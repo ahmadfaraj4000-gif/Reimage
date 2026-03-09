@@ -1,356 +1,1339 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ReImage - Professional branding, web design, and social media management for law firms, medical practices, and restaurants.">
-    <title>ReImage | Branding & Digital Marketing Solutions</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="logo.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RE IMAGE Business Solutions</title>
+  <link rel="icon" href="logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    :root {
+      --teal: #1a7a8a;
+      --teal-dark: #0d5a68;
+      --teal-light: #2ba3b8;
+      --navy: #0c1f2e;
+      --navy-mid: #152a3a;
+      --navy-light: #1e3a4f;
+      --gold: #c8922a;
+      --gold-light: #e8ad40;
+      --white: #ffffff;
+      --off-white: #f4f8fa;
+      --gray: #8a9bb0;
+      --light-gray: #d4e0e8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ========== NAVBAR ========== */
+    .navbar {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(12, 31, 46, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(26, 122, 138, 0.25);
+      transition: all 0.3s;
+    }
+    .navbar.scrolled {
+      padding: 0.6rem 2rem;
+      background: rgba(12, 31, 46, 0.98);
+      border-bottom-color: rgba(26, 122, 138, 0.5);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { height: 38px; width: auto; }
+    .nav-logo-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 1.3rem;
+      color: var(--white); letter-spacing: 1px;
+    }
+    .nav-logo-text span { color: var(--teal-light); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--light-gray); text-decoration: none;
+      font-weight: 500; font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      transition: color 0.3s; position: relative;
+    }
+    .nav-links a:hover { color: var(--teal-light); }
+    .nav-links a.active { color: var(--teal-light); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      color: var(--white) !important;
+      padding: 0.5rem 1.4rem !important;
+      border-radius: 6px !important;
+      font-weight: 600 !important;
+      border: 1px solid var(--teal-light) !important;
+      transition: all 0.3s !important;
+    }
+    .nav-cta:hover { background: linear-gradient(135deg, var(--teal-light), var(--teal)) !important; transform: translateY(-2px); }
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; color: var(--white); font-size: 1.4rem; }
+
+    /* ========== HERO ========== */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      background: radial-gradient(ellipse at 30% 50%, rgba(26,122,138,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, rgba(200,146,42,0.06) 0%, transparent 50%),
+                  linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 60%, #0a1a28 100%);
+      position: relative; overflow: hidden;
+      padding: 120px 2rem 80px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 80%, rgba(26,122,138,0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 10%, rgba(43,163,184,0.05) 0%, transparent 35%);
+    }
+    .hero-grid-overlay {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(26,122,138,0.06) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(26,122,138,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(26,122,138,0.15);
+      border: 1px solid rgba(43,163,184,0.35);
+      padding: 0.4rem 1rem; border-radius: 50px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--teal-light);
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--teal-light); border-radius: 50%; animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.8rem, 5vw, 4.4rem);
+      font-weight: 800; line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .hero-title .accent { color: var(--teal-light); }
+    .hero-title .gold-accent { color: var(--gold-light); }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--gray);
+      line-height: 1.7; margin-bottom: 2.5rem;
+      max-width: 520px;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 0.85rem 2rem; border-radius: 8px;
+      font-weight: 700; font-size: 0.95rem;
+      letter-spacing: 0.5px; text-decoration: none;
+      transition: all 0.3s; cursor: pointer; border: none;
+      font-family: 'Barlow', sans-serif;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      color: white;
+      border: 1px solid var(--teal-light);
+      box-shadow: 0 4px 20px rgba(26,122,138,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(26,122,138,0.5); background: linear-gradient(135deg, var(--teal-light), var(--teal)); }
+    .btn-outline {
+      background: transparent; color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.25);
+    }
+    .btn-outline:hover { border-color: var(--teal-light); color: var(--teal-light); transform: translateY(-3px); }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), #a0731e);
+      color: white; border: 1px solid var(--gold-light);
+      box-shadow: 0 4px 20px rgba(200,146,42,0.3);
+    }
+    .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(200,146,42,0.5); }
+
+    /* Hero right side visual */
+    .hero-visual { position: relative; }
+    .hero-cards-stack {
+      position: relative; width: 100%;
+    }
+    .hero-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(26,122,138,0.3);
+      border-radius: 16px; padding: 1.8rem;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s;
+    }
+    .hero-card:hover { transform: translateY(-5px); }
+    .hero-card-main { position: relative; z-index: 2; }
+    .hero-card-float {
+      position: absolute;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(43,163,184,0.2);
+      border-radius: 12px; padding: 1rem 1.4rem;
+      backdrop-filter: blur(10px);
+      font-size: 0.85rem; z-index: 3;
+    }
+    .hero-card-float.one { bottom: -30px; right: -20px; display: flex; align-items: center; gap: 10px; }
+    .hero-card-float.two { top: -20px; right: -10px; }
+    .float-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--teal), var(--teal-dark)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+    .stat-big { font-size: 2rem; font-weight: 800; color: var(--teal-light); }
+    .stat-label { color: var(--gray); font-size: 0.8rem; }
+    .service-preview-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .service-preview-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.3rem; letter-spacing: 0.5px; margin-bottom: 0.5rem; }
+    .service-preview-price { color: var(--gold-light); font-weight: 700; font-size: 1.1rem; }
+    .price-tag { background: var(--gold); color: white; padding: 2px 10px; border-radius: 4px; font-weight: 700; font-size: 0.85rem; }
+
+    /* ========== SECTION WRAPPER ========== */
+    .section { padding: 100px 2rem; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--teal-light); font-weight: 700;
+      font-size: 0.8rem; letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .section-label::before { content: ''; width: 30px; height: 2px; background: var(--teal-light); }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; text-transform: uppercase;
+      letter-spacing: 1px; line-height: 1.1;
+    }
+    .section-sub { color: var(--gray); font-size: 1.05rem; line-height: 1.7; margin-top: 0.8rem; }
+
+    /* ========== SERVICES ========== */
+    .services { background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%); }
+    .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+    .service-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(26,122,138,0.06) 100%);
+      border: 1px solid rgba(26,122,138,0.25);
+      border-radius: 20px; padding: 2.5rem;
+      cursor: pointer; transition: all 0.4s;
+      position: relative; overflow: hidden;
+      text-decoration: none; color: inherit;
+      display: block;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s;
+    }
+    .service-card:hover { border-color: rgba(43,163,184,0.5); transform: translateY(-6px); box-shadow: 0 20px 50px rgba(26,122,138,0.2); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card.gold-card::before { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+    .service-icon-wrap {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      border-radius: 14px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; margin-bottom: 1.5rem;
+      box-shadow: 0 4px 20px rgba(26,122,138,0.4);
+    }
+    .service-card.gold-card .service-icon-wrap { background: linear-gradient(135deg, var(--gold), #a0731e); box-shadow: 0 4px 20px rgba(200,146,42,0.4); }
+    .service-card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; font-size: 1.7rem;
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 0.8rem;
+    }
+    .service-card-sub { color: var(--gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; }
+    .service-features { list-style: none; margin-bottom: 2rem; }
+    .service-features li {
+      display: flex; align-items: center; gap: 10px;
+      padding: 0.4rem 0; color: var(--light-gray); font-size: 0.95rem;
+    }
+    .service-features li i { color: var(--teal-light); font-size: 0.8rem; }
+    .service-card.gold-card .service-features li i { color: var(--gold-light); }
+    .service-price-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+    .service-price { font-size: 2.2rem; font-weight: 800; color: var(--white); }
+    .service-price sub { font-size: 1rem; font-weight: 600; color: var(--gray); }
+    .service-price-badge {
+      background: rgba(200,146,42,0.2); border: 1px solid var(--gold);
+      color: var(--gold-light); padding: 0.3rem 0.8rem; border-radius: 6px;
+      font-size: 0.8rem; font-weight: 700;
+    }
+    .service-cta {
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(26,122,138,0.12); border: 1px solid rgba(26,122,138,0.3);
+      padding: 0.9rem 1.2rem; border-radius: 10px;
+      font-weight: 600; font-size: 0.9rem; color: var(--teal-light);
+      transition: all 0.3s;
+    }
+    .service-card:hover .service-cta { background: rgba(26,122,138,0.25); }
+    .service-card.gold-card .service-cta { background: rgba(200,146,42,0.1); border-color: rgba(200,146,42,0.3); color: var(--gold-light); }
+
+    /* ========== PORTFOLIO ========== */
+    .portfolio { background: var(--navy-mid); }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .portfolio-card {
+      border: 1px solid rgba(26,122,138,0.2);
+      border-radius: 16px; overflow: hidden;
+      transition: all 0.3s;
+      background: rgba(255,255,255,0.02);
+    }
+    .portfolio-card:hover { border-color: rgba(43,163,184,0.4); transform: translateY(-4px); }
+    .portfolio-preview {
+      height: 200px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; position: relative; overflow: hidden;
+    }
+    .portfolio-preview::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(26,122,138,0.15), transparent);
+    }
+    .portfolio-preview .browser-bar {
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 28px; background: rgba(0,0,0,0.3);
+      display: flex; align-items: center; gap: 5px; padding: 0 10px;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .dot.red { background: #ff5f57; }
+    .dot.yellow { background: #febc2e; }
+    .dot.green { background: #28c840; }
+    .portfolio-info { padding: 1.5rem; }
+    .portfolio-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.4rem; }
+    .portfolio-url { color: var(--teal-light); font-size: 0.85rem; text-decoration: none; }
+    .portfolio-url:hover { text-decoration: underline; }
+    .portfolio-tag {
+      display: inline-block; margin-top: 0.8rem;
+      background: rgba(26,122,138,0.15); border: 1px solid rgba(26,122,138,0.3);
+      color: var(--teal-light); padding: 0.2rem 0.7rem;
+      border-radius: 4px; font-size: 0.75rem; font-weight: 600;
+    }
+
+    /* ========== ABOUT ========== */
+    .about { background: linear-gradient(160deg, var(--navy-mid) 0%, var(--navy) 100%); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3rem; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .about-stat-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(26,122,138,0.2);
+      border-radius: 14px; padding: 1.5rem; text-align: center;
+    }
+    .about-stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.5rem; font-weight: 800; color: var(--teal-light);
+    }
+    .about-stat-label { color: var(--gray); font-size: 0.85rem; margin-top: 0.3rem; }
+    .about-text p { color: var(--gray); line-height: 1.8; margin-bottom: 1.2rem; }
+    .about-highlights { list-style: none; margin-top: 1.5rem; }
+    .about-highlights li { display: flex; align-items: flex-start; gap: 12px; padding: 0.5rem 0; color: var(--light-gray); }
+    .about-highlights li i { color: var(--teal-light); margin-top: 3px; }
+
+    /* ========== MODAL / ORDER FLOW ========== */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.8); backdrop-filter: blur(8px);
+      z-index: 2000; display: flex; align-items: center; justify-content: center;
+      padding: 1rem;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .modal-overlay.active { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--navy-mid);
+      border: 1px solid rgba(26,122,138,0.4);
+      border-radius: 20px; width: 100%; max-width: 600px;
+      max-height: 90vh; overflow-y: auto;
+      transform: translateY(30px); transition: transform 0.3s;
+      scrollbar-width: thin; scrollbar-color: var(--teal) transparent;
+    }
+    .modal-overlay.active .modal { transform: translateY(0); }
+    .modal-header {
+      padding: 2rem 2rem 1.5rem;
+      border-bottom: 1px solid rgba(26,122,138,0.2);
+      display: flex; align-items: flex-start; justify-content: space-between;
+      position: sticky; top: 0;
+      background: var(--navy-mid); z-index: 1;
+    }
+    .modal-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; font-weight: 800; text-transform: uppercase; }
+    .modal-title span { color: var(--teal-light); }
+    .modal-close {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      color: var(--gray); cursor: pointer; font-size: 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s; flex-shrink: 0;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.12); color: white; }
+    .modal-body { padding: 2rem; }
+    .modal-step { display: none; }
+    .modal-step.active { display: block; }
+
+    /* Steps indicator */
+    .steps-bar {
+      display: flex; align-items: center; margin-bottom: 2rem;
+    }
+    .step-dot {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255,255,255,0.06); border: 2px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 700; color: var(--gray);
+      flex-shrink: 0; transition: all 0.3s;
+    }
+    .step-dot.active { background: var(--teal); border-color: var(--teal-light); color: white; }
+    .step-dot.done { background: rgba(26,122,138,0.3); border-color: var(--teal); color: var(--teal-light); }
+    .step-line { flex: 1; height: 2px; background: rgba(255,255,255,0.08); transition: background 0.3s; }
+    .step-line.done { background: rgba(26,122,138,0.4); }
+
+    /* Form elements */
+    .form-group { margin-bottom: 1.3rem; }
+    .form-label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--light-gray); margin-bottom: 0.5rem; letter-spacing: 0.5px; }
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1.5px solid rgba(26,122,138,0.25);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 1rem;
+      padding: 0.85rem 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      outline: none;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      border-color: var(--teal-light);
+      box-shadow: 0 0 0 3px rgba(26,122,138,0.15);
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .form-select option { background: var(--navy-mid); }
+    .form-textarea { resize: vertical; min-height: 120px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* Package selector */
+    .package-option {
+      border: 2px solid rgba(26,122,138,0.25);
+      border-radius: 12px; padding: 1.2rem; cursor: pointer;
+      transition: all 0.3s; margin-bottom: 0.8rem;
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .package-option:hover { border-color: rgba(43,163,184,0.5); }
+    .package-option.selected { border-color: var(--teal-light); background: rgba(26,122,138,0.12); }
+    .package-radio {
+      width: 20px; height: 20px; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px; transition: all 0.3s;
+    }
+    .package-option.selected .package-radio { border-color: var(--teal-light); }
+    .package-radio::after {
+      content: ''; width: 10px; height: 10px; border-radius: 50%;
+      background: var(--teal-light); transform: scale(0); transition: transform 0.2s;
+    }
+    .package-option.selected .package-radio::after { transform: scale(1); }
+    .package-name { font-weight: 700; font-size: 1rem; }
+    .package-desc { color: var(--gray); font-size: 0.85rem; margin-top: 0.2rem; }
+    .package-price { font-weight: 800; color: var(--gold-light); font-size: 1.1rem; margin-left: auto; flex-shrink: 0; }
+
+    /* Stripe card element */
+    .stripe-card-wrap {
+      background: rgba(255,255,255,0.05);
+      border: 1.5px solid rgba(26,122,138,0.25);
+      border-radius: 8px; padding: 1rem;
+      transition: border-color 0.3s;
+    }
+    .stripe-card-wrap:focus-within { border-color: var(--teal-light); }
+    #card-element { min-height: 24px; }
+    #card-errors { color: #ff6b6b; font-size: 0.85rem; margin-top: 0.5rem; min-height: 1.2em; }
+
+    .order-summary {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(26,122,138,0.2);
+      border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;
+    }
+    .order-summary-title { font-weight: 700; margin-bottom: 1rem; color: var(--light-gray); }
+    .order-row { display: flex; justify-content: space-between; padding: 0.4rem 0; font-size: 0.9rem; color: var(--gray); }
+    .order-row.total { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 0.8rem; padding-top: 0.8rem; font-weight: 700; color: var(--white); font-size: 1rem; }
+    .order-row .price { color: var(--teal-light); font-weight: 600; }
+
+    .modal-footer {
+      display: flex; gap: 1rem; justify-content: flex-end;
+      padding-top: 1.5rem; border-top: 1px solid rgba(26,122,138,0.15);
+    }
+    .btn-modal-back {
+      background: transparent; border: 1.5px solid rgba(255,255,255,0.15);
+      color: var(--gray); padding: 0.75rem 1.5rem; border-radius: 8px;
+      cursor: pointer; font-family: 'Barlow', sans-serif; font-weight: 600;
+      transition: all 0.3s;
+    }
+    .btn-modal-back:hover { border-color: rgba(255,255,255,0.3); color: white; }
+    .btn-modal-next {
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      color: white; padding: 0.75rem 2rem; border-radius: 8px;
+      cursor: pointer; font-family: 'Barlow', sans-serif; font-weight: 700;
+      border: none; font-size: 0.95rem; transition: all 0.3s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .btn-modal-next:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,122,138,0.4); }
+    .btn-modal-next:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .spinner { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .success-state { text-align: center; padding: 2rem 0; }
+    .success-icon { font-size: 4rem; margin-bottom: 1rem; color: var(--teal-light); }
+    .success-title { font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 800; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .success-sub { color: var(--gray); line-height: 1.7; }
+
+    /* ========== ADMIN MODAL ========== */
+    .admin-modal {
+      background: var(--navy-mid); border: 1px solid rgba(26,122,138,0.4);
+      border-radius: 20px; width: 100%; max-width: 900px;
+      max-height: 90vh; overflow-y: auto;
+    }
+    .admin-login { max-width: 400px; }
+    .admin-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .admin-table th { text-align: left; padding: 0.8rem 1rem; border-bottom: 1px solid rgba(26,122,138,0.3); color: var(--teal-light); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+    .admin-table td { padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--light-gray); vertical-align: top; }
+    .admin-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .status-badge { display: inline-block; padding: 0.2rem 0.7rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; }
+    .status-badge.paid { background: rgba(26,122,138,0.2); color: var(--teal-light); border: 1px solid rgba(26,122,138,0.4); }
+    .status-badge.pending { background: rgba(200,146,42,0.2); color: var(--gold-light); border: 1px solid rgba(200,146,42,0.4); }
+    .admin-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+    .admin-logout { background: none; border: 1px solid rgba(255,255,255,0.15); color: var(--gray); padding: 0.4rem 1rem; border-radius: 6px; cursor: pointer; font-family: 'Barlow', sans-serif; font-size: 0.85rem; transition: all 0.3s; }
+    .admin-logout:hover { border-color: #ff6b6b; color: #ff6b6b; }
+
+    /* ========== CONTACT ========== */
+    .contact { background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; align-items: start; }
+    .contact-info-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+    .contact-icon { width: 44px; height: 44px; background: rgba(26,122,138,0.15); border: 1px solid rgba(26,122,138,0.3); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--teal-light); flex-shrink: 0; }
+    .contact-info-label { font-weight: 600; color: var(--white); font-size: 0.9rem; margin-bottom: 0.2rem; }
+    .contact-info-val { color: var(--gray); font-size: 0.9rem; }
+    .contact-form-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(26,122,138,0.25);
+      border-radius: 20px; padding: 2.5rem;
+    }
+    .form-success {
+      display: none; text-align: center; padding: 2rem;
+      color: var(--teal-light); font-weight: 600; font-size: 1.1rem;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(26,122,138,0.2);
+      padding: 60px 2rem 30px;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-brand img { height: 40px; margin-bottom: 1rem; }
+    .footer-brand p { color: var(--gray); font-size: 0.9rem; line-height: 1.7; }
+    .footer-col-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; color: var(--white); margin-bottom: 1.2rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.7rem; }
+    .footer-col ul li a { color: var(--gray); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+    .footer-col ul li a:hover { color: var(--teal-light); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 2rem; display: flex;
+      align-items: center; justify-content: space-between;
+      color: var(--gray); font-size: 0.85rem;
+    }
+    .footer-admin-btn {
+      background: none; border: 1px solid rgba(255,255,255,0.1);
+      color: var(--gray); padding: 0.35rem 0.9rem; border-radius: 6px;
+      cursor: pointer; font-size: 0.8rem; font-family: 'Barlow', sans-serif;
+      transition: all 0.3s; display: flex; align-items: center; gap: 6px;
+    }
+    .footer-admin-btn:hover { border-color: rgba(26,122,138,0.5); color: var(--teal-light); }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+      .hero-visual { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .menu-btn { display: block; }
+      .nav-links.open {
+        display: flex; flex-direction: column; position: fixed;
+        top: 60px; left: 0; width: 100%;
+        background: rgba(12,31,46,0.98);
+        padding: 2rem; gap: 1.5rem;
+        border-bottom: 1px solid rgba(26,122,138,0.3);
+      }
+    }
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+      .hero-btns { justify-content: center; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Animate on scroll */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s; }
+    .fade-up.visible { opacity: 1; transform: none; }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <img src="logo.png" alt="ReImage Logo" class="logo-img">
-                <span class="logo-text">ReImage</span>
-            </a>
-            <button class="menu-toggle" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact" class="nav-contact-btn">Get Started</a></li>
-            </ul>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="#home" class="nav-logo">
+    <img src="logo.png" alt="RE IMAGE" />
+    <span class="nav-logo-text">RE <span>IMAGE</span></span>
+  </a>
+  <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Our Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#services" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-content fade-up">
+      <div class="hero-badge">Business Growth Solutions</div>
+      <h1 class="hero-title">
+        Elevate Your<br />
+        <span class="accent">Brand.</span> Grow<br />
+        Your <span class="gold-accent">Business.</span>
+      </h1>
+      <p class="hero-sub">
+        Professional social media content creation and custom website design built to attract clients, amplify your presence, and drive real results.
+      </p>
+      <div class="hero-btns">
+        <a href="#services" class="btn btn-primary"><i class="fas fa-rocket"></i> View Our Services</a>
+        <a href="#work" class="btn btn-outline"><i class="fas fa-eye"></i> See Our Work</a>
+      </div>
+    </div>
+    <div class="hero-visual fade-up" style="transition-delay:0.2s">
+      <div class="hero-cards-stack">
+        <div class="hero-card hero-card-main">
+          <div class="service-preview-icon">🎬</div>
+          <div class="service-preview-title">Content Boost Package</div>
+          <div style="color:var(--gray);font-size:0.9rem;margin-bottom:1rem;">1 Video + 5 Edited Images — Shot at your location</div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="service-preview-price">Only $99</div>
+            <span class="price-tag">SAVE $250</span>
+          </div>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Build Your Digital Presence. Grow Your Business.</h1>
-                <p class="hero-subtitle">Professional branding, web design, and social media management for law firms, medical practices, restaurants, and professional services.</p>
-                <div class="hero-buttons">
-                    <a href="#services" class="btn btn-primary">Our Services</a>
-                    <a href="#contact" class="btn btn-secondary">Start a Project</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="image-placeholder">
-                    <i class="fas fa-chart-line"></i>
-                    <i class="fas fa-laptop-code"></i>
-                    <i class="fas fa-users"></i>
-                </div>
-            </div>
+        <div class="hero-card-float one">
+          <div class="float-icon">🌐</div>
+          <div>
+            <div style="font-weight:700;font-size:0.9rem;">Website Design</div>
+            <div style="color:var(--gray);font-size:0.8rem;">Custom built for you</div>
+          </div>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">Our Services</h2>
-                <p class="section-subtitle">Complete digital solutions to build and maintain your professional brand</p>
-            </div>
-            
-            <div class="services-grid">
-                <!-- Service 1 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3 class="service-title">Website Creation</h3>
-                    <p class="service-description">
-                        Custom, responsive websites designed to convert visitors into clients. Modern design with clear messaging for your specific industry.
-                    </p>
-                    <ul class="service-features">
-                        <li>Mobile-Responsive Design</li>
-                        <li>SEO Optimized</li>
-                        <li>Fast Loading Speeds</li>
-                        <li>Content Management System</li>
-                    </ul>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-hashtag"></i>
-                    </div>
-                    <h3 class="service-title">Social Media Management</h3>
-                    <p class="service-description">
-                        Consistent, engaging content that builds your audience and establishes your authority in your field.
-                    </p>
-                    <ul class="service-features">
-                        <li>Content Strategy & Planning</li>
-                        <li>Regular Posting & Engagement</li>
-                        <li>Analytics & Performance Reports</li>
-                        <li>Ad Campaign Management</li>
-                    </ul>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3 class="service-title">Logo & Brand Design</h3>
-                    <p class="service-description">
-                        Memorable logos and cohesive brand identities that communicate professionalism and trust.
-                    </p>
-                    <ul class="service-features">
-                        <li>Logo Design Concepts</li>
-                        <li>Brand Style Guide</li>
-                        <li>Business Card Design</li>
-                        <li>Brand Consistency Audit</li>
-                    </ul>
-                </div>
-
-                <!-- Service 4 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                    <h3 class="service-title">Brand Upkeep & Maintenance</h3>
-                    <p class="service-description">
-                        Ongoing support to keep your digital presence current, secure, and effective as your business grows.
-                    </p>
-                    <ul class="service-features">
-                        <li>Website Updates & Security</li>
-                        <li>Content Refreshes</li>
-                        <li>Performance Monitoring</li>
-                        <li>Monthly Strategy Reviews</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="hero-card-float two" style="display:flex;gap:8px;align-items:center;">
+          <div style="font-size:1.3rem;">📈</div>
+          <div>
+            <div class="stat-big">100+</div>
+            <div class="stat-label">Clients Served</div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="section-container">
-            <div class="about-content">
-                <h2 class="section-title">Why Choose ReImage</h2>
-                <p class="about-text">
-                    We specialize in helping professional service businesses stand out in today's digital landscape. 
-                    Our approach combines industry-specific knowledge with cutting-edge design and marketing strategies. We don't just build websites—we build digital foundations that help you attract more clients and grow your practice.
-                </p>
-                <div class="about-stats">
-                    <div class="stat">
-                        <span class="stat-number">100+</span>
-                        <span class="stat-label">Projects Delivered</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">24/7</span>
-                        <span class="stat-label">Support</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">30-Day</span>
-                        <span class="stat-label">Satisfaction Guarantee</span>
-                    </div>
-                </div>
-            </div>
+<!-- SERVICES -->
+<section id="services" class="section services">
+  <div class="section-inner">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title fade-up">Our Services</h2>
+    <p class="section-sub fade-up">Click a service to get started — fill out your details and we'll handle the rest.</p>
+
+    <div class="services-grid">
+      <!-- SERVICE 1 -->
+      <div class="service-card gold-card fade-up" onclick="openOrderModal('content')">
+        <div class="service-icon-wrap">🎬</div>
+        <h3 class="service-card-title">Social Media Content<br>Starter Package</h3>
+        <p class="service-card-sub">Professional content created at your business location — ready to post on Facebook, Instagram, TikTok & Ads immediately.</p>
+        <div class="service-price-row">
+          <div class="service-price">$99 <sub style="font-size:0.8rem;color:var(--gray);">/ package</sub></div>
+          <span class="service-price-badge">SAVE $250</span>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">Ready to Transform Your Brand?</h2>
-                <p class="section-subtitle">Tell us about your project. We'll get back to you within 24 hours.</p>
-            </div>
-
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3 class="contact-info-title">Get in Touch</h3>
-                    <p class="contact-info-text">
-                        Whether you need a complete brand overhaul or help with specific marketing challenges, we're here to help.
-                    </p>
-                    <div class="contact-details">
-                        <div class="contact-detail">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h4>Email Us</h4>
-                                <p>contact@reimage.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-detail">
-                            <i class="fas fa-clock"></i>
-                            <div>
-                                <h4>Response Time</h4>
-                                <p>Within 24 hours</p>
-                            </div>
-                        </div>
-                        <div class="contact-detail">
-                            <i class="fas fa-briefcase"></i>
-                            <div>
-                                <h4>Specialties</h4>
-                                <p>Law Firms • Medical Practices • Restaurants • Professional Services</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-form-container">
-                    <div class="contact-form-card">
-                        <h3 class="contact-form-title">Start Your Project</h3>
-                        
-                        <!-- Smart Email Button with Detailed Prompt -->
-                        <div class="email-button-container">
-                            <p class="email-instructions">Click below to send us an email with pre-filled information about your needs:</p>
-                            <a href="mailto:contact@reimage.com?subject=ReImage%20Project%20Inquiry&body=Hello%20ReImage%20Team,%0A%0AI'm%20interested%20in%20your%20services.%20Here's%20some%20information%20about%20my%20project:%0A%0A1.%20My%20business%20type:%20(Law%20Firm%2C%20Medical%20Practice%2C%20Restaurant%2C%20or%20Other)%0A%0A2.%20Primary%20services%20I'm%20interested%20in:%20(Website%20Creation%2C%20Social%20Media%20Management%2C%20Logo%20Design%2C%20Brand%20Upkeep%2C%20or%20All%20of%20the%20above)%0A%0A3.%20Current%20stage%20of%20my%20business:%20(New%20Business%2C%20Existing%20Business%20Needing%20Refresh%2C%20Scaling%20Operations)%0A%0A4.%20My%20timeline:%20(Urgent%20-%20within%202%20weeks%2C%20Planning%20Phase%2C%20Just%20Exploring%20Options)%0A%0A5.%20Budget%20range:%20(Under%20%243k%2C%20%243k-%245k%2C%20%245k-%2410k%2C%20%2410k%2B)%0A%0A6.%20Anything%20else%20you%20should%20know%20about%20my%20project:%0A%0A---%0A%0AMy%20contact%20information:%0AName:%0ACompany:%0APhone:%0ABest%20time%20to%20call:%0A---%0A%0AI%20look%20forward%20to%20hearing%20from%20you!" 
-                               class="btn btn-primary btn-email">
-                                <i class="fas fa-paper-plane"></i> Email Us About Your Project
-                            </a>
-                            <p class="email-note">This opens your email app with a detailed template to help us understand your needs better.</p>
-                        </div>
-                        
-                        <!-- Alternative: Simple Contact Form (Optional) -->
-                        <div class="alternative-contact">
-                            <p class="alt-contact-text">Prefer a contact form instead?</p>
-                            <form class="simple-form" id="contactForm">
-                                <div class="form-group">
-                                    <input type="text" placeholder="Your Name" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" placeholder="Email Address" required>
-                                </div>
-                                <div class="form-group">
-                                    <select required>
-                                        <option value="" disabled selected>Service Interested In</option>
-                                        <option value="website">Website Creation</option>
-                                        <option value="social">Social Media Management</option>
-                                        <option value="logo">Logo & Brand Design</option>
-                                        <option value="upkeep">Brand Upkeep</option>
-                                        <option value="all">Full Package</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <textarea placeholder="Tell us about your project..." rows="3"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Send Message</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <ul class="service-features">
+          <li><i class="fas fa-check-circle"></i> 1 Professional Social Media Video</li>
+          <li><i class="fas fa-check-circle"></i> 5 High-Quality Edited Images</li>
+          <li><i class="fas fa-check-circle"></i> Shot at your business location</li>
+          <li><i class="fas fa-check-circle"></i> Ready to post immediately</li>
+          <li><i class="fas fa-check-circle"></i> Facebook, Instagram, TikTok & Ads ready</li>
+        </ul>
+        <div class="service-cta">
+          <span>Book This Package</span>
+          <i class="fas fa-arrow-right"></i>
         </div>
-    </section>
+      </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="section-container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="#" class="logo">
-                        <img src="logo.png" alt="ReImage Logo" class="logo-img">
-                        <span class="logo-text">ReImage</span>
-                    </a>
-                    <p class="footer-tagline">Building digital foundations for professional success.</p>
-                </div>
-                
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4 class="footer-title">Services</h4>
-                        <ul>
-                            <li><a href="#services">Website Creation</a></li>
-                            <li><a href="#services">Social Media Management</a></li>
-                            <li><a href="#services">Logo Design</a></li>
-                            <li><a href="#services">Brand Upkeep</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4 class="footer-title">Company</h4>
-                        <ul>
-                            <li><a href="#about">About Us</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                            <li><a href="#contact">Get Started</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4 class="footer-title">Industries</h4>
-                        <ul>
-                            <li>Law Firms</li>
-                            <li>Medical Practices</li>
-                            <li>Restaurants</li>
-                            <li>Professional Services</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> ReImage. All rights reserved.</p>
-                <p class="footer-email">contact@reimage.com</p>
-            </div>
+      <!-- SERVICE 2 -->
+      <div class="service-card fade-up" style="transition-delay:0.15s" onclick="openOrderModal('website')">
+        <div class="service-icon-wrap">🌐</div>
+        <h3 class="service-card-title">Custom Website<br>for Small Business</h3>
+        <p class="service-card-sub">Professional, mobile-responsive websites designed to convert visitors into clients — built specifically for small businesses.</p>
+        <div class="service-price-row">
+          <div class="service-price" id="websitePriceDisplay">Custom <sub style="font-size:0.8rem;color:var(--gray);">quote</sub></div>
         </div>
-    </footer>
+        <ul class="service-features">
+          <li><i class="fas fa-check-circle"></i> Mobile-Responsive Design</li>
+          <li><i class="fas fa-check-circle"></i> SEO Optimized Structure</li>
+          <li><i class="fas fa-check-circle"></i> Fast Loading & Secure</li>
+          <li><i class="fas fa-check-circle"></i> Contact Forms & Calls-to-Action</li>
+          <li><i class="fas fa-check-circle"></i> Up to 5 pages included</li>
+        </ul>
+        <div class="service-cta">
+          <span>Start Your Website</span>
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- JavaScript -->
-    <script>
-        // Current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-        
-        // Mobile menu toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
-        
-        // Close menu when clicking a link
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                menuToggle.classList.remove('active');
-            });
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if(this.getAttribute('href') === '#') return;
-                
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Simple form submission
-        const contactForm = document.getElementById('contactForm');
-        if(contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you! This is a demo form. In a real implementation, this would send your message to our team.');
-                this.reset();
-            });
-        }
-        
-        // Sticky navbar on scroll
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if(window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-    </script>
+<!-- PORTFOLIO -->
+<section id="work" class="section portfolio">
+  <div class="section-inner">
+    <div class="section-label">Portfolio</div>
+    <h2 class="section-title fade-up">Websites We've Built</h2>
+    <p class="section-sub fade-up">Real websites we've crafted for small businesses — professional, fast, and built to convert.</p>
+
+    <div class="portfolio-grid">
+      <div class="portfolio-card fade-up">
+        <div class="portfolio-preview">
+          <div class="browser-bar">
+            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+            <span style="flex:1;text-align:center;font-size:0.7rem;color:var(--gray);">farajsoftwaresolutions.com</span>
+          </div>
+          <span>💻</span>
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-name">Faraj Software Solutions</div>
+          <a href="https://farajsoftwaresolutions.com" target="_blank" class="portfolio-url">farajsoftwaresolutions.com ↗</a>
+          <div><span class="portfolio-tag">Software Company</span></div>
+        </div>
+      </div>
+
+      <div class="portfolio-card fade-up" style="transition-delay:0.15s">
+        <div class="portfolio-preview">
+          <div class="browser-bar">
+            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+            <span style="flex:1;text-align:center;font-size:0.7rem;color:var(--gray);">techniqskinandbeauty.com</span>
+          </div>
+          <span>💅</span>
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-name">Techniq Skin & Beauty</div>
+          <a href="https://techniqskinandbeauty.com" target="_blank" class="portfolio-url">techniqskinandbeauty.com ↗</a>
+          <div><span class="portfolio-tag">Beauty & Wellness</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">Built for Small<br>Business Owners</h2>
+        <p style="margin-top:1rem;">We understand that as a small business owner, every dollar matters. That's why we've built affordable, high-impact services that deliver professional results without the agency price tag.</p>
+        <p>From creating content at your location to launching your business online — we do it all. Our focus is simple: help you look professional, attract more customers, and grow.</p>
+        <ul class="about-highlights">
+          <li><i class="fas fa-check-circle"></i> Fast turnaround — content ready to post same day</li>
+          <li><i class="fas fa-check-circle"></i> We come to your business location</li>
+          <li><i class="fas fa-check-circle"></i> Websites designed to convert visitors into customers</li>
+          <li><i class="fas fa-check-circle"></i> Dedicated support throughout your project</li>
+        </ul>
+      </div>
+      <div class="about-stats fade-up" style="transition-delay:0.2s">
+        <div class="about-stat-card">
+          <div class="about-stat-num">100+</div>
+          <div class="about-stat-label">Projects Delivered</div>
+        </div>
+        <div class="about-stat-card">
+          <div class="about-stat-num">$250</div>
+          <div class="about-stat-label">Avg. Savings on Content</div>
+        </div>
+        <div class="about-stat-card">
+          <div class="about-stat-num">24hr</div>
+          <div class="about-stat-label">Response Time</div>
+        </div>
+        <div class="about-stat-card">
+          <div class="about-stat-num">5★</div>
+          <div class="about-stat-label">Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section contact">
+  <div class="section-inner">
+    <div style="text-align:center;">
+      <div class="section-label" style="justify-content:center;">Get In Touch</div>
+      <h2 class="section-title fade-up">Ready to Transform<br>Your Business?</h2>
+      <p class="section-sub fade-up">Have questions? Want to discuss your project before ordering? Reach out directly.</p>
+    </div>
+    <div class="contact-grid" style="margin-top:3rem;">
+      <div class="fade-up">
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:700;text-transform:uppercase;margin-bottom:1.5rem;">Contact Info</h3>
+        <div class="contact-info-item">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div class="contact-info-label">Email Us</div>
+            <div class="contact-info-val">info@reimagebusinesssolutions.com</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon"><i class="fas fa-clock"></i></div>
+          <div>
+            <div class="contact-info-label">Response Time</div>
+            <div class="contact-info-val">Within 24 hours</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <div class="contact-info-label">Service Area</div>
+            <div class="contact-info-val">We come to your location</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon"><i class="fab fa-instagram"></i></div>
+          <div>
+            <div class="contact-info-label">Social Media</div>
+            <div class="contact-info-val">@reimagebusiness</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-card fade-up" style="transition-delay:0.2s">
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:700;text-transform:uppercase;margin-bottom:1.5rem;">Send a Message</h3>
+        <form id="contactForm" onsubmit="submitContact(event)">
+          <div class="form-group">
+            <input class="form-input" type="text" placeholder="Your Name" required />
+          </div>
+          <div class="form-group">
+            <input class="form-input" type="email" placeholder="Email Address" required />
+          </div>
+          <div class="form-group">
+            <select class="form-select">
+              <option value="">I'm interested in...</option>
+              <option>Social Media Content Package</option>
+              <option>Website Design</option>
+              <option>Both Services</option>
+              <option>General Question</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea class="form-textarea" placeholder="Tell us about your business and what you need..." rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <i class="fas fa-check-circle" style="font-size:2.5rem;display:block;margin-bottom:0.8rem;"></i>
+          Message sent! We'll be in touch within 24 hours.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="logo.png" alt="RE IMAGE" />
+        <p>Professional branding, social media content, and website design for small businesses ready to grow.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Services</div>
+        <ul>
+          <li><a href="#services" onclick="openOrderModal('content')">Content Package — $99</a></li>
+          <li><a href="#services" onclick="openOrderModal('website')">Website Design</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Our Work</div>
+        <ul>
+          <li><a href="https://farajsoftwaresolutions.com" target="_blank">Faraj Software Solutions</a></li>
+          <li><a href="https://techniqskinandbeauty.com" target="_blank">Techniq Skin & Beauty</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Company</div>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#services">Get Started</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="yr"></span> RE IMAGE Business Solutions. All rights reserved.</span>
+      <button class="footer-admin-btn" onclick="openAdminModal()">
+        <i class="fas fa-lock"></i> Admin Login
+      </button>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== ORDER MODAL ===== -->
+<div class="modal-overlay" id="orderModalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal" id="orderModal">
+    <div class="modal-header">
+      <div>
+        <div style="font-size:0.75rem;color:var(--teal-light);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:0.3rem;">RE IMAGE Business Solutions</div>
+        <div class="modal-title" id="modalTitle">Place Your <span>Order</span></div>
+      </div>
+      <button class="modal-close" onclick="closeOrderModal()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <!-- Steps bar -->
+      <div class="steps-bar" id="stepsBar">
+        <div class="step-dot active" id="dot1">1</div>
+        <div class="step-line" id="line1"></div>
+        <div class="step-dot" id="dot2">2</div>
+        <div class="step-line" id="line2"></div>
+        <div class="step-dot" id="dot3">3</div>
+      </div>
+
+      <!-- STEP 1: Details -->
+      <div class="modal-step active" id="step1">
+        <h4 style="font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:0.5px;">Your Details</h4>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input class="form-input" id="firstName" type="text" placeholder="John" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input class="form-input" id="lastName" type="text" placeholder="Smith" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" id="emailInput" type="email" placeholder="john@mybusiness.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input class="form-input" id="phoneInput" type="tel" placeholder="(555) 000-0000" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Business Name</label>
+          <input class="form-input" id="bizName" type="text" placeholder="My Business LLC" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tell Us About Your Project</label>
+          <textarea class="form-textarea" id="projectDesc" placeholder="Describe your business, your goals, and what you'd like us to create for you..."></textarea>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-modal-back" onclick="closeOrderModal()">Cancel</button>
+          <button class="btn-modal-next" onclick="goToStep2()">
+            Next: Choose Package <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Package -->
+      <div class="modal-step" id="step2">
+        <h4 style="font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:0.5px;">Select Package</h4>
+        <div id="packageOptions"></div>
+        <div class="modal-footer">
+          <button class="btn-modal-back" onclick="goToStep(1)">Back</button>
+          <button class="btn-modal-next" onclick="goToStep3()">
+            Next: Payment <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Payment -->
+      <div class="modal-step" id="step3">
+        <h4 style="font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:0.5px;">Payment</h4>
+        <div class="order-summary" id="orderSummary"></div>
+        <div class="form-group">
+          <label class="form-label">Card Details</label>
+          <div class="stripe-card-wrap">
+            <div id="card-element"></div>
+          </div>
+          <div id="card-errors"></div>
+        </div>
+        <div style="color:var(--gray);font-size:0.8rem;display:flex;align-items:center;gap:6px;margin-top:0.5rem;">
+          <i class="fas fa-lock"></i> Secured by Stripe. We never store your card details.
+        </div>
+        <div class="modal-footer">
+          <button class="btn-modal-back" onclick="goToStep(2)">Back</button>
+          <button class="btn-modal-next" id="payBtn" onclick="submitPayment()">
+            <span id="payBtnText"><i class="fas fa-lock"></i> Pay Now</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="modal-step" id="stepSuccess">
+        <div class="success-state">
+          <div class="success-icon">✅</div>
+          <div class="success-title">Order Confirmed!</div>
+          <p class="success-sub" id="successMsg">Thank you! We've received your order and will be in touch within 24 hours to get started.</p>
+          <button class="btn btn-primary" style="margin-top:1.5rem;" onclick="closeOrderModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ADMIN MODAL ===== -->
+<div class="modal-overlay" id="adminModalOverlay" onclick="handleAdminOverlayClick(event)">
+  <div class="modal admin-modal" id="adminModal">
+    <div class="modal-header">
+      <div class="modal-title">Admin <span>Dashboard</span></div>
+      <button class="modal-close" onclick="closeAdminModal()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <!-- Login -->
+      <div id="adminLogin">
+        <h4 style="font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;text-transform:uppercase;">Admin Login</h4>
+        <div class="form-group">
+          <label class="form-label">Username</label>
+          <input class="form-input" id="adminUser" type="text" placeholder="admin" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input class="form-input" id="adminPass" type="password" placeholder="••••••••" onkeyup="if(event.key==='Enter')adminLogin()" />
+        </div>
+        <div id="adminError" style="color:#ff6b6b;font-size:0.85rem;margin-bottom:1rem;"></div>
+        <button class="btn btn-primary" onclick="adminLogin()" style="width:100%;justify-content:center;">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </button>
+      </div>
+
+      <!-- Dashboard -->
+      <div id="adminDash" style="display:none;">
+        <div class="admin-header">
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:700;text-transform:uppercase;">Customer Orders</div>
+            <div style="color:var(--gray);font-size:0.85rem;" id="orderCount"></div>
+          </div>
+          <button class="admin-logout" onclick="adminLogout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+        <div id="ordersTable"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ========== CONFIG ==========
+// Replace with your actual Stripe publishable key
+const STRIPE_PK = 'pk_test_51XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
+
+// Admin credentials (in production, use a real backend)
+const ADMIN_USER = 'reimage';
+const ADMIN_PASS = 'Reimage2025!';
+
+// ========== STATE ==========
+let currentService = '';
+let currentStep = 1;
+let selectedPackage = null;
+let stripe = null;
+let cardElement = null;
+let orders = JSON.parse(localStorage.getItem('reimage_orders') || '[]');
+
+const packages = {
+  content: [
+    { id: 'content_99', name: 'Content Boost Package', desc: '1 Professional Video + 5 Edited Images, shot at your location', price: 99, label: '$99 — Best Value' }
+  ],
+  website: [
+    { id: 'website_499', name: 'Starter Website', desc: 'Up to 3 pages, mobile responsive, contact form', price: 499, label: '$499' },
+    { id: 'website_799', name: 'Business Website', desc: 'Up to 5 pages, SEO optimized, CMS, analytics', price: 799, label: '$799' },
+    { id: 'website_1199', name: 'Premium Website', desc: 'Up to 8 pages, e-commerce ready, priority support', price: 1199, label: '$1,199' }
+  ]
+};
+
+// ========== NAVBAR ==========
+window.addEventListener('scroll', () => {
+  const nb = document.getElementById('navbar');
+  if (window.scrollY > 50) nb.classList.add('scrolled');
+  else nb.classList.remove('scrolled');
+});
+
+document.getElementById('menuBtn').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// ========== SCROLL ANIMATIONS ==========
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+// ========== ORDER MODAL ==========
+function openOrderModal(service) {
+  currentService = service;
+  currentStep = 1;
+  selectedPackage = null;
+
+  const title = document.getElementById('modalTitle');
+  title.innerHTML = service === 'content'
+    ? 'Book <span>Content Package</span>'
+    : 'Start Your <span>Website</span>';
+
+  renderPackageOptions();
+  showStep(1);
+
+  document.getElementById('orderModalOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  // Init Stripe
+  if (!stripe) {
+    try {
+      stripe = Stripe(STRIPE_PK);
+      const elements = stripe.elements({ appearance: { theme: 'night', variables: { colorPrimary: '#2ba3b8' } } });
+      cardElement = elements.create('card', { style: { base: { fontFamily: 'Barlow, sans-serif', fontSize: '16px', color: '#fff' } } });
+      cardElement.mount('#card-element');
+      cardElement.on('change', (event) => {
+        document.getElementById('card-errors').textContent = event.error ? event.error.message : '';
+      });
+    } catch(e) {
+      console.warn('Stripe not initialized — test mode');
+    }
+  }
+}
+
+function closeOrderModal() {
+  document.getElementById('orderModalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('orderModalOverlay')) closeOrderModal();
+}
+
+function renderPackageOptions() {
+  const pkgs = packages[currentService];
+  let html = '';
+  pkgs.forEach((pkg, i) => {
+    const sel = i === 0 ? 'selected' : '';
+    if (i === 0) selectedPackage = pkg;
+    html += `<div class="package-option ${sel}" onclick="selectPackage(this, '${pkg.id}')">
+      <div class="package-radio"></div>
+      <div style="flex:1">
+        <div class="package-name">${pkg.name}</div>
+        <div class="package-desc">${pkg.desc}</div>
+      </div>
+      <div class="package-price">${pkg.label}</div>
+    </div>`;
+  });
+  document.getElementById('packageOptions').innerHTML = html;
+}
+
+function selectPackage(el, id) {
+  document.querySelectorAll('.package-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  const allPkgs = packages[currentService];
+  selectedPackage = allPkgs.find(p => p.id === id);
+}
+
+function renderOrderSummary() {
+  if (!selectedPackage) return;
+  document.getElementById('orderSummary').innerHTML = `
+    <div class="order-summary-title">Order Summary</div>
+    <div class="order-row"><span>${selectedPackage.name}</span><span class="price">$${selectedPackage.price.toLocaleString()}</span></div>
+    <div class="order-row"><span>Processing Fee</span><span class="price">$0</span></div>
+    <div class="order-row total"><span>Total</span><span class="price">$${selectedPackage.price.toLocaleString()}</span></div>
+  `;
+}
+
+function showStep(n) {
+  [1,2,3,'Success'].forEach(s => {
+    const el = document.getElementById('step' + s);
+    if (el) el.classList.remove('active');
+  });
+  document.getElementById('step' + (n === 4 ? 'Success' : n)).classList.add('active');
+  currentStep = n;
+  updateStepsBar(n);
+}
+
+function updateStepsBar(n) {
+  const bar = document.getElementById('stepsBar');
+  if (!bar || n === 4) return;
+  for (let i = 1; i <= 3; i++) {
+    const dot = document.getElementById('dot' + i);
+    if (!dot) continue;
+    dot.className = 'step-dot';
+    if (i < n) dot.classList.add('done');
+    else if (i === n) dot.classList.add('active');
+  }
+  for (let i = 1; i <= 2; i++) {
+    const line = document.getElementById('line' + i);
+    if (!line) continue;
+    line.className = 'step-line' + (i < n ? ' done' : '');
+  }
+}
+
+function goToStep(n) { showStep(n); }
+
+function goToStep2() {
+  const required = ['firstName', 'lastName', 'emailInput', 'bizName'];
+  for (const id of required) {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) { el.focus(); el.style.borderColor = '#ff6b6b'; return; }
+    el.style.borderColor = '';
+  }
+  showStep(2);
+}
+
+function goToStep3() {
+  if (!selectedPackage) { alert('Please select a package.'); return; }
+  renderOrderSummary();
+  showStep(3);
+}
+
+async function submitPayment() {
+  const btn = document.getElementById('payBtn');
+  const btnText = document.getElementById('payBtnText');
+  btn.disabled = true;
+  btnText.innerHTML = '<div class="spinner"></div> Processing...';
+
+  // Save order regardless of payment (demo mode)
+  const order = {
+    id: 'ORD-' + Date.now(),
+    date: new Date().toLocaleDateString(),
+    name: document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value,
+    email: document.getElementById('emailInput').value,
+    phone: document.getElementById('phoneInput').value,
+    business: document.getElementById('bizName').value,
+    service: selectedPackage.name,
+    project: document.getElementById('projectDesc').value,
+    amount: selectedPackage.price,
+    status: 'pending'
+  };
+
+  // Try real Stripe payment
+  if (stripe && cardElement) {
+    try {
+      const result = await stripe.createPaymentMethod({ type: 'card', card: cardElement, billing_details: { name: order.name, email: order.email } });
+      if (result.error) {
+        document.getElementById('card-errors').textContent = result.error.message;
+        btn.disabled = false;
+        btnText.innerHTML = '<i class="fas fa-lock"></i> Pay Now';
+        return;
+      }
+      order.status = 'paid';
+      order.paymentMethod = result.paymentMethod.id;
+    } catch(e) {
+      // Demo mode — proceed anyway
+      order.status = 'demo';
+    }
+  } else {
+    order.status = 'demo';
+  }
+
+  // Store order
+  orders.push(order);
+  localStorage.setItem('reimage_orders', JSON.stringify(orders));
+
+  // Show success
+  document.getElementById('stepsBar').style.display = 'none';
+  document.getElementById('successMsg').textContent = `Thank you, ${order.name.split(' ')[0]}! We've received your order for "${order.service}" and will contact you at ${order.email} within 24 hours.`;
+  showStep(4);
+}
+
+// ========== ADMIN MODAL ==========
+function openAdminModal() {
+  document.getElementById('adminModalOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('adminLogin').style.display = 'block';
+  document.getElementById('adminDash').style.display = 'none';
+  document.getElementById('adminError').textContent = '';
+}
+
+function closeAdminModal() {
+  document.getElementById('adminModalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function handleAdminOverlayClick(e) {
+  if (e.target === document.getElementById('adminModalOverlay')) closeAdminModal();
+}
+
+function adminLogin() {
+  const u = document.getElementById('adminUser').value;
+  const p = document.getElementById('adminPass').value;
+  if (u === ADMIN_USER && p === ADMIN_PASS) {
+    document.getElementById('adminLogin').style.display = 'none';
+    document.getElementById('adminDash').style.display = 'block';
+    renderOrders();
+  } else {
+    document.getElementById('adminError').textContent = 'Invalid credentials. Please try again.';
+  }
+}
+
+function adminLogout() {
+  document.getElementById('adminLogin').style.display = 'block';
+  document.getElementById('adminDash').style.display = 'none';
+  document.getElementById('adminUser').value = '';
+  document.getElementById('adminPass').value = '';
+}
+
+function renderOrders() {
+  const allOrders = JSON.parse(localStorage.getItem('reimage_orders') || '[]');
+  document.getElementById('orderCount').textContent = `${allOrders.length} total order${allOrders.length !== 1 ? 's' : ''}`;
+
+  if (allOrders.length === 0) {
+    document.getElementById('ordersTable').innerHTML = '<p style="color:var(--gray);text-align:center;padding:3rem 0;">No orders yet. Share your website to start getting orders!</p>';
+    return;
+  }
+
+  const rows = allOrders.slice().reverse().map(o => `
+    <tr>
+      <td><strong>${o.name}</strong><br><span style="color:var(--gray);font-size:0.8rem;">${o.email}</span></td>
+      <td>${o.business}<br><span style="color:var(--gray);font-size:0.8rem;">${o.phone || '—'}</span></td>
+      <td>${o.service}</td>
+      <td style="color:var(--teal-light);font-weight:700;">$${o.amount}</td>
+      <td><span class="status-badge ${o.status === 'paid' ? 'paid' : 'pending'}">${o.status.toUpperCase()}</span></td>
+      <td style="color:var(--gray);font-size:0.8rem;">${o.date}</td>
+    </tr>
+  `).join('');
+
+  document.getElementById('ordersTable').innerHTML = `
+    <div style="overflow-x:auto;">
+      <table class="admin-table">
+        <thead><tr>
+          <th>Client</th><th>Business</th><th>Service</th><th>Amount</th><th>Status</th><th>Date</th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+  `;
+}
+
+// ========== CONTACT FORM ==========
+function submitContact(e) {
+  e.preventDefault();
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+</script>
 </body>
 </html>
