@@ -213,7 +213,7 @@
 
     /* ========== SERVICES ========== */
     .services { background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%); }
-    .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+    .services-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-top: 3rem; }
     .service-card {
       background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(26,122,138,0.06) 100%);
       border: 1px solid rgba(26,122,138,0.25);
@@ -699,6 +699,28 @@
           <i class="fas fa-arrow-right"></i>
         </div>
       </div>
+
+      <!-- SERVICE 3 -->
+      <div class="service-card fade-up" style="transition-delay:0.3s" onclick="openOrderModal('automation')">
+        <div class="service-icon-wrap">🤖</div>
+        <h3 class="service-card-title">AI Automation<br>for Your Business</h3>
+        <p class="service-card-sub">Streamline repetitive tasks and save hours every week with custom AI-powered automations built specifically for your business workflows.</p>
+        <div class="service-price-row">
+          <div class="service-price">$199 <sub style="font-size:0.8rem;color:var(--gray);">/ month</sub></div>
+          <span class="service-price-badge">MONTHLY</span>
+        </div>
+        <ul class="service-features">
+          <li><i class="fas fa-check-circle"></i> Custom AI Workflow Automation</li>
+          <li><i class="fas fa-check-circle"></i> Lead Follow-Up & CRM Integration</li>
+          <li><i class="fas fa-check-circle"></i> Automated Email & SMS Sequences</li>
+          <li><i class="fas fa-check-circle"></i> Appointment Booking Automation</li>
+          <li><i class="fas fa-check-circle"></i> Ongoing Support & Optimization</li>
+        </ul>
+        <div class="service-cta">
+          <span>Get Automated</span>
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -797,7 +819,7 @@
           <div class="contact-icon"><i class="fas fa-envelope"></i></div>
           <div>
             <div class="contact-info-label">Email Us</div>
-            <div class="contact-info-val">info@reimagebusinesssolutions.com</div>
+            <div class="contact-info-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="345d5a525b7446515d595553515641475d5a514747475b5841405d5b5a471a575b59">[email&#160;protected]</a></div>
           </div>
         </div>
         <div class="contact-info-item">
@@ -836,6 +858,7 @@
               <option value="">I'm interested in...</option>
               <option>Social Media Content Package</option>
               <option>Website Design</option>
+              <option>AI Automation</option>
               <option>Both Services</option>
               <option>General Question</option>
             </select>
@@ -869,6 +892,7 @@
         <ul>
           <li><a href="#services" onclick="openOrderModal('content')">Content Package — $99</a></li>
           <li><a href="#services" onclick="openOrderModal('website')">Website Design</a></li>
+          <li><a href="#services" onclick="openOrderModal('automation')">AI Automation — $199/mo</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1040,7 +1064,7 @@
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ========== CONFIG ==========
 // Replace with your actual Stripe publishable key
 const STRIPE_PK = 'pk_test_51XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
@@ -1065,6 +1089,9 @@ const packages = {
     { id: 'website_499', name: 'Starter Website', desc: 'Up to 3 pages, mobile responsive, contact form', price: 499, label: '$499' },
     { id: 'website_799', name: 'Business Website', desc: 'Up to 5 pages, SEO optimized, CMS, analytics', price: 799, label: '$799' },
     { id: 'website_1199', name: 'Premium Website', desc: 'Up to 8 pages, e-commerce ready, priority support', price: 1199, label: '$1,199' }
+  ],
+  automation: [
+    { id: 'automation_199', name: 'AI Automation — Monthly Plan', desc: 'Custom AI workflows, lead follow-up, email/SMS sequences, appointment booking & ongoing optimization', price: 199, label: '$199 / month' }
   ]
 };
 
@@ -1096,6 +1123,8 @@ function openOrderModal(service) {
   const title = document.getElementById('modalTitle');
   title.innerHTML = service === 'content'
     ? 'Book <span>Content Package</span>'
+    : service === 'automation'
+    ? 'Start Your <span>AI Automation</span>'
     : 'Start Your <span>Website</span>';
 
   renderPackageOptions();
@@ -1328,10 +1357,33 @@ function renderOrders() {
   `;
 }
 
-// ========== CONTACT FORM ==========
-function submitContact(e) {
-  e.preventDefault();
-  document.getElementById('contactForm').style.display = 'none';
+// 
+// ========== CONTACT FORM → N8N ==========
+async function submitContact(event) {
+  event.preventDefault();
+
+  const form = document.getElementById('contactForm');
+  const inputs = form.querySelectorAll('input, select, textarea');
+
+  const lead = {
+    name:     inputs[0].value,
+    email:    inputs[1].value,
+    interest: inputs[2].value,
+    message:  inputs[3].value,
+    date:     new Date().toLocaleString()
+  };
+
+  try {
+    await fetch('http://localhost:5678/webhook/8d9911cf-3835-46d1-8530-e891fb4788a9', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(lead)
+    });
+  } catch(e) {
+    console.error('n8n webhook error:', e);
+  }
+
+  form.style.display = 'none';
   document.getElementById('formSuccess').style.display = 'block';
 }
 </script>
