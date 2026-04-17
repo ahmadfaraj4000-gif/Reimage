@@ -55,6 +55,30 @@
     .pay-item strong { display:block; margin-bottom:.3rem; color:var(--white); }
     .muted { color:var(--gray); }
     .cta-box { margin-top:1.2rem; padding:1.15rem; border-radius:16px; background:rgba(26,122,138,0.12); border:1px solid rgba(43,163,184,0.28); color:var(--light-gray); line-height:1.7; }
+    .apply-card { margin-top:1.5rem; padding:1.4rem; border-radius:18px; background:rgba(255,255,255,0.05); border:1px solid rgba(26,122,138,0.24); }
+    .apply-card h3 { font-family:'Barlow Condensed',sans-serif; font-size:1.5rem; text-transform:uppercase; margin-bottom:.8rem; }
+    .apply-form .form-group { margin-bottom:1rem; }
+    .apply-form label { display:block; font-size:.85rem; font-weight:600; color:var(--light-gray); margin-bottom:.45rem; }
+    .apply-form input, .apply-form textarea {
+      width:100%;
+      background:rgba(255,255,255,0.05);
+      border:1.5px solid rgba(26,122,138,0.25);
+      border-radius:10px;
+      color:var(--white);
+      font-family:'Barlow',sans-serif;
+      font-size:1rem;
+      padding:.85rem 1rem;
+      outline:none;
+    }
+    .apply-form textarea { min-height:120px; resize:vertical; }
+    .apply-form input:focus, .apply-form textarea:focus { border-color:var(--teal-light); box-shadow:0 0 0 3px rgba(26,122,138,0.15); }
+    .join-btn {
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:8px; width:100%; border:none; cursor:pointer;
+      background:linear-gradient(135deg,var(--teal),var(--teal-dark));
+      color:#fff; padding:.95rem 1.2rem; border-radius:10px;
+      font-weight:700; font-family:'Barlow',sans-serif; font-size:.95rem;
+    }
     .footer {
       position: relative;
       background:
@@ -210,6 +234,34 @@
         <div class="cta-box">
           <strong style="display:block;margin-bottom:.45rem;color:var(--white);">Apply Now</strong>
           Start building your income with RE IMAGE and grow with a system designed for performance and long-term success.
+        </div>
+
+        <div class="apply-card">
+          <h3>Join the Team</h3>
+          <form class="apply-form" action="https://formspree.io/f/xgorkyaq" method="POST">
+            <input type="hidden" name="submission_type" value="Applicant" />
+            <div class="form-group">
+              <label for="applicantName">Name</label>
+              <input id="applicantName" name="name" type="text" placeholder="Your full name" required />
+            </div>
+            <div class="form-group">
+              <label for="applicantEmail">Email</label>
+              <input id="applicantEmail" name="email" type="email" placeholder="you@example.com" required />
+            </div>
+            <div class="form-group">
+              <label for="applicantPhone">Phone Number</label>
+              <input id="applicantPhone" name="phone" type="tel" placeholder="(555) 000-0000" required />
+            </div>
+            <div class="form-group">
+              <label for="applicantSocial">Social Media Profiles</label>
+              <input id="applicantSocial" name="social_profiles" type="text" placeholder="Instagram, TikTok, LinkedIn, etc." required />
+            </div>
+            <div class="form-group">
+              <label for="applicantExperience">Experience</label>
+              <textarea id="applicantExperience" name="experience" placeholder="Tell us about your content, business, or client-facing experience." required></textarea>
+            </div>
+            <button class="join-btn" type="submit">Join the Team</button>
+          </form>
         </div>
       </div>
     </div>

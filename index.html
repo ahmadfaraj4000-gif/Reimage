@@ -1450,6 +1450,11 @@
 
       <!-- STEP 1: Details -->
       <div class="modal-step active" id="step1">
+        <form id="serviceLeadForm" action="https://formspree.io/f/xgorkyaq" method="POST" onsubmit="return false;" style="display:none;">
+          <input type="hidden" name="submission_type" id="submissionTypeField" value="Service Lead" />
+          <input type="hidden" name="selected_service" id="selectedServiceField" value="" />
+          <input type="hidden" name="selected_package" id="selectedPackageField" value="" />
+        </form>
         <h4 style="font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:0.5px;">Your Details</h4>
         <div class="form-row">
           <div class="form-group">
@@ -1700,6 +1705,22 @@ function openOrderModal(service) {
   currentStep = 1;
   selectedPackage = null;
 
+  const serviceMap = {
+    starter: 'Growth Foundation',
+    total: 'Full Scale System',
+    social: 'Social Media Management',
+    website: 'Website Development',
+    automation: 'AI Automation'
+  };
+
+  const selectedServiceField = document.getElementById('selectedServiceField');
+  const selectedPackageField = document.getElementById('selectedPackageField');
+  const submissionTypeField = document.getElementById('submissionTypeField');
+
+  if (selectedServiceField) selectedServiceField.value = serviceMap[service] || service;
+  if (selectedPackageField) selectedPackageField.value = '';
+  if (submissionTypeField) submissionTypeField.value = 'Service Lead';
+
   const title = document.getElementById('modalTitle');
   title.innerHTML = service === 'starter'
     ? 'Start With <span>Growth Foundation</span>'
@@ -1743,6 +1764,8 @@ function renderPackageOptions() {
   pkgs.forEach((pkg, i) => {
     const sel = i === 0 ? 'selected' : '';
     if (i === 0) selectedPackage = pkg;
+  const selectedPackageField = document.getElementById('selectedPackageField');
+  if (selectedPackageField) selectedPackageField.value = pkg.name;
     html += `<div class="package-option ${sel}" onclick="selectPackage(this, '${pkg.id}')">
       <div class="package-radio"></div>
       <div style="flex:1">
@@ -1871,6 +1894,28 @@ function goToStep3() {
   showStep(3);
 }
 
+async function sendLeadToFormspree(order) {
+  const formData = new FormData();
+  formData.append('submission_type', 'Service Lead');
+  formData.append('selected_service', currentService);
+  formData.append('selected_package', order.service || '');
+  formData.append('name', order.name || '');
+  formData.append('email', order.email || '');
+  formData.append('phone', order.phone || '');
+  formData.append('business', order.business || '');
+  formData.append('project', order.project || '');
+
+  try {
+    await fetch('https://formspree.io/f/xgorkyaq', {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+  } catch (err) {
+    console.error('Formspree submission failed:', err);
+  }
+}
+
 async function submitPayment() {
   const btn = document.getElementById('payBtn');
   const btnText = document.getElementById('payBtnText');
@@ -1892,6 +1937,7 @@ async function submitPayment() {
   };
 
   if (selectedPackage && selectedPackage.stripeUrl) {
+    await sendLeadToFormspree(order);
     orders.push(order);
     localStorage.setItem('reimage_orders', JSON.stringify(orders));
     window.location.href = selectedPackage.stripeUrl;
@@ -1917,6 +1963,8 @@ async function submitPayment() {
   } else {
     order.status = 'demo';
   }
+
+  await sendLeadToFormspree(order);
 
   // Store order
   orders.push(order);
