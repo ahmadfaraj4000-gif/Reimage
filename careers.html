@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers | RE IMAGE Business Solutions</title>
+  <link rel="icon" href="logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal: #1a7a8a;
+      --teal-dark: #0d5a68;
+      --teal-light: #2ba3b8;
+      --navy: #0c1f2e;
+      --navy-mid: #152a3a;
+      --gold: #c8922a;
+      --gold-light: #e8ad40;
+      --white: #ffffff;
+      --gray: #8a9bb0;
+      --light-gray: #d4e0e8;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'Barlow',sans-serif; background:linear-gradient(160deg,var(--navy) 0%, var(--navy-mid) 100%); color:var(--white); }
+    .navbar { position:sticky; top:0; z-index:1000; padding:1rem 2rem; display:flex; align-items:center; justify-content:space-between; background:linear-gradient(180deg,#fff 0%,#fff 100%); border-bottom:1px solid rgba(26,122,138,0.18); box-shadow:0 2px 20px rgba(0,0,0,0.06); }
+    .navbar::before { content:''; position:absolute; left:0; right:0; bottom:0; height:3px; background:linear-gradient(90deg,var(--teal),var(--gold-light),var(--teal-light)); }
+    .nav-logo img { height:40px; width:auto; display:block; }
+    .nav-links { display:flex; list-style:none; gap:2rem; }
+    .nav-links a { text-decoration:none; color:#243746; font-weight:600; }
+    .nav-links a:hover, .nav-links a.active { color:var(--teal); }
+    .hero { padding:110px 2rem 50px; background:radial-gradient(ellipse at 30% 20%, rgba(26,122,138,0.12) 0%, transparent 45%), linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 65%, #0a1a28 100%); }
+    .hero-inner { max-width:1100px; margin:0 auto; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; color:var(--teal-light); text-transform:uppercase; letter-spacing:1.7px; font-size:.82rem; font-weight:700; margin-bottom:1rem; }
+    .eyebrow::before { content:''; width:28px; height:2px; background:var(--teal-light); }
+    h1 { font-family:'Barlow Condensed',sans-serif; font-size:clamp(2.8rem,5vw,4.4rem); line-height:1.02; text-transform:uppercase; margin-bottom:1rem; }
+    .hero p { max-width:760px; color:var(--gray); font-size:1.05rem; line-height:1.8; }
+    .section { padding:0 2rem 80px; }
+    .wrap { max-width:1100px; margin:0 auto; }
+    .grid { display:grid; grid-template-columns:1.35fr .85fr; gap:2rem; align-items:start; }
+    .card { background:rgba(255,255,255,0.04); border:1px solid rgba(26,122,138,0.28); border-radius:22px; padding:2rem; box-shadow:0 18px 50px rgba(0,0,0,0.18); }
+    .card h2 { font-family:'Barlow Condensed',sans-serif; font-size:2rem; text-transform:uppercase; margin-bottom:1rem; }
+    .block { margin-bottom:1.8rem; }
+    .block h3 { font-family:'Barlow Condensed',sans-serif; font-size:1.3rem; text-transform:uppercase; margin-bottom:.75rem; color:var(--gold-light); letter-spacing:.5px; }
+    .block p, .block li { color:var(--light-gray); line-height:1.75; }
+    .block ul { list-style:none; }
+    .block li { display:flex; gap:10px; align-items:flex-start; padding:.38rem 0; }
+    .block li::before { content:'•'; color:var(--teal-light); font-weight:900; }
+    .highlight { background:linear-gradient(135deg, rgba(200,146,42,0.12), rgba(26,122,138,0.12)); border:1px solid rgba(200,146,42,0.28); }
+    .pay-grid { display:grid; gap:.9rem; }
+    .pay-item { padding:1rem 1.1rem; border-radius:16px; border:1px solid rgba(26,122,138,0.24); background:rgba(255,255,255,0.03); }
+    .pay-item strong { display:block; margin-bottom:.3rem; color:var(--white); }
+    .muted { color:var(--gray); }
+    .cta-box { margin-top:1.2rem; padding:1.15rem; border-radius:16px; background:rgba(26,122,138,0.12); border:1px solid rgba(43,163,184,0.28); color:var(--light-gray); line-height:1.7; }
+    .footer { padding:28px 2rem 40px; color:var(--gray); }
+    .footer .wrap { border-top:1px solid rgba(255,255,255,0.08); padding-top:1.4rem; }
+    @media (max-width: 900px) { .grid { grid-template-columns:1fr; } .nav-links { gap:1rem; font-size:.92rem; flex-wrap:wrap; justify-content:flex-end; } .navbar { padding:1rem; } .hero, .section, .footer { padding-left:1rem; padding-right:1rem; } }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo"><img src="logo.png" alt="RE IMAGE Business Solutions logo" /></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#work">Our Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="careers.html" class="active">Careers</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Now Hiring</div>
+      <h1>Business & Social Media<br />Specialist</h1>
+      <p>RE IMAGE is looking for motivated, self-driven individuals to join our growing platform as Media & Business Specialists. In this role, you will create engaging content for local businesses while also helping them discover opportunities to grow through RE IMAGE services. This is a flexible, part-time opportunity designed for individuals who want to earn based on performance, build relationships, and grow their income over time.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid">
+      <div class="card">
+        <div class="block">
+          <h2>Job Overview</h2>
+          <p>We are building a modern, performance-driven platform for local business growth. This role combines content creation, business relationship building, and long-term earning potential in one lane.</p>
+        </div>
+
+        <div class="block">
+          <h3>What You’ll Be Doing</h3>
+          <ul>
+            <li>Visit local businesses and create social media content</li>
+            <li>Produce 3–5 pieces of content per session, including at least 3 videos</li>
+            <li>Complete content sessions within 1–2 hours</li>
+            <li>Collaborate with businesses on social media posts such as Instagram and Facebook</li>
+            <li>Upload content in original quality using Google Drive or Dropbox</li>
+            <li>Identify areas where businesses can improve, including content, website, branding, and growth opportunities</li>
+            <li>Introduce businesses to RE IMAGE services without hard selling</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <h3>Lead & Growth Structure</h3>
+          <ul>
+            <li>Leads are not guaranteed at the start</li>
+            <li>Opportunities are earned through performance</li>
+            <li>You are encouraged to prospect your own clients</li>
+            <li>Creators who perform well receive more opportunities over time</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <h3>What We’re Looking For</h3>
+          <ul>
+            <li>Minimum 1,000 followers on at least one social media platform</li>
+            <li>Ability to create engaging content using a phone or camera</li>
+            <li>Strong communication and people skills</li>
+            <li>Self-motivated and comfortable approaching businesses</li>
+            <li>Willing to learn and grow within a performance-based system</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <h3>Perks & Benefits</h3>
+          <ul>
+            <li>Flexible schedule with true part-time freedom</li>
+            <li>Discounts through RE IMAGE partner businesses</li>
+            <li>Performance-based rewards and recognition</li>
+            <li>Earn $60,000+ personally and qualify for a company trip</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <h3>Important Notes</h3>
+          <ul>
+            <li>This is a 1099 independent contractor role</li>
+            <li>Income is not hourly or guaranteed</li>
+            <li>Earnings are based on activity, performance, and consistency</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card highlight">
+        <div class="block">
+          <h2>Compensation</h2>
+          <div class="pay-grid">
+            <div class="pay-item"><strong>Content Sessions</strong><span>$100 per session lasting 1–2 hours. Sessions depend on business demand and are not guaranteed daily.</span></div>
+            <div class="pay-item"><strong>Performance Earnings From Content</strong><span>Earn about 5% of sales generated from your content using a unique tracking code.</span></div>
+            <div class="pay-item"><strong>Website Sales</strong><span>Earn 25% upfront commission on every website sold.</span></div>
+            <div class="pay-item"><strong>Website Monthly Income</strong><span>Earn 5% recurring monthly income from website management.</span></div>
+            <div class="pay-item"><strong>Additional Services</strong><span>Earn 15% upfront on other services such as branding and AI, plus 5% recurring on ongoing services.</span></div>
+            <div class="pay-item"><strong>Funding</strong><span>Earn from helping businesses get approved for funding through RE IMAGE connections.</span></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h3>Earning Potential (Part-Time)</h3>
+          <ul>
+            <li>Year 1: about $60,000</li>
+            <li>Year 2: about $90,000</li>
+            <li>Year 3: about $120,000</li>
+            <li>Year 4: about $160,000</li>
+            <li>Year 5: up to $200,000</li>
+          </ul>
+          <p class="muted" style="margin-top:.8rem;">Growth is driven by recurring income, repeat clients, and increased opportunities over time.</p>
+        </div>
+
+        <div class="block">
+          <h3>Why Join RE IMAGE?</h3>
+          <ul>
+            <li>Multiple income streams, not just one paycheck</li>
+            <li>Opportunity to build long-term recurring income</li>
+            <li>Real growth potential without income caps</li>
+            <li>Be part of a modern, scalable business model</li>
+          </ul>
+        </div>
+
+        <div class="cta-box">
+          <strong style="display:block;margin-bottom:.45rem;color:var(--white);">Apply Now</strong>
+          Start building your income with RE IMAGE and grow with a system designed for performance and long-term success.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">© 2026 RE IMAGE Business Solutions. All rights reserved.</div>
+  </footer>
+</body>
+</html>
