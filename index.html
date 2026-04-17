@@ -285,6 +285,167 @@
       line-height: 1.5;
     }
 
+
+    /* ========== LUXURY ELEVATION ========== */
+    .hero-grid-overlay { display: none; }
+    .hero-inner.luxury-hero {
+      max-width: 1200px;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+    }
+    .hero-content.luxury-copy {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 1.15rem;
+      color: var(--gold-light);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .hero-kicker::before {
+      content: '';
+      width: 34px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold-light), transparent);
+      opacity: 0.8;
+    }
+    .hero-title.luxury-title {
+      font-size: clamp(3.4rem, 6vw, 5.7rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.25rem;
+      text-wrap: balance;
+    }
+    .hero-sub.luxury-sub {
+      max-width: 760px;
+      margin: 0 auto 2rem;
+      font-size: 1.08rem;
+      color: #c5d1db;
+    }
+    .hero-microproof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    .hero-microproof span {
+      padding: 0.65rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: var(--light-gray);
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .hero-btns.luxury-actions {
+      justify-content: center;
+    }
+    .hero-proof.luxury-proof {
+      max-width: 100%;
+      margin: 2.8rem auto 0;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .hero-proof-card.luxury-proof-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(26,122,138,0.08));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.22);
+    }
+    .positioning {
+      position: relative;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(200,146,42,0.08), transparent 30%),
+        linear-gradient(180deg, #102435 0%, #0c1f2e 100%);
+      overflow: hidden;
+    }
+    .positioning::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(43,163,184,0.06), transparent 35%, rgba(200,146,42,0.05));
+      pointer-events: none;
+    }
+    .positioning-shell {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+    .positioning-intro {
+      padding-right: 1rem;
+    }
+    .positioning-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      line-height: 0.98;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .positioning-copy {
+      color: #c3cfda;
+      line-height: 1.8;
+      max-width: 620px;
+      font-size: 1.02rem;
+    }
+    .positioning-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .positioning-card {
+      padding: 1.5rem;
+      border-radius: 20px;
+      background: linear-gradient(160deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 22px 70px rgba(0,0,0,0.16);
+    }
+    .positioning-card strong {
+      display: block;
+      margin-bottom: 0.7rem;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .positioning-card p {
+      color: var(--gray);
+      line-height: 1.7;
+      font-size: 0.92rem;
+    }
+    .positioning-statement {
+      border-radius: 24px;
+      padding: 2rem;
+      background: linear-gradient(145deg, rgba(26,122,138,0.16), rgba(255,255,255,0.04));
+      border: 1px solid rgba(43,163,184,0.18);
+      box-shadow: 0 28px 80px rgba(0,0,0,0.2);
+      align-self: center;
+    }
+    .positioning-statement .mini-kicker {
+      margin-bottom: 1rem;
+    }
+    .positioning-quote {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 3.4vw, 3.1rem);
+      line-height: 1.02;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .positioning-note {
+      color: #bfd0db;
+      line-height: 1.8;
+    }
+
     /* ========== SECTION WRAPPER ========== */
     .section { padding: 100px 2rem; }
     .section-inner { max-width: 1200px; margin: 0 auto; }
@@ -427,6 +588,60 @@
     .service-pay-link.gold:hover {
       background: rgba(200,146,42,0.22);
       border-color: rgba(232,173,64,0.8);
+    }
+
+
+    .package-grid .service-card {
+      padding: 2.85rem;
+      border-radius: 28px;
+      background: linear-gradient(160deg, rgba(255,255,255,0.06), rgba(26,122,138,0.08));
+      box-shadow: 0 26px 80px rgba(0,0,0,0.22);
+    }
+    .package-grid .service-card.gold-card {
+      background: linear-gradient(160deg, rgba(255,255,255,0.06), rgba(200,146,42,0.10));
+    }
+    .package-grid .service-card-title {
+      font-size: 2rem;
+      line-height: 0.98;
+      margin-bottom: 0.9rem;
+    }
+    .package-grid .service-card-sub {
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 34rem;
+      margin-bottom: 1.6rem;
+      color: #c4d0da;
+    }
+    .package-grid .service-price {
+      font-size: 2.5rem;
+    }
+    .package-grid .service-price-badge {
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.45rem 0.85rem;
+    }
+    .package-grid .service-features {
+      margin-bottom: 1.5rem;
+    }
+    .package-grid .service-features li {
+      padding: 0.78rem 0;
+      font-size: 0.96rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      align-items: flex-start;
+    }
+    .package-grid .service-features li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .package-grid .service-actions {
+      margin-top: 1.6rem;
+    }
+    .package-grid .service-pay-link {
+      min-height: 54px;
+      border-radius: 14px;
+      font-size: 0.94rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
     /* ========== PORTFOLIO ========== */
@@ -722,7 +937,11 @@
 
     /* ========== RESPONSIVE ========== */
     @media (max-width: 900px) {
-      .hero-inner { display: flex; text-align: center; }
+      .hero-inner { display: flex; text-align: center; justify-content: center; }
+      .hero-inner.luxury-hero { text-align: center; justify-content: center; align-items: center; }
+      .hero-content.luxury-copy { margin: 0 auto; }
+      .hero-btns.luxury-actions { justify-content: center; }
+      .hero-proof.luxury-proof { grid-template-columns: 1fr; }
       .hero-visual { display: none; }
       .package-grid { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr 1fr; }
@@ -730,6 +949,8 @@
       .about-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; }
+      .positioning-shell { grid-template-columns: 1fr; }
+      .positioning-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .menu-btn { display: block; }
       .nav-links.open {
@@ -777,35 +998,75 @@
 
 <!-- HERO -->
 <section id="home" class="hero">
-  <div class="hero-grid-overlay"></div>
-  <div class="hero-inner">
-    <div class="hero-content fade-up">
+  <div class="hero-inner luxury-hero">
+    <div class="hero-content fade-up luxury-copy">
       <div class="hero-badge">Business Growth Solutions</div>
-      <h1 class="hero-title">
-        Content, Websites & <span class="accent">AI Systems</span><br />
-        Built To Help Your <span class="gold-accent">Business Grow</span>
+      <div class="hero-kicker">Luxury positioning. Revenue-minded execution.</div>
+      <h1 class="hero-title luxury-title">
+        We Build <span class="accent">Growth Systems</span><br />
+        For Businesses Ready To <span class="gold-accent">Scale</span>
       </h1>
-      <p class="hero-sub">
-        We help small businesses look premium online, post consistently, follow up with leads faster, and turn more traffic into paying customers with done-for-you creative, websites, and automation.
+      <p class="hero-sub luxury-sub">
+        Content, conversion-driven websites, and AI automation engineered to make your brand look elevated, convert more attention, and create a smoother path from lead to customer.
       </p>
-      <div class="hero-btns">
-        <a href="#services" class="btn btn-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0"><path d="M8 1l1.8 3.6L14 5.4l-3 2.9.7 4.1L8 10.4l-3.7 2 .7-4.1L2 5.4l4.2-.8L8 1z" fill="currentColor"/></svg> View Packages</a>
-        <a href="#contact" class="btn btn-outline"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0"><path d="M2 4.5h12v7H2z" stroke="currentColor" stroke-width="1.4"/><path d="M2 5.5l6 4 6-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Book Consultation</a>
+      <div class="hero-microproof" style="display:none">
+        <span>Premium brand presence</span>
+        <span>Conversion-led websites</span>
+        <span>Automated follow-up systems</span>
       </div>
-      <div class="hero-proof">
-        <div class="hero-proof-card">
-          <strong>Weekly content systems</strong>
-          <span>Videos, image posts, scripts, and structured content days built around your brand.</span>
+      <div class="hero-btns luxury-actions">
+        <a href="#services" class="btn btn-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0"><path d="M8 1l1.8 3.6L14 5.4l-3 2.9.7 4.1L8 10.4l-3.7 2 .7-4.1L2 5.4l4.2-.8L8 1z" fill="currentColor"/></svg> Explore Our Systems</a>
+        <a href="#contact" class="btn btn-outline"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0"><path d="M2 4.5h12v7H2z" stroke="currentColor" stroke-width="1.4"/><path d="M2 5.5l6 4 6-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Book Private Consultation</a>
+      </div>
+      <div class="hero-proof luxury-proof">
+        <div class="hero-proof-card luxury-proof-card">
+          <strong>Luxury presentation</strong>
+          <span>Sharper messaging, elevated creative direction, and a cleaner brand experience across every touchpoint.</span>
         </div>
-        <div class="hero-proof-card">
-          <strong>Websites that convert</strong>
-          <span>Clean static or dynamic sites designed to capture leads and make your business look established.</span>
+        <div class="hero-proof-card luxury-proof-card">
+          <strong>Systems that convert</strong>
+          <span>Websites and funnels built to do more than look good — they move visitors toward action and trust.</span>
         </div>
-        <div class="hero-proof-card">
-          <strong>Lead follow-up automation</strong>
-          <span>End-to-end AI workflows that help you respond faster and keep opportunities from slipping away.</span>
+        <div class="hero-proof-card luxury-proof-card">
+          <strong>Follow-up without friction</strong>
+          <span>Automation that keeps momentum alive after the first click, call, or inquiry.</span>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section positioning">
+  <div class="section-inner positioning-shell">
+    <div class="positioning-intro fade-up">
+      <div class="section-label">How We Position Growth</div>
+      <h2 class="positioning-title">We Don’t Just Offer Services.<br />We Build Revenue Systems.</h2>
+      <p class="positioning-copy">
+        The brands that feel premium online usually win before the sales conversation even starts. We combine content, website experience, and automation into one growth ecosystem so your business looks more established, converts with more confidence, and follows up like a serious operator.
+      </p>
+
+      <div class="positioning-grid">
+        <div class="positioning-card">
+          <strong>Acquire Attention</strong>
+          <p>Strategic content and brand presentation that help your business look sharper, more current, and more credible.</p>
+        </div>
+        <div class="positioning-card">
+          <strong>Convert Traffic</strong>
+          <p>Refined websites and offer structure designed to turn curiosity into booked calls, submitted forms, and trust.</p>
+        </div>
+        <div class="positioning-card">
+          <strong>Automate Growth</strong>
+          <p>Lead capture and follow-up systems that reduce friction and keep opportunities moving after first contact.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="positioning-statement fade-up">
+      <div class="mini-kicker">Why it feels different</div>
+      <div class="positioning-quote">Most businesses do not have an attention problem.<br />They have a conversion and follow-up problem.</div>
+      <p class="positioning-note">
+        That is where we focus. The goal is not more noise — it is a more premium presence, better conversion flow, and a system that keeps leads warm without constant manual effort.
+      </p>
     </div>
   </div>
 </section>
@@ -814,31 +1075,29 @@
 <section id="services" class="section services">
   <div class="section-inner">
     <div class="section-label">What We Offer</div>
-    <h2 class="section-title fade-up">Packages & Core Services</h2>
-    <p class="section-sub fade-up">Choose a full done-for-you package or start with an individual service. Package cards include a placeholder Stripe checkout button you can replace with your own URL.</p>
+    <h2 class="section-title fade-up">Signature Growth Systems & Core Services</h2>
+    <p class="section-sub fade-up">Choose a flagship growth engagement or start with a focused service. The same colors stay in place — the positioning just feels more premium, more intentional, and more conversion-driven.</p>
 
-    <div class="mini-kicker fade-up">Packages</div>
+    <div class="mini-kicker fade-up">Flagship Engagements</div>
     <div class="package-grid">
       <div class="service-card featured-card fade-up" onclick="openOrderModal('starter')">
         <div class="service-icon-wrap">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="5" width="20" height="18" rx="4" stroke="white" stroke-width="1.8"/><path d="M9 14l3 3 7-7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3 class="service-card-title">Starter Package</h3>
-        <p class="service-card-sub">A strong entry point for businesses that need a polished online presence, consistent posting, and professional content without the full automation stack.</p>
+        <h3 class="service-card-title">Growth Foundation</h3>
+        <p class="service-card-sub">A cleaner, more premium starting point for businesses that want stronger presentation, consistent content, and a polished digital foundation without overcomplicating the first step.</p>
         <div class="service-price-row">
           <div class="service-price">$399 <sub style="font-size:0.8rem;color:var(--gray);">/ week</sub></div>
-          <span class="service-price-badge">START HERE</span>
+          <span class="service-price-badge">FOUNDATION</span>
         </div>
         <ul class="service-features">
-          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Social media management 9-5</li>
-          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 2 picture posts and 1 video post per week</li>
-          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Content day once a month</li>
-          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Static website</li>
-          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Website creation and maintenance included</li>
-          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Assistance with bank funding</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Consistent weekly content support with social media management</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> A polished static website built to improve trust and presentation</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Monthly content day to keep creative direction consistent</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Bank funding assistance to support growth conversations</li>
         </ul>
         <div class="service-actions">
-          <button type="button" class="service-pay-link gold" onclick="event.stopPropagation(); openOrderModal('starter')">Book Starter Package</button>
+          <button type="button" class="service-pay-link gold" onclick="event.stopPropagation(); openOrderModal('starter')">Start With Strategy</button>
         </div>
       </div>
 
@@ -846,23 +1105,20 @@
         <div class="service-icon-wrap" style="background:linear-gradient(135deg,var(--gold),#a0731e);box-shadow:0 4px 20px rgba(200,146,42,0.4);">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3l2.5 5 5.5.8-4 3.9.95 5.5L14 15.6l-4.95 2.6.95-5.5-4-3.9 5.5-.8L14 3z" stroke="white" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 21h14M9 24h10" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>
-        <h3 class="service-card-title">Total Package</h3>
-        <p class="service-card-sub">Our all-in offer for businesses that want us handling the marketing engine, the website, the follow-up system, and the weekly content machine.</p>
+        <h3 class="service-card-title">Full Scale System</h3>
+        <p class="service-card-sub">Our higher-touch engagement for businesses that want the full presentation, conversion, and follow-up engine working together as one premium growth system.</p>
         <div class="service-price-row">
           <div class="service-price">$699 <sub style="font-size:0.8rem;color:var(--gray);">/ week</sub></div>
-          <span class="service-price-badge">ALL-IN-ONE</span>
+          <span class="service-price-badge">FULL SCALE</span>
         </div>
         <ul class="service-features">
-          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 24/7 social media management and lead follow-up</li>
-          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 3 video posts and 3 picture posts each week</li>
-          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Website creation, maintenance, and dynamic website support</li>
-          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> End-to-end AI automation for collecting leads</li>
-          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Ads spend support, weekly content day, and scripts for content day</li>
-          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Assistance with bank funding</li>
-          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Partnership outreach and relationship building</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Ongoing content, social management, and lead follow-up support</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Dynamic website + SEO optimization + conversion-focused automation</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Weekly content direction, scripts, and campaign support</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Bank funding assistance plus partnership outreach for growth-minded businesses</li>
         </ul>
         <div class="service-actions">
-          <button type="button" class="service-pay-link gold" onclick="event.stopPropagation(); openOrderModal('total')">Book Total Package</button>
+          <button type="button" class="service-pay-link gold" onclick="event.stopPropagation(); openOrderModal('total')">Apply For Full System</button>
         </div>
       </div>
     </div>
@@ -1102,8 +1358,8 @@
           <div class="form-group">
             <select class="form-select">
               <option value="">I'm interested in...</option>
-              <option>Starter Package</option>
-              <option>Total Package</option>
+              <option>Growth Foundation</option>
+              <option>Full Scale System</option>
               <option>Social Media Management</option>
               <option>Website Development</option>
               <option>AI Automation</option>
@@ -1137,8 +1393,8 @@
       <div class="footer-col">
         <div class="footer-col-title">Services</div>
         <ul>
-          <li><a href="#services" onclick="openOrderModal('starter')">Starter Package — $399/week</a></li>
-          <li><a href="#services" onclick="openOrderModal('total')">Total Package — $699/week</a></li>
+          <li><a href="#services" onclick="openOrderModal('starter')">Growth Foundation — $399/week</a></li>
+          <li><a href="#services" onclick="openOrderModal('total')">Full Scale System — $699/week</a></li>
           <li><a href="#services" onclick="openOrderModal('social')">Social Media Management — $249/week</a></li>
           <li><a href="#services" onclick="openOrderModal('website')">Website Development</a></li>
           <li><a href="#services" onclick="openOrderModal('automation')">AI Automation — $249/week</a></li>
@@ -1148,6 +1404,8 @@
         <div class="footer-col-title">Our Work</div>
         <ul>
           <li><a href="https://farajsoftwaresolutions.com" target="_blank">Faraj Software Solutions</a></li>
+          <li><a href="https://blesena.com">Blesena</a></li>
+          <li><a href="https://cr8autos.com">CR8 Autos</a></li>
           <li><a href="https://techniqskinandbeauty.com" target="_blank">Techniq Skin & Beauty</a></li>
         </ul>
       </div>
@@ -1333,13 +1591,13 @@ let orders = JSON.parse(localStorage.getItem('reimage_orders') || '[]');
 
 const packages = {
   starter: [
-    { id: 'starter_399', name: 'Starter Package', desc: 'A professional starter system with social media management, monthly content, a static website, ongoing maintenance, and assistance with bank funding.', price: 399, label: '$399 / week', stripeUrl: 'https://buy.stripe.com/28EfZj8UWaRubJp9Of5Ne06' }
+    { id: 'starter_399', name: 'Growth Foundation', desc: 'A premium foundation system with social media management, monthly content, a polished website presence, ongoing maintenance, and assistance with bank funding.', price: 399, label: '$399 / week', stripeUrl: 'https://buy.stripe.com/28EfZj8UWaRubJp9Of5Ne06' }
   ],
   total: [
-    { id: 'total_699', name: 'Total Package', desc: 'Our all-in growth package with weekly content, a dynamic website, AI automation, lead follow-up, bank funding assistance, and partnership-building support.', price: 699, label: '$699 / week', stripeUrl: 'https://buy.stripe.com/14AfZjefggbO7t98Kb5Ne07' }
+    { id: 'total_699', name: 'Full Scale System', desc: 'Our flagship scale system with weekly content, a dynamic website, AI automation, lead follow-up, bank funding assistance, and partnership-building support.', price: 699, label: '$699 / week', stripeUrl: 'https://buy.stripe.com/14AfZjefggbO7t98Kb5Ne07' }
   ],
   social: [
-    { id: 'social_249', name: 'Social Media Management', desc: 'Standalone social media management support, scheduling, publishing, and brand consistency for your business.', price: 249, label: '$249 / week' }
+    { id: 'social_249', name: 'Social Media Management', desc: 'Standalone social media management support, scheduling, publishing, and brand consistency for your business.', price: 249, label: '$249 / week', stripeUrl: 'https://buy.stripe.com/6oU9AVdbc3p25l16C35Ne08' }
   ],
   website: [
     { id: 'website_static', name: 'Static Website', desc: 'Fast, professional static site — up to 5 pages, mobile responsive, contact form. $29.99/mo hosting & maintenance.', price: 99, label: '$99 + $29.99/mo' },
@@ -1352,9 +1610,9 @@ const packages = {
 
 const serviceDetails = {
   starter: {
-    eyebrow: 'Starter Package Overview',
+    eyebrow: 'Growth Foundation Overview',
     title: 'What you get before checkout',
-    intro: 'This package is built for businesses that want a cleaner online presence, consistent posting, and a simple website without jumping straight into a full automation stack.',
+    intro: 'This engagement is built for businesses that want a cleaner, more premium online presence, consistent posting, and a website foundation without jumping straight into the full automation stack.',
     bullets: [
       'Social media management during business hours',
       '2 picture posts and 1 video post each week',
@@ -1364,9 +1622,9 @@ const serviceDetails = {
     ]
   },
   total: {
-    eyebrow: 'Total Package Overview',
+    eyebrow: 'Full Scale System Overview',
     title: 'What you get before checkout',
-    intro: 'This package is designed for businesses that want a stronger growth engine with weekly content, website support, lead automation, and help opening more opportunities.',
+    intro: 'This flagship engagement is designed for businesses that want a stronger growth engine with weekly content, elevated web presence, lead automation, and help opening more opportunities.',
     bullets: [
       '24/7 social media management and lead follow-up support',
       '3 video posts and 3 picture posts each week',
@@ -1437,9 +1695,9 @@ function openOrderModal(service) {
 
   const title = document.getElementById('modalTitle');
   title.innerHTML = service === 'starter'
-    ? 'Book <span>Starter Package</span>'
+    ? 'Start With <span>Growth Foundation</span>'
     : service === 'total'
-    ? 'Book <span>Total Package</span>'
+    ? 'Apply For <span>Full Scale System</span>'
     : service === 'social'
     ? 'Book <span>Social Media Management</span>'
     : service === 'automation'
