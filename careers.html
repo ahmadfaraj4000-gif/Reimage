@@ -26,6 +26,11 @@
     .nav-logo img { height:40px; width:auto; display:block; }
     .nav-links { display:flex; list-style:none; gap:2rem; }
     .nav-links a { text-decoration:none; color:#243746; font-weight:600; }
+    .nav-cta { background:linear-gradient(135deg,var(--teal),var(--teal-dark)); color:#fff !important; padding:.5rem 1.4rem !important; border-radius:6px !important; border:1px solid var(--teal-light) !important; }
+    .menu-btn { display:none; background:none; border:none; cursor:pointer; color:#243746; font-size:1.4rem; }
+    .nav-links.open a { color:var(--white); }
+    .nav-links.open a:hover, .nav-links.open a.active { color:var(--teal-light); }
+    .nav-links.open .nav-cta { color:var(--white) !important; }
     .nav-links a:hover, .nav-links a.active { color:var(--teal); }
     .hero { padding:110px 2rem 50px; background:radial-gradient(ellipse at 30% 20%, rgba(26,122,138,0.12) 0%, transparent 45%), linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 65%, #0a1a28 100%); }
     .hero-inner { max-width:1100px; margin:0 auto; }
@@ -50,21 +55,50 @@
     .pay-item strong { display:block; margin-bottom:.3rem; color:var(--white); }
     .muted { color:var(--gray); }
     .cta-box { margin-top:1.2rem; padding:1.15rem; border-radius:16px; background:rgba(26,122,138,0.12); border:1px solid rgba(43,163,184,0.28); color:var(--light-gray); line-height:1.7; }
-    .footer { padding:28px 2rem 40px; color:var(--gray); }
-    .footer .wrap { border-top:1px solid rgba(255,255,255,0.08); padding-top:1.4rem; }
-    @media (max-width: 900px) { .grid { grid-template-columns:1fr; } .nav-links { gap:1rem; font-size:.92rem; flex-wrap:wrap; justify-content:flex-end; } .navbar { padding:1rem; } .hero, .section, .footer { padding-left:1rem; padding-right:1rem; } }
+    .footer {
+      position: relative;
+      background:
+        radial-gradient(circle at top left, rgba(43,163,184,0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(200,146,42,0.10), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,0.985) 0%, rgba(244,248,250,0.985) 100%);
+      border-top: 1px solid rgba(26,122,138,0.18);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.75);
+      padding: 60px 2rem 30px;
+    }
+    .footer::before {
+      content:'';
+      position:absolute;
+      top:0; left:0; right:0;
+      height:4px;
+      background:linear-gradient(90deg,var(--teal),var(--gold-light),var(--teal-light));
+      opacity:.9;
+    }
+    .footer-inner { max-width:1200px; margin:0 auto; }
+    .footer-top { display:grid; grid-template-columns:1.2fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
+    .footer-brand img { height:40px; margin-bottom:1rem; }
+    .footer-brand p { color:#456072; font-size:.9rem; line-height:1.7; }
+    .footer-col-title { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:1rem; letter-spacing:1px; text-transform:uppercase; color:var(--navy); margin-bottom:1.2rem; }
+    .footer-col ul { list-style:none; }
+    .footer-col ul li { margin-bottom:.7rem; }
+    .footer-col ul li a { color:#3f596b; text-decoration:none; font-size:.9rem; transition:color .3s; }
+    .footer-col ul li a:hover { color:var(--teal-light); }
+    .footer-bottom { border-top:1px solid rgba(12,31,46,0.08); padding-top:2rem; display:flex; align-items:center; justify-content:space-between; color:#456072; font-size:.85rem; }
+    @media (max-width: 900px) { .grid { grid-template-columns:1fr; } .navbar { padding:1rem; } .hero, .section, .footer { padding-left:1rem; padding-right:1rem; } .footer-top { grid-template-columns:1fr 1fr; } .nav-links { display:none; } .menu-btn { display:block; } .nav-links.open { display:flex; flex-direction:column; position:fixed; top:72px; left:0; width:100%; background:rgba(12,31,46,0.98); padding:2rem; gap:1.5rem; border-bottom:1px solid rgba(26,122,138,0.3); } }
+    @media (max-width: 600px) { .footer-top { grid-template-columns:1fr; } .footer-bottom { flex-direction:column; gap:1rem; text-align:center; } }
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <a href="index.html" class="nav-logo"><img src="logo.png" alt="RE IMAGE Business Solutions logo" /></a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
+    <nav class="navbar" id="navbar">
+    <a href="index.html#home" class="nav-logo"><img src="logo.png" alt="RE IMAGE Business Solutions logo" /></a>
+    <button class="menu-btn" id="menuBtn"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="3" width="22" height="2" rx="1" fill="currentColor"/><rect y="10" width="22" height="2" rx="1" fill="currentColor"/><rect y="17" width="22" height="2" rx="1" fill="currentColor"/></svg></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#home">Home</a></li>
       <li><a href="index.html#services">Services</a></li>
       <li><a href="index.html#work">Our Work</a></li>
       <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#contact">Contact</a></li>
       <li><a href="careers.html" class="active">Careers</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Book Consultation</a></li>
     </ul>
   </nav>
 
@@ -181,8 +215,65 @@
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="wrap">© 2026 RE IMAGE Business Solutions. All rights reserved.</div>
+    <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="logo.png" alt="RE IMAGE Business Solutions logo" />
+          <p>Professional content, conversion-focused websites, and automation systems for small businesses ready to grow the right way.</p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Services</div>
+          <ul>
+            <li><a href="index.html#services">Growth Foundation — $399/week</a></li>
+            <li><a href="index.html#services">Full Scale System — $699/week</a></li>
+            <li><a href="index.html#services">Social Media Management — $249/week</a></li>
+            <li><a href="index.html#services">Website Development</a></li>
+            <li><a href="index.html#services">AI Automation — $249/week</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Our Work</div>
+          <ul>
+            <li><a href="https://farajsoftwaresolutions.com" target="_blank">Faraj Software Solutions</a></li>
+            <li><a href="https://blesena.com" target="_blank">Blesena</a></li>
+            <li><a href="https://cr8autos.com" target="_blank">CR8 Autos</a></li>
+            <li><a href="https://techniqskinandbeauty.com" target="_blank">Techniq Skin & Beauty</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="index.html#contact">Book Consultation</a></li>
+            <li><a href="careers.html">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="yr"></span> RE IMAGE Business Solutions. All rights reserved.</span>
+      </div>
+    </div>
   </footer>
+  <script>
+    window.addEventListener('scroll', () => {
+      const nb = document.getElementById('navbar');
+      if (!nb) return;
+      if (window.scrollY > 50) nb.classList.add('scrolled');
+      else nb.classList.remove('scrolled');
+    });
+
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    if (menuBtn && navLinks) {
+      menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+    }
+
+    const yr = document.getElementById('yr');
+    if (yr) yr.textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
