@@ -33,7 +33,6 @@
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet" />
   
-  <script src="https://js.stripe.com/v3/"></script>
   <style>
     :root {
       --teal: #1a7a8a;
@@ -112,7 +111,7 @@
       box-shadow: 0 4px 24px rgba(0,0,0,0.08);
     }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .nav-logo img { height: 38px; width: auto; }
+    .nav-logo img { height: 68px; width: auto; }
     .nav-logo-text {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 700; font-size: 1.3rem;
@@ -975,24 +974,52 @@
     /* Animate on scroll */
     .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s; }
     .fade-up.visible { opacity: 1; transform: none; }
-  </style>
+  
+/* ===== POLISHED CENTERED DESKTOP NAV UPDATE ===== */
+@media (min-width: 901px) {
+  .navbar { min-height:76px; padding:.85rem 2.25rem; justify-content:center; }
+  .nav-logo { position:absolute; left:2.25rem; z-index:2; }
+  .nav-logo img { height:44px; }
+  .nav-links { margin:0 auto; gap:.55rem; align-items:center; justify-content:center; padding:.4rem; border:1px solid rgba(26,122,138,.14); border-radius:999px; background:rgba(255,255,255,.72); box-shadow:0 10px 30px rgba(12,31,46,.07); }
+  .nav-links a { display:inline-flex; align-items:center; justify-content:center; min-height:38px; padding:0 1rem; border-radius:999px; font-size:.86rem; font-weight:700; letter-spacing:.045em; text-transform:uppercase; }
+  .nav-links a:hover, .nav-links a.active { background:rgba(26,122,138,.09); }
+  .nav-cta { min-height:38px; padding:0 1.15rem !important; border-radius:999px !important; box-shadow:0 8px 20px rgba(26,122,138,.22); }
+}
+@media (max-width: 900px) { .nav-links.open { transform:none; } }
+
+
+
+/* ===== LOGO HEADER UPDATE ===== */
+.nav-logo-text{display:none!important;}
+.nav-logo{gap:0!important;}
+.nav-logo img{height:64px!important;width:auto!important;max-width:260px!important;object-fit:contain!important;display:block!important;}
+.navbar{min-height:92px!important;}
+@media (min-width:901px){
+  .nav-logo img{height:68px!important;}
+  .navbar.scrolled .nav-logo img{height:58px!important;}
+}
+@media (max-width:900px){
+  .navbar{min-height:82px!important;}
+  .nav-logo img{height:58px!important;max-width:220px!important;}
+}
+
+</style>
 </head>
 <body>
 
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
-  <a href="#home" class="nav-logo">
+  <a href="index.html#home" class="nav-logo">
     <img src="logo.png" alt="RE IMAGE Business Solutions logo" />
   </a>
-  <button class="menu-btn" id="menuBtn"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="3" width="22" height="2" rx="1" fill="currentColor"/><rect y="10" width="22" height="2" rx="1" fill="currentColor"/><rect y="17" width="22" height="2" rx="1" fill="currentColor"/></svg></button>
+  <button class="menu-btn" id="menuBtn" aria-label="Open navigation"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="3" width="22" height="2" rx="1" fill="currentColor"/><rect y="10" width="22" height="2" rx="1" fill="currentColor"/><rect y="17" width="22" height="2" rx="1" fill="currentColor"/></svg></button>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#work">Our Work</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="index.html#home">Home</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#work">Our Work</a></li>
+    <li><a href="index.html#about">About</a></li>
     <li><a href="careers.html">Careers</a></li>
-    <li><a href="#contact" class="nav-cta">Book Consultation</a></li>
+    <li><a href="start-with-us.html" class="nav-cta">Start With Us</a></li>
   </ul>
 </nav>
 
@@ -1015,22 +1042,8 @@
         <span>Automated follow-up systems</span>
       </div>
       <div class="hero-btns luxury-actions">
-        <a href="#services" class="btn btn-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0"><path d="M8 1l1.8 3.6L14 5.4l-3 2.9.7 4.1L8 10.4l-3.7 2 .7-4.1L2 5.4l4.2-.8L8 1z" fill="currentColor"/></svg> Explore Our Systems</a>
-        <a href="#contact" class="btn btn-outline"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0"><path d="M2 4.5h12v7H2z" stroke="currentColor" stroke-width="1.4"/><path d="M2 5.5l6 4 6-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Book Private Consultation</a>
-      </div>
-      <div class="hero-proof luxury-proof">
-        <div class="hero-proof-card luxury-proof-card">
-          <strong>Luxury presentation</strong>
-          <span>Sharper messaging, elevated creative direction, and a cleaner brand experience across every touchpoint.</span>
-        </div>
-        <div class="hero-proof-card luxury-proof-card">
-          <strong>Systems that convert</strong>
-          <span>Websites and funnels built to do more than look good — they move visitors toward action and trust.</span>
-        </div>
-        <div class="hero-proof-card luxury-proof-card">
-          <strong>Follow-up without friction</strong>
-          <span>Automation that keeps momentum alive after the first click, call, or inquiry.</span>
-        </div>
+        <a href="start-with-us.html" class="btn btn-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0"><path d="M8 1l1.8 3.6L14 5.4l-3 2.9.7 4.1L8 10.4l-3.7 2 .7-4.1L2 5.4l4.2-.8L8 1z" fill="currentColor"/></svg> Start With Us</a>
+        <a href="start-with-us.html" class="btn btn-outline"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0"><path d="M2 4.5h12v7H2z" stroke="currentColor" stroke-width="1.4"/><path d="M2 5.5l6 4 6-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Learn More</a>
       </div>
     </div>
   </div>
@@ -1080,16 +1093,13 @@
 
     <div class="mini-kicker fade-up">Flagship Engagements</div>
     <div class="package-grid">
-      <div class="service-card featured-card fade-up" onclick="openOrderModal('starter')">
+      <div class="service-card featured-card fade-up" onclick="window.location.href='growth-foundation.html'">
         <div class="service-icon-wrap">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="5" width="20" height="18" rx="4" stroke="white" stroke-width="1.8"/><path d="M9 14l3 3 7-7" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h3 class="service-card-title">Growth Foundation</h3>
         <p class="service-card-sub">A cleaner, more premium starting point for businesses that want stronger presentation, consistent content, and a polished digital foundation without overcomplicating the first step.</p>
-        <div class="service-price-row">
-          <div class="service-price">$399 <sub style="font-size:0.8rem;color:var(--gray);">/ week</sub></div>
-          <span class="service-price-badge">FOUNDATION</span>
-        </div>
+        <div class="service-price-row"><span class="service-price-badge">FOUNDATION</span></div>
         <ul class="service-features">
           <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Social media management with 5 images and 4 videos posted each week</li>
           <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> A polished static website built to improve trust and presentation</li>
@@ -1097,20 +1107,17 @@
           <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Bank funding assistance to support growth conversations</li>
         </ul>
         <div class="service-actions">
-          <button type="button" class="service-pay-link gold" onclick="event.stopPropagation(); openOrderModal('starter')">Start With Strategy</button>
+          <button type="button" class="service-pay-link gold" onclick="event.stopPropagation(); window.location.href='growth-foundation.html'">Start With Growth Foundation</button>
         </div>
       </div>
 
-      <div class="service-card gold-card fade-up" style="transition-delay:0.15s" onclick="openOrderModal('total')">
+      <div class="service-card gold-card fade-up" style="transition-delay:0.15s" onclick="window.location.href='full-scale-system.html'">
         <div class="service-icon-wrap" style="background:linear-gradient(135deg,var(--gold),#a0731e);box-shadow:0 4px 20px rgba(200,146,42,0.4);">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3l2.5 5 5.5.8-4 3.9.95 5.5L14 15.6l-4.95 2.6.95-5.5-4-3.9 5.5-.8L14 3z" stroke="white" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 21h14M9 24h10" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>
         <h3 class="service-card-title">Full Scale System</h3>
         <p class="service-card-sub">Our higher-touch engagement for businesses that want the full presentation, conversion, branding, SEO, and follow-up engine working together as one premium growth system.</p>
-        <div class="service-price-row">
-          <div class="service-price">$699 <sub style="font-size:0.8rem;color:var(--gray);">/ week</sub></div>
-          <span class="service-price-badge">FULL SCALE</span>
-        </div>
+        <div class="service-price-row"><span class="service-price-badge">FULL SCALE</span></div>
         <ul class="service-features">
           <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 8 images and 8 videos posted each week with ongoing social management and lead follow-up support</li>
           <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Dynamic website, SEO optimization, and conversion-focused automation</li>
@@ -1118,7 +1125,7 @@
           <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--gold-light)" opacity="0.25"/><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Bank funding assistance, partnership outreach, branding touchups or full rebrand, and consistent branding across website and social media</li>
         </ul>
         <div class="service-actions">
-          <button type="button" class="service-pay-link gold" onclick="event.stopPropagation(); openOrderModal('total')">Apply For Full System</button>
+          <button type="button" class="service-pay-link gold" onclick="event.stopPropagation(); window.location.href='full-scale-system.html'">Learn More About Full Scale</button>
         </div>
       </div>
     </div>
@@ -1127,43 +1134,31 @@
 
     <div class="mini-kicker fade-up">Core Services</div>
     <h3 class="section-title fade-up" style="font-size:clamp(1.6rem,3vw,2.3rem);margin-bottom:0.4rem;">Individual services if you only need one piece</h3>
-    <p class="section-sub fade-up" style="margin-top:0;">These are the standalone offers. The pricing is separated cleanly so clients can understand the difference between a package and a one-off service.</p>
+    <p class="section-sub fade-up" style="margin-top:0;">These are the standalone offers. Each service has its own page so clients can understand exactly what is included before reaching out.</p>
 
     <div class="services-grid">
-      <div class="service-card fade-up" onclick="openOrderModal('social')">
+      <div class="service-card fade-up" onclick="window.location.href='social-media-management.html'">
         <div class="service-icon-wrap">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="6" width="20" height="16" rx="3" stroke="white" stroke-width="1.8"/><path d="M9 11h10M9 16h7" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
         </div>
         <h3 class="service-card-title">Social Media<br>Management</h3>
         <p class="service-card-sub">Hands-on posting support, planning, scheduling, and audience-facing management for businesses that need a stronger brand presence.</p>
-        <div class="service-price-row">
-          <div class="service-price">$249 <sub style="font-size:0.8rem;color:var(--gray);">/ week</sub></div>
-          <span class="service-price-badge">STANDALONE</span>
-        </div>
+        <div class="service-price-row"><span class="service-price-badge">STANDALONE</span></div>
         <ul class="service-features">
           <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--teal-light)" opacity="0.2"/><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Content scheduling and post management</li>
           <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--teal-light)" opacity="0.2"/><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Brand-consistent captions and publishing</li>
           <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--teal-light)" opacity="0.2"/><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Ongoing management support</li>
         </ul>
-        <div class="service-cta"><span>Book Social Media</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="service-cta"><span>Learn More About Social Media</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
 
-      <div class="service-card fade-up" style="transition-delay:0.15s" onclick="openOrderModal('website')">
+      <div class="service-card fade-up" style="transition-delay:0.15s" onclick="window.location.href='website-development.html'">
         <div class="service-icon-wrap">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="white" stroke-width="1.8"/><path d="M2 14h24M14 2c-3 3-5 7-5 12s2 9 5 12M14 2c3 3 5 7 5 12s-2 9-5 12" stroke="white" stroke-width="1.8"/></svg>
         </div>
         <h3 class="service-card-title">Website<br>Development</h3>
         <p class="service-card-sub">Professional static or dynamic websites designed to make your business look established and turn visitors into leads.</p>
-        <div style="margin-bottom:1.5rem;">
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:0.5rem;">
-            <div class="service-price">$99</div>
-            <span style="color:var(--gray);font-size:0.9rem;">static site + <strong style="color:var(--teal-light);">$29.99/mo</strong></span>
-          </div>
-          <div style="display:flex;align-items:baseline;gap:8px;">
-            <div class="service-price">$249.99</div>
-            <span style="color:var(--gray);font-size:0.9rem;">dynamic site + <strong style="color:var(--teal-light);">$49.99/mo</strong></span>
-          </div>
-        </div>
+        <div class="service-price-row"><span class="service-price-badge">WEBSITE OPTIONS</span></div>
         <ul class="service-features">
           <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--teal-light)" opacity="0.2"/><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Mobile responsive</li>
           <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--teal-light)" opacity="0.2"/><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> SEO-ready structure</li>
@@ -1172,22 +1167,19 @@
         <div class="service-cta"><span>Start Your Website</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
 
-      <div class="service-card fade-up" style="transition-delay:0.3s" onclick="openOrderModal('automation')">
+      <div class="service-card fade-up" style="transition-delay:0.3s" onclick="window.location.href='ai-automation.html'">
         <div class="service-icon-wrap">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="8" y="4" width="12" height="14" rx="3" stroke="white" stroke-width="1.8"/><circle cx="14" cy="11" r="2.5" stroke="white" stroke-width="1.5"/><path d="M10 22h8M14 18v4" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
         </div>
         <h3 class="service-card-title">AI Automation</h3>
         <p class="service-card-sub">Automate lead capture, follow-up, and repetitive work so your business can respond faster and operate with less manual effort.</p>
-        <div class="service-price-row">
-          <div class="service-price">$249 <sub style="font-size:0.8rem;color:var(--gray);">/ week</sub></div>
-          <span class="service-price-badge">AUTOMATION</span>
-        </div>
+        <div class="service-price-row"><span class="service-price-badge">AUTOMATION</span></div>
         <ul class="service-features">
           <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--teal-light)" opacity="0.2"/><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Lead intake automation</li>
           <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--teal-light)" opacity="0.2"/><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Follow-up sequences</li>
           <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><circle cx="7" cy="7" r="7" fill="var(--teal-light)" opacity="0.2"/><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Workflow setup tailored to your business</li>
         </ul>
-        <div class="service-cta"><span>Get Automated</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="service-cta"><span>Learn More About Automation</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
     </div>
   </div>
@@ -1290,8 +1282,8 @@
           <div class="about-stat-label">Projects Delivered</div>
         </div>
         <div class="about-stat-card">
-          <div class="about-stat-num">$250</div>
-          <div class="about-stat-label">Avg. Savings on Content</div>
+          <div class="about-stat-num">Lean</div>
+          <div class="about-stat-label">Efficient Content Systems</div>
         </div>
         <div class="about-stat-card">
           <div class="about-stat-num">24hr</div>
@@ -1306,93 +1298,16 @@
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="section contact">
+<!-- START WITH US CTA -->
+<section id="start" class="section contact">
   <div class="section-inner">
-    <div style="text-align:center;">
-      <div class="section-label" style="justify-content:center;">Get In Touch</div>
-      <h2 class="section-title fade-up">Ready to Transform<br>Your Business?</h2>
-      <p class="section-sub fade-up">Have questions? Want to discuss your project before ordering? Reach out directly.</p>
-    </div>
-    <div class="contact-grid" style="margin-top:3rem;">
-      <div class="fade-up">
-        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:700;text-transform:uppercase;margin-bottom:1.5rem;">Contact Info</h3>
-        <div class="contact-info-item">
-          <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="var(--teal-light)" stroke-width="1.5"/><path d="M2 6l7 5 7-5" stroke="var(--teal-light)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-          <div>
-            <div class="contact-info-label">Email Us</div>
-            <div class="contact-info-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="345d5a525b7446515d595553515641475d5a514747475b5841405d5b5a471a575b59">[email&#160;protected]</a></div>
-          </div>
-        </div>
-        <div class="contact-info-item">
-          <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="var(--teal-light)" stroke-width="1.5"/><path d="M9 5v4l3 2" stroke="var(--teal-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div>
-            <div class="contact-info-label">Response Time</div>
-            <div class="contact-info-val">Within 24 hours</div>
-          </div>
-        </div>
-        <div class="contact-info-item">
-          <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2C6.24 2 4 4.24 4 7c0 4 5 9 5 9s5-5 5-9c0-2.76-2.24-5-5-5z" stroke="var(--teal-light)" stroke-width="1.5"/><circle cx="9" cy="7" r="1.5" stroke="var(--teal-light)" stroke-width="1.3"/></svg></div>
-          <div>
-            <div class="contact-info-label">Service Area</div>
-            <div class="contact-info-val">We come to your location</div>
-          </div>
-        </div>
-        <div class="contact-info-item">
-          <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="12" rx="2" stroke="var(--teal-light)" stroke-width="1.5"/><path d="M6 7h6M6 10h4" stroke="var(--teal-light)" stroke-width="1.3" stroke-linecap="round"/></svg></div>
-          <div>
-            <div class="contact-info-label">Social Media</div>
-            <div class="contact-info-val">@reimagebusiness</div>
-          </div>
-        </div>
-      </div>
-      <div class="contact-form-card fade-up" style="transition-delay:0.2s">
-        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:700;text-transform:uppercase;margin-bottom:1.5rem;">Send a Message</h3>
-        <form id="contactForm" onsubmit="submitContact(event)">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="contactName">Your Name</label>
-              <input class="form-input" id="contactName" name="name" type="text" placeholder="Your Name" required />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="contactBusiness">Business Name</label>
-              <input class="form-input" id="contactBusiness" name="business_name" type="text" placeholder="Business Name" required />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="contactEmail">Email Address</label>
-              <input class="form-input" id="contactEmail" name="email" type="email" placeholder="Email Address" required />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="contactPhone">Phone Number</label>
-              <input class="form-input" id="contactPhone" name="phone" type="tel" placeholder="Phone Number" required />
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="contactInterest">I'm Interested In</label>
-            <select class="form-select" id="contactInterest" name="interest" required>
-              <option value="">Select a package or service</option>
-              <option>Growth Foundation — $399/week</option>
-              <option>Full Scale System — $699/week</option>
-              <option>Social Media Management — $249/week</option>
-              <option>Website Development</option>
-              <option>AI Automation — $249/week</option>
-              <option>General Question</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="contactMessage">Tell Us About Your Business</label>
-            <textarea class="form-textarea" id="contactMessage" name="message" placeholder="Tell us about your business and what you need..." rows="4" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0"><path d="M2 8l12-6-6 12-2-4-4-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg> Send Message
-          </button>
-        </form>
-        <div class="form-success" id="formSuccess">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" style="display:block;margin:0 auto 0.8rem"><circle cx="20" cy="20" r="20" fill="var(--teal)" opacity="0.2"/><path d="M12 20l6 6 10-12" stroke="var(--teal-light)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Message sent! We'll be in touch within 24 hours.
-        </div>
+    <div style="text-align:center;max-width:820px;margin:0 auto;">
+      <div class="section-label" style="justify-content:center;">Start With Us</div>
+      <h2 class="section-title fade-up">Ready to Plan Your Next Move?</h2>
+      <p class="section-sub fade-up">Use the new Start With Us page to choose a service, request a consultation, and reserve a one-hour consultation slot. This setup is ready to connect to Supabase and your future admin portal.</p>
+      <div class="hero-btns luxury-actions" style="margin-top:2rem;justify-content:center;">
+        <a href="start-with-us.html" class="btn btn-primary">Start With Us</a>
+        <a href="start-with-us.html?service=Consultation" class="btn btn-outline">Schedule Consultation</a>
       </div>
     </div>
   </div>
@@ -1409,11 +1324,11 @@
       <div class="footer-col">
         <div class="footer-col-title">Services</div>
         <ul>
-          <li><a href="#services" onclick="openOrderModal('starter')">Growth Foundation — $399/week</a></li>
-          <li><a href="#services" onclick="openOrderModal('total')">Full Scale System — $699/week</a></li>
-          <li><a href="#services" onclick="openOrderModal('social')">Social Media Management — $249/week</a></li>
-          <li><a href="#services" onclick="openOrderModal('website')">Website Development</a></li>
-          <li><a href="#services" onclick="openOrderModal('automation')">AI Automation — $249/week</a></li>
+          <li><a href="growth-foundation.html">Growth Foundation</a></li>
+          <li><a href="full-scale-system.html">Full Scale System</a></li>
+          <li><a href="social-media-management.html">Social Media Management</a></li>
+          <li><a href="website-development.html">Website Development</a></li>
+          <li><a href="ai-automation.html">AI Automation</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1429,8 +1344,8 @@
         <div class="footer-col-title">Company</div>
         <ul>
           <li><a href="#about">About Us</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#contact">Book Consultation</a></li>
+          <li><a href="start-with-us.html">Contact</a></li>
+          <li><a href="start-with-us.html">Start With Us</a></li>
           <li><a href="careers.html">Careers</a></li>
         </ul>
       </div>
@@ -1612,20 +1527,20 @@ let orders = JSON.parse(localStorage.getItem('reimage_orders') || '[]');
 
 const packages = {
   starter: [
-    { id: 'starter_399', name: 'Growth Foundation', desc: 'A premium foundation system with 5 images and 4 videos each week, content days scheduled as needed, a polished website presence, ongoing maintenance, and assistance with bank funding.', price: 399, label: '$399 / week', stripeUrl: 'https://buy.stripe.com/28EfZj8UWaRubJp9Of5Ne06' }
+    { id: 'starter_399', name: 'Growth Foundation', desc: 'A premium foundation system with 5 images and 4 videos each week, content days scheduled as needed, a polished website presence, ongoing maintenance, and assistance with bank funding.', label: 'Learn more' }
   ],
   total: [
-    { id: 'total_699', name: 'Full Scale System', desc: 'Our flagship scale system with 8 images and 8 videos each week, a weekly content day, dynamic website + SEO, AI automation, branding touchups or rebrand support, consistent cross-platform branding, lead follow-up, bank funding assistance, and partnership-building support.', price: 699, label: '$699 / week', stripeUrl: 'https://buy.stripe.com/14AfZjefggbO7t98Kb5Ne07' }
+    { id: 'total_699', name: 'Full Scale System', desc: 'Our flagship scale system with 8 images and 8 videos each week, a weekly content day, dynamic website + SEO, AI automation, branding touchups or rebrand support, consistent cross-platform branding, lead follow-up, bank funding assistance, and partnership-building support.', label: 'Learn more' }
   ],
   social: [
-    { id: 'social_249', name: 'Social Media Management', desc: 'Standalone social media management support, scheduling, publishing, and brand consistency for your business.', price: 249, label: '$249 / week', stripeUrl: 'https://buy.stripe.com/6oU9AVdbc3p25l16C35Ne08' }
+    { id: 'social_249', name: 'Social Media Management', desc: 'Standalone social media management support, scheduling, publishing, and brand consistency for your business.', label: 'Learn more' }
   ],
   website: [
-    { id: 'website_static', name: 'Static Website', desc: 'Fast, professional static site — up to 5 pages, mobile responsive, contact form. $29.99/mo hosting & maintenance.', price: 99, label: '$99 + $29.99/mo' },
-    { id: 'website_dynamic', name: 'Dynamic Website', desc: 'Full-featured dynamic site — CMS, SEO optimization, analytics, contact forms, conversion structure, and more. $49.99/mo hosting & maintenance.', price: 249.99, label: '$249.99 + $49.99/mo' }
+    { id: 'website_static', name: 'Static Website', desc: 'Fast, professional static site — up to 5 pages, mobile responsive, contact form, hosting and maintenance support.', label: 'Learn more' },
+    { id: 'website_dynamic', name: 'Dynamic Website', desc: 'Full-featured dynamic site — CMS, SEO optimization, analytics, contact forms, conversion structure, hosting and maintenance support.', label: 'Learn more' }
   ],
   automation: [
-    { id: 'automation_249', name: 'AI Automation', desc: 'Custom AI workflows, lead follow-up, intake systems, and ongoing optimization tailored to your business.', price: 249, label: '$249 / week' }
+    { id: 'automation_249', name: 'AI Automation', desc: 'Custom AI workflows, lead follow-up, intake systems, and ongoing optimization tailored to your business.', label: 'Learn more' }
   ]
 };
 
@@ -1743,7 +1658,7 @@ function openOrderModal(service) {
     : service === 'total'
     ? 'Apply For <span>Full Scale System</span>'
     : service === 'social'
-    ? 'Book <span>Social Media Management</span>'
+    ? 'Learn More About <span>Social Media Management</span>'
     : service === 'automation'
     ? 'Start Your <span>AI Automation</span>'
     : 'Start Your <span>Website</span>';
@@ -1788,7 +1703,7 @@ function renderPackageOptions() {
         <div class="package-name">${pkg.name}</div>
         <div class="package-desc">${pkg.desc}</div>
       </div>
-      <div class="package-price">${pkg.label}</div>
+      <div class="package-price">Learn more</div>
     </div>`;
   });
   document.getElementById('packageOptions').innerHTML = html;
@@ -1817,18 +1732,12 @@ function renderServiceOverview() {
 
 function renderOrderSummary() {
   if (!selectedPackage) return;
-  const stripeNote = selectedPackage.stripeUrl
-    ? '<div style="margin-top:0.85rem;color:var(--gray);font-size:0.82rem;line-height:1.55;">After clicking pay, you will be taken to secure Stripe checkout to complete payment.</div>'
-    : '';
-
   document.getElementById('orderSummary').innerHTML = `
-    <div class="order-summary-title">Order Summary</div>
-    <div class="order-row"><span>${selectedPackage.name}</span><span class="price">$${selectedPackage.price.toLocaleString()}</span></div>
-    <div class="order-row"><span>Processing Fee</span><span class="price">$0</span></div>
-    <div class="order-row total"><span>Total</span><span class="price">$${selectedPackage.price.toLocaleString()}</span></div>
-    ${stripeNote}
+    <div class="order-summary-title">Selected Service</div>
+    <div class="order-row"><span>${selectedPackage.name}</span><span class="price">Consultation</span></div>
   `;
 }
+
 
 function showStep(n) {
   [1,2,3,'Success'].forEach(s => {
@@ -2045,7 +1954,7 @@ function renderOrders() {
       <td><strong>${o.name}</strong><br><span style="color:var(--gray);font-size:0.8rem;">${o.email}</span></td>
       <td>${o.business}<br><span style="color:var(--gray);font-size:0.8rem;">${o.phone || '—'}</span></td>
       <td>${o.service}</td>
-      <td style="color:var(--teal-light);font-weight:700;">$${o.amount}</td>
+      <td style="color:var(--teal-light);font-weight:700;">Consultation</td>
       <td><span class="status-badge ${o.status === 'paid' ? 'paid' : 'pending'}">${o.status.toUpperCase()}</span></td>
       <td style="color:var(--gray);font-size:0.8rem;">${o.date}</td>
     </tr>
