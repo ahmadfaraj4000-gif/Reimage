@@ -127,7 +127,74 @@
     }
     .nav-links a:hover { color: var(--teal); }
     .nav-links a.active { color: var(--teal); }
-    .nav-cta {
+    .services-dropdown{position:relative;display:flex;align-items:center}
+.services-toggle{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.35rem;
+  min-height:38px;
+  padding:0 1rem;
+  border:0;
+  border-radius:999px;
+  background:transparent;
+  color:var(--navy-mid);
+  font-family:'Barlow',sans-serif;
+  font-size:.86rem;
+  font-weight:700;
+  letter-spacing:.045em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:.25s;
+}
+.services-toggle:hover,
+.services-dropdown.open .services-toggle{
+  color:var(--teal);
+  background:rgba(26,122,138,.09);
+}
+.services-toggle span{font-size:.72rem;line-height:1}
+.services-menu{
+  position:absolute;
+  top:calc(100% + 12px);
+  left:50%;
+  transform:translateX(-50%) translateY(8px);
+  width:270px;
+  padding:.55rem;
+  border-radius:18px;
+  background:rgba(255,255,255,.98);
+  border:1px solid rgba(26,122,138,.18);
+  box-shadow:0 22px 55px rgba(12,31,46,.18);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:.2s ease;
+  z-index:2000;
+}
+.services-dropdown.open .services-menu{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translateX(-50%) translateY(0);
+}
+.services-menu a{
+  display:flex!important;
+  justify-content:flex-start!important;
+  width:100%;
+  min-height:42px!important;
+  padding:0 .95rem!important;
+  border-radius:12px!important;
+  color:var(--navy-mid)!important;
+  text-decoration:none;
+  font-size:.82rem!important;
+  font-weight:800!important;
+  letter-spacing:.04em!important;
+  text-transform:uppercase!important;
+  background:transparent!important;
+}
+.services-menu a:hover{
+  color:var(--teal)!important;
+  background:rgba(26,122,138,.09)!important;
+}.nav-cta {
       background: linear-gradient(135deg, var(--teal), var(--teal-dark));
       color: var(--white) !important;
       padding: 0.5rem 1.4rem !important;
@@ -1003,7 +1070,35 @@
   .nav-logo img{height:58px!important;max-width:220px!important;}
 }
 
-</style>
+.nav-links.open .services-dropdown{width:100%;display:block}
+.nav-links.open .services-toggle{
+  width:100%;
+  color:#fff;
+  min-height:44px;
+}
+.nav-links.open .services-dropdown.open .services-toggle{
+  color:var(--teal-light);
+  background:rgba(255,255,255,.06);
+}
+.nav-links.open .services-menu{
+  position:static;
+  width:100%;
+  transform:none;
+  margin:.45rem 0 0;
+  background:rgba(255,255,255,.06);
+  border-color:rgba(255,255,255,.12);
+  box-shadow:none;
+}
+.nav-links.open .services-dropdown.open .services-menu{
+  transform:none;
+}
+.nav-links.open .services-menu a{
+  color:#fff!important;
+}
+.nav-links.open .services-menu a:hover{
+  color:var(--teal-light)!important;
+  background:rgba(255,255,255,.08)!important;
+}</style>
 </head>
 <body>
 
@@ -1015,7 +1110,18 @@
   <button class="menu-btn" id="menuBtn" aria-label="Open navigation"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="3" width="22" height="2" rx="1" fill="currentColor"/><rect y="10" width="22" height="2" rx="1" fill="currentColor"/><rect y="17" width="22" height="2" rx="1" fill="currentColor"/></svg></button>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html#home">Home</a></li>
-    <li><a href="index.html#services">Services</a></li>
+    <li class="services-dropdown">
+      <button class="services-toggle" type="button" aria-expanded="false">
+        Services <span>▾</span>
+      </button>
+      <div class="services-menu">
+        <a href="growth-foundation.html">Growth Foundation</a>
+        <a href="full-scale-system.html">Full Scale System</a>
+        <a href="social-media-management.html">Social Media Management</a>
+        <a href="website-development.html">Website Development</a>
+        <a href="ai-automation.html">AI Automation</a>
+      </div>
+    </li>
     <li><a href="index.html#work">Our Work</a></li>
     <li><a href="index.html#about">About</a></li>
     <li><a href="careers.html">Careers</a></li>
@@ -2001,6 +2107,43 @@ async function submitContact(event) {
   form.style.display = 'none';
   document.getElementById('formSuccess').style.display = 'block';
 }
+</script>
+<script>
+(function(){
+  const dropdown = document.querySelector('.services-dropdown');
+  const toggle = document.querySelector('.services-toggle');
+  const menu = document.querySelector('.services-menu');
+  const navLinks = document.getElementById('navLinks');
+
+  if (!dropdown || !toggle || !menu) return;
+
+  function closeServicesMenu(){
+    dropdown.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+  }
+
+  toggle.addEventListener('click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    const isOpen = dropdown.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  menu.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){
+      closeServicesMenu();
+      if (navLinks) navLinks.classList.remove('open');
+    });
+  });
+
+  document.addEventListener('click', function(e){
+    if (!dropdown.contains(e.target)) closeServicesMenu();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeServicesMenu();
+  });
+})();
 </script>
 </body>
 </html>
