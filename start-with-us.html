@@ -249,7 +249,21 @@
 .nav-links.open .services-menu a:hover{
   color:var(--teal-light)!important;
   background:rgba(255,255,255,.08)!important;
-}</style>
+}
+/* Mobile services dropdown fix: keep submenu hidden until Services is tapped */
+@media(max-width:900px){
+  .nav-links.open .services-menu{
+    display:none;
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+  .nav-links.open .services-dropdown.open .services-menu{
+    display:block;
+  }
+}
+
+</style>
 </head>
 <body>
 <nav class="navbar" id="navbar">
