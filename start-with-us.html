@@ -40,7 +40,7 @@
   top:calc(100% + 12px);
   left:50%;
   transform:translateX(-50%) translateY(8px);
-  width:270px;
+  width:300px;
   padding:.55rem;
   border-radius:18px;
   background:rgba(255,255,255,.98);
@@ -280,6 +280,7 @@
         <a href="full-scale-system.html">Full Scale System</a>
         <a href="social-media-management.html">Social Media Management</a>
         <a href="website-development.html">Website Development</a>
+        <a href="ai-receptionists.html">AI Receptionists</a>
         <a href="ai-automation.html">AI Automation</a>
       </div>
     </li>
@@ -310,7 +311,7 @@
         <div class="form-row"><div class="form-group"><label class="form-label" for="firstName">First Name</label><input class="form-input" id="firstName" name="first_name" required></div><div class="form-group"><label class="form-label" for="lastName">Last Name</label><input class="form-input" id="lastName" name="last_name" required></div></div>
         <div class="form-row"><div class="form-group"><label class="form-label" for="email">Email</label><input class="form-input" id="email" name="email" type="email" required></div><div class="form-group"><label class="form-label" for="phone">Phone</label><input class="form-input" id="phone" name="phone" type="tel"></div></div>
         <div class="form-group"><label class="form-label" for="businessName">Business Name</label><input class="form-input" id="businessName" name="business_name" required></div>
-        <div class="form-group"><label class="form-label" for="serviceChoice">Choose Service</label><select class="form-select" id="serviceChoice" name="service_choice" required><option value="">Select one</option><option value="Consultation">Consultation</option><option value="Growth Foundation">Growth Foundation</option><option value="Full Scale System">Full Scale System</option><option value="Social Media Management">Social Media Management</option><option value="Website Development">Website Development</option><option value="AI Automation">AI Automation</option><option value="General Question">General Question</option></select></div>
+        <div class="form-group"><label class="form-label" for="serviceChoice">Choose Service</label><select class="form-select" id="serviceChoice" name="service_choice" required><option value="">Select one</option><option value="Consultation">Consultation</option><option value="Growth Foundation">Growth Foundation</option><option value="Full Scale System">Full Scale System</option><option value="Social Media Management">Social Media Management</option><option value="Website Development">Website Development</option><option value="AI Receptionist Phone">AI Receptionist Phone</option><option value="AI Web Receptionist Chatbot">AI Web Receptionist Chatbot</option><option value="AI Automation">AI Automation</option><option value="General Question">General Question</option></select></div>
         <div class="calendar-box" id="calendarBox"><h3>Schedule Consultation</h3><p>Choose a date and one-hour time slot.</p><div class="calendar-head"><button class="cal-btn" type="button" id="prevMonth">Prev</button><div class="calendar-title" id="calendarTitle"></div><button class="cal-btn" type="button" id="nextMonth">Next</button></div><div class="calendar-grid" id="calendarGrid"></div><div class="time-slots" id="timeSlots"></div><input type="hidden" id="consultationDate" name="consultation_date"><input type="hidden" id="consultationTime" name="consultation_time"></div>
         <div class="form-group" style="margin-top:1rem;"><label class="form-label" for="message">Tell us about your business</label><textarea class="form-textarea" id="message" name="message" placeholder="What are you trying to build, improve, or automate?" required></textarea></div>
         <button class="submit-btn" type="submit">Submit Request</button><div class="status" id="statusBox"></div>
