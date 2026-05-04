@@ -1,455 +1,203 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Careers | RE IMAGE Business Solutions</title>
-  <link rel="icon" href="logo.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --teal: #1a7a8a;
-      --teal-dark: #0d5a68;
-      --teal-light: #2ba3b8;
-      --navy: #0c1f2e;
-      --navy-mid: #152a3a;
-      --gold: #c8922a;
-      --gold-light: #e8ad40;
-      --white: #ffffff;
-      --gray: #8a9bb0;
-      --light-gray: #d4e0e8;
-    }
-    * { box-sizing:border-box; margin:0; padding:0; }
-    body { font-family:'Barlow',sans-serif; background:linear-gradient(160deg,var(--navy) 0%, var(--navy-mid) 100%); color:var(--white); }
-    .navbar { position:sticky; top:0; z-index:1000; padding:1rem 2rem; display:flex; align-items:center; justify-content:space-between; background:linear-gradient(180deg,#fff 0%,#fff 100%); border-bottom:1px solid rgba(26,122,138,0.18); box-shadow:0 2px 20px rgba(0,0,0,0.06); }
-    .navbar::before { content:''; position:absolute; left:0; right:0; bottom:0; height:3px; background:linear-gradient(90deg,var(--teal),var(--gold-light),var(--teal-light)); }
-    .nav-logo img { height:64px; width:auto; display:block; }
-    .nav-links { display:flex; list-style:none; gap:2rem; }
-    .nav-links a { text-decoration:none; color:#243746; font-weight:600; }
-    .services-dropdown{position:relative;display:flex;align-items:center}
-.services-toggle{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:.35rem;
-  min-height:38px;
-  padding:0 1rem;
-  border:0;
-  border-radius:999px;
-  background:transparent;
-  color:var(--navy-mid);
-  font-family:'Barlow',sans-serif;
-  font-size:.86rem;
-  font-weight:700;
-  letter-spacing:.045em;
-  text-transform:uppercase;
-  cursor:pointer;
-  transition:.25s;
-}
-.services-toggle:hover,
-.services-dropdown.open .services-toggle{
-  color:var(--teal);
-  background:rgba(26,122,138,.09);
-}
-.services-toggle span{font-size:.72rem;line-height:1}
-.services-menu{
-  position:absolute;
-  top:calc(100% + 12px);
-  left:50%;
-  transform:translateX(-50%) translateY(8px);
-  width:300px;
-  padding:.55rem;
-  border-radius:18px;
-  background:rgba(255,255,255,.98);
-  border:1px solid rgba(26,122,138,.18);
-  box-shadow:0 22px 55px rgba(12,31,46,.18);
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-  transition:.2s ease;
-  z-index:2000;
-}
-.services-dropdown.open .services-menu{
-  opacity:1;
-  visibility:visible;
-  pointer-events:auto;
-  transform:translateX(-50%) translateY(0);
-}
-.services-menu a{
-  display:flex!important;
-  justify-content:flex-start!important;
-  width:100%;
-  min-height:42px!important;
-  padding:0 .95rem!important;
-  border-radius:12px!important;
-  color:var(--navy-mid)!important;
-  text-decoration:none;
-  font-size:.82rem!important;
-  font-weight:800!important;
-  letter-spacing:.04em!important;
-  text-transform:uppercase!important;
-  background:transparent!important;
-}
-.services-menu a:hover{
-  color:var(--teal)!important;
-  background:rgba(26,122,138,.09)!important;
-}.nav-cta { background:linear-gradient(135deg,var(--teal),var(--teal-dark)); color:#fff !important; padding:.5rem 1.4rem !important; border-radius:6px !important; border:1px solid var(--teal-light) !important; }
-    .menu-btn { display:none; background:none; border:none; cursor:pointer; color:#243746; font-size:1.4rem; }
-    .nav-links.open a { color:var(--white); }
-    .nav-links.open a:hover, .nav-links.open a.active { color:var(--teal-light); }
-    .nav-links.open .nav-cta { color:var(--white) !important; }
-    .nav-links a:hover, .nav-links a.active { color:var(--teal); }
-    .hero { padding:110px 2rem 50px; background:radial-gradient(ellipse at 30% 20%, rgba(26,122,138,0.12) 0%, transparent 45%), linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 65%, #0a1a28 100%); }
-    .hero-inner { max-width:1100px; margin:0 auto; }
-    .eyebrow { display:inline-flex; align-items:center; gap:8px; color:var(--teal-light); text-transform:uppercase; letter-spacing:1.7px; font-size:.82rem; font-weight:700; margin-bottom:1rem; }
-    .eyebrow::before { content:''; width:28px; height:2px; background:var(--teal-light); }
-    h1 { font-family:'Barlow Condensed',sans-serif; font-size:clamp(2.8rem,5vw,4.4rem); line-height:1.02; text-transform:uppercase; margin-bottom:1rem; }
-    .hero p { max-width:760px; color:var(--gray); font-size:1.05rem; line-height:1.8; }
-    .section { padding:0 2rem 80px; }
-    .wrap { max-width:1100px; margin:0 auto; }
-    .grid { display:grid; grid-template-columns:1.35fr .85fr; gap:2rem; align-items:start; }
-    .card { background:rgba(255,255,255,0.04); border:1px solid rgba(26,122,138,0.28); border-radius:22px; padding:2rem; box-shadow:0 18px 50px rgba(0,0,0,0.18); }
-    .card h2 { font-family:'Barlow Condensed',sans-serif; font-size:2rem; text-transform:uppercase; margin-bottom:1rem; }
-    .block { margin-bottom:1.8rem; }
-    .block h3 { font-family:'Barlow Condensed',sans-serif; font-size:1.3rem; text-transform:uppercase; margin-bottom:.75rem; color:var(--gold-light); letter-spacing:.5px; }
-    .block p, .block li { color:var(--light-gray); line-height:1.75; }
-    .block ul { list-style:none; }
-    .block li { display:flex; gap:10px; align-items:flex-start; padding:.38rem 0; }
-    .block li::before { content:'•'; color:var(--teal-light); font-weight:900; }
-    .highlight { background:linear-gradient(135deg, rgba(200,146,42,0.12), rgba(26,122,138,0.12)); border:1px solid rgba(200,146,42,0.28); }
-    .pay-grid { display:grid; gap:.9rem; }
-    .pay-item { padding:1rem 1.1rem; border-radius:16px; border:1px solid rgba(26,122,138,0.24); background:rgba(255,255,255,0.03); }
-    .pay-item strong { display:block; margin-bottom:.3rem; color:var(--white); }
-    .muted { color:var(--gray); }
-    .cta-box { margin-top:1.2rem; padding:1.15rem; border-radius:16px; background:rgba(26,122,138,0.12); border:1px solid rgba(43,163,184,0.28); color:var(--light-gray); line-height:1.7; }
-    .apply-card { margin-top:1.5rem; padding:1.4rem; border-radius:18px; background:rgba(255,255,255,0.05); border:1px solid rgba(26,122,138,0.24); }
-    .apply-card h3 { font-family:'Barlow Condensed',sans-serif; font-size:1.5rem; text-transform:uppercase; margin-bottom:.8rem; }
-    .apply-form .form-group { margin-bottom:1rem; }
-    .apply-form label { display:block; font-size:.85rem; font-weight:600; color:var(--light-gray); margin-bottom:.45rem; }
-    .apply-form input, .apply-form textarea {
-      width:100%;
-      background:rgba(255,255,255,0.05);
-      border:1.5px solid rgba(26,122,138,0.25);
-      border-radius:10px;
-      color:var(--white);
-      font-family:'Barlow',sans-serif;
-      font-size:1rem;
-      padding:.85rem 1rem;
-      outline:none;
-    }
-    .apply-form textarea { min-height:120px; resize:vertical; }
-    .apply-form input:focus, .apply-form textarea:focus { border-color:var(--teal-light); box-shadow:0 0 0 3px rgba(26,122,138,0.15); }
-    .join-btn {
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:8px; width:100%; border:none; cursor:pointer;
-      background:linear-gradient(135deg,var(--teal),var(--teal-dark));
-      color:#fff; padding:.95rem 1.2rem; border-radius:10px;
-      font-weight:700; font-family:'Barlow',sans-serif; font-size:.95rem;
-    }
-    .footer {
-      position: relative;
-      background:
-        radial-gradient(circle at top left, rgba(43,163,184,0.12), transparent 28%),
-        radial-gradient(circle at top right, rgba(200,146,42,0.10), transparent 24%),
-        linear-gradient(180deg, rgba(255,255,255,0.985) 0%, rgba(244,248,250,0.985) 100%);
-      border-top: 1px solid rgba(26,122,138,0.18);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.75);
-      padding: 60px 2rem 30px;
-    }
-    .footer::before {
-      content:'';
-      position:absolute;
-      top:0; left:0; right:0;
-      height:4px;
-      background:linear-gradient(90deg,var(--teal),var(--gold-light),var(--teal-light));
-      opacity:.9;
-    }
-    .footer-inner { max-width:1200px; margin:0 auto; }
-    .footer-top { display:grid; grid-template-columns:1.2fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
-    .footer-brand img { height:40px; margin-bottom:1rem; }
-    .footer-brand p { color:#456072; font-size:.9rem; line-height:1.7; }
-    .footer-col-title { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:1rem; letter-spacing:1px; text-transform:uppercase; color:var(--navy); margin-bottom:1.2rem; }
-    .footer-col ul { list-style:none; }
-    .footer-col ul li { margin-bottom:.7rem; }
-    .footer-col ul li a { color:#3f596b; text-decoration:none; font-size:.9rem; transition:color .3s; }
-    .footer-col ul li a:hover { color:var(--teal-light); }
-    .footer-bottom { border-top:1px solid rgba(12,31,46,0.08); padding-top:2rem; display:flex; align-items:center; justify-content:space-between; color:#456072; font-size:.85rem; }
-    @media (max-width: 900px) { .grid { grid-template-columns:1fr; } .navbar { padding:1rem; } .hero, .section, .footer { padding-left:1rem; padding-right:1rem; } .footer-top { grid-template-columns:1fr 1fr; } .nav-links { display:none; } .menu-btn { display:block; } .nav-links.open { display:flex; flex-direction:column; position:fixed; top:72px; left:0; width:100%; background:rgba(12,31,46,0.98); padding:2rem; gap:1.5rem; border-bottom:1px solid rgba(26,122,138,0.3); } }
-    @media (max-width: 600px) { .footer-top { grid-template-columns:1fr; } .footer-bottom { flex-direction:column; gap:1rem; text-align:center; } }
-  
-/* ===== POLISHED CENTERED DESKTOP NAV UPDATE ===== */
-@media (min-width: 901px) {
-  .navbar { min-height:76px; padding:.85rem 2.25rem; justify-content:center; }
-  .nav-logo { position:absolute; left:2.25rem; z-index:2; }
-  .nav-logo img { height:44px; }
-  .nav-links { margin:0 auto; gap:.55rem; align-items:center; justify-content:center; padding:.4rem; border:1px solid rgba(26,122,138,.14); border-radius:999px; background:rgba(255,255,255,.72); box-shadow:0 10px 30px rgba(12,31,46,.07); }
-  .nav-links a { display:inline-flex; align-items:center; justify-content:center; min-height:38px; padding:0 1rem; border-radius:999px; font-size:.86rem; font-weight:700; letter-spacing:.045em; text-transform:uppercase; }
-  .nav-links a:hover, .nav-links a.active { background:rgba(26,122,138,.09); }
-  .nav-cta { min-height:38px; padding:0 1.15rem !important; border-radius:999px !important; box-shadow:0 8px 20px rgba(26,122,138,.22); }
-}
-@media (max-width: 900px) { .nav-links.open { transform:none; } }
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Careers | RE IMAGE Business Solutions</title>
+<link href="logo.png" rel="icon"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&amp;family=Barlow+Condensed:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/><link href="styles.css" rel="stylesheet"/>
 
-
-
-/* ===== LOGO HEADER UPDATE ===== */
-.nav-logo-text{display:none!important;}
-.nav-logo{gap:0!important;}
-.nav-logo img{height:64px!important;width:auto!important;max-width:260px!important;object-fit:contain!important;display:block!important;}
-.navbar{min-height:92px!important;}
-@media (min-width:901px){
-  .nav-logo img{height:68px!important;}
-  .navbar.scrolled .nav-logo img{height:58px!important;}
-}
-@media (max-width:900px){
-  .navbar{min-height:82px!important;}
-  .nav-logo img{height:58px!important;max-width:220px!important;}
-}
-
-.nav-links.open .services-dropdown{width:100%;display:block}
-.nav-links.open .services-toggle{
-  width:100%;
-  color:#fff;
-  min-height:44px;
-}
-.nav-links.open .services-dropdown.open .services-toggle{
-  color:var(--teal-light);
-  background:rgba(255,255,255,.06);
-}
-.nav-links.open .services-menu{
-  position:static;
-  width:100%;
-  transform:none;
-  margin:.45rem 0 0;
-  background:rgba(255,255,255,.06);
-  border-color:rgba(255,255,255,.12);
-  box-shadow:none;
-}
-.nav-links.open .services-dropdown.open .services-menu{
-  transform:none;
-}
-.nav-links.open .services-menu a{
-  color:#fff!important;
-}
-.nav-links.open .services-menu a:hover{
-  color:var(--teal-light)!important;
-  background:rgba(255,255,255,.08)!important;
-}
-/* Mobile services dropdown fix: keep submenu hidden until Services is tapped */
-@media(max-width:900px){
-  .nav-links.open .services-menu{
-    display:none;
-    opacity:1;
-    visibility:visible;
-    pointer-events:auto;
-  }
-  .nav-links.open .services-dropdown.open .services-menu{
-    display:block;
-  }
-}
-
-</style>
 </head>
 <body>
-    <nav class="navbar" id="navbar">
-  <a href="index.html#home" class="nav-logo">
-    <img src="logo.png" alt="RE IMAGE Business Solutions logo" />
-  </a>
-  <button class="menu-btn" id="menuBtn" aria-label="Open navigation"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="3" width="22" height="2" rx="1" fill="currentColor"/><rect y="10" width="22" height="2" rx="1" fill="currentColor"/><rect y="17" width="22" height="2" rx="1" fill="currentColor"/></svg></button>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="index.html#home">Home</a></li>
-    <li class="services-dropdown">
-      <button class="services-toggle" type="button" aria-expanded="false">
+<nav class="navbar" id="navbar">
+<a class="nav-logo" href="index.html#home">
+<img alt="RE IMAGE Business Solutions logo" src="logo.png"/>
+</a>
+<button aria-label="Open navigation" class="menu-btn" id="menuBtn"><svg fill="none" height="22" viewbox="0 0 22 22" width="22"><rect fill="currentColor" height="2" rx="1" width="22" y="3"></rect><rect fill="currentColor" height="2" rx="1" width="22" y="10"></rect><rect fill="currentColor" height="2" rx="1" width="22" y="17"></rect></svg></button>
+<ul class="nav-links" id="navLinks">
+<li><a href="index.html#home">Home</a></li>
+<li class="services-dropdown">
+<button aria-expanded="false" class="services-toggle" type="button">
         Services <span>▾</span>
-      </button>
-      <div class="services-menu">
-        <a href="growth-foundation.html">Growth Foundation</a>
-        <a href="full-scale-system.html">Full Scale System</a>
-        <a href="social-media-management.html">Social Media Management</a>
-        <a href="website-development.html">Website Development</a>
-        <a href="ai-receptionists.html">AI Receptionists</a>
-        <a href="ai-automation.html">AI Automation</a>
-      </div>
-    </li>
-    <li><a href="index.html#work">Our Work</a></li>
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="careers.html" class="active">Careers</a></li>
-    <li><a href="https://login.reimagebs.com" target="_blank" rel="noopener">Client Portal</a></li>
-    <li><a href="start-with-us.html" class="nav-cta">Start With Us</a></li>
-  </ul>
+</button>
+<div class="services-menu">
+<a href="growth-foundation.html">Growth Foundation</a>
+<a href="full-scale-system.html">Full Scale System</a>
+<a href="social-media-management.html">Social Media Management</a>
+<a href="website-development.html">Website Development</a>
+<a href="ai-receptionists.html">AI Receptionists</a>
+<a href="ai-automation.html">AI Automation</a>
+</div>
+</li>
+<li><a href="index.html#work">Our Work</a></li>
+<li><a href="index.html#about">About</a></li>
+<li><a class="active" href="careers.html">Careers</a></li>
+<li><a href="https://login.reimagebs.com" rel="noopener" target="_blank">Client Portal</a></li>
+<li><a class="nav-cta" href="start-with-us.html">Start With Us</a></li>
+</ul>
 </nav>
-
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="eyebrow">Now Hiring</div>
-      <h1>Business & Social Media<br />Specialist</h1>
-      <p>RE IMAGE is looking for motivated, self-driven individuals to join our growing platform as Media & Business Specialists. In this role, you will create engaging content for local businesses while also helping them discover opportunities to grow through RE IMAGE services. This is a flexible, part-time opportunity designed for individuals who want to earn based on performance, build relationships, and grow their income over time.</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap grid">
-      <div class="card">
-        <div class="block">
-          <h2>Job Overview</h2>
-          <p>We are building a modern, performance-driven platform for local business growth. This role combines content creation, business relationship building, and long-term earning potential in one lane.</p>
-        </div>
-
-        <div class="block">
-          <h3>What You’ll Be Doing</h3>
-          <ul>
-            <li>Visit local businesses and create social media content</li>
-            <li>Produce 3–5 pieces of content per session, including at least 3 videos</li>
-            <li>Complete content sessions within 1–2 hours</li>
-            <li>Collaborate with businesses on social media posts such as Instagram and Facebook</li>
-            <li>Upload content in original quality using Google Drive or Dropbox</li>
-            <li>Identify areas where businesses can improve, including content, website, branding, and growth opportunities</li>
-            <li>Introduce businesses to RE IMAGE services without hard selling</li>
-          </ul>
-        </div>
-
-        <div class="block">
-          <h3>Lead & Growth Structure</h3>
-          <ul>
-            <li>Leads are not guaranteed at the start</li>
-            <li>Opportunities are earned through performance</li>
-            <li>You are encouraged to prospect your own clients</li>
-            <li>Creators who perform well receive more opportunities over time</li>
-          </ul>
-        </div>
-
-        <div class="block">
-          <h3>What We’re Looking For</h3>
-          <ul>
-            <li>Minimum 1,000 followers on at least one social media platform</li>
-            <li>Ability to create engaging content using a phone or camera</li>
-            <li>Strong communication and people skills</li>
-            <li>Self-motivated and comfortable approaching businesses</li>
-            <li>Willing to learn and grow within a performance-based system</li>
-          </ul>
-        </div>
-
-        <div class="block">
-          <h3>Perks & Benefits</h3>
-          <ul>
-            <li>Flexible schedule with true part-time freedom</li>
-            <li>Discounts through RE IMAGE partner businesses</li>
-            <li>Performance-based rewards and recognition</li>
-            <li>Earn $60,000+ personally and qualify for a company trip</li>
-          </ul>
-        </div>
-
-        <div class="block">
-          <h3>Important Notes</h3>
-          <ul>
-            <li>This is a 1099 independent contractor role</li>
-            <li>Income is not hourly or guaranteed</li>
-            <li>Earnings are based on activity, performance, and consistency</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card highlight">
-        <div class="block">
-          <h2>Compensation</h2>
-          <div class="pay-grid">
-            <div class="pay-item"><strong>Content Sessions</strong><span>$100 per session lasting 1–2 hours. Sessions depend on business demand and are not guaranteed daily.</span></div>
-            <div class="pay-item"><strong>Performance Earnings From Content</strong><span>Earn about 5% of sales generated from your content using a unique tracking code.</span></div>
-            <div class="pay-item"><strong>Website Sales</strong><span>Earn 25% upfront commission on every website sold.</span></div>
-            <div class="pay-item"><strong>Website Monthly Income</strong><span>Earn 5% recurring monthly income from website management.</span></div>
-            <div class="pay-item"><strong>Additional Services</strong><span>Earn 15% upfront on other services such as branding and AI, plus 5% recurring on ongoing services.</span></div>
-            <div class="pay-item"><strong>Funding</strong><span>Earn from helping businesses get approved for funding through RE IMAGE connections.</span></div>
-          </div>
-        </div>
-
-        <div class="block">
-          <h3>Why Join RE IMAGE?</h3>
-          <ul>
-            <li>Multiple income streams, not just one paycheck</li>
-            <li>Opportunity to build long-term recurring income</li>
-            <li>Real growth potential without income caps</li>
-            <li>Be part of a modern, scalable business model</li>
-          </ul>
-        </div>
-
-        <div class="cta-box">
-          <strong style="display:block;margin-bottom:.45rem;color:var(--white);">Apply Now</strong>
+<section class="hero">
+<div class="hero-inner">
+<div class="eyebrow">Now Hiring</div>
+<h1>Business &amp; Social Media<br/>Specialist</h1>
+<p>RE IMAGE is looking for motivated, self-driven individuals to join our growing platform as Media &amp; Business Specialists. In this role, you will create engaging content for local businesses while also helping them discover opportunities to grow through RE IMAGE services. This is a flexible, part-time opportunity designed for individuals who want to earn based on performance, build relationships, and grow their income over time.</p>
+</div>
+</section>
+<section class="section">
+<div class="wrap grid">
+<div class="card">
+<div class="block">
+<h2>Job Overview</h2>
+<p>We are building a modern, performance-driven platform for local business growth. This role combines content creation, business relationship building, and long-term earning potential in one lane.</p>
+</div>
+<div class="block">
+<h3>What You’ll Be Doing</h3>
+<ul>
+<li>Visit local businesses and create social media content</li>
+<li>Produce 3–5 pieces of content per session, including at least 3 videos</li>
+<li>Complete content sessions within 1–2 hours</li>
+<li>Collaborate with businesses on social media posts such as Instagram and Facebook</li>
+<li>Upload content in original quality using Google Drive or Dropbox</li>
+<li>Identify areas where businesses can improve, including content, website, branding, and growth opportunities</li>
+<li>Introduce businesses to RE IMAGE services without hard selling</li>
+</ul>
+</div>
+<div class="block">
+<h3>Lead &amp; Growth Structure</h3>
+<ul>
+<li>Leads are not guaranteed at the start</li>
+<li>Opportunities are earned through performance</li>
+<li>You are encouraged to prospect your own clients</li>
+<li>Creators who perform well receive more opportunities over time</li>
+</ul>
+</div>
+<div class="block">
+<h3>What We’re Looking For</h3>
+<ul>
+<li>Minimum 1,000 followers on at least one social media platform</li>
+<li>Ability to create engaging content using a phone or camera</li>
+<li>Strong communication and people skills</li>
+<li>Self-motivated and comfortable approaching businesses</li>
+<li>Willing to learn and grow within a performance-based system</li>
+</ul>
+</div>
+<div class="block">
+<h3>Perks &amp; Benefits</h3>
+<ul>
+<li>Flexible schedule with true part-time freedom</li>
+<li>Discounts through RE IMAGE partner businesses</li>
+<li>Performance-based rewards and recognition</li>
+<li>Earn $60,000+ personally and qualify for a company trip</li>
+</ul>
+</div>
+<div class="block">
+<h3>Important Notes</h3>
+<ul>
+<li>This is a 1099 independent contractor role</li>
+<li>Income is not hourly or guaranteed</li>
+<li>Earnings are based on activity, performance, and consistency</li>
+</ul>
+</div>
+</div>
+<div class="card highlight">
+<div class="block">
+<h2>Compensation</h2>
+<div class="pay-grid">
+<div class="pay-item"><strong>Content Sessions</strong><span>$100 per session lasting 1–2 hours. Sessions depend on business demand and are not guaranteed daily.</span></div>
+<div class="pay-item"><strong>Performance Earnings From Content</strong><span>Earn about 5% of sales generated from your content using a unique tracking code.</span></div>
+<div class="pay-item"><strong>Website Sales</strong><span>Earn 25% upfront commission on every website sold.</span></div>
+<div class="pay-item"><strong>Website Monthly Income</strong><span>Earn 5% recurring monthly income from website management.</span></div>
+<div class="pay-item"><strong>Additional Services</strong><span>Earn 15% upfront on other services such as branding and AI, plus 5% recurring on ongoing services.</span></div>
+<div class="pay-item"><strong>Funding</strong><span>Earn from helping businesses get approved for funding through RE IMAGE connections.</span></div>
+</div>
+</div>
+<div class="block">
+<h3>Why Join RE IMAGE?</h3>
+<ul>
+<li>Multiple income streams, not just one paycheck</li>
+<li>Opportunity to build long-term recurring income</li>
+<li>Real growth potential without income caps</li>
+<li>Be part of a modern, scalable business model</li>
+</ul>
+</div>
+<div class="cta-box">
+<strong style="display:block;margin-bottom:.45rem;color:var(--white);">Apply Now</strong>
           Start building your income with RE IMAGE and grow with a system designed for performance and long-term success.
         </div>
-
-        <div class="apply-card">
-          <h3>Join the Team</h3>
-          <form class="apply-form" action="https://formspree.io/f/xgorkyaq" method="POST">
-            <input type="hidden" name="submission_type" value="Applicant" />
-            <div class="form-group">
-              <label for="applicantName">Name</label>
-              <input id="applicantName" name="name" type="text" placeholder="Your full name" required />
-            </div>
-            <div class="form-group">
-              <label for="applicantEmail">Email</label>
-              <input id="applicantEmail" name="email" type="email" placeholder="you@example.com" required />
-            </div>
-            <div class="form-group">
-              <label for="applicantPhone">Phone Number</label>
-              <input id="applicantPhone" name="phone" type="tel" placeholder="(555) 000-0000" required />
-            </div>
-            <div class="form-group">
-              <label for="applicantSocial">Social Media Profiles</label>
-              <input id="applicantSocial" name="social_profiles" type="text" placeholder="Instagram, TikTok, LinkedIn, etc." required />
-            </div>
-            <div class="form-group">
-              <label for="applicantExperience">Experience</label>
-              <textarea id="applicantExperience" name="experience" placeholder="Tell us about your content, business, or client-facing experience." required></textarea>
-            </div>
-            <button class="join-btn" type="submit">Join the Team</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-    <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <img src="logo.png" alt="RE IMAGE Business Solutions logo" />
-          <p>Professional content, conversion-focused websites, and automation systems for small businesses ready to grow the right way.</p>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Services</div>
-          <ul>
-            <li><a href="growth-foundation.html">Growth Foundation — $399/week</a></li>
-            <li><a href="full-scale-system.html">Full Scale System — $699/week</a></li>
-            <li><a href="social-media-management.html">Social Media Management</a></li>
-            <li><a href="website-development.html">Website Development</a></li>
-            <li><a href="ai-automation.html">AI Automation — $249/week</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Our Work</div>
-          <ul>
-            <li><a href="https://farajsoftwaresolutions.com" target="_blank">Faraj Software Solutions</a></li>
-            <li><a href="https://blesena.com" target="_blank">Blesena</a></li>
-            <li><a href="https://cr8autos.com" target="_blank">CR8 Autos</a></li>
-            <li><a href="https://techniqskinandbeauty.com" target="_blank">Techniq Skin & Beauty</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Company</div>
-          <ul>
-            <li><a href="index.html#about">About Us</a></li>
-            <li><a href="start-with-us.html">Contact</a></li>
-            <li><a href="start-with-us.html">Start With Us</a></li>
-            <li><a href="careers.html">Careers</a></li>
-            <li><a href="https://login.reimagebs.com" target="_blank" rel="noopener">Client Portal</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© <span id="yr"></span> RE IMAGE Business Solutions. All rights reserved.</span>
-      </div>
-    </div>
-  </footer>
-  <script>
+<div class="apply-card">
+<h3>Join the Team</h3>
+<form action="https://formspree.io/f/xgorkyaq" class="apply-form" method="POST">
+<input name="submission_type" type="hidden" value="Applicant"/>
+<div class="form-group">
+<label for="applicantName">Name</label>
+<input id="applicantName" name="name" placeholder="Your full name" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="applicantEmail">Email</label>
+<input id="applicantEmail" name="email" placeholder="you@example.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="applicantPhone">Phone Number</label>
+<input id="applicantPhone" name="phone" placeholder="(555) 000-0000" required="" type="tel"/>
+</div>
+<div class="form-group">
+<label for="applicantSocial">Social Media Profiles</label>
+<input id="applicantSocial" name="social_profiles" placeholder="Instagram, TikTok, LinkedIn, etc." required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="applicantExperience">Experience</label>
+<textarea id="applicantExperience" name="experience" placeholder="Tell us about your content, business, or client-facing experience." required=""></textarea>
+</div>
+<button class="join-btn" type="submit">Join the Team</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-top">
+<div class="footer-brand">
+<img alt="RE IMAGE Business Solutions logo" src="logo.png"/>
+<p>Professional content, conversion-focused websites, and automation systems for small businesses ready to grow the right way.</p>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">Services</div>
+<ul>
+<li><a href="growth-foundation.html">Growth Foundation — $399/week</a></li>
+<li><a href="full-scale-system.html">Full Scale System — $699/week</a></li>
+<li><a href="social-media-management.html">Social Media Management</a></li>
+<li><a href="website-development.html">Website Development</a></li>
+<li><a href="ai-automation.html">AI Automation — $249/week</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">Our Work</div>
+<ul>
+<li><a href="https://farajsoftwaresolutions.com" target="_blank">Faraj Software Solutions</a></li>
+<li><a href="https://blesena.com" target="_blank">Blesena</a></li>
+<li><a href="https://cr8autos.com" target="_blank">CR8 Autos</a></li>
+<li><a href="https://techniqskinandbeauty.com" target="_blank">Techniq Skin &amp; Beauty</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">Company</div>
+<ul>
+<li><a href="index.html#about">About Us</a></li>
+<li><a href="start-with-us.html">Contact</a></li>
+<li><a href="start-with-us.html">Start With Us</a></li>
+<li><a href="careers.html">Careers</a></li>
+<li><a href="https://login.reimagebs.com" rel="noopener" target="_blank">Client Portal</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© <span id="yr"></span> RE IMAGE Business Solutions. All rights reserved.</span>
+</div>
+</div>
+</footer>
+<script>
     window.addEventListener('scroll', () => {
       const nb = document.getElementById('navbar');
       if (!nb) return;

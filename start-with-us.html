@@ -1,325 +1,70 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Start With Us | RE IMAGE Business Solutions</title>
-  <link rel="icon" href="logo.png" />
-  <meta name="description" content="Start a project or schedule a consultation with RE IMAGE Business Solutions." />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    :root{--teal:#1a7a8a;--teal-dark:#0d5a68;--teal-light:#2ba3b8;--navy:#0c1f2e;--navy-mid:#152a3a;--gold:#c8922a;--gold-light:#e8ad40;--white:#fff;--gray:#8a9bb0;--light-gray:#d4e0e8}
-    *{box-sizing:border-box;margin:0;padding:0} body{font-family:'Barlow',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden}.navbar{position:sticky;top:0;z-index:1000;min-height:86px;padding:.75rem 2.25rem;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at top left,rgba(43,163,184,.08),transparent 30%),radial-gradient(circle at top right,rgba(200,146,42,.06),transparent 25%),#fff;border-bottom:1px solid rgba(26,122,138,.18);box-shadow:0 2px 20px rgba(0,0,0,.06)}.navbar:before{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--gold-light),var(--teal-light))}.nav-logo{position:absolute;left:2.25rem;display:flex;align-items:center;text-decoration:none;z-index:2}.nav-logo img{height:68px;width:auto;display:block}.nav-links{display:flex;list-style:none;gap:.55rem;align-items:center;justify-content:center;margin:0 auto;padding:.4rem;border:1px solid rgba(26,122,138,.14);border-radius:999px;background:rgba(255,255,255,.72);box-shadow:0 10px 30px rgba(12,31,46,.07)}.nav-links a{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 1rem;border-radius:999px;color:var(--navy-mid);text-decoration:none;font-size:.86rem;font-weight:700;letter-spacing:.045em;text-transform:uppercase;transition:.25s}.nav-links a:hover,.nav-links a.active{color:var(--teal);background:rgba(26,122,138,.09)}.services-dropdown{position:relative;display:flex;align-items:center}
-.services-toggle{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:.35rem;
-  min-height:38px;
-  padding:0 1rem;
-  border:0;
-  border-radius:999px;
-  background:transparent;
-  color:var(--navy-mid);
-  font-family:'Barlow',sans-serif;
-  font-size:.86rem;
-  font-weight:700;
-  letter-spacing:.045em;
-  text-transform:uppercase;
-  cursor:pointer;
-  transition:.25s;
-}
-.services-toggle:hover,
-.services-dropdown.open .services-toggle{
-  color:var(--teal);
-  background:rgba(26,122,138,.09);
-}
-.services-toggle span{font-size:.72rem;line-height:1}
-.services-menu{
-  position:absolute;
-  top:calc(100% + 12px);
-  left:50%;
-  transform:translateX(-50%) translateY(8px);
-  width:300px;
-  padding:.55rem;
-  border-radius:18px;
-  background:rgba(255,255,255,.98);
-  border:1px solid rgba(26,122,138,.18);
-  box-shadow:0 22px 55px rgba(12,31,46,.18);
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-  transition:.2s ease;
-  z-index:2000;
-}
-.services-dropdown.open .services-menu{
-  opacity:1;
-  visibility:visible;
-  pointer-events:auto;
-  transform:translateX(-50%) translateY(0);
-}
-.services-menu a{
-  display:flex!important;
-  justify-content:flex-start!important;
-  width:100%;
-  min-height:42px!important;
-  padding:0 .95rem!important;
-  border-radius:12px!important;
-  color:var(--navy-mid)!important;
-  text-decoration:none;
-  font-size:.82rem!important;
-  font-weight:800!important;
-  letter-spacing:.04em!important;
-  text-transform:uppercase!important;
-  background:transparent!important;
-}
-.services-menu a:hover{
-  color:var(--teal)!important;
-  background:rgba(26,122,138,.09)!important;
-}.nav-cta{background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff!important;border:1px solid var(--teal-light);box-shadow:0 8px 20px rgba(26,122,138,.22)}.menu-btn{display:none;background:none;border:0;color:var(--navy);cursor:pointer;font-size:1.4rem}.hero{padding:105px 2rem 50px;background:radial-gradient(ellipse at 25% 20%,rgba(26,122,138,.18),transparent 52%),radial-gradient(ellipse at 85% 10%,rgba(200,146,42,.10),transparent 45%),linear-gradient(160deg,var(--navy),var(--navy-mid) 65%,#081724)}.wrap{max-width:1180px;margin:0 auto}.eyebrow{display:inline-flex;gap:10px;align-items:center;color:var(--gold-light);font-weight:800;letter-spacing:.17em;text-transform:uppercase;font-size:.82rem;margin-bottom:1rem}.eyebrow:before{content:'';width:34px;height:1px;background:var(--gold-light)}h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,6vw,5.3rem);line-height:.96;text-transform:uppercase;margin-bottom:1rem;max-width:850px}.hero p{max-width:760px;color:#c5d1db;line-height:1.8;font-size:1.08rem}.section{
-  padding:80px 2rem 95px;
-  background:
-    radial-gradient(circle at 18% 20%,rgba(43,163,184,.10),transparent 30%),
-    radial-gradient(circle at 82% 12%,rgba(200,146,42,.08),transparent 28%),
-    linear-gradient(180deg,var(--navy) 0%,#081724 100%);
-}.start-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  justify-content:center;
-  align-items:start;
-}.panel{
-  width:100%;
-  max-width:850px;
-  margin:0 auto;
-  position:relative;
-  overflow:hidden;
-  background:
-    radial-gradient(circle at top left,rgba(43,163,184,.13),transparent 34%),
-    radial-gradient(circle at top right,rgba(200,146,42,.10),transparent 30%),
-    linear-gradient(145deg,rgba(255,255,255,.075),rgba(26,122,138,.065));
-  border:1px solid rgba(43,163,184,.30);
-  border-radius:30px;
-  padding:2.25rem;
-  box-shadow:0 34px 100px rgba(0,0,0,.30);
-}
-.panel:before{
-  content:'';
-  position:absolute;
-  left:0;
-  right:0;
-  top:0;
-  height:4px;
-  background:linear-gradient(90deg,var(--teal),var(--gold-light),var(--teal-light));
-}
-.panel:after{
-  content:'';
-  position:absolute;
-  inset:1px;
-  border-radius:29px;
-  pointer-events:none;
-  border:1px solid rgba(255,255,255,.045);
-}.panel h2,.panel h3{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.04em}.panel h2{
-  font-size:clamp(2.2rem,4vw,3.25rem);
-  line-height:.95;
-  margin-bottom:.7rem;
-  text-align:center;
-}.panel p{
-  color:#c5d1db;
-  line-height:1.75;
-  text-align:center;
-  max-width:620px;
-  margin-left:auto;
-  margin-right:auto;
-}.form-proof{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:.65rem;
-  margin:0 auto 1.65rem;
-}
-.form-proof span{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:.55rem .8rem;
-  border-radius:999px;
-  background:rgba(255,255,255,.055);
-  border:1px solid rgba(255,255,255,.09);
-  color:var(--light-gray);
-  font-size:.82rem;
-  font-weight:800;
-  letter-spacing:.035em;
-  text-transform:uppercase;
-}
-#startForm{
-  position:relative;
-  z-index:1;
-}
-.form-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:1.05rem;
-}.form-group{
-  margin-bottom:1.18rem;
-}.form-label{
-  display:block;
-  font-size:.82rem;
-  font-weight:900;
-  color:#d8e7ee;
-  margin-bottom:.5rem;
-  text-transform:uppercase;
-  letter-spacing:.075em;
-}.form-input,
-.form-select,
-.form-textarea{
-  width:100%;
-  min-height:56px;
-  background:rgba(255,255,255,.06);
-  border:1.5px solid rgba(43,163,184,.30);
-  border-radius:15px;
-  color:#fff;
-  font-family:'Barlow',sans-serif;
-  font-size:1rem;
-  padding:1rem 1.05rem;
-  outline:none;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
-  transition:border-color .22s ease,box-shadow .22s ease,background .22s ease;
-}.form-select option{color:#111}.form-textarea{min-height:120px;resize:vertical}.form-input:focus,
-.form-select:focus,
-.form-textarea:focus{
-  border-color:var(--teal-light);
-  background:rgba(255,255,255,.075);
-  box-shadow:0 0 0 4px rgba(43,163,184,.14);
-}.calendar-box{
-  display:none;
-  margin-top:1.25rem;
-  padding:1.25rem;
-  border-radius:22px;
-  border:1px solid rgba(200,146,42,.30);
-  background:
-    radial-gradient(circle at top left,rgba(200,146,42,.10),transparent 35%),
-    rgba(200,146,42,.065);
-}.calendar-box.active{display:block}.calendar-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem}.cal-btn{border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#fff;border-radius:10px;padding:.55rem .8rem;cursor:pointer}.calendar-title{font-weight:800;color:var(--gold-light);text-transform:uppercase;letter-spacing:.08em}.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:.35rem}.dow,.day{min-height:42px;display:flex;align-items:center;justify-content:center;border-radius:10px}.dow{color:var(--gray);font-weight:800;font-size:.78rem;text-transform:uppercase}.day{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);color:#fff;cursor:pointer}.day.disabled{opacity:.25;cursor:not-allowed}.day.selected{background:linear-gradient(135deg,var(--teal),var(--teal-dark));border-color:var(--teal-light)}.time-slots{display:grid;grid-template-columns:repeat(4,1fr);gap:.55rem;margin-top:1rem}.time-slot{padding:.75rem .55rem;border-radius:12px;border:1px solid rgba(43,163,184,.25);background:rgba(255,255,255,.055);color:#fff;font-weight:700;cursor:pointer}.time-slot.selected{background:linear-gradient(135deg,var(--gold),#a0731e);border-color:var(--gold-light)}.time-slot.booked{opacity:.35;cursor:not-allowed;text-decoration:line-through}.time-slot:disabled{opacity:.35;cursor:not-allowed}.submit-btn:disabled{opacity:.65;cursor:not-allowed}.submit-btn{
-  width:100%;
-  min-height:60px;
-  margin-top:.35rem;
-  border:0;
-  border-radius:16px;
-  background:linear-gradient(135deg,var(--teal-light),var(--teal-dark));
-  color:white;
-  font-weight:900;
-  letter-spacing:.085em;
-  text-transform:uppercase;
-  cursor:pointer;
-  box-shadow:0 16px 38px rgba(26,122,138,.34);
-  transition:transform .22s ease,box-shadow .22s ease,background .22s ease;
-}
-.submit-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 22px 48px rgba(26,122,138,.42);
-}
-.submit-btn:active{
-  transform:translateY(0);
-}.help-list{list-style:none;margin-top:1.2rem}.help-list li{color:var(--light-gray);line-height:1.65;padding:.45rem 0;display:flex;gap:10px}.help-list li:before{content:'✓';color:var(--teal-light);font-weight:900}.status{display:none;margin-top:1rem;padding:1rem;border-radius:14px;background:rgba(43,163,184,.12);border:1px solid rgba(43,163,184,.35);color:var(--light-gray);line-height:1.6}.footer{background:linear-gradient(180deg,rgba(255,255,255,.985),rgba(244,248,250,.985));border-top:1px solid rgba(26,122,138,.18);padding:36px 2rem;color:#456072}.footer-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}.footer img{height:48px}.footer a{color:#456072;text-decoration:none;font-weight:700}@media(max-width:900px){.panel{padding:1.35rem;border-radius:24px}.section{padding:55px 1rem 75px}.navbar{justify-content:space-between;padding:.75rem 1rem}.nav-logo{position:static}.nav-logo img{height:58px}.menu-btn{display:block}.nav-links{display:none}.nav-links.open{display:flex;position:fixed;top:82px;left:0;width:100%;border-radius:0;background:rgba(12,31,46,.98);flex-direction:column;padding:2rem;gap:1rem}.nav-links.open a{color:#fff}.start-grid,.form-row{grid-template-columns:1fr}.time-slots{grid-template-columns:repeat(2,1fr)}}
-  .nav-links.open .services-dropdown{width:100%;display:block}
-.nav-links.open .services-toggle{
-  width:100%;
-  color:#fff;
-  min-height:44px;
-}
-.nav-links.open .services-dropdown.open .services-toggle{
-  color:var(--teal-light);
-  background:rgba(255,255,255,.06);
-}
-.nav-links.open .services-menu{
-  position:static;
-  width:100%;
-  transform:none;
-  margin:.45rem 0 0;
-  background:rgba(255,255,255,.06);
-  border-color:rgba(255,255,255,.12);
-  box-shadow:none;
-}
-.nav-links.open .services-dropdown.open .services-menu{
-  transform:none;
-}
-.nav-links.open .services-menu a{
-  color:#fff!important;
-}
-.nav-links.open .services-menu a:hover{
-  color:var(--teal-light)!important;
-  background:rgba(255,255,255,.08)!important;
-}
-/* Mobile services dropdown fix: keep submenu hidden until Services is tapped */
-@media(max-width:900px){
-  .nav-links.open .services-menu{
-    display:none;
-    opacity:1;
-    visibility:visible;
-    pointer-events:auto;
-  }
-  .nav-links.open .services-dropdown.open .services-menu{
-    display:block;
-  }
-}
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Start With Us | RE IMAGE Business Solutions</title>
+<link href="logo.png" rel="icon"/>
+<meta content="Start a project or schedule a consultation with RE IMAGE Business Solutions." name="description"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&amp;family=Barlow+Condensed:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/><link href="styles.css" rel="stylesheet"/>
 
-</style>
 </head>
-<body>
+<body class="start-page">
 <nav class="navbar" id="navbar">
-  <a href="index.html" class="nav-logo"><img src="logo.png" alt="RE IMAGE Business Solutions logo"></a>
-  <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="index.html">Home</a></li>
-    <li class="services-dropdown">
-      <button class="services-toggle" type="button" aria-expanded="false">
+<a class="nav-logo" href="index.html"><img alt="RE IMAGE Business Solutions logo" src="logo.png"/></a>
+<button aria-label="Open menu" class="menu-btn" id="menuBtn">☰</button>
+<ul class="nav-links" id="navLinks">
+<li><a href="index.html">Home</a></li>
+<li class="services-dropdown">
+<button aria-expanded="false" class="services-toggle" type="button">
         Services <span>▾</span>
-      </button>
-      <div class="services-menu">
-        <a href="growth-foundation.html">Growth Foundation</a>
-        <a href="full-scale-system.html">Full Scale System</a>
-        <a href="social-media-management.html">Social Media Management</a>
-        <a href="website-development.html">Website Development</a>
-        <a href="ai-receptionists.html">AI Receptionists</a>
-        <a href="ai-automation.html">AI Automation</a>
-      </div>
-    </li>
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="careers.html">Careers</a></li>
-    <li><a href="https://login.reimagebs.com" target="_blank" rel="noopener">Client Portal</a></li>
-    <li><a href="start-with-us.html" class="nav-cta active">Start With Us</a></li>
-  </ul>
+</button>
+<div class="services-menu">
+<a href="growth-foundation.html">Growth Foundation</a>
+<a href="full-scale-system.html">Full Scale System</a>
+<a href="social-media-management.html">Social Media Management</a>
+<a href="website-development.html">Website Development</a>
+<a href="ai-receptionists.html">AI Receptionists</a>
+<a href="ai-automation.html">AI Automation</a>
+</div>
+</li>
+<li><a href="index.html#about">About</a></li>
+<li><a href="careers.html">Careers</a></li>
+<li><a href="https://login.reimagebs.com" rel="noopener" target="_blank">Client Portal</a></li>
+<li><a class="nav-cta active" href="start-with-us.html">Start With Us</a></li>
+</ul>
 </nav>
 <header class="hero">
-  <div class="wrap">
-    <div class="eyebrow">Project Intake + Consultation Scheduling</div>
-    <h1>Start With Us</h1>
-    <p>Choose the service you are interested in, tell us what your business needs, or schedule a one-hour consultation. The form is structured so it can plug into Supabase and a future admin portal cleanly.</p>
-  </div>
+<div class="wrap">
+<div class="eyebrow">Project Intake + Consultation Scheduling</div>
+<h1>Start With Us</h1>
+<p>Choose the service you are interested in, tell us what your business needs, or schedule a one-hour consultation. The form is structured so it can plug into Supabase and a future admin portal cleanly.</p>
+</div>
 </header>
 <main class="section">
-  <div class="wrap start-grid">
-    <section class="panel">
-      <h2>Tell us what you need</h2>
-      <p style="margin-bottom:1.3rem;">Select “Consultation” to schedule a one-hour call.</p>
-      <div class="form-proof">
-        <span>✓ Fast response</span>
-        <span>✓ Secure intake</span>
-        <span>✓ Built for small businesses</span>
-      </div>
-      <form id="startForm">
-        <div class="form-row"><div class="form-group"><label class="form-label" for="firstName">First Name</label><input class="form-input" id="firstName" name="first_name" required></div><div class="form-group"><label class="form-label" for="lastName">Last Name</label><input class="form-input" id="lastName" name="last_name" required></div></div>
-        <div class="form-row"><div class="form-group"><label class="form-label" for="email">Email</label><input class="form-input" id="email" name="email" type="email" required></div><div class="form-group"><label class="form-label" for="phone">Phone</label><input class="form-input" id="phone" name="phone" type="tel"></div></div>
-        <div class="form-group"><label class="form-label" for="businessName">Business Name</label><input class="form-input" id="businessName" name="business_name" required></div>
-        <div class="form-group"><label class="form-label" for="serviceChoice">Choose Service</label><select class="form-select" id="serviceChoice" name="service_choice" required><option value="">Select one</option><option value="Consultation">Consultation</option><option value="Growth Foundation">Growth Foundation</option><option value="Full Scale System">Full Scale System</option><option value="Social Media Management">Social Media Management</option><option value="Website Development">Website Development</option><option value="AI Receptionist Phone">AI Receptionist Phone</option><option value="AI Web Receptionist Chatbot">AI Web Receptionist Chatbot</option><option value="AI Automation">AI Automation</option><option value="General Question">General Question</option></select></div>
-        <div class="calendar-box" id="calendarBox"><h3>Schedule Consultation</h3><p>Choose a date and one-hour time slot.</p><div class="calendar-head"><button class="cal-btn" type="button" id="prevMonth">Prev</button><div class="calendar-title" id="calendarTitle"></div><button class="cal-btn" type="button" id="nextMonth">Next</button></div><div class="calendar-grid" id="calendarGrid"></div><div class="time-slots" id="timeSlots"></div><input type="hidden" id="consultationDate" name="consultation_date"><input type="hidden" id="consultationTime" name="consultation_time"></div>
-        <div class="form-group" style="margin-top:1rem;"><label class="form-label" for="message">Tell us about your business</label><textarea class="form-textarea" id="message" name="message" placeholder="What are you trying to build, improve, or automate?" required></textarea></div>
-        <button class="submit-btn" type="submit">Submit Request</button><div class="status" id="statusBox"></div>
-      </form>
-    </section>
-  </div>
+<div class="wrap start-grid">
+<section class="panel">
+<h2>Tell us what you need</h2>
+<p style="margin-bottom:1.3rem;">Select “Consultation” to schedule a one-hour call.</p>
+<div class="form-proof">
+<span>✓ Fast response</span>
+<span>✓ Secure intake</span>
+<span>✓ Built for small businesses</span>
+</div>
+<form id="startForm">
+<div class="form-row"><div class="form-group"><label class="form-label" for="firstName">First Name</label><input class="form-input" id="firstName" name="first_name" required=""/></div><div class="form-group"><label class="form-label" for="lastName">Last Name</label><input class="form-input" id="lastName" name="last_name" required=""/></div></div>
+<div class="form-row"><div class="form-group"><label class="form-label" for="email">Email</label><input class="form-input" id="email" name="email" required="" type="email"/></div><div class="form-group"><label class="form-label" for="phone">Phone</label><input class="form-input" id="phone" name="phone" type="tel"/></div></div>
+<div class="form-group"><label class="form-label" for="businessName">Business Name</label><input class="form-input" id="businessName" name="business_name" required=""/></div>
+<div class="form-group"><label class="form-label" for="serviceChoice">Choose Service</label><select class="form-select" id="serviceChoice" name="service_choice" required=""><option value="">Select one</option><option value="Consultation">Consultation</option><option value="Growth Foundation">Growth Foundation</option><option value="Full Scale System">Full Scale System</option><option value="Social Media Management">Social Media Management</option><option value="Website Development">Website Development</option><option value="AI Receptionist Phone">AI Receptionist Phone</option><option value="AI Web Receptionist Chatbot">AI Web Receptionist Chatbot</option><option value="AI Automation">AI Automation</option><option value="General Question">General Question</option></select></div>
+<div class="calendar-box" id="calendarBox"><h3>Schedule Consultation</h3><p>Choose a date and one-hour time slot.</p><div class="calendar-head"><button class="cal-btn" id="prevMonth" type="button">Prev</button><div class="calendar-title" id="calendarTitle"></div><button class="cal-btn" id="nextMonth" type="button">Next</button></div><div class="calendar-grid" id="calendarGrid"></div><div class="time-slots" id="timeSlots"></div><input id="consultationDate" name="consultation_date" type="hidden"/><input id="consultationTime" name="consultation_time" type="hidden"/></div>
+<div class="form-group" style="margin-top:1rem;"><label class="form-label" for="message">Tell us about your business</label><textarea class="form-textarea" id="message" name="message" placeholder="What are you trying to build, improve, or automate?" required=""></textarea></div>
+<button class="submit-btn" type="submit">Submit Request</button><div class="status" id="statusBox"></div>
+</form>
+</section>
+</div>
 </main>
-<footer class="footer"><div class="footer-inner"><img src="logo.png" alt="RE IMAGE Business Solutions logo"><div>© <span id="yr"></span> RE IMAGE Business Solutions</div><a href="index.html">Back to Home</a><a href="https://login.reimagebs.com" target="_blank" rel="noopener">Client Portal</a></div></footer>
+<footer class="footer"><div class="footer-inner"><img alt="RE IMAGE Business Solutions logo" src="logo.png"/><div>© <span id="yr"></span> RE IMAGE Business Solutions</div><a href="index.html">Back to Home</a><a href="https://login.reimagebs.com" rel="noopener" target="_blank">Client Portal</a></div></footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 // SINGLE SCRIPT TAG - Supabase + calendar + form logic
