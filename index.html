@@ -1,1107 +1,1447 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>RE IMAGE Business Solutions | Websites, Content &amp; AI Automation for Small Businesses</title>
-<link href="logo.png" rel="icon"/>
-<!-- SEO Meta Tags -->
-<meta content="RE IMAGE Business Solutions — affordable websites, content creation, and AI automation for small businesses." name="description"/>
-<meta content="small business website design, content creation, AI automation, affordable web design" name="keywords"/>
-<meta content="RE IMAGE Business Solutions" name="author"/>
-<link href="https://yourdomain.com" rel="canonical"/>
-<!-- Open Graph Tags -->
-<meta content="RE IMAGE Business Solutions" property="og:title"/>
-<meta content="Professional websites, content creation &amp; AI automation for small businesses." property="og:description"/>
-<meta content="https://yourdomain.com/logo.png" property="og:image"/>
-<meta content="https://yourdomain.com" property="og:url"/>
-<meta content="website" property="og:type"/>
-<!-- Schema Markup -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Craft Auto Body & Towing | West Hartford, CT | 860-953-1966</title>
+<meta name="description" content="Car Craft Auto Body & Towing in West Hartford, CT offers collision repair, towing, insurance claim repairs, affordable out-of-pocket auto body repair, bumper repair, dent repair, scratch repair, and free estimates. Call 860-953-1966.">
+<meta name="keywords" content="auto body repair West Hartford CT, collision repair West Hartford, out of pocket auto body repair CT, self pay collision repair, bumper repair West Hartford, scratch repair CT, towing service West Hartford CT, paintless dent repair CT, car craft auto body">
+<meta property="og:title" content="Car Craft Auto Body & Towing | West Hartford, CT">
+<meta property="og:description" content="Collision repair, towing, used car sales, and affordable self-pay auto body repairs in West Hartford, CT. Free estimates. 860-953-1966">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://carcraftautobodytowing.com">
+<link rel="canonical" href="https://carcraftautobodytowing.com">
 <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "RE IMAGE Business Solutions",
-    "description": "Affordable websites, content creation, and AI automation for small businesses.",
-    "url": "https://yourdomain.com",
-    "email": "your@email.com",
-    "areaServed": "United States"
-  }
-  </script>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&amp;family=Barlow+Condensed:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/><link href="styles.css" rel="stylesheet"/>
+{"@context":"https://schema.org","@type":"AutoRepair","name":"Car Craft Auto Body & Towing","image":"https://carcraftautobodytowing.com/logo.png","url":"https://carcraftautobodytowing.com","telephone":"860-953-1966","address":{"@type":"PostalAddress","streetAddress":"8 South St","addressLocality":"West Hartford","addressRegion":"CT","postalCode":"06110","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":41.748,"longitude":-72.737},"openingHours":"Mo-Fr 08:30-16:30","priceRange":"$$","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"47"},"sameAs":["https://www.facebook.com/carcraftautobody"]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f4f6;
+  --bg-soft:#e9edf1;
+  --panel:#ffffff;
+  --panel-2:#f4f6f8;
+  --panel-3:#edf1f4;
+  --line:rgba(18,28,45,.10);
+  --line-strong:rgba(18,28,45,.18);
+  --text:#16202b;
+  --muted:#5f6975;
+  --muted-2:#7b8793;
+  --red:#d52b1e;
+  --red-bright:#f03a2c;
+  --silver:#3f4c59;
+  --shadow:0 22px 60px rgba(15,23,42,.10);
+  --shadow-soft:0 12px 30px rgba(15,23,42,.08);
+  --radius:24px;
+  --nav-h:82px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{
+  font-family:'Barlow',sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(213,43,30,.08), transparent 24%),
+    radial-gradient(circle at 88% 10%, rgba(255,255,255,.75), transparent 20%),
+    linear-gradient(180deg,#fafbfc 0%, #f2f4f7 45%, #eef2f5 100%);
+  color:var(--text);
+  overflow-x:hidden;
+}
+a{color:inherit}
+img{display:block;max-width:100%}
+.container{max-width:1360px;margin:0 auto;padding:0 28px}
+.section{padding:110px 0}
+.kicker{
+  display:inline-flex;align-items:center;gap:12px;
+  font:700 12px/1 'Barlow Condensed',sans-serif;
+  letter-spacing:3px;text-transform:uppercase;color:var(--red);
+  margin-bottom:18px;
+}
+.kicker::before{content:"";width:36px;height:2px;background:var(--red)}
+.section-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(44px,6vw,86px);
+  line-height:.94;letter-spacing:1px;
+  margin-bottom:18px;
+}
+.section-title .accent{color:var(--red)}
+.section-sub{max-width:620px;color:var(--muted);font-size:17px;line-height:1.8}
+.grid-2{display:grid;grid-template-columns:1.04fr .96fr;gap:34px}
 
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:var(--nav-h);
+  background:rgba(255,255,255,.82);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(18,28,45,.08);
+}
+.nav-inner{
+  height:100%;display:flex;align-items:center;justify-content:space-between;gap:22px;
+}
+.nav-logo{
+  padding:0;
+  background:transparent;
+  border:none;
+  box-shadow:none;
+}
+
+.nav-logo img{
+  height:64px;
+  width:auto;
+  display:block;
+  filter:drop-shadow(0 8px 18px rgba(0,0,0,.45));
+}
+.nav-links{
+  display:flex;
+  list-style:none;
+  gap:6px;
+  align-items:center;
+}
+
+.nav-links a:not(.btn){
+  text-decoration:none;
+  padding:10px 14px;
+  border-radius:999px;
+  font:700 13px/1 'Barlow Condensed',sans-serif;
+  letter-spacing:1.9px;
+  text-transform:uppercase;
+  color:var(--muted);
+  transition:.22s ease;
+}
+
+.nav-links a:not(.btn):hover{
+  color:var(--text);
+  background:rgba(255,255,255,.72);
+}
+
+.nav-phone{
+  font-weight:700;
+  color:var(--silver);
+  white-space:nowrap;
+}
+
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+}
+
+.hamburger span{
+  width:26px;
+  height:2px;
+  background:#18212b;
+  border-radius:10px;
+}
+
+.mobile-menu{
+  display:none;
+  background:#ffffff;
+  border-top:1px solid var(--line);
+}
+
+.mobile-menu.open{
+  display:block;
+}
+
+.mobile-menu a{
+  display:block;
+  padding:16px 28px;
+  border-bottom:1px solid var(--line);
+  text-decoration:none;
+  color:var(--muted);
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:1.3px;
+  font-size:14px;
+}
+
+.mobile-menu a:last-child{
+  color:#18212b;
+  background:var(--red);
+}
+.hero{
+  padding-top:calc(var(--nav-h) + 40px);
+  padding-bottom:42px;
+  min-height:100svh;
+  display:flex;align-items:center;
+}
+.hero-shell{
+  position:relative;
+  border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(255,255,255,.96),rgba(241,244,248,.98));
+  border-radius:34px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.hero-shell::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 16% 24%, rgba(213,43,30,.10), transparent 28%),
+    linear-gradient(90deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.75) 42%, rgba(255,255,255,.18) 100%);
+  z-index:1;
+}
+.hero-grid{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1.06fr .94fr;align-items:stretch;
+}
+.hero-copy{padding:76px 64px 62px}
+.hero-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(70px,10vw,136px);
+  line-height:1;
+  letter-spacing:1.5px;
+  margin-bottom:22px;
+}
+
+.hero-title .hero-topline{
+  display:block;
+  white-space:nowrap;
+}
+
+.hero-title .accent{
+  color:var(--red);
+  display:inline;
+}
+
+.hero-title .subline{
+  display:block;
+  font-size:clamp(28px,4vw,52px);
+  letter-spacing:5px;
+  color:var(--silver);
+  margin-top:12px;
+}
+.hero-copy p{
+  max-width:560px;color:var(--muted);font-size:18px;line-height:1.82;margin-bottom:32px;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:46px}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:54px;
+  padding:0 24px;
+  border-radius:16px;
+  text-decoration:none;
+  font:800 14px/1 'Barlow Condensed',sans-serif;
+  text-transform:uppercase;
+  letter-spacing:1.6px;
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+}
+
+.btn-primary{
+  background:linear-gradient(180deg, #d9362b 0%, #b92218 100%);
+  color:#ffffff;
+  border:1px solid rgba(0,0,0,.08);
+  box-shadow:0 8px 18px rgba(185,34,24,.18);
+}
+
+.btn-primary:hover{
+  transform:translateY(-1px);
+  box-shadow:0 12px 24px rgba(185,34,24,.22);
+  background:linear-gradient(180deg, #e03d31 0%, #c1261b 100%);
+}
+.btn-secondary{border:1px solid var(--line-strong);color:var(--silver);background:rgba(255,255,255,.82)}
+.btn-secondary:hover{border-color:rgba(255,255,255,.24);color:#18212b;background:rgba(255,255,255,.06)}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;
+}
+.hero-stat{
+  padding:18px 18px 16px;
+  border:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
+  border-radius:20px;
+}
+.hero-stat strong{display:block;font-family:'Bebas Neue',sans-serif;font-size:40px;line-height:1;color:#18212b;letter-spacing:.8px}
+.hero-stat span{display:block;margin-top:4px;color:var(--muted-2);font:700 11px/1.45 'Barlow Condensed',sans-serif;letter-spacing:2px;text-transform:uppercase}
+.hero-visual{
+  position:relative;min-height:760px;background:#dfe5ea;
+}
+.hero-main-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.88) contrast(1.05) brightness(.8)}
+.hero-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(17,24,39,.16))}
+.hero-card{
+  position:absolute;z-index:3;right:28px;bottom:28px;left:28px;
+  background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(243,246,249,.98));
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:24px;padding:20px 22px;box-shadow:var(--shadow-soft)
+}
+.hero-card-top{display:flex;justify-content:space-between;gap:16px;align-items:end;margin-bottom:16px}
+.hero-card-label{font:700 11px/1 'Barlow Condensed',sans-serif;color:var(--red);letter-spacing:2.4px;text-transform:uppercase;margin-bottom:8px}
+.hero-card-title{font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:.95;letter-spacing:1px}
+.hero-badge{padding:8px 12px;border-radius:999px;background:rgba(213,43,30,.14);border:1px solid rgba(213,43,30,.36);font:800 11px/1 'Barlow Condensed',sans-serif;letter-spacing:1.8px;text-transform:uppercase;color:#18212b;white-space:nowrap}
+.hero-proof{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hero-proof-item{position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08);height:150px}
+.hero-proof-item img{width:100%;height:100%;object-fit:cover}
+.hero-proof-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.75) 100%)}
+.hero-proof-label{position:absolute;left:12px;bottom:12px;z-index:2;padding:6px 10px;border-radius:999px;font:800 10px/1 'Barlow Condensed',sans-serif;letter-spacing:2px;text-transform:uppercase}
+.hero-proof-label.before{background:rgba(0,0,0,.72);color: rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.12)}
+.hero-proof-label.after{background:rgba(213,43,30,.92);color:#18212b}
+.hero-logo-mark{position:absolute;right:22px;top:22px;z-index:3;width:180px;opacity:.88;filter:drop-shadow(0 14px 30px rgba(0,0,0,.35))}
+
+.trust-bar{padding:26px 0 0}
+.trust-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.trust-item{
+  border:1px solid var(--line);border-radius:20px;padding:16px 18px;
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
+  color:var(--silver);font:700 12px/1.5 'Barlow Condensed',sans-serif;letter-spacing:1.7px;text-transform:uppercase;
+}
+.trust-item strong{display:block;color:#18212b;font-size:14px;letter-spacing:1.1px;margin-bottom:4px}
+
+.services{background:linear-gradient(180deg,rgba(255,255,255,.02),transparent)}
+.services-top{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap;margin-bottom:38px}
+.services-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px}
+.service-card{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:28px;
+  overflow:hidden;
+  background:linear-gradient(180deg,#ffffff,#edf1f4);
+  min-height:320px;
+  box-shadow:var(--shadow-soft);
+}
+
+.service-card.large{
+  grid-row:span 2;
+  min-height:658px;
+}
+
+.service-media{
+  position:absolute;
+  inset:0;
+  opacity:1;
+}
+
+.service-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.92) contrast(1.02) brightness(.82);
+}
+
+.service-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.10) 0%,
+    rgba(255,255,255,.02) 30%,
+    rgba(15,23,42,.48) 100%
+  );
+}
+
+.service-content{
+  position:relative;
+  z-index:1;
+  padding:30px 28px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  height:100%;
+}
+
+.service-no{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:72px;
+  line-height:1;
+  color:rgba(255,255,255,.22);
+  margin-bottom:auto;
+}
+
+.service-card.large .service-no{
+  font-size:110px;
+}
+
+.service-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:36px;
+  letter-spacing:.8px;
+  line-height:.96;
+  margin:16px 0 12px;
+  color:#ffffff;
+  text-shadow:0 2px 10px rgba(0,0,0,.22);
+}
+
+.service-desc{
+  color:rgba(255,255,255,.88);
+  font-size:15px;
+  line-height:1.82;
+  max-width:420px;
+  text-shadow:0 1px 8px rgba(0,0,0,.18);
+}
+
+.service-link{
+  margin-top:18px;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:#ffffff;
+  text-decoration:none;
+  font:800 12px/1 'Barlow Condensed',sans-serif;
+  text-transform:uppercase;
+  letter-spacing:2px;
+}
+
+.service-link span{
+  color:#ff5a4d;
+}
+
+.showcase-head{display:flex;justify-content:space-between;gap:28px;align-items:end;flex-wrap:wrap;margin-bottom:38px}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.case-card{
+  border:1px solid var(--line);border-radius:28px;background:linear-gradient(180deg,var(--panel),var(--panel-3));overflow:hidden;box-shadow:var(--shadow-soft)
+}
+.case-card.wide{grid-column:1/-1}
+.compare{
+  position:relative;height:510px;background:#dfe4ea;overflow:hidden;cursor:ew-resize
+}
+.case-card:not(.wide) .compare{height:400px}
+.compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.compare .after{z-index:1}
+.compare .before{z-index:2;clip-path:inset(0 50% 0 0);filter:saturate(.72) brightness(.88)}
+.compare .divider{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;z-index:3;transform:translateX(-50%)}
+.compare .handle{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;width:56px;height:56px;border-radius:50%;background:#ffffff;color:#18212b;display:grid;place-items:center;font:800 20px/1 sans-serif;box-shadow:0 12px 24px rgba(0,0,0,.25)}
+.compare-labels{position:absolute;inset:auto 16px 16px 16px;z-index:4;display:flex;justify-content:space-between;gap:10px}
+.compare-label{padding:8px 12px;border-radius:999px;font:800 11px/1 'Barlow Condensed',sans-serif;letter-spacing:2px;text-transform:uppercase}
+.compare-label.before{background:rgba(0,0,0,.72);color: rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.12)}
+.compare-label.after{background:rgba(213,43,30,.92);color:#18212b}
+.case-copy{padding:22px 24px 24px}
+.case-title{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:10px}
+.case-title h3{font-family:'Bebas Neue',sans-serif;font-size:34px;line-height:.95;letter-spacing:.8px}
+.case-tag{padding:8px 12px;border-radius:999px;border:1px solid rgba(213,43,30,.35);background:rgba(213,43,30,.12);font:800 11px/1 'Barlow Condensed',sans-serif;letter-spacing:2px;text-transform:uppercase;color:#18212b;white-space:nowrap}
+.case-copy p{color:var(--muted);font-size:15px;line-height:1.78}
+.static-split{display:grid;grid-template-columns:1fr 1fr;height:400px}
+.static-half{position:relative;overflow:hidden}
+.static-half img{width:100%;height:100%;object-fit:cover}
+.static-half.before img{filter:saturate(.7) brightness(.88)}
+.static-label{position:absolute;left:14px;bottom:14px;padding:7px 11px;border-radius:999px;font:800 10px/1 'Barlow Condensed',sans-serif;letter-spacing:2px;text-transform:uppercase}
+.static-label.before{background:rgba(0,0,0,.72);color: rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.12)}
+.static-label.after{background:rgba(213,43,30,.92);color:#18212b}
+
+.story-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:18px}
+.story-panel,.metrics-panel{border:1px solid var(--line);border-radius:28px;background:linear-gradient(180deg,var(--panel),var(--panel-3));box-shadow:var(--shadow-soft)}
+.story-panel{padding:34px 32px}
+.story-panel p{color:var(--muted);font-size:16px;line-height:1.92}
+.metric-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:18px}
+.metric-card{padding:22px 22px;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.02)}
+.metric-card strong{display:block;font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:1;color:#18212b;letter-spacing:.8px}
+.metric-card span{display:block;margin-top:6px;color:var(--silver);font:800 12px/1.45 'Barlow Condensed',sans-serif;letter-spacing:2px;text-transform:uppercase}
+.metric-card p{margin-top:10px;color:var(--muted);font-size:14px;line-height:1.72}
+
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+.review-card{border:1px solid var(--line);border-radius:26px;background:linear-gradient(180deg,var(--panel),var(--panel-3));padding:28px;box-shadow:var(--shadow-soft)}
+.review-stars{color:var(--red);letter-spacing:3px;font-size:15px;margin-bottom:14px}
+.review-card p{color:#2c3640;font-size:15px;line-height:1.82;font-style:italic}
+.review-meta{margin-top:20px;color:var(--muted);font-size:13px}
+.review-meta strong{display:block;color:#18212b;font:800 15px/1.2 'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.review-banner{margin-top:18px;padding:24px 28px;border:1px solid var(--line);border-radius:26px;background:linear-gradient(180deg,rgba(213,43,30,.10),rgba(255,255,255,.88));display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.review-banner strong{font-family:'Bebas Neue',sans-serif;font-size:40px;line-height:.95;letter-spacing:1px}
+
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:34px}
+.faq-list{border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;background:none;border:none;color:#18212b;text-align:left;padding:22px 0;display:flex;justify-content:space-between;gap:16px;align-items:center;font:800 18px/1.4 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.8px;cursor:pointer}
+.faq-q span:last-child{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--red);font-size:20px;flex-shrink:0}
+.faq-a{max-height:0;overflow:hidden;color:var(--muted);font-size:15px;line-height:1.8;transition:max-height .28s ease,padding-bottom .28s ease}
+.faq-item.open .faq-a{max-height:220px;padding-bottom:20px}
+.faq-item.open .faq-q span:last-child{background:var(--red);border-color:var(--red);color:#18212b}
+
+.contact-wrap{border:1px solid var(--line);border-radius:32px;background:linear-gradient(180deg,var(--panel),var(--panel-3));overflow:hidden;box-shadow:var(--shadow)}
+.contact-grid{display:grid;grid-template-columns:.95fr 1.05fr}
+.contact-info{padding:40px 34px;background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));border-right:1px solid var(--line)}
+.contact-info h3{font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:.92;letter-spacing:1px;margin-bottom:14px}
+.contact-info p{color:var(--muted);font-size:16px;line-height:1.82;margin-bottom:26px}
+.contact-phone{display:block;text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:58px;line-height:.92;letter-spacing:1.6px;color:var(--red);margin-bottom:28px}
+.contact-item{padding:18px 0;border-top:1px solid var(--line)}
+.contact-item strong{display:block;font:800 12px/1 'Barlow Condensed',sans-serif;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.contact-item span,.contact-item a{color:var(--silver);text-decoration:none;line-height:1.8}
+.contact-form{padding:40px 34px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form-group{display:flex;flex-direction:column;gap:10px}
+.form-group.full{grid-column:1/-1}
+.form-group label{font:800 12px/1 'Barlow Condensed',sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--silver)}
+.form-input,.form-textarea,select.form-input{
+  width:100%;border:1px solid var(--line);background:rgba(255,255,255,.82);color:#18212b;
+  min-height:54px;padding:0 16px;border-radius:16px;outline:none;font:500 15px/1.2 'Barlow',sans-serif;transition:.18s ease
+}
+.form-textarea{min-height:130px;padding:16px;resize:vertical}
+.form-input:focus,.form-textarea:focus{border-color:rgba(213,43,30,.45);box-shadow:0 0 0 4px rgba(213,43,30,.12)}
+select.form-input option{background:#0f131a;color:#18212b}
+
+
+.owner-section{
+  position:relative;
+}
+.owner-wrap{
+  border:1px solid var(--line);
+  border-radius:32px;
+  overflow:hidden;
+  background:linear-gradient(180deg,var(--panel),var(--panel-3));
+  box-shadow:var(--shadow);
+}
+.owner-grid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  align-items:stretch;
+}
+.owner-photo{
+  position:relative;
+  min-height:620px;
+  background:#dfe5ea;
+}
+.owner-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+}
+.owner-photo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    180deg,
+    rgba(0,0,0,.02) 0%,
+    rgba(0,0,0,.08) 55%,
+    rgba(0,0,0,.16) 100%
+  );
+}
+.owner-photo-badge{
+  position:absolute;
+  left:20px;
+  bottom:20px;
+  z-index:2;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(7,8,10,.72);
+  color:#18212b;
+  font:800 11px/1 'Barlow Condensed',sans-serif;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+.owner-copy{
+  padding:44px 40px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.owner-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:72px;
+  line-height:.9;
+  letter-spacing:1px;
+  margin:8px 0 6px;
+}
+.owner-role{
+  color:var(--red);
+  font:800 13px/1.2 'Barlow Condensed',sans-serif;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:24px;
+}
+.owner-quote{
+  background: linear-gradient(180deg,#ffffff,#eef1f4);
+  border-radius: 24px;
+  padding: 32px;
+  color: #374151;
+  line-height: 1.8;
+  font-size: 18px;
+  border-left: 4px solid #e03131;
+  box-shadow: 0 10px 30px rgba(0,0,0,.05);
+}
+.owner-copy p{
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.9;
+}
+.owner-points{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:26px;
+}
+.owner-point{
+  padding:18px 18px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:rgba(255,255,255,.025);
+}
+.owner-point strong{
+  display:block;
+  color:#18212b;
+  font:800 13px/1.3 'Barlow Condensed',sans-serif;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+.owner-point span{
+  display:block;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+}
+
+footer{padding:34px 0 46px}
+.footer-shell{border:1px solid var(--line);border-radius:28px;background:linear-gradient(180deg,var(--panel-3),rgba(255,255,255,.02));padding:28px;display:grid;grid-template-columns:1.25fr .75fr .75fr .9fr;gap:18px}
+.footer-brand img{height:60px;width:auto;margin-bottom:16px}
+.footer-brand p{max-width:320px;color:var(--muted);font-size:14px;line-height:1.8}
+.footer-col h4{font:800 12px/1 'Barlow Condensed',sans-serif;letter-spacing:2.4px;text-transform:uppercase;color:#18212b;margin-bottom:14px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col a{color:var(--muted);text-decoration:none;font-size:14px}
+.footer-col a:hover{color:#18212b}
+.footer-bottom{margin-top:16px;color:var(--muted-2);font-size:13px}
+
+
+.compare-labels{
+  top:16px;
+  bottom:auto;
+  inset:auto 16px auto 16px;
+  align-items:flex-start;
+  pointer-events:none;
+}
+.compare-label,
+.static-label{
+  min-width:104px;
+  text-align:center;
+}
+.address-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:16px;
+}
+.address-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  padding:0 18px;
+  border-radius:999px;
+  text-decoration:none;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.82);
+  color:#18212b;
+  font:800 12px/1 'Barlow Condensed',sans-serif;
+  letter-spacing:1.8px;
+  text-transform:uppercase;
+  transition:.18s ease;
+  cursor:pointer;
+}
+.address-btn:hover{
+  background:#ffffff;
+  border-color:rgba(18,28,45,.18);
+}
+
+.estimate-strip{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;border:1px solid var(--line);border-radius:30px;padding:38px 40px;background:linear-gradient(135deg,rgba(255,255,255,.96),rgba(241,244,248,.98));box-shadow:var(--shadow-soft)}
+.estimate-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+
+@media (max-width: 1180px){
+  .hero-grid,.grid-2,.story-grid,.faq-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-visual{min-height:620px}
+  .services-grid,.reviews-grid{grid-template-columns:1fr 1fr}
+  .service-card.large{grid-row:auto;min-height:360px;grid-column:1/-1}
+  .trust-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-shell{grid-template-columns:1fr 1fr}
+}
+@media (max-width: 860px){
+  .nav-links,.nav-phone{display:none}
+  .hamburger{display:flex}
+  .container{padding:0 18px}
+  .hero{padding-top:calc(var(--nav-h) + 18px)}
+  .hero-copy{padding:32px 20px 24px}
+  .hero-title{font-size:clamp(56px,16vw,86px)}
+  .hero-copy p{font-size:16px}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .hero-visual{min-height:460px}
+  .hero-logo-mark{width:132px;right:16px;top:16px}
+  .hero-card{right:14px;left:14px;bottom:14px;padding:16px}
+  .compare-label,.static-label{min-width:84px;font-size:9px;padding:6px 9px}
+  .address-actions{flex-direction:column;align-items:flex-start}
+  .owner-grid{grid-template-columns:1fr}
+  .owner-photo{min-height:420px}
+  .owner-copy{padding:28px 20px}
+  .owner-name{font-size:54px}
+  .owner-points{grid-template-columns:1fr}
+  .hero-card-top{display:block}
+  .hero-badge{display:inline-flex;margin-top:12px}
+  .hero-proof-item{height:112px}
+  .trust-grid,.services-grid,.case-grid,.reviews-grid,.metric-list,.footer-shell,.form-grid{grid-template-columns:1fr}
+  .case-card.wide{grid-column:auto}
+  .compare,.case-card:not(.wide) .compare,.static-split{height:auto}
+  .static-split{grid-template-columns:1fr}
+  .static-half{height:250px}
+  .section{padding:84px 0}
+  .contact-info,.contact-form{padding:28px 20px}
+  .contact-phone{font-size:46px}
+  .estimate-strip{grid-template-columns:1fr;padding:28px 22px}
+  .estimate-actions{justify-content:flex-start}
+}
+.compare,
+.compare * {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.compare img {
+  -webkit-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+}
+
+/* === Dark header/footer treatment === */
+nav{
+  background:linear-gradient(180deg, rgba(7,10,14,.97) 0%, rgba(11,16,22,.95) 100%);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  box-shadow:0 14px 34px rgba(3,6,10,.24);
+}
+nav::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:2px;
+  background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(148,163,184,.55) 22%, rgba(213,43,30,.88) 50%, rgba(148,163,184,.55) 78%, rgba(255,255,255,0) 100%);
+  box-shadow:0 0 14px rgba(148,163,184,.10), 0 0 18px rgba(213,43,30,.16);
+}
+.nav-inner{position:relative;z-index:1}
+.nav-logo{
+  display:inline-flex;
+  align-items:center;
+  padding:0;
+  border-radius:0;
+  background:transparent;
+  border:none;
+  box-shadow:none;
+}
+.nav-logo img{
+  height:68px;
+  width:auto;
+  display:block;
+  filter:
+    drop-shadow(0 0 12px rgba(213,43,30,.18))
+    drop-shadow(0 8px 18px rgba(0,0,0,.45));
+}
+.nav-links a:not(.btn),
+.nav-links a{
+  color:rgba(239,244,248,.84);
+}
+.nav-links a:not(.btn):hover,
+.nav-links a:not(.btn).active,
+.nav-links a.active{
+  color:#ffffff;
+  background:rgba(255,255,255,.10);
+}
+.nav-phone{color:rgba(236,242,247,.90)}
+.nav-links .btn,
+.nav-links .cta{
+  color:#ffffff !important;
+  box-shadow:0 12px 28px rgba(213,43,30,.24);
+}
+.hamburger span{background:#f4f7fa}
+.mobile-menu{
+  background:linear-gradient(180deg, rgba(8,11,16,.99), rgba(12,17,24,.98));
+  border-top:1px solid rgba(255,255,255,.08);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04), 0 18px 32px rgba(0,0,0,.24);
+}
+.mobile-menu a{
+  color:rgba(236,242,247,.86);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.mobile-menu a:hover,
+.mobile-menu a.active{
+  background:rgba(255,255,255,.06);
+  color:#ffffff;
+}
+.mobile-menu a:last-child{
+  color:#ffffff;
+  background:linear-gradient(180deg,var(--red-bright),var(--red));
+}
+footer{padding:30px 0 46px}
+.footer-shell{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(180deg, rgba(7,10,14,.98) 0%, rgba(12,17,24,.98) 100%);
+  box-shadow:0 20px 44px rgba(4,8,12,.22);
+  color:rgba(238,243,247,.88);
+}
+.footer-shell::before{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:0;
+  height:2px;
+  background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(148,163,184,.55) 22%, rgba(213,43,30,.88) 50%, rgba(148,163,184,.55) 78%, rgba(255,255,255,0) 100%);
+  box-shadow:0 0 14px rgba(148,163,184,.10), 0 0 18px rgba(213,43,30,.16);
+}
+.footer-brand img{
+  height:60px;
+  width:auto;
+  display:block;
+  background:transparent;
+  border:none;
+  border-radius:0;
+  padding:0;
+  box-shadow:none;
+  opacity:.9;
+}
+.footer-brand p{
+  max-width:320px;
+  color:rgba(226,234,241,.78);
+  font-size:14px;
+  line-height:1.8;
+}
+.footer-col h4{
+  color:#ffffff;
+}
+.footer-col a{
+  color:rgba(226,234,241,.82);
+  text-decoration:none;
+  font-size:14px;
+}
+.footer-col a:hover{
+  color:#ffffff;
+}
+.footer-meta{
+  margin-top:18px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+}
+.footer-bottom{
+  margin:0;
+  color:#46515d;
+  font-size:13px;
+  line-height:1.6;
+  text-align:center;
+}
+.footer-credit{
+  margin:0;
+  color:#3f4c59;
+  font-size:13px;
+  line-height:1.6;
+  text-align:center;
+}
+.footer-credit a{
+  color:var(--red);
+  text-decoration:none;
+  font-weight:700;
+}
+.footer-credit a:hover{
+  color:#b92218;
+}
+
+
+
+/* === Mobile stacked before/after for slider-based cards only === */
+@media (max-width: 860px){
+  .compare{
+    height:auto !important;
+    display:grid;
+    grid-template-columns:1fr;
+    overflow:visible;
+    cursor:default;
+    background:transparent;
+  }
+  .case-card:not(.wide) .compare{
+    height:auto !important;
+  }
+  .compare img,
+  .compare .after,
+  .compare .before{
+    position:relative;
+    inset:auto;
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    clip-path:none !important;
+  }
+  .compare .before{
+    order:1;
+    filter:saturate(.72) brightness(.88);
+  }
+  .compare .after{
+    order:2;
+  }
+  .compare .divider,
+  .compare .handle{
+    display:none;
+  }
+  .compare .compare-labels{
+    position:static;
+    inset:auto;
+    order:3;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    padding:10px 0 0;
+  }
+  .compare .compare-label{
+    position:static;
+    width:100%;
+    min-width:0;
+    justify-self:stretch;
+  }
+}
+
+
+/* === Hours and self-pay SEO additions === */
+.nav-side{display:flex;flex-direction:column;align-items:flex-end;gap:4px;white-space:nowrap}
+.nav-hours{font:800 11px/1 'Barlow Condensed',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:rgba(236,242,247,.76)}
+.hero-hours{display:inline-flex;align-items:center;margin:0 0 18px;padding:10px 14px;border-radius:999px;background:rgba(213,43,30,.10);border:1px solid rgba(213,43,30,.24);color:var(--red);font:800 12px/1.25 'Barlow Condensed',sans-serif;letter-spacing:1.9px;text-transform:uppercase}
+.cash-repair-panel{border:1px solid var(--line);border-radius:32px;background:linear-gradient(135deg,rgba(255,255,255,.96),rgba(241,244,248,.98));box-shadow:var(--shadow-soft);padding:38px;display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
+.cash-repair-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;list-style:none}
+.cash-repair-list li{border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.72);padding:14px 16px;color:var(--silver);font:800 12px/1.4 'Barlow Condensed',sans-serif;letter-spacing:1.6px;text-transform:uppercase}
+@media (max-width: 1180px){.cash-repair-panel{grid-template-columns:1fr}.cash-repair-list{grid-template-columns:1fr}}
+@media (max-width: 860px){.nav-side{display:none}.hero-hours{display:flex;align-items:flex-start;border-radius:16px;line-height:1.45}.cash-repair-panel{padding:26px 20px}}
+
+</style>
 </head>
 <body>
-<!-- NAVBAR -->
-<nav class="navbar" id="navbar">
-<a class="nav-logo" href="index.html#home">
-<img alt="RE IMAGE Business Solutions logo" src="logo.png"/>
-</a>
-<button aria-label="Open navigation" class="menu-btn" id="menuBtn"><svg fill="none" height="22" viewbox="0 0 22 22" width="22"><rect fill="currentColor" height="2" rx="1" width="22" y="3"></rect><rect fill="currentColor" height="2" rx="1" width="22" y="10"></rect><rect fill="currentColor" height="2" rx="1" width="22" y="17"></rect></svg></button>
-<ul class="nav-links" id="navLinks">
-<li><a href="index.html#home">Home</a></li>
-<li class="services-dropdown">
-<button aria-expanded="false" class="services-toggle" type="button">
-        Services <span>▾</span>
-</button>
-<div class="services-menu">
-<a href="business-funding.html">Business Funding</a>
-<a href="growth-foundation.html">Growth Foundation</a>
-<a href="full-scale-system.html">Full Scale System</a>
-<a href="social-media-management.html">Social Media Management</a>
-<a href="website-development.html">Website Development</a>
-<a href="ai-receptionists.html">AI Receptionists</a>
-<a href="ai-automation.html">AI Automation</a>
-</div>
-</li>
-<li><a href="index.html#work">Our Work</a></li>
-<li><a href="index.html#about">About</a></li>
-<li><a href="careers.html">Careers</a></li>
-<li><a href="https://login.reimagebs.com" rel="noopener" target="_blank">Client Portal</a></li>
-<li><a class="nav-cta" href="start-with-us.html">Start With Us</a></li>
-</ul>
+<nav>
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo" aria-label="Car Craft Auto Body home">
+      <img src="carcraft.png" alt="Car Craft Auto Body & Towing logo">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="inventory.html">Inventory</a></li>
+      <li><a href="#work">Our Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#owner">Owner</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <a href="contact.html" class="btn btn-primary">Free Estimate</a>
+    </ul>
+    <div class="nav-side"><div class="nav-phone">860-953-1966</div><div class="nav-hours">Mon–Fri 8:30 AM–4:30 PM</div></div>
+    <div class="hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="toggleMenu()">Services</a>
+    <a href="inventory.html">Inventory</a>
+    <a href="#work" onclick="toggleMenu()">Our Work</a>
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#owner" onclick="toggleMenu()">Owner</a>
+    <a href="#reviews" onclick="toggleMenu()">Reviews</a>
+    <a href="#faq" onclick="toggleMenu()">FAQ</a>
+    <a href="contact.html">Free Estimate</a>
+    <a href="tel:8609531966">Call 860-953-1966</a>
+    <a href="contact.html">Hours: Mon–Fri 8:30 AM–4:30 PM</a>
+  </div>
 </nav>
-<!-- HERO -->
-<section class="hero" id="home">
-<div class="hero-inner luxury-hero">
-<div class="hero-content fade-up luxury-copy">
-<div class="hero-badge">Business Growth Solutions</div>
-<div class="hero-kicker">Luxury positioning. Revenue-minded execution.</div>
-<h1 class="hero-title luxury-title">
-        Premium Websites, Content, and AI Systems<br/>
-        For Businesses Ready To <span class="gold-accent">Look Bigger</span>
-</h1>
-<p class="hero-sub luxury-sub">
-        RE IMAGE helps service businesses upgrade their online presence, capture more leads, and automate follow-up with polished websites, content, and AI-powered client systems.
-      </p>
-<div class="hero-microproof">
-<span>Lead-focused websites</span>
-<span>AI follow-up systems</span>
-<span>Content that builds trust</span>
-<span>Business funding guidance</span>
-</div>
-<div class="hero-btns luxury-actions">
-<a class="btn btn-primary" href="start-with-us.html"><svg fill="none" height="16" style="flex-shrink:0" viewbox="0 0 16 16" width="16"><path d="M8 1l1.8 3.6L14 5.4l-3 2.9.7 4.1L8 10.4l-3.7 2 .7-4.1L2 5.4l4.2-.8L8 1z" fill="currentColor"></path></svg> Start With Us</a>
-<a class="btn btn-outline" href="start-with-us.html"><svg fill="none" height="16" style="flex-shrink:0" viewbox="0 0 16 16" width="16"><path d="M2 4.5h12v7H2z" stroke="currentColor" stroke-width="1.4"></path><path d="M2 5.5l6 4 6-4" stroke="currentColor" stroke-linecap="round" stroke-width="1.4"></path></svg> Learn More</a>
-</div>
-</div>
-</div>
-</section>
 
-
-<section class="section positioning">
-<div class="section-inner positioning-shell">
-<div class="positioning-intro fade-up">
-<div class="section-label">How We Position Growth</div>
-<h2 class="positioning-title">We Don’t Just Offer Services.<br/>We Build Revenue Systems.</h2>
-<p class="positioning-copy">
-        The brands that feel premium online usually win before the sales conversation even starts. We combine content, website experience, and automation into one growth ecosystem so your business looks more established, converts with more confidence, and follows up like a serious operator.
-      </p>
-<div class="positioning-grid">
-<div class="positioning-card">
-<strong>Acquire Attention</strong>
-<p>Strategic content and brand presentation that help your business look sharper, more current, and more credible.</p>
-</div>
-<div class="positioning-card">
-<strong>Convert Traffic</strong>
-<p>Refined websites and offer structure designed to turn curiosity into booked calls, submitted forms, and trust.</p>
-</div>
-<div class="positioning-card">
-<strong>Automate Growth</strong>
-<p>Lead capture and follow-up systems that reduce friction and keep opportunities moving after first contact.</p>
-</div>
-</div>
-</div>
-<div class="positioning-statement fade-up">
-<div class="mini-kicker">Why it feels different</div>
-<div class="positioning-quote">Most businesses do not have an attention problem.<br/>They have a conversion and follow-up problem.</div>
-<p class="positioning-note">
-        That is where we focus. The goal is not more noise — it is a more premium presence, better conversion flow, and a system that keeps leads warm without constant manual effort.
-      </p>
-</div>
-</div>
-
-</section>
-<section class="section" id="business-funding">
-<div class="section-inner">
-<div class="section-label">Business Funding</div>
-<h2 class="section-title fade-up">Capital Support For Owners Ready To Grow</h2>
-<p class="section-sub fade-up">Before a business spends more on marketing, equipment, staff, vehicles, or expansion, funding may be the missing piece. RE IMAGE helps owners understand the next step, organize the right information, and prepare for funding conversations with more confidence.</p>
-<div class="grid">
-<div class="card fade-up"><h3>Funding Readiness</h3><ul><li>Review the purpose of the funding request</li><li>Clarify what the capital will be used for</li><li>Identify what details should be prepared</li><li>Give the owner a cleaner next-step plan</li></ul></div>
-<div class="card fade-up" style="transition-delay:0.12s"><h3>Growth Capital Direction</h3><ul><li>Working capital needs</li><li>Equipment, vehicle, or buildout support</li><li>Marketing and growth investment</li><li>Expansion and stabilization planning</li></ul></div>
-<div class="card fade-up" style="transition-delay:0.24s"><h3>Connection Support</h3><ul><li>Help preparing for funding conversations</li><li>Referral-style support where available</li><li>Plain-language next steps</li><li>Follow-up support after the intake</li></ul></div>
-</div>
-<div class="btns" style="justify-content:center;margin-top:2rem;"><a class="btn btn-primary" href="business-funding.html">Learn More About Business Funding</a><a class="btn btn-outline" href="start-with-us.html">Start Funding Request</a></div>
-</div>
-</section>
-
-<!-- SERVICES -->
-<section class="section services" id="services">
-<div class="section-inner">
-<div class="section-label">What We Offer</div>
-<h2 class="section-title fade-up">Signature Growth Systems &amp; Core Services</h2>
-<p class="section-sub fade-up">Choose a flagship growth engagement or start with a focused service. The same colors stay in place — the positioning just feels more premium, more intentional, and more conversion-driven.</p>
-<div class="mini-kicker fade-up">Flagship Engagements</div>
-<div class="package-grid">
-<div class="service-card gold-card fade-up" onclick="window.location.href='business-funding.html'">
-<div class="service-icon-wrap" style="background:linear-gradient(135deg,var(--gold),#a0731e);box-shadow:0 4px 20px rgba(200,146,42,0.4);">
-<svg fill="none" height="28" viewbox="0 0 28 28" width="28"><rect height="16" rx="3" stroke="white" stroke-width="1.8" width="20" x="4" y="7"></rect><path d="M8 12h12M8 17h7" stroke="white" stroke-linecap="round" stroke-width="1.8"></path><path d="M20 5v18" opacity="0.75" stroke="white" stroke-linecap="round" stroke-width="1.5"></path></svg>
-</div>
-<h3 class="service-card-title">Growth Foundation</h3>
-<p class="service-card-sub">A cleaner, more premium starting point for businesses that want stronger presentation, consistent content, and a polished digital foundation without overcomplicating the first step.</p>
-<div class="service-price-row"><span class="service-price-badge">FOUNDATION</span></div>
-<ul class="service-features">
-<li><svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" fill="var(--gold-light)" opacity="0.25" r="7"></circle><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> Social media management with 5 images and 4 videos posted each week</li>
-<li><svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" fill="var(--gold-light)" opacity="0.25" r="7"></circle><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> A polished static website built to improve trust and presentation</li>
-<li><svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" fill="var(--gold-light)" opacity="0.25" r="7"></circle><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> Content days scheduled as needed to keep content production moving</li>
-<li><svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" fill="var(--gold-light)" opacity="0.25" r="7"></circle><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> Bank funding assistance to support growth conversations</li>
-</ul>
-<div class="service-actions">
-<button class="service-pay-link gold" onclick="event.stopPropagation(); window.location.href='growth-foundation.html'" type="button">Start With Growth Foundation</button>
-</div>
-</div>
-<div class="service-card gold-card fade-up" onclick="window.location.href='full-scale-system.html'" style="transition-delay:0.24s">
-<div class="service-icon-wrap" style="background:linear-gradient(135deg,var(--gold),#a0731e);box-shadow:0 4px 20px rgba(200,146,42,0.4);">
-<svg fill="none" height="28" viewbox="0 0 28 28" width="28"><path d="M14 3l2.5 5 5.5.8-4 3.9.95 5.5L14 15.6l-4.95 2.6.95-5.5-4-3.9 5.5-.8L14 3z" stroke="white" stroke-linejoin="round" stroke-width="1.6"></path><path d="M7 21h14M9 24h10" stroke="white" stroke-linecap="round" stroke-width="1.6"></path></svg>
-</div>
-<h3 class="service-card-title">Full Scale System</h3>
-<p class="service-card-sub">Our higher-touch engagement for businesses that want the full presentation, conversion, branding, SEO, and follow-up engine working together as one premium growth system.</p>
-<div class="service-price-row"><span class="service-price-badge">FULL SCALE</span></div>
-<ul class="service-features">
-<li><svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" fill="var(--gold-light)" opacity="0.25" r="7"></circle><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> 8 images and 8 videos posted each week with ongoing social management and lead follow-up support</li>
-<li><svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" fill="var(--gold-light)" opacity="0.25" r="7"></circle><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> Dynamic website, SEO optimization, and conversion-focused automation</li>
-<li><svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" fill="var(--gold-light)" opacity="0.25" r="7"></circle><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> Weekly content day, scripts for content day, and campaign support</li>
-<li><svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" fill="var(--gold-light)" opacity="0.25" r="7"></circle><path d="M4 7l2 2 4-4" stroke="var(--gold-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> Bank funding assistance, partnership outreach, branding touchups or full rebrand, and consistent branding across website and social media</li>
-</ul>
-<div class="service-actions">
-<button class="service-pay-link gold" onclick="event.stopPropagation(); window.location.href='full-scale-system.html'" type="button">Learn More About Full Scale</button>
-</div>
-</div>
-</div>
-<div class="services-divider"></div>
-<div class="mini-kicker fade-up">Core Services</div>
-<h3 class="section-title fade-up" style="font-size:clamp(1.6rem,3vw,2.3rem);margin-bottom:0.4rem;">Individual services if you only need one piece</h3>
-<p class="section-sub fade-up" style="margin-top:0;">These are the standalone offers. Each service has its own page so clients can understand exactly what is included before reaching out.</p>
-<div class="services-grid">
-<div class="service-card fade-up" onclick="window.location.href='social-media-management.html'">
-<div class="service-icon-wrap">
-<svg fill="none" height="28" viewbox="0 0 28 28" width="28"><rect height="16" rx="3" stroke="white" stroke-width="1.8" width="20" x="4" y="6"></rect><path d="M9 11h10M9 16h7" stroke="white" stroke-linecap="round" stroke-width="1.8"></path></svg>
-</div>
-<h3 class="service-card-title">Social Media<br/>Management</h3>
-<p class="service-card-sub">Hands-on posting support, planning, scheduling, and audience-facing management for businesses that need a stronger brand presence.</p>
-<div class="service-price-row"><span class="service-price-badge">STANDALONE</span></div>
-<ul class="service-features">
-<li><svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" fill="var(--teal-light)" opacity="0.2" r="7"></circle><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> Content scheduling and post management</li>
-<li><svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" fill="var(--teal-light)" opacity="0.2" r="7"></circle><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> Brand-consistent captions and publishing</li>
-<li><svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" fill="var(--teal-light)" opacity="0.2" r="7"></circle><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> Ongoing management support</li>
-</ul>
-<div class="service-cta"><span>Learn More About Social Media</span><svg fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></div>
-</div>
-<div class="service-card fade-up" onclick="window.location.href='website-development.html'" style="transition-delay:0.15s">
-<div class="service-icon-wrap">
-<svg fill="none" height="28" viewbox="0 0 28 28" width="28"><circle cx="14" cy="14" r="12" stroke="white" stroke-width="1.8"></circle><path d="M2 14h24M14 2c-3 3-5 7-5 12s2 9 5 12M14 2c3 3 5 7 5 12s-2 9-5 12" stroke="white" stroke-width="1.8"></path></svg>
-</div>
-<h3 class="service-card-title">Website<br/>Development</h3>
-<p class="service-card-sub">Professional static or dynamic websites designed to make your business look established and turn visitors into leads.</p>
-<div class="service-price-row"><span class="service-price-badge">WEBSITE OPTIONS</span></div>
-<ul class="service-features">
-<li><svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" fill="var(--teal-light)" opacity="0.2" r="7"></circle><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> Mobile responsive</li>
-<li><svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" fill="var(--teal-light)" opacity="0.2" r="7"></circle><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> SEO-ready structure</li>
-<li><svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" fill="var(--teal-light)" opacity="0.2" r="7"></circle><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> Contact forms and CTA flow</li>
-</ul>
-<div class="service-cta"><span>Start Your Website</span><svg fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></div>
-</div>
-<div class="service-card fade-up" onclick="window.location.href='ai-receptionists.html'" style="transition-delay:0.3s">
-<div class="service-icon-wrap">
-<svg fill="none" height="28" viewbox="0 0 28 28" width="28"><path d="M8 10a6 6 0 0 1 12 0v4" stroke="white" stroke-linecap="round" stroke-width="1.8"></path><path d="M6 14v-3a8 8 0 0 1 16 0v3" stroke="white" stroke-linecap="round" stroke-width="1.8"></path><rect height="7" rx="2" stroke="white" stroke-width="1.8" width="5" x="4" y="13"></rect><rect height="7" rx="2" stroke="white" stroke-width="1.8" width="5" x="19" y="13"></rect><path d="M18 22h-4" stroke="white" stroke-linecap="round" stroke-width="1.8"></path></svg>
-</div>
-<h3 class="service-card-title">AI<br/>Receptionists</h3>
-<p class="service-card-sub">Phone and website receptionist options that help answer questions, collect lead details, and keep customer conversations moving.</p>
-<div class="service-price-row"><span class="service-price-badge">FROM $69.99/MO</span></div>
-<ul class="service-features">
-<li><svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" fill="var(--teal-light)" opacity="0.2" r="7"></circle><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> AI phone receptionist option</li>
-<li><svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" fill="var(--teal-light)" opacity="0.2" r="7"></circle><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> Website chatbot receptionist option</li>
-<li><svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" fill="var(--teal-light)" opacity="0.2" r="7"></circle><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> Lead capture and customer guidance</li>
-</ul>
-<div class="service-cta"><span>View AI Receptionist Options</span><svg fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></div>
-</div>
-<div class="service-card fade-up" onclick="window.location.href='ai-automation.html'" style="transition-delay:0.45s">
-<div class="service-icon-wrap">
-<svg fill="none" height="28" viewbox="0 0 28 28" width="28"><rect height="14" rx="3" stroke="white" stroke-width="1.8" width="12" x="8" y="4"></rect><circle cx="14" cy="11" r="2.5" stroke="white" stroke-width="1.5"></circle><path d="M10 22h8M14 18v4" stroke="white" stroke-linecap="round" stroke-width="1.8"></path></svg>
-</div>
-<h3 class="service-card-title">AI Automation</h3>
-<p class="service-card-sub">Automate lead capture, follow-up, and repetitive work so your business can respond faster and operate with less manual effort.</p>
-<div class="service-price-row"><span class="service-price-badge">AUTOMATION</span></div>
-<ul class="service-features">
-<li><svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" fill="var(--teal-light)" opacity="0.2" r="7"></circle><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> Lead intake automation</li>
-<li><svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" fill="var(--teal-light)" opacity="0.2" r="7"></circle><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> Follow-up sequences</li>
-<li><svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" fill="var(--teal-light)" opacity="0.2" r="7"></circle><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> Workflow setup tailored to your business</li>
-</ul>
-<div class="service-cta"><span>Learn More About Automation</span><svg fill="none" height="16" viewbox="0 0 16 16" width="16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></div>
-</div>
-</div>
-</div>
-</section>
-<!-- PORTFOLIO -->
-<section class="section portfolio" id="work">
-<div class="section-inner">
-<div class="section-label">Portfolio</div>
-<h2 class="section-title fade-up">Websites We've Built</h2>
-<p class="section-sub fade-up">Real websites we've crafted for small businesses — professional, fast, and built to convert.</p>
-<div class="portfolio-grid">
-<div class="portfolio-card fade-up">
-<div class="portfolio-preview">
-<div class="browser-bar">
-<div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-<span style="flex:1;text-align:center;font-size:0.7rem;color:var(--gray);">farajsoftwaresolutions.com</span>
-</div>
-<span><svg fill="none" height="52" viewbox="0 0 52 52" width="52"><rect height="28" opacity="0.5" rx="3" stroke="var(--teal)" stroke-width="2" width="36" x="8" y="12"></rect><path d="M16 22h20M16 29h14" opacity="0.7" stroke="var(--teal-light)" stroke-linecap="round" stroke-width="2"></path></svg></span>
-</div>
-<div class="portfolio-info">
-<div class="portfolio-name">Faraj Software Solutions</div>
-<a class="portfolio-url" href="https://farajsoftwaresolutions.com" target="_blank">farajsoftwaresolutions.com ↗</a>
-<p style="color:var(--gray);font-size:0.85rem;margin-top:0.5rem;">Software development and tech solutions for small sbusinesses.</p>
-<div><span class="portfolio-tag">Software Company</span></div>
-</div>
-</div>
-<div class="portfolio-card fade-up" style="transition-delay:0.15s">
-<div class="portfolio-preview">
-<div class="browser-bar">
-<div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-<span style="flex:1;text-align:center;font-size:0.7rem;color:var(--gray);">techniqskinandbeauty.com</span>
-</div>
-<span><svg fill="none" height="52" viewbox="0 0 52 52" width="52"><circle cx="26" cy="26" opacity="0.5" r="14" stroke="var(--teal)" stroke-width="2"></circle><path d="M20 26c0-3.3 2.7-6 6-6s6 2.7 6 6-2.7 6-6 6" opacity="0.7" stroke="var(--teal-light)" stroke-linecap="round" stroke-width="2"></path><circle cx="26" cy="26" fill="var(--teal-light)" opacity="0.5" r="3"></circle></svg></span>
-</div>
-<div class="portfolio-info">
-<div class="portfolio-name">Techniq Skin &amp; Beauty</div>
-<a class="portfolio-url" href="https://techniqskinandbeauty.com" target="_blank">techniqskinandbeauty.com ↗</a>
-<p style="color:var(--gray);font-size:0.85rem;margin-top:0.5rem;">A skin care and beauty studio offering professional treatments and wellness services.</p>
-<div><span class="portfolio-tag">Beauty &amp; Wellness</span></div>
-</div>
-</div>
-<div class="portfolio-card fade-up" style="transition-delay:0.3s">
-<div class="portfolio-preview">
-<div class="browser-bar">
-<div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-<span style="flex:1;text-align:center;font-size:0.7rem;color:var(--gray);">cr8autos.com</span>
-</div>
-<span><svg fill="none" height="52" viewbox="0 0 52 52" width="52"><path d="M10 32l3-10h26l3 10" opacity="0.5" stroke="var(--teal)" stroke-width="2"></path><rect height="10" opacity="0.7" rx="2" stroke="var(--teal-light)" stroke-width="2" width="36" x="8" y="32"></rect><circle cx="17" cy="42" opacity="0.7" r="4" stroke="var(--teal-light)" stroke-width="2"></circle><circle cx="35" cy="42" opacity="0.7" r="4" stroke="var(--teal-light)" stroke-width="2"></circle></svg></span>
-</div>
-<div class="portfolio-info">
-<div class="portfolio-name">CR8 Autos</div>
-<a class="portfolio-url" href="https://www.cr8autos.com" target="_blank">cr8autos.com ↗</a>
-<p style="color:var(--gray);font-size:0.85rem;margin-top:0.5rem;">Auto body repair shop based in Watervliet, NY.</p>
-<div><span class="portfolio-tag">Auto Body &amp; Repair</span></div>
-</div>
-</div>
-<div class="portfolio-card fade-up" style="transition-delay:0.45s">
-<div class="portfolio-preview">
-<div class="browser-bar">
-<div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-<span style="flex:1;text-align:center;font-size:0.7rem;color:var(--gray);">blesena.com</span>
-</div>
-<span><svg fill="none" height="52" viewbox="0 0 52 52" width="52"><circle cx="26" cy="26" opacity="0.5" r="14" stroke="var(--teal)" stroke-width="2"></circle><path d="M26 18v8l5 3" opacity="0.8" stroke="var(--teal-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></span>
-</div>
-<div class="portfolio-info">
-<div class="portfolio-name">Blesena</div>
-<a class="portfolio-url" href="https://www.blesena.com" target="_blank">blesena.com ↗</a>
-<p style="color:var(--gray);font-size:0.85rem;margin-top:0.5rem;">Virtual roadside assistance &amp; pre-purchase vehicle inspections by certified mechanics.</p>
-<div><span class="portfolio-tag">Roadside &amp; Auto Services</span></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- ABOUT -->
-<section class="section about" id="about">
-<div class="section-inner">
-<div class="about-grid">
-<div class="about-text fade-up">
-<div class="section-label">Who We Are</div>
-<h2 class="section-title">Built for Small<br/>Business Owners</h2>
-<p style="margin-top:1rem;">We understand that as a small business owner, every dollar matters. That's why we've built affordable, high-impact services that deliver professional results without the agency price tag.</p>
-<p>From creating content at your location to launching your business online — we do it all. Our focus is simple: help you look professional, attract more customers, and grow.</p>
-<ul class="about-highlights">
-<li><svg fill="none" height="16" style="flex-shrink:0;margin-top:2px" viewbox="0 0 16 16" width="16"><circle cx="8" cy="8" fill="var(--teal-light)" opacity="0.18" r="8"></circle><path d="M5 8l2 2 4-4" stroke="var(--teal-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> Fast turnaround — content ready to post same day</li>
-<li><svg fill="none" height="16" style="flex-shrink:0;margin-top:2px" viewbox="0 0 16 16" width="16"><circle cx="8" cy="8" fill="var(--teal-light)" opacity="0.18" r="8"></circle><path d="M5 8l2 2 4-4" stroke="var(--teal-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> We come to your business location</li>
-<li><svg fill="none" height="16" style="flex-shrink:0;margin-top:2px" viewbox="0 0 16 16" width="16"><circle cx="8" cy="8" fill="var(--teal-light)" opacity="0.18" r="8"></circle><path d="M5 8l2 2 4-4" stroke="var(--teal-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> Websites designed to convert visitors into customers</li>
-<li><svg fill="none" height="16" style="flex-shrink:0;margin-top:2px" viewbox="0 0 16 16" width="16"><circle cx="8" cy="8" fill="var(--teal-light)" opacity="0.18" r="8"></circle><path d="M5 8l2 2 4-4" stroke="var(--teal-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg> Dedicated support throughout your project</li>
-</ul>
-</div>
-<div class="about-stats fade-up" style="transition-delay:0.2s">
-<div class="about-stat-card">
-<div class="about-stat-num">100+</div>
-<div class="about-stat-label">Projects Delivered</div>
-</div>
-<div class="about-stat-card">
-<div class="about-stat-num">Lean</div>
-<div class="about-stat-label">Efficient Content Systems</div>
-</div>
-<div class="about-stat-card">
-<div class="about-stat-num">24hr</div>
-<div class="about-stat-label">Response Time</div>
-</div>
-<div class="about-stat-card">
-<div class="about-stat-num">5★</div>
-<div class="about-stat-label">Client Satisfaction</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- START WITH US CTA -->
-<section class="section contact" id="start">
-<div class="section-inner">
-<div style="text-align:center;max-width:820px;margin:0 auto;">
-<div class="section-label" style="justify-content:center;">Start With Us</div>
-<h2 class="section-title fade-up">Ready to Plan Your Next Move?</h2>
-<p class="section-sub fade-up">Use the new Start With Us page to choose a service, request a consultation, and reserve a one-hour consultation slot. This setup is ready to connect to Supabase and your future admin portal.</p>
-<div class="hero-btns luxury-actions" style="margin-top:2rem;justify-content:center;">
-<a class="btn btn-primary" href="start-with-us.html">Start With Us</a>
-<a class="btn btn-outline" href="start-with-us.html?service=Consultation">Schedule Consultation</a>
-</div>
-</div>
-</div>
-</section>
-<!-- FOOTER -->
-<footer class="footer">
-<div class="footer-inner">
-<div class="footer-top">
-<div class="footer-brand">
-<img alt="RE IMAGE Business Solutions logo" src="logo.png"/>
-<p>Professional content, conversion-focused websites, and automation systems for small businesses ready to grow the right way.</p>
-</div>
-<div class="footer-col">
-<div class="footer-col-title">Services</div>
-<ul>
-<li><a href="growth-foundation.html">Growth Foundation</a></li>
-<li><a href="full-scale-system.html">Full Scale System</a></li>
-<li><a href="social-media-management.html">Social Media Management</a></li>
-<li><a href="website-development.html">Website Development</a></li>
-<li><a href="ai-automation.html">AI Automation</a></li>
-</ul>
-</div>
-<div class="footer-col">
-<div class="footer-col-title">Our Work</div>
-<ul>
-<li><a href="https://farajsoftwaresolutions.com" target="_blank">Faraj Software Solutions</a></li>
-<li><a href="https://blesena.com">Blesena</a></li>
-<li><a href="https://cr8autos.com">CR8 Autos</a></li>
-<li><a href="https://techniqskinandbeauty.com" target="_blank">Techniq Skin &amp; Beauty</a></li>
-</ul>
-</div>
-<div class="footer-col">
-<div class="footer-col-title">Company</div>
-<ul>
-<li><a href="#about">About Us</a></li>
-<li><a href="start-with-us.html">Contact</a></li>
-<li><a href="start-with-us.html">Start With Us</a></li>
-<li><a href="careers.html">Careers</a></li>
-<li><a href="https://login.reimagebs.com" rel="noopener" target="_blank">Client Portal</a></li>
-</ul>
-</div>
-</div>
-<div class="footer-bottom">
-<span>© <span id="yr"></span> RE IMAGE Business Solutions. All rights reserved.</span>
-<button class="footer-admin-btn" onclick="openAdminModal()">
-<svg fill="none" height="12" viewbox="0 0 12 12" width="12"><rect height="6.5" rx="1.5" stroke="currentColor" stroke-width="1.2" width="9" x="1.5" y="5"></rect><path d="M3.5 5V3.5a2.5 2.5 0 015 0V5" stroke="currentColor" stroke-width="1.2"></path></svg> Admin Login
-      </button>
-</div>
-</div>
-</footer>
-<!-- ===== ORDER MODAL ===== -->
-<div class="modal-overlay" id="orderModalOverlay" onclick="handleOverlayClick(event)">
-<div class="modal" id="orderModal">
-<div class="modal-header">
-<div>
-<div style="font-size:0.75rem;color:var(--teal-light);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:0.3rem;">RE IMAGE Business Solutions</div>
-<div class="modal-title" id="modalTitle">Place Your <span>Order</span></div>
-</div>
-<button class="modal-close" onclick="closeOrderModal()"><svg fill="none" height="14" viewbox="0 0 14 14" width="14"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg></button>
-</div>
-<div class="modal-body">
-<!-- Steps bar -->
-<div class="steps-bar" id="stepsBar">
-<div class="step-dot active" id="dot1">1</div>
-<div class="step-line" id="line1"></div>
-<div class="step-dot" id="dot2">2</div>
-<div class="step-line" id="line2"></div>
-<div class="step-dot" id="dot3">3</div>
-</div>
-<!-- STEP 1: Details -->
-<div class="modal-step active" id="step1">
-<form action="https://formspree.io/f/xgorkyaq" id="serviceLeadForm" method="POST" onsubmit="return false;" style="display:none;">
-<input id="submissionTypeField" name="submission_type" type="hidden" value="Service Lead"/>
-<input id="selectedServiceField" name="selected_service" type="hidden" value=""/>
-<input id="selectedPackageField" name="selected_package" type="hidden" value=""/>
-</form>
-<h4 style="font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:0.5px;">Your Details</h4>
-<div class="form-row">
-<div class="form-group">
-<label class="form-label">First Name</label>
-<input class="form-input" id="firstName" placeholder="John" required="" type="text"/>
-</div>
-<div class="form-group">
-<label class="form-label">Last Name</label>
-<input class="form-input" id="lastName" placeholder="Smith" required="" type="text"/>
-</div>
-</div>
-<div class="form-group">
-<label class="form-label">Email Address</label>
-<input class="form-input" id="emailInput" placeholder="john@mybusiness.com" required="" type="email"/>
-</div>
-<div class="form-group">
-<label class="form-label">Phone Number</label>
-<input class="form-input" id="phoneInput" placeholder="(555) 000-0000" type="tel"/>
-</div>
-<div class="form-group">
-<label class="form-label">Business Name</label>
-<input class="form-input" id="bizName" placeholder="My Business LLC" required="" type="text"/>
-</div>
-<div class="form-group">
-<label class="form-label">Tell Us About Your Project</label>
-<textarea class="form-textarea" id="projectDesc" placeholder="Describe your business, your goals, and what you'd like us to create for you..."></textarea>
-</div>
-<div class="modal-footer">
-<button class="btn-modal-back" onclick="closeOrderModal()">Cancel</button>
-<button class="btn-modal-next" onclick="goToStep2()">
-            Next: Choose Service <svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
-</button>
-</div>
-</div>
-<!-- STEP 2: Package -->
-<div class="modal-step" id="step2">
-<div id="serviceOverviewWrap"></div>
-<div id="packageOptions"></div>
-<div class="modal-footer">
-<button class="btn-modal-back" onclick="goToStep(1)">Back</button>
-<button class="btn-modal-next" onclick="goToStep3()">
-            Next: Payment <svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
-</button>
-</div>
-</div>
-<!-- STEP 3: Payment -->
-<div class="modal-step" id="step3">
-<h4 id="paymentHeading" style="font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:0.5px;">Payment</h4>
-<div class="order-summary" id="orderSummary"></div>
-<div class="form-group" id="cardFieldsWrap">
-<label class="form-label" id="cardLabel">Card Details</label>
-<div class="stripe-card-wrap" id="stripeCardWrap">
-<div id="card-element"></div>
-</div>
-<div id="card-errors"></div>
-</div>
-<div id="secureStripeNote" style="color:var(--gray);font-size:0.8rem;display:flex;align-items:center;gap:6px;margin-top:0.5rem;">
-<svg fill="none" height="12" viewbox="0 0 12 12" width="12"><rect height="6" rx="1.5" stroke="currentColor" stroke-width="1.3" width="8" x="2" y="5"></rect><path d="M4 5V3.5a2 2 0 014 0V5" stroke="currentColor" stroke-width="1.3"></path></svg> Secured by Stripe. We never store your card details.
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="container">
+    <div class="hero-shell">
+      <div class="hero-grid">
+        <div class="hero-copy">
+       <div class="kicker">West Hartford, CT · Est. 2001</div>
+       <h1 class="hero-title" id="hero-heading">
+        <span class="hero-topline">AUTO BODY <span class="accent">&amp;</span></span>
+        <span class="subline"> 24 Hour Towing</span>
+      </h1>
+        <p>23+ years repairing damage the right way—from bumper damage, scratches, dents, and affordable out-of-pocket repairs to full collision and insurance claim repairs. Free estimates available Monday through Friday.</p>
+        <div class="hero-hours">Open Mon–Fri: 8:30 AM – 4:30 PM · Free Estimates Available</div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:8609531966">Call for Free Estimate</a>
+          <a class="btn btn-secondary" href="#work">See Real Repairs</a>
         </div>
-<div class="modal-footer">
-<button class="btn-modal-back" onclick="goToStep(2)">Back</button>
-<button class="btn-modal-next" id="payBtn" onclick="submitPayment()">
-<span id="payBtnText"><svg fill="none" height="13" style="flex-shrink:0" viewbox="0 0 13 13" width="13"><rect height="7" rx="1.5" stroke="currentColor" stroke-width="1.3" width="10" x="1.5" y="5.5"></rect><path d="M4 5.5V4a2.5 2.5 0 015 0v1.5" stroke="currentColor" stroke-width="1.3"></path></svg> Pay Now</span>
-</button>
-</div>
-</div>
-<!-- SUCCESS -->
-<div class="modal-step" id="stepSuccess">
-<div class="success-state">
-<div class="success-icon"><svg fill="none" height="56" viewbox="0 0 56 56" width="56"><circle cx="28" cy="28" fill="var(--teal)" opacity="0.15" r="28"></circle><path d="M16 28l9 9 15-18" stroke="var(--teal-light)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path></svg></div>
-<div class="success-title">Order Confirmed!</div>
-<p class="success-sub" id="successMsg">Thank you! We've received your order and will be in touch within 24 hours to get started.</p>
-<button class="btn btn-primary" onclick="closeOrderModal()" style="margin-top:1.5rem;">Close</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- ===== ADMIN MODAL ===== -->
-<div class="modal-overlay" id="adminModalOverlay" onclick="handleAdminOverlayClick(event)">
-<div class="modal admin-modal" id="adminModal">
-<div class="modal-header">
-<div class="modal-title">Admin <span>Dashboard</span></div>
-<button class="modal-close" onclick="closeAdminModal()"><svg fill="none" height="14" viewbox="0 0 14 14" width="14"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg></button>
-</div>
-<div class="modal-body">
-<!-- Login -->
-<div id="adminLogin">
-<h4 style="font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;text-transform:uppercase;">Admin Login</h4>
-<div class="form-group">
-<label class="form-label">Username</label>
-<input class="form-input" id="adminUser" placeholder="admin" type="text"/>
-</div>
-<div class="form-group">
-<label class="form-label">Password</label>
-<input class="form-input" id="adminPass" onkeyup="if(event.key==='Enter')adminLogin()" placeholder="••••••••" type="password"/>
-</div>
-<div id="adminError" style="color:#ff6b6b;font-size:0.85rem;margin-bottom:1rem;"></div>
-<button class="btn btn-primary" onclick="adminLogin()" style="width:100%;justify-content:center;">
-<svg fill="none" height="14" style="flex-shrink:0" viewbox="0 0 14 14" width="14"><path d="M9 2h3a1 1 0 011 1v8a1 1 0 01-1 1H9M6 10l4-3-4-3M2 7h8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg> Login
-        </button>
-</div>
-<!-- Dashboard -->
-<div id="adminDash" style="display:none;">
-<div class="admin-header">
-<div>
-<div style="font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:700;text-transform:uppercase;">Customer Orders</div>
-<div id="orderCount" style="color:var(--gray);font-size:0.85rem;"></div>
-</div>
-<button class="admin-logout" onclick="adminLogout()"><svg fill="none" height="13" style="flex-shrink:0" viewbox="0 0 13 13" width="13"><path d="M5 2H2a1 1 0 00-1 1v7a1 1 0 001 1h3M9 9l3-2.5L9 4M4 6.5h8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"></path></svg> Logout</button>
-</div>
-<div id="ordersTable"></div>
-</div>
-</div>
-</div>
-</div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ========== CONFIG ==========
-// Replace with your actual Stripe publishable key
-const STRIPE_PK = 'pk_test_51XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
-
-// Admin credentials (in production, use a real backend)
-const ADMIN_USER = 'reimage';
-const ADMIN_PASS = 'Reimage2025!';
-
-// ========== STATE ==========
-let currentService = '';
-let currentStep = 1;
-let selectedPackage = null;
-let stripe = null;
-let cardElement = null;
-let orders = JSON.parse(localStorage.getItem('reimage_orders') || '[]');
-
-const packages = {
-  funding: [
-    { id: 'funding_consult', name: 'Business Funding', desc: 'Funding guidance for business owners who need capital for growth, equipment, marketing, working capital, or expansion opportunities.', label: 'Learn more' }
-  ],
-  starter: [
-    { id: 'starter_399', name: 'Growth Foundation', desc: 'A premium foundation system with 5 images and 4 videos each week, content days scheduled as needed, a polished website presence, ongoing maintenance, and assistance with bank funding.', label: 'Learn more' }
-  ],
-  total: [
-    { id: 'total_699', name: 'Full Scale System', desc: 'Our flagship scale system with 8 images and 8 videos each week, a weekly content day, dynamic website + SEO, AI automation, branding touchups or rebrand support, consistent cross-platform branding, lead follow-up, bank funding assistance, and partnership-building support.', label: 'Learn more' }
-  ],
-  social: [
-    { id: 'social_249', name: 'Social Media Management', desc: 'Standalone social media management support, scheduling, publishing, and brand consistency for your business.', label: 'Learn more' }
-  ],
-  website: [
-    { id: 'website_static', name: 'Static Website', desc: 'Fast, professional static site — up to 5 pages, mobile responsive, contact form, hosting and maintenance support.', label: 'Learn more' },
-    { id: 'website_dynamic', name: 'Dynamic Website', desc: 'Full-featured dynamic site — CMS, SEO optimization, analytics, contact forms, conversion structure, hosting and maintenance support.', label: 'Learn more' }
-  ],
-  automation: [
-    { id: 'automation_249', name: 'AI Automation', desc: 'Custom AI workflows, lead follow-up, intake systems, and ongoing optimization tailored to your business.', label: 'Learn more' }
-  ]
-};
-
-const serviceDetails = {
-  funding: {
-    eyebrow: 'Business Funding Overview',
-    title: 'What this includes',
-    intro: 'Business Funding support is for owners who want help understanding funding readiness, organizing the basic business information lenders or partners may ask for, and moving toward the right capital conversations without guessing.',
-    bullets: [
-      'Funding readiness review based on your current business stage and growth goal',
-      'Guidance on what business details, revenue information, and use-of-funds notes should be organized',
-      'Support identifying whether the need is working capital, equipment, marketing, expansion, or stabilization',
-      'Referral-style funding assistance through RE IMAGE connections where available',
-      'Clear next steps so the owner understands what to prepare before applying or speaking with a funding partner'
-    ]
-  },
-  starter: {
-    eyebrow: 'Growth Foundation Overview',
-    title: 'What you get before checkout',
-    intro: 'Growth Foundation is built for businesses that want a strong, polished online presence without jumping straight into the full scale package. Before payment, we show you exactly what is included so you understand the creative, website, and support side of the engagement clearly.',
-    bullets: [
-      '5 professionally edited image posts and 4 professionally edited video posts delivered each week',
-      'Social media management support during business hours so posting stays consistent and your brand stays active',
-      'Content days scheduled as needed based on your business, campaign calendar, and what needs to be captured next',
-      'Static website build with maintenance included so your business has a polished digital home base',
-      'Creative direction to keep the visuals and messaging aligned with your business goals',
-      'Assistance with bank funding conversations through our process when that support is needed'
-    ]
-  },
-  total: {
-    eyebrow: 'Full Scale System Overview',
-    title: 'What you get before checkout',
-    intro: 'Full Scale System is our highest-touch growth package for businesses that want content, website performance, automation, SEO, and brand consistency all working together. This step is designed to build trust before checkout by showing exactly what the engagement includes.',
-    bullets: [
-      '8 professionally edited image posts and 8 professionally edited video posts delivered each week',
-      '24/7 social media management and lead follow-up support so leads do not sit cold',
-      'A weekly content day scheduled to keep production consistent and to create the volume needed for a stronger presence',
-      'Dynamic website creation, maintenance, support, and SEO optimization to improve visibility and conversion',
-      'End-to-end AI automation for lead collection and faster follow-up',
-      'Scripts for content day, campaign direction, and support around offers and promotions',
-      'Brand facelift touchups to improve your existing identity or a full rebrand if the business needs a fresh look',
-      'Consistent branding across the website, social media, and public-facing content',
-      'Assistance with bank funding plus partnership outreach and relationship-building support'
-    ]
-  },
-  social: {
-    eyebrow: 'Service Overview',
-    title: 'What this includes',
-    intro: 'This service is for businesses that need a professional social media system rather than random posting. After you submit your info, we break down the full scope so you understand how the planning, filming, editing, scheduling, and optimization work before you go to Stripe.',
-    bullets: [
-      'We plan and schedule content days around your business, availability, and what needs to be captured',
-      'We write scripts and talking points for content day so filming is faster, clearer, and more strategic',
-      'We edit the content to a high standard so your brand looks cleaner and more professional online',
-      'We schedule content throughout the week so posting stays consistent instead of being random',
-      'We optimize captions, structure, and presentation for both social media engagement and SEO visibility where relevant',
-      'We keep branding, tone, and post quality consistent so your page feels intentional and trustworthy'
-    ]
-  },
-  website: {
-    eyebrow: 'Service Overview',
-    title: 'What this includes',
-    intro: 'Our website service gives you a clear breakdown before payment so you understand the difference between the static and dynamic options and what each tier is built to do for your business.',
-    bullets: [
-      'Static website option for businesses that need a clean, professional presence with clear calls to action and a polished look',
-      'Dynamic website option for businesses that need more flexibility, stronger functionality, and SEO optimization built into the experience',
-      'Mobile-responsive layout so the website looks clean on desktop and phone',
-      'Contact forms, conversion structure, and trust-building sections designed to support inquiries',
-      'A site built around presentation, usability, and a smoother path from visitor to lead'
-    ]
-  },
-  automation: {
-    eyebrow: 'Service Overview',
-    title: 'What this includes',
-    intro: 'Automation is built to reduce manual follow-up and help your business respond faster when leads come in.',
-    bullets: [
-      'Lead intake automation',
-      'Follow-up sequence setup',
-      'Workflow setup tailored to your business'
-    ]
-  }
-};
-
-// ========== NAVBAR ==========
-window.addEventListener('scroll', () => {
-  const nb = document.getElementById('navbar');
-  if (window.scrollY > 50) nb.classList.add('scrolled');
-  else nb.classList.remove('scrolled');
-});
-
-document.getElementById('menuBtn').addEventListener('click', () => {
-  document.getElementById('navLinks').classList.toggle('open');
-});
-
-document.getElementById('yr').textContent = new Date().getFullYear();
-
-// ========== SCROLL ANIMATIONS ==========
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
-
-// ========== ORDER MODAL ==========
-function openOrderModal(service) {
-  currentService = service;
-  currentStep = 1;
-  selectedPackage = null;
-
-  const serviceMap = {
-    funding: 'Business Funding',
-    starter: 'Growth Foundation',
-    total: 'Full Scale System',
-    social: 'Social Media Management',
-    website: 'Website Development',
-    automation: 'AI Automation'
-  };
-
-  const selectedServiceField = document.getElementById('selectedServiceField');
-  const selectedPackageField = document.getElementById('selectedPackageField');
-  const submissionTypeField = document.getElementById('submissionTypeField');
-
-  if (selectedServiceField) selectedServiceField.value = serviceMap[service] || service;
-  if (selectedPackageField) selectedPackageField.value = '';
-  if (submissionTypeField) submissionTypeField.value = 'Service Lead';
-
-  const title = document.getElementById('modalTitle');
-  title.innerHTML = service === 'funding'
-    ? 'Start With <span>Business Funding</span>'
-    : service === 'starter'
-    ? 'Start With <span>Growth Foundation</span>'
-    : service === 'total'
-    ? 'Apply For <span>Full Scale System</span>'
-    : service === 'social'
-    ? 'Learn More About <span>Social Media Management</span>'
-    : service === 'automation'
-    ? 'Start Your <span>AI Automation</span>'
-    : 'Start Your <span>Website</span>';
-
-  renderPackageOptions();
-  renderServiceOverview();
-  showStep(1);
-
-  document.getElementById('orderModalOverlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
-
-  // Init Stripe
-  if (!stripe) {
-    try {
-      stripe = Stripe(STRIPE_PK);
-    } catch(e) {
-      console.warn('Stripe not initialized — test mode');
-    }
-  }
-}
-
-function closeOrderModal() {
-  document.getElementById('orderModalOverlay').classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-function handleOverlayClick(e) {
-  if (e.target === document.getElementById('orderModalOverlay')) closeOrderModal();
-}
-
-function renderPackageOptions() {
-  const pkgs = packages[currentService];
-  let html = '';
-  pkgs.forEach((pkg, i) => {
-    const sel = i === 0 ? 'selected' : '';
-    if (i === 0) selectedPackage = pkg;
-  const selectedPackageField = document.getElementById('selectedPackageField');
-  if (selectedPackageField) selectedPackageField.value = pkg.name;
-    html += `<div class="package-option ${sel}" onclick="selectPackage(this, '${pkg.id}')">
-      <div class="package-radio"></div>
-      <div style="flex:1">
-        <div class="package-name">${pkg.name}</div>
-        <div class="package-desc">${pkg.desc}</div>
+          <div class="hero-stats">
+            <div class="hero-stat"><strong>23+</strong><span>Years in Business</span></div>
+            <div class="hero-stat"><strong>4.9★</strong><span>Google Rating</span></div>
+            <div class="hero-stat"><strong>24/7</strong><span>Towing Available</span></div>
+            <div class="hero-stat"><strong>100%</strong><span>Free Estimates</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img class="hero-main-image" src="storefront.png" alt="Audi restored by Car Craft Auto Body & Towing">
+          </div>
+        </div>
       </div>
-      <div class="package-price">Learn more</div>
-    </div>`;
-  });
-  document.getElementById('packageOptions').innerHTML = html;
-}
-
-function selectPackage(el, id) {
-  document.querySelectorAll('.package-option').forEach(o => o.classList.remove('selected'));
-  el.classList.add('selected');
-  const allPkgs = packages[currentService];
-  selectedPackage = allPkgs.find(p => p.id === id);
-}
-
-function renderServiceOverview() {
-  const info = serviceDetails[currentService];
-  if (!info) return;
-  const bullets = info.bullets.map(item => `<li style="display:flex;gap:10px;align-items:flex-start;padding:0.45rem 0;color:var(--light-gray);font-size:0.95rem;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:2px"><circle cx="7" cy="7" r="7" fill="var(--teal-light)" opacity="0.2"/><path d="M4 7l2 2 4-4" stroke="var(--teal-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>${item}</span></li>`).join('');
-  document.getElementById('serviceOverviewWrap').innerHTML = `
-    <div style="margin-bottom:1.25rem;padding:1.25rem;border-radius:14px;background:rgba(255,255,255,0.04);border:1px solid rgba(26,122,138,0.25);">
-      <div style="font-size:0.78rem;color:var(--teal-light);font-weight:700;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:0.55rem;">${info.eyebrow}</div>
-      <h4 style="font-family:'Barlow Condensed',sans-serif;font-size:1.35rem;font-weight:700;margin-bottom:0.7rem;text-transform:uppercase;letter-spacing:0.5px;">${info.title}</h4>
-      <p style="color:var(--gray);line-height:1.7;font-size:0.95rem;margin-bottom:0.85rem;">${info.intro}</p>
-      <ul style="list-style:none;margin:0;padding:0;">${bullets}</ul>
     </div>
-  `;
-}
+  </div>
+</section>
 
-function renderOrderSummary() {
-  if (!selectedPackage) return;
-  document.getElementById('orderSummary').innerHTML = `
-    <div class="order-summary-title">Selected Service</div>
-    <div class="order-row"><span>${selectedPackage.name}</span><span class="price">Consultation</span></div>
-  `;
-}
-
-
-function showStep(n) {
-  [1,2,3,'Success'].forEach(s => {
-    const el = document.getElementById('step' + s);
-    if (el) el.classList.remove('active');
-  });
-  document.getElementById('step' + (n === 4 ? 'Success' : n)).classList.add('active');
-  currentStep = n;
-  updateStepsBar(n);
-}
-
-function updateStepsBar(n) {
-  const bar = document.getElementById('stepsBar');
-  if (!bar || n === 4) return;
-  for (let i = 1; i <= 3; i++) {
-    const dot = document.getElementById('dot' + i);
-    if (!dot) continue;
-    dot.className = 'step-dot';
-    if (i < n) dot.classList.add('done');
-    else if (i === n) dot.classList.add('active');
-  }
-  for (let i = 1; i <= 2; i++) {
-    const line = document.getElementById('line' + i);
-    if (!line) continue;
-    line.className = 'step-line' + (i < n ? ' done' : '');
-  }
-}
-
-function goToStep(n) { showStep(n); }
-
-function goToStep2() {
-  const required = ['firstName', 'lastName', 'emailInput', 'bizName'];
-  for (const id of required) {
-    const el = document.getElementById(id);
-    if (!el.value.trim()) { el.focus(); el.style.borderColor = '#ff6b6b'; return; }
-    el.style.borderColor = '';
-  }
-  showStep(2);
-}
-
-function renderPaymentStep() {
-  const isHostedCheckout = selectedPackage && selectedPackage.stripeUrl;
-  const heading = document.getElementById('paymentHeading');
-  const label = document.getElementById('cardLabel');
-  const wrap = document.getElementById('cardFieldsWrap');
-  const note = document.getElementById('secureStripeNote');
-  const payBtnText = document.getElementById('payBtnText');
-  if (isHostedCheckout) {
-    heading.textContent = 'Secure Checkout';
-    label.textContent = 'Next step';
-    wrap.style.display = 'block';
-    document.getElementById('stripeCardWrap').innerHTML = '<div style="color:var(--light-gray);line-height:1.7;font-size:0.95rem;">You\'ve already reviewed your service details. Click below to continue to secure Stripe checkout and complete payment there.</div>';
-    note.style.display = 'none';
-    payBtnText.innerHTML = 'Continue to Stripe';
-  } else {
-    heading.textContent = 'Payment';
-    label.textContent = 'Card Details';
-    wrap.style.display = 'block';
-    document.getElementById('stripeCardWrap').innerHTML = '<div id="card-element"></div>';
-    note.style.display = 'flex';
-    payBtnText.innerHTML = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;vertical-align:middle;margin-right:4px"><rect x="1.5" y="5.5" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M4 5.5V4a2.5 2.5 0 015 0v1.5" stroke="currentColor" stroke-width="1.3"/></svg> Pay Now';
-    if (stripe && !cardElement) {
-      const elements = stripe.elements({ appearance: { theme: 'night', variables: { colorPrimary: '#2ba3b8' } } });
-      cardElement = elements.create('card', { style: { base: { fontFamily: 'Barlow, sans-serif', fontSize: '16px', color: '#fff' } } });
-      cardElement.mount('#card-element');
-      cardElement.on('change', (event) => {
-        document.getElementById('card-errors').textContent = event.error ? event.error.message : '';
-      });
-    } else if (cardElement && document.getElementById('card-element') && !document.getElementById('card-element').childElementCount) {
-      cardElement.mount('#card-element');
-    }
-  }
-}
-
-function goToStep3() {
-  if (!selectedPackage) { alert('Please select a package.'); return; }
-  renderOrderSummary();
-  renderPaymentStep();
-  showStep(3);
-}
-
-async function sendLeadToFormspree(order) {
-  const formData = new FormData();
-  formData.append('submission_type', 'Service Lead');
-  formData.append('selected_service', currentService);
-  formData.append('selected_package', order.service || '');
-  formData.append('name', order.name || '');
-  formData.append('email', order.email || '');
-  formData.append('phone', order.phone || '');
-  formData.append('business', order.business || '');
-  formData.append('project', order.project || '');
-
-  try {
-    await fetch('https://formspree.io/f/xgorkyaq', {
-      method: 'POST',
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    });
-  } catch (err) {
-    console.error('Formspree submission failed:', err);
-  }
-}
-
-async function submitPayment() {
-  const btn = document.getElementById('payBtn');
-  const btnText = document.getElementById('payBtnText');
-  btn.disabled = true;
-  btnText.innerHTML = '<div class="spinner"></div> Processing...';
-
-  // Save order regardless of payment (demo mode)
-  const order = {
-    id: 'ORD-' + Date.now(),
-    date: new Date().toLocaleDateString(),
-    name: document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value,
-    email: document.getElementById('emailInput').value,
-    phone: document.getElementById('phoneInput').value,
-    business: document.getElementById('bizName').value,
-    service: selectedPackage.name,
-    project: document.getElementById('projectDesc').value,
-    amount: selectedPackage.price,
-    status: 'pending'
-  };
-
-  if (selectedPackage && selectedPackage.stripeUrl) {
-    await sendLeadToFormspree(order);
-    orders.push(order);
-    localStorage.setItem('reimage_orders', JSON.stringify(orders));
-    window.location.href = selectedPackage.stripeUrl;
-    return;
-  }
-
-  // Try real Stripe payment
-  if (stripe && cardElement) {
-    try {
-      const result = await stripe.createPaymentMethod({ type: 'card', card: cardElement, billing_details: { name: order.name, email: order.email } });
-      if (result.error) {
-        document.getElementById('card-errors').textContent = result.error.message;
-        btn.disabled = false;
-        btnText.innerHTML = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;vertical-align:middle;margin-right:4px"><rect x="1.5" y="5.5" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M4 5.5V4a2.5 2.5 0 015 0v1.5" stroke="currentColor" stroke-width="1.3"/></svg> Pay Now';
-        return;
-      }
-      order.status = 'paid';
-      order.paymentMethod = result.paymentMethod.id;
-    } catch(e) {
-      // Demo mode — proceed anyway
-      order.status = 'demo';
-    }
-  } else {
-    order.status = 'demo';
-  }
-
-  await sendLeadToFormspree(order);
-
-  // Store order
-  orders.push(order);
-  localStorage.setItem('reimage_orders', JSON.stringify(orders));
-
-  // Show success
-  document.getElementById('stepsBar').style.display = 'none';
-  document.getElementById('successMsg').textContent =
-    'Thank you, ' + order.name.split(' ')[0] + '! We received your order for ' +
-    order.service + ' and will contact you at ' + order.email + ' within 24 hours.';
-  showStep(4);
-}
-
-// ========== ADMIN MODAL ==========
-function openAdminModal() {
-  document.getElementById('adminModalOverlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
-  document.getElementById('adminLogin').style.display = 'block';
-  document.getElementById('adminDash').style.display = 'none';
-  document.getElementById('adminError').textContent = '';
-}
-
-function closeAdminModal() {
-  document.getElementById('adminModalOverlay').classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-function handleAdminOverlayClick(e) {
-  if (e.target === document.getElementById('adminModalOverlay')) closeAdminModal();
-}
-
-function adminLogin() {
-  const u = document.getElementById('adminUser').value;
-  const p = document.getElementById('adminPass').value;
-  if (u === ADMIN_USER && p === ADMIN_PASS) {
-    document.getElementById('adminLogin').style.display = 'none';
-    document.getElementById('adminDash').style.display = 'block';
-    renderOrders();
-  } else {
-    document.getElementById('adminError').textContent = 'Invalid credentials. Please try again.';
-  }
-}
-
-function adminLogout() {
-  document.getElementById('adminLogin').style.display = 'block';
-  document.getElementById('adminDash').style.display = 'none';
-  document.getElementById('adminUser').value = '';
-  document.getElementById('adminPass').value = '';
-}
-
-function renderOrders() {
-  const allOrders = JSON.parse(localStorage.getItem('reimage_orders') || '[]');
-  document.getElementById('orderCount').textContent = `${allOrders.length} total order${allOrders.length !== 1 ? 's' : ''}`;
-
-  if (allOrders.length === 0) {
-    document.getElementById('ordersTable').innerHTML = '<p style="color:var(--gray);text-align:center;padding:3rem 0;">No orders yet. Share your website to start getting orders!</p>';
-    return;
-  }
-
-  const rows = allOrders.slice().reverse().map(o => `
-    <tr>
-      <td><strong>${o.name}</strong><br><span style="color:var(--gray);font-size:0.8rem;">${o.email}</span></td>
-      <td>${o.business}<br><span style="color:var(--gray);font-size:0.8rem;">${o.phone || '—'}</span></td>
-      <td>${o.service}</td>
-      <td style="color:var(--teal-light);font-weight:700;">Consultation</td>
-      <td><span class="status-badge ${o.status === 'paid' ? 'paid' : 'pending'}">${o.status.toUpperCase()}</span></td>
-      <td style="color:var(--gray);font-size:0.8rem;">${o.date}</td>
-    </tr>
-  `).join('');
-
-  document.getElementById('ordersTable').innerHTML = `
-    <div style="overflow-x:auto;">
-      <table class="admin-table">
-        <thead><tr>
-          <th>Client</th><th>Business</th><th>Service</th><th>Amount</th><th>Status</th><th>Date</th>
-        </tr></thead>
-        <tbody>${rows}</tbody>
-      </table>
+<section class="trust-bar">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-item"><strong>Insurance or Self-Pay</strong>We handle claims and out-of-pocket repairs.</div>
+      <div class="trust-item"><strong>Locally Owned</strong>Trusted in West Hartford since 2001.</div>
+      <div class="trust-item"><strong>Free Written Estimates</strong>Clear pricing with no surprises.</div>
+      <div class="trust-item"><strong>24/7 Emergency Towing</strong>Fast response when you need help most.</div>
+      <div class="trust-item"><strong>Open Weekdays</strong>Mon–Fri: 8:30 AM – 4:30 PM</div>
     </div>
-  `;
-}
+  </div>
+</section>
 
-// 
-// ========== CONTACT FORM → N8N ==========
-async function submitContact(event) {
-  event.preventDefault();
+<section class="section services" id="services">
+  <div class="container">
+    <div class="services-top">
+      <div>
+        <div class="kicker">What We Do</div>
+        <h2 class="section-title">HIGH-END SERVICE.<br><span class="accent">LOCAL TRUST.</span></h2>
+      </div>
+    </div>
 
-  const form = document.getElementById('contactForm');
-  const lead = {
-    name: document.getElementById('contactName').value,
-    business: document.getElementById('contactBusiness').value,
-    email: document.getElementById('contactEmail').value,
-    phone: document.getElementById('contactPhone').value,
-    interest: document.getElementById('contactInterest').value,
-    message: document.getElementById('contactMessage').value,
-    date: new Date().toLocaleString()
-  };
+    <div class="services-grid">
+      <article class="service-card large">
+        <div class="service-media"><img src="nissan-after.png" alt="Nissan repaired by Car Craft"></div>
+        <div class="service-overlay"></div>
+        <div class="service-content">
+          <div class="service-no">01</div>
+          <h3 class="service-title">Collision Repair & Auto Body</h3>
+          <p class="service-desc">From bumper damage to major front-end and multi-panel repairs, we restore vehicles with factory-minded precision, clean fitment, and paint-matched finishes.</p>
+          <a class="service-link" href="contact.html"><span>→</span> Get a free estimate</a>
+        </div>
+      </article>
 
-  try {
-    await fetch('http://localhost:5678/webhook/8d9911cf-3835-46d1-8530-e891fb4788a9', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(lead)
-    });
-  } catch(e) {
-    console.error('n8n webhook error:', e);
-  }
+      <article class="service-card">
+        <div class="service-media"><img src="tow.png" alt="Vehicle before collision repair"></div>
+        <div class="service-overlay"></div>
+        <div class="service-content">
+          <div class="service-no">02</div>
+          <h3 class="service-title">24-Hour Towing</h3>
+          <p class="service-desc">Prompt towing, emergency response, and a shop that can handle the repair after the tow is complete.</p>
+          <a class="service-link" href="tel:8609531966"><span>→</span> Call now</a>
+        </div>
+      </article>
 
-  form.style.display = 'none';
-  document.getElementById('formSuccess').style.display = 'block';
-}
-</script>
+      <article class="service-card">
+        <div class="service-media"><img src="subaru-after.png" alt="Subaru after repair"></div>
+        <div class="service-overlay"></div>
+        <div class="service-content">
+          <div class="service-no">04</div>
+          <h3 class="service-title">Used Car Sales</h3>
+          <p class="service-desc">Quality used vehicles, fair pricing, and a shop background that understands condition, repair quality, and presentation.</p>
+          <a class="service-link" href="contact.html"><span>→</span> Ask about inventory</a>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <div class="service-media"><img src="mercedes-before.png" alt="Damaged vehicle before repair"></div>
+        <div class="service-overlay"></div>
+        <div class="service-content">
+          <div class="service-no">05</div>
+          <h3 class="service-title">Insurance Claim Support</h3>
+          <p class="service-desc">We coordinate with insurance companies so customers are not left guessing about the next step.</p>
+          <a class="service-link" href="contact.html"><span>→</span> Start your estimate</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="container">
+    <div class="showcase-head">
+      <div>
+        <div class="kicker">Our Work</div>
+        <h2 class="section-title">REAL VEHICLES.<br><span class="accent">REAL RESULTS.</span></h2>
+      </div>
+    </div>
+
+    <div class="case-grid">
+      <article class="case-card wide">
+        <div class="compare" data-start="54">
+          <img class="after" src="nissan-before.png" alt="Nissan after repair">
+          <img class="before" src="nissan-after.png" alt="Nissan before repair">
+          <div class="divider"></div>
+          <div class="handle">⇆</div>
+        </div>
+        <div class="case-copy">
+          <div class="case-title">
+            <h3>Nissan Altima · Front-End Collision Repair</h3>
+            <div class="case-tag">Drag to Compare</div>
+          </div>
+          <p>Front-end damage, bumper replacement, grille restoration, and paint-matched finishing. The slider makes the work feel high-value and proof-driven instead of decorative.</p>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="static-split">
+          <div class="static-half before">
+            <img src="audi-before.png" alt="Audi before repair">
+            <div class="static-label before">Before</div>
+          </div>
+          <div class="static-half">
+            <img src="audi-after.png" alt="Audi after repair">
+            <div class="static-label after">After</div>
+          </div>
+        </div>
+        <div class="case-copy">
+          <div class="case-title">
+            <h3>Audi Q5 · Fender & Front Corner Repair</h3>
+            <div class="case-tag">Restored</div>
+          </div>
+          <p>Front-end damage to the fender, bumper, and headlight area was repaired with new components, precise panel alignment, and a seamless paint match to restore the vehicle to factory condition.</p>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="static-split">
+          <div class="static-half before">
+            <img src="mercedes-before.png" alt="Mercedes before repair">
+            <div class="static-label before">Before</div>
+          </div>
+          <div class="static-half">
+            <img src="mercedes-after.png" alt="Mercedes after repair">
+            <div class="static-label after">After</div>
+          </div>
+        </div>
+        <div class="case-copy">
+          <div class="case-title">
+            <h3>Mercedes SLK · Front-End Rebuild</h3>
+            <div class="case-tag">Restored</div>
+          </div>
+          <p>Severe front-end damage was rebuilt with new bumper, headlights, and structural components, followed by precise alignment and a full paint match to restore the vehicle to a clean, factory-quality finish.</p>
+        </div>
+      </article>
+
+      <article class="case-card wide">
+        <div class="compare" data-start="48">
+          <img class="after" src="subaru-after.png" alt="Subaru after repair">
+          <img class="before" src="subaru-before.png" alt="Subaru before repair">
+          <div class="divider"></div>
+          <div class="handle">⇆</div>
+        </div>
+        <div class="case-copy">
+          <div class="case-title">
+            <h3>Subaru · Multi-Panel Side Repair</h3>
+            <div class="case-tag">Drag to Compare</div>
+          </div>
+          <p>Door, side, and panel damage brought back into shape with a brighter after photo and a dramatic comparison treatment that feels much more premium.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-panel">
+        <div class="kicker">Why Car Craft</div>
+        <h2 class="section-title">WEST HARTFORD'S<br><span class="accent">TRUSTED SHOP</span></h2>
+        <p>Not a franchise. Not a chain. Just a local shop with a long track record, direct communication, and work people can actually verify. The page now leans into darker metallic surfaces, tighter typography, and real proof so it feels more like a premium automotive brand and less like a template.</p>
+      </div>
+      <div class="metrics-panel">
+        <div class="metric-list">
+          <div class="metric-card"><strong>23+</strong><span>Years in Business</span><p>Serving West Hartford and surrounding communities since 2001.</p></div>
+          <div class="metric-card"><strong>4.9</strong><span>Google Rating</span><p>Built around reviews, reputation, and repeat local trust.</p></div>
+          <div class="metric-card"><strong>All</strong><span>Insurance Accepted</span><p>We help coordinate claims and reduce back-and-forth for customers.</p></div>
+          <div class="metric-card"><strong>24/7</strong><span>Towing Available</span><p>Emergency towing support when customers need help immediately.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section owner-section" id="owner">
+  <div class="container">
+    <div class="owner-wrap">
+      <div class="owner-grid">
+        <div class="owner-photo">
+          <img src="owner.png" alt="John, owner of Car Craft Auto Body & Towing">
+        </div>
+        <div class="owner-copy">
+          <div class="kicker">Meet the Owner</div>
+          <h2 class="section-title">THE FACE BEHIND<br><span class="accent">CAR CRAFT</span></h2>
+          <div class="owner-name">JOHN</div>
+          <div class="owner-role">Owner · Car Craft Auto Body & Towing</div>
+          <div class="owner-quote">“People remember how you treat them after an accident. We try to make a stressful situation feel straightforward, honest, and handled the right way.”</div>
+          <p>Car Craft is not a call-center shop and not a franchise operation. Customers work with a real local owner who takes pride in the work, communicates directly, and stands behind the final result. Adding John here makes the site feel more personal, more credible, and a lot more premium because visitors can immediately see there is a real person behind the reputation.</p>
+          <div class="owner-points">
+            <div class="owner-point">
+              <strong>Direct Accountability</strong>
+              <span>You are dealing with the shop, not being passed around between departments.</span>
+            </div>
+            <div class="owner-point">
+              <strong>Local Reputation</strong>
+              <span>Built on years of repeat customers, referrals, and real before-and-after work.</span>
+            </div>
+            <div class="owner-point">
+              <strong>Hands-On Oversight</strong>
+              <span>The work and customer experience stay personal instead of feeling generic.</span>
+            </div>
+            <div class="owner-point">
+              <strong>Trust First</strong>
+              <span>Clear communication, insurance-friendly help, and repairs customers can feel good about.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="reviews">
+  <div class="container">
+    <div class="kicker">Customer Reviews</div>
+    <h2 class="section-title">DON'T TAKE OUR<br><span class="accent">WORD FOR IT</span></h2>
+    <p class="section-sub">The reviews already had strong trust value. The difference now is the presentation feels more refined and expensive.</p>
+
+    <div class="reviews-grid">
+      <article class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>“John was the only guy in town willing to help me fix my bumper. He only charged me $20. The next day I bumped into him at Whole Foods and he was so friendly. Highly recommend!”</p>
+        <div class="review-meta"><strong>Briana Komar</strong>4 months ago · Google</div>
+      </article>
+      <article class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>“I am very pleased with this company. They helped me out when my son got into an accident. They towed it and fixed it at a very reasonable price. The car looks great.”</p>
+        <div class="review-meta"><strong>Dave Gabriel</strong>2 months ago · Google</div>
+      </article>
+      <article class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p>“Car Craft helped me out by towing my car after AAA told me they wouldn't. They were prompt, courteous and extremely efficient. Watched their driver bring the car down from a parking garage — impressive.”</p>
+        <div class="review-meta"><strong>James Streeto</strong>4 months ago · Google</div>
+      </article>
+    </div>
+
+    <div class="review-banner">
+      <strong>4.9 Stars Across 47 Google Reviews</strong>
+      <a class="btn btn-primary" href="https://www.google.com/search?q=Car+Craft+Auto+Body+%26+Towing+Reviews" target="_blank" rel="noopener">Read All Reviews</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="self-pay-repairs">
+  <div class="container">
+    <div class="cash-repair-panel">
+      <div>
+        <div class="kicker">Self-Pay Repairs</div>
+        <h2 class="section-title">AFFORDABLE OUT-OF-POCKET<br><span class="accent">AUTO BODY REPAIRS</span></h2>
+        <p class="section-sub">Not every repair needs an insurance claim. Car Craft Auto Body offers free estimates for bumper damage, scratches, dents, paint repair, and minor collision damage for customers who want to pay out of pocket and avoid deductibles, claim delays, or possible premium increases.</p>
+        <div class="hero-actions" style="margin-top:24px;margin-bottom:0">
+          <a class="btn btn-primary" href="contact.html">Get a Free Self-Pay Estimate</a>
+          <a class="btn btn-secondary" href="tel:8609531966">Call 860-953-1966</a>
+        </div>
+      </div>
+      <ul class="cash-repair-list" aria-label="Out-of-pocket auto body repair services">
+        <li>Bumper Repair</li>
+        <li>Scratch Repair</li>
+        <li>Dent Repair</li>
+        <li>Paint Touch-Ups</li>
+        <li>Minor Collision Damage</li>
+        <li>No Insurance Required</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div>
+        <div class="kicker">FAQ</div>
+        <h2 class="section-title">COMMON<br><span class="accent">QUESTIONS</span></h2>
+        <p class="section-sub">Answers about estimates, towing, insurance repairs, and out-of-pocket auto body work in West Hartford.</p>
+      </div>
+      <div class="faq-list" role="list">
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span>Do you offer towing for all vehicle types?</span><span>+</span></button>
+          <div class="faq-a">Yes — cars, trucks, SUVs, and more. Our fleet includes flat beds and traditional tow trucks to handle a wide range of towing needs throughout Hartford County.</div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span>How long does an auto body repair take?</span><span>+</span></button>
+          <div class="faq-a">It depends on the damage. Minor dents and scratches can often be completed in 1–2 days. Larger collision repairs can take 1–2 weeks. We give you a timeline with your estimate.</div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span>Do you work with my insurance company?</span><span>+</span></button>
+          <div class="faq-a">Yes. We work with all major insurance companies and help coordinate the claim process so customers are not left chasing paperwork on their own.</div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span>Can I repair my car without using insurance?</span><span>+</span></button>
+          <div class="faq-a">Yes. Many customers choose out-of-pocket repairs for bumper damage, scratches, dents, paint touch-ups, and smaller collision repairs. We can give you a free estimate before you decide.</div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span>Why would I pay out of pocket instead of filing a claim?</span><span>+</span></button>
+          <div class="faq-a">For some minor repairs, paying directly may help avoid deductibles, claim delays, or possible premium increases. We can explain the repair options clearly so you can choose what makes sense.</div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false"><span>Do I need an appointment for a free estimate?</span><span>+</span></button>
+          <div class="faq-a">No appointment is required. You can come by during business hours or call ahead at 860-953-1966 and we can often provide a same-day written estimate.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section estimate-strip-section" id="estimate">
+  <div class="container">
+    <div class="estimate-strip">
+      <div>
+        <div class="kicker">Ready To Start?</div>
+        <h2 class="section-title">REQUEST A FREE<br><span class="accent">ESTIMATE TODAY</span></h2>
+        <p class="section-sub">Send photos and vehicle details through our contact page, call us directly, or get directions to the shop in seconds.</p>
+      </div>
+      <div class="estimate-actions">
+        <a class="btn btn-primary" href="contact.html">Go to Contact Page</a>
+        <a class="btn btn-secondary" href="tel:8609531966">Call 860-953-1966</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-shell">
+      <div class="footer-brand">
+        <img src="carcraft.png" alt="Car Craft Auto Body & Towing logo">
+        <p>West Hartford's trusted collision repair and towing service since 2001. Locally owned, insurance-friendly, and committed to quality work on every vehicle.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Auto Body Collision Repair</a></li>
+          <li><a href="#self-pay-repairs">Out-of-Pocket Repairs</a></li>
+          <li><a href="#services">24-Hour Towing</a></li>
+          <li><a href="#services">Used Car Sales</a></li>
+          <li><a href= "#services">Sell Us Your Vehicle</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="inventory.html">Inventory</a></li>
+          <li><a href="#work">Our Work</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#owner">Meet the Owner</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:8609531966">860-953-1966</a></li>
+          <li>Mon–Fri: 8:30 AM – 4:30 PM</li>
+          <li><a href="mailto:info@balkun@comcast.net">balkun@comcast.net</a></li>
+          <li><a href="contact.html">8 South St, West Hartford, CT</a></li>
+          <li><a href="https://www.facebook.com/carcraftautobody" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <p class="footer-bottom">© 2025 Car Craft Auto Body & Towing. All rights reserved.</p>
+      <p class="footer-credit">Powered By <a href="https://reimagebs.com" target="_blank" rel="noopener">RE IMAGE Business Solutions</a></p>
+    </div>
+  </div>
+</footer>
+
 <script>
-(function(){
-  const dropdown = document.querySelector('.services-dropdown');
-  const toggle = document.querySelector('.services-toggle');
-  const menu = document.querySelector('.services-menu');
-  const navLinks = document.getElementById('navLinks');
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('open');
+}
 
-  if (!dropdown || !toggle || !menu) return;
+function toggleFaq(btn){
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(el){
+    el.classList.remove('open');
+    el.querySelector('.faq-q').setAttribute('aria-expanded','false');
+  });
+  if(!isOpen){
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
+  }
+}
 
-  function closeServicesMenu(){
-    dropdown.classList.remove('open');
-    toggle.setAttribute('aria-expanded','false');
+
+function copyAddress(){
+  const text = '8 South St, West Hartford, CT 06110';
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(function(){
+      alert('Address copied: ' + text);
+    }).catch(function(){
+      fallbackCopyAddress(text);
+    });
+  } else {
+    fallbackCopyAddress(text);
+  }
+}
+
+function fallbackCopyAddress(text){
+  const area = document.createElement('textarea');
+  area.value = text;
+  area.style.position = 'fixed';
+  area.style.left = '-9999px';
+  document.body.appendChild(area);
+  area.focus();
+  area.select();
+  try {
+    document.execCommand('copy');
+    alert('Address copied: ' + text);
+  } catch (err) {
+    alert(text);
+  }
+  document.body.removeChild(area);
+}
+
+function setupCompare(compare){
+  const before = compare.querySelector('.before');
+  const divider = compare.querySelector('.divider');
+  const handle = compare.querySelector('.handle');
+  let active = false;
+  let start = Number(compare.dataset.start || 50);
+
+  function setPosition(percent){
+    const p = Math.max(5, Math.min(95, percent));
+    before.style.clipPath = `inset(0 ${100 - p}% 0 0)`;
+    divider.style.left = p + '%';
+    handle.style.left = p + '%';
   }
 
-  toggle.addEventListener('click', function(e){
-    e.preventDefault();
-    e.stopPropagation();
-    const isOpen = dropdown.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  });
+  function fromEvent(e){
+    const rect = compare.getBoundingClientRect();
+    const point = e.touches ? e.touches[0] : e;
+    return ((point.clientX - rect.left) / rect.width) * 100;
+  }
 
-  menu.querySelectorAll('a').forEach(function(link){
-    link.addEventListener('click', function(){
-      closeServicesMenu();
-      if (navLinks) navLinks.classList.remove('open');
+  setPosition(start);
+
+  compare.querySelectorAll('img').forEach(function(img){
+    img.setAttribute('draggable', 'false');
+    img.addEventListener('dragstart', function(e){
+      e.preventDefault();
     });
   });
 
-  document.addEventListener('click', function(e){
-    if (!dropdown.contains(e.target)) closeServicesMenu();
-  });
+  const begin = (e) => {
+    e.preventDefault();
+    active = true;
+    setPosition(fromEvent(e));
+  };
 
-document.addEventListener('keydown', function(e){
-  if (e.key === 'Escape') closeServicesMenu();
-});
-})();
+  const move = (e) => {
+    if (!active) return;
+    e.preventDefault();
+    setPosition(fromEvent(e));
+  };
+
+  const end = () => {
+    active = false;
+  };
+
+  compare.addEventListener('mousedown', begin);
+  window.addEventListener('mousemove', move);
+  window.addEventListener('mouseup', end);
+
+  compare.addEventListener('touchstart', begin, { passive: false });
+  window.addEventListener('touchmove', move, { passive: false });
+  window.addEventListener('touchend', end, { passive: true });
+}
+
+document.querySelectorAll('.compare').forEach(setupCompare);
 </script>
-<script src="ai-receptionist.js"></script>
 </body>
 </html>
