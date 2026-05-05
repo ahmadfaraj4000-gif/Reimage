@@ -46,6 +46,7 @@
         Services <span>▾</span>
 </button>
 <div class="services-menu">
+<a href="business-funding.html">Business Funding</a>
 <a href="growth-foundation.html">Growth Foundation</a>
 <a href="full-scale-system.html">Full Scale System</a>
 <a href="social-media-management.html">Social Media Management</a>
@@ -75,10 +76,10 @@
         RE IMAGE helps service businesses upgrade their online presence, capture more leads, and automate follow-up with polished websites, content, and AI-powered client systems.
       </p>
 <div class="hero-microproof">
-<span>Premium digital presence</span>
 <span>Lead-focused websites</span>
 <span>AI follow-up systems</span>
 <span>Content that builds trust</span>
+<span>Business funding guidance</span>
 </div>
 <div class="hero-btns luxury-actions">
 <a class="btn btn-primary" href="start-with-us.html"><svg fill="none" height="16" style="flex-shrink:0" viewbox="0 0 16 16" width="16"><path d="M8 1l1.8 3.6L14 5.4l-3 2.9.7 4.1L8 10.4l-3.7 2 .7-4.1L2 5.4l4.2-.8L8 1z" fill="currentColor"></path></svg> Start With Us</a>
@@ -87,6 +88,8 @@
 </div>
 </div>
 </section>
+
+
 <section class="section positioning">
 <div class="section-inner positioning-shell">
 <div class="positioning-intro fade-up">
@@ -118,7 +121,22 @@
       </p>
 </div>
 </div>
+
 </section>
+<section class="section" id="business-funding">
+<div class="section-inner">
+<div class="section-label">Business Funding</div>
+<h2 class="section-title fade-up">Capital Support For Owners Ready To Grow</h2>
+<p class="section-sub fade-up">Before a business spends more on marketing, equipment, staff, vehicles, or expansion, funding may be the missing piece. RE IMAGE helps owners understand the next step, organize the right information, and prepare for funding conversations with more confidence.</p>
+<div class="grid">
+<div class="card fade-up"><h3>Funding Readiness</h3><ul><li>Review the purpose of the funding request</li><li>Clarify what the capital will be used for</li><li>Identify what details should be prepared</li><li>Give the owner a cleaner next-step plan</li></ul></div>
+<div class="card fade-up" style="transition-delay:0.12s"><h3>Growth Capital Direction</h3><ul><li>Working capital needs</li><li>Equipment, vehicle, or buildout support</li><li>Marketing and growth investment</li><li>Expansion and stabilization planning</li></ul></div>
+<div class="card fade-up" style="transition-delay:0.24s"><h3>Connection Support</h3><ul><li>Help preparing for funding conversations</li><li>Referral-style support where available</li><li>Plain-language next steps</li><li>Follow-up support after the intake</li></ul></div>
+</div>
+<div class="btns" style="justify-content:center;margin-top:2rem;"><a class="btn btn-primary" href="business-funding.html">Learn More About Business Funding</a><a class="btn btn-outline" href="start-with-us.html">Start Funding Request</a></div>
+</div>
+</section>
+
 <!-- SERVICES -->
 <section class="section services" id="services">
 <div class="section-inner">
@@ -127,9 +145,9 @@
 <p class="section-sub fade-up">Choose a flagship growth engagement or start with a focused service. The same colors stay in place — the positioning just feels more premium, more intentional, and more conversion-driven.</p>
 <div class="mini-kicker fade-up">Flagship Engagements</div>
 <div class="package-grid">
-<div class="service-card featured-card fade-up" onclick="window.location.href='growth-foundation.html'">
-<div class="service-icon-wrap">
-<svg fill="none" height="28" viewbox="0 0 28 28" width="28"><rect height="18" rx="4" stroke="white" stroke-width="1.8" width="20" x="4" y="5"></rect><path d="M9 14l3 3 7-7" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg>
+<div class="service-card gold-card fade-up" onclick="window.location.href='business-funding.html'">
+<div class="service-icon-wrap" style="background:linear-gradient(135deg,var(--gold),#a0731e);box-shadow:0 4px 20px rgba(200,146,42,0.4);">
+<svg fill="none" height="28" viewbox="0 0 28 28" width="28"><rect height="16" rx="3" stroke="white" stroke-width="1.8" width="20" x="4" y="7"></rect><path d="M8 12h12M8 17h7" stroke="white" stroke-linecap="round" stroke-width="1.8"></path><path d="M20 5v18" opacity="0.75" stroke="white" stroke-linecap="round" stroke-width="1.5"></path></svg>
 </div>
 <h3 class="service-card-title">Growth Foundation</h3>
 <p class="service-card-sub">A cleaner, more premium starting point for businesses that want stronger presentation, consistent content, and a polished digital foundation without overcomplicating the first step.</p>
@@ -144,7 +162,7 @@
 <button class="service-pay-link gold" onclick="event.stopPropagation(); window.location.href='growth-foundation.html'" type="button">Start With Growth Foundation</button>
 </div>
 </div>
-<div class="service-card gold-card fade-up" onclick="window.location.href='full-scale-system.html'" style="transition-delay:0.15s">
+<div class="service-card gold-card fade-up" onclick="window.location.href='full-scale-system.html'" style="transition-delay:0.24s">
 <div class="service-icon-wrap" style="background:linear-gradient(135deg,var(--gold),#a0731e);box-shadow:0 4px 20px rgba(200,146,42,0.4);">
 <svg fill="none" height="28" viewbox="0 0 28 28" width="28"><path d="M14 3l2.5 5 5.5.8-4 3.9.95 5.5L14 15.6l-4.95 2.6.95-5.5-4-3.9 5.5-.8L14 3z" stroke="white" stroke-linejoin="round" stroke-width="1.6"></path><path d="M7 21h14M9 24h10" stroke="white" stroke-linecap="round" stroke-width="1.6"></path></svg>
 </div>
@@ -553,6 +571,9 @@ let cardElement = null;
 let orders = JSON.parse(localStorage.getItem('reimage_orders') || '[]');
 
 const packages = {
+  funding: [
+    { id: 'funding_consult', name: 'Business Funding', desc: 'Funding guidance for business owners who need capital for growth, equipment, marketing, working capital, or expansion opportunities.', label: 'Learn more' }
+  ],
   starter: [
     { id: 'starter_399', name: 'Growth Foundation', desc: 'A premium foundation system with 5 images and 4 videos each week, content days scheduled as needed, a polished website presence, ongoing maintenance, and assistance with bank funding.', label: 'Learn more' }
   ],
@@ -572,6 +593,18 @@ const packages = {
 };
 
 const serviceDetails = {
+  funding: {
+    eyebrow: 'Business Funding Overview',
+    title: 'What this includes',
+    intro: 'Business Funding support is for owners who want help understanding funding readiness, organizing the basic business information lenders or partners may ask for, and moving toward the right capital conversations without guessing.',
+    bullets: [
+      'Funding readiness review based on your current business stage and growth goal',
+      'Guidance on what business details, revenue information, and use-of-funds notes should be organized',
+      'Support identifying whether the need is working capital, equipment, marketing, expansion, or stabilization',
+      'Referral-style funding assistance through RE IMAGE connections where available',
+      'Clear next steps so the owner understands what to prepare before applying or speaking with a funding partner'
+    ]
+  },
   starter: {
     eyebrow: 'Growth Foundation Overview',
     title: 'What you get before checkout',
@@ -664,6 +697,7 @@ function openOrderModal(service) {
   selectedPackage = null;
 
   const serviceMap = {
+    funding: 'Business Funding',
     starter: 'Growth Foundation',
     total: 'Full Scale System',
     social: 'Social Media Management',
@@ -680,7 +714,9 @@ function openOrderModal(service) {
   if (submissionTypeField) submissionTypeField.value = 'Service Lead';
 
   const title = document.getElementById('modalTitle');
-  title.innerHTML = service === 'starter'
+  title.innerHTML = service === 'funding'
+    ? 'Start With <span>Business Funding</span>'
+    : service === 'starter'
     ? 'Start With <span>Growth Foundation</span>'
     : service === 'total'
     ? 'Apply For <span>Full Scale System</span>'
