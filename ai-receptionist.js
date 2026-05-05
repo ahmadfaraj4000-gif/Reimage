@@ -1099,7 +1099,7 @@
     launch.className = "reibot-launch";
     launch.type = "button";
     launch.setAttribute("aria-label", "Open RE IMAGE AI receptionist");
-    launch.innerHTML = `<b>AI</b><span>Help</span>`;
+    launch.innerHTML = `<b>Chat</b><span>with us</span>`;
 
     const panel = document.createElement("section");
     panel.className = "reibot-panel";
