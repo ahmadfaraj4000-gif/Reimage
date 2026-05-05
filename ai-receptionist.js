@@ -4,80 +4,149 @@
   const CONFIG = {
     businessName: "RE IMAGE Business Solutions",
     shortName: "RE IMAGE",
-    tagline: "Websites, content, and automation systems for small businesses.",
+    phone: "8607185928",
+    phoneDisplay: "(860) 718-5928",
+    email: "reimagebs@gmail.com",
     clientPortalUrl: "https://login.reimagebs.com",
     startUrl: "start-with-us.html",
     servicesUrl: "index.html#services",
     careersUrl: "careers.html",
-    aiReceptionistsUrl: "ai-receptionists.html",
-    websiteUrl: "website-development.html",
-    socialUrl: "social-media-management.html",
-    automationUrl: "ai-automation.html",
-    growthUrl: "growth-foundation.html",
-    fullSystemUrl: "full-scale-system.html",
     logo: "logo.png",
-    socialHandle: "@reimagebusiness",
-    serviceArea: "United States / remote support for small businesses",
 
     SUPABASE_URL: "https://uybcjtigyujoyrunecto.supabase.co",
     SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV5YmNqdGlneXVqb3lydW5lY3RvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3MTczOTAsImV4cCI6MjA5MjI5MzM5MH0.UTDL7poTPwzVWSjNg28tPJeaHzU_Xbqe6c08Y7tl5Fk",
     tableName: "start_requests",
-    source: "AI Website Receptionist",
+    source: "AI Website Receptionist"
+  };
 
-    services: {
-      growth: {
-        label: "Growth Foundation",
-        price: "Custom / consultation-based",
-        url: "growth-foundation.html",
-        summary: "A starting package for small businesses that need a clearer online presence, stronger messaging, and a foundation for growth."
-      },
-      full: {
-        label: "Full Scale System",
-        price: "Custom / consultation-based",
-        url: "full-scale-system.html",
-        summary: "A complete build for businesses that need a website, intake flow, operations support, automation, and a cleaner system behind the scenes."
-      },
-      social: {
-        label: "Social Media Management",
-        price: "Reels from $149 / account support $99 per week",
-        url: "social-media-management.html",
-        summary: "Professionally shot reels, researched scripts/hooks, calls to action, or account management support using owner-made content."
-      },
-      website: {
-        label: "Website Development",
-        price: "Custom / consultation-based",
-        url: "website-development.html",
-        summary: "Conversion-focused websites with service pages, clear CTAs, mobile polish, SEO basics, and lead capture."
-      },
-      phone: {
-        label: "AI Receptionist Phone",
-        price: "$99/month",
-        url: "ai-receptionists.html#pricing",
-        summary: "An AI phone receptionist for common questions, lead collection, and customer routing."
-      },
-      webbot: {
-        label: "AI Web Receptionist Chatbot",
-        price: "$69.99/month",
-        url: "ai-receptionists.html#pricing",
-        summary: "A website chatbot receptionist for FAQs, customer intake, service guidance, and lead capture."
-      },
-      automation: {
-        label: "AI Automation",
-        price: "$249/week",
-        url: "ai-automation.html",
-        summary: "Custom automation setup and ongoing optimization around the business process."
-      }
+  const SERVICES = {
+    website: {
+      label: "Website Development",
+      price:
+        "Website pricing depends on scope, pages, content, and features. The best next step is to send your project details so RE IMAGE can quote it properly.",
+      summary:
+        "Website Development is best when your business needs a professional online presence, clear service pages, mobile design, SEO basics, forms, booking links, payment links, and stronger calls to action."
+    },
+    social: {
+      label: "Social Media Management",
+      price:
+        "Social Media pricing: 1 professional reel is $149, 3 professional reels are $399, and account management using owner-made content is $99/week.",
+      summary:
+        "Social Media Management is best when you need better content, stronger Instagram/Facebook presence, reels, captions, posting support, and more trust with customers."
+    },
+    webbot: {
+      label: "AI Web Receptionist Chatbot",
+      price: "AI Web Receptionist Chatbot pricing is $69.99/month.",
+      summary:
+        "The AI Web Receptionist Chatbot helps answer website questions, guide customers, collect leads, explain services, and send service requests."
+    },
+    phone: {
+      label: "AI Receptionist Phone",
+      price: "AI Receptionist Phone pricing is $99/month.",
+      summary:
+        "The AI Phone Receptionist helps answer calls, handle common questions, collect customer details, and reduce missed opportunities."
+    },
+    automation: {
+      label: "AI Automation",
+      price: "AI Automation pricing is $249/week.",
+      summary:
+        "AI Automation is best when you want to clean up intake, follow-up, admin work, forms, messages, payment flows, reminders, or repetitive business tasks."
+    },
+    growth: {
+      label: "Growth Foundation",
+      price:
+        "Growth Foundation is consultation-based because it depends on what your business already has and what needs to be built first.",
+      summary:
+        "Growth Foundation is best for businesses that need the basics cleaned up: website direction, messaging, service structure, lead flow, local visibility, and online presence."
+    },
+    full: {
+      label: "Full Scale System",
+      price:
+        "Full Scale System is custom-priced because it depends on the website, portal, automation, intake, payments, and admin features needed.",
+      summary:
+        "Full Scale System is best when you need a full business setup: website, client flow, admin system, automation, forms, payments, and operations support."
+    },
+    funding: {
+      label: "Business Funding",
+      price:
+        "Business funding options depend on the business, revenue, credit profile, time in business, and funding amount needed. RE IMAGE can help review the situation and guide you toward the right funding path.",
+      summary:
+        "Business Funding is for owners who need access to capital for growth, equipment, marketing, inventory, payroll, expansion, or operations. RE IMAGE can help collect the right details and guide the next step."
     }
+  };
+
+  const INDUSTRIES = {
+    restaurant: ["restaurant", "food", "cafe", "pizza", "bar", "bakery", "catering", "kitchen", "food truck", "deli"],
+    beauty: ["spa", "beauty", "skin", "salon", "lashes", "brows", "barber", "hair", "nails", "esthetician", "makeup", "med spa"],
+    auto: ["auto", "body shop", "autobody", "mechanic", "collision", "detailing", "car repair", "repair shop", "paint shop", "towing"],
+    rental: ["rental", "car rental", "rent cars", "fleet", "vehicles", "equipment rental"],
+    contractor: ["contractor", "cleaning", "landscaping", "plumbing", "hvac", "roofing", "construction", "electrician", "handyman"],
+    medical: ["clinic", "doctor", "dentist", "therapy", "health", "chiropractor", "wellness"],
+    retail: ["retail", "store", "boutique", "clothing", "ecommerce", "e-commerce", "shop", "products"],
+    professional: ["consulting", "consultant", "accounting", "law", "lawyer", "real estate", "agency", "insurance"]
+  };
+
+  const INTENTS = {
+    greeting: ["hi", "hello", "hey", "yo", "good morning", "good afternoon", "good evening"],
+    howAreYou: ["how are you", "how you doing", "how's it going", "whats up", "what's up"],
+    contactPhone: ["phone", "phone number", "call", "number", "telephone", "contact number"],
+    contactEmail: ["email", "e-mail", "mail"],
+    portal: ["portal", "client portal", "login", "log in", "sign in", "account", "dashboard", "message", "service request"],
+    pricing: ["price", "pricing", "cost", "how much", "monthly", "per month", "week", "quote", "estimate"],
+    website: ["website", "site", "webpage", "landing page", "seo", "google", "domain", "redesign", "online presence"],
+    social: ["social", "instagram", "facebook", "tiktok", "reel", "reels", "content", "caption", "posting"],
+    phone: ["phone receptionist", "ai phone", "answer calls", "missed calls", "call answering", "virtual receptionist"],
+    webbot: ["chatbot", "web receptionist", "website receptionist", "ai chatbot", "chat bot", "website chat"],
+    automation: ["automation", "automate", "workflow", "intake", "forms", "follow up", "crm", "admin", "supabase", "stripe"],
+    growth: ["growth foundation", "foundation", "starting", "start my business", "new business"],
+    full: ["full scale", "full system", "complete system", "everything", "whole setup"],
+    funding: [
+      "funding", "business funding", "loan", "capital", "cash advance", "working capital",
+      "business loan", "money for my business", "need money", "financing", "fund my business"
+    ],
+    choose: ["what do i need", "help me choose", "recommend", "best option", "not sure", "which service"],
+    start: ["start", "get started", "book", "schedule", "consultation", "send request", "start project"],
+    careers: ["job", "career", "hiring", "work for you", "apply"],
+    thanks: ["thanks", "thank you", "appreciate it"],
+    objectionPrice: [
+      "too expensive", "cost too much", "cheaper", "can't afford", "can’t afford",
+      "budget is low", "out of my budget", "pricey"
+    ],
+    objectionThink: [
+      "need to think", "think about it", "not ready", "maybe later", "just looking",
+      "just researching", "i'll get back", "ill get back"
+    ],
+    objectionExistingWebsite: [
+      "already have a website", "i have a website", "my website already", "existing website", "current website"
+    ],
+    competitor: ["wix", "squarespace", "godaddy", "canva", "shopify", "wordpress", "fiverr", "upwork"],
+    timeline: ["how long", "timeline", "how soon", "when will it be done", "turnaround", "how many days", "how many weeks"],
+    payment: ["payment", "deposit", "invoice", "pay", "stripe", "square", "card"],
+    bundle: ["bundle", "package", "combo", "what should i combine", "what goes together", "best package"],
+    faq: ["revision", "revisions", "what happens next", "next step", "consultation", "free consultation", "do you offer", "what do you do"],
+    stageNew: ["new business", "starting a business", "start up", "startup", "haven't launched", "not open yet", "from scratch"],
+    stageExisting: ["existing business", "already open", "been in business", "current business", "improving my business", "we are open"],
+    urgent: ["asap", "urgent", "today", "right now", "emergency", "immediately", "need this now"],
+    profanity: ["fuck", "shit", "bitch", "asshole", "damn", "wtf", "fucking", "bullshit", "pissed"]
   };
 
   const state = {
     open: false,
-    lang: "en",
-    step: null,
-    lead: freshLead(),
-    supabase: null,
+    greeted: false,
     busy: false,
-    greeted: false
+    step: null,
+    supabase: null,
+    memory: {
+      businessType: "",
+      industry: "",
+      businessStage: "",
+      problem: "",
+      serviceInterest: "",
+      lastIntent: "",
+      lastRecommendedService: "",
+      lastObjection: ""
+    },
+    lead: freshLead()
   };
 
   function freshLead() {
@@ -87,193 +156,456 @@
       phone: "",
       business: "",
       service: "",
-      message: "",
-      urgency: "",
+      goal: "",
       budget: "",
-      goal: ""
+      urgency: "",
+      stage: "",
+      objection: ""
     };
   }
 
-  const copy = {
-    en: {
-      welcome: "Hi — welcome to RE IMAGE Business Solutions. I can help you choose a service, explain pricing, collect your project details, or point you to the right next step. What are you trying to build or improve?",
-      placeholder: "Ask about websites, social media, AI receptionists...",
-      quick: ["Help me choose", "Pricing", "AI Receptionist", "Website", "Social Media", "Start a project"],
-      fallback: "I can help with websites, social media management, AI receptionists, AI automation, pricing, timelines, client portal questions, or starting a project. Which one are you looking for?",
-      askName: "Absolutely. I’ll collect the important details so RE IMAGE can follow up properly. What’s your full name?",
-      askEmail: "Thanks. What email should we use to contact you?",
-      askPhone: "What phone number should we use?",
-      askBusiness: "What’s the business name? If you don’t have one yet, you can say ‘not yet.’",
-      askService: "Which service are you most interested in?",
-      askGoal: "What are you trying to accomplish? Example: get more leads, rebuild website, add AI receptionist, manage social media, automate intake, or clean up operations.",
-      askBudget: "Do you have a target budget or preferred starting package? You can also say ‘not sure.’",
-      askUrgency: "When are you hoping to start?",
-      confirm: "Here’s what I’m going to send over:",
-      success: "Perfect — I sent your request to RE IMAGE. Someone can review it and follow up with the next step. You can also use the Start With Us page if you want to schedule directly.",
-      fail: "I had trouble sending that request from the widget. Please use the Start With Us form and your details will still go through.",
-      required: "I need that detail before I can send the request.",
-      softFlirt: "I appreciate the energy 😄 I’m here to keep things professional, but I can definitely help your business look sharp and convert better. What are we building?",
-      smallTalk: "I’m doing great — ready to help you turn visitors into actual leads. What kind of business are we working on?"
-    },
-    es: {
-      welcome: "Hola — bienvenido a RE IMAGE Business Solutions. Puedo ayudarle a escoger un servicio, explicar precios, tomar los detalles del proyecto o dirigirle al próximo paso. ¿Qué quiere construir o mejorar?",
-      placeholder: "Pregunte sobre websites, redes sociales, AI receptionist...",
-      quick: ["Ayúdame a escoger", "Precios", "AI Receptionist", "Website", "Redes Sociales", "Empezar proyecto"],
-      fallback: "Puedo ayudar con websites, manejo de redes sociales, AI receptionists, automatización, precios, tiempos, portal de cliente o empezar un proyecto. ¿Qué necesita?",
-      askName: "Claro. Voy a tomar los detalles importantes para que RE IMAGE pueda darle seguimiento. ¿Cuál es su nombre completo?",
-      askEmail: "Gracias. ¿Qué email debemos usar para contactarle?",
-      askPhone: "¿Qué número de teléfono debemos usar?",
-      askBusiness: "¿Cuál es el nombre del negocio? Si todavía no tiene uno, puede decir ‘todavía no.’",
-      askService: "¿Qué servicio le interesa más?",
-      askGoal: "¿Qué quiere lograr? Ejemplo: conseguir más clientes, rehacer el website, agregar AI receptionist, manejar redes sociales, automatizar intake o organizar operaciones.",
-      askBudget: "¿Tiene un presupuesto o paquete preferido? También puede decir ‘no estoy seguro.’",
-      askUrgency: "¿Cuándo quiere empezar?",
-      confirm: "Esto es lo que voy a enviar:",
-      success: "Perfecto — envié su solicitud a RE IMAGE. Alguien puede revisarla y darle seguimiento. También puede usar la página Start With Us para programar directo.",
-      fail: "Tuve problema enviando la solicitud desde el chat. Use la forma Start With Us y sus detalles llegan igual.",
-      required: "Necesito ese detalle antes de enviar la solicitud.",
-      softFlirt: "Gracias por la energía 😄 Mantengo esto profesional, pero sí puedo ayudar a que su negocio se vea brutal y convierta mejor. ¿Qué vamos a construir?",
-      smallTalk: "Estoy muy bien — listo para ayudarle a convertir visitantes en clientes reales. ¿Qué tipo de negocio tiene?"
+  function clean(text) {
+    return String(text || "").toLowerCase().trim();
+  }
+
+  function includesAny(text, list) {
+    const t = clean(text);
+    return list.some((word) => t.includes(clean(word)));
+  }
+
+  function scoreIntent(text) {
+    const scores = {};
+    const t = clean(text);
+
+    Object.keys(INTENTS).forEach((intent) => {
+      scores[intent] = 0;
+      INTENTS[intent].forEach((word) => {
+        if (t.includes(clean(word))) scores[intent] += word.length > 8 ? 3 : 2;
+      });
+    });
+
+    if (state.memory.lastIntent && scores[state.memory.lastIntent] > 0) scores[state.memory.lastIntent] += 1;
+    if (t.includes("price") || t.includes("cost") || t.includes("how much")) scores.pricing += 3;
+    if (t.includes("loan") || t.includes("funding") || t.includes("capital")) scores.funding += 4;
+    if (t.includes("portal") || t.includes("login")) scores.portal += 4;
+    if (includesAny(t, INTENTS.profanity)) scores.profanity += 10;
+
+    const ranked = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+    const winner = ranked[0];
+    if (!winner || winner[1] <= 0) return "unknown";
+    return winner[0];
+  }
+
+  function detectIndustry(text) {
+    const t = clean(text);
+
+    for (const [industry, words] of Object.entries(INDUSTRIES)) {
+      if (words.some((w) => t.includes(w))) return industry;
     }
-  };
 
-  const keywords = {
-    spanish: ["hola", "buenas", "gracias", "precio", "cuanto", "cuánto", "pagina", "página", "redes", "cita", "negocio", "automatizacion", "automatización", "empezar", "servicio"],
-    start: ["start", "get started", "begin", "sign up", "contact", "talk", "consultation", "schedule", "book", "project", "quote", "proposal", "empezar", "comenzar", "consulta", "cita", "contactar", "proyecto"],
-    choose: ["choose", "which", "recommend", "best", "not sure", "help me", "what do i need", "difference", "compare", "escoger", "cual", "cuál", "recomienda", "no se", "no sé", "diferencia"],
-    pricing: ["price", "pricing", "cost", "how much", "monthly", "week", "package", "payment", "stripe", "budget", "precio", "cuanto", "cuánto", "costo", "mensual", "semanal", "paquete", "pago", "presupuesto"],
-    website: ["website", "web site", "site", "landing page", "seo", "google", "domain", "hosting", "mobile", "redesign", "webpage", "pagina web", "página web", "sitio", "dominio"],
-    social: ["social", "instagram", "facebook", "tiktok", "reel", "reels", "content", "post", "posting", "caption", "messages", "dm", "redes", "contenido", "publicar", "mensajes"],
-    aiReceptionist: ["ai receptionist", "receptionist", "chatbot", "phone bot", "answer calls", "missed calls", "web receptionist", "phone receptionist", "virtual receptionist", "front desk", "recepcionista", "chat bot", "contestar llamadas", "llamadas perdidas"],
-    automation: ["automation", "automate", "workflow", "crm", "intake", "forms", "admin", "portal", "follow up", "supabase", "stripe", "zapier", "automatización", "automatizacion", "flujo", "formularios"],
-    portal: ["client portal", "login", "portal", "account", "dashboard", "admin", "password", "log in", "iniciar sesión", "cuenta"],
-    careers: ["job", "career", "hiring", "work for", "apply", "trabajo", "empleo", "contratando", "aplicar"],
-    timeline: ["how long", "timeline", "when", "deadline", "turnaround", "launch", "cuanto tarda", "cuánto tarda", "tiempo", "cuando", "cuándo"],
-    smalltalk: ["how are you", "what's up", "whats up", "hello", "hey", "hi", "yo", "good morning", "good afternoon", "como estas", "cómo estás", "que tal", "qué tal"],
-    flirt: ["cute", "sexy", "beautiful", "love you", "date", "flirt", "handsome", "preciosa", "guapa", "linda", "amor", "cita conmigo"]
-  };
-
-  function lower(s) {
-    return String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const patterns = ["i operate", "i run", "i own", "my business is", "we are a", "we do", "i have a"];
+    if (patterns.some((p) => t.includes(p))) return "local service";
+    return "";
   }
 
-  function hasAny(text, arr) {
-    const t = lower(text);
-    return arr.some(k => t.includes(lower(k)));
+  function detectBusinessStage(text) {
+    const t = clean(text);
+    if (includesAny(t, INTENTS.stageNew)) return "New business / starting from scratch";
+    if (includesAny(t, INTENTS.stageExisting)) return "Existing business / improving current setup";
+    return "";
   }
 
-  function t(key) {
-    return copy[state.lang]?.[key] || copy.en[key] || "";
+  function updateMemory(text, intent) {
+    const industry = detectIndustry(text);
+    const stage = detectBusinessStage(text);
+
+    if (industry) {
+      state.memory.industry = industry;
+      state.memory.businessType = text;
+    }
+
+    if (stage) {
+      state.memory.businessStage = stage;
+      state.lead.stage = stage;
+    }
+
+    const serviceMap = {
+      website: "Website Development",
+      social: "Social Media Management",
+      phone: "AI Receptionist Phone",
+      webbot: "AI Web Receptionist Chatbot",
+      automation: "AI Automation",
+      growth: "Growth Foundation",
+      full: "Full Scale System",
+      funding: "Business Funding"
+    };
+
+    if (serviceMap[intent]) state.memory.serviceInterest = serviceMap[intent];
+
+    if (["website", "social", "phone", "webbot", "automation", "growth", "full", "funding", "choose", "bundle"].includes(intent)) {
+      state.memory.problem = text;
+    }
+
+    if (["objectionPrice", "objectionThink", "objectionExistingWebsite"].includes(intent)) {
+      state.memory.lastObjection = intent;
+      state.lead.objection = intent;
+    }
+
+    state.memory.lastIntent = intent;
   }
 
-  function detectLang(text) {
-    if (hasAny(text, keywords.spanish)) state.lang = "es";
-    if (/\b(english|ingles|inglés)\b/i.test(text)) state.lang = "en";
-    if (/\b(espanol|español|spanish)\b/i.test(text)) state.lang = "es";
+  function serviceKeyFromText(text) {
+    const t = clean(text);
+
+    if (includesAny(t, INTENTS.phone)) return "phone";
+    if (includesAny(t, INTENTS.webbot)) return "webbot";
+    if (includesAny(t, INTENTS.funding)) return "funding";
+    if (includesAny(t, INTENTS.website)) return "website";
+    if (includesAny(t, INTENTS.social)) return "social";
+    if (includesAny(t, INTENTS.automation)) return "automation";
+    if (includesAny(t, INTENTS.growth)) return "growth";
+    if (includesAny(t, INTENTS.full)) return "full";
+
+    if (state.memory.serviceInterest) {
+      const label = clean(state.memory.serviceInterest);
+      if (label.includes("phone")) return "phone";
+      if (label.includes("web receptionist") || label.includes("chatbot")) return "webbot";
+      if (label.includes("website")) return "website";
+      if (label.includes("social")) return "social";
+      if (label.includes("automation")) return "automation";
+      if (label.includes("growth")) return "growth";
+      if (label.includes("full")) return "full";
+      if (label.includes("funding") || label.includes("loan") || label.includes("capital")) return "funding";
+    }
+
+    return "";
   }
 
-  function detectIntent(text) {
-    if (hasAny(text, keywords.flirt)) return "flirt";
-    if (hasAny(text, keywords.start)) return "start";
-    if (hasAny(text, keywords.aiReceptionist)) return "aiReceptionist";
-    if (hasAny(text, keywords.website)) return "website";
-    if (hasAny(text, keywords.social)) return "social";
-    if (hasAny(text, keywords.automation)) return "automation";
-    if (hasAny(text, keywords.pricing)) return "pricing";
-    if (hasAny(text, keywords.choose)) return "choose";
-    if (hasAny(text, keywords.portal)) return "portal";
-    if (hasAny(text, keywords.careers)) return "careers";
-    if (hasAny(text, keywords.timeline)) return "timeline";
-    if (hasAny(text, keywords.smalltalk)) return "smalltalk";
-    return "fallback";
-  }
+  function pricingReply(text) {
+    const key = serviceKeyFromText(text);
 
-  function pricingReply() {
-    if (state.lang === "es") {
+    if (!key) {
       return [
-        "Estos son los precios claros que están publicados:",
-        "• AI Receptionist Phone: $99/mes",
-        "• AI Web Receptionist Chatbot: $69.99/mes",
-        "• AI Automation: $249/semana",
-        "• Social Media: 1 reel profesional $149, 3 reels $399, manejo de cuenta $99/semana",
-        "• Websites, Growth Foundation y Full Scale System dependen del alcance. Lo mejor es enviar los detalles para cotización."
+        "Which service do you want pricing for?",
+        "",
+        "I can give pricing for:",
+        "• AI Web Receptionist Chatbot",
+        "• AI Receptionist Phone",
+        "• AI Automation",
+        "• Social Media Management",
+        "• Website Development",
+        "• Business Funding",
+        "• Growth Foundation",
+        "• Full Scale System"
       ].join("\n");
     }
 
+    return SERVICES[key].price;
+  }
+
+  function recommendService() {
+    const industry = state.memory.industry;
+    const stage = state.memory.businessStage;
+    const problem = clean([state.memory.problem, state.memory.businessType, stage].join(" "));
+
+    let key = "";
+
+    if (problem.includes("funding") || problem.includes("loan") || problem.includes("capital") || problem.includes("financing") || problem.includes("money")) key = "funding";
+    else if (problem.includes("call") || problem.includes("phone") || problem.includes("missed")) key = "phone";
+    else if (problem.includes("chat") || problem.includes("website questions")) key = "webbot";
+    else if (problem.includes("instagram") || problem.includes("content") || problem.includes("reel")) key = "social";
+    else if (problem.includes("google") || problem.includes("website") || problem.includes("site")) key = "website";
+    else if (problem.includes("automate") || problem.includes("follow") || problem.includes("forms") || problem.includes("intake")) key = "automation";
+    else if (problem.includes("everything") || problem.includes("system") || problem.includes("full")) key = "full";
+
+    if (!key) {
+      if (stage === "New business / starting from scratch") key = "growth";
+      else if (["restaurant", "beauty", "auto", "rental", "contractor", "medical", "retail", "professional"].includes(industry)) key = "website";
+      else key = "growth";
+    }
+
+    state.memory.lastRecommendedService = SERVICES[key].label;
+    return key;
+  }
+
+  function recommendationReply() {
+    const key = recommendService();
+    const service = SERVICES[key];
+
+    const industryLine = state.memory.industry
+      ? `Since you operate a ${state.memory.industry} business, `
+      : "Based on what you said, ";
+
     return [
-      "Here’s the clean pricing we have published:",
-      "• AI Receptionist Phone: $99/month",
-      "• AI Web Receptionist Chatbot: $69.99/month",
-      "• AI Automation: $249/week",
-      "• Social Media: 1 professional reel $149, 3 reels $399, account management $99/week",
-      "• Websites, Growth Foundation, and Full Scale System depend on scope, so the best move is to send project details for a quote."
+      `${industryLine}I would start with ${service.label}.`,
+      "",
+      service.summary,
+      "",
+      bundleReply(),
+      "",
+      "After that, RE IMAGE can decide if you also need social media, AI receptionist support, automation, business funding, or a full system build."
     ].join("\n");
   }
 
-  function chooseReply() {
-    if (state.lang === "es") {
-      return [
-        "Le ayudo a escoger rápido:",
-        "• Si necesita verse profesional online → Website Development.",
-        "• Si pierde llamadas o preguntas repetidas → AI Receptionist Phone o Web Chatbot.",
-        "• Si necesita contenido y presencia → Social Media Management.",
-        "• Si ya tiene procesos desordenados → AI Automation o Full Scale System.",
-        "• Si está empezando y necesita base → Growth Foundation.",
-        "Si me dice el tipo de negocio y el problema principal, le digo cuál empezaría primero."
-      ].join("\n");
-    }
-
+  function portalReply() {
     return [
-      "Here’s the fastest way to choose:",
-      "• Need to look professional online → Website Development.",
-      "• Missing calls or repeating the same answers → AI Receptionist Phone or Web Chatbot.",
-      "• Need content and visibility → Social Media Management.",
-      "• Messy operations or manual follow-up → AI Automation or Full Scale System.",
-      "• Starting from scratch → Growth Foundation.",
-      "Tell me your business type and biggest problem, and I’ll point you to the best starting option."
+      `The RE IMAGE client portal is here: ${CONFIG.clientPortalUrl}`,
+      "",
+      "Clients can sign in, send service requests, message RE IMAGE, and keep communication organized.",
+      "",
+      "If you do not have access yet, start with the project request and RE IMAGE can help get your account set up."
     ].join("\n");
+  }
+
+  function phoneReply() {
+    return `You can call RE IMAGE at ${CONFIG.phoneDisplay}.`;
+  }
+
+  function emailReply() {
+    return `You can email RE IMAGE at ${CONFIG.email}.`;
   }
 
   function serviceReply(intent) {
-    const langEs = state.lang === "es";
+    const map = {
+      website: "website",
+      social: "social",
+      phone: "phone",
+      webbot: "webbot",
+      automation: "automation",
+      growth: "growth",
+      full: "full",
+      funding: "funding"
+    };
 
-    if (intent === "website") {
-      return langEs
-        ? "Website Development es para negocios que necesitan una página profesional, clara y lista para convertir visitantes en leads. Puede incluir páginas de servicio, llamadas a la acción, diseño móvil, SEO básico, formularios y estructura para crecer."
-        : "Website Development is for businesses that need a professional, conversion-focused site. It can include service pages, calls to action, mobile polish, SEO basics, forms, and a structure that helps turn visitors into leads.";
+    const key = map[intent];
+    const service = SERVICES[key];
+    if (!service) return fallbackReply();
+
+    return [
+      `${service.label}`,
+      "",
+      service.summary,
+      "",
+      "Would you like pricing for this service, or do you want to start a request?"
+    ].join("\n");
+  }
+
+  function businessTypeReply() {
+    const key = recommendService();
+    const service = SERVICES[key];
+
+    return [
+      "Got it — that helps.",
+      "",
+      `For that type of business, I would usually look at ${service.label} first.`,
+      "",
+      service.summary,
+      "",
+      bundleReply(),
+      "",
+      "What are you trying to improve most right now: more leads, better website, more bookings, social media, missed calls, automation, or funding?"
+    ].join("\n");
+  }
+
+  function objectionReply(intent) {
+    if (intent === "objectionPrice") {
+      return [
+        "I understand. The goal is not to sell you something you do not need.",
+        "",
+        "RE IMAGE can help figure out the most important first step, whether that is a simple website improvement, social media support, automation, funding guidance, or a larger system later.",
+        "",
+        "If budget is tight, the best move is to start with the service that creates the fastest return."
+      ].join("\n");
     }
 
-    if (intent === "social") {
-      return langEs
-        ? "Social Media Management puede ser contenido profesional o manejo de cuenta. Los paquetes publicados incluyen 1 reel profesional por $149, 3 reels por $399, o manejo de cuenta por $99/semana usando contenido hecho por el dueño."
-        : "Social Media Management can mean professional content or account operation. Published options include 1 professionally shot reel for $149, 3 reels for $399, or account management for $99/week using owner-made content.";
+    if (intent === "objectionThink") {
+      return [
+        "That makes sense. A good next step is to send the basic details now so RE IMAGE can understand what you are considering.",
+        "",
+        "No pressure — it just gives you a clearer starting point when you are ready."
+      ].join("\n");
     }
 
-    if (intent === "aiReceptionist") {
-      return langEs
-        ? "AI Receptionists ayudan a contestar preguntas, capturar leads y dirigir clientes al próximo paso. Phone Receptionist cuesta $99/mes. Web Receptionist Chatbot cuesta $69.99/mes. También se pueden usar juntos."
-        : "AI Receptionists help answer questions, capture leads, and guide customers to the next step. Phone Receptionist is $99/month. Web Receptionist Chatbot is $69.99/month. They can also work together.";
+    if (intent === "objectionExistingWebsite") {
+      return [
+        "That actually helps. If you already have a website, RE IMAGE can look at whether it is doing its job:",
+        "",
+        "• Is it bringing leads?",
+        "• Is it mobile friendly?",
+        "• Is it clear what services you offer?",
+        "• Does it connect to forms, booking, payments, or the client portal?",
+        "",
+        "Sometimes you do not need a brand-new site. You may just need a smarter lead flow."
+      ].join("\n");
     }
 
-    if (intent === "automation") {
-      return langEs
-        ? "AI Automation es para automatizar tareas como intake, follow-up, formularios, mensajes, administración y procesos internos. El servicio publicado es $249/semana y se ajusta al flujo del negocio."
-        : "AI Automation is for automating intake, follow-up, forms, messages, admin work, and internal workflows. The published service is $249/week and is tailored around the business process.";
+    return fallbackReply();
+  }
+
+  function competitorReply() {
+    return [
+      "Tools like Wix, Squarespace, GoDaddy, Canva, Shopify, and WordPress can be fine for basic websites.",
+      "",
+      "Where RE IMAGE is different is when the business needs more than a pretty page — things like lead forms, client portals, AI receptionist tools, automation, payments, service requests, and admin workflows.",
+      "",
+      "If you only need something simple, a builder may work. If you need the website to support operations, RE IMAGE is usually the better fit."
+    ].join("\n");
+  }
+
+  function timelineReply() {
+    return [
+      "Timeline depends on the service and how much content is ready.",
+      "",
+      "A smaller update or simple setup can move faster. A full website, portal, automation, funding package, or complete business system takes more planning.",
+      "",
+      `If this is urgent, call RE IMAGE directly at ${CONFIG.phoneDisplay}.`
+    ].join("\n");
+  }
+
+  function paymentReply() {
+    return [
+      "RE IMAGE can handle payments, invoices, deposits, and checkout flows depending on the project.",
+      "",
+      "For client projects, payment details are usually handled through a secure payment processor like Stripe or Square, not through the chat.",
+      "",
+      "If you need payment setup for your own business, RE IMAGE can also help build that into your website or portal."
+    ].join("\n");
+  }
+
+  function bundleReply() {
+    const industry = state.memory.industry;
+
+    if (industry === "beauty") return "Recommended bundle: Website + Booking Flow + Social Media Content + Gift Card Promotion + AI Web Receptionist.";
+    if (industry === "auto") return "Recommended bundle: Website + Estimate Request Form + Before/After Gallery + Local SEO + Missed Call Support.";
+    if (industry === "rental") return "Recommended bundle: Website + Booking Flow + Payments/Deposits + Client Portal + Admin Dashboard.";
+    if (industry === "restaurant") return "Recommended bundle: Website + Menu/Ordering Flow + Local SEO + Social Media Content.";
+    if (industry === "contractor") return "Recommended bundle: Website + Quote Request Form + Local SEO + Follow-Up Automation.";
+    if (industry === "retail") return "Recommended bundle: Website/E-commerce + Social Content + Payment Setup + Customer Follow-Up.";
+
+    return "Recommended general bundle: Website + SEO Basics + AI Web Receptionist + Lead Form + Client Portal.";
+  }
+
+  function businessFundingReply() {
+    return [
+      "Yes — RE IMAGE can help with business funding guidance.",
+      "",
+      "Business funding may help with growth, equipment, marketing, inventory, payroll, expansion, or operating cash flow.",
+      "",
+      "The right option depends on business revenue, time in business, credit profile, funding amount needed, and how quickly you need it.",
+      "",
+      "Would you like to send a funding request so RE IMAGE can review the details?"
+    ].join("\n");
+  }
+
+  function faqReply() {
+    return [
+      "Here are the basics:",
+      "",
+      "• Next step: send a request so RE IMAGE can review your business and goal.",
+      "• Consultation: RE IMAGE can use the request details to guide the next conversation.",
+      "• Revisions: depend on the service and project scope.",
+      "• Payments: handled securely through proper payment tools, not inside chat.",
+      "• Portal: clients can sign in, send service requests, and message RE IMAGE."
+    ].join("\n");
+  }
+
+  function businessStageReply() {
+    if (state.memory.businessStage === "New business / starting from scratch") {
+      return [
+        "Since this is a new business, RE IMAGE should focus on foundation first:",
+        "",
+        "• clear service offer",
+        "• professional website or landing page",
+        "• lead form or booking flow",
+        "• basic SEO/local visibility",
+        "• social proof and content plan",
+        "",
+        "That usually points toward Growth Foundation or Website Development first."
+      ].join("\n");
     }
 
     return [
-      `• ${CONFIG.services.website.label}: ${CONFIG.services.website.summary}`,
-      `• ${CONFIG.services.social.label}: ${CONFIG.services.social.summary}`,
-      `• ${CONFIG.services.phone.label}: ${CONFIG.services.phone.price}`,
-      `• ${CONFIG.services.webbot.label}: ${CONFIG.services.webbot.price}`,
-      `• ${CONFIG.services.automation.label}: ${CONFIG.services.automation.price}`,
-      `• ${CONFIG.services.growth.label} / ${CONFIG.services.full.label}: custom systems based on business needs.`
+      "Since this is an existing business, RE IMAGE should look at what is already working and what is leaking leads:",
+      "",
+      "• website clarity",
+      "• calls and missed messages",
+      "• booking/request flow",
+      "• social media consistency",
+      "• payment or admin bottlenecks",
+      "",
+      "That usually points toward Website Development, AI Receptionist, Automation, or a Full Scale System."
+    ].join("\n");
+  }
+
+  function urgentReply() {
+    return [
+      "If this is urgent, the fastest move is to call RE IMAGE directly.",
+      "",
+      `Phone: ${CONFIG.phoneDisplay}`,
+      `Email: ${CONFIG.email}`,
+      "",
+      "You can still send a request here so the details are organized."
+    ].join("\n");
+  }
+
+  function profanityReply() {
+    return [
+      "I understand this might be frustrating. I can still help.",
+      "",
+      "Are you trying to ask about pricing, services, the client portal, business funding, or starting a request?"
+    ].join("\n");
+  }
+
+  function calculateLeadScore() {
+    let score = 0;
+    const text = [
+      state.lead.goal,
+      state.lead.budget,
+      state.lead.urgency,
+      state.lead.stage,
+      state.lead.objection,
+      state.memory.problem,
+      state.memory.serviceInterest
+    ].join(" ").toLowerCase();
+
+    if (state.lead.email) score += 15;
+    if (state.lead.phone) score += 20;
+    if (state.lead.business) score += 10;
+    if (state.lead.service) score += 15;
+    if (state.memory.industry) score += 5;
+    if (state.lead.stage) score += 5;
+
+    if (text.includes("asap") || text.includes("today") || text.includes("urgent") || text.includes("this week")) score += 25;
+    if (text.includes("pricing") || text.includes("price") || text.includes("cost")) score += 10;
+    if (text.includes("$750") || text.includes("750+")) score += 15;
+    if (text.includes("just researching") || text.includes("maybe later") || text.includes("not ready")) score -= 15;
+    if (text.includes("too expensive") || text.includes("can't afford") || text.includes("out of my budget")) score -= 10;
+
+    if (score >= 70) return "Hot";
+    if (score >= 40) return "Warm";
+    return "Cold";
+  }
+
+  function adminNextStep() {
+    const quality = calculateLeadScore();
+    const service = state.lead.service || state.memory.lastRecommendedService || state.memory.serviceInterest || "General";
+
+    if (quality === "Hot") return `Call quickly. Lead is hot and interested in ${service}.`;
+    if (quality === "Warm") return `Follow up with a helpful message and clarify scope for ${service}.`;
+    return `Nurture lead. Ask what problem they want solved first and offer a simple next step.`;
+  }
+
+  function fallbackReply() {
+    return [
+      "I can help with websites, social media, AI receptionists, AI automation, business funding, pricing, the client portal, or starting a project.",
+      "",
+      "Are you asking about pricing, services, the client portal, funding, or starting a request?"
     ].join("\n");
   }
 
   function bot(text, chips) {
     addMessage("bot", text);
-    if (chips?.length) addChips(chips);
+    if (chips && chips.length) addChips(chips);
   }
 
   function user(text) {
@@ -312,7 +644,7 @@
     const wrap = document.createElement("div");
     wrap.className = "reibot-chips";
 
-    chips.forEach(label => {
+    chips.forEach((label) => {
       const btn = document.createElement("button");
       btn.type = "button";
       btn.textContent = label;
@@ -324,11 +656,33 @@
     body.scrollTop = body.scrollHeight;
   }
 
+  function serviceChips() {
+    return [
+      "Website Development",
+      "Social Media Management",
+      "AI Web Receptionist Chatbot",
+      "AI Receptionist Phone",
+      "AI Automation",
+      "Business Funding",
+      "Not sure"
+    ];
+  }
+
+  function mainChips() {
+    return ["Help me choose", "Pricing", "Business Funding", "Client portal", "Start a project"];
+  }
+
   function startLead(service) {
     state.lead = freshLead();
     if (service) state.lead.service = service;
+    else if (state.memory.lastRecommendedService) state.lead.service = state.memory.lastRecommendedService;
+    else if (state.memory.serviceInterest) state.lead.service = state.memory.serviceInterest;
+
+    if (state.memory.businessStage) state.lead.stage = state.memory.businessStage;
+    if (state.memory.lastObjection) state.lead.objection = state.memory.lastObjection;
+
     state.step = "name";
-    bot(t("askName"));
+    bot("Absolutely. I’ll collect the important details so RE IMAGE can follow up properly. What’s your full name?");
   }
 
   function validateEmail(v) {
@@ -366,14 +720,20 @@
 
   function buildLeadMessage() {
     const l = state.lead;
+
     return [
       "AI Receptionist Lead",
       `Business: ${l.business || "—"}`,
+      `Business stage: ${l.stage || state.memory.businessStage || "—"}`,
       `Interested service: ${l.service || "—"}`,
-      `Goal / problem: ${l.goal || l.message || "—"}`,
+      `Bot recommendation: ${state.memory.lastRecommendedService || "—"}`,
+      `Goal / problem: ${l.goal || "—"}`,
       `Budget: ${l.budget || "—"}`,
       `Timeline: ${l.urgency || "—"}`,
-      `Language: ${state.lang}`,
+      `Detected industry: ${state.memory.industry || "—"}`,
+      `Lead quality: ${calculateLeadScore()}`,
+      `Objection / hesitation: ${l.objection || state.memory.lastObjection || "—"}`,
+      `Recommended admin next step: ${adminNextStep()}`,
       `Source: ${CONFIG.source}`
     ].join("\n");
   }
@@ -402,66 +762,86 @@
     const l = state.lead;
 
     bot(
-      `${t("confirm")}\n\nName: ${l.name}\nEmail: ${l.email}\nPhone: ${l.phone}\nBusiness: ${l.business}\nService: ${l.service}\nGoal: ${l.goal}\nBudget: ${l.budget || "Not sure"}\nTimeline: ${l.urgency || "Not sure"}`,
-      state.lang === "es"
-        ? ["Confirmar", "Cambiar servicio", "Abrir forma"]
-        : ["Confirm", "Change service", "Open form"]
+      [
+        "Here’s what I’m going to send over:",
+        "",
+        `Name: ${l.name}`,
+        `Email: ${l.email}`,
+        `Phone: ${l.phone}`,
+        `Business: ${l.business}`,
+        `Business stage: ${l.stage || state.memory.businessStage || "Not sure"}`,
+        `Service: ${l.service}`,
+        `Goal: ${l.goal}`,
+        `Budget: ${l.budget || "Not sure"}`,
+        `Timeline: ${l.urgency || "Not sure"}`,
+        `Lead quality: ${calculateLeadScore()}`
+      ].join("\n"),
+      ["Confirm", "Change service", "Open form"]
     );
 
     state.step = "confirm";
   }
 
   async function handleLeadStep(text) {
-    const value = text.trim();
+    const value = String(text || "").trim();
 
     if (state.step === "name") {
-      if (value.length < 2) return bot(t("required"));
+      if (value.length < 2) return bot("I need your name before I can send the request.");
       state.lead.name = value;
       state.step = "email";
-      return bot(t("askEmail"));
+      return bot("Thanks. What email should RE IMAGE use to contact you?");
     }
 
     if (state.step === "email") {
-      if (!validateEmail(value)) {
-        return bot(state.lang === "es" ? "Necesito un email válido para enviar la solicitud." : "I need a valid email before I can send the request.");
-      }
+      if (!validateEmail(value)) return bot("Please enter a valid email address.");
       state.lead.email = value;
       state.step = "phone";
-      return bot(t("askPhone"));
+      return bot("What phone number should RE IMAGE use?");
     }
 
     if (state.step === "phone") {
-      if (!validatePhone(value)) {
-        return bot(state.lang === "es" ? "Necesito un número de teléfono válido con área." : "I need a valid phone number with area code.");
-      }
+      if (!validatePhone(value)) return bot("Please enter a valid phone number with area code.");
       state.lead.phone = value;
       state.step = "business";
-      return bot(t("askBusiness"));
+      return bot("What’s the business name? If you do not have one yet, you can say “not yet.”");
     }
 
     if (state.step === "business") {
       state.lead.business = value;
+      state.memory.businessType = value;
+      state.step = "stage";
+      return bot("Is this a new business or an existing business?", ["New business", "Existing business"]);
+    }
+
+    if (state.step === "stage") {
+      const stage = detectBusinessStage(value) || (clean(value).includes("new") ? "New business / starting from scratch" : "Existing business / improving current setup");
+      state.lead.stage = stage;
+      state.memory.businessStage = stage;
       state.step = "service";
-      return bot(t("askService"), serviceChips());
+      return bot("Which service are you most interested in?", serviceChips());
     }
 
     if (state.step === "service") {
-      state.lead.service = normalizeService(value);
+      const key = serviceKeyFromText(value);
+      state.lead.service = key ? SERVICES[key].label : value;
+      state.memory.serviceInterest = state.lead.service;
       state.step = "goal";
-      return bot(t("askGoal"));
+      return bot(
+        "What are you trying to accomplish? Example: get more leads, rebuild your website, add an AI receptionist, manage social media, automate intake, get business funding, or clean up operations."
+      );
     }
 
     if (state.step === "goal") {
       state.lead.goal = value;
-      state.lead.message = value;
+      state.memory.problem = value;
       state.step = "budget";
-      return bot(t("askBudget"), state.lang === "es" ? ["No estoy seguro", "$100-$300", "$300-$750", "$750+"] : ["Not sure", "$100-$300", "$300-$750", "$750+"]);
+      return bot("Do you have a target budget, or are you not sure yet?", ["Not sure", "$100-$300", "$300-$750", "$750+"]);
     }
 
     if (state.step === "budget") {
       state.lead.budget = value;
       state.step = "urgency";
-      return bot(t("askUrgency"), state.lang === "es" ? ["ASAP", "Esta semana", "Este mes", "Solo investigando"] : ["ASAP", "This week", "This month", "Just researching"]);
+      return bot("When are you hoping to start?", ["ASAP", "This week", "This month", "Just researching"]);
     }
 
     if (state.step === "urgency") {
@@ -470,83 +850,88 @@
     }
 
     if (state.step === "confirm") {
-      if (/confirm|yes|send|submit|ok|dale|si|sí|confirmar/i.test(value)) {
+      if (/confirm|yes|send|submit|ok/i.test(value)) {
         try {
           state.busy = true;
           await saveLead();
-          state.step = null;
           state.busy = false;
-          return bot(t("success"), state.lang === "es" ? ["Nuevo proyecto", "Ver precios", "Portal cliente"] : ["New project", "View pricing", "Client portal"]);
+          state.step = null;
+
+          return bot(
+            "Perfect — I sent your request to RE IMAGE. Someone can review it and follow up with the next step.",
+            ["Client portal", "New project", "Phone number", "Email"]
+          );
         } catch (e) {
           console.error("RE IMAGE receptionist lead failed", e);
           state.busy = false;
-          return bot(t("fail"), state.lang === "es" ? ["Abrir forma", "Intentar otra vez"] : ["Open form", "Try again"]);
+
+          return bot(
+            "I had trouble sending that request from the widget. Please use the Start With Us form and your details will still go through.",
+            ["Open form", "Phone number", "Email"]
+          );
         }
       }
 
-      if (/change|service|cambiar/i.test(value)) {
+      if (/change|service/i.test(value)) {
         state.step = "service";
-        return bot(t("askService"), serviceChips());
+        return bot("No problem. Which service should I change it to?", serviceChips());
       }
 
-      return bot(state.lang === "es" ? "Puede escribir Confirmar para enviarlo, Cambiar servicio, o Abrir forma." : "Type Confirm to send it, Change service, or Open form.");
+      if (/open form|form/i.test(value)) {
+        window.location.href = CONFIG.startUrl;
+        return;
+      }
+
+      return bot("Type Confirm to send it, Change service to edit it, or Open form to use the full form.");
     }
-  }
-
-  function normalizeService(v) {
-    const text = lower(v);
-
-    if (hasAny(text, keywords.aiReceptionist)) {
-      if (text.includes("phone") || text.includes("call") || text.includes("llamada")) return "AI Receptionist Phone";
-      if (text.includes("web") || text.includes("chat")) return "AI Web Receptionist Chatbot";
-      return "AI Receptionists";
-    }
-
-    if (hasAny(text, keywords.website)) return "Website Development";
-    if (hasAny(text, keywords.social)) return "Social Media Management";
-    if (hasAny(text, keywords.automation)) return "AI Automation";
-    if (text.includes("growth")) return "Growth Foundation";
-    if (text.includes("full")) return "Full Scale System";
-
-    return v;
-  }
-
-  function serviceChips() {
-    return [
-      "Website Development",
-      "Social Media Management",
-      "AI Receptionist Phone",
-      "AI Web Receptionist Chatbot",
-      "AI Automation",
-      "Not sure"
-    ];
   }
 
   function routeChip(label) {
-    const tLabel = lower(label);
+    const t = clean(label);
 
-    if (tLabel.includes("open form") || tLabel.includes("abrir forma")) {
+    if (t.includes("open form")) {
       window.location.href = CONFIG.startUrl;
       return true;
     }
 
-    if (tLabel.includes("client portal") || tLabel.includes("portal cliente")) {
-      window.open(CONFIG.clientPortalUrl, "_blank");
+    if (t.includes("open careers")) {
+      window.location.href = CONFIG.careersUrl;
       return true;
     }
 
-    if (tLabel.includes("pricing") || tLabel.includes("precios") || tLabel.includes("view pricing")) {
-      bot(pricingReply(), ["Start a project", "AI Receptionist", "Website", "Social Media"]);
+    if (t.includes("client portal")) {
+      bot(portalReply(), ["Start a project", "Phone number", "Email"]);
       return true;
     }
 
-    if (tLabel.includes("new project") || tLabel.includes("start a project") || tLabel.includes("nuevo proyecto") || tLabel.includes("empezar proyecto")) {
+    if (t.includes("phone number")) {
+      bot(phoneReply(), ["Start a project", "Client portal"]);
+      return true;
+    }
+
+    if (t === "email") {
+      bot(emailReply(), ["Start a project", "Client portal"]);
+      return true;
+    }
+
+    if (t.includes("new project") || t.includes("start a project") || t.includes("get started")) {
       startLead();
       return true;
     }
 
-    if (tLabel.includes("open careers")) {
-      window.location.href = CONFIG.careersUrl;
+    if (t.includes("business funding")) {
+      state.memory.serviceInterest = SERVICES.funding.label;
+      bot(businessFundingReply(), ["Start a project", "Pricing", "Phone number"]);
+      return true;
+    }
+
+    if (t.includes("pricing")) {
+      bot(pricingReply(label), serviceChips());
+      return true;
+    }
+
+    if (t.includes("services")) {
+      bot(fallbackReply(), mainChips());
       return true;
     }
 
@@ -558,7 +943,6 @@
     if (!text || state.busy) return;
 
     user(text);
-    detectLang(text);
 
     const input = document.querySelector(".reibot-input");
     if (input) input.value = "";
@@ -566,56 +950,98 @@
     if (routeChip(text)) return;
     if (state.step) return handleLeadStep(text);
 
-    const intent = detectIntent(text);
+    const intent = scoreIntent(text);
+    updateMemory(text, intent);
+
+    if (intent === "profanity") {
+      return bot(profanityReply(), ["Pricing", "Services", "Client portal", "Business Funding", "Start a project"]);
+    }
+
+    if (intent === "urgent") {
+      return bot(urgentReply(), ["Start a project", "Phone number", "Email"]);
+    }
+
+    if (detectIndustry(text)) {
+      return bot(businessTypeReply(), ["More leads", "Better website", "Social media", "AI receptionist", "Automation", "Business Funding"]);
+    }
+
+    if (detectBusinessStage(text)) {
+      return bot(businessStageReply(), ["Help me choose", "Pricing", "Start a project"]);
+    }
 
     switch (intent) {
-      case "flirt":
-        return bot(t("softFlirt"), ["Start a project", "Pricing", "Website"]);
+      case "greeting":
+        return bot(
+          "Hey — welcome to RE IMAGE Business Solutions. I can help with websites, social media, AI receptionists, automation, business funding, pricing, or the client portal. What are you trying to build or improve?",
+          mainChips()
+        );
 
-      case "smalltalk":
-        return bot(t("smallTalk"), state.lang === "es" ? ["Ver servicios", "Precios", "Empezar"] : ["View services", "Pricing", "Get started"]);
+      case "howAreYou":
+        return bot(
+          "I’m doing great — ready to help turn visitors into real leads. What kind of business are we working on?",
+          ["Website", "Social Media", "AI receptionist", "Business Funding", "Start a project"]
+        );
+
+      case "thanks":
+        return bot("You’re welcome. Do you want to start a request or ask about another service?", ["Start a project", "Pricing", "Client portal"]);
+
+      case "contactPhone":
+        return bot(phoneReply(), ["Start a project", "Email", "Client portal"]);
+
+      case "contactEmail":
+        return bot(emailReply(), ["Start a project", "Phone number", "Client portal"]);
+
+      case "portal":
+        return bot(portalReply(), ["Start a project", "Phone number", "Email"]);
+
+      case "pricing":
+        return bot(pricingReply(text), ["Start a project", "Help me choose"]);
+
+      case "website":
+      case "social":
+      case "phone":
+      case "webbot":
+      case "automation":
+      case "growth":
+      case "full":
+      case "funding":
+        return bot(serviceReply(intent), ["Pricing", "Start a project", "Help me choose"]);
+
+      case "choose":
+        return bot(recommendationReply(), ["Pricing", "Start a project", "Client portal"]);
+
+      case "objectionPrice":
+      case "objectionThink":
+      case "objectionExistingWebsite":
+        return bot(objectionReply(intent), ["Help me choose", "Start a project", "Pricing"]);
+
+      case "competitor":
+        return bot(competitorReply(), ["Help me choose", "Start a project"]);
+
+      case "timeline":
+        return bot(timelineReply(), ["Start a project", "Phone number"]);
+
+      case "payment":
+        return bot(paymentReply(), ["Start a project", "Client portal"]);
+
+      case "bundle":
+        return bot(bundleReply(), ["Start a project", "Pricing"]);
+
+      case "faq":
+        return bot(faqReply(), ["Start a project", "Client portal", "Phone number"]);
+
+      case "stageNew":
+      case "stageExisting":
+        return bot(businessStageReply(), ["Help me choose", "Start a project"]);
 
       case "start":
         return startLead();
 
-      case "choose":
-        return bot(chooseReply(), ["Website", "AI Receptionist", "Social Media", "Start a project"]);
-
-      case "pricing":
-        return bot(pricingReply(), ["Start a project", "AI Receptionist", "Social Media", "Website"]);
-
-      case "website":
-      case "social":
-      case "aiReceptionist":
-      case "automation":
-        return bot(serviceReply(intent), state.lang === "es" ? ["Empezar proyecto", "Precios", "Ayúdame a escoger"] : ["Start a project", "Pricing", "Help me choose"]);
-
-      case "portal":
-        return bot(
-          state.lang === "es"
-            ? "El portal de cliente está en login.reimagebs.com. Si todavía no tiene cuenta o necesita acceso, use Start With Us y RE IMAGE puede ayudarle."
-            : "The client portal is at login.reimagebs.com. If you do not have an account or need access, use Start With Us and RE IMAGE can help.",
-          ["Client portal", "Start a project"]
-        );
-
       case "careers":
-        return bot(
-          state.lang === "es"
-            ? "Para oportunidades de trabajo, use la página Careers. Si quiere, puedo abrirla."
-            : "For job opportunities, use the Careers page. I can open it for you.",
-          ["Open careers", "Start a project"]
-        );
-
-      case "timeline":
-        return bot(
-          state.lang === "es"
-            ? "El tiempo depende del alcance. Un chatbot o receptionist simple puede moverse más rápido; websites y sistemas completos dependen de páginas, contenido, integraciones y revisiones. Lo mejor es enviar los detalles para una estimación real."
-            : "Timeline depends on scope. A simple chatbot or receptionist setup can move faster; websites and full systems depend on pages, content, integrations, and revisions. The best move is to send the details for a real estimate.",
-          ["Start a project", "Help me choose"]
-        );
+        return bot("For job opportunities, use the Careers page. I can open it for you.", ["Open careers", "Start a project"]);
 
       default:
-        return bot(t("fallback"), state.lang === "es" ? ["Ayúdame a escoger", "Precios", "Empezar proyecto"] : ["Help me choose", "Pricing", "Start a project"]);
+        return bot(fallbackReply(), mainChips());
     }
   }
 
@@ -695,7 +1121,7 @@
 
       <div class="reibot-foot">
         <form class="reibot-form">
-          <input class="reibot-input" type="text" autocomplete="off" placeholder="${t("placeholder")}">
+          <input class="reibot-input" type="text" autocomplete="off" placeholder="Ask about websites, funding, social media, AI receptionists...">
           <button class="reibot-send" type="submit">↗</button>
         </form>
         <div class="reibot-mini">
@@ -718,7 +1144,10 @@
 
       if (!state.greeted) {
         state.greeted = true;
-        bot(t("welcome"), t("quick"));
+        bot(
+          "Hi — welcome to RE IMAGE Business Solutions. I can help you choose a service, explain pricing, talk about the client portal, business funding, or collect your project details. What are you trying to build or improve?",
+          mainChips()
+        );
       }
 
       setTimeout(() => input && input.focus(), 50);
@@ -729,10 +1158,10 @@
       state.open = false;
     }
 
-    launch.addEventListener("click", () => state.open ? closePanel() : openPanel());
+    launch.addEventListener("click", () => (state.open ? closePanel() : openPanel()));
     close.addEventListener("click", closePanel);
 
-    form.addEventListener("submit", e => {
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
       handleInput(input.value);
     });
