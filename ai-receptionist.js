@@ -139,8 +139,10 @@
     memory: {
       businessType: "",
       industry: "",
+      sector: "",
       businessStage: "",
       problem: "",
+      painPoints: [],
       serviceInterest: "",
       lastIntent: "",
       lastRecommendedService: "",
@@ -155,8 +157,12 @@
       email: "",
       phone: "",
       business: "",
+      sector: "",
+      revenue: "",
+      employees: "",
       service: "",
       goal: "",
+      painPoints: "",
       budget: "",
       urgency: "",
       stage: "",
@@ -173,7 +179,118 @@
     return list.some((word) => t.includes(clean(word)));
   }
 
-  function scoreIntent(text) {
+  // ─── Semantic Intent Engine (Transformers.js) ────────────────────────────────
+  // Replaces the old keyword-scoring scoreIntent(). Uses a tiny all-MiniLM-L6-v2
+  // embedding model (~25 MB, cached in the browser after first load) to compare
+  // the user's message against natural-language descriptions of each intent by
+  // MEANING, not keywords. Falls back to the legacy keyword scorer if the model
+  // hasn't loaded yet.
+
+  const INTENT_DESCRIPTIONS = {
+    greeting:                  "saying hello or greeting someone",
+    howAreYou:                 "asking how someone is doing or what's up",
+    contactPhone:              "asking for a phone number or how to call",
+    contactEmail:              "asking for an email address",
+    portal:                    "asking about the client portal, login, dashboard, or account access",
+    pricing:                   "asking about price, cost, how much something costs, or getting a quote",
+    website:                   "asking about building or improving a website, landing page, or online presence",
+    social:                    "asking about social media, Instagram, Facebook, reels, or content creation",
+    phone:                     "asking about an AI phone receptionist or answering missed calls",
+    webbot:                    "asking about a website chatbot or AI web receptionist",
+    automation:                "asking about automating tasks, workflows, forms, follow-ups, or intake processes",
+    growth:                    "asking about starting a business or building a foundation from scratch",
+    full:                      "asking about a complete business system with everything included",
+    funding:                   "asking about business funding, loans, capital, financing, or money for the business",
+    choose:                    "not sure which service to pick and asking for a recommendation",
+    start:                     "ready to get started, book, or submit a project request",
+    careers:                   "asking about jobs, hiring, or working for the company",
+    thanks:                    "saying thank you or expressing appreciation",
+    objectionPrice:            "saying the price is too expensive or out of budget",
+    objectionThink:            "saying they need to think about it or aren't ready yet",
+    objectionExistingWebsite:  "saying they already have a website",
+    competitor:                "asking about Wix, Squarespace, WordPress, Shopify, or similar website builders",
+    timeline:                  "asking how long something takes or when it will be done",
+    payment:                   "asking about payment methods, deposits, or invoices",
+    bundle:                    "asking what services to combine or what package makes sense",
+    faq:                       "asking general questions about how the process works or what happens next",
+    stageNew:                  "mentioning they are starting a new business or haven't launched yet",
+    stageExisting:             "mentioning they have an existing business that is already open",
+    urgent:                    "saying they need something immediately, urgently, or as soon as possible",
+    profanity:                 "using swear words or offensive language"
+  };
+
+  const nlp = {
+    pipeline: null,
+    intentEmbeddings: null,
+    loading: false,
+    ready: false,
+
+    async load() {
+      if (nlp.ready || nlp.loading) return;
+      nlp.loading = true;
+
+      try {
+        // Dynamically import Transformers.js from the official CDN
+        const { pipeline, env } = await import(
+          "https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2/dist/transformers.min.js"
+        );
+
+        // Use local cache so the model is only downloaded once per browser
+        env.allowLocalModels = false;
+
+        nlp.pipeline = await pipeline(
+          "feature-extraction",
+          "Xenova/all-MiniLM-L6-v2",
+          { quantized: true }          // ~25 MB quantized model
+        );
+
+        // Pre-compute embeddings for every intent description
+        const keys   = Object.keys(INTENT_DESCRIPTIONS);
+        const values = Object.values(INTENT_DESCRIPTIONS);
+        const outputs = await nlp.pipeline(values, { pooling: "mean", normalize: true });
+
+        nlp.intentEmbeddings = keys.map((k, i) => ({
+          intent: k,
+          vec: Array.from(outputs[i].data)
+        }));
+
+        nlp.ready = true;
+      } catch (err) {
+        console.warn("RE IMAGE NLP: model load failed, using keyword fallback.", err);
+      }
+
+      nlp.loading = false;
+    },
+
+    cosineSimilarity(a, b) {
+      let dot = 0, normA = 0, normB = 0;
+      for (let i = 0; i < a.length; i++) {
+        dot   += a[i] * b[i];
+        normA += a[i] * a[i];
+        normB += b[i] * b[i];
+      }
+      return dot / (Math.sqrt(normA) * Math.sqrt(normB) + 1e-8);
+    },
+
+    async classify(text) {
+      if (!nlp.ready) return null;
+
+      const out = await nlp.pipeline([text], { pooling: "mean", normalize: true });
+      const vec  = Array.from(out[0].data);
+
+      let best = null, bestScore = -Infinity;
+      for (const { intent, vec: iv } of nlp.intentEmbeddings) {
+        const score = nlp.cosineSimilarity(vec, iv);
+        if (score > bestScore) { bestScore = score; best = intent; }
+      }
+
+      // Require a minimum confidence threshold — below it, fall back to keywords
+      return bestScore >= 0.30 ? best : null;
+    }
+  };
+
+  // Legacy keyword scorer — used as fallback while NLP is loading or if it fails
+  function scoreIntentKeywords(text) {
     const scores = {};
     const t = clean(text);
 
@@ -195,6 +312,17 @@
     if (!winner || winner[1] <= 0) return "unknown";
     return winner[0];
   }
+
+  // Public scorer — tries semantic model first, falls back to keywords
+  async function scoreIntent(text) {
+    const semantic = await nlp.classify(text);
+    if (semantic) return semantic;
+    return scoreIntentKeywords(text);
+  }
+
+  // Kick off model loading immediately so it's ready by the time the user types
+  nlp.load();
+  // ─────────────────────────────────────────────────────────────────────────────
 
   function detectIndustry(text) {
     const t = clean(text);
@@ -724,13 +852,17 @@
     return [
       "AI Receptionist Lead",
       `Business: ${l.business || "—"}`,
+      `Sector / Occupation: ${l.sector || state.memory.sector || "—"}`,
+      `Detected industry: ${state.memory.industry || "—"}`,
       `Business stage: ${l.stage || state.memory.businessStage || "—"}`,
+      `Team size: ${l.employees || "—"}`,
+      `Monthly revenue range: ${l.revenue || "—"}`,
       `Interested service: ${l.service || "—"}`,
       `Bot recommendation: ${state.memory.lastRecommendedService || "—"}`,
       `Goal / problem: ${l.goal || "—"}`,
+      `Pain points: ${l.painPoints || state.memory.painPoints.join(", ") || "—"}`,
       `Budget: ${l.budget || "—"}`,
       `Timeline: ${l.urgency || "—"}`,
-      `Detected industry: ${state.memory.industry || "—"}`,
       `Lead quality: ${calculateLeadScore()}`,
       `Objection / hesitation: ${l.objection || state.memory.lastObjection || "—"}`,
       `Recommended admin next step: ${adminNextStep()}`,
@@ -763,62 +895,184 @@
 
     bot(
       [
-        "Here’s what I’m going to send over:",
+        "Here\u2019s what I\u2019m sending to RE IMAGE:",
         "",
         `Name: ${l.name}`,
         `Email: ${l.email}`,
         `Phone: ${l.phone}`,
         `Business: ${l.business}`,
-        `Business stage: ${l.stage || state.memory.businessStage || "Not sure"}`,
+        `Sector: ${l.sector || "\u2014"}`,
+        `Team size: ${l.employees || "\u2014"}`,
+        `Revenue range: ${l.revenue || "\u2014"}`,
+        `Stage: ${l.stage || state.memory.businessStage || "Not sure"}`,
         `Service: ${l.service}`,
         `Goal: ${l.goal}`,
+        `Pain points: ${l.painPoints || "\u2014"}`,
         `Budget: ${l.budget || "Not sure"}`,
         `Timeline: ${l.urgency || "Not sure"}`,
         `Lead quality: ${calculateLeadScore()}`
       ].join("\n"),
-      ["Confirm", "Change service", "Open form"]
+      ["Confirm & Send", "Change service", "Open form"]
     );
 
     state.step = "confirm";
   }
 
+  // \u2500\u2500 Sector / occupation helpers \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+  const SECTOR_CHIPS = [
+    "Restaurant / Food",
+    "Beauty / Salon / Spa",
+    "Auto / Body Shop",
+    "Contractor / Trades",
+    "Medical / Health",
+    "Retail / E-commerce",
+    "Professional Services",
+    "Rental / Fleet",
+    "Other"
+  ];
+
+  function sectorFromChip(value) {
+    const t = clean(value);
+    if (t.includes("restaurant") || t.includes("food")) return "restaurant";
+    if (t.includes("beauty") || t.includes("salon") || t.includes("spa")) return "beauty";
+    if (t.includes("auto") || t.includes("body")) return "auto";
+    if (t.includes("contractor") || t.includes("trade")) return "contractor";
+    if (t.includes("medical") || t.includes("health")) return "medical";
+    if (t.includes("retail") || t.includes("ecommerce") || t.includes("e-commerce")) return "retail";
+    if (t.includes("professional") || t.includes("consulting") || t.includes("agency")) return "professional";
+    if (t.includes("rental") || t.includes("fleet")) return "rental";
+    return "";
+  }
+
+  function budgetChips() {
+    const svc = clean(state.lead.service || state.memory.serviceInterest || "");
+    if (svc.includes("automation") || svc.includes("full scale")) {
+      return ["Under $500/mo", "$500\u2013$1,000/mo", "$1,000\u2013$2,500/mo", "$2,500+/mo"];
+    }
+    if (svc.includes("social")) {
+      return ["$99/week", "$149 per reel", "$399 for 3 reels", "Not sure"];
+    }
+    if (svc.includes("website")) {
+      return ["Under $1,000", "$1,000\u2013$3,000", "$3,000\u2013$6,000", "Not sure yet"];
+    }
+    return ["Not sure", "$100\u2013$500", "$500\u2013$1,500", "$1,500+"];
+  }
+
+  function painPointChips() {
+    const ind = state.memory.industry || sectorFromChip(state.lead.sector || "");
+    if (ind === "beauty" || ind === "medical") {
+      return ["Not enough bookings", "Missing calls", "Weak social media", "No online reviews", "Hard to follow up"];
+    }
+    if (ind === "restaurant") {
+      return ["Low foot traffic", "No online ordering", "Weak social content", "Missing calls", "No loyalty system"];
+    }
+    if (ind === "auto" || ind === "contractor") {
+      return ["Missing quote requests", "Slow follow-up", "No online presence", "Missing calls", "Hard to collect payments"];
+    }
+    return ["Not enough leads", "Missing calls", "Weak website", "Poor social media", "Too much manual admin"];
+  }
+  // \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+
   async function handleLeadStep(text) {
     const value = String(text || "").trim();
 
     if (state.step === "name") {
-      if (value.length < 2) return bot("I need your name before I can send the request.");
+      if (value.length < 2) return bot("I need your full name to send the request.");
       state.lead.name = value;
       state.step = "email";
-      return bot("Thanks. What email should RE IMAGE use to contact you?");
+      return bot(`Nice to meet you, ${value.split(" ")[0]}! What email address should RE IMAGE use to reach you?`);
     }
 
     if (state.step === "email") {
-      if (!validateEmail(value)) return bot("Please enter a valid email address.");
+      if (!validateEmail(value)) return bot("That doesn\u2019t look quite right \u2014 can you double-check your email address?");
       state.lead.email = value;
       state.step = "phone";
-      return bot("What phone number should RE IMAGE use?");
+      return bot("And what\u2019s the best phone number for RE IMAGE to call or text?");
     }
 
     if (state.step === "phone") {
-      if (!validatePhone(value)) return bot("Please enter a valid phone number with area code.");
+      if (!validatePhone(value)) return bot("Please include your area code \u2014 I need at least 10 digits.");
       state.lead.phone = value;
       state.step = "business";
-      return bot("What’s the business name? If you do not have one yet, you can say “not yet.”");
+      return bot("What\u2019s your business name? If you haven\u2019t named it yet, just say \"not yet.\"");
     }
 
     if (state.step === "business") {
       state.lead.business = value;
       state.memory.businessType = value;
+
+      if (state.memory.industry) {
+        state.lead.sector = state.memory.industry;
+        state.memory.sector = state.memory.industry;
+        state.step = "stage";
+        return bot("Is this a new business you\u2019re building, or an existing one you\u2019re trying to grow?", ["New business", "Existing business"]);
+      }
+
+      state.step = "sector";
+      return bot("What sector or industry is your business in?", SECTOR_CHIPS);
+    }
+
+    if (state.step === "sector") {
+      state.lead.sector = value;
+      state.memory.sector = value;
+      const detected = sectorFromChip(value) || detectIndustry(value);
+      if (detected) state.memory.industry = detected;
+
+      if (clean(value) === "other") {
+        state.step = "sectorOther";
+        return bot("No problem \u2014 can you briefly describe what your business does?");
+      }
+
       state.step = "stage";
-      return bot("Is this a new business or an existing business?", ["New business", "Existing business"]);
+      return bot("Got it. Is this a new business or an existing one you\u2019re looking to grow?", ["New business", "Existing business"]);
+    }
+
+    if (state.step === "sectorOther") {
+      state.lead.sector = value;
+      state.memory.sector = value;
+      const detected = detectIndustry(value);
+      if (detected) state.memory.industry = detected;
+      state.step = "stage";
+      return bot("Got it. Is this a new business or an existing one?", ["New business", "Existing business"]);
     }
 
     if (state.step === "stage") {
       const stage = detectBusinessStage(value) || (clean(value).includes("new") ? "New business / starting from scratch" : "Existing business / improving current setup");
       state.lead.stage = stage;
       state.memory.businessStage = stage;
+      state.step = "employees";
+      return bot("How big is your team right now?", ["Just me", "2\u20135 people", "6\u201315 people", "16+ people"]);
+    }
+
+    if (state.step === "employees") {
+      state.lead.employees = value;
+      const isNew = clean(state.lead.stage).includes("new");
+      if (isNew) {
+        state.lead.revenue = "Pre-revenue / not launched";
+        state.step = "painPoints";
+        return bot("What\u2019s the biggest challenge you\u2019re trying to solve right now?", painPointChips());
+      }
+      state.step = "revenue";
+      return bot("Roughly what\u2019s your current monthly revenue? This helps RE IMAGE tailor the right solution.", ["Under $5K/mo", "$5K\u2013$15K/mo", "$15K\u2013$50K/mo", "$50K+/mo", "Prefer not to say"]);
+    }
+
+    if (state.step === "revenue") {
+      state.lead.revenue = value;
+      state.step = "painPoints";
+      return bot("What\u2019s the biggest challenge holding your business back right now?", painPointChips());
+    }
+
+    if (state.step === "painPoints") {
+      state.lead.painPoints = value;
+      state.memory.painPoints.push(value);
       state.step = "service";
-      return bot("Which service are you most interested in?", serviceChips());
+      const autoKey = recommendService();
+      const autoService = SERVICES[autoKey];
+      state.memory.lastRecommendedService = autoService.label;
+      return bot(
+        `Based on that, ${autoService.label} sounds like the strongest starting point for you.\n\n${autoService.summary}\n\nDoes that sound right, or would you like a different service?`,
+        [...serviceChips().filter(s => s !== autoService.label).slice(0, 4), `Yes, ${autoService.label}`]
+      );
     }
 
     if (state.step === "service") {
@@ -826,22 +1080,20 @@
       state.lead.service = key ? SERVICES[key].label : value;
       state.memory.serviceInterest = state.lead.service;
       state.step = "goal";
-      return bot(
-        "What are you trying to accomplish? Example: get more leads, rebuild your website, add an AI receptionist, manage social media, automate intake, get business funding, or clean up operations."
-      );
+      return bot(`Great choice. In one or two sentences, what\u2019s the main outcome you\u2019re hoping for with ${state.lead.service}?`);
     }
 
     if (state.step === "goal") {
       state.lead.goal = value;
       state.memory.problem = value;
       state.step = "budget";
-      return bot("Do you have a target budget, or are you not sure yet?", ["Not sure", "$100-$300", "$300-$750", "$750+"]);
+      return bot("What\u2019s your budget for this? Pick the range that fits best.", budgetChips());
     }
 
     if (state.step === "budget") {
       state.lead.budget = value;
       state.step = "urgency";
-      return bot("When are you hoping to start?", ["ASAP", "This week", "This month", "Just researching"]);
+      return bot("When are you hoping to get started?", ["ASAP \u2014 this week", "This month", "Next 1\u20133 months", "Just exploring for now"]);
     }
 
     if (state.step === "urgency") {
@@ -850,23 +1102,21 @@
     }
 
     if (state.step === "confirm") {
-      if (/confirm|yes|send|submit|ok/i.test(value)) {
+      if (/confirm|send|yes|submit|ok/i.test(value)) {
         try {
           state.busy = true;
           await saveLead();
           state.busy = false;
           state.step = null;
-
           return bot(
-            "Perfect — I sent your request to RE IMAGE. Someone can review it and follow up with the next step.",
+            `Perfect \u2014 your request is on its way to RE IMAGE. Someone will review it and follow up at ${state.lead.email} or ${state.lead.phone}.\n\nIs there anything else I can help you with?`,
             ["Client portal", "New project", "Phone number", "Email"]
           );
         } catch (e) {
           console.error("RE IMAGE receptionist lead failed", e);
           state.busy = false;
-
           return bot(
-            "I had trouble sending that request from the widget. Please use the Start With Us form and your details will still go through.",
+            "I had trouble sending from the widget. Please use the Start With Us form \u2014 your details will still reach RE IMAGE.",
             ["Open form", "Phone number", "Email"]
           );
         }
@@ -874,7 +1124,7 @@
 
       if (/change|service/i.test(value)) {
         state.step = "service";
-        return bot("No problem. Which service should I change it to?", serviceChips());
+        return bot("No problem \u2014 which service would you like instead?", serviceChips());
       }
 
       if (/open form|form/i.test(value)) {
@@ -882,7 +1132,7 @@
         return;
       }
 
-      return bot("Type Confirm to send it, Change service to edit it, or Open form to use the full form.");
+      return bot("Type \"Confirm & Send\" to submit, \"Change service\" to edit, or \"Open form\" to use the full form.");
     }
   }
 
@@ -938,20 +1188,56 @@
     return false;
   }
 
-  function handleInput(raw) {
+  // Typing indicator helpers
+  function showTyping() {
+    const body = document.querySelector(".reibot-body");
+    if (!body || document.getElementById("reibot-typing")) return;
+    const row = document.createElement("div");
+    row.id = "reibot-typing";
+    row.className = "reibot-msg";
+    row.innerHTML = `
+      <div class="reibot-avatar">RI</div>
+      <div class="reibot-bubble" style="padding:14px 16px;">
+        <span style="display:inline-flex;gap:4px;align-items:center;">
+          <span style="width:7px;height:7px;border-radius:50%;background:#2ba3b8;animation:reidot 1s infinite 0s"></span>
+          <span style="width:7px;height:7px;border-radius:50%;background:#2ba3b8;animation:reidot 1s infinite .2s"></span>
+          <span style="width:7px;height:7px;border-radius:50%;background:#2ba3b8;animation:reidot 1s infinite .4s"></span>
+        </span>
+      </div>`;
+    if (!document.getElementById("reidot-style")) {
+      const s = document.createElement("style");
+      s.id = "reidot-style";
+      s.textContent = "@keyframes reidot{0%,80%,100%{opacity:.2;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}";
+      document.head.appendChild(s);
+    }
+    body.appendChild(row);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  function hideTyping() {
+    const el = document.getElementById("reibot-typing");
+    if (el) el.remove();
+  }
+
+  async function handleInput(raw) {
     const text = String(raw || "").trim();
     if (!text || state.busy) return;
 
+    state.busy = true;
     user(text);
 
     const input = document.querySelector(".reibot-input");
     if (input) input.value = "";
 
-    if (routeChip(text)) return;
-    if (state.step) return handleLeadStep(text);
+    if (routeChip(text)) { state.busy = false; return; }
+    if (state.step) { state.busy = false; return handleLeadStep(text); }
 
-    const intent = scoreIntent(text);
+    // Show typing dots while semantic model classifies (usually < 200 ms once loaded)
+    showTyping();
+    const intent = await scoreIntent(text);
+    hideTyping();
     updateMemory(text, intent);
+    state.busy = false;
 
     if (intent === "profanity") {
       return bot(profanityReply(), ["Pricing", "Services", "Client portal", "Business Funding", "Start a project"]);
@@ -1111,7 +1397,7 @@
           <div class="reibot-logo"><img src="${CONFIG.logo}" alt=""></div>
           <div>
             <div class="reibot-title">RE IMAGE Assistant</div>
-            <div class="reibot-sub">Service guidance + lead intake</div>
+            <div class="reibot-sub" id="reibot-sub-status">Service guidance + lead intake</div>
           </div>
         </div>
         <button class="reibot-x" type="button" aria-label="Close">×</button>
@@ -1148,6 +1434,18 @@
           "Hi — welcome to RE IMAGE Business Solutions. I can help you choose a service, explain pricing, talk about the client portal, business funding, or collect your project details. What are you trying to build or improve?",
           mainChips()
         );
+      }
+
+      // Show NLP loading status in subtitle
+      const sub = document.getElementById("reibot-sub-status");
+      if (sub && !nlp.ready) {
+        sub.textContent = "Loading smart replies…";
+        const poll = setInterval(() => {
+          if (nlp.ready) {
+            sub.textContent = "Service guidance + lead intake";
+            clearInterval(poll);
+          }
+        }, 500);
       }
 
       setTimeout(() => input && input.focus(), 50);
