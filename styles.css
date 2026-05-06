@@ -3029,3 +3029,19 @@ main > .section:has(.section-head) .section-head p {
 #business-funding .section-sub {
   margin-bottom: 4rem;
 }
+@media (max-width: 768px) {
+  .hero-microproof {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.65rem;
+  }
+
+  .hero-microproof span {
+    width: auto;
+    max-width: 92vw;
+    font-size: 0.72rem;
+    padding: 0.65rem 0.85rem;
+    letter-spacing: 0.06em;
+  }
+}
