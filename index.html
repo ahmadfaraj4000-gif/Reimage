@@ -64,7 +64,25 @@
 </nav>
 <!-- HERO -->
 <section class="hero" id="home">
-<div class="hero-inner luxury-hero">
+
+  <!-- Premium Background Effects -->
+  <div class="hero-grid-bg"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-vignette"></div>
+
+  <!-- Spotlights -->
+  <div class="hero-spotlight spotlight-one"></div>
+  <div class="hero-spotlight spotlight-two"></div>
+  <div class="hero-spotlight spotlight-three"></div>
+
+  <!-- Floating Dust -->
+  <div class="hero-dust">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- Main Hero Content -->
+  <div class="hero-inner luxury-hero">
 <div class="hero-content fade-up luxury-copy">
 <div class="hero-badge">Business Growth Solutions</div>
 <div class="hero-kicker">Luxury positioning. Revenue-minded execution.</div>
@@ -1103,5 +1121,39 @@ document.addEventListener('keydown', function(e){
 })();
 </script>
 <script src="ai-receptionist.js"></script>
+<script>
+  const reimageHero = document.querySelector('.hero');
+
+  if (reimageHero) {
+    reimageHero.addEventListener('mousemove', function (e) {
+      const rect = reimageHero.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+      reimageHero.style.setProperty('--mx', x + '%');
+      reimageHero.style.setProperty('--my', y + '%');
+    });
+
+    reimageHero.addEventListener('mouseleave', function () {
+      reimageHero.style.setProperty('--mx', '50%');
+      reimageHero.style.setProperty('--my', '45%');
+    });
+
+    window.addEventListener('scroll', function () {
+      const scrollY = window.scrollY;
+      const heroInner = reimageHero.querySelector('.hero-inner');
+      const cardOne = reimageHero.querySelector('.float-card-one');
+      const cardTwo = reimageHero.querySelector('.float-card-two');
+      const cardThree = reimageHero.querySelector('.float-card-three');
+
+      if (scrollY < window.innerHeight) {
+        if (heroInner) heroInner.style.transform = `translateY(${scrollY * 0.04}px)`;
+        if (cardOne) cardOne.style.transform = `translateY(${scrollY * -0.08}px)`;
+        if (cardTwo) cardTwo.style.transform = `translateY(${scrollY * -0.05}px)`;
+        if (cardThree) cardThree.style.transform = `translateY(${scrollY * -0.07}px)`;
+      }
+    });
+  }
+</script>
 </body>
 </html>
