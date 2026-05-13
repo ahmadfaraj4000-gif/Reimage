@@ -145,7 +145,8 @@
     howAreYou: ["how are you", "how you doing", "how's it going", "whats up", "what's up"],
     contactPhone: ["phone", "phone number", "call", "number", "telephone", "contact number"],
     contactEmail: ["email", "e-mail", "mail"],
-    portal: ["portal", "client portal", "login", "log in", "sign in", "account", "dashboard", "message", "service request"],
+    portal: ["portal", "client portal", "login", "log in", "sign in", "sign up", "create account", "account", "dashboard", "message", "service request"],
+    existingClient: ["already a client", "current client", "i am a client", "i'm a client", "im a client", "existing client", "have an account", "my account"],
     pricing: ["price", "pricing", "cost", "how much", "monthly", "per month", "week", "quote", "estimate"],
     website: ["website", "site", "webpage", "landing page", "seo", "google", "domain", "redesign", "online presence"],
     social: ["social", "instagram", "facebook", "tiktok", "reel", "reels", "content", "caption", "posting"],
@@ -288,6 +289,7 @@
     contactPhone:              "asking for a phone number or how to call",
     contactEmail:              "asking for an email address",
     portal:                    "asking about the client portal, login, dashboard, or account access",
+    existingClient:            "saying they are already a client or already have an account",
     pricing:                   "asking about price, cost, how much something costs, or getting a quote",
     website:                   "asking about building or improving a website, landing page, or online presence",
     social:                    "asking about social media, Instagram, Facebook, reels, or content creation",
@@ -498,6 +500,7 @@
   function shouldUseBusinessContext(text) {
     const t = clean(text);
     if (!detectIndustry(t)) return false;
+    if (mentionedServiceKeys(t).length) return false;
 
     const directQuestionIntents = [
       INTENTS.pricing,
@@ -505,10 +508,50 @@
       INTENTS.contactEmail,
       INTENTS.portal,
       INTENTS.careers,
-      INTENTS.start
+      INTENTS.start,
+      INTENTS.website,
+      INTENTS.social,
+      INTENTS.phone,
+      INTENTS.webbot,
+      INTENTS.automation,
+      INTENTS.growth,
+      INTENTS.full,
+      INTENTS.funding
     ];
 
     return !directQuestionIntents.some((words) => includesAny(t, words));
+  }
+
+  function isPricingQuestion(text) {
+    return includesAny(text, INTENTS.pricing) || /\b(how much|cost|price|pricing|quote|estimate)\b/i.test(text);
+  }
+
+  function isStartRequest(text) {
+    return includesAny(text, INTENTS.start) || /\b(sign me up|let'?s do it|move forward|submit|send request)\b/i.test(text);
+  }
+
+  function isContactQuestion(text) {
+    return includesAny(text, INTENTS.contactPhone) || includesAny(text, INTENTS.contactEmail) || includesAny(text, INTENTS.portal);
+  }
+
+  function isUrgentRequest(text) {
+    return includesAny(text, INTENTS.urgent);
+  }
+
+  function shouldInterruptStep(text) {
+    const t = clean(text);
+    if (!state.step || state.step === "confirm") return false;
+    if (isStartRequest(t) || isContactQuestion(t) || isPricingQuestion(t)) return true;
+    if (/\b(actually|i meant|instead|not that|change it|switch)\b/i.test(t) && mentionedServiceKeys(t).length) return true;
+    if (mentionedServiceKeys(t).length && !["service", "websiteType"].includes(state.step)) return true;
+    return false;
+  }
+
+  function pricingChipsForActiveService() {
+    const keys = activeServiceKeys();
+    if (keys.includes("website")) return ["Static Website", "Dynamic Website", "Start a project", "Not sure"];
+    if (isReceptionistService(keys)) return ["Starter", "Growth", "Pro", "Start a project"];
+    return ["Start a project", "Help me choose", "Other services"];
   }
 
   function describeBusinessContext() {
@@ -782,9 +825,10 @@
 
   function planKeyFromText(text) {
     const t = clean(text);
-    if (t.includes("starter")) return "starter";
-    if (t.includes("growth")) return "growth";
-    if (t.includes("pro")) return "pro";
+    const isReceptionistContext = t.includes("receptionist") || t.includes("chatbot") || t.includes("chat bot") || t.includes("ai plan") || t.includes("plan");
+    if (t === "starter" || (t.includes("starter") && isReceptionistContext)) return "starter";
+    if (t === "growth" || (t.includes("growth") && isReceptionistContext && !t.includes("foundation"))) return "growth";
+    if (t === "pro" || (t.includes("pro") && isReceptionistContext)) return "pro";
     return "";
   }
 
@@ -818,6 +862,10 @@
     ].join("\n");
   }
 
+  function shortWebsitePricing() {
+    return "Website pricing starts at $99 down + $29.99/month for a Static Website, or $249.99 down + $49.99/month for a Dynamic Website.";
+  }
+
   function websiteQualifierReply() {
     state.salesStage = "qualification";
     state.step = "websiteType";
@@ -825,12 +873,128 @@
     setLastQuestion("websiteType");
 
     return [
-      allWebsitePlanPricing(),
+      shortWebsitePricing(),
+      "",
+      memoryAcknowledgement(),
       "",
       "To point you toward the right website setup, which sounds closer to what you need?",
       "",
-      "Static is best if you need a clean professional site fast. Dynamic is better if you need SEO, analytics, campaigns, CMS-style updates, client portals, admin portals, Supabase integration, backend-connected forms, or more flexible content."
+      "Static is best if you need a clean professional site fast. Dynamic is better if you need SEO, analytics, campaigns, frequent updates, booking/forms, payments, portals, or backend-connected features."
     ].join("\n");
+  }
+
+  function websiteBusinessIntroReply(text) {
+    state.salesStage = "qualification";
+    state.step = "websiteType";
+    setCurrentServices(["website"]);
+    setCurrentProblem(text);
+    setLastQuestion("websiteType");
+
+    const industry = describeIndustry();
+    const spaLine = state.memory.industry === "beauty"
+      ? "For a spa or beauty business, the site should make services, booking, reviews, photos, gift cards, and trust easy to find."
+      : `For ${industry}, the site should make the offer clear, show proof, work well on mobile, and give customers an easy next step.`;
+
+    const lines = [
+      `Got it. You need Website Development for ${industry}.`,
+      "",
+      spaLine,
+      "",
+      shortWebsitePricing(),
+      "",
+      "The first thing I would narrow down is the website setup:",
+      "",
+      "Static Website: best for a clean professional site with mostly fixed pages.",
+      "Dynamic Website: better if you need SEO, analytics, campaigns, frequent updates, booking/form flows, portals, payments, or backend-connected features.",
+      "",
+      "Which sounds closer to what you need?"
+    ];
+
+    if (isUrgentRequest(text)) {
+      lines.push("", "Since you need this quickly, you can also start a request now and RE IMAGE can follow up with the right website path.");
+    }
+
+    return lines.join("\n");
+  }
+
+  function memoryAcknowledgement() {
+    const pieces = [];
+    const industry = state.memory.industry ? describeIndustry() : "";
+    const service = state.memory.serviceInterest || state.memory.lastRecommendedService;
+    const problem = summarizeProblem(state.memory.currentProblem || state.memory.problem);
+    const stage = state.memory.businessStage;
+
+    if (industry && service) pieces.push(`Since this is ${service} for ${industry}, I will keep the recommendation focused on that.`);
+    else if (industry) pieces.push(`Since this is for ${industry}, I will keep the recommendation practical for that business type.`);
+    else if (service) pieces.push(`Since you mentioned ${service}, I will keep this focused there.`);
+
+    if (stage) pieces.push(`You also mentioned this is ${stage.toLowerCase()}.`);
+    if (problem) pieces.push(`The main goal sounds like ${problem}.`);
+
+    return pieces.join(" ") || "I will keep this focused on the clearest next step.";
+  }
+
+  function serviceDiscoveryQuestion(key) {
+    const industry = state.memory.industry || state.memory.currentIndustry;
+
+    if (industry === "beauty") {
+      if (key === "website" || key === "growth" || key === "full") return "For a spa or beauty business, should the first priority be booking, services/menu clarity, reviews, photos, gift cards, or follow-up?";
+      if (key === "social") return "For beauty content, do you need service photos, short reels, model/client transformations, offer posts, or a consistent posting plan?";
+      if (key === "automation" || key === "webbot" || key === "phone") return "Are you mostly trying to handle booking questions, missed calls, service questions, gift cards, or follow-up after inquiries?";
+    }
+
+    if (industry === "restaurant") {
+      if (key === "website" || key === "growth" || key === "full") return "For a restaurant or food business, should the first priority be menu clarity, online ordering, local SEO, catering requests, or customer follow-up?";
+      if (key === "social") return "For food content, do you need menu highlights, specials, short videos, event/catering posts, or consistent weekly posting?";
+      if (key === "automation" || key === "webbot" || key === "phone") return "Are you mostly trying to handle menu questions, online orders, catering requests, missed calls, or customer follow-up?";
+    }
+
+    if (industry === "contractor") {
+      if (key === "website" || key === "growth" || key === "full") return "For a contractor or trades business, should the first priority be quote requests, before/after gallery, local SEO, missed calls, or follow-up after estimates?";
+      if (key === "social") return "For contractor content, do you need before/after projects, proof of work, service explainers, reviews, or consistent local visibility?";
+      if (key === "automation" || key === "webbot" || key === "phone") return "Are you mostly trying to handle quote requests, missed calls, estimate follow-up, scheduling, or customer questions?";
+    }
+
+    if (industry === "auto") {
+      if (key === "website" || key === "growth" || key === "full") return "For an auto business, should the first priority be estimate forms, before/after galleries, local search, service pages, missed calls, or review building?";
+      if (key === "social") return "For auto content, do you need before/after work, service videos, customer trust posts, offers, or consistent local visibility?";
+      if (key === "automation" || key === "webbot" || key === "phone") return "Are you mostly trying to handle estimate requests, missed calls, service questions, appointment flow, or follow-up?";
+    }
+
+    if (key === "website") return "Do you need a simple site, or a site with booking, payments, forms, SEO, or frequent updates?";
+    if (key === "funding") return "Is the funding for startup costs, expansion, equipment, payroll, marketing, or operating cash flow?";
+    if (key === "social") return "Do you need content creation, posting management, reels, or a full content plan?";
+    if (key === "automation") return "What are you still doing manually that you wish happened automatically?";
+    if (key === "phone") return "Are you mainly trying to stop missed calls, qualify callers, book appointments, or route calls better?";
+    if (key === "webbot") return "Should the website receptionist mostly answer questions, collect leads, book appointments, or route service requests?";
+    if (key === "growth") return "Are you still shaping the offer, setting up your online presence, or trying to get your first steady customers?";
+    if (key === "full") return "Do you need everything built around customer intake, payments, portal access, admin workflows, or follow-up?";
+    return "What outcome matters most right now?";
+  }
+
+  function serviceBusinessIntroReply(key, text) {
+    const service = SERVICES[key];
+    if (!service) return fallbackReply();
+
+    if (key === "website") return websiteBusinessIntroReply(text);
+
+    setCurrentServices([key]);
+    setCurrentProblem(text);
+
+    const industry = describeIndustry();
+    const lines = [
+      `Got it. You need ${service.label} for ${industry}.`,
+      "",
+      service.summary,
+      "",
+      serviceDiscoveryQuestion(key)
+    ];
+
+    if (isUrgentRequest(text)) {
+      lines.push("", "Since you need this quickly, starting a request now is the fastest way to get the details in front of RE IMAGE.");
+    }
+
+    return lines.join("\n");
   }
 
   function recommendWebsitePlan() {
@@ -1032,16 +1196,27 @@
     }
 
     state.awaitingPricingChoice = false;
+    setCurrentServices([key]);
     if (key === "webbot" || key === "phone") return allReceptionistPlanPricing();
-    if (key === "website") return allWebsitePlanPricing();
+    if (key === "website") return shortWebsitePricing();
     return SERVICES[key].price;
   }
 
   function salesPricingReply(text) {
+    const directWebsitePlan = websitePlanKeyFromText(text);
+    const directReceptionistPlan = planKeyFromText(text);
     const price = pricingReply(text);
     const keys = activeServiceKeys();
 
     if (state.awaitingPricingChoice) return price;
+
+    if (directWebsitePlan || directReceptionistPlan) {
+      return [
+        price,
+        "",
+        "Do you want to start a request with that option, or compare it with another setup?"
+      ].join("\n");
+    }
 
     if (keys.includes("website")) return websiteQualifierReply();
 
@@ -1109,6 +1284,8 @@
       lines.push("", websiteRecommendation);
     }
 
+    lines.push("", packageRecommendationReply());
+
     lines.push(
       "",
       quality === "Hot"
@@ -1155,23 +1332,212 @@
     return key;
   }
 
-  function recommendationReply() {
-    const key = recommendService();
-    const service = SERVICES[key];
+  function recommendPackageKey() {
+    const keys = activeServiceKeys();
+    const stage = state.memory.businessStage;
+    const problem = clean([
+      state.memory.primaryPainPoint,
+      state.memory.problem,
+      state.memory.currentProblem,
+      state.memory.businessType,
+      state.lead.goal,
+      state.lead.painPoints
+    ].join(" "));
 
+    const wantsSystem = (
+      keys.length >= 2 ||
+      keys.includes("full") ||
+      problem.includes("everything") ||
+      problem.includes("full") ||
+      problem.includes("system") ||
+      problem.includes("portal") ||
+      problem.includes("admin") ||
+      problem.includes("client flow") ||
+      problem.includes("workflow") ||
+      (problem.includes("website") && (problem.includes("automation") || problem.includes("follow") || problem.includes("missed") || problem.includes("booking")))
+    );
+
+    if (wantsSystem) return "full";
+    if (stage === "New business / starting from scratch" || keys.includes("growth")) return "growth";
+    if (keys.includes("funding")) return "growth";
+    return serviceKeyFromText(state.memory.lastRecommendedService || state.memory.serviceInterest || "") || recommendService();
+  }
+
+  function packageRecommendationReply() {
+    const key = recommendPackageKey();
+
+    if (key === "full") {
+      state.memory.lastRecommendedService = SERVICES.full.label;
+      return [
+        "This sounds like Full Scale System because you need the pieces working together, not handled separately.",
+        "That is usually the better fit when the need includes website, automation, lead capture, follow-up, portal/admin flow, or a full customer journey."
+      ].join("\n");
+    }
+
+    if (key === "growth") {
+      state.memory.lastRecommendedService = SERVICES.growth.label;
+      return [
+        "Based on that, I would start with Growth Foundation.",
+        "That is usually the strongest first move when the business needs clearer positioning, online presence, lead flow, and a practical growth plan before stacking on more tools."
+      ].join("\n");
+    }
+
+    const service = SERVICES[key] || SERVICES[recommendService()];
+    return [
+      `Based on that, I would start with ${service.label}.`,
+      service.summary
+    ].join("\n");
+  }
+
+  function recommendationReply() {
     const industryLine = state.memory.industry
       ? `Since you operate a ${state.memory.industry} business, `
       : "Based on what you said, ";
 
     return [
-      `${industryLine}I would start with ${service.label}.`,
+      `${industryLine}here is the path I would look at first.`,
       "",
-      service.summary,
+      packageRecommendationReply(),
       "",
       bundleReply(),
       "",
-      "After that, RE IMAGE can decide if you also need social media, AI receptionist support, automation, business funding, or a full system build."
+      serviceDiscoveryQuestion(recommendPackageKey()),
+      "",
+      "Does that sound right, or is there one specific part you want to focus on first?"
     ].join("\n");
+  }
+
+  function serviceIntentReply(intent) {
+    const map = {
+      website: "website",
+      social: "social",
+      phone: "phone",
+      webbot: "webbot",
+      automation: "automation",
+      growth: "growth",
+      full: "full",
+      funding: "funding"
+    };
+
+    const key = map[intent];
+    const service = SERVICES[key];
+    if (!service) return fallbackReply();
+
+    if (key === "website") {
+      state.salesStage = "qualification";
+      state.step = "websiteType";
+      setCurrentServices(["website"]);
+      setLastQuestion("websiteType");
+
+      return [
+        "Got it. You need a website.",
+        "",
+        shortWebsitePricing(),
+        "",
+        "The first thing I would check is whether this should be a simple professional site or a dynamic site with booking, forms, payments, SEO, portals, or frequent updates.",
+        "",
+        "Which sounds closer?"
+      ].join("\n");
+    }
+
+    setCurrentServices([key]);
+
+    return [
+      `Got it. You are asking about ${service.label}.`,
+      "",
+      service.summary,
+      "",
+      serviceDiscoveryQuestion(key)
+    ].join("\n");
+  }
+
+  function commonPhraseReply(text) {
+    const t = clean(text);
+    const industry = detectIndustry(text);
+    const urgent = isUrgentRequest(text);
+
+    if (/\b(i need|need|want|looking for).{0,20}(website|site|webpage|landing page)\b/i.test(text)) {
+      updateMemory(text, "website");
+      const reply = industry ? websiteBusinessIntroReply(text) : serviceIntentReply("website");
+      return {
+        text: urgent && !industry
+          ? [
+              reply,
+              "",
+              "Since you need this quickly, you can start a request now and RE IMAGE can use the details to follow up faster."
+            ].join("\n")
+          : reply,
+        chips: urgent ? ["Start a project", "Static Website", "Dynamic Website"] : ["Static Website", "Dynamic Website", "Not sure"]
+      };
+    }
+
+    if (t.includes("more customers") || t.includes("more clients") || t.includes("more bookings") || t.includes("more leads")) {
+      setCurrentProblem(text);
+      return {
+        text: [
+          "Got it. The real goal is more customers.",
+          "",
+          packageRecommendationReply(),
+          "",
+          "Usually I would first check the website, booking/request flow, social proof, and follow-up. Which part feels weakest right now?"
+        ].join("\n"),
+        chips: ["Weak website", "Not enough leads", "Poor follow-up", "Social media", "Help me choose"]
+      };
+    }
+
+    if (includesAny(t, INTENTS.existingClient)) {
+      return {
+        text: existingClientReply(),
+        chips: ["Open portal", "Phone number", "Email"]
+      };
+    }
+
+    if (detectBusinessStage(text) === "New business / starting from scratch") {
+      updateMemory(text, "growth");
+      return {
+        text: [
+          "Got it. Since you are starting from scratch, the first move is a clean foundation.",
+          "",
+          "That usually means a clear offer, a professional website or landing page, a lead form or booking path, basic local visibility, and a simple follow-up process.",
+          "",
+          serviceDiscoveryQuestion("growth")
+        ].join("\n"),
+        chips: ["Website", "Growth Foundation", "Help me choose", "Start a project"]
+      };
+    }
+
+    if (includesAny(t, INTENTS.objectionExistingWebsite)) {
+      updateMemory(text, "objectionExistingWebsite");
+      return {
+        text: objectionReply("objectionExistingWebsite"),
+        chips: ["Website audit", "Improve lead flow", "Start a project", "Pricing"]
+      };
+    }
+
+    if (/\b(booking|book appointments|appointment|pay online|payment setup|take payments|forms|lead form|contact form)\b/i.test(text)) {
+      setCurrentServices(["website", "automation"]);
+      setCurrentProblem(text);
+      return {
+        text: [
+          "Yes. RE IMAGE can build those into the website or customer flow.",
+          "",
+          "For booking, payments, and forms, I would usually look at Website Development with automation support so the site does more than sit there.",
+          "",
+          "Do you need booking, payments, forms, or all of those connected together?"
+        ].join("\n"),
+        chips: ["Booking", "Payments", "Forms", "All connected", "Start a project"]
+      };
+    }
+
+    if (/\b(everything|full setup|whole setup|complete system|full system)\b/i.test(text)) {
+      updateMemory(text, "full");
+      return {
+        text: serviceIntentReply("full"),
+        chips: ["Website", "Automation", "Client portal", "Start a project"]
+      };
+    }
+
+    return null;
   }
 
   function portalReply() {
@@ -1181,6 +1547,26 @@
       "Clients can sign in, send service requests, message RE IMAGE, and keep communication organized.",
       "",
       "If you do not have access yet, start with the project request and RE IMAGE can help get your account set up."
+    ].join("\n");
+  }
+
+  function existingClientReply() {
+    return [
+      "Got it. Since you are already a client, the best move is to use the RE IMAGE client portal so your request stays connected to your account.",
+      "",
+      `Portal: ${CONFIG.clientPortalUrl}`,
+      "",
+      "From there you can send service requests, message RE IMAGE, and keep project communication organized."
+    ].join("\n");
+  }
+
+  function portalSignupReply() {
+    return [
+      "One more smart step: create or sign into your RE IMAGE client portal account.",
+      "",
+      "That gives you a cleaner place to track communication, send service requests, and keep the project organized after this intake.",
+      "",
+      `Portal: ${CONFIG.clientPortalUrl}`
     ].join("\n");
   }
 
@@ -1269,32 +1655,34 @@
   function objectionReply(intent) {
     if (intent === "objectionPrice") {
       return [
-        "I understand. The goal is not to sell you something you do not need.",
+        "I understand. The goal is not to sell you something you do not need or overbuild before the business is ready.",
         "",
-        "RE IMAGE can help figure out the most important first step, whether that is a simple website improvement, social media support, automation, funding guidance, or a larger system later.",
+        "RE IMAGE can help figure out the highest-impact first step, whether that is Growth Foundation, a focused website improvement, automation, funding guidance, or a larger system later.",
         "",
-        "If budget is tight, the best move is to start with the service that creates the fastest return."
+        "If budget is tight, the best move is to start with the part most likely to improve lead flow, trust, or follow-up first. Want me to help narrow that down?"
       ].join("\n");
     }
 
     if (intent === "objectionThink") {
       return [
-        "That makes sense. A good next step is to send the basic details now so RE IMAGE can understand what you are considering.",
+        "That makes sense. You should not rush into a system if the next step is not clear.",
         "",
-        "No pressure — it just gives you a clearer starting point when you are ready."
+        "A useful low-pressure move is to send the basics now so RE IMAGE can review the business, recommend the right starting point, and avoid guessing later.",
+        "",
+        "You can treat it as a clarity request, not a commitment."
       ].join("\n");
     }
 
     if (intent === "objectionExistingWebsite") {
       return [
-        "That actually helps. If you already have a website, RE IMAGE can look at whether it is doing its job:",
+        "That actually helps. If you already have a website, the question is whether it is doing its job as part of the growth system:",
         "",
         "• Is it bringing leads?",
         "• Is it mobile friendly?",
         "• Is it clear what services you offer?",
-        "• Does it connect to forms, booking, payments, or the client portal?",
+        "• Does it connect to forms, booking, payments, follow-up, or the client portal?",
         "",
-        "Sometimes you do not need a brand-new site. You may just need a smarter lead flow."
+        "Sometimes you do not need a brand-new site. You may need a smarter lead flow, better conversion structure, or automation around the site."
       ].join("\n");
     }
 
@@ -1633,10 +2021,18 @@
     state.lead = freshLead();
     hydrateLeadFromMemory(service);
 
+    const summary = [
+      state.lead.service ? `Service: ${state.lead.service}` : "",
+      state.lead.sector ? `Business type: ${state.lead.sector}` : "",
+      state.lead.goal ? `Goal: ${state.lead.goal}` : ""
+    ].filter(Boolean);
+
     state.step = "name";
     bot(
       [
-        "Perfect. I’ll use what you already shared so you don’t have to repeat everything.",
+        summary.length
+          ? `Perfect. I will mark this as ${summary.join(" | ")}.`
+          : "Perfect. I’ll use what you already shared so you don’t have to repeat everything.",
         "",
         "I just need your contact details and any missing basics so RE IMAGE can follow up properly.",
         "",
@@ -1750,26 +2146,6 @@
     const { error } = await supabase.from(CONFIG.tableName).insert([payload]);
     if (error) throw error;
   }
-
-  async function sendCustomerWelcomeEmail() {
-  if (!state.lead.email) return;
-
-  try {
-    await fetch(CONFIG.AI_BACKEND_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        message: "Send welcome email to customer after service request submission.",
-        customer_email: state.lead.email,
-        send_welcome: true
-      })
-    });
-  } catch (error) {
-    console.error("Welcome email failed:", error);
-  }
-}
 
   async function finishLead() {
     const l = state.lead;
@@ -1885,7 +2261,9 @@
       state.step = "employees";
       return bot("How big is your team right now?", ["Just me", "2–5 people", "6–15 people", "16+ people"]);
     }
-    if (!state.lead.revenue && !clean(state.lead.stage).includes("new")) {
+    const service = clean(state.lead.service || state.memory.serviceInterest || "");
+    const needsRevenue = service.includes("funding") || service.includes("full scale");
+    if (needsRevenue && !state.lead.revenue && !clean(state.lead.stage).includes("new")) {
       state.step = "revenue";
       return bot("Roughly what’s your current monthly revenue? This helps RE IMAGE tailor the right solution.", ["Under $5K/mo", "$5K–$15K/mo", "$15K–$50K/mo", "$50K+/mo", "Prefer not to say"]);
     }
@@ -2001,8 +2379,8 @@
       if (!state.lead.service) {
         state.step = "service";
         return bot(
-          `Based on that, ${autoService.label} sounds like the strongest starting point for you.\n\n${autoService.summary}\n\nDoes that sound right, or would you like a different service?`,
-          [...serviceChips().filter(s => s !== autoService.label).slice(0, 4), `Yes, ${autoService.label}`]
+          `${packageRecommendationReply()}\n\nDoes that sound right, or would you like a different service?`,
+          [...serviceChips().filter(s => s !== autoService.label).slice(0, 4), `Yes, ${state.memory.lastRecommendedService}`]
         );
       }
       return askNextLeadQuestion();
@@ -2012,6 +2390,7 @@
       const key = serviceKeyFromText(value);
       state.lead.service = key ? SERVICES[key].label : value;
       state.memory.serviceInterest = state.lead.service;
+      state.memory.lastRecommendedService = state.lead.service;
       return askNextLeadQuestion();
     }
 
@@ -2037,14 +2416,15 @@
           state.busy = true;
           await saveLead();
 
-          // send email in the background, do not make the customer wait
-          sendCustomerWelcomeEmail();
-
           state.busy = false;
           state.step = null;
           return bot(
-            `Perfect \u2014 your request is on its way to RE IMAGE. Someone will review it and follow up at ${state.lead.email} or ${state.lead.phone}.\n\nIs there anything else I can help you with?`,
-            ["Client portal", "New project", "Phone number", "Email"]
+            [
+              `Perfect \u2014 your request is on its way to RE IMAGE. Someone will review it and follow up at ${state.lead.email} or ${state.lead.phone}.`,
+              "",
+              portalSignupReply()
+            ].join("\n"),
+            ["Create portal account", "New project", "Phone number", "Email"]
           );
         } catch (e) {
           console.error("RE IMAGE receptionist lead failed", e);
@@ -2215,13 +2595,83 @@
     }
   }
 
+  async function handleStepInterruption(text) {
+    const correction = correctionReply(text);
+    if (correction) {
+      state.step = null;
+      await smartBot(correction, ["Pricing", "Start a project", "Ask another question"], text);
+      return true;
+    }
+
+    if (isStartRequest(text)) {
+      state.step = null;
+      startLead();
+      return true;
+    }
+
+    if (includesAny(text, INTENTS.contactPhone)) {
+      bot(phoneReply(), ["Start a project", "Email", "Client portal"]);
+      return true;
+    }
+
+    if (includesAny(text, INTENTS.contactEmail)) {
+      bot(emailReply(), ["Start a project", "Phone number", "Client portal"]);
+      return true;
+    }
+
+    if (includesAny(text, INTENTS.portal)) {
+      bot(portalReply(), ["Start a project", "Phone number", "Email"]);
+      return true;
+    }
+
+    if (isPricingQuestion(text)) {
+      await smartBot(salesPricingReply(text), pricingChipsForActiveService(), text);
+      return true;
+    }
+
+    const keys = mentionedServiceKeys(text);
+    if (keys.length > 1) {
+      state.step = null;
+      updateMemory(text, "choose");
+      await smartBot(combinedServicesReply(keys), ["Pricing", "Start a project", "Ask another question"], text);
+      return true;
+    }
+
+    if (keys.length === 1) {
+      state.step = null;
+      updateMemory(text, keys[0]);
+      const chips = keys[0] === "website"
+        ? ["Static Website", "Dynamic Website", "Not sure"]
+        : ["Pricing", "Start a project", "Help me choose"];
+      await smartBot(serviceBusinessIntroReply(keys[0], text), chips, text);
+      return true;
+    }
+
+    return false;
+  }
+
   async function routeChip(label) {
     const t = clean(label);
     const serviceKey = serviceKeyFromText(label, false);
+    const receptionistPlan = planKeyFromText(label);
+    const websitePlan = websitePlanKeyFromText(label);
+
+    if ((receptionistPlan || websitePlan) && !(websitePlan && state.step === "websiteType")) {
+      await smartBot(salesPricingReply(label), receptionistPlan ? ["Start a project", "Growth", "Pro"] : ["Start a project", "Static Website", "Dynamic Website"], label);
+      return true;
+    }
 
     if (state.awaitingPricingChoice && serviceKey) {
       setCurrentServices([serviceKey]);
-      await smartBot(salesPricingReply(label), ["0-5/week", "5-10/week", "10-25/week", "25+/week", "Not sure"], label);
+      await smartBot(
+        [
+          salesPricingReply(label),
+          "",
+          packageRecommendationReply()
+        ].join("\n"),
+        ["0-5/week", "5-10/week", "10-25/week", "25+/week", "Not sure"],
+        label
+      );
       return true;
     }
 
@@ -2249,6 +2699,11 @@
 
     if (t.includes("open careers")) {
       window.location.href = CONFIG.careersUrl;
+      return true;
+    }
+
+    if (t.includes("open portal") || t.includes("create portal account") || t.includes("create account") || t.includes("sign up")) {
+      window.location.href = CONFIG.clientPortalUrl;
       return true;
     }
 
@@ -2286,8 +2741,8 @@
       return true;
     }
 
-    if (t.includes("pricing")) {
-      await smartBot(salesPricingReply(label), ["0-5/week", "5-10/week", "10-25/week", "25+/week", "Not sure"], label);
+    if (isPricingQuestion(label)) {
+      await smartBot(salesPricingReply(label), pricingChipsForActiveService(), label);
       return true;
     }
 
@@ -2346,11 +2801,33 @@
       return smartBot(correction, ["Pricing", "Start a project", "Ask another question"], text);
     }
 
+    const common = commonPhraseReply(text);
+    if (common) {
+      state.busy = false;
+      return smartBot(common.text, common.chips, text);
+    }
+
     const requestedServices = mentionedServiceKeys(text);
     if (requestedServices.length > 1) {
       updateMemory(text, "choose");
       state.busy = false;
       return smartBot(combinedServicesReply(requestedServices), ["Pricing", "Start a project", "Ask another question"], text);
+    }
+
+    if (requestedServices.length === 1 && (detectIndustry(text) || isUrgentRequest(text))) {
+      updateMemory(text, requestedServices[0]);
+      state.busy = false;
+
+      const chips = requestedServices[0] === "website"
+        ? ["Start a project", "Static Website", "Dynamic Website"]
+        : ["Start a project", "Pricing", "Help me choose"];
+
+      return smartBot(serviceBusinessIntroReply(requestedServices[0], text), chips, text);
+    }
+
+    if (state.step && shouldInterruptStep(text)) {
+      state.busy = false;
+      return handleStepInterruption(text);
     }
 
     if (await routeChip(text)) { state.busy = false; return; }
@@ -2378,7 +2855,11 @@
       return bot(urgentReply(), ["Start a project", "Phone number", "Email"]);
     }
 
-    if (detectIndustry(text)) {
+    if (intent === "existingClient") {
+      return bot(existingClientReply(), ["Open portal", "Phone number", "Email"]);
+    }
+
+    if (detectIndustry(text) && !mentionedServiceKeys(text).length) {
       return startDiscovery(text);
     }
 
@@ -2422,7 +2903,7 @@
       case "growth":
       case "full":
       case "funding":
-        return smartBot(serviceReply(intent), ["Pricing", "Start a project", "Help me choose"], text);
+        return smartBot(serviceIntentReply(intent), intent === "website" ? ["Static Website", "Dynamic Website", "Not sure"] : ["Pricing", "Start a project", "Help me choose"], text);
 
       case "choose":
         return smartBot(recommendationReply(), ["Pricing", "Start a project", "Client portal"], text);
