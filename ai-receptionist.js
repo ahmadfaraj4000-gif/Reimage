@@ -422,11 +422,24 @@
   nlp.load();
   // ─────────────────────────────────────────────────────────────────────────────
 
+  function escapeRegExp(value) {
+    return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+
+  function includesPhrase(text, phrase) {
+    const t = clean(text);
+    const p = clean(phrase);
+    if (!p) return false;
+
+    if (p.includes(" ")) return t.includes(p);
+    return new RegExp(`(^|[^a-z0-9])${escapeRegExp(p)}([^a-z0-9]|$)`, "i").test(t);
+  }
+
   function detectIndustry(text) {
     const t = clean(text);
 
     for (const [industry, words] of Object.entries(INDUSTRIES)) {
-      if (words.some((w) => t.includes(w))) return industry;
+      if (words.some((w) => includesPhrase(t, w))) return industry;
     }
 
     const patterns = ["i operate", "i run", "i own", "my business is", "we are a", "we do", "i have a"];
