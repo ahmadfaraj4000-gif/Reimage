@@ -2512,6 +2512,26 @@
     return ["salesMissed", "salesBudget", "salesTimeline", "salesDecision", "websiteType", "websiteUpdates"].includes(state.step);
   }
 
+  function isLeadCaptureStep() {
+    return [
+      "name",
+      "email",
+      "phone",
+      "business",
+      "sector",
+      "sectorOther",
+      "stage",
+      "employees",
+      "revenue",
+      "painPoints",
+      "service",
+      "goal",
+      "budget",
+      "urgency",
+      "confirm"
+    ].includes(state.step);
+  }
+
   async function handleSalesStep(text) {
     const value = String(text || "").trim();
 
@@ -2853,6 +2873,11 @@
 
     const input = document.querySelector(".reibot-input");
     if (input) input.value = "";
+
+    if (isLeadCaptureStep()) {
+      state.busy = false;
+      return handleLeadStep(text);
+    }
 
     const correction = correctionReply(text);
     if (correction) {
