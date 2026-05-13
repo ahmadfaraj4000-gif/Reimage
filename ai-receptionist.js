@@ -1751,6 +1751,26 @@
     if (error) throw error;
   }
 
+  async function sendCustomerWelcomeEmail() {
+  if (!state.lead.email) return;
+
+  try {
+    await fetch(CONFIG.AI_BACKEND_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: "Send welcome email to customer after service request submission.",
+        customer_email: state.lead.email,
+        send_welcome: true
+      })
+    });
+  } catch (error) {
+    console.error("Welcome email failed:", error);
+  }
+}
+
   async function finishLead() {
     const l = state.lead;
 
@@ -2016,6 +2036,7 @@
         try {
           state.busy = true;
           await saveLead();
+          await sendCustomerWelcomeEmail();
           state.busy = false;
           state.step = null;
           return bot(
