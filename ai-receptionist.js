@@ -150,7 +150,7 @@
     pricing: ["price", "pricing", "cost", "how much", "monthly", "per month", "week", "quote", "estimate"],
     website: ["website", "site", "webpage", "landing page", "seo", "google", "domain", "redesign", "online presence"],
     social: ["social", "instagram", "facebook", "tiktok", "reel", "reels", "content", "caption", "posting"],
-    phone: ["phone receptionist", "ai phone", "answer calls", "missed calls", "call answering", "virtual receptionist"],
+    phone: ["phone receptionist", "ai phone", "ai receptionist", "receptionist", "answer calls", "catch calls", "missed calls", "call answering", "virtual receptionist"],
     webbot: ["chatbot", "web receptionist", "website receptionist", "ai chatbot", "chat bot", "website chat"],
     automation: ["automation", "automate", "workflow", "intake", "forms", "follow up", "crm", "admin", "supabase", "stripe"],
     growth: ["growth foundation", "foundation", "starting", "start my business", "new business"],
@@ -641,11 +641,11 @@
   function serviceKeyFromText(text, useMemory = true) {
     const t = clean(text);
 
-    if (t.includes("ai receptionist phone")) return "phone";
-    if (t.includes("ai receptionist")) return "phone";
     if (t.includes("starter ai receptionist") || t === "starter" || t.includes("starter plan")) return "webbot";
     if (t.includes("growth ai receptionist") || t === "growth" || t.includes("growth plan")) return "webbot";
     if (t.includes("pro ai receptionist") || t === "pro" || t.includes("pro plan")) return "webbot";
+    if (t.includes("ai receptionist phone")) return "phone";
+    if (t.includes("ai receptionist")) return "phone";
     if (t.includes("ai web receptionist") || t.includes("web receptionist chatbot")) return "webbot";
     if (t.includes("website development")) return "website";
     if (t.includes("social media management")) return "social";
@@ -869,7 +869,7 @@
   function websiteQualifierReply() {
     state.salesStage = "qualification";
     state.step = "websiteType";
-    setCurrentServices(["website"]);
+    setCurrentServices(["website", ...activeServiceKeys().filter((key) => key !== "website")]);
     setLastQuestion("websiteType");
 
     return [
@@ -1059,6 +1059,11 @@
     const labels = serviceLabels(keys);
     const industry = state.memory.industry;
     const summary = summarizeRequestedServices(keys, state.memory.problem);
+    const includesWebsite = keys.includes("website");
+    const includesPhone = keys.includes("phone");
+    const includesWebbot = keys.includes("webbot");
+    const includesAutomation = keys.includes("automation");
+    const includesFunding = keys.includes("funding");
 
     setCurrentServices(keys);
     state.memory.conversationSummary = summary;
@@ -1083,15 +1088,39 @@
 
     lines.push(
       "",
+      packageRecommendationReply(),
+      "",
       "Suggested sequence:",
+      ""
+    );
+
+    if (includesWebsite && (includesPhone || includesWebbot || includesAutomation)) {
+      lines.push(
+        "1. Scope the website around the services, booking/request flow, trust signals, and calls to action customers need.",
+        "2. Add the AI receptionist layer so missed calls, website questions, and lead details do not slip through.",
+        "3. Connect the intake and follow-up path so the website and receptionist work like one customer flow."
+      );
+    } else if (includesFunding && includesWebsite) {
+      lines.push(
+        "1. Clarify the funding goal and what the money would support.",
+        "2. Scope the website around what customers need to see, order, request, or trust.",
+        "3. Use one plan so the funding conversation and website build support the same growth goal."
+      );
+    } else {
+      lines.push(
+        "1. Clarify the main customer problem.",
+        "2. Decide which service should create the strongest first improvement.",
+        "3. Build the next step around lead flow, trust, and follow-up."
+      );
+    }
+
+    lines.push(
       "",
-      "1. Clarify the funding goal and what the money would support.",
-      "2. Scope the website around what customers need to see, order, request, or trust.",
-      "3. Use one plan so the funding conversation and website build support the same growth goal.",
+      "A good next step is to send one request with the full need so RE IMAGE can review the business, recommended package, and customer flow together.",
       "",
-      "A good next step is to send one request with both needs so RE IMAGE can review the business, funding goal, and website scope together.",
-      "",
-      "Do you want pricing first, or should I ask a few quick questions so I can point you toward the best starting point?"
+      includesWebsite
+        ? "Do you want to scope the website setup first, see pricing, or start the request now?"
+        : "Do you want pricing first, or should I ask a few quick questions so I can point you toward the best starting point?"
     );
 
     return lines.join("\n");
@@ -1215,6 +1244,18 @@
         price,
         "",
         "Do you want to start a request with that option, or compare it with another setup?"
+      ].join("\n");
+    }
+
+    if (keys.length > 1) {
+      return [
+        price,
+        "",
+        packageRecommendationReply(),
+        "",
+        keys.includes("website")
+          ? "Do you want to scope the website setup next, or start the request with the full system need?"
+          : "Do you want to start a request with these services, or narrow the first move?"
       ].join("\n");
     }
 
@@ -2741,6 +2782,11 @@
       return true;
     }
 
+    if (t.includes("scope website") || t.includes("website setup")) {
+      await smartBot(websiteQualifierReply(), ["Static Website", "Dynamic Website", "Not sure"], label);
+      return true;
+    }
+
     if (isPricingQuestion(label)) {
       await smartBot(salesPricingReply(label), pricingChipsForActiveService(), label);
       return true;
@@ -2811,7 +2857,13 @@
     if (requestedServices.length > 1) {
       updateMemory(text, "choose");
       state.busy = false;
-      return smartBot(combinedServicesReply(requestedServices), ["Pricing", "Start a project", "Ask another question"], text);
+      return smartBot(
+        combinedServicesReply(requestedServices),
+        requestedServices.includes("website")
+          ? ["Scope website setup", "Pricing", "Start a project"]
+          : ["Pricing", "Start a project", "Ask another question"],
+        text
+      );
     }
 
     if (requestedServices.length === 1 && (detectIndustry(text) || isUrgentRequest(text))) {
@@ -2830,9 +2882,9 @@
       return handleStepInterruption(text);
     }
 
-    if (await routeChip(text)) { state.busy = false; return; }
     if (isDiscoveryStep()) { state.busy = false; return handleDiscoveryStep(text); }
     if (isSalesStep()) { state.busy = false; return handleSalesStep(text); }
+    if (await routeChip(text)) { state.busy = false; return; }
     if (state.step) { state.busy = false; return handleLeadStep(text); }
 
     if (shouldUseBusinessContext(text)) {
