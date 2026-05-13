@@ -779,10 +779,10 @@
     const relatedLabels = serviceLabels(related);
 
     if (relatedLabels.length) {
-      return `A smart next thing to check is whether you also need ${formatList(relatedLabels)}. Are you trying to solve just this one piece, or build the full customer flow?`;
+      return `If you want to keep this focused, we can stay with the main service. If you want a fuller customer flow later, ${formatList(relatedLabels)} could be worth reviewing too.`;
     }
 
-    return "Are you trying to solve just this one piece, or build the full customer flow?";
+    return "We can keep this focused, or look at the wider customer flow if that would help.";
   }
 
   function isReceptionistService(keys = activeServiceKeys()) {
@@ -1338,7 +1338,9 @@
       lines.push("", websiteRecommendation);
     }
 
-    lines.push("", packageRecommendationReply());
+    if (!websiteRecommendation) {
+      lines.push("", packageRecommendationReply());
+    }
 
     lines.push(
       "",
@@ -1348,7 +1350,7 @@
       "",
       followUp,
       "",
-      "I can also collect your basic details now so RE IMAGE can follow up with the right recommendation."
+      "I can collect your basic details now so RE IMAGE can follow up with the right recommendation."
     );
 
     return lines.join("\n");
@@ -2206,24 +2208,17 @@
 
     bot(
       [
-        "Here\u2019s what I\u2019m sending to RE IMAGE:",
+        "Ready to send this to RE IMAGE?",
         "",
         `Name: ${l.name}`,
         `Email: ${l.email}`,
         `Phone: ${l.phone}`,
         `Business: ${l.business}`,
-        `Sector: ${l.sector || "\u2014"}`,
-        `Team size: ${l.employees || "\u2014"}`,
-        `Revenue range: ${l.revenue || "\u2014"}`,
-        `Stage: ${l.stage || state.memory.businessStage || "Not sure"}`,
         `Service: ${l.service}`,
         `Goal: ${l.goal}`,
-        `Pain points: ${l.painPoints || "\u2014"}`,
-        `Missed opportunities: ${l.missedOpportunities || state.memory.qualification.missedOpportunities || "\u2014"}`,
-        `Budget: ${l.budget || state.memory.qualification.budget || "Not sure"}`,
         `Timeline: ${l.urgency || state.memory.qualification.timeline || "Not sure"}`,
-        `Decision maker: ${l.decisionMaker || state.memory.qualification.decisionMaker || "\u2014"}`,
-        `Lead quality: ${calculateLeadScore()}`
+        "",
+        "When you confirm, it will be submitted to RE IMAGE, show in the client portal for this email, and send the customer confirmation email."
       ].join("\n"),
       ["Confirm & Send", "Change service", "Open form"]
     );
@@ -2348,21 +2343,53 @@
 
   async function handleLeadStep(text) {
     const value = String(text || "").trim();
+    const normalized = clean(value);
+
+    if (normalized.includes("open form") || normalized === "form") {
+      window.location.href = CONFIG.startUrl;
+      return;
+    }
+
+    if (
+      state.step !== "confirm" &&
+      /\b(pause|cancel|stop|nevermind|never mind|changed my mind|change my mind|i have a question|question)\b/i.test(value)
+    ) {
+      state.step = null;
+      return bot(
+        "No problem. We can pause the request here. You can ask a question, resume this request, or open the full form instead.",
+        ["Resume request", "Open form", "Pricing", "Client portal"]
+      );
+    }
 
     if (state.step === "name") {
-      if (value.length < 2) return bot("I need your full name to send the request.");
+      if (value.length < 2 || /\b(asdf|qwer|test|fake)\b/i.test(value)) {
+        return bot(
+          "No worries. I just need the name RE IMAGE should use for follow-up. You can type your real name, pause the request, or open the full form.",
+          ["Open form", "Pause request"]
+        );
+      }
       state.lead.name = value;
       return askNextLeadQuestion();
     }
 
     if (state.step === "email") {
-      if (!validateEmail(value)) return bot("That doesn\u2019t look quite right \u2014 can you double-check your email address?");
+      if (!validateEmail(value)) {
+        return bot(
+          "No worries, I may have missed that. Please type the email like name@example.com, or choose one of these options.",
+          ["Open form", "Pause request"]
+        );
+      }
       state.lead.email = value;
       return askNextLeadQuestion();
     }
 
     if (state.step === "phone") {
-      if (!validatePhone(value)) return bot("Please include your area code \u2014 I need at least 10 digits.");
+      if (!validatePhone(value)) {
+        return bot(
+          "Almost there. Please include the area code so RE IMAGE has at least 10 digits, or use the full form instead.",
+          ["Open form", "Pause request"]
+        );
+      }
       state.lead.phone = value;
       return askNextLeadQuestion();
     }
@@ -2474,7 +2501,8 @@
           state.step = null;
           return bot(
             [
-              `Perfect \u2014 your request is on its way to RE IMAGE. Someone will review it and follow up at ${state.lead.email} or ${state.lead.phone}.`,
+              `Perfect. Your request was submitted to RE IMAGE, and a confirmation email should go to ${state.lead.email}.`,
+              "It should also appear in the client portal when you sign in with that same email.",
               "",
               portalSignupReply()
             ].join("\n"),
@@ -2751,6 +2779,11 @@
 
     if (t.includes("show pricing again")) {
       await smartBot(salesPricingReply(label), ["Under $100/mo", "$100-$300/mo", "$300-$750/mo", "$750+/mo", "Not sure yet"], label);
+      return true;
+    }
+
+    if (t.includes("resume request") || t.includes("continue request")) {
+      askNextLeadQuestion();
       return true;
     }
 
