@@ -12,6 +12,8 @@
     servicesUrl: "index.html#services",
     careersUrl: "careers.html",
     logo: "logo.png",
+    AI_BACKEND_URL: window.REIMAGE_AI_BACKEND_URL || "http://127.0.0.1:8000/chat",
+    AI_TIMEOUT_MS: 2500,
 
     SUPABASE_URL: "https://uybcjtigyujoyrunecto.supabase.co",
     SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV5YmNqdGlneXVqb3lydW5lY3RvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3MTczOTAsImV4cCI6MjA5MjI5MzM5MH0.UTDL7poTPwzVWSjNg28tPJeaHzU_Xbqe6c08Y7tl5Fk",
@@ -23,7 +25,7 @@
     website: {
       label: "Website Development",
       price:
-        "Website pricing depends on scope, pages, content, and features. The best next step is to send your project details so RE IMAGE can quote it properly.",
+        "Website pricing: Static Website is $99 down + $29.99/month. Dynamic Website is $249.99 down + $49.99/month.",
       summary:
         "Website Development is best when your business needs a professional online presence, clear service pages, mobile design, SEO basics, forms, booking links, payment links, and stronger calls to action."
     },
@@ -72,6 +74,58 @@
         "Business funding options depend on the business, revenue, credit profile, time in business, and funding amount needed. RE IMAGE can help review the situation and guide you toward the right funding path.",
       summary:
         "Business Funding is for owners who need access to capital for growth, equipment, marketing, inventory, payroll, expansion, or operations. RE IMAGE can help collect the right details and guide the next step."
+    }
+  };
+
+  const AI_RECEPTIONIST_PLANS = {
+    starter: {
+      label: "Starter",
+      price: "$99/month",
+      replies: "2,000 AI replies/month",
+      usageLimit: "20 replies per conversation",
+      profileLimit: "1 business profile",
+      websiteLimit: "1 website",
+      includes: "Lead capture included",
+      bestFor: "small businesses that want a website receptionist to answer questions, collect leads, and route serious customers."
+    },
+    growth: {
+      label: "Growth",
+      price: "$149/month",
+      replies: "5,000 AI replies/month",
+      usageLimit: "20 replies per conversation",
+      profileLimit: "1 business profile",
+      websiteLimit: "1 website",
+      includes: "Lead capture included",
+      bestFor: "businesses with higher website traffic or more frequent customer questions."
+    },
+    pro: {
+      label: "Pro",
+      price: "$249/month",
+      replies: "10,000 AI replies/month",
+      usageLimit: "20 replies per conversation",
+      profileLimit: "1 business profile",
+      websiteLimit: "1 website",
+      includes: "Lead capture plus automation support",
+      bestFor: "busy businesses that need higher message volume plus automation for intake, follow-up, routing, and lead handling."
+    }
+  };
+
+  const WEBSITE_PLANS = {
+    static: {
+      label: "Static Website",
+      downPayment: "$99 down",
+      monthly: "$29.99/month",
+      pages: "up to 5 polished pages",
+      includes: "mobile-responsive design, contact form setup, hosting, and maintenance support",
+      bestFor: "businesses that need a professional online presence fast and do not need frequent page or content changes."
+    },
+    dynamic: {
+      label: "Dynamic Website",
+      downPayment: "$249.99 down",
+      monthly: "$49.99/month",
+      pages: "expanded page structure",
+      includes: "SEO optimization, analytics, CMS or dynamic sections, client portals, admin portals, Supabase integration, backend-connected forms, hosting, and maintenance support",
+      bestFor: "businesses that update often, run campaigns, need stronger conversion structure, collect customer data, need portal access, or want backend-connected workflows."
     }
   };
 
@@ -135,15 +189,34 @@
     greeted: false,
     busy: false,
     step: null,
+    salesStage: "discovery",
+    awaitingPricingChoice: false,
+    backendAvailable: null,
     supabase: null,
     memory: {
       businessType: "",
       industry: "",
+      currentIndustry: "",
       sector: "",
       businessStage: "",
       problem: "",
+      currentProblem: "",
       painPoints: [],
+      primaryPainPoint: "",
+      timeInBusiness: "",
+      conversationSummary: "",
       serviceInterest: "",
+      serviceInterests: [],
+      currentServices: [],
+      qualification: {
+        missedOpportunities: "",
+        budget: "",
+        timeline: "",
+        decisionMaker: "",
+        websiteType: "",
+        websiteUpdates: ""
+      },
+      lastQuestionAsked: "",
       lastIntent: "",
       lastRecommendedService: "",
       lastObjection: ""
@@ -163,8 +236,11 @@
       service: "",
       goal: "",
       painPoints: "",
+      timeInBusiness: "",
+      missedOpportunities: "",
       budget: "",
       urgency: "",
+      decisionMaker: "",
       stage: "",
       objection: ""
     };
@@ -177,6 +253,26 @@
   function includesAny(text, list) {
     const t = clean(text);
     return list.some((word) => t.includes(clean(word)));
+  }
+
+  function setCurrentServices(keysOrLabels) {
+    const labels = keysOrLabels
+      .map((item) => SERVICES[item]?.label || item)
+      .filter(Boolean);
+
+    state.memory.currentServices = labels;
+    state.memory.serviceInterests = labels;
+    state.memory.serviceInterest = labels.join(" + ");
+    state.memory.lastRecommendedService = labels[0] || "";
+  }
+
+  function setCurrentProblem(text) {
+    state.memory.currentProblem = text;
+    state.memory.problem = text;
+  }
+
+  function setLastQuestion(question) {
+    state.memory.lastQuestionAsked = question;
   }
 
   // ─── Semantic Intent Engine (Transformers.js) ────────────────────────────────
@@ -343,12 +439,29 @@
     return "";
   }
 
+  function inferStageFromTime(text) {
+    const t = clean(text);
+    if (t.includes("not open") || t.includes("pre launch") || t.includes("pre-launch") || t.includes("starting")) {
+      return "New business / starting from scratch";
+    }
+
+    const monthMatch = t.match(/(\d+)\s*(month|months|mo)\b/);
+    if (monthMatch && Number(monthMatch[1]) < 12) return "New business / starting from scratch";
+
+    if (t.includes("year") || t.includes("yr") || t.includes("years") || t.includes("been in business")) {
+      return "Existing business / improving current setup";
+    }
+
+    return "";
+  }
+
   function updateMemory(text, intent) {
     const industry = detectIndustry(text);
     const stage = detectBusinessStage(text);
 
     if (industry) {
       state.memory.industry = industry;
+      state.memory.currentIndustry = industry;
       state.memory.businessType = text;
     }
 
@@ -368,10 +481,10 @@
       funding: "Business Funding"
     };
 
-    if (serviceMap[intent]) state.memory.serviceInterest = serviceMap[intent];
+    if (serviceMap[intent]) setCurrentServices([serviceMap[intent]]);
 
     if (["website", "social", "phone", "webbot", "automation", "growth", "full", "funding", "choose", "bundle"].includes(intent)) {
-      state.memory.problem = text;
+      setCurrentProblem(text);
     }
 
     if (["objectionPrice", "objectionThink", "objectionExistingWebsite"].includes(intent)) {
@@ -382,8 +495,122 @@
     state.memory.lastIntent = intent;
   }
 
-  function serviceKeyFromText(text) {
+  function shouldUseBusinessContext(text) {
     const t = clean(text);
+    if (!detectIndustry(t)) return false;
+
+    const directQuestionIntents = [
+      INTENTS.pricing,
+      INTENTS.contactPhone,
+      INTENTS.contactEmail,
+      INTENTS.portal,
+      INTENTS.careers,
+      INTENTS.start
+    ];
+
+    return !directQuestionIntents.some((words) => includesAny(t, words));
+  }
+
+  function describeBusinessContext() {
+    const industry = describeIndustry();
+    const stage = state.memory.businessStage ? `, ${state.memory.businessStage.toLowerCase()}` : "";
+    const time = state.memory.timeInBusiness ? `, operating for ${state.memory.timeInBusiness}` : "";
+    const problem = summarizeProblem(state.memory.problem);
+    const problemLine = problem ? `, and the main challenge is ${problem}` : "";
+    return `You run ${industry}${stage}${time}${problemLine}.`;
+  }
+
+  function describeIndustry() {
+    const industry = state.memory.currentIndustry || state.memory.industry;
+    if (!industry) return "a business";
+    if (industry === "auto") return "a mobile/detailing or auto service business";
+    if (industry === "beauty") return "a beauty business";
+    if (industry === "restaurant") return "a restaurant or food business";
+    if (industry === "contractor") return "a contractor or trades business";
+    if (industry === "retail") return "a retail business";
+    if (industry === "rental") return "a rental business";
+    if (industry === "medical") return "a health or wellness business";
+    if (industry === "professional") return "a professional services business";
+    if (/^[aeiou]/i.test(industry)) return `an ${industry} business`;
+    return `a ${industry} business`;
+  }
+
+  function summarizeProblem(text) {
+    const t = clean(text);
+    if (!t) return "";
+
+    if (t.includes("ghost") && (t.includes("estimate") || t.includes("quote"))) {
+      return "turning estimates into follow-up conversations and booked work";
+    }
+    if (t.includes("follow up") || t.includes("follow-up")) {
+      return "keeping follow-up consistent after people show interest";
+    }
+    if (t.includes("lead") || t.includes("leads")) {
+      return "getting a steadier flow of qualified leads";
+    }
+    if (t.includes("call") || t.includes("missed")) {
+      return "capturing calls and messages before opportunities slip away";
+    }
+    if (t.includes("instagram") || t.includes("facebook") || t.includes("social") || t.includes("content")) {
+      return "staying visible and organized across social media";
+    }
+    if (t.includes("website") || t.includes("site") || t.includes("google")) {
+      return "making the website clearer and better at converting visitors";
+    }
+    if (t.includes("booking") || t.includes("appointment")) {
+      return "making booking easier for customers";
+    }
+    if (t.includes("admin") || t.includes("manual") || t.includes("organizing") || t.includes("requests")) {
+      return "reducing manual admin work and organizing customer requests";
+    }
+    if (t.includes("funding") || t.includes("loan") || t.includes("capital")) {
+      return "figuring out the right funding path";
+    }
+
+    return "clarifying the customer flow and deciding what should be improved first";
+  }
+
+  function shortBusinessAcknowledgement(text) {
+    const industry = state.memory.industry ? describeIndustry().replace(/^a |^an /, "your ") : "the business";
+    const problem = summarizeProblem(text);
+    if (problem) return `Got it. For ${industry}, it sounds like the priority is ${problem}.`;
+    return `Got it. I want to understand the business a little better before recommending anything.`;
+  }
+
+  function startDiscovery(text) {
+    updateMemory(text, "choose");
+    const services = mentionedServiceKeys(text);
+    if (services.length) setCurrentServices(services);
+    setCurrentProblem(text);
+    state.step = "discoveryTime";
+    setLastQuestion("timeInBusiness");
+
+    return bot(
+      [
+        shortBusinessAcknowledgement(text),
+        "",
+        "Before I recommend anything, how long have you been in business?"
+      ].join("\n"),
+      ["Not open yet", "Under 1 year", "1-3 years", "3+ years"]
+    );
+  }
+
+  function serviceKeyFromText(text, useMemory = true) {
+    const t = clean(text);
+
+    if (t.includes("ai receptionist phone")) return "phone";
+    if (t.includes("ai receptionist")) return "phone";
+    if (t.includes("starter ai receptionist") || t === "starter" || t.includes("starter plan")) return "webbot";
+    if (t.includes("growth ai receptionist") || t === "growth" || t.includes("growth plan")) return "webbot";
+    if (t.includes("pro ai receptionist") || t === "pro" || t.includes("pro plan")) return "webbot";
+    if (t.includes("ai web receptionist") || t.includes("web receptionist chatbot")) return "webbot";
+    if (t.includes("website development")) return "website";
+    if (t.includes("social media management")) return "social";
+    if (t.includes("business funding")) return "funding";
+    if (t.includes("ai automation")) return "automation";
+    if (t.includes("growth foundation")) return "growth";
+    if (t.includes("full scale system")) return "full";
+    if (t.includes("static website") || t.includes("dynamic website")) return "website";
 
     if (includesAny(t, INTENTS.phone)) return "phone";
     if (includesAny(t, INTENTS.webbot)) return "webbot";
@@ -394,8 +621,8 @@
     if (includesAny(t, INTENTS.growth)) return "growth";
     if (includesAny(t, INTENTS.full)) return "full";
 
-    if (state.memory.serviceInterest) {
-      const label = clean(state.memory.serviceInterest);
+    if (useMemory && (state.memory.lastRecommendedService || state.memory.serviceInterest || state.memory.currentServices.length)) {
+      const label = clean(state.memory.currentServices[0] || state.memory.lastRecommendedService || state.memory.serviceInterest);
       if (label.includes("phone")) return "phone";
       if (label.includes("web receptionist") || label.includes("chatbot")) return "webbot";
       if (label.includes("website")) return "website";
@@ -409,36 +636,508 @@
     return "";
   }
 
+  function mentionedServiceKeys(text) {
+    const t = clean(text);
+    const keys = [];
+
+    const checks = [
+      ["webbot", INTENTS.webbot],
+      ["phone", INTENTS.phone],
+      ["funding", INTENTS.funding],
+      ["website", INTENTS.website],
+      ["social", INTENTS.social],
+      ["automation", INTENTS.automation],
+      ["growth", INTENTS.growth],
+      ["full", INTENTS.full]
+    ];
+
+    checks.forEach(([key, words]) => {
+      if (includesAny(t, words) && !keys.includes(key)) keys.push(key);
+    });
+
+    return keys;
+  }
+
+  function serviceLabels(keys) {
+    return keys.map((key) => SERVICES[key]?.label).filter(Boolean);
+  }
+
+  function activeServiceKeys() {
+    const labels = state.memory.currentServices.length
+      ? state.memory.currentServices
+      : state.memory.serviceInterests;
+
+    return labels
+      .map((label) => serviceKeyFromText(label, false))
+      .filter(Boolean);
+  }
+
+  function relatedServicesFor(keys) {
+    const related = [];
+    const add = (key) => {
+      if (!keys.includes(key) && !related.includes(key)) related.push(key);
+    };
+
+    keys.forEach((key) => {
+      if (key === "website") {
+        add("webbot");
+        add("automation");
+        add("social");
+      }
+      if (key === "social") {
+        add("website");
+        add("webbot");
+      }
+      if (key === "phone") {
+        add("webbot");
+        add("automation");
+      }
+      if (key === "webbot") {
+        add("website");
+        add("automation");
+      }
+      if (key === "funding") {
+        add("website");
+        add("growth");
+      }
+      if (key === "automation") {
+        add("website");
+        add("phone");
+      }
+      if (key === "growth") {
+        add("website");
+        add("social");
+      }
+      if (key === "full") {
+        add("website");
+        add("automation");
+        add("webbot");
+      }
+    });
+
+    return related.slice(0, 3);
+  }
+
+  function salesFollowUpQuestion(keys) {
+    const related = relatedServicesFor(keys);
+    const relatedLabels = serviceLabels(related);
+
+    if (relatedLabels.length) {
+      return `A smart next thing to check is whether you also need ${formatList(relatedLabels)}. Are you trying to solve just this one piece, or build the full customer flow?`;
+    }
+
+    return "Are you trying to solve just this one piece, or build the full customer flow?";
+  }
+
+  function isReceptionistService(keys = activeServiceKeys()) {
+    return keys.some((key) => key === "webbot" || key === "phone");
+  }
+
+  function planSummary(planKey) {
+    const plan = AI_RECEPTIONIST_PLANS[planKey];
+    if (!plan) return "";
+
+    return [
+      `${plan.label}: ${plan.price}`,
+      `${plan.replies}, ${plan.usageLimit}, ${plan.profileLimit}, ${plan.websiteLimit}.`,
+      plan.includes
+    ].join("\n");
+  }
+
+  function allReceptionistPlanPricing() {
+    return [
+      "AI receptionist plans:",
+      "",
+      planSummary("starter"),
+      "",
+      planSummary("growth"),
+      "",
+      planSummary("pro")
+    ].join("\n");
+  }
+
+  function recommendReceptionistPlan() {
+    const missed = clean(state.memory.qualification.missedOpportunities);
+    const budget = clean(state.memory.qualification.budget);
+
+    if (missed.includes("25+") || missed.includes("10-25") || budget.includes("750+")) return "pro";
+    if (missed.includes("5-10") || budget.includes("300-$750") || budget.includes("300-750")) return "growth";
+    return "starter";
+  }
+
+  function planRecommendationReply() {
+    if (!isReceptionistService()) return "";
+
+    const planKey = recommendReceptionistPlan();
+    const plan = AI_RECEPTIONIST_PLANS[planKey];
+
+    return [
+      `Based on the volume and budget you shared, I would start with the ${plan.label} plan.`,
+      "",
+      planSummary(planKey),
+      "",
+      `That plan is best for ${plan.bestFor}`
+    ].join("\n");
+  }
+
+  function planKeyFromText(text) {
+    const t = clean(text);
+    if (t.includes("starter")) return "starter";
+    if (t.includes("growth")) return "growth";
+    if (t.includes("pro")) return "pro";
+    return "";
+  }
+
+  function websitePlanKeyFromText(text) {
+    const t = clean(text);
+    if (t.includes("static")) return "static";
+    if (t.includes("dynamic")) return "dynamic";
+    return "";
+  }
+
+  function websitePlanSummary(planKey) {
+    const plan = WEBSITE_PLANS[planKey];
+    if (!plan) return "";
+
+    return [
+      `${plan.label}: ${plan.downPayment} + ${plan.monthly}`,
+      `Includes ${plan.pages}, ${plan.includes}.`,
+      `Best for ${plan.bestFor}`
+    ].join("\n");
+  }
+
+  function allWebsitePlanPricing() {
+    return [
+      "Website Development pricing:",
+      "",
+      websitePlanSummary("static"),
+      "",
+      websitePlanSummary("dynamic"),
+      "",
+      "Static means the pages are mostly fixed and edited when updates are needed. Dynamic means the site can support flexible sections, campaigns, SEO/analytics structure, client portals, admin portals, Supabase integration, backend-connected forms, and content that changes more often."
+    ].join("\n");
+  }
+
+  function websiteQualifierReply() {
+    state.salesStage = "qualification";
+    state.step = "websiteType";
+    setCurrentServices(["website"]);
+    setLastQuestion("websiteType");
+
+    return [
+      allWebsitePlanPricing(),
+      "",
+      "To point you toward the right website setup, which sounds closer to what you need?",
+      "",
+      "Static is best if you need a clean professional site fast. Dynamic is better if you need SEO, analytics, campaigns, CMS-style updates, client portals, admin portals, Supabase integration, backend-connected forms, or more flexible content."
+    ].join("\n");
+  }
+
+  function recommendWebsitePlan() {
+    const type = clean(state.memory.qualification.websiteType);
+    const updates = clean(state.memory.qualification.websiteUpdates);
+    const problem = clean([state.memory.currentProblem, state.memory.problem, state.memory.primaryPainPoint].join(" "));
+
+    if (
+      type.includes("dynamic") ||
+      updates.includes("weekly") ||
+      updates.includes("seasonal") ||
+      problem.includes("seo") ||
+      problem.includes("campaign") ||
+      problem.includes("analytics") ||
+      problem.includes("update often") ||
+      problem.includes("portal") ||
+      problem.includes("admin") ||
+      problem.includes("supabase") ||
+      problem.includes("backend") ||
+      problem.includes("login") ||
+      problem.includes("dashboard") ||
+      problem.includes("customer data")
+    ) {
+      return "dynamic";
+    }
+
+    return "static";
+  }
+
+  function websitePlanRecommendationReply() {
+    if (!activeServiceKeys().includes("website")) return "";
+    const planKey = recommendWebsitePlan();
+    const plan = WEBSITE_PLANS[planKey];
+
+    return [
+      `Based on what you shared, I would lean toward the ${plan.label}.`,
+      `${plan.label} pricing is ${plan.downPayment} + ${plan.monthly}.`,
+      `It includes ${plan.includes}.`
+    ].join("\n");
+  }
+
+  function formatList(items) {
+    if (items.length <= 1) return items[0] || "";
+    if (items.length === 2) return `${items[0]} and ${items[1]}`;
+    return `${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]}`;
+  }
+
+  function summarizeRequestedServices(keys, text) {
+    const labels = serviceLabels(keys);
+    const industry = state.memory.industry ? `${state.memory.industry} business` : "business";
+    const serviceList = formatList(labels);
+    const problem = summarizeProblem(text);
+
+    if (problem) {
+      return `You are looking for ${serviceList} for your ${industry}, with the bigger goal of ${problem}.`;
+    }
+
+    return `You are looking for ${serviceList} for your ${industry}, so customers have a clearer way to understand the business and take the next step.`;
+  }
+
+  function combinedServicesReply(keys) {
+    const labels = serviceLabels(keys);
+    const industry = state.memory.industry;
+    const summary = summarizeRequestedServices(keys, state.memory.problem);
+
+    setCurrentServices(keys);
+    state.memory.conversationSummary = summary;
+
+    const lines = [
+      "Here is what I am hearing:",
+      "",
+      summary,
+      "",
+      industry
+        ? `For a ${industry} business, those services can work together instead of being handled separately.`
+        : "Those services can work together instead of being handled separately.",
+      "",
+      "Here is how I would think about it:"
+    ];
+
+    keys.forEach((key) => {
+      const service = SERVICES[key];
+      if (!service) return;
+      lines.push("", `• ${service.label}: ${service.summary}`);
+    });
+
+    lines.push(
+      "",
+      "Suggested sequence:",
+      "",
+      "1. Clarify the funding goal and what the money would support.",
+      "2. Scope the website around what customers need to see, order, request, or trust.",
+      "3. Use one plan so the funding conversation and website build support the same growth goal.",
+      "",
+      "A good next step is to send one request with both needs so RE IMAGE can review the business, funding goal, and website scope together.",
+      "",
+      "Do you want pricing first, or should I ask a few quick questions so I can point you toward the best starting point?"
+    );
+
+    return lines.join("\n");
+  }
+
+  function correctionReply(text) {
+    const keys = mentionedServiceKeys(text);
+    const isCorrection = /\b(actually|i meant|instead|not that|change it|switch)\b/i.test(text);
+
+    if (!isCorrection || !keys.length) return "";
+
+    setCurrentServices(keys);
+    setCurrentProblem(text);
+
+    if (keys.length > 1) {
+      return combinedServicesReply(keys);
+    }
+
+    const key = keys[0];
+    const service = SERVICES[key];
+
+    if (!service) return "";
+
+    return [
+      "Got it. I updated the focus.",
+      "",
+      `Now I am looking at ${service.label} as the main service.`,
+      "",
+      service.summary,
+      "",
+      "Do you want pricing for that, or do you want to start a request?"
+    ].join("\n");
+  }
+
   function pricingReply(text) {
+    const directPlan = planKeyFromText(text);
+    if (directPlan) {
+      setCurrentServices(["webbot"]);
+      state.awaitingPricingChoice = false;
+      return planSummary(directPlan);
+    }
+
+    const directWebsitePlan = websitePlanKeyFromText(text);
+    if (directWebsitePlan) {
+      setCurrentServices(["website"]);
+      state.awaitingPricingChoice = false;
+      return websitePlanSummary(directWebsitePlan);
+    }
+
+    const mentioned = mentionedServiceKeys(text);
+
+    if (mentioned.length > 1) {
+      state.awaitingPricingChoice = false;
+      return mentioned.map((key) => SERVICES[key].price).join("\n\n");
+    }
+
+    const activeServices = state.memory.currentServices.length
+      ? state.memory.currentServices
+      : state.memory.serviceInterests;
+
+    if (!mentioned.length && activeServices.length > 1) {
+      state.awaitingPricingChoice = false;
+      const prices = activeServices
+        .map((label) => {
+          const key = serviceKeyFromText(label, false);
+          return key ? SERVICES[key].price : "";
+        })
+        .filter(Boolean)
+        .join("\n\n");
+
+      return [
+        "For the services we are discussing:",
+        "",
+        prices,
+        "",
+        "If you want, RE IMAGE can review the full setup as one request so the website, funding, and next steps are not treated separately."
+      ].join("\n");
+    }
+
     const key = serviceKeyFromText(text);
 
     if (!key) {
+      state.awaitingPricingChoice = true;
       return [
         "Which service do you want pricing for?",
         "",
         "I can give pricing for:",
+        "• Starter AI Receptionist — $99/month",
+        "• Growth AI Receptionist — $149/month",
+        "• Pro AI Receptionist — $249/month",
         "• AI Web Receptionist Chatbot",
         "• AI Receptionist Phone",
         "• AI Automation",
         "• Social Media Management",
         "• Website Development",
+        "• Static Website — $99 down + $29.99/month",
+        "• Dynamic Website — $249.99 down + $49.99/month",
         "• Business Funding",
         "• Growth Foundation",
         "• Full Scale System"
       ].join("\n");
     }
 
+    state.awaitingPricingChoice = false;
+    if (key === "webbot" || key === "phone") return allReceptionistPlanPricing();
+    if (key === "website") return allWebsitePlanPricing();
     return SERVICES[key].price;
+  }
+
+  function salesPricingReply(text) {
+    const price = pricingReply(text);
+    const keys = activeServiceKeys();
+
+    if (state.awaitingPricingChoice) return price;
+
+    if (keys.includes("website")) return websiteQualifierReply();
+
+    state.salesStage = "qualification";
+    state.step = "salesMissed";
+    setLastQuestion("missedOpportunities");
+
+    return [
+      price,
+      "",
+      "To point you toward the right setup, I just need a little more context.",
+      "",
+      "About how many leads, calls, messages, bookings, or customers do you think you miss in a typical week?"
+    ].join("\n");
+  }
+
+  function qualificationSummary() {
+    const q = state.memory.qualification;
+    const services = state.memory.currentServices.length
+      ? formatList(state.memory.currentServices)
+      : state.memory.serviceInterest || "the right service";
+    const business = describeIndustry();
+    const problem = summarizeProblem(state.memory.currentProblem || state.memory.problem);
+
+    return [
+      `You are looking at ${services} for ${business}.`,
+      problem ? `The main goal is ${problem}.` : "",
+      q.websiteType ? `Website type: ${q.websiteType}.` : "",
+      q.websiteUpdates ? `Expected website updates: ${q.websiteUpdates}.` : "",
+      q.missedOpportunities ? `You may be missing about ${q.missedOpportunities} opportunities each week.` : "",
+      q.budget ? `Your budget range is ${q.budget}.` : "",
+      q.timeline ? `You want to start ${q.timeline.toLowerCase()}.` : "",
+      q.decisionMaker ? decisionMakerSentence(q.decisionMaker) : ""
+    ].filter(Boolean).join(" ");
+  }
+
+  function decisionMakerSentence(value) {
+    const t = clean(value);
+    if (t.includes("i decide")) return "You are the decision maker.";
+    if (t.includes("partner")) return "A partner would need to review it too.";
+    if (t.includes("manager")) return "A manager would need to approve it.";
+    return `Decision process: ${value}.`;
+  }
+
+  function softCloseReply() {
+    const quality = calculateLeadScore();
+    const keys = activeServiceKeys();
+    const followUp = salesFollowUpQuestion(keys);
+    const planRecommendation = planRecommendationReply();
+    const websiteRecommendation = websitePlanRecommendationReply();
+
+    state.salesStage = "close";
+
+    const lines = [
+      "Here is what I am hearing:",
+      "",
+      qualificationSummary()
+    ];
+
+    if (planRecommendation) {
+      lines.push("", planRecommendation);
+    }
+
+    if (websiteRecommendation) {
+      lines.push("", websiteRecommendation);
+    }
+
+    lines.push(
+      "",
+      quality === "Hot"
+        ? "This sounds like a strong fit to send over now, especially because the need and timeline are clear."
+        : "This sounds worth reviewing so RE IMAGE can point you toward the strongest first move without overbuilding.",
+      "",
+      followUp,
+      "",
+      "I can also collect your basic details now so RE IMAGE can follow up with the right recommendation."
+    );
+
+    return lines.join("\n");
   }
 
   function recommendService() {
     const industry = state.memory.industry;
     const stage = state.memory.businessStage;
-    const problem = clean([state.memory.problem, state.memory.businessType, stage].join(" "));
+    const primaryPain = clean(state.memory.primaryPainPoint);
+    const problem = clean([primaryPain, state.memory.problem, state.memory.businessType, stage].join(" "));
 
     let key = "";
 
-    if (problem.includes("funding") || problem.includes("loan") || problem.includes("capital") || problem.includes("financing") || problem.includes("money")) key = "funding";
+    if (primaryPain.includes("website") || primaryPain.includes("site") || primaryPain.includes("online presence")) key = "website";
+    else if (primaryPain.includes("social") || primaryPain.includes("instagram") || primaryPain.includes("facebook") || primaryPain.includes("content")) key = "social";
+    else if (primaryPain.includes("missed call") || primaryPain.includes("calls")) key = "phone";
+    else if (primaryPain.includes("manual") || primaryPain.includes("admin") || primaryPain.includes("follow")) key = "automation";
+    else if (primaryPain.includes("lead") || primaryPain.includes("bookings")) key = "website";
+    else if (problem.includes("funding") || problem.includes("loan") || problem.includes("capital") || problem.includes("financing") || problem.includes("money")) key = "funding";
+    else if (problem.includes("ghost") || problem.includes("follow up") || problem.includes("follow-up") || problem.includes("estimate") || problem.includes("quote")) key = "automation";
     else if (problem.includes("call") || problem.includes("phone") || problem.includes("missed")) key = "phone";
     else if (problem.includes("chat") || problem.includes("website questions")) key = "webbot";
     else if (problem.includes("instagram") || problem.includes("content") || problem.includes("reel")) key = "social";
@@ -508,13 +1207,16 @@
     const key = map[intent];
     const service = SERVICES[key];
     if (!service) return fallbackReply();
+    setCurrentServices([key]);
 
     return [
       `${service.label}`,
       "",
       service.summary,
       "",
-      "Would you like pricing for this service, or do you want to start a request?"
+      "Would you like pricing for this service, or do you want to start a request?",
+      "",
+      salesFollowUpQuestion([key])
     ].join("\n");
   }
 
@@ -532,6 +1234,35 @@
       bundleReply(),
       "",
       "What are you trying to improve most right now: more leads, better website, more bookings, social media, missed calls, automation, or funding?"
+    ].join("\n");
+  }
+
+  function discoveryRecommendationReply() {
+    const key = recommendService();
+    const service = SERVICES[key];
+    const summary = describeBusinessContext();
+    const existingKeys = activeServiceKeys().filter((existingKey) => existingKey !== key);
+    const finalKeys = [key, ...existingKeys];
+    const finalLabels = serviceLabels(finalKeys);
+    state.memory.conversationSummary = summary;
+    setCurrentServices(finalKeys);
+
+    return [
+      "Here is what I am hearing:",
+      "",
+      summary,
+      "",
+      finalKeys.length > 1
+        ? `Based on that, I would look at ${formatList(finalLabels)} together.`
+        : `Based on that, I am leaning toward ${service.label} as the first move.`,
+      "",
+      finalKeys.length > 1
+        ? finalKeys.map((serviceKey) => `• ${SERVICES[serviceKey].label}: ${SERVICES[serviceKey].summary}`).join("\n")
+        : service.summary,
+      "",
+      bundleReply(),
+      "",
+      "Does that sound right, or is the bigger issue something else?"
     ].join("\n");
   }
 
@@ -702,10 +1433,14 @@
     if (state.lead.service) score += 15;
     if (state.memory.industry) score += 5;
     if (state.lead.stage) score += 5;
+    if (state.memory.qualification.missedOpportunities) score += 10;
+    if (state.memory.qualification.budget) score += 10;
+    if (state.memory.qualification.timeline) score += 10;
+    if (state.memory.qualification.decisionMaker) score += 5;
 
     if (text.includes("asap") || text.includes("today") || text.includes("urgent") || text.includes("this week")) score += 25;
     if (text.includes("pricing") || text.includes("price") || text.includes("cost")) score += 10;
-    if (text.includes("$750") || text.includes("750+")) score += 15;
+    if (text.includes("$750") || text.includes("750+") || text.includes("$500") || text.includes("1000") || text.includes("1,000")) score += 15;
     if (text.includes("just researching") || text.includes("maybe later") || text.includes("not ready")) score -= 15;
     if (text.includes("too expensive") || text.includes("can't afford") || text.includes("out of my budget")) score -= 10;
 
@@ -722,13 +1457,104 @@
     if (quality === "Warm") return `Follow up with a helpful message and clarify scope for ${service}.`;
     return `Nurture lead. Ask what problem they want solved first and offer a simple next step.`;
   }
+  async function getAIReply(userMessage) {
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), CONFIG.AI_TIMEOUT_MS);
 
+    try {
+      const response = await fetch(CONFIG.AI_BACKEND_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        signal: controller.signal,
+        body: JSON.stringify(
+          typeof userMessage === "string" ? { message: userMessage } : userMessage
+        )
+      });
+
+      if (!response.ok) throw new Error(`Backend responded ${response.status}`);
+      const data = await response.json();
+      state.backendAvailable = true;
+
+      return data.reply || "";
+    } catch (error) {
+      state.backendAvailable = false;
+      console.error("AI Receptionist error:", error);
+      return "";
+    } finally {
+      window.clearTimeout(timeout);
+    }
+  }
+
+  function buildAIContext() {
+    return {
+      industry: state.memory.currentIndustry || state.memory.industry || "",
+      services: state.memory.currentServices.length
+        ? state.memory.currentServices
+        : state.memory.serviceInterests,
+      problem: summarizeProblem(state.memory.currentProblem || state.memory.problem),
+      stage: state.memory.businessStage,
+      timeInBusiness: state.memory.timeInBusiness,
+      lastQuestionAsked: state.memory.lastQuestionAsked
+    };
+  }
+
+  function looksLikeUsefulRewrite(text, draft) {
+    const reply = String(text || "").trim();
+    if (reply.length < 20) return false;
+    if (reply.length > Math.max(900, draft.length * 1.7)) return false;
+    if (/customer:|receptionist:|draft reply|rewritten/i.test(reply)) return false;
+    if (/tell me (a little )?more|how can i help|thanks for reaching out/i.test(reply)) return false;
+
+    const protectedTerms = [
+      "Business Funding",
+      "Website Development",
+      "Static Website",
+      "Dynamic Website",
+      "Social Media Management",
+      "AI Receptionist Phone",
+      "AI Web Receptionist",
+      "AI Automation",
+      "Growth Foundation",
+      "Full Scale System"
+    ].filter((term) => draft.includes(term));
+
+    if (protectedTerms.length && !protectedTerms.some((term) => reply.includes(term))) return false;
+
+    return true;
+  }
+
+  async function polishReply(draft, userMessage) {
+    const reply = await getAIReply({
+      message: userMessage || state.memory.currentProblem || "Customer needs help",
+      mode: "polish",
+      draft,
+      context: buildAIContext()
+    });
+
+    if (looksLikeUsefulRewrite(reply, draft)) return reply;
+    return draft;
+  }
+
+  async function smartBot(draft, chips, userMessage) {
+    showTyping();
+    const polished = await polishReply(draft, userMessage);
+    hideTyping();
+    return bot(polished, chips);
+  }
   function fallbackReply() {
+    const backendLine = state.backendAvailable === false
+      ? "The live AI writer is not reachable right now, but I can still help with the built-in service guide."
+      : "";
+
     return [
+      backendLine,
+      backendLine ? "" : "",
       "I can help with websites, social media, AI receptionists, AI automation, business funding, pricing, the client portal, or starting a project.",
       "",
       "Are you asking about pricing, services, the client portal, funding, or starting a request?"
-    ].join("\n");
+    ].filter((line, index, arr) => line || arr[index - 1]).join("\n");
   }
 
   function bot(text, chips) {
@@ -786,6 +1612,9 @@
 
   function serviceChips() {
     return [
+      "Starter AI Receptionist",
+      "Growth AI Receptionist",
+      "Pro AI Receptionist",
       "Website Development",
       "Social Media Management",
       "AI Web Receptionist Chatbot",
@@ -802,15 +1631,40 @@
 
   function startLead(service) {
     state.lead = freshLead();
+    hydrateLeadFromMemory(service);
+
+    state.step = "name";
+    bot(
+      [
+        "Perfect. I’ll use what you already shared so you don’t have to repeat everything.",
+        "",
+        "I just need your contact details and any missing basics so RE IMAGE can follow up properly.",
+        "",
+        "What’s your full name?"
+      ].join("\n")
+    );
+  }
+
+  function hydrateLeadFromMemory(service) {
+    const activeServices = state.memory.currentServices.length
+      ? state.memory.currentServices
+      : state.memory.serviceInterests;
+
     if (service) state.lead.service = service;
+    else if (activeServices.length) state.lead.service = formatList(activeServices);
     else if (state.memory.lastRecommendedService) state.lead.service = state.memory.lastRecommendedService;
     else if (state.memory.serviceInterest) state.lead.service = state.memory.serviceInterest;
 
-    if (state.memory.businessStage) state.lead.stage = state.memory.businessStage;
-    if (state.memory.lastObjection) state.lead.objection = state.memory.lastObjection;
-
-    state.step = "name";
-    bot("Absolutely. I’ll collect the important details so RE IMAGE can follow up properly. What’s your full name?");
+    state.lead.stage = state.memory.businessStage || state.lead.stage;
+    state.lead.sector = state.memory.sector || state.memory.currentIndustry || state.memory.industry || state.lead.sector;
+    state.lead.goal = summarizeProblem(state.memory.currentProblem || state.memory.problem) || state.memory.currentProblem || state.memory.problem || state.lead.goal;
+    state.lead.painPoints = state.memory.primaryPainPoint || state.memory.painPoints.join(", ") || state.lead.painPoints;
+    state.lead.timeInBusiness = state.memory.timeInBusiness || state.lead.timeInBusiness;
+    state.lead.missedOpportunities = state.memory.qualification.missedOpportunities || state.lead.missedOpportunities;
+    state.lead.budget = state.memory.qualification.budget || state.lead.budget;
+    state.lead.urgency = state.memory.qualification.timeline || state.lead.urgency;
+    state.lead.decisionMaker = state.memory.qualification.decisionMaker || state.lead.decisionMaker;
+    state.lead.objection = state.memory.lastObjection || state.lead.objection;
   }
 
   function validateEmail(v) {
@@ -855,14 +1709,21 @@
       `Sector / Occupation: ${l.sector || state.memory.sector || "—"}`,
       `Detected industry: ${state.memory.industry || "—"}`,
       `Business stage: ${l.stage || state.memory.businessStage || "—"}`,
+      `Time in business: ${l.timeInBusiness || state.memory.timeInBusiness || "—"}`,
       `Team size: ${l.employees || "—"}`,
       `Monthly revenue range: ${l.revenue || "—"}`,
       `Interested service: ${l.service || "—"}`,
+      `Current services discussed: ${state.memory.currentServices.join(", ") || "—"}`,
       `Bot recommendation: ${state.memory.lastRecommendedService || "—"}`,
       `Goal / problem: ${l.goal || "—"}`,
       `Pain points: ${l.painPoints || state.memory.painPoints.join(", ") || "—"}`,
-      `Budget: ${l.budget || "—"}`,
-      `Timeline: ${l.urgency || "—"}`,
+      `Missed opportunities: ${l.missedOpportunities || state.memory.qualification.missedOpportunities || "—"}`,
+      `Budget: ${l.budget || state.memory.qualification.budget || "—"}`,
+      `Timeline: ${l.urgency || state.memory.qualification.timeline || "—"}`,
+      `Decision maker: ${l.decisionMaker || state.memory.qualification.decisionMaker || "—"}`,
+      `Website type: ${state.memory.qualification.websiteType || "—"}`,
+      `Website update frequency: ${state.memory.qualification.websiteUpdates || "—"}`,
+      `Sales qualification summary: ${qualificationSummary() || "—"}`,
       `Lead quality: ${calculateLeadScore()}`,
       `Objection / hesitation: ${l.objection || state.memory.lastObjection || "—"}`,
       `Recommended admin next step: ${adminNextStep()}`,
@@ -908,8 +1769,10 @@
         `Service: ${l.service}`,
         `Goal: ${l.goal}`,
         `Pain points: ${l.painPoints || "\u2014"}`,
-        `Budget: ${l.budget || "Not sure"}`,
-        `Timeline: ${l.urgency || "Not sure"}`,
+        `Missed opportunities: ${l.missedOpportunities || state.memory.qualification.missedOpportunities || "\u2014"}`,
+        `Budget: ${l.budget || state.memory.qualification.budget || "Not sure"}`,
+        `Timeline: ${l.urgency || state.memory.qualification.timeline || "Not sure"}`,
+        `Decision maker: ${l.decisionMaker || state.memory.qualification.decisionMaker || "\u2014"}`,
         `Lead quality: ${calculateLeadScore()}`
       ].join("\n"),
       ["Confirm & Send", "Change service", "Open form"]
@@ -973,28 +1836,83 @@
   }
   // \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 
+  function askNextLeadQuestion() {
+    if (!state.lead.name) {
+      state.step = "name";
+      return bot("What’s your full name?");
+    }
+    if (!state.lead.email) {
+      state.step = "email";
+      return bot(`Nice to meet you, ${state.lead.name.split(" ")[0]}! What email address should RE IMAGE use to reach you?`);
+    }
+    if (!state.lead.phone) {
+      state.step = "phone";
+      return bot("And what’s the best phone number for RE IMAGE to call or text?");
+    }
+    if (!state.lead.business) {
+      state.step = "business";
+      return bot("What’s your business name? If you haven’t named it yet, just say \"not yet.\"");
+    }
+    if (!state.lead.sector) {
+      state.step = "sector";
+      return bot("What sector or industry is your business in?", SECTOR_CHIPS);
+    }
+    if (!state.lead.stage) {
+      state.step = "stage";
+      return bot("Is this a new business you’re building, or an existing one you’re trying to grow?", ["New business", "Existing business"]);
+    }
+    if (!state.lead.employees) {
+      state.step = "employees";
+      return bot("How big is your team right now?", ["Just me", "2–5 people", "6–15 people", "16+ people"]);
+    }
+    if (!state.lead.revenue && !clean(state.lead.stage).includes("new")) {
+      state.step = "revenue";
+      return bot("Roughly what’s your current monthly revenue? This helps RE IMAGE tailor the right solution.", ["Under $5K/mo", "$5K–$15K/mo", "$15K–$50K/mo", "$50K+/mo", "Prefer not to say"]);
+    }
+    if (!state.lead.painPoints) {
+      state.step = "painPoints";
+      return bot("I have the general need, but what’s the biggest challenge holding the business back right now?", painPointChips());
+    }
+    if (!state.lead.service) {
+      state.step = "service";
+      return bot("Which service should RE IMAGE focus on first?", serviceChips());
+    }
+    if (!state.lead.goal) {
+      state.step = "goal";
+      return bot(`In one or two sentences, what outcome are you hoping for with ${state.lead.service}?`);
+    }
+    if (!state.lead.budget) {
+      state.step = "budget";
+      return bot("What’s your budget for this? Pick the range that fits best.", budgetChips());
+    }
+    if (!state.lead.urgency) {
+      state.step = "urgency";
+      return bot("When are you hoping to get started?", ["ASAP — this week", "This month", "Next 1–3 months", "Just exploring for now"]);
+    }
+
+    state.step = null;
+    return finishLead();
+  }
+
   async function handleLeadStep(text) {
     const value = String(text || "").trim();
 
     if (state.step === "name") {
       if (value.length < 2) return bot("I need your full name to send the request.");
       state.lead.name = value;
-      state.step = "email";
-      return bot(`Nice to meet you, ${value.split(" ")[0]}! What email address should RE IMAGE use to reach you?`);
+      return askNextLeadQuestion();
     }
 
     if (state.step === "email") {
       if (!validateEmail(value)) return bot("That doesn\u2019t look quite right \u2014 can you double-check your email address?");
       state.lead.email = value;
-      state.step = "phone";
-      return bot("And what\u2019s the best phone number for RE IMAGE to call or text?");
+      return askNextLeadQuestion();
     }
 
     if (state.step === "phone") {
       if (!validatePhone(value)) return bot("Please include your area code \u2014 I need at least 10 digits.");
       state.lead.phone = value;
-      state.step = "business";
-      return bot("What\u2019s your business name? If you haven\u2019t named it yet, just say \"not yet.\"");
+      return askNextLeadQuestion();
     }
 
     if (state.step === "business") {
@@ -1004,12 +1922,10 @@
       if (state.memory.industry) {
         state.lead.sector = state.memory.industry;
         state.memory.sector = state.memory.industry;
-        state.step = "stage";
-        return bot("Is this a new business you\u2019re building, or an existing one you\u2019re trying to grow?", ["New business", "Existing business"]);
+        return askNextLeadQuestion();
       }
 
-      state.step = "sector";
-      return bot("What sector or industry is your business in?", SECTOR_CHIPS);
+      return askNextLeadQuestion();
     }
 
     if (state.step === "sector") {
@@ -1023,8 +1939,7 @@
         return bot("No problem \u2014 can you briefly describe what your business does?");
       }
 
-      state.step = "stage";
-      return bot("Got it. Is this a new business or an existing one you\u2019re looking to grow?", ["New business", "Existing business"]);
+      return askNextLeadQuestion();
     }
 
     if (state.step === "sectorOther") {
@@ -1032,16 +1947,14 @@
       state.memory.sector = value;
       const detected = detectIndustry(value);
       if (detected) state.memory.industry = detected;
-      state.step = "stage";
-      return bot("Got it. Is this a new business or an existing one?", ["New business", "Existing business"]);
+      return askNextLeadQuestion();
     }
 
     if (state.step === "stage") {
       const stage = detectBusinessStage(value) || (clean(value).includes("new") ? "New business / starting from scratch" : "Existing business / improving current setup");
       state.lead.stage = stage;
       state.memory.businessStage = stage;
-      state.step = "employees";
-      return bot("How big is your team right now?", ["Just me", "2\u20135 people", "6\u201315 people", "16+ people"]);
+      return askNextLeadQuestion();
     }
 
     if (state.step === "employees") {
@@ -1049,56 +1962,53 @@
       const isNew = clean(state.lead.stage).includes("new");
       if (isNew) {
         state.lead.revenue = "Pre-revenue / not launched";
-        state.step = "painPoints";
-        return bot("What\u2019s the biggest challenge you\u2019re trying to solve right now?", painPointChips());
+        return askNextLeadQuestion();
       }
-      state.step = "revenue";
-      return bot("Roughly what\u2019s your current monthly revenue? This helps RE IMAGE tailor the right solution.", ["Under $5K/mo", "$5K\u2013$15K/mo", "$15K\u2013$50K/mo", "$50K+/mo", "Prefer not to say"]);
+      return askNextLeadQuestion();
     }
 
     if (state.step === "revenue") {
       state.lead.revenue = value;
-      state.step = "painPoints";
-      return bot("What\u2019s the biggest challenge holding your business back right now?", painPointChips());
+      return askNextLeadQuestion();
     }
 
     if (state.step === "painPoints") {
       state.lead.painPoints = value;
       state.memory.painPoints.push(value);
-      state.step = "service";
       const autoKey = recommendService();
       const autoService = SERVICES[autoKey];
       state.memory.lastRecommendedService = autoService.label;
-      return bot(
-        `Based on that, ${autoService.label} sounds like the strongest starting point for you.\n\n${autoService.summary}\n\nDoes that sound right, or would you like a different service?`,
-        [...serviceChips().filter(s => s !== autoService.label).slice(0, 4), `Yes, ${autoService.label}`]
-      );
+      if (!state.lead.service) {
+        state.step = "service";
+        return bot(
+          `Based on that, ${autoService.label} sounds like the strongest starting point for you.\n\n${autoService.summary}\n\nDoes that sound right, or would you like a different service?`,
+          [...serviceChips().filter(s => s !== autoService.label).slice(0, 4), `Yes, ${autoService.label}`]
+        );
+      }
+      return askNextLeadQuestion();
     }
 
     if (state.step === "service") {
       const key = serviceKeyFromText(value);
       state.lead.service = key ? SERVICES[key].label : value;
       state.memory.serviceInterest = state.lead.service;
-      state.step = "goal";
-      return bot(`Great choice. In one or two sentences, what\u2019s the main outcome you\u2019re hoping for with ${state.lead.service}?`);
+      return askNextLeadQuestion();
     }
 
     if (state.step === "goal") {
       state.lead.goal = value;
       state.memory.problem = value;
-      state.step = "budget";
-      return bot("What\u2019s your budget for this? Pick the range that fits best.", budgetChips());
+      return askNextLeadQuestion();
     }
 
     if (state.step === "budget") {
       state.lead.budget = value;
-      state.step = "urgency";
-      return bot("When are you hoping to get started?", ["ASAP \u2014 this week", "This month", "Next 1\u20133 months", "Just exploring for now"]);
+      return askNextLeadQuestion();
     }
 
     if (state.step === "urgency") {
       state.lead.urgency = value;
-      return finishLead();
+      return askNextLeadQuestion();
     }
 
     if (state.step === "confirm") {
@@ -1136,8 +2046,177 @@
     }
   }
 
-  function routeChip(label) {
+  function isDiscoveryStep() {
+    return state.step === "discoveryTime" || state.step === "discoveryPain";
+  }
+
+  function isSalesStep() {
+    return ["salesMissed", "salesBudget", "salesTimeline", "salesDecision", "websiteType", "websiteUpdates"].includes(state.step);
+  }
+
+  async function handleSalesStep(text) {
+    const value = String(text || "").trim();
+
+    if (state.step === "websiteType") {
+      const planKey = websitePlanKeyFromText(value);
+      state.memory.qualification.websiteType = planKey || value;
+      state.lead.service = planKey ? WEBSITE_PLANS[planKey].label : "Website Development";
+      state.step = "websiteUpdates";
+      setLastQuestion("websiteUpdates");
+
+      return bot(
+        [
+          planKey
+            ? `Got it. ${WEBSITE_PLANS[planKey].label} sounds like the better fit so far.`
+            : "Got it. I can help narrow that down.",
+          "",
+          "How often do you expect to update the website after it launches?"
+        ].join("\n"),
+        ["Rarely", "Monthly", "Weekly", "Seasonal campaigns", "Not sure"]
+      );
+    }
+
+    if (state.step === "websiteUpdates") {
+      state.memory.qualification.websiteUpdates = value;
+      state.step = "salesBudget";
+      setLastQuestion("budget");
+
+      return bot(
+        [
+          "That helps.",
+          "",
+          websitePlanRecommendationReply(),
+          "",
+          "What budget range feels realistic for the website?"
+        ].join("\n"),
+        ["Under $100/mo", "$100-$300/mo", "$300-$750/mo", "$750+/mo", "Not sure yet"]
+      );
+    }
+
+    if (state.step === "salesMissed") {
+      state.memory.qualification.missedOpportunities = value;
+      state.lead.missedOpportunities = value;
+      state.step = "salesBudget";
+      setLastQuestion("budget");
+
+      return bot(
+        [
+          "That helps. If you are missing that many opportunities, the follow-up system matters.",
+          "",
+          "What budget range would feel realistic if the setup could help capture more of those opportunities?"
+        ].join("\n"),
+        ["Under $100/mo", "$100-$300/mo", "$300-$750/mo", "$750+/mo", "Not sure yet"]
+      );
+    }
+
+    if (state.step === "salesBudget") {
+      state.memory.qualification.budget = value;
+      state.lead.budget = value;
+      state.step = "salesTimeline";
+      setLastQuestion("timeline");
+
+      return bot(
+        [
+          "Got it.",
+          "",
+          "How soon are you trying to get something in place?"
+        ].join("\n"),
+        ["ASAP", "This month", "Next 1-3 months", "Just exploring"]
+      );
+    }
+
+    if (state.step === "salesTimeline") {
+      state.memory.qualification.timeline = value;
+      state.lead.urgency = value;
+      state.step = "salesDecision";
+      setLastQuestion("decisionMaker");
+
+      return bot(
+        [
+          "Good to know.",
+          "",
+          "Are you the person who would make the decision, or would someone else need to review it too?"
+        ].join("\n"),
+        ["I decide", "Need a partner to review", "Need manager approval", "Not sure"]
+      );
+    }
+
+    if (state.step === "salesDecision") {
+      state.memory.qualification.decisionMaker = value;
+      state.lead.decisionMaker = value;
+      state.step = null;
+      setLastQuestion("");
+
+      return smartBot(softCloseReply(), ["Start a project", "Show pricing again", "Other services"], value);
+    }
+  }
+
+  async function handleDiscoveryStep(text) {
+    const value = String(text || "").trim();
+
+    if (state.step === "discoveryTime") {
+      state.memory.timeInBusiness = value;
+      state.lead.timeInBusiness = value;
+
+      const stage = inferStageFromTime(value) || detectBusinessStage(value);
+      if (stage) {
+        state.memory.businessStage = stage;
+        state.lead.stage = stage;
+      }
+
+      state.step = "discoveryPain";
+      setLastQuestion("primaryPainPoint");
+      return bot(
+        [
+          "That helps.",
+          "",
+          describeBusinessContext(),
+          "",
+          "What is the biggest thing costing you opportunities right now?"
+        ].join("\n"),
+        ["Slow follow-up", "Not enough leads", "Missed calls", "Weak website", "Social media", "Too much manual admin"]
+      );
+    }
+
+    if (state.step === "discoveryPain") {
+      state.memory.problem = [state.memory.problem, value].filter(Boolean).join(" | ");
+      state.memory.currentProblem = state.memory.problem;
+      state.memory.primaryPainPoint = value;
+      state.memory.painPoints.push(value);
+      state.lead.painPoints = value;
+      state.step = null;
+      setLastQuestion("");
+
+      return smartBot(discoveryRecommendationReply(), ["Pricing", "Start a project", "Ask another question"], value);
+    }
+  }
+
+  async function routeChip(label) {
     const t = clean(label);
+    const serviceKey = serviceKeyFromText(label, false);
+
+    if (state.awaitingPricingChoice && serviceKey) {
+      setCurrentServices([serviceKey]);
+      await smartBot(salesPricingReply(label), ["0-5/week", "5-10/week", "10-25/week", "25+/week", "Not sure"], label);
+      return true;
+    }
+
+    if (t.includes("show pricing again")) {
+      await smartBot(salesPricingReply(label), ["Under $100/mo", "$100-$300/mo", "$300-$750/mo", "$750+/mo", "Not sure yet"], label);
+      return true;
+    }
+
+    if (t.includes("other services")) {
+      const keys = activeServiceKeys();
+      const related = relatedServicesFor(keys);
+      bot(
+        related.length
+          ? `The related services I would check next are ${formatList(serviceLabels(related))}. Which one do you want to explore?`
+          : "Which other service do you want to explore?",
+        serviceChips()
+      );
+      return true;
+    }
 
     if (t.includes("open form")) {
       window.location.href = CONFIG.startUrl;
@@ -1170,13 +2249,21 @@
     }
 
     if (t.includes("business funding")) {
-      state.memory.serviceInterest = SERVICES.funding.label;
-      bot(businessFundingReply(), ["Start a project", "Pricing", "Phone number"]);
+      setCurrentServices(["funding"]);
+      await smartBot(
+        [
+          businessFundingReply(),
+          "",
+          salesFollowUpQuestion(["funding"])
+        ].join("\n"),
+        ["Pricing", "Website Development", "Growth Foundation", "Start a project"],
+        label
+      );
       return true;
     }
 
     if (t.includes("pricing")) {
-      bot(pricingReply(label), serviceChips());
+      await smartBot(salesPricingReply(label), ["0-5/week", "5-10/week", "10-25/week", "25+/week", "Not sure"], label);
       return true;
     }
 
@@ -1229,8 +2316,28 @@
     const input = document.querySelector(".reibot-input");
     if (input) input.value = "";
 
-    if (routeChip(text)) { state.busy = false; return; }
+    const correction = correctionReply(text);
+    if (correction) {
+      state.busy = false;
+      return smartBot(correction, ["Pricing", "Start a project", "Ask another question"], text);
+    }
+
+    const requestedServices = mentionedServiceKeys(text);
+    if (requestedServices.length > 1) {
+      updateMemory(text, "choose");
+      state.busy = false;
+      return smartBot(combinedServicesReply(requestedServices), ["Pricing", "Start a project", "Ask another question"], text);
+    }
+
+    if (await routeChip(text)) { state.busy = false; return; }
+    if (isDiscoveryStep()) { state.busy = false; return handleDiscoveryStep(text); }
+    if (isSalesStep()) { state.busy = false; return handleSalesStep(text); }
     if (state.step) { state.busy = false; return handleLeadStep(text); }
+
+    if (shouldUseBusinessContext(text)) {
+      state.busy = false;
+      return startDiscovery(text);
+    }
 
     // Show typing dots while semantic model classifies (usually < 200 ms once loaded)
     showTyping();
@@ -1248,7 +2355,7 @@
     }
 
     if (detectIndustry(text)) {
-      return bot(businessTypeReply(), ["More leads", "Better website", "Social media", "AI receptionist", "Automation", "Business Funding"]);
+      return startDiscovery(text);
     }
 
     if (detectBusinessStage(text)) {
@@ -1281,7 +2388,7 @@
         return bot(portalReply(), ["Start a project", "Phone number", "Email"]);
 
       case "pricing":
-        return bot(pricingReply(text), ["Start a project", "Help me choose"]);
+        return smartBot(salesPricingReply(text), ["0-5/week", "5-10/week", "10-25/week", "25+/week", "Not sure"], text);
 
       case "website":
       case "social":
@@ -1291,34 +2398,34 @@
       case "growth":
       case "full":
       case "funding":
-        return bot(serviceReply(intent), ["Pricing", "Start a project", "Help me choose"]);
+        return smartBot(serviceReply(intent), ["Pricing", "Start a project", "Help me choose"], text);
 
       case "choose":
-        return bot(recommendationReply(), ["Pricing", "Start a project", "Client portal"]);
+        return smartBot(recommendationReply(), ["Pricing", "Start a project", "Client portal"], text);
 
       case "objectionPrice":
       case "objectionThink":
       case "objectionExistingWebsite":
-        return bot(objectionReply(intent), ["Help me choose", "Start a project", "Pricing"]);
+        return smartBot(objectionReply(intent), ["Help me choose", "Start a project", "Pricing"], text);
 
       case "competitor":
-        return bot(competitorReply(), ["Help me choose", "Start a project"]);
+        return smartBot(competitorReply(), ["Help me choose", "Start a project"], text);
 
       case "timeline":
-        return bot(timelineReply(), ["Start a project", "Phone number"]);
+        return smartBot(timelineReply(), ["Start a project", "Phone number"], text);
 
       case "payment":
-        return bot(paymentReply(), ["Start a project", "Client portal"]);
+        return smartBot(paymentReply(), ["Start a project", "Client portal"], text);
 
       case "bundle":
-        return bot(bundleReply(), ["Start a project", "Pricing"]);
+        return smartBot(bundleReply(), ["Start a project", "Pricing"], text);
 
       case "faq":
-        return bot(faqReply(), ["Start a project", "Client portal", "Phone number"]);
+        return smartBot(faqReply(), ["Start a project", "Client portal", "Phone number"], text);
 
       case "stageNew":
       case "stageExisting":
-        return bot(businessStageReply(), ["Help me choose", "Start a project"]);
+        return smartBot(businessStageReply(), ["Help me choose", "Start a project"], text);
 
       case "start":
         return startLead();
@@ -1326,8 +2433,17 @@
       case "careers":
         return bot("For job opportunities, use the Careers page. I can open it for you.", ["Open careers", "Start a project"]);
 
-      default:
+      default: {
+        showTyping();
+        const aiReply = await getAIReply(text);
+        hideTyping();
+
+        if (aiReply) {
+          return bot(aiReply, ["Pricing", "Start a project", "Client portal"]);
+        }
+
         return bot(fallbackReply(), mainChips());
+      }
     }
   }
 
