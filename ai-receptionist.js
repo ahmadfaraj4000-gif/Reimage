@@ -2036,7 +2036,10 @@
         try {
           state.busy = true;
           await saveLead();
-          await sendCustomerWelcomeEmail();
+
+          // send email in the background, do not make the customer wait
+          sendCustomerWelcomeEmail();
+
           state.busy = false;
           state.step = null;
           return bot(
