@@ -13,7 +13,7 @@
     careersUrl: "careers.html",
     logo: "logo.png",
     AI_BACKEND_URL: window.REIMAGE_AI_BACKEND_URL || "http://127.0.0.1:8000/chat",
-    AI_TIMEOUT_MS: 2500,
+    AI_TIMEOUT_MS: 15000,
 
     SUPABASE_URL: "https://uybcjtigyujoyrunecto.supabase.co",
     SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV5YmNqdGlneXVqb3lydW5lY3RvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3MTczOTAsImV4cCI6MjA5MjI5MzM5MH0.UTDL7poTPwzVWSjNg28tPJeaHzU_Xbqe6c08Y7tl5Fk",
