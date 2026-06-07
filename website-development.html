@@ -1,66 +1,429 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Website Development | RE IMAGE Business Solutions</title><link href="logo.png" rel="icon"/><meta content="Website Development services from RE IMAGE Business Solutions for small businesses." name="description"/><link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&amp;family=Barlow+Condensed:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/><link href="styles.css" rel="stylesheet"/></head><body class="service-page"><nav class="navbar" id="navbar">
-<a class="nav-logo" href="index.html#home">
-<img alt="RE IMAGE Business Solutions logo" src="logo.png"/>
-</a>
-<button aria-label="Open navigation" class="menu-btn" id="menuBtn"><svg fill="none" height="22" viewbox="0 0 22 22" width="22"><rect fill="currentColor" height="2" rx="1" width="22" y="3"></rect><rect fill="currentColor" height="2" rx="1" width="22" y="10"></rect><rect fill="currentColor" height="2" rx="1" width="22" y="17"></rect></svg></button>
-<ul class="nav-links" id="navLinks">
-<li><a href="index.html#home">Home</a></li>
-<li class="services-dropdown">
-<button aria-expanded="false" class="services-toggle" type="button">
-        Services <span>▾</span>
-</button>
-<div class="services-menu">
-<a href="business-funding.html">Business Funding</a>
-<a href="growth-foundation.html">Growth Foundation</a>
-<a href="full-scale-system.html">Full Scale System</a>
-<a href="social-media-management.html">Social Media Management</a>
-<a href="website-development.html">Website Development</a>
-<a href="ai-receptionists.html">AI Receptionists</a>
-<a href="ai-automation.html">AI Automation</a>
-</div>
-</li>
-<li><a href="our-work.html">Our Work</a></li>
-<li><a href="index.html#about">About</a></li>
-<li><a href="careers.html">Careers</a></li>
-<li><a href="https://login.reimagebs.com" rel="noopener" target="_blank">Client Portal</a></li>
-<li><a class="nav-cta" href="start-with-us.html">Start With Us</a></li>
-</ul>
-</nav><main><section class="hero"><div class="wrap"><div class="eyebrow">Websites Built To Convert</div><h1>Website Development</h1><p>Clean, mobile-responsive websites for small businesses that need credibility, service clarity, contact flow, and a stronger first impression online.</p><div class="btns"><a class="btn btn-primary" href="#pricing">View Pricing</a><a class="btn btn-secondary" href="start-with-us.html">Start With Us</a></div></div></section><section class="section"><div class="wrap"><div class="section-head"><div class="label">What We Provide</div><h2>Built around real small business growth.</h2><p>Each service is structured to give customers clear deliverables, simple next steps, and a professional system they can understand before they buy.</p></div><div class="grid"><div class="card"><h3>Static Website</h3><ul><li>Up to 5 polished pages</li><li>Mobile-responsive design</li><li>Contact form setup</li><li>Great for service businesses that need a professional presence fast</li></ul></div><div class="card"><h3>Dynamic Website</h3><ul><li>Expanded page structure</li><li>SEO optimization and analytics</li><li>CMS or dynamic sections where needed</li><li>Built for businesses that update often or run campaigns</li></ul></div><div class="card"><h3>Ongoing Maintenance</h3><ul><li>Hosting and maintenance support</li><li>Text, image, and service updates</li><li>Performance checks</li><li>Conversion improvements over time</li></ul></div></div></div></section><section class="section alt" id="pricing"><div class="wrap"><div class="section-head"><div class="label">Pricing + CTA</div><h2>Choose the option that fits.</h2><p>Services with live Stripe links go directly to secure checkout. Services without a matching live payment link route to the consultation form.</p></div><div class="pricing"><div class="price-card"><div class="label">Package</div><h3>Static Website</h3><div class="price">$99 <small> + $29.99/mo</small></div><p class="note">Professional static website plus hosting and maintenance.</p><div class="spacer"></div><a class="btn btn-primary" href="start-with-us.html">Request Static Website</a></div><div class="price-card"><div class="label">Package</div><h3>Dynamic Website</h3><div class="price">$249.99 <small> + $49.99/mo</small></div><p class="note">More advanced website with SEO, analytics, and stronger conversion structure.</p><div class="spacer"></div><a class="btn btn-primary" href="start-with-us.html">Request Dynamic Website</a></div></div></div></section><section class="section"><div class="wrap"><div class="section-head"><div class="label">Next Step</div><h2>Need help choosing?</h2><p>Choose a service, tell us what you need, or schedule a consultation from the Start With Us page.</p><div class="btns"><a class="btn btn-primary" href="start-with-us.html">Start With Us</a><a class="btn btn-secondary" href="index.html#services">Back To Services</a></div></div></div></section></main><footer class="footer"><div class="footer-inner"><div class="footer-top"><div><img alt="RE IMAGE Business Solutions logo" src="logo.png"/><p>Professional content, conversion-focused websites, and automation systems for small businesses ready to grow the right way.</p></div><div><h4>Services</h4><ul><li><a href="business-funding.html">Business Funding</a></li><li><a href="growth-foundation.html">Growth Foundation</a></li><li><a href="full-scale-system.html">Full Scale System</a></li><li><a href="social-media-management.html">Social Media Management</a></li><li><a href="website-development.html">Website Development</a></li><li><a href="ai-receptionists.html">AI Receptionists</a></li><li><a href="ai-automation.html">AI Automation</a></li></ul></div><div><h4>Company</h4><ul><li><a href="index.html#about">About</a></li><li><a href="index.html#work">Our Work</a></li><li><a href="careers.html">Careers</a></li><li><a href="https://login.reimagebs.com" rel="noopener" target="_blank">Client Portal</a></li></ul></div><div><h4>Contact</h4><ul><li><a href="start-with-us.html">Start With Us</a></li><li><a href="start-with-us.html">Contact Form</a></li></ul></div></div><div class="footer-bottom">© <span id="yr"></span> RE IMAGE Business Solutions. All rights reserved.</div></div></footer><script>const menuBtn=document.getElementById('menuBtn');const navLinks=document.getElementById('navLinks');if(menuBtn&&navLinks)menuBtn.addEventListener('click',()=>navLinks.classList.toggle('open'));const yr=document.getElementById('yr');if(yr)yr.textContent=new Date().getFullYear();</script><script>
-(function(){
-  const dropdown = document.querySelector('.services-dropdown');
-  const toggle = document.querySelector('.services-toggle');
-  const menu = document.querySelector('.services-menu');
-  const navLinks = document.getElementById('navLinks');
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Website Development | RE IMAGE Business Solutions</title>
+  <link href="logo.png" rel="icon" />
+  <meta content="Website tiers from RE IMAGE Business Solutions, including static SEO websites, dynamic status pages, payments, portals, and AI automation systems." name="description" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&amp;family=Barlow+Condensed:wght@400;600;700;800&amp;display=swap" rel="stylesheet" />
+  <link href="styles.css" rel="stylesheet" />
+  <style>
+    .website-pricing {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 360px)) !important;
+    }
 
-  if (!dropdown || !toggle || !menu) return;
+    .website-pricing .price-card ul {
+      list-style: none;
+      margin: 1rem 0 1.2rem;
+      padding: 0;
+    }
 
-  function closeServicesMenu(){
-    dropdown.classList.remove('open');
-    toggle.setAttribute('aria-expanded','false');
-  }
+    .website-pricing .price-card li {
+      display: flex;
+      gap: 10px;
+      padding: .35rem 0;
+      line-height: 1.45;
+    }
 
-  toggle.addEventListener('click', function(e){
-    e.preventDefault();
-    e.stopPropagation();
-    const isOpen = dropdown.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  });
+    .website-pricing .price-card li::before {
+      content: "✓";
+      color: var(--teal);
+      font-weight: 900;
+    }
 
-  menu.querySelectorAll('a').forEach(function(link){
-    link.addEventListener('click', function(){
-      closeServicesMenu();
-      if (navLinks) navLinks.classList.remove('open');
-    });
-  });
+    .tier-includes {
+      color: var(--teal) !important;
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      margin-top: 1rem;
+      text-transform: uppercase;
+    }
 
-  document.addEventListener('click', function(e){
-    if (!dropdown.contains(e.target)) closeServicesMenu();
-  });
+    .comparison-card {
+      margin-top: 2rem;
+      overflow: hidden;
+    }
 
-  document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape') closeServicesMenu();
-  });
-})();
-</script>
-</body></html>
+    .comparison-table-wrap {
+      overflow-x: auto;
+      margin-top: 1.2rem;
+    }
+
+    .comparison-table {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      border-bottom: 1px solid rgba(26,122,138,.18);
+      padding: .9rem 1rem;
+      text-align: left;
+    }
+
+    .comparison-table th {
+      color: var(--navy);
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .comparison-table td {
+      color: #53697a;
+      font-weight: 700;
+    }
+
+    .comparison-table td:nth-child(2) {
+      color: var(--teal);
+      font-weight: 900;
+    }
+  </style>
+</head>
+<body class="service-page">
+  <nav class="navbar" id="navbar">
+    <a class="nav-logo" href="index.html#home">
+      <img alt="RE IMAGE Business Solutions logo" src="logo.png" />
+    </a>
+    <button aria-label="Open navigation" class="menu-btn" id="menuBtn">
+      <svg fill="none" height="22" viewBox="0 0 22 22" width="22">
+        <rect fill="currentColor" height="2" rx="1" width="22" y="3"></rect>
+        <rect fill="currentColor" height="2" rx="1" width="22" y="10"></rect>
+        <rect fill="currentColor" height="2" rx="1" width="22" y="17"></rect>
+      </svg>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#home">Home</a></li>
+      <li class="services-dropdown">
+        <button aria-expanded="false" class="services-toggle" type="button">Services <span>▾</span></button>
+        <div class="services-menu">
+          <a href="business-funding.html">Business Funding</a>
+          <a href="growth-foundation.html">Growth Foundation</a>
+          <a href="full-scale-system.html">Full Scale System</a>
+          <a href="social-media-management.html">Social Media Management</a>
+          <a href="website-development.html">Website Development</a>
+          <a href="ai-receptionists.html">AI Receptionists</a>
+          <a href="ai-automation.html">AI Automation</a>
+        </div>
+      </li>
+      <li><a href="our-work.html">Our Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="https://login.reimagebs.com" rel="noopener" target="_blank">Client Portal</a></li>
+      <li><a class="nav-cta" href="start-with-us.html">Start With Us</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Websites Built To Convert</div>
+        <h1>Website Development</h1>
+        <p>Choose the website system that matches how your business actually works, from a clean SEO-ready online presence to portals, payments, order tracking, and AI automation.</p>
+        <div class="btns">
+          <a class="btn btn-primary" href="#pricing">View Website Tiers</a>
+          <a class="btn btn-secondary" href="start-with-us.html">Start With Us</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="label">What We Provide</div>
+          <h2>Organized from simple websites to full business systems.</h2>
+          <p>Start with the foundation your business needs now, then upgrade into payments, portals, tracking, and automation when your operations are ready for more.</p>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <h3>Visibility Foundation</h3>
+            <ul>
+              <li>Mobile-friendly website design</li>
+              <li>Google and Bing indexing</li>
+              <li>Sitemap, robots.txt, and llms.txt setup</li>
+              <li>Basic SEO, analytics, and visitor tracking</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Customer Functionality</h3>
+            <ul>
+              <li>QR-code landing pages and business hubs</li>
+              <li>Status pages for orders, services, or appointments</li>
+              <li>Secure logins, customer accounts, and intake forms</li>
+              <li>Stripe or Square payment collection</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Operations Systems</h3>
+            <ul>
+              <li>Admin and client portals</li>
+              <li>Inventory, subscriptions, and reporting tools</li>
+              <li>Custom invoice generation and editing</li>
+              <li>AI, SMS, email, API, and webhook automations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="pricing">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="label">Website Tiers</div>
+          <h2>Pick the right level of website infrastructure.</h2>
+          <p>Every tier includes a clear one-time setup price plus monthly hosting, maintenance, and support. Larger systems add the operational tools that usually cost far more when quoted by traditional agencies.</p>
+        </div>
+
+        <div class="pricing website-pricing">
+          <div class="price-card">
+            <div class="label">Tier 1</div>
+            <h3>Static Website + SEO</h3>
+            <div class="price">$449 <small>one-time + $29.99/mo</small></div>
+            <p class="note">A clean, professional website designed to showcase your business, services, contact information, and brand.</p>
+            <div class="tier-includes">Includes</div>
+            <ul>
+              <li>Mobile-friendly design</li>
+              <li>Google and Bing indexing</li>
+              <li>Sitemap, robots.txt, and llms.txt setup</li>
+              <li>Basic SEO optimization</li>
+              <li>Analytics and visitor tracking</li>
+              <li>Contact forms</li>
+              <li>Website hosting and maintenance</li>
+            </ul>
+            <p class="note">Perfect for businesses that need a professional online presence and want to be found online.</p>
+            <div class="spacer"></div>
+            <a class="btn btn-primary" href="start-with-us.html?service=Static%20Website%20%2B%20SEO">Request Tier 1</a>
+          </div>
+
+          <div class="price-card">
+            <div class="label">Tier 2</div>
+            <h3>Dynamic Website with QR & Status Page</h3>
+            <div class="price">$599 <small>one-time + $29.99/mo</small></div>
+            <p class="note">Everything in Tier 1, plus dynamic functionality for customer updates and trackable business links.</p>
+            <div class="tier-includes">Includes</div>
+            <ul>
+              <li>Dynamic website functionality</li>
+              <li>QR-code landing pages</li>
+              <li>Linktree-style business hub</li>
+              <li>Customer-facing status pages</li>
+              <li>Order tracking</li>
+              <li>Service progress tracking</li>
+              <li>Appointment status updates</li>
+            </ul>
+            <p class="note">Perfect for restaurants, print shops, auto shops, spas, and service-based businesses.</p>
+            <div class="spacer"></div>
+            <a class="btn btn-primary" href="start-with-us.html?service=Dynamic%20Website%20with%20QR%20%26%20Status%20Page">Request Tier 2</a>
+          </div>
+
+          <div class="price-card">
+            <div class="label">Tier 3</div>
+            <h3>Dynamic Website with Payments & Scripted Chatbot</h3>
+            <div class="price">$999 <small>one-time + $29.99/mo</small></div>
+            <p class="note">Everything in Tier 2, plus logins, payments, booking flows, intake forms, and a guided chatbot experience.</p>
+            <div class="tier-includes">Includes</div>
+            <ul>
+              <li>Customer accounts</li>
+              <li>Secure user logins</li>
+              <li>Stripe or Square payment integration</li>
+              <li>Online payment collection</li>
+              <li>Online booking capabilities</li>
+              <li>Scripted chatbot</li>
+              <li>Customer intake forms</li>
+            </ul>
+            <p class="note">Perfect for businesses that accept online payments, reservations, bookings, or customer submissions.</p>
+            <div class="spacer"></div>
+            <a class="btn btn-primary" href="start-with-us.html?service=Dynamic%20Website%20with%20Payments%20%26%20Scripted%20Chatbot">Request Tier 3</a>
+          </div>
+
+          <div class="price-card">
+            <div class="label">Tier 4</div>
+            <h3>Business Portal Suite</h3>
+            <div class="price">$1,299 <small>one-time + $49.99/mo</small></div>
+            <p class="note">Everything in Tier 3, plus a custom management system for business operations, orders, invoices, and reporting.</p>
+            <div class="tier-includes">Includes</div>
+            <ul>
+              <li>Admin portal and client portal</li>
+              <li>User and subscription management</li>
+              <li>Inventory management</li>
+              <li>AI chatbot, Twilio SMS, and Resend email integration</li>
+              <li>Custom invoice generation and editing</li>
+              <li>Order management dashboards</li>
+              <li>Business reporting tools</li>
+            </ul>
+            <p class="note">Examples include custom systems like Living Word Imprints and CR8 Autos. This tier gives businesses complete control through a custom-built management system.</p>
+            <div class="spacer"></div>
+            <a class="btn btn-primary" href="start-with-us.html?service=Business%20Portal%20Suite">Request Tier 4</a>
+          </div>
+
+          <div class="price-card">
+            <div class="label">Tier 5</div>
+            <h3>AI Automation Suite</h3>
+            <div class="price">$1,699 <small>one-time + $49.99/mo</small></div>
+            <p class="note">Everything in Tier 4, plus AI-powered automation for leads, follow-up, reminders, internal alerts, and connected workflows.</p>
+            <div class="tier-includes">Includes</div>
+            <ul>
+              <li>AI-powered workflow automation</li>
+              <li>Lead capture automation</li>
+              <li>Automated email and SMS follow-ups</li>
+              <li>Google Sheets and CRM integration</li>
+              <li>Appointment reminders and internal team notifications</li>
+              <li>AI-assisted customer support workflows</li>
+              <li>Advanced invoice automation</li>
+              <li>API integrations and webhook automations</li>
+            </ul>
+            <p class="note">Perfect for businesses looking to reduce manual work, automate repetitive tasks, and scale operations efficiently.</p>
+            <div class="spacer"></div>
+            <a class="btn btn-primary" href="start-with-us.html?service=AI%20Automation%20Suite">Request Tier 5</a>
+          </div>
+        </div>
+
+        <div class="card comparison-card">
+          <div class="label">Market Comparison</div>
+          <h3>Priced lower than typical custom website builds.</h3>
+          <p>These market ranges are common for comparable custom website, portal, and automation builds. RE IMAGE keeps the entry point lower for small businesses while still building real operational tools.</p>
+          <div class="comparison-table-wrap">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>Tier</th>
+                  <th>Your Price</th>
+                  <th>Typical Market Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Static Website + SEO</td>
+                  <td>$449</td>
+                  <td>$800-$2,500</td>
+                </tr>
+                <tr>
+                  <td>Dynamic Website + Status Page</td>
+                  <td>$599</td>
+                  <td>$1,500-$4,000</td>
+                </tr>
+                <tr>
+                  <td>Payments + Logins + Chatbot</td>
+                  <td>$999</td>
+                  <td>$3,000-$8,000</td>
+                </tr>
+                <tr>
+                  <td>Business Portal Suite</td>
+                  <td>$1,299</td>
+                  <td>$5,000-$15,000+</td>
+                </tr>
+                <tr>
+                  <td>AI Automation Suite</td>
+                  <td>$1,699</td>
+                  <td>$8,000-$25,000+</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="label">Next Step</div>
+          <h2>Need help choosing?</h2>
+          <p>Choose a tier, tell us what your business needs, or schedule a consultation from the Start With Us page.</p>
+          <div class="btns">
+            <a class="btn btn-primary" href="start-with-us.html">Start With Us</a>
+            <a class="btn btn-secondary" href="our-work.html">View Our Work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <img alt="RE IMAGE Business Solutions logo" src="logo.png" />
+          <p>Professional content, conversion-focused websites, and automation systems for small businesses ready to grow the right way.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="business-funding.html">Business Funding</a></li>
+            <li><a href="growth-foundation.html">Growth Foundation</a></li>
+            <li><a href="full-scale-system.html">Full Scale System</a></li>
+            <li><a href="social-media-management.html">Social Media Management</a></li>
+            <li><a href="website-development.html">Website Development</a></li>
+            <li><a href="ai-receptionists.html">AI Receptionists</a></li>
+            <li><a href="ai-automation.html">AI Automation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="our-work.html">Our Work</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="https://login.reimagebs.com" rel="noopener" target="_blank">Client Portal</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="start-with-us.html">Start With Us</a></li>
+            <li><a href="start-with-us.html">Contact Form</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">© <span id="yr"></span> RE IMAGE Business Solutions. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    if (menuBtn && navLinks) menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+    const yr = document.getElementById('yr');
+    if (yr) yr.textContent = new Date().getFullYear();
+  </script>
+  <script>
+    (function(){
+      const dropdown = document.querySelector('.services-dropdown');
+      const toggle = document.querySelector('.services-toggle');
+      const menu = document.querySelector('.services-menu');
+      const navLinks = document.getElementById('navLinks');
+
+      if (!dropdown || !toggle || !menu) return;
+
+      function closeServicesMenu(){
+        dropdown.classList.remove('open');
+        toggle.setAttribute('aria-expanded','false');
+      }
+
+      toggle.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = dropdown.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      menu.querySelectorAll('a').forEach(function(link){
+        link.addEventListener('click', function(){
+          closeServicesMenu();
+          if (navLinks) navLinks.classList.remove('open');
+        });
+      });
+
+      document.addEventListener('click', function(e){
+        if (!dropdown.contains(e.target)) closeServicesMenu();
+      });
+
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape') closeServicesMenu();
+      });
+    })();
+  </script>
+</body>
+</html>

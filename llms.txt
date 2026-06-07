@@ -91,21 +91,25 @@ Ideal for:
 
 ## Website Development
 
-RE IMAGE Business Solutions develops both static and dynamic websites for businesses that need modern, conversion-focused online platforms.
+RE IMAGE Business Solutions develops tiered website systems for businesses that need modern, conversion-focused online platforms, from SEO-ready static websites to portals, payments, status pages, and AI automation.
 
 Website services include:
 
+* Static Website + SEO: $449 one-time + $29.99/month
+* Dynamic Website with QR & Status Page: $599 one-time + $29.99/month
+* Dynamic Website with Payments & Scripted Chatbot: $999 one-time + $29.99/month
+* Business Portal Suite: $1,299 one-time + $49.99/month
+* AI Automation Suite: $1,699 one-time + $49.99/month
 * Mobile responsive websites
-* Static websites
-* Dynamic websites
-* SEO-ready structures
-* Lead generation optimization
-* Contact forms
-* Landing pages
-* Brand-focused user interfaces
-* Website redesigns
-* Website maintenance
-* Website performance optimization
+* Google and Bing indexing
+* Sitemap, robots.txt, and llms.txt setup
+* Basic SEO optimization
+* Analytics and visitor tracking
+* Contact forms, intake forms, QR pages, and business hubs
+* Customer accounts, secure logins, Stripe or Square payments, and online booking
+* Admin portals, client portals, inventory management, invoice tools, dashboards, and reporting
+* Twilio SMS, Resend email, AI chatbot, API, webhook, CRM, and Google Sheets integrations
+* Website hosting, maintenance, and performance optimization
 
 Website goals:
 

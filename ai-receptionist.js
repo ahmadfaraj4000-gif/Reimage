@@ -25,9 +25,9 @@
     website: {
       label: "Website Development",
       price:
-        "Website pricing: Static Website is $99 down + $29.99/month. Dynamic Website is $249.99 down + $49.99/month.",
+        "Website pricing starts at $449 one-time + $29.99/month for Static Website + SEO, with dynamic, payment, portal, and AI automation tiers available up to $1,699 one-time + $49.99/month.",
       summary:
-        "Website Development is best when your business needs a professional online presence, clear service pages, mobile design, SEO basics, forms, booking links, payment links, and stronger calls to action."
+        "Website Development is best when your business needs a professional online presence, SEO, forms, QR or status pages, booking, payments, portals, invoice tools, or automation."
     },
     social: {
       label: "Social Media Management",
@@ -112,20 +112,44 @@
 
   const WEBSITE_PLANS = {
     static: {
-      label: "Static Website",
-      downPayment: "$99 down",
+      label: "Static Website + SEO",
+      downPayment: "$449 one-time",
       monthly: "$29.99/month",
-      pages: "up to 5 polished pages",
-      includes: "mobile-responsive design, contact form setup, hosting, and maintenance support",
-      bestFor: "businesses that need a professional online presence fast and do not need frequent page or content changes."
+      pages: "clean professional website",
+      includes: "mobile-friendly design, Google and Bing indexing, sitemap, robots.txt, llms.txt, basic SEO, analytics, contact forms, hosting, and maintenance",
+      bestFor: "businesses that need a professional online presence and want to be found online."
     },
     dynamic: {
-      label: "Dynamic Website",
-      downPayment: "$249.99 down",
+      label: "Dynamic Website with QR & Status Page",
+      downPayment: "$599 one-time",
+      monthly: "$29.99/month",
+      pages: "dynamic website functionality",
+      includes: "QR-code landing pages, linktree-style business hub, customer-facing status pages, order tracking, service progress tracking, and appointment status updates",
+      bestFor: "restaurants, print shops, auto shops, spas, and service-based businesses."
+    },
+    payments: {
+      label: "Dynamic Website with Payments & Scripted Chatbot",
+      downPayment: "$999 one-time",
+      monthly: "$29.99/month",
+      pages: "dynamic website with customer actions",
+      includes: "customer accounts, secure user logins, Stripe or Square payment integration, online payment collection, online booking, scripted chatbot, and intake forms",
+      bestFor: "businesses that accept online payments, reservations, bookings, or customer submissions."
+    },
+    portal: {
+      label: "Business Portal Suite",
+      downPayment: "$1,299 one-time",
       monthly: "$49.99/month",
-      pages: "expanded page structure",
-      includes: "SEO optimization, analytics, CMS or dynamic sections, client portals, admin portals, Supabase integration, backend-connected forms, hosting, and maintenance support",
-      bestFor: "businesses that update often, run campaigns, need stronger conversion structure, collect customer data, need portal access, or want backend-connected workflows."
+      pages: "custom portal and management system",
+      includes: "admin portal, client portal, user management, subscriptions, inventory, AI chatbot, Twilio SMS, Resend email, custom invoices, order dashboards, and reporting",
+      bestFor: "businesses that need control over operations through a custom management system."
+    },
+    ai: {
+      label: "AI Automation Suite",
+      downPayment: "$1,699 one-time",
+      monthly: "$49.99/month",
+      pages: "website, portal, and automation system",
+      includes: "AI workflow automation, lead capture, email and SMS follow-ups, Google Sheets or CRM integration, appointment reminders, team notifications, support workflows, invoice automation, APIs, and webhooks",
+      bestFor: "businesses looking to reduce manual work, automate repetitive tasks, and scale operations efficiently."
     }
   };
 
@@ -562,7 +586,7 @@
 
   function pricingChipsForActiveService() {
     const keys = activeServiceKeys();
-    if (keys.includes("website")) return ["Static Website", "Dynamic Website", "Start a project", "Not sure"];
+    if (keys.includes("website")) return ["Static + SEO", "Status Page", "Portal Suite", "AI Automation Suite"];
     if (isReceptionistService(keys)) return ["Starter", "Growth", "Pro", "Start a project"];
     return ["Start a project", "Help me choose", "Other services"];
   }
@@ -847,8 +871,11 @@
 
   function websitePlanKeyFromText(text) {
     const t = clean(text);
-    if (t.includes("static")) return "static";
-    if (t.includes("dynamic")) return "dynamic";
+    if (t.includes("ai automation suite") || (t.includes("ai") && t.includes("automation") && t.includes("suite"))) return "ai";
+    if (t.includes("business portal") || t.includes("portal suite") || (t.includes("admin") && t.includes("portal"))) return "portal";
+    if (t.includes("payment") || t.includes("payments") || t.includes("stripe") || t.includes("square") || t.includes("chatbot") || t.includes("logins")) return "payments";
+    if (t.includes("qr") || t.includes("status") || t.includes("order tracking") || t.includes("dynamic")) return "dynamic";
+    if (t.includes("static") || t.includes("seo")) return "static";
     return "";
   }
 
@@ -871,12 +898,16 @@
       "",
       websitePlanSummary("dynamic"),
       "",
-      "Static means the pages are mostly fixed and edited when updates are needed. Dynamic means the site can support flexible sections, campaigns, SEO/analytics structure, client portals, admin portals, Supabase integration, backend-connected forms, and content that changes more often."
+      websitePlanSummary("payments"),
+      "",
+      websitePlanSummary("portal"),
+      "",
+      websitePlanSummary("ai")
     ].join("\n");
   }
 
   function shortWebsitePricing() {
-    return "Website pricing starts at $99 down + $29.99/month for a Static Website, or $249.99 down + $49.99/month for a Dynamic Website.";
+    return "Website pricing starts at $449 one-time + $29.99/month for Static Website + SEO. Dynamic/status pages are $599, payments/logins/chatbot is $999, Business Portal Suite is $1,299, and AI Automation Suite is $1,699.";
   }
 
   function websiteQualifierReply() {
@@ -892,7 +923,7 @@
       "",
       "To point you toward the right website setup, which sounds closer to what you need?",
       "",
-      "Static is best if you need a clean professional site fast. Dynamic is better if you need SEO, analytics, campaigns, frequent updates, booking/forms, payments, portals, or backend-connected features."
+      "Static is best for a clean SEO-ready presence. Dynamic/status is better for QR links and order updates. Payments, Portal, and AI Automation tiers are for bookings, logins, payments, dashboards, invoices, follow-up, and backend-connected operations."
     ].join("\n");
   }
 
@@ -917,8 +948,8 @@
       "",
       "The first thing I would narrow down is the website setup:",
       "",
-      "Static Website: best for a clean professional site with mostly fixed pages.",
-      "Dynamic Website: better if you need SEO, analytics, campaigns, frequent updates, booking/form flows, portals, payments, or backend-connected features.",
+      "Static Website + SEO: best for a clean professional site and search visibility.",
+      "Dynamic/status tiers: better if you need QR pages, order updates, booking/forms, payments, portals, invoices, or backend-connected operations.",
       "",
       "Which sounds closer to what you need?"
     ];
@@ -1229,8 +1260,11 @@
         "• AI Automation",
         "• Social Media Management",
         "• Website Development",
-        "• Static Website — $99 down + $29.99/month",
-        "• Dynamic Website — $249.99 down + $49.99/month",
+        "• Static Website + SEO — $449 one-time + $29.99/month",
+        "• Dynamic Website + Status Page — $599 one-time + $29.99/month",
+        "• Payments + Logins + Chatbot — $999 one-time + $29.99/month",
+        "• Business Portal Suite — $1,299 one-time + $49.99/month",
+        "• AI Automation Suite — $1,699 one-time + $49.99/month",
         "• Business Funding",
         "• Growth Foundation",
         "• Full Scale System"
@@ -1523,7 +1557,7 @@
               "Since you need this quickly, you can start a request now and RE IMAGE can use the details to follow up faster."
             ].join("\n")
           : reply,
-        chips: urgent ? ["Start a project", "Static Website", "Dynamic Website"] : ["Static Website", "Dynamic Website", "Not sure"]
+        chips: urgent ? ["Start a project", "Static + SEO", "Status Page"] : ["Static + SEO", "Status Page", "Portal Suite", "Not sure"]
       };
     }
 
@@ -1954,8 +1988,8 @@
     const protectedTerms = [
       "Business Funding",
       "Website Development",
-      "Static Website",
-      "Dynamic Website",
+      "Static Website + SEO",
+      "Dynamic Website with QR & Status Page",
       "Social Media Management",
       "AI Receptionist Phone",
       "AI Web Receptionist",
@@ -2743,7 +2777,7 @@
       state.step = null;
       updateMemory(text, keys[0]);
       const chips = keys[0] === "website"
-        ? ["Static Website", "Dynamic Website", "Not sure"]
+        ? ["Static + SEO", "Status Page", "Portal Suite", "Not sure"]
         : ["Pricing", "Start a project", "Help me choose"];
       await smartBot(serviceBusinessIntroReply(keys[0], text), chips, text);
       return true;
@@ -2759,7 +2793,7 @@
     const websitePlan = websitePlanKeyFromText(label);
 
     if ((receptionistPlan || websitePlan) && !(websitePlan && state.step === "websiteType")) {
-      await smartBot(salesPricingReply(label), receptionistPlan ? ["Start a project", "Growth", "Pro"] : ["Start a project", "Static Website", "Dynamic Website"], label);
+      await smartBot(salesPricingReply(label), receptionistPlan ? ["Start a project", "Growth", "Pro"] : ["Start a project", "Static + SEO", "Portal Suite"], label);
       return true;
     }
 
@@ -2849,7 +2883,7 @@
     }
 
     if (t.includes("scope website") || t.includes("website setup")) {
-      await smartBot(websiteQualifierReply(), ["Static Website", "Dynamic Website", "Not sure"], label);
+      await smartBot(websiteQualifierReply(), ["Static + SEO", "Status Page", "Portal Suite", "Not sure"], label);
       return true;
     }
 
@@ -2942,7 +2976,7 @@
       state.busy = false;
 
       const chips = requestedServices[0] === "website"
-        ? ["Start a project", "Static Website", "Dynamic Website"]
+        ? ["Start a project", "Static + SEO", "Status Page"]
         : ["Start a project", "Pricing", "Help me choose"];
 
       return smartBot(serviceBusinessIntroReply(requestedServices[0], text), chips, text);
@@ -3026,7 +3060,7 @@
       case "growth":
       case "full":
       case "funding":
-        return smartBot(serviceIntentReply(intent), intent === "website" ? ["Static Website", "Dynamic Website", "Not sure"] : ["Pricing", "Start a project", "Help me choose"], text);
+        return smartBot(serviceIntentReply(intent), intent === "website" ? ["Static + SEO", "Status Page", "Portal Suite", "Not sure"] : ["Pricing", "Start a project", "Help me choose"], text);
 
       case "choose":
         return smartBot(recommendationReply(), ["Pricing", "Start a project", "Client portal"], text);
