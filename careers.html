@@ -43,6 +43,19 @@
 <h1>Sales Representative</h1>
 </div>
 </section>
+<section class="section careers-application" id="apply">
+<div class="wrap">
+<div class="apply-card">
+<div class="block">
+<h2>Apply Now</h2>
+<p>Start in the salesman portal. Create your account, complete the application there, then track approval, onboarding, testing, and dashboard access from one place.</p>
+</div>
+<div class="career-apply-actions">
+<a class="join-btn" href="reimage-salesman-portal/dist/index.html">Apply in Salesman Portal</a>
+</div>
+</div>
+</div>
+</section>
 <section class="section careers-description">
 <div class="wrap">
 <div class="card">
@@ -133,62 +146,6 @@
 </div>
 </div>
 </section>
-<section class="section careers-application" id="apply">
-<div class="wrap">
-<div class="apply-card">
-<div class="block">
-<h2>Apply Now</h2>
-<p>Apply below. Your application will show in the admin portal under Sales Team. After submitting, create or log into your salesman portal account to track approval, onboarding, testing, and dashboard access.</p>
-</div>
-<form class="apply-form" id="salesApplicationForm">
-<input name="submission_type" type="hidden" value="Sales Representative Applicant"/>
-<div class="form-group">
-<label for="applicantName">Name</label>
-<input id="applicantName" name="full_name" placeholder="Your full name" required="" type="text"/>
-</div>
-<div class="form-group">
-<label for="applicantEmail">Email</label>
-<input id="applicantEmail" name="email" placeholder="you@example.com" required="" type="email"/>
-</div>
-<div class="form-group">
-<label for="applicantPhone">Phone Number</label>
-<input id="applicantPhone" name="phone" placeholder="(555) 000-0000" required="" type="tel"/>
-</div>
-<div class="form-group">
-<label for="applicantCity">City / State</label>
-<input id="applicantCity" name="city_state" placeholder="Detroit, MI" required="" type="text"/>
-</div>
-<div class="form-group">
-<label for="applicantExperience">Experience</label>
-<textarea id="applicantExperience" name="sales_experience" placeholder="Tell us about your sales, business, or client-facing experience." required=""></textarea>
-</div>
-<div class="form-group">
-<label for="applicantWhy">Why do you want to sell for RE IMAGE?</label>
-<textarea id="applicantWhy" name="why_join" placeholder="Tell us why this role fits you." required=""></textarea>
-</div>
-<div class="form-group">
-<label for="applicantIndustries">What industries do you know best?</label>
-<input id="applicantIndustries" name="industries" placeholder="Restaurants, contractors, salons, medical, etc." required="" type="text"/>
-</div>
-<div class="form-group">
-<label for="applicantAvailability">Availability</label>
-<input id="applicantAvailability" name="availability" placeholder="Weekdays, evenings, weekends, etc." required="" type="text"/>
-</div>
-<div class="form-group">
-<label for="applicantReferral">Referral Source</label>
-<input id="applicantReferral" name="referral_source" placeholder="How did you hear about this role?" required="" type="text"/>
-</div>
-<div class="form-group">
-<label for="applicantResume">Resume / Portfolio Link Optional</label>
-<input id="applicantResume" name="resume_link" placeholder="LinkedIn, resume, portfolio, etc." type="url"/>
-</div>
-<button class="join-btn" type="submit">Join the Team</button>
-<div class="status" id="salesApplicationStatus"></div>
-<a class="btn btn-secondary" href="reimage-salesman-portal/dist/index.html" style="margin-top:1rem;">Open Salesman Portal</a>
-</form>
-</div>
-</div>
-</section>
 <footer class="footer">
 <div class="footer-inner">
 <div class="footer-top">
@@ -233,9 +190,6 @@
 </div>
 </footer>
 <script>
-  const SALES_SUPABASE_URL = 'https://uybcjtigyujoyrunecto.supabase.co';
-  const SALES_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV5YmNqdGlneXVqb3lydW5lY3RvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3MTczOTAsImV4cCI6MjA5MjI5MzM5MH0.UTDL7poTPwzVWSjNg28tPJeaHzU_Xbqe6c08Y7tl5Fk';
-
     window.addEventListener('scroll', () => {
       const nb = document.getElementById('navbar');
       if (!nb) return;
@@ -254,51 +208,6 @@
     const yr = document.getElementById('yr');
     if (yr) yr.textContent = new Date().getFullYear();
   </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-(function(){
-  const form = document.getElementById('salesApplicationForm');
-  const status = document.getElementById('salesApplicationStatus');
-  if (!form || !status || !window.supabase) return;
-
-  const salesSupabase = window.supabase.createClient(SALES_SUPABASE_URL, SALES_SUPABASE_ANON_KEY);
-
-  function setStatus(message, isError){
-    status.className = `status show ${isError ? 'error' : ''}`;
-    status.textContent = message;
-  }
-
-  form.addEventListener('submit', async function(e){
-    e.preventDefault();
-    setStatus('Submitting application...', false);
-
-    const data = new FormData(form);
-    const payload = {
-      full_name: String(data.get('full_name') || '').trim(),
-      email: String(data.get('email') || '').trim(),
-      phone: String(data.get('phone') || '').trim(),
-      city_state: String(data.get('city_state') || '').trim(),
-      sales_experience: String(data.get('sales_experience') || '').trim(),
-      why_join: String(data.get('why_join') || '').trim(),
-      industries: String(data.get('industries') || '').trim(),
-      availability: String(data.get('availability') || '').trim(),
-      referral_source: String(data.get('referral_source') || '').trim(),
-      resume_link: String(data.get('resume_link') || '').trim(),
-      status: 'pending_review'
-    };
-
-    const { error } = await salesSupabase.from('sales_applications').insert(payload);
-
-    if (error) {
-      setStatus(error.message, true);
-      return;
-    }
-
-    form.reset();
-    setStatus('Application submitted. It will now appear in the admin portal under Sales Team.', false);
-  });
-})();
-</script>
 <script>
 (function(){
   const dropdown = document.querySelector('.services-dropdown');
