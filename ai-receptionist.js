@@ -29,13 +29,6 @@
       summary:
         "Website Development is best when your business needs a professional online presence, SEO, forms, QR or status pages, booking, payments, portals, invoice tools, or automation."
     },
-    social: {
-      label: "Social Media Management",
-      price:
-        "Social Media pricing: 1 professional reel is $149, 3 professional reels are $399, and account management using owner-made content is $99/week.",
-      summary:
-        "Social Media Management is best when you need better content, stronger Instagram/Facebook presence, reels, captions, posting support, and more trust with customers."
-    },
     webbot: {
       label: "AI Web Receptionist Chatbot",
       price: "AI Web Receptionist Chatbot pricing is $69.99/month.",
@@ -173,7 +166,6 @@
     existingClient: ["already a client", "current client", "i am a client", "i'm a client", "im a client", "existing client", "have an account", "my account"],
     pricing: ["price", "pricing", "cost", "how much", "monthly", "per month", "week", "quote", "estimate"],
     website: ["website", "site", "webpage", "landing page", "seo", "google", "domain", "redesign", "online presence"],
-    social: ["social", "instagram", "facebook", "tiktok", "reel", "reels", "content", "caption", "posting"],
     phone: ["phone receptionist", "ai phone", "ai receptionist", "receptionist", "answer calls", "catch calls", "missed calls", "call answering", "virtual receptionist"],
     webbot: ["chatbot", "web receptionist", "website receptionist", "ai chatbot", "chat bot", "website chat"],
     automation: ["automation", "automate", "workflow", "intake", "forms", "follow up", "crm", "admin", "supabase", "stripe"],
@@ -316,7 +308,6 @@
     existingClient:            "saying they are already a client or already have an account",
     pricing:                   "asking about price, cost, how much something costs, or getting a quote",
     website:                   "asking about building or improving a website, landing page, or online presence",
-    social:                    "asking about social media, Instagram, Facebook, reels, or content creation",
     phone:                     "asking about an AI phone receptionist or answering missed calls",
     webbot:                    "asking about a website chatbot or AI web receptionist",
     automation:                "asking about automating tasks, workflows, forms, follow-ups, or intake processes",
@@ -511,7 +502,6 @@
 
     const serviceMap = {
       website: "Website Development",
-      social: "Social Media Management",
       phone: "AI Receptionist Phone",
       webbot: "AI Web Receptionist Chatbot",
       automation: "AI Automation",
@@ -522,7 +512,7 @@
 
     if (serviceMap[intent]) setCurrentServices([serviceMap[intent]]);
 
-    if (["website", "social", "phone", "webbot", "automation", "growth", "full", "funding", "choose", "bundle"].includes(intent)) {
+    if (["website", "phone", "webbot", "automation", "growth", "full", "funding", "choose", "bundle"].includes(intent)) {
       setCurrentProblem(text);
     }
 
@@ -632,7 +622,7 @@
       return "capturing calls and messages before opportunities slip away";
     }
     if (t.includes("instagram") || t.includes("facebook") || t.includes("social") || t.includes("content")) {
-      return "staying visible and organized across social media";
+      return "answering website questions and capturing leads faster";
     }
     if (t.includes("website") || t.includes("site") || t.includes("google")) {
       return "making the website clearer and better at converting visitors";
@@ -685,7 +675,7 @@
     if (t.includes("ai receptionist")) return "phone";
     if (t.includes("ai web receptionist") || t.includes("web receptionist chatbot")) return "webbot";
     if (t.includes("website development")) return "website";
-    if (t.includes("social media management")) return "social";
+    if (t.includes("portals management")) return "social";
     if (t.includes("business funding")) return "funding";
     if (t.includes("ai automation")) return "automation";
     if (t.includes("growth foundation")) return "growth";
@@ -1258,7 +1248,6 @@
         "• AI Web Receptionist Chatbot",
         "• AI Receptionist Phone",
         "• AI Automation",
-        "• Social Media Management",
         "• Website Development",
         "• Static Website + SEO — $449 one-time + $29.99/month",
         "• Dynamic Website + Status Page — $599 one-time + $29.99/month",
@@ -1709,7 +1698,7 @@
       "",
       bundleReply(),
       "",
-      "What are you trying to improve most right now: more leads, better website, more bookings, social media, missed calls, automation, or funding?"
+      "What are you trying to improve most right now: more leads, better website, more bookings, missed calls, automation, or funding?"
     ].join("\n");
   }
 
@@ -1812,12 +1801,12 @@
   function bundleReply() {
     const industry = state.memory.industry;
 
-    if (industry === "beauty") return "Recommended bundle: Website + Booking Flow + Social Media Content + Gift Card Promotion + AI Web Receptionist.";
+    if (industry === "beauty") return "Recommended bundle: Website + Booking Flow + Gift Card Promotion + AI Web Receptionist.";
     if (industry === "auto") return "Recommended bundle: Website + Estimate Request Form + Before/After Gallery + Local SEO + Missed Call Support.";
     if (industry === "rental") return "Recommended bundle: Website + Booking Flow + Payments/Deposits + Client Portal + Admin Dashboard.";
-    if (industry === "restaurant") return "Recommended bundle: Website + Menu/Ordering Flow + Local SEO + Social Media Content.";
+    if (industry === "restaurant") return "Recommended bundle: Website + Menu/Ordering Flow + Local SEO + AI Web Receptionist.";
     if (industry === "contractor") return "Recommended bundle: Website + Quote Request Form + Local SEO + Follow-Up Automation.";
-    if (industry === "retail") return "Recommended bundle: Website/E-commerce + Social Content + Payment Setup + Customer Follow-Up.";
+    if (industry === "retail") return "Recommended bundle: Website/E-commerce + Payment Setup + Customer Follow-Up.";
 
     return "Recommended general bundle: Website + SEO Basics + AI Web Receptionist + Lead Form + Client Portal.";
   }
@@ -1867,7 +1856,7 @@
       "• website clarity",
       "• calls and missed messages",
       "• booking/request flow",
-      "• social media consistency",
+      "• website and portal consistency",
       "• payment or admin bottlenecks",
       "",
       "That usually points toward Website Development, AI Receptionist, Automation, or a Full Scale System."
@@ -1990,7 +1979,6 @@
       "Website Development",
       "Static Website + SEO",
       "Dynamic Website with QR & Status Page",
-      "Social Media Management",
       "AI Receptionist Phone",
       "AI Web Receptionist",
       "AI Automation",
@@ -2029,7 +2017,7 @@
     return [
       backendLine,
       backendLine ? "" : "",
-      "I can help with websites, social media, AI receptionists, AI automation, business funding, pricing, the client portal, or starting a project.",
+      "I can help with websites, portals, AI receptionists, AI automation, business funding, pricing, the client portal, or starting a project.",
       "",
       "Are you asking about pricing, services, the client portal, funding, or starting a request?"
     ].filter((line, index, arr) => line || arr[index - 1]).join("\n");
@@ -2094,7 +2082,6 @@
       "Growth AI Receptionist",
       "Pro AI Receptionist",
       "Website Development",
-      "Social Media Management",
       "AI Web Receptionist Chatbot",
       "AI Receptionist Phone",
       "AI Automation",
@@ -2303,15 +2290,15 @@
   function painPointChips() {
     const ind = state.memory.industry || sectorFromChip(state.lead.sector || "");
     if (ind === "beauty" || ind === "medical") {
-      return ["Not enough bookings", "Missing calls", "Weak social media", "No online reviews", "Hard to follow up"];
+      return ["Not enough bookings", "Missing calls", "Weak website", "No online reviews", "Hard to follow up"];
     }
     if (ind === "restaurant") {
-      return ["Low foot traffic", "No online ordering", "Weak social content", "Missing calls", "No loyalty system"];
+      return ["Low foot traffic", "No online ordering", "Weak website", "Missing calls", "No loyalty system"];
     }
     if (ind === "auto" || ind === "contractor") {
       return ["Missing quote requests", "Slow follow-up", "No online presence", "Missing calls", "Hard to collect payments"];
     }
-    return ["Not enough leads", "Missing calls", "Weak website", "Poor social media", "Too much manual admin"];
+    return ["Not enough leads", "Missing calls", "Weak website", "No portal", "Too much manual admin"];
   }
   // \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 
@@ -3027,14 +3014,14 @@
     switch (intent) {
       case "greeting":
         return bot(
-          "Hey — welcome to RE IMAGE Business Solutions. I can help with websites, social media, AI receptionists, automation, business funding, pricing, or the client portal. What are you trying to build or improve?",
+          "Hey — welcome to RE IMAGE Business Solutions. I can help with websites, portals, AI receptionists, automation, business funding, pricing, or the client portal. What are you trying to build or improve?",
           mainChips()
         );
 
       case "howAreYou":
         return bot(
           "I’m doing great — ready to help turn visitors into real leads. What kind of business are we working on?",
-          ["Website", "Social Media", "AI receptionist", "Business Funding", "Start a project"]
+          ["Website", "Client portal", "AI receptionist", "Business Funding", "Start a project"]
         );
 
       case "thanks":
@@ -3185,7 +3172,7 @@
 
       <div class="reibot-foot">
         <form class="reibot-form">
-          <input class="reibot-input" type="text" autocomplete="off" placeholder="Ask about websites, funding, social media, AI receptionists...">
+          <input class="reibot-input" type="text" autocomplete="off" placeholder="Ask about websites, funding, portals, AI receptionists...">
           <button class="reibot-send" type="submit">↗</button>
         </form>
         <div class="reibot-mini">

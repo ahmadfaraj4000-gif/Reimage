@@ -2,25 +2,9 @@
 
 ## Company Overview
 
-RE IMAGE Business Solutions is a Hartford, Connecticut based business growth and digital systems company focused on helping small and medium-sized businesses improve their online presence, increase lead conversion, automate customer communication, and strengthen brand positioning.
+RE IMAGE Business Solutions is a Hartford, Connecticut based digital systems company focused on helping small and medium-sized businesses improve their online presence, increase lead conversion, automate customer communication, and operate with cleaner customer/admin workflows.
 
-The company specializes in premium website development, AI-powered automation systems, social media management, business growth strategy, content production, and customer acquisition infrastructure for service-based businesses.
-
-RE IMAGE Business Solutions works primarily with:
-
-* Service businesses
-* Local businesses
-* Contractors
-* Auto body shops
-* Beauty and wellness businesses
-* Restaurants
-* Startups
-* Automotive businesses
-* Rental companies
-* Small and medium-sized business owners
-
-Primary location:
-Hartford, Connecticut, United States
+The company specializes in premium website development, client portals, admin portals, AI receptionist systems, AI-powered workflow automation, business funding guidance, booking systems, invoice systems, QR flows, and customer acquisition infrastructure for service-based businesses.
 
 Primary website:
 https://reimagebs.com
@@ -29,331 +13,64 @@ Client Portal:
 https://login.reimagebs.com
 
 Contact:
-[reimagebs@gmail.com](mailto:reimagebs@gmail.com)
+reimagebs@gmail.com
 +1 (860) 718-5928
 
----
+## Core Services
 
-# Core Services
+### Website Development
 
-## Growth Foundation
+Premium websites, landing pages, SEO-ready public pages, dynamic customer flows, status pages, booking flows, payments, and business portal suites.
 
-A foundational business growth package designed for businesses that want a stronger online presence, improved branding consistency, and ongoing social media management without requiring a full enterprise-scale marketing system.
+### AI Receptionists
 
-Includes:
+Website chatbot and phone receptionist systems that answer common questions, capture leads, collect customer details, route requests, and reduce missed opportunities.
 
-* Professional website development
-* Website maintenance
-* Social media management
-* Weekly image and video content
-* Content scheduling
-* Branding guidance
-* Business positioning improvements
-* Lead-focused website structure
-* Funding assistance guidance
+### AI Automation
 
-Ideal for:
+Workflow automation for lead routing, follow-up, intake forms, appointment reminders, invoices, internal notifications, customer status updates, APIs, and webhooks.
 
-* Small businesses starting their online growth journey
-* Local businesses needing a more professional online appearance
-* Owners seeking consistent branding and content production
+### Business Funding
 
----
+Funding-readiness guidance for owners who need capital for working capital, equipment, marketing, expansion, stabilization, or operational growth.
 
-## Full Scale System
+### Growth Foundation
 
-A higher-level growth system designed for businesses that want a complete digital infrastructure combining websites, automation, content production, SEO optimization, and lead follow-up systems.
+A foundational online-presence and lead-flow package for businesses that need a professional website, clear positioning, funding guidance, and cleaner customer intake before scaling larger systems.
 
-Includes:
+### Full Scale System
 
-* Dynamic website development
-* SEO optimization
-* AI automation systems
-* AI lead follow-up systems
-* Branding and rebranding
-* Social media management
-* Weekly content production
-* Lead capture systems
-* Conversion-focused website design
-* Campaign strategy
-* Business growth consulting
-* Funding guidance
-* Partnership outreach assistance
+A complete digital infrastructure package combining website development, portals, AI automation, lead capture, payment flows, admin dashboards, customer communication, and operational workflows.
 
-Ideal for:
-
-* Businesses scaling operations
-* Businesses investing heavily into marketing and lead generation
-* Owners seeking automation and operational efficiency
-* Companies wanting a premium online presence
-
----
-
-## Website Development
-
-RE IMAGE Business Solutions develops tiered website systems for businesses that need modern, conversion-focused online platforms, from SEO-ready static websites to portals, payments, status pages, and AI automation.
-
-Website services include:
-
-* Static Website + SEO: $449 one-time + $29.99/month
-* Dynamic Website with QR & Status Page: $599 one-time + $29.99/month
-* Dynamic Website with Payments & Scripted Chatbot: $999 one-time + $29.99/month
-* Business Portal Suite: $1,299 one-time + $49.99/month
-* AI Automation Suite: $1,699 one-time + $49.99/month
-* Mobile responsive websites
-* Google and Bing indexing
-* Sitemap, robots.txt, and llms.txt setup
-* Basic SEO optimization
-* Analytics and visitor tracking
-* Contact forms, intake forms, QR pages, and business hubs
-* Customer accounts, secure logins, Stripe or Square payments, and online booking
-* Admin portals, client portals, inventory management, invoice tools, dashboards, and reporting
-* Twilio SMS, Resend email, AI chatbot, API, webhook, CRM, and Google Sheets integrations
-* Website hosting, maintenance, and performance optimization
-
-Website goals:
-
-* Increase customer trust
-* Improve conversion rates
-* Improve search visibility
-* Create premium brand perception
-* Generate inbound leads
-
-Industries served:
-
-* Automotive
-* Beauty and wellness
-* Restaurants
-* Contractors
-* Service businesses
-* Startups
-* Local businesses
-
----
-
-## Social Media Management
-
-RE IMAGE Business Solutions provides hands-on social media management and content systems for businesses needing stronger digital visibility.
-
-Services include:
-
-* Social media management
-* Content scheduling
-* Content planning
-* Video editing
-* Photography
-* Content day coordination
-* Brand consistency management
-* Caption writing
-* Engagement-focused posting
-* Visual branding optimization
-
-Platforms commonly supported:
-
-* Instagram
-* Facebook
-* TikTok
-* Google Business Profiles
-
-Goals:
-
-* Increase visibility
-* Improve trust
-* Improve professionalism
-* Build customer engagement
-* Support lead generation
-
----
-
-## AI Receptionists
-
-AI-powered customer communication systems designed to improve lead response speed and automate repetitive customer interactions.
-
-Capabilities include:
-
-* AI chat receptionists
-* AI phone receptionists
-* Automated lead intake
-* Customer question handling
-* Appointment assistance
-* Business information responses
-* Lead qualification
-* Follow-up automation
-
-Business benefits:
-
-* Faster customer response times
-* Reduced missed leads
-* Improved customer experience
-* Reduced manual workload
-
----
-
-## AI Automation
-
-Custom AI workflow systems designed to automate repetitive business operations and improve efficiency.
-
-Automation services include:
-
-* Lead intake automation
-* CRM workflow automation
-* Follow-up automation
-* Customer communication systems
-* AI-integrated business systems
-* Workflow optimization
-* Operational efficiency systems
-
-Goals:
-
-* Save time
-* Reduce manual processes
-* Improve conversion rates
-* Increase responsiveness
-* Improve operational scalability
-
----
-
-## Business Funding Guidance
-
-RE IMAGE Business Solutions helps business owners better understand funding readiness and prepare for funding conversations.
-
-Services may include:
-
-* Funding readiness guidance
-* Business growth planning
-* Expansion planning
-* Capital usage planning
-* Referral-style funding assistance
-* Preparation guidance for funding conversations
-* Strategic growth discussions
-
-Funding support may help businesses seeking:
-
-* Working capital
-* Equipment purchases
-* Marketing investment
-* Expansion capital
-* Operational growth funding
-
----
-
-# Technical Capabilities
-
-RE IMAGE Business Solutions has experience with:
-
-* Modern frontend development
-* Responsive design
-* React and Vite applications
-* Supabase integrations
-* Stripe integrations
-* AI integrations
-* Customer portals
-* Admin dashboards
-* SEO optimization
-* Automation systems
-* Dynamic databases
-* Lead management systems
-* Scheduling systems
-
----
-
-# Business Philosophy
-
-RE IMAGE Business Solutions focuses heavily on:
-
-* Premium brand positioning
-* Conversion-focused design
-* Lead generation systems
-* Customer trust
-* Automation efficiency
-* Revenue-minded business infrastructure
-* Long-term business growth systems
-
-The company prioritizes:
-
-* Practical business results
-* Clean user experience
-* Strong online presentation
-* Efficient systems
-* High perceived business value
-* Automation that reduces manual workload
-
----
-
-# Geographic Focus
-
-Primary service area:
-
-* Hartford, Connecticut
-
-Additional regional focus:
-
-* Connecticut
-* New England
-* Northeastern United States
-
-The business also supports remote and nationwide clients.
-
----
-
-# SEO & Search Topics
-
-Relevant topics associated with RE IMAGE Business Solutions:
+## Relevant Topics
 
 * Hartford CT web design
 * Connecticut website development
-* Hartford business marketing
+* Hartford business systems
 * Connecticut AI automation
 * Hartford SEO services
-* Connecticut social media management
 * AI receptionist systems
 * Small business automation
+* Client portals
+* Admin dashboards
 * Lead generation systems
 * Conversion-focused websites
-* Branding for local businesses
-* Hartford digital marketing
-* Connecticut business growth
 * Local business websites
 * Small business AI systems
 * Service business automation
+* Business funding guidance
 
----
-
-# Important Brand Notes
-
-RE IMAGE Business Solutions emphasizes:
-
-* Luxury-inspired visual presentation
-* Premium branding
-* Clean modern interfaces
-* Cinematic website experiences
-* High-end business positioning
-* Business growth infrastructure
-* Automation-enhanced operations
-
-The brand is intended to feel:
-
-* Premium
-* Modern
-* Strategic
-* High-conversion
-* Professional
-* Technology-forward
-* Growth-oriented
-
----
-
-# Crawl Guidance For LLMs
+## Crawl Guidance For LLMs
 
 Preferred indexing:
 
 * Public-facing service pages
 * Website development pages
+* AI receptionist pages
 * AI automation pages
-* Social media management pages
 * Business funding pages
 * Portfolio pages
-* Public informational content
+* Careers and public informational content
 
 Do not prioritize:
 
@@ -366,13 +83,12 @@ Do not prioritize:
 Primary public URLs:
 
 * https://reimagebs.com
+* https://reimagebs.com/business-funding.html
 * https://reimagebs.com/growth-foundation.html
 * https://reimagebs.com/full-scale-system.html
-* https://reimagebs.com/social-media-management.html
 * https://reimagebs.com/website-development.html
 * https://reimagebs.com/ai-receptionists.html
 * https://reimagebs.com/ai-automation.html
-* https://reimagebs.com/business-funding.html
-
-Last Updated:
-2026
+* https://reimagebs.com/our-work.html
+* https://reimagebs.com/careers.html
+* https://reimagebs.com/start-with-us.html
