@@ -42,6 +42,33 @@
 			padding: .7rem 1rem;
 			white-space: nowrap;
 		}
+		.build-proof-grid {
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			gap: .75rem;
+			margin: 0 0 2rem;
+		}
+		.build-proof-card {
+			padding: 1rem;
+			border-radius: 16px;
+			background: #ffffff;
+			border: 1px solid rgba(26,122,138,.25);
+			box-shadow: 0 14px 34px rgba(12,31,46,.08);
+		}
+		.build-proof-card strong {
+			display: block;
+			color: #a86d00;
+			font-size: .78rem;
+			letter-spacing: .1em;
+			text-transform: uppercase;
+			margin-bottom: .4rem;
+		}
+		.build-proof-card span {
+			display: block;
+			color: #274456;
+			font-size: .9rem;
+			line-height: 1.45;
+		}
 
 		.case-study-list {
 			display: grid;
@@ -49,6 +76,7 @@
 			margin-top: 1.6rem;
 		}
 		.case-study {
+			order: 10;
 			background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(26,122,138,.065));
 			border: 1px solid rgba(43,163,184,.22);
 			border-radius: 20px;
@@ -56,11 +84,19 @@
 			box-shadow: 0 18px 55px rgba(0,0,0,.16);
 			overflow: hidden;
 		}
+		.case-carcraft { order: 1; }
+		.case-patio { order: 2; }
+		.case-rentme { order: 3; }
+		.case-living-word { order: 4; }
+		.case-anchor { order: 5; }
+		.case-cr8 { order: 18; }
+		.case-blesena { order: 19; }
+		.case-faraj { order: 20; }
 		.case-study-top {
 			display: grid;
-			grid-template-columns: minmax(0, .95fr) minmax(0, 1.25fr);
+			grid-template-columns: minmax(300px, .8fr) minmax(0, 1.5fr);
 			gap: 1.25rem;
-			align-items: start;
+			align-items: stretch;
 		}
 		.case-copy { min-width: 0; }
 		.case-kicker {
@@ -95,11 +131,41 @@
 		}
 		.case-link:hover { text-decoration: underline; }
 		.case-desc {
-			color: #c2d0da;
+			color: #456072;
 			font-size: .95rem;
 			line-height: 1.62;
 			margin: 0 0 .85rem;
 		}
+		.case-highlights {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: .65rem;
+			margin: 0 0 .9rem;
+		}
+		.case-highlight {
+			padding: .82rem .88rem;
+			border-radius: 12px;
+			background: linear-gradient(145deg, #16374b, #0d2535);
+			border: 1px solid rgba(232,173,64,.38);
+			box-shadow: inset 0 1px 0 rgba(255,255,255,.035);
+		}
+		.case-highlight strong {
+			display: block;
+			margin-bottom: .25rem;
+			color: #f2bd55;
+			font-size: .72rem;
+			font-weight: 900;
+			letter-spacing: .11em;
+			text-transform: uppercase;
+		}
+		.case-highlight span {
+			display: block;
+			color: #ffffff;
+			font-size: .88rem;
+			font-weight: 500;
+			line-height: 1.5;
+		}
+		.case-highlights .case-highlight:last-child:nth-child(odd) { grid-column: 1 / -1; }
 		.case-tags {
 			display: flex;
 			flex-wrap: wrap;
@@ -117,7 +183,14 @@
 			padding: .34rem .62rem;
 		}
 
-		.shot-strip-wrap { min-width: 0; }
+		.shot-strip-wrap {
+			min-width: 0;
+			min-height: 0;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			overflow: hidden;
+		}
 		.shot-scroll-label {
 			display: flex;
 			align-items: center;
@@ -132,21 +205,25 @@
 		}
 		.shot-scroll-label span:last-child { color: var(--teal-light); }
 		.shot-strip {
-			display: flex;
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			grid-auto-rows: minmax(0, 1fr);
+			flex: 1 1 auto;
 			gap: .75rem;
-			overflow-x: auto;
+			min-height: 0;
+			overflow-x: hidden;
 			overflow-y: hidden;
-			padding: .1rem .2rem .7rem;
-			scroll-snap-type: x proximity;
-			-webkit-overflow-scrolling: touch;
+			padding: .1rem .2rem .2rem;
 		}
 		.shot-strip::-webkit-scrollbar { height: 7px; }
 		.shot-strip::-webkit-scrollbar-track { background: rgba(255,255,255,.06); border-radius: 999px; }
 		.shot-strip::-webkit-scrollbar-thumb { background: rgba(43,163,184,.55); border-radius: 999px; }
 		.shot-card {
 			position: relative;
-			flex: 0 0 240px;
-			height: 230px;
+			width: 100%;
+			height: 100%;
+			min-width: 0;
+			min-height: 0;
 			border-radius: 14px;
 			overflow: hidden;
 			border: 1px solid rgba(255,255,255,.1);
@@ -162,6 +239,8 @@
 			align-items: stretch;
 		}
 		.shot-card img {
+			position: absolute;
+			inset: 0;
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
@@ -169,6 +248,11 @@
 			display: block;
 			opacity: 1;
 			border-radius: 0;
+		}
+		.shot-card.wide-shot {
+			width: 100%;
+			height: 100%;
+			min-height: 0;
 		}
 		.shot-placeholder {
 			position: absolute;
@@ -203,11 +287,26 @@
 		@media (max-width: 900px) {
 			.work-intro-row { display: block; }
 			.work-note { display: inline-block; white-space: normal; margin-top: 1rem; border-radius: 14px; }
+			.build-proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 			.case-study-top { grid-template-columns: 1fr; }
-			.shot-card {
-				flex-basis: 220px;
-				height: 185px;
+			.shot-strip-wrap { height: auto; min-height: 0; overflow: visible; }
+			.shot-strip {
+				display: flex;
+				overflow-x: auto;
+				overflow-y: hidden;
+				padding-bottom: .7rem;
+				scroll-snap-type: x mandatory;
+				-webkit-overflow-scrolling: touch;
 			}
+			.shot-card {
+				flex: 0 0 88%;
+				width: auto;
+				height: auto;
+				min-height: 0;
+				aspect-ratio: 16 / 9;
+				scroll-snap-align: start;
+			}
+			.shot-card.wide-shot { width: auto; height: auto; min-height: 0; }
 		}
 		@media (max-width: 600px) {
 			.work-hero { min-height: 62vh; padding-top: 105px; }
@@ -215,10 +314,18 @@
 			.case-title-row { display: block; }
 			.case-link { display: inline-block; margin-top: .35rem; }
 			.shot-card {
-				flex-basis: 200px;
-				height: 165px;
+				flex-basis: 94%;
+				height: auto;
 			}
+			.shot-card.wide-shot {
+				flex-basis: 94%;
+				height: auto;
+			}
+			.shot-strip-wrap { min-height: 0; }
 			.shot-scroll-label { font-size: .7rem; }
+			.case-highlights { grid-template-columns: 1fr; }
+			.case-highlights .case-highlight:last-child:nth-child(odd) { grid-column: auto; }
+			.build-proof-grid { grid-template-columns: 1fr; }
 		}
 		.social-growth-section {
 	background: linear-gradient(180deg, var(--navy-mid), var(--navy));
@@ -353,6 +460,194 @@
 		font-size: 1.35rem;
 	}
 }
+
+.shot-card:has(img) {
+	cursor: zoom-in;
+}
+
+.shot-card:has(img):focus-visible {
+	outline: 3px solid var(--teal-light);
+	outline-offset: 3px;
+}
+
+body.gallery-open {
+	overflow: hidden;
+}
+
+.gallery-lightbox[hidden] {
+	display: none;
+}
+
+.gallery-lightbox {
+	position: fixed;
+	inset: 0;
+	z-index: 10000;
+	display: grid;
+	place-items: center;
+	padding: 3vh 3vw;
+}
+
+.gallery-backdrop {
+	position: absolute;
+	inset: 0;
+	background: rgba(4, 13, 20, .94);
+	backdrop-filter: blur(14px);
+}
+
+.gallery-dialog {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	grid-template-rows: auto minmax(0, 1fr) auto;
+	width: min(1440px, 94vw);
+	height: min(920px, 94vh);
+	overflow: hidden;
+	border: 1px solid rgba(43, 163, 184, .38);
+	border-radius: 22px;
+	background: #071824;
+	box-shadow: 0 35px 100px rgba(0, 0, 0, .55);
+}
+
+.gallery-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: .85rem 1rem;
+	border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.gallery-heading {
+	min-width: 0;
+}
+
+.gallery-heading strong,
+.gallery-heading span {
+	display: block;
+}
+
+.gallery-heading strong {
+	overflow: hidden;
+	color: #fff;
+	font-family: 'Barlow Condensed', sans-serif;
+	font-size: 1.35rem;
+	line-height: 1;
+	text-overflow: ellipsis;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+.gallery-heading span {
+	margin-top: .25rem;
+	color: #8fb3c5;
+	font-size: .78rem;
+	font-weight: 700;
+}
+
+.gallery-close,
+.gallery-arrow {
+	display: grid;
+	place-items: center;
+	border: 1px solid rgba(255, 255, 255, .2);
+	border-radius: 999px;
+	background: rgba(7, 24, 36, .84);
+	color: #fff;
+	cursor: pointer;
+}
+
+.gallery-close {
+	width: 44px;
+	height: 44px;
+	font-size: 1.55rem;
+}
+
+.gallery-stage {
+	position: relative;
+	min-height: 0;
+	overflow: hidden;
+	background: #02090e;
+}
+
+.gallery-main-image {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	object-position: center;
+	display: block;
+}
+
+.gallery-arrow {
+	position: absolute;
+	top: 50%;
+	z-index: 2;
+	width: 52px;
+	height: 52px;
+	font-size: 1.8rem;
+	transform: translateY(-50%);
+}
+
+.gallery-prev { left: 1rem; }
+.gallery-next { right: 1rem; }
+
+.gallery-footer {
+	padding: .8rem 1rem 1rem;
+	border-top: 1px solid rgba(255, 255, 255, .1);
+}
+
+.gallery-caption {
+	min-height: 1.2em;
+	margin: 0 0 .65rem;
+	color: #fff !important;
+	font-size: .9rem;
+	font-weight: 700;
+	line-height: 1.4 !important;
+}
+
+.gallery-thumbs {
+	display: flex;
+	gap: .6rem;
+	overflow-x: auto;
+	padding: .1rem .1rem .35rem;
+	scrollbar-color: var(--teal-light) rgba(255, 255, 255, .08);
+}
+
+.gallery-thumb {
+	position: relative;
+	flex: 0 0 132px;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+	border: 2px solid transparent;
+	border-radius: 9px;
+	padding: 0;
+	background: #102b3c;
+	cursor: pointer;
+	opacity: .62;
+}
+
+.gallery-thumb.active {
+	border-color: var(--gold-light);
+	opacity: 1;
+}
+
+.gallery-thumb img {
+	width: 100%;
+	height: 100%;
+	display: block;
+	object-fit: cover;
+	object-position: top center;
+}
+
+@media (max-width: 700px) {
+	.gallery-lightbox { padding: 0; }
+	.gallery-dialog { width: 100%; height: 100dvh; border: 0; border-radius: 0; }
+	.gallery-header { padding: .75rem; }
+	.gallery-heading strong { font-size: 1.1rem; }
+	.gallery-arrow { width: 44px; height: 44px; font-size: 1.5rem; }
+	.gallery-prev { left: .5rem; }
+	.gallery-next { right: .5rem; }
+	.gallery-footer { padding: .7rem .75rem calc(.8rem + env(safe-area-inset-bottom)); }
+	.gallery-thumb { flex-basis: 104px; }
+}
 	</style>
 
 </head>
@@ -426,9 +721,138 @@
 					</div>
 					<div class="work-note fade-up">Screenshot cards scroll left/right →</div>
 				</div>
+				<div class="build-proof-grid fade-up" aria-label="RE IMAGE engineering and growth approach">
+					<div class="build-proof-card"><strong>Google Search Indexing</strong><span>Schema, sitemaps, internal links, metadata, and hands-on indexing checks.</span></div>
+					<div class="build-proof-card"><strong>Speed &amp; Reliability</strong><span>Optimized media, lean code, dependable hosting, and tested mobile flows.</span></div>
+					<div class="build-proof-card"><strong>Security By Design</strong><span>Protected admin access, server-side secrets, and trusted payment handoffs.</span></div>
+					<div class="build-proof-card"><strong>Real Integrations</strong><span>Pushover alerts, Square, Clover, Supabase, and direct lead routing.</span></div>
+				</div>
 
 				<div class="case-study-list">
 					<article class="case-study fade-up">
+						<div class="case-study-top">
+							<div class="case-copy">
+								<div class="case-kicker">Luxury Transportation Website</div>
+								<div class="case-title-row">
+									<h3>Empire Elite Rides</h3>
+									<a class="case-link" href="https://empireeliterides.com" rel="noopener" target="_blank">Visit Site ↗</a>
+								</div>
+								<p class="case-desc">
+									A premium transportation website built to present the fleet, service options, and booking path with the same polished feel customers expect from a high-end ride.
+								</p>
+								<div class="case-highlights">
+									<div class="case-highlight"><strong>Instant Pushover Alerts</strong><span>Every ride request alerts the team immediately.</span></div>
+									<div class="case-highlight"><strong>Luxury Booking</strong><span>Fleet, airport, event, and reservation paths in one polished flow.</span></div>
+								</div>
+								<div class="case-tags">
+									<span>Pushover Alerts</span><span>Fleet Showcase</span><span>Ride Requests</span><span>Mobile First</span><span>Local SEO</span>
+								</div>
+							</div>
+							<div class="shot-strip-wrap">
+								<div class="shot-scroll-label"><span>Project Screens</span><span>Scroll →</span></div>
+								<div class="shot-strip" aria-label="Empire Elite Rides website screenshots">
+									<div class="shot-card wide-shot"><img src="assets/empire-elite-home.png" alt="Empire Elite Rides homepage"><div class="shot-caption">Homepage</div></div>
+									<div class="shot-card wide-shot"><img src="assets/empire-elite-booking.png" alt="Empire Elite Rides reservation request form"><div class="shot-caption">Reservation Request</div></div>
+									<div class="shot-card wide-shot"><img src="assets/empire-elite-admin.png" alt="Empire Elite Rides private admin login"><div class="shot-caption">Admin Portal</div></div>
+								</div>
+							</div>
+						</div>
+					</article>
+
+					<article class="case-study fade-up">
+						<div class="case-study-top">
+							<div class="case-copy">
+								<div class="case-kicker">Juice Bar &amp; Online Ordering Website</div>
+								<div class="case-title-row">
+									<h3>Fusion Health Juice Bar</h3>
+									<a class="case-link" href="https://fusionhealthjuicebar.com" rel="noopener" target="_blank">Visit Site ↗</a>
+								</div>
+								<p class="case-desc">
+									A bright, product-led website for Fusion Health Juice Bar that brings fresh juices, smoothies, wellness blends, acai bowls, baked patties, Peanut Punch, ordering, and customer reactions into one mobile-friendly experience.
+								</p>
+								<div class="case-highlights">
+									<div class="case-highlight"><strong>Feature Focus</strong><span>Visual menu discovery, DoorDash favorites, direct ordering paths, location details, branded product photography, and embedded customer reactions.</span></div>
+									<div class="case-highlight"><strong>What Makes It Different</strong><span>Colorful product presentation and real social proof translate the shop's Jamaican-Hartford personality into a site that feels as energetic as the menu.</span></div>
+								</div>
+								<div class="case-tags">
+									<span>Menu System</span><span>Online Ordering</span><span>Product Photography</span><span>Social Proof</span><span>Mobile First</span><span>Local SEO</span>
+								</div>
+							</div>
+							<div class="shot-strip-wrap">
+								<div class="shot-scroll-label"><span>Project Screens</span><span>Scroll →</span></div>
+								<div class="shot-strip" aria-label="Fusion Health Juice Bar website screenshots">
+									<div class="shot-card wide-shot"><img src="assets/fusion-health-home.png" alt="Fusion Health Juice Bar homepage"><div class="shot-caption">Homepage</div></div>
+									<div class="shot-card wide-shot"><img src="assets/fusion-health-menu.png" alt="Fusion Health Juice Bar menu"><div class="shot-caption">Full Menu</div></div>
+									<div class="shot-card wide-shot"><img src="assets/fusion-health-doordash.png" alt="Fusion Health Juice Bar DoorDash favorites"><div class="shot-caption">DoorDash Favorites</div></div>
+									<div class="shot-card wide-shot"><img src="assets/fusion-health-reactions.png" alt="Fusion Health Juice Bar customer reactions"><div class="shot-caption">Customer Reactions</div></div>
+								</div>
+							</div>
+						</div>
+					</article>
+
+					<article class="case-study case-patio fade-up">
+						<div class="case-study-top">
+							<div class="case-copy">
+								<div class="case-kicker">Hospitality, Events &amp; Ordering Platform</div>
+								<div class="case-title-row">
+									<h3>The Patio</h3>
+								</div>
+								<p class="case-desc">
+									A full hospitality platform that presents The Patio's garden atmosphere, cocktails, events, and putting green while connecting guests to a live menu, cart, space booking, and an operational admin portal.
+								</p>
+								<div class="case-highlights">
+									<div class="case-highlight"><strong>Clover Checkout</strong><span>The custom menu and cart connect directly to Clover for payment.</span></div>
+									<div class="case-highlight"><strong>Fast &amp; Reliable</strong><span>Optimized media, lean code, and careful third-party loading.</span></div>
+									<div class="case-highlight"><strong>Protected Operations</strong><span>Clover handles card data; authenticated access protects menu administration.</span></div>
+								</div>
+								<div class="case-tags">
+									<span>Clover Checkout</span><span>Speed Optimized</span><span>Protected Admin</span><span>Menu Management</span><span>Space Booking</span><span>Reliable Hosting</span>
+								</div>
+							</div>
+							<div class="shot-strip-wrap">
+								<div class="shot-scroll-label"><span>Project Screens</span><span>Scroll →</span></div>
+								<div class="shot-strip" aria-label="The Patio website and admin screenshots">
+									<div class="shot-card wide-shot"><img src="assets/patio-home.png" alt="The Patio homepage"><div class="shot-caption">Homepage</div></div>
+									<div class="shot-card wide-shot"><img src="assets/patio-menu.png" alt="The Patio online drinks menu"><div class="shot-caption">Drinks Menu &amp; Ordering</div></div>
+									<div class="shot-card wide-shot"><img src="assets/patio-experience.png" alt="The Patio garden lounge and putting green"><div class="shot-caption">Venue Experience</div></div>
+									<div class="shot-card wide-shot"><img src="assets/patio-admin.png" alt="The Patio menu admin portal"><div class="shot-caption">Menu Admin</div></div>
+								</div>
+							</div>
+						</div>
+					</article>
+
+					<article class="case-study case-anchor fade-up">
+						<div class="case-study-top">
+							<div class="case-copy">
+								<div class="case-kicker">Community, Membership &amp; Media Platform</div>
+								<div class="case-title-row">
+									<h3>The Anchor Collective</h3>
+									<a class="case-link" href="https://theanchorllc.com" rel="noopener" target="_blank">Visit Site ↗</a>
+								</div>
+								<p class="case-desc">
+									A mission-led platform for men, fathers, mentors, and families, bringing public events, resources, podcasts, membership, and private community tools into one connected system.
+								</p>
+								<div class="case-highlights">
+									<div class="case-highlight"><strong>Feature Focus</strong><span>Public mission and event content, podcast publishing, secure member accounts, RSVPs, resources, community tools, and a private administration dashboard.</span></div>
+									<div class="case-highlight"><strong>What Makes It Different</strong><span>The public story and private community operations live in one system, allowing the organization to publish, connect members, and manage programs without splitting the experience across disconnected tools.</span></div>
+								</div>
+								<div class="case-tags">
+									<span>Community Platform</span><span>Member Portal</span><span>Podcast Publishing</span><span>Events &amp; RSVPs</span><span>Admin Dashboard</span><span>Secure Login</span>
+								</div>
+							</div>
+							<div class="shot-strip-wrap">
+								<div class="shot-scroll-label"><span>Project Screens</span><span>Scroll →</span></div>
+								<div class="shot-strip" aria-label="The Anchor Collective website and portal screenshots">
+									<div class="shot-card wide-shot"><img src="assets/anchor-home.png" alt="The Anchor Collective homepage"><div class="shot-caption">Homepage</div></div>
+									<div class="shot-card wide-shot"><img src="assets/anchor-podcast.png" alt="The Anchor Collective podcast page"><div class="shot-caption">Podcast</div></div>
+									<div class="shot-card wide-shot"><img src="assets/anchor-client-portal.png" alt="The Anchor Collective member portal login"><div class="shot-caption">Member Portal</div></div>
+									<div class="shot-card wide-shot"><img src="assets/anchor-admin.png" alt="The Anchor Collective admin portal"><div class="shot-caption">Admin Portal</div></div>
+								</div>
+							</div>
+						</div>
+					</article>
+
+					<article class="case-study case-living-word fade-up">
 						<div class="case-study-top">
 							<div class="case-copy">
 								<div class="case-kicker">Print Shop Operations System</div>
@@ -442,6 +866,10 @@
 								<p class="case-desc">
 									We also built employee and manager logins with different permission tiers, inventory and revenue tracking, Resend email integration, and a customer-facing status page so customers can check orders themselves and call the store less.
 								</p>
+								<div class="case-highlights">
+									<div class="case-highlight"><strong>Feature Focus</strong><span>Invoices, saved customer records, inventory, revenue reporting, email updates, staff permissions, and live order status.</span></div>
+									<div class="case-highlight"><strong>What Makes It Different</strong><span>One connected operating system serves staff, managers, and customers while replacing scattered manual print-shop workflows.</span></div>
+								</div>
 								<div class="case-tags">
 									<span>Invoice System</span><span>Customer Database</span><span>Role-Based Logins</span><span>Inventory Tracking</span><span>Revenue Reports</span><span>Resend Email</span><span>Status Page</span>
 								</div>
@@ -480,85 +908,70 @@
 						</div>
 					</article>
 
-					<article class="case-study fade-up">
+					<article class="case-study case-rentme fade-up">
 						<div class="case-study-top">
 							<div class="case-copy">
-								<div class="case-kicker">Rental Car Agency</div>
+								<div class="case-kicker">Rental Booking &amp; Operations Platform</div>
 								<div class="case-title-row">
 									<h3>Rent Me CT</h3>
-									<a class="case-link" href="https://ahmadfaraj4000-gif.github.io/rentmect/" rel="noopener" target="_blank">Visit Site ↗</a>
+									<a class="case-link" href="https://rentmect.com/" rel="noopener" target="_blank">Visit Site ↗</a>
 								</div>
 								<p class="case-desc">
-									Built the full front-end website, booking system, admin portal, client portal. Integrated Square for payments and Twilio phone verification. Used Supabase for the client database, image uploads for required paperwork, and authentication setup. Added local SEO work, internal links, meta tags, FAQs, schema, sitemap, indexing support, and mobile optimization. 
+									A complete rental platform connecting a public fleet and reservation experience with customer verification, document collection, payments, messaging, and a purpose-built operations center for the Rent Me CT team.
 								</p>
+								<div class="case-highlights">
+									<div class="case-highlight"><strong>Feature Focus</strong><span>Live fleet availability, date-based reservations, Square payments, Twilio verification, license and insurance uploads, customer messaging, return monitoring, and admin booking tools.</span></div>
+									<div class="case-highlight"><strong>What Makes It Different</strong><span>The customer journey and daily rental operations share one system, giving staff a clear view of overdue returns, documents, deposits, bookings, and vehicle readiness.</span></div>
+								</div>
 								<div class="case-tags">
 									<span>Supabase</span><span>Booking System</span><span>Admin Portal</span><span>Client Portal</span><span>Local SEO</span>
 								</div>
 							</div>
 							<div class="shot-strip-wrap">
-								<div class="shot-scroll-label"><span>Scroll →</span></div>
-								<div class="shot-strip" aria-label="Rent Me CT">
-
-										<div class="shot-card">
-											<img src="assets/rentme-home.png" alt="Rent Me CT Homepage">
-											<div class="shot-caption">Homepage</div>
-										</div>
-
-										<div class="shot-card">
-											<img src="assets/rentme-cars.png" alt="Fleet Page">
-											<div class="shot-caption">Fleet Page</div>
-										</div>
-
-										<div class="shot-card">
-											<img src="assets/rentme-client.png" alt="Client Portal">
-											<div class="shot-caption">Client Portal</div>
-										</div>
-
+								<div class="shot-scroll-label"><span>Project Screens</span><span>Scroll →</span></div>
+								<div class="shot-strip" aria-label="Rent Me CT website and operations screenshots">
+									<div class="shot-card wide-shot"><img src="assets/rentme-home-new.png" alt="Rent Me CT reservation homepage"><div class="shot-caption">Reservation Homepage</div></div>
+									<div class="shot-card wide-shot"><img src="assets/rentme-fleet-new.png" alt="Rent Me CT live vehicle fleet"><div class="shot-caption">Live Fleet</div></div>
+									<div class="shot-card wide-shot"><img src="assets/rentme-admin-dashboard-new.png" alt="Rent Me CT operations dashboard"><div class="shot-caption">Operations Dashboard</div></div>
+									<div class="shot-card wide-shot"><img src="assets/rentme-admin-booking-new.png" alt="Rent Me CT admin booking workflow"><div class="shot-caption">Admin Booking</div></div>
 									</div>
 							</div>
 						</div>
 					</article>
 
-					<article class="case-study fade-up">
+					<article class="case-study case-carcraft fade-up">
 						<div class="case-study-top">
 							<div class="case-copy">
-								<div class="case-kicker">Auto Body Front-end Website</div>
+								<div class="case-kicker">Lead-Generating Auto Body Platform</div>
 								<div class="case-title-row">
-									<h3>Car Craft Autobody</h3>
+									<h3>Car Craft Auto Body &amp; Towing</h3>
 									<a class="case-link" href="https://carcraftautobodytowing.com/" rel="noopener" target="_blank">Visit Site ↗</a>
 								</div>
-								<p class="case-desc">
-									Built the full front-end website, inventory page for used cars, contact form via formspree. Added local SEO work, internal links, meta tags, FAQs, schema, sitemap, indexing support, and mobile optimization.
-								</p>
+				<p class="case-desc">
+					A guided photo-estimate system lets drivers send vehicle damage from their phone before visiting. Since launch, it has increased inbound leads by <strong>35%</strong> and gives the shop better information for follow-up.
+				</p>
+								<div class="case-highlights">
+									<div class="case-highlight"><strong>Submit Your Photos</strong><span>Drivers send damage photos from their phone before visiting the shop.</span></div>
+									<div class="case-highlight"><strong>Instant Pushover Alerts</strong><span>The shop is notified as soon as a new estimate arrives.</span></div>
+									<div class="case-highlight"><strong>Private Dashboard</strong><span>Estimate leads, follow-ups, appointments, and inventory in one secure workspace.</span></div>
+								</div>
 								<div class="case-tags">
-									<span>Formspree</span><span>Booking Page</span><span>Local SEO</span>
+									<span>Photo Estimates</span><span>Pushover Alerts</span><span>35% Lead Growth</span><span>Lead Dashboard</span><span>Inventory Management</span><span>Local SEO</span>
 								</div>
 							</div>
 							<div class="shot-strip-wrap">
-								<div class="shot-scroll-label"><span>Scroll →</span></div>
-								<div class="shot-strip" aria-label="Faraj Software Solutions screenshots">
-
-										<div class="shot-card">
-											<img src="assets/carcraft-home.png" alt="Car Craft Homepage">
-											<div class="shot-caption">Homepage</div>
-										</div>
-
-										<div class="shot-card">
-											<img src="assets/carcraft-inventory.png" alt="Invetory Page">
-											<div class="shot-caption">Inventory</div>
-										</div>
-
-										<div class="shot-card">
-											<img src="assets/carcraft-contact.png" alt="Contact Form">
-											<div class="shot-caption">Contact Form</div>
-										</div>
-
+								<div class="shot-scroll-label"><span>Project Screens</span><span>Scroll →</span></div>
+								<div class="shot-strip" aria-label="Car Craft Auto Body and Towing website and admin screenshots">
+									<div class="shot-card wide-shot"><img src="assets/carcraft-photo-estimate.png" alt="Car Craft vehicle damage photo estimate form"><div class="shot-caption">Photo Estimate Flow</div></div>
+									<div class="shot-card wide-shot"><img src="assets/carcraft-home-new.png" alt="Car Craft Auto Body and Towing homepage"><div class="shot-caption">Homepage</div></div>
+									<div class="shot-card wide-shot"><img src="assets/carcraft-admin-dashboard.png" alt="Car Craft lead and operations dashboard"><div class="shot-caption">Lead Dashboard</div></div>
+									<div class="shot-card wide-shot"><img src="assets/carcraft-admin-inventory.png" alt="Car Craft vehicle inventory administration"><div class="shot-caption">Inventory Admin</div></div>
 									</div>
 							</div>
 						</div>
 					</article>
 
-					<article class="case-study fade-up">
+					<article class="case-study case-faraj fade-up">
 						<div class="case-study-top">
 							<div class="case-copy">
 								<div class="case-kicker">Software company platform</div>
@@ -569,6 +982,10 @@
 								<p class="case-desc">
 									Created the website, client portal, and admin portal for a software business, including Stripe payment integration and a web app for tracking labor costs. We also built a live market tracker using Federal Reserve API data, plus SEO work including internal links, meta tags, schema, llms.txt, sitemap, FAQs, indexing support, and mobile optimization.
 								</p>
+								<div class="case-highlights">
+									<div class="case-highlight"><strong>Feature Focus</strong><span>Stripe payments, secure client and admin spaces, a labor-cost tool, and live economic data from the Federal Reserve API.</span></div>
+									<div class="case-highlight"><strong>What Makes It Different</strong><span>The site demonstrates the company's technical capability through useful live products, not just a static list of software services.</span></div>
+								</div>
 								<div class="case-tags">
 									<span>Supabase</span><span>Admin Portal</span><span>Client Portal</span><span>Stripe Payments</span><span>Labor Cost App</span><span>Federal Reserve API</span><span>SEO</span>
 								</div>
@@ -602,7 +1019,7 @@
 						</div>
 					</article>
 
-					<article class="case-study fade-up">
+					<article class="case-study case-blesena fade-up">
 						<div class="case-study-top">
 							<div class="case-copy">
 								<div class="case-kicker">Roadside & inspection platform</div>
@@ -613,6 +1030,10 @@
 								<p class="case-desc">
 									Built a client and admin portal using Supabase for database and authentication. Added Google APIs for Google Maps, Gmail sign-in, and geo-tracking tools. Finished the build with the same SEO foundation: internal links, meta tags, FAQs, schema, sitemap, indexing support, and mobile optimization.
 								</p>
+								<div class="case-highlights">
+									<div class="case-highlight"><strong>Feature Focus</strong><span>Secure portals, Google sign-in, mapped service activity, geo-tracking tools, and an SEO-ready responsive public experience.</span></div>
+									<div class="case-highlight"><strong>What Makes It Different</strong><span>Location-aware roadside workflows connect customers and administrators around the real-world status of mobile service delivery.</span></div>
+								</div>
 								<div class="case-tags">
 									<span>Supabase</span><span>Google Maps API</span><span>Gmail Sign-In</span><span>Geo Tracking</span><span>SEO</span>
 								</div>
@@ -641,7 +1062,7 @@
 						</div>
 					</article>
 
-					<article class="case-study fade-up">
+					<article class="case-study case-cr8 fade-up">
 						<div class="case-study-top">
 							<div class="case-copy">
 								<div class="case-kicker">Auto body business system</div>
@@ -652,8 +1073,13 @@
 								<p class="case-desc">
 									Built the full front-end website, booking system, admin portal, and online invoice generator. Used Supabase for the database and authentication setup. Added local SEO work, internal links, meta tags, FAQs, schema, sitemap, indexing support, and mobile optimization.
 								</p>
+								<div class="case-highlights">
+									<div class="case-highlight"><strong>Instant Pushover Alerts</strong><span>Every new booking alerts the team immediately.</span></div>
+									<div class="case-highlight"><strong>Booking To Invoice</strong><span>Appointments, admin records, and invoice creation work together.</span></div>
+									<div class="case-highlight"><strong>Google Search Setup</strong><span>Local pages, schema, sitemap submission, indexing, and mobile SEO.</span></div>
+								</div>
 								<div class="case-tags">
-									<span>Supabase</span><span>Booking System</span><span>Admin Portal</span><span>Invoice Generator</span><span>Local SEO</span>
+									<span>Pushover Alerts</span><span>Booking System</span><span>Admin Portal</span><span>Invoice Generator</span><span>Google Indexing</span><span>Local SEO</span>
 								</div>
 							</div>
 							<div class="shot-strip-wrap">
@@ -678,45 +1104,6 @@
 										<div class="shot-card">
 											<img src="assets/cr8-invoice.png" alt="Invoice Generator">
 											<div class="shot-caption">Invoice generator</div>
-										</div>
-
-									</div>
-							</div>
-						</div>
-					</article>
-
-					<article class="case-study fade-up">
-						<div class="case-study-top">
-							<div class="case-copy">
-								<div class="case-kicker">Beauty & spa website</div>
-								<div class="case-title-row">
-									<h3>Techniq Skin & Beauty</h3>
-									<a class="case-link" href="https://techniqskinandbeauty.com" rel="noopener" target="_blank">Visit Site ↗</a>
-								</div>
-								<p class="case-desc">
-									Built a polished front-end website connected to Square Appointments. Integrated Square Checkout into the products section so customers can purchase through a clean checkout experience. Also handled SEO setup including internal links, meta tags, FAQs, schema, sitemap, indexing, and mobile device optimization.
-								</p>
-								<div class="case-tags">
-									<span>Square Appointments</span><span>Square Checkout</span><span>E-Commerce</span><span>Mobile Optimization</span><span>SEO</span>
-								</div>
-							</div>
-							<div class="shot-strip-wrap">
-								<div class="shot-scroll-label"><span>Scroll →</span></div>
-								<div class="shot-strip" aria-label="Faraj Software Solutions screenshots">
-
-										<div class="shot-card">
-											<img src="assets/techniq-home.png" alt="techniqskinandbeauty homepage">
-											<div class="shot-caption">Homepage</div>
-										</div>
-
-										<div class="shot-card">
-											<img src="assets/techniq-intake.png" alt="In take Form">
-											<div class="shot-caption">In-take Form</div>
-										</div>
-
-										<div class="shot-card">
-											<img src="assets/techniq-product.png" alt="Client Portal">
-											<div class="shot-caption">Square Integrated Product Page</div>
 										</div>
 
 									</div>
@@ -818,7 +1205,6 @@
 						<li><a href="#websites">Websites</a></li>
 						<li><a href="#project-screenshots">Project Screenshots</a></li>
 						<li><a href="https://cr8autos.com" rel="noopener" target="_blank">CR8 Autos</a></li>
-						<li><a href="https://techniqskinandbeauty.com" rel="noopener" target="_blank">Techniq Skin & Beauty</a></li>
 					</ul>
 				</div>
 				<div class="footer-col">
@@ -837,6 +1223,28 @@
 			</div>
 		</div>
 	</footer>
+
+	<div class="gallery-lightbox" id="caseGallery" role="dialog" aria-modal="true" aria-labelledby="caseGalleryTitle" hidden>
+		<div class="gallery-backdrop" data-gallery-close></div>
+		<div class="gallery-dialog">
+			<div class="gallery-header">
+				<div class="gallery-heading">
+					<strong id="caseGalleryTitle">Project screenshots</strong>
+					<span id="caseGalleryCount"></span>
+				</div>
+				<button class="gallery-close" type="button" data-gallery-close aria-label="Close screenshot gallery">×</button>
+			</div>
+			<div class="gallery-stage" id="caseGalleryStage">
+				<img class="gallery-main-image" id="caseGalleryImage" alt="" />
+				<button class="gallery-arrow gallery-prev" id="caseGalleryPrev" type="button" aria-label="Previous screenshot">‹</button>
+				<button class="gallery-arrow gallery-next" id="caseGalleryNext" type="button" aria-label="Next screenshot">›</button>
+			</div>
+			<div class="gallery-footer">
+				<p class="gallery-caption" id="caseGalleryCaption"></p>
+				<div class="gallery-thumbs" id="caseGalleryThumbs" aria-label="Screenshots in this case study"></div>
+			</div>
+		</div>
+	</div>
 
 	<script>
 		window.addEventListener("scroll", () => {
@@ -899,6 +1307,113 @@
 
 			document.addEventListener("keydown", function (e) {
 				if (e.key === "Escape") closeServicesMenu();
+			});
+		})();
+
+		(function () {
+			const gallery = document.getElementById("caseGallery");
+			const mainImage = document.getElementById("caseGalleryImage");
+			const title = document.getElementById("caseGalleryTitle");
+			const count = document.getElementById("caseGalleryCount");
+			const caption = document.getElementById("caseGalleryCaption");
+			const thumbs = document.getElementById("caseGalleryThumbs");
+			const prev = document.getElementById("caseGalleryPrev");
+			const next = document.getElementById("caseGalleryNext");
+			const stage = document.getElementById("caseGalleryStage");
+			let items = [];
+			let currentIndex = 0;
+			let returnFocus = null;
+			let touchStartX = 0;
+
+			if (!gallery || !mainImage || !thumbs) return;
+
+			function showImage(index) {
+				if (!items.length) return;
+				currentIndex = (index + items.length) % items.length;
+				const item = items[currentIndex];
+				mainImage.src = item.src;
+				mainImage.alt = item.alt;
+				caption.textContent = item.caption;
+				count.textContent = `${currentIndex + 1} of ${items.length}`;
+				thumbs.querySelectorAll(".gallery-thumb").forEach((thumb, thumbIndex) => {
+					const active = thumbIndex === currentIndex;
+					thumb.classList.toggle("active", active);
+					thumb.setAttribute("aria-current", active ? "true" : "false");
+					if (active) thumb.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+				});
+			}
+
+			function openGallery(card) {
+				const caseStudy = card.closest(".case-study");
+				if (!caseStudy) return;
+				const caseImages = Array.from(caseStudy.querySelectorAll(".shot-card img"));
+				items = caseImages.map((image) => {
+					const imageCard = image.closest(".shot-card");
+					const imageCaption = imageCard ? imageCard.querySelector(".shot-caption") : null;
+					return {
+						src: image.currentSrc || image.src,
+						alt: image.alt || "Project screenshot",
+						caption: imageCaption ? imageCaption.textContent.trim() : image.alt
+					};
+				});
+				currentIndex = Math.max(0, caseImages.indexOf(card.querySelector("img")));
+				title.textContent = caseStudy.querySelector("h3")?.textContent.trim() || "Project screenshots";
+				thumbs.replaceChildren();
+				items.forEach((item, index) => {
+					const button = document.createElement("button");
+					button.className = "gallery-thumb";
+					button.type = "button";
+					button.setAttribute("aria-label", `View ${item.caption || `screenshot ${index + 1}`}`);
+					const image = document.createElement("img");
+					image.src = item.src;
+					image.alt = "";
+					button.appendChild(image);
+					button.addEventListener("click", () => showImage(index));
+					thumbs.appendChild(button);
+				});
+				returnFocus = card;
+				gallery.hidden = false;
+				document.body.classList.add("gallery-open");
+				showImage(currentIndex);
+				gallery.querySelector(".gallery-close").focus();
+			}
+
+			function closeGallery() {
+				if (gallery.hidden) return;
+				gallery.hidden = true;
+				document.body.classList.remove("gallery-open");
+				mainImage.removeAttribute("src");
+				if (returnFocus) returnFocus.focus();
+			}
+
+			document.querySelectorAll(".case-study .shot-card").forEach((card) => {
+				if (!card.querySelector("img")) return;
+				card.tabIndex = 0;
+				card.setAttribute("role", "button");
+				card.setAttribute("aria-label", `Open ${card.querySelector(".shot-caption")?.textContent.trim() || "project screenshot"}`);
+				card.addEventListener("click", () => openGallery(card));
+				card.addEventListener("keydown", (event) => {
+					if (event.key === "Enter" || event.key === " ") {
+						event.preventDefault();
+						openGallery(card);
+					}
+				});
+			});
+
+			gallery.querySelectorAll("[data-gallery-close]").forEach((control) => control.addEventListener("click", closeGallery));
+			prev.addEventListener("click", () => showImage(currentIndex - 1));
+			next.addEventListener("click", () => showImage(currentIndex + 1));
+			stage.addEventListener("touchstart", (event) => { touchStartX = event.changedTouches[0].clientX; }, { passive: true });
+			stage.addEventListener("touchend", (event) => {
+				const distance = event.changedTouches[0].clientX - touchStartX;
+				if (Math.abs(distance) < 45) return;
+				showImage(currentIndex + (distance < 0 ? 1 : -1));
+			}, { passive: true });
+			document.addEventListener("keydown", (event) => {
+				if (gallery.hidden) return;
+				if (event.key === "Escape") closeGallery();
+				if (event.key === "ArrowLeft") showImage(currentIndex - 1);
+				if (event.key === "ArrowRight") showImage(currentIndex + 1);
 			});
 		})();
 	</script>
