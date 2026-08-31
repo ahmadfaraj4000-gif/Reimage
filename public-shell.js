@@ -8,6 +8,51 @@
     });
   }
 
+  const currentMenuButton = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+
+  if (currentMenuButton && navLinks) {
+    // Replace the button so older page-specific click handlers cannot toggle the
+    // menu a second time. The public shell is the single mobile-nav controller.
+    const menuButton = currentMenuButton.cloneNode(true);
+    currentMenuButton.replaceWith(menuButton);
+
+    const closeMenu = () => {
+      navLinks.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'Open navigation');
+    };
+
+    const toggleMenu = () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+    };
+
+    menuButton.setAttribute('aria-expanded', String(navLinks.classList.contains('open')));
+    menuButton.addEventListener('click', (event) => {
+      event.stopPropagation();
+      toggleMenu();
+    });
+
+    navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+
+    document.addEventListener('click', (event) => {
+      if (!navigation.contains(event.target)) closeMenu();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && navLinks.classList.contains('open')) {
+        closeMenu();
+        menuButton.focus();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 980) closeMenu();
+    });
+  }
+
   let footer = document.querySelector('footer');
   if (!footer) {
     footer = document.createElement('footer');
