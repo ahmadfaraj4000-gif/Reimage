@@ -129,14 +129,21 @@ body .navbar .menu-btn { display: none !important; }
 
 @media (max-width: 980px) {
   body .navbar,
-  body .navbar.scrolled {
+  body .navbar.scrolled,
+  body.home-page.new-blue-home .navbar,
+  body.home-page.new-blue-home .navbar.scrolled {
     justify-content: space-between !important;
     width: calc(100% - 24px) !important;
     min-height: 56px !important;
     padding: 5px 0 !important;
+    overflow: visible !important;
+    clip-path: none !important;
+    box-shadow: 0 1px 0 rgba(7,20,38,.08) !important;
   }
 
   body .navbar .menu-btn {
+    position: relative !important;
+    z-index: 2301 !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -147,6 +154,10 @@ body .navbar .menu-btn { display: none !important; }
     padding: 0 !important;
     background: transparent !important;
     color: var(--shell-ink) !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+    -webkit-appearance: none !important;
   }
 
   body .navbar .nav-links {
