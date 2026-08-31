@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hartford, Reimagined | RE IMAGE</title>
+  <meta name="description" content="Explore an interactive 3D map of Hartford and step inside businesses powered by RE IMAGE.">
+  <link rel="icon" href="assets/reimage-logo-2026-transparent.png">
+  <link rel="stylesheet" href="styles.css?v=20260803-8">
+  <link rel="stylesheet" href="map.css?v=20260803-1">
+<link href="public-shell.css?v=20260803-3" rel="stylesheet">
+</head>
+<body class="map-page new-blue-home">
+  <nav class="navbar" id="navbar" aria-label="Main navigation">
+    <a class="nav-logo new-brand" href="index.html" aria-label="RE IMAGE homepage">
+      <img src="assets/reimage-logo-2026-transparent.png" alt="RE IMAGE">
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="website-development.html">Systems</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="our-work.html">Portfolio</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a class="nav-cta" href="start-with-us.html">Start With Us</a></li>
+    </ul>
+  </nav>
+
+  <main class="map-main">
+    <header class="map-intro">
+      <div>
+        <p class="map-overline"><span></span> RE IMAGE CITY NETWORK</p>
+        <h1>Hartford, reimagined.</h1>
+      </div>
+      <p class="map-intro-copy">Explore the businesses we help power. Select a branded location, enter its digital twin, and take action without leaving the city.</p>
+      <div class="map-legend" aria-label="Map legend">
+        <span><i class="legend-client"></i> RE IMAGE client</span>
+        <span><i class="legend-city"></i> City building</span>
+      </div>
+    </header>
+
+    <section class="map-shell" aria-label="Interactive Hartford business map">
+      <div class="map-status">
+        <span class="status-light"></span>
+        <span>HARTFORD / CT</span>
+        <strong id="mapZoomLabel">100%</strong>
+        <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">Boundary © OpenStreetMap contributors</a>
+      </div>
+
+      <div class="map-stage" id="mapStage" tabindex="0" aria-label="Drag to move around the city. Scroll or use the controls to zoom.">
+        <svg class="city-map" id="cityMap" viewBox="0 0 900 760" role="img" aria-labelledby="cityMapTitle cityMapDesc">
+          <title id="cityMapTitle">Interactive three-dimensional map of Hartford</title>
+          <desc id="cityMapDesc">A muted city with six brightly branded RE IMAGE client locations.</desc>
+          <defs>
+            <linearGradient id="cityGround" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#1c2531"></stop>
+              <stop offset="1" stop-color="#0d141d"></stop>
+            </linearGradient>
+            <linearGradient id="riverWater" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#0b3151"></stop>
+              <stop offset="1" stop-color="#071d32"></stop>
+            </linearGradient>
+            <filter id="cityShadow" x="-30%" y="-30%" width="160%" height="180%">
+              <feDropShadow dx="18" dy="24" stdDeviation="18" flood-color="#000" flood-opacity=".42"></feDropShadow>
+            </filter>
+            <filter id="clientGlow" x="-100%" y="-100%" width="300%" height="300%">
+              <feGaussianBlur stdDeviation="7" result="blur"></feGaussianBlur>
+              <feMerge><feMergeNode in="blur"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+            </filter>
+            <clipPath id="hartfordClip">
+              <polygon points="70,46.4 104,235.3 107.4,295.5 87.4,352.5 97.3,420.6 103.1,453.8 100.1,491.1 99.3,504.3 98.4,519.8 98.2,529.6 101,546.4 100.9,637.8 178.5,715.8 404.7,699.6 652.1,674.1 797.5,669 827,631.2 825.4,585.6 793.3,521.3 772.6,505.2 714.6,485.5 690.9,473.3 646.9,441.5 621.6,420.8 598.1,367.2 610.3,331.5 655.2,300 731.2,269.3 772.7,230.3 793.7,164.6 790.5,116.4 790.5,70.1 756.6,51.2 626.8,80.3 667,51.5 539.8,57.2 367.4,93.4 298.4,40.9"></polygon>
+            </clipPath>
+          </defs>
+
+          <path class="river-shape" d="M775,-20 C720,100 850,194 780,286 C720,368 855,456 795,570 C758,642 794,716 850,790 L940,790 L940,-20 Z" fill="url(#riverWater)"></path>
+          <g id="mapCamera">
+            <polygon class="city-shadow" points="70,46.4 104,235.3 107.4,295.5 87.4,352.5 97.3,420.6 103.1,453.8 100.1,491.1 99.3,504.3 98.4,519.8 98.2,529.6 101,546.4 100.9,637.8 178.5,715.8 404.7,699.6 652.1,674.1 797.5,669 827,631.2 825.4,585.6 793.3,521.3 772.6,505.2 714.6,485.5 690.9,473.3 646.9,441.5 621.6,420.8 598.1,367.2 610.3,331.5 655.2,300 731.2,269.3 772.7,230.3 793.7,164.6 790.5,116.4 790.5,70.1 756.6,51.2 626.8,80.3 667,51.5 539.8,57.2 367.4,93.4 298.4,40.9" transform="translate(12 18)"></polygon>
+            <polygon class="city-ground" points="70,46.4 104,235.3 107.4,295.5 87.4,352.5 97.3,420.6 103.1,453.8 100.1,491.1 99.3,504.3 98.4,519.8 98.2,529.6 101,546.4 100.9,637.8 178.5,715.8 404.7,699.6 652.1,674.1 797.5,669 827,631.2 825.4,585.6 793.3,521.3 772.6,505.2 714.6,485.5 690.9,473.3 646.9,441.5 621.6,420.8 598.1,367.2 610.3,331.5 655.2,300 731.2,269.3 772.7,230.3 793.7,164.6 790.5,116.4 790.5,70.1 756.6,51.2 626.8,80.3 667,51.5 539.8,57.2 367.4,93.4 298.4,40.9"></polygon>
+            <g id="roadLayer" clip-path="url(#hartfordClip)"></g>
+            <g id="buildingLayer" clip-path="url(#hartfordClip)"></g>
+            <g id="businessLayer"></g>
+          </g>
+        </svg>
+
+        <div class="map-instructions" id="mapInstructions">
+          <span class="instruction-icon">↔</span>
+          <div><strong>Explore Hartford</strong><small>Drag to move · Scroll to zoom · Select a beacon</small></div>
+          <button type="button" aria-label="Dismiss instructions">×</button>
+        </div>
+
+        <aside class="business-directory" aria-label="RE IMAGE client locations">
+          <div class="directory-head">
+            <span>LIVE LOCATIONS</span>
+            <strong id="locationCount">06</strong>
+          </div>
+          <div class="directory-list" id="directoryList"></div>
+        </aside>
+
+        <article class="location-preview" id="locationPreview" aria-live="polite">
+          <div class="preview-image"><img id="previewImage" src="" alt=""></div>
+          <div class="preview-copy">
+            <div class="preview-meta"><span id="previewType"></span><i></i><span>RE IMAGE POWERED</span></div>
+            <h2 id="previewName"></h2>
+            <p id="previewDescription"></p>
+            <div class="preview-actions">
+              <button class="enter-location" id="enterLocation" type="button"><span>Enter location</span><b>↗</b></button>
+              <a id="previewWebsite" href="#" target="_blank" rel="noopener">Visit site</a>
+            </div>
+          </div>
+        </article>
+
+        <div class="map-controls" aria-label="Map controls">
+          <button id="zoomIn" type="button" aria-label="Zoom in">+</button>
+          <button id="zoomOut" type="button" aria-label="Zoom out">−</button>
+          <button id="resetMap" type="button" aria-label="Reset map view">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.34-5.66M4 4v6h6"></path></svg>
+          </button>
+        </div>
+
+        <div class="map-compass" aria-hidden="true"><span>N</span><i></i></div>
+        <div class="map-coordinates">41.7658° N <span>/</span> 72.6734° W</div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="place-dialog" id="placeDialog">
+    <article class="place-experience">
+      <button class="dialog-close" id="dialogClose" type="button" aria-label="Close location">×</button>
+      <div class="space-viewer" id="spaceViewer">
+        <div class="viewer-shade"></div>
+        <div class="viewer-topbar">
+          <span class="viewer-live"><i></i> DIGITAL TWIN</span>
+          <span>DRAG TO LOOK AROUND</span>
+        </div>
+        <div class="viewer-reticle" aria-hidden="true"><i></i></div>
+        <button class="viewer-hotspot hotspot-primary" id="viewerHotspot" type="button"><span>+</span><b id="hotspotLabel">Take action</b></button>
+        <div class="viewer-bottom">
+          <div class="viewer-brand" id="viewerBrand"></div>
+          <div><strong id="viewerName"></strong><span id="viewerType"></span></div>
+        </div>
+      </div>
+      <div class="place-details">
+        <div>
+          <span class="place-index" id="placeIndex">01 / 06</span>
+          <h2 id="placeName"></h2>
+          <p id="placeDescription"></p>
+        </div>
+        <div class="place-actions">
+          <a class="place-primary-action" id="placePrimaryAction" href="#" target="_blank" rel="noopener"></a>
+          <a class="place-secondary-action" id="placeSecondaryAction" href="our-work.html">View RE IMAGE build</a>
+        </div>
+        <div class="space-thumbnails" id="spaceThumbnails" aria-label="Location views"></div>
+      </div>
+    </article>
+  </dialog>
+
+  <script src="map.js" defer></script>
+<script src="public-shell.js?v=20260803-3"></script>
+</body>
+</html>

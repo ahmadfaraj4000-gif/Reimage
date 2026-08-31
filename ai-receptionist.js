@@ -397,12 +397,12 @@
         if (score > bestScore) { bestScore = score; best = intent; }
       }
 
-      // Require a minimum confidence threshold — below it, fall back to keywords
+      // Require a minimum confidence threshold - below it, fall back to keywords
       return bestScore >= 0.30 ? best : null;
     }
   };
 
-  // Legacy keyword scorer — used as fallback while NLP is loading or if it fails
+  // Legacy keyword scorer - used as fallback while NLP is loading or if it fails
   function scoreIntentKeywords(text) {
     const scores = {};
     const t = clean(text);
@@ -426,7 +426,7 @@
     return winner[0];
   }
 
-  // Public scorer — tries semantic model first, falls back to keywords
+  // Public scorer - tries semantic model first, falls back to keywords
   async function scoreIntent(text) {
     const semantic = await nlp.classify(text);
     if (semantic) return semantic;
@@ -1242,18 +1242,18 @@
         "Which service do you want pricing for?",
         "",
         "I can give pricing for:",
-        "• Starter AI Receptionist — $99/month",
-        "• Growth AI Receptionist — $149/month",
-        "• Pro AI Receptionist — $249/month",
+        "• Starter AI Receptionist - $99/month",
+        "• Growth AI Receptionist - $149/month",
+        "• Pro AI Receptionist - $249/month",
         "• AI Web Receptionist Chatbot",
         "• AI Receptionist Phone",
         "• AI Automation",
         "• Website Development",
-        "• Static Website + SEO — $449 one-time + $29.99/month",
-        "• Dynamic Website + Status Page — $599 one-time + $29.99/month",
-        "• Payments + Logins + Chatbot — $999 one-time + $29.99/month",
-        "• Business Portal Suite — $1,299 one-time + $49.99/month",
-        "• AI Automation Suite — $1,699 one-time + $49.99/month",
+        "• Static Website + SEO - $449 one-time + $29.99/month",
+        "• Dynamic Website + Status Page - $599 one-time + $29.99/month",
+        "• Payments + Logins + Chatbot - $999 one-time + $29.99/month",
+        "• Business Portal Suite - $1,299 one-time + $49.99/month",
+        "• AI Automation Suite - $1,699 one-time + $49.99/month",
         "• Business Funding",
         "• Growth Foundation",
         "• Full Scale System"
@@ -1690,7 +1690,7 @@
     const service = SERVICES[key];
 
     return [
-      "Got it — that helps.",
+      "Got it - that helps.",
       "",
       `For that type of business, I would usually look at ${service.label} first.`,
       "",
@@ -1772,7 +1772,7 @@
     return [
       "Tools like Wix, Squarespace, GoDaddy, Canva, Shopify, and WordPress can be fine for basic websites.",
       "",
-      "Where RE IMAGE is different is when the business needs more than a pretty page — things like lead forms, client portals, AI receptionist tools, automation, payments, service requests, and admin workflows.",
+      "Where RE IMAGE is different is when the business needs more than a pretty page - things like lead forms, client portals, AI receptionist tools, automation, payments, service requests, and admin workflows.",
       "",
       "If you only need something simple, a builder may work. If you need the website to support operations, RE IMAGE is usually the better fit."
     ].join("\n");
@@ -1813,7 +1813,7 @@
 
   function businessFundingReply() {
     return [
-      "Yes — RE IMAGE can help with business funding guidance.",
+      "Yes - RE IMAGE can help with business funding guidance.",
       "",
       "Business funding may help with growth, equipment, marketing, inventory, payroll, expansion, or operating cash flow.",
       "",
@@ -2178,27 +2178,27 @@
 
     return [
       "AI Receptionist Lead",
-      `Business: ${l.business || "—"}`,
-      `Sector / Occupation: ${l.sector || state.memory.sector || "—"}`,
-      `Detected industry: ${state.memory.industry || "—"}`,
-      `Business stage: ${l.stage || state.memory.businessStage || "—"}`,
-      `Time in business: ${l.timeInBusiness || state.memory.timeInBusiness || "—"}`,
-      `Team size: ${l.employees || "—"}`,
-      `Monthly revenue range: ${l.revenue || "—"}`,
-      `Interested service: ${l.service || "—"}`,
-      `Current services discussed: ${state.memory.currentServices.join(", ") || "—"}`,
-      `Bot recommendation: ${state.memory.lastRecommendedService || "—"}`,
-      `Goal / problem: ${l.goal || "—"}`,
-      `Pain points: ${l.painPoints || state.memory.painPoints.join(", ") || "—"}`,
-      `Missed opportunities: ${l.missedOpportunities || state.memory.qualification.missedOpportunities || "—"}`,
-      `Budget: ${l.budget || state.memory.qualification.budget || "—"}`,
-      `Timeline: ${l.urgency || state.memory.qualification.timeline || "—"}`,
-      `Decision maker: ${l.decisionMaker || state.memory.qualification.decisionMaker || "—"}`,
-      `Website type: ${state.memory.qualification.websiteType || "—"}`,
-      `Website update frequency: ${state.memory.qualification.websiteUpdates || "—"}`,
-      `Sales qualification summary: ${qualificationSummary() || "—"}`,
+      `Business: ${l.business || "-"}`,
+      `Sector / Occupation: ${l.sector || state.memory.sector || "-"}`,
+      `Detected industry: ${state.memory.industry || "-"}`,
+      `Business stage: ${l.stage || state.memory.businessStage || "-"}`,
+      `Time in business: ${l.timeInBusiness || state.memory.timeInBusiness || "-"}`,
+      `Team size: ${l.employees || "-"}`,
+      `Monthly revenue range: ${l.revenue || "-"}`,
+      `Interested service: ${l.service || "-"}`,
+      `Current services discussed: ${state.memory.currentServices.join(", ") || "-"}`,
+      `Bot recommendation: ${state.memory.lastRecommendedService || "-"}`,
+      `Goal / problem: ${l.goal || "-"}`,
+      `Pain points: ${l.painPoints || state.memory.painPoints.join(", ") || "-"}`,
+      `Missed opportunities: ${l.missedOpportunities || state.memory.qualification.missedOpportunities || "-"}`,
+      `Budget: ${l.budget || state.memory.qualification.budget || "-"}`,
+      `Timeline: ${l.urgency || state.memory.qualification.timeline || "-"}`,
+      `Decision maker: ${l.decisionMaker || state.memory.qualification.decisionMaker || "-"}`,
+      `Website type: ${state.memory.qualification.websiteType || "-"}`,
+      `Website update frequency: ${state.memory.qualification.websiteUpdates || "-"}`,
+      `Sales qualification summary: ${qualificationSummary() || "-"}`,
       `Lead quality: ${calculateLeadScore()}`,
-      `Objection / hesitation: ${l.objection || state.memory.lastObjection || "—"}`,
+      `Objection / hesitation: ${l.objection || state.memory.lastObjection || "-"}`,
       `Recommended admin next step: ${adminNextStep()}`,
       `Source: ${CONFIG.source}`
     ].join("\n");
@@ -2355,7 +2355,7 @@
     }
     if (!state.lead.urgency) {
       state.step = "urgency";
-      return bot("When are you hoping to get started?", ["ASAP — this week", "This month", "Next 1–3 months", "Just exploring for now"]);
+      return bot("When are you hoping to get started?", ["ASAP - this week", "This month", "Next 1–3 months", "Just exploring for now"]);
     }
 
     state.step = null;
@@ -2898,9 +2898,9 @@
       <div class="reibot-avatar">RI</div>
       <div class="reibot-bubble" style="padding:14px 16px;">
         <span style="display:inline-flex;gap:4px;align-items:center;">
-          <span style="width:7px;height:7px;border-radius:50%;background:#2ba3b8;animation:reidot 1s infinite 0s"></span>
-          <span style="width:7px;height:7px;border-radius:50%;background:#2ba3b8;animation:reidot 1s infinite .2s"></span>
-          <span style="width:7px;height:7px;border-radius:50%;background:#2ba3b8;animation:reidot 1s infinite .4s"></span>
+          <span style="width:7px;height:7px;border-radius:50%;background:#08b9ee;animation:reidot 1s infinite 0s"></span>
+          <span style="width:7px;height:7px;border-radius:50%;background:#08b9ee;animation:reidot 1s infinite .2s"></span>
+          <span style="width:7px;height:7px;border-radius:50%;background:#08b9ee;animation:reidot 1s infinite .4s"></span>
         </span>
       </div>`;
     if (!document.getElementById("reidot-style")) {
@@ -3014,13 +3014,13 @@
     switch (intent) {
       case "greeting":
         return bot(
-          "Hey — welcome to RE IMAGE Business Solutions. I can help with websites, portals, AI receptionists, automation, business funding, pricing, or the client portal. What are you trying to build or improve?",
+          "Hey - welcome to RE IMAGE Business Solutions. I can help with websites, portals, AI receptionists, automation, business funding, pricing, or the client portal. What are you trying to build or improve?",
           mainChips()
         );
 
       case "howAreYou":
         return bot(
-          "I’m doing great — ready to help turn visitors into real leads. What kind of business are we working on?",
+          "I’m doing great - ready to help turn visitors into real leads. What kind of business are we working on?",
           ["Website", "Client portal", "AI receptionist", "Business Funding", "Start a project"]
         );
 
@@ -3100,15 +3100,15 @@
     const style = document.createElement("style");
 
     style.textContent = `
-      .reibot-launch{position:fixed;right:22px;bottom:22px;z-index:5000;width:66px;height:66px;border:0;border-radius:50%;cursor:pointer;background:linear-gradient(135deg,#1a7a8a,#0d5a68);color:#fff;box-shadow:0 18px 46px rgba(0,0,0,.42),0 0 0 7px rgba(43,163,184,.13);font-family:Barlow,Arial,sans-serif;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1px;transition:transform .22s ease,box-shadow .22s ease}
-      .reibot-launch:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 22px 58px rgba(0,0,0,.48),0 0 0 9px rgba(43,163,184,.17)}
+      .reibot-launch{position:fixed;right:22px;bottom:22px;z-index:5000;width:66px;height:66px;border:0;border-radius:50%;cursor:pointer;background:linear-gradient(135deg,#0877e8,#0348bf);color:#fff;box-shadow:0 18px 46px rgba(0,0,0,.42),0 0 0 7px rgba(8,185,238,.13);font-family:Barlow,Arial,sans-serif;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1px;transition:transform .22s ease,box-shadow .22s ease}
+      .reibot-launch:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 22px 58px rgba(0,0,0,.48),0 0 0 9px rgba(8,185,238,.17)}
       .reibot-launch b{font-family:'Barlow Condensed',Barlow,Arial,sans-serif;font-size:21px;letter-spacing:.04em;line-height:1}
       .reibot-launch span{font-size:9px;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
 
-      .reibot-panel{position:fixed;right:22px;bottom:100px;z-index:5000;width:min(410px,calc(100vw - 28px));height:590px;max-height:calc(100vh - 125px);display:none;flex-direction:column;overflow:hidden;border-radius:24px;background:#071823;border:1px solid rgba(43,163,184,.34);box-shadow:0 28px 90px rgba(0,0,0,.58)}
+      .reibot-panel{position:fixed;right:22px;bottom:100px;z-index:5000;width:min(410px,calc(100vw - 28px));height:590px;max-height:calc(100vh - 125px);display:none;flex-direction:column;overflow:hidden;border-radius:24px;background:#071823;border:1px solid rgba(8,185,238,.34);box-shadow:0 28px 90px rgba(0,0,0,.58)}
       .reibot-panel.open{display:flex}
 
-      .reibot-head{position:relative;padding:16px 16px 14px;background:radial-gradient(circle at 15% 0,rgba(43,163,184,.28),transparent 38%),linear-gradient(135deg,#0c1f2e,#102c3e);border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between}
+      .reibot-head{position:relative;padding:16px 16px 14px;background:radial-gradient(circle at 15% 0,rgba(8,185,238,.28),transparent 38%),linear-gradient(135deg,#0c1f2e,#102c3e);border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between}
       .reibot-brand{display:flex;gap:11px;align-items:center}
       .reibot-logo{width:38px;height:38px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;overflow:hidden}
       .reibot-logo img{width:100%;height:100%;object-fit:contain}
@@ -3116,24 +3116,24 @@
       .reibot-sub{font-size:12px;color:#a8c7d3;margin-top:2px}
       .reibot-x{border:0;background:rgba(255,255,255,.08);color:#fff;width:34px;height:34px;border-radius:10px;cursor:pointer;font-size:18px}
 
-      .reibot-body{flex:1;overflow:auto;padding:16px;background:radial-gradient(circle at 0 0,rgba(26,122,138,.12),transparent 36%),linear-gradient(180deg,#081724,#06131d)}
+      .reibot-body{flex:1;overflow:auto;padding:16px;background:radial-gradient(circle at 0 0,rgba(8,119,232,.12),transparent 36%),linear-gradient(180deg,#081724,#06131d)}
       .reibot-msg{display:flex;gap:9px;margin-bottom:12px}
       .reibot-user{justify-content:flex-end}
-      .reibot-avatar{width:34px;height:34px;flex:0 0 34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a7a8a,#0d5a68);color:#fff;font-size:10px;font-weight:900;letter-spacing:.05em}
+      .reibot-avatar{width:34px;height:34px;flex:0 0 34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0877e8,#0348bf);color:#fff;font-size:10px;font-weight:900;letter-spacing:.05em}
       .reibot-bubble{max-width:84%;white-space:pre-wrap;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.09);color:#eaf6fa;border-radius:17px 17px 17px 4px;padding:11px 12px;font-size:14px;line-height:1.48}
-      .reibot-user .reibot-bubble{border-radius:17px 17px 4px 17px;background:linear-gradient(135deg,#1a7a8a,#0d5a68);border-color:rgba(43,163,184,.35);color:#fff}
+      .reibot-user .reibot-bubble{border-radius:17px 17px 4px 17px;background:linear-gradient(135deg,#0877e8,#0348bf);border-color:rgba(8,185,238,.35);color:#fff}
 
       .reibot-chips{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 14px 43px}
-      .reibot-chips button{border:1px solid rgba(43,163,184,.28);background:rgba(43,163,184,.10);color:#dff6fb;border-radius:999px;padding:9px 11px;font-size:12px;font-weight:900;cursor:pointer;text-transform:none;transition:.2s}
-      .reibot-chips button:hover{background:rgba(43,163,184,.22);transform:translateY(-1px)}
+      .reibot-chips button{border:1px solid rgba(8,185,238,.28);background:rgba(8,185,238,.10);color:#dff6fb;border-radius:999px;padding:9px 11px;font-size:12px;font-weight:900;cursor:pointer;text-transform:none;transition:.2s}
+      .reibot-chips button:hover{background:rgba(8,185,238,.22);transform:translateY(-1px)}
 
       .reibot-foot{padding:12px;background:#071823;border-top:1px solid rgba(255,255,255,.08)}
       .reibot-form{display:flex;gap:8px}
-      .reibot-input{flex:1;min-height:46px;border-radius:14px;border:1px solid rgba(43,163,184,.24);background:rgba(255,255,255,.06);color:#fff;padding:0 12px;outline:none;font-family:Barlow,Arial,sans-serif;font-size:14px}
-      .reibot-input:focus{border-color:#2ba3b8;box-shadow:0 0 0 4px rgba(43,163,184,.12)}
-      .reibot-send{width:50px;border:0;border-radius:14px;background:linear-gradient(135deg,#c8922a,#a0731e);color:#fff;font-weight:900;cursor:pointer}
+      .reibot-input{flex:1;min-height:46px;border-radius:14px;border:1px solid rgba(8,185,238,.24);background:rgba(255,255,255,.06);color:#fff;padding:0 12px;outline:none;font-family:Barlow,Arial,sans-serif;font-size:14px}
+      .reibot-input:focus{border-color:#08b9ee;box-shadow:0 0 0 4px rgba(8,185,238,.12)}
+      .reibot-send{width:50px;border:0;border-radius:14px;background:linear-gradient(135deg,#0877e8,#0348bf);color:#fff;font-weight:900;cursor:pointer}
       .reibot-mini{display:flex;justify-content:space-between;gap:10px;margin-top:9px;color:#7396a5;font-size:11px}
-      .reibot-mini a{color:#e8ad40;text-decoration:none;font-weight:800}
+      .reibot-mini a{color:#43a5ff;text-decoration:none;font-weight:800}
 
       @media(max-width:520px){
         .reibot-launch{right:16px;bottom:16px;width:60px;height:60px}
@@ -3142,6 +3142,9 @@
         .reibot-chips{margin-left:0}
         .reibot-chips button{font-size:12px;padding:8px 10px}
       }
+
+      /* Presentation-only pause: keep the receptionist implementation available for restoration. */
+      .reibot-launch,.reibot-panel{display:none!important}
     `;
 
     document.head.appendChild(style);
@@ -3196,7 +3199,7 @@
       if (!state.greeted) {
         state.greeted = true;
         bot(
-          "Hi — welcome to RE IMAGE Business Solutions. I can help you choose a service, explain pricing, talk about the client portal, business funding, or collect your project details. What are you trying to build or improve?",
+          "Hi - welcome to RE IMAGE Business Solutions. I can help you choose a service, explain pricing, talk about the client portal, business funding, or collect your project details. What are you trying to build or improve?",
           mainChips()
         );
       }

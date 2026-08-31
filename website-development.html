@@ -3,90 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Website Development | RE IMAGE Business Solutions</title>
-  <link href="logo.png" rel="icon" />
-  <meta content="Website tiers from RE IMAGE Business Solutions, including static SEO websites, dynamic status pages, payments, portals, and AI automation systems." name="description" />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&amp;family=Barlow+Condensed:wght@400;600;700;800&amp;display=swap" rel="stylesheet" />
-  <link href="styles.css" rel="stylesheet" />
-  <style>
-    .website-pricing {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 360px)) !important;
-    }
-
-    .website-pricing .price-card ul {
-      list-style: none;
-      margin: 1rem 0 1.2rem;
-      padding: 0;
-    }
-
-    .website-pricing .price-card li {
-      display: flex;
-      gap: 10px;
-      padding: .35rem 0;
-      line-height: 1.45;
-    }
-
-    .website-pricing .price-card li::before {
-      content: "✓";
-      color: var(--teal);
-      font-weight: 900;
-    }
-
-    .tier-includes {
-      color: var(--teal) !important;
-      font-size: .78rem;
-      font-weight: 900;
-      letter-spacing: .12em;
-      margin-top: 1rem;
-      text-transform: uppercase;
-    }
-
-    .comparison-card {
-      margin-top: 2rem;
-      overflow: hidden;
-    }
-
-    .comparison-table-wrap {
-      overflow-x: auto;
-      margin-top: 1.2rem;
-    }
-
-    .comparison-table {
-      width: 100%;
-      min-width: 680px;
-      border-collapse: collapse;
-    }
-
-    .comparison-table th,
-    .comparison-table td {
-      border-bottom: 1px solid rgba(26,122,138,.18);
-      padding: .9rem 1rem;
-      text-align: left;
-    }
-
-    .comparison-table th {
-      color: var(--navy);
-      font-size: .78rem;
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .comparison-table td {
-      color: #53697a;
-      font-weight: 700;
-    }
-
-    .comparison-table td:nth-child(2) {
-      color: var(--teal);
-      font-weight: 900;
-    }
-  </style>
+  <title>Business Operating Systems | RE IMAGE Business Solutions</title>
+  <link href="assets/reimage-logo-2026-transparent.png" rel="icon" />
+  <meta content="Straightforward business websites and operating systems from RE IMAGE Business Solutions, from a professional public presence to multi-location customer and admin platforms." name="description" />
+  <link href="styles.css?v=20260803-8" rel="stylesheet" />
+  <link href="public-system.css?v=20260803-5" rel="stylesheet">
+<link href="public-shell.css?v=20260803-3" rel="stylesheet">
 </head>
-<body class="service-page">
+<body class="service-page systems-page public-unified">
   <nav class="navbar" id="navbar">
     <a class="nav-logo" href="index.html#home">
-      <img alt="RE IMAGE Business Solutions logo" src="logo.png" />
+      <img alt="RE IMAGE Business Solutions logo" src="assets/reimage-logo-2026-transparent.png" />
     </a>
     <button aria-label="Open navigation" class="menu-btn" id="menuBtn">
       <svg fill="none" height="22" viewBox="0 0 22 22" width="22">
@@ -96,230 +23,154 @@
       </svg>
     </button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html#home">Home</a></li>
-      <li class="services-dropdown">
-        <button aria-expanded="false" class="services-toggle" type="button">Services <span>▾</span></button>
-        <div class="services-menu">
-          <a href="business-funding.html">Business Funding</a>
-          <a href="growth-foundation.html">Growth Foundation</a>
-          <a href="full-scale-system.html">Full Scale System</a>
-          <a href="website-development.html">Website Development</a>
-          <a href="ai-receptionists.html">AI Receptionists</a>
-          <a href="ai-automation.html">AI Automation</a>
-        </div>
-      </li>
-      <li><a href="our-work.html">Our Work</a></li>
-      <li><a href="index.html#about">About</a></li>
+      <li><a href="website-development.html">Systems</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="our-work.html">Portfolio</a></li>
       <li><a href="careers.html">Careers</a></li>
-      <li><a href="https://login.reimagebs.com" rel="noopener" target="_blank">Client Portal</a></li>
       <li><a class="nav-cta" href="start-with-us.html">Start With Us</a></li>
     </ul>
   </nav>
 
   <main>
-    <section class="hero">
-      <div class="wrap">
-        <div class="eyebrow">Websites Built To Convert</div>
-        <h1>Website Development</h1>
-        <p>Choose the website system that matches how your business actually works, from a clean SEO-ready online presence to portals, payments, order tracking, and AI automation.</p>
-        <div class="btns">
-          <a class="btn btn-primary" href="#pricing">View Website Tiers</a>
-          <a class="btn btn-secondary" href="start-with-us.html">Start With Us</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
+    <section class="section systems-catalog" id="systems">
       <div class="wrap">
         <div class="section-head">
-          <div class="label">What We Provide</div>
-          <h2>Organized from simple websites to full business systems.</h2>
-          <p>Start with the foundation your business needs now, then upgrade into payments, portals, tracking, and automation when your operations are ready for more.</p>
-        </div>
-        <div class="grid">
-          <div class="card">
-            <h3>Visibility Foundation</h3>
-            <ul>
-              <li>Mobile-friendly website design</li>
-              <li>Google and Bing indexing</li>
-              <li>Sitemap, robots.txt, and llms.txt setup</li>
-              <li>Basic SEO, analytics, and visitor tracking</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Customer Functionality</h3>
-            <ul>
-              <li>QR-code landing pages and business hubs</li>
-              <li>Status pages for orders, services, or appointments</li>
-              <li>Secure logins, customer accounts, and intake forms</li>
-              <li>Stripe or Square payment collection</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Operations Systems</h3>
-            <ul>
-              <li>Admin and client portals</li>
-              <li>Inventory, subscriptions, and reporting tools</li>
-              <li>Custom invoice generation and editing</li>
-              <li>AI, SMS, email, API, and webhook automations</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt" id="pricing">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="label">Website Tiers</div>
-          <h2>Pick the right level of website infrastructure.</h2>
-          <p>Every tier includes a clear one-time setup price plus monthly hosting, maintenance, and support. Larger systems add the operational tools that usually cost far more when quoted by traditional agencies.</p>
+          <div class="label">Business Operating Systems</div>
+          <h1>Choose the system that fits how your business works.</h1>
+          <p>Four straightforward tiers cover a professional website and marketing foundation, public-facing business systems, customer portals, and complete multi-location operating systems.</p>
         </div>
 
-        <div class="pricing website-pricing">
-          <div class="price-card">
-            <div class="label">Tier 1</div>
-            <h3>Static Website + SEO</h3>
-            <div class="price">$449 <small>one-time + $29.99/mo</small></div>
-            <p class="note">A clean, professional website designed to showcase your business, services, contact information, and brand.</p>
-            <div class="tier-includes">Includes</div>
-            <ul>
-              <li>Mobile-friendly design</li>
-              <li>Google and Bing indexing</li>
-              <li>Sitemap, robots.txt, and llms.txt setup</li>
-              <li>Basic SEO optimization</li>
-              <li>Analytics and visitor tracking</li>
-              <li>Contact forms</li>
-              <li>Website hosting and maintenance</li>
-            </ul>
-            <p class="note">Perfect for businesses that need a professional online presence and want to be found online.</p>
-            <div class="spacer"></div>
-            <a class="btn btn-primary" href="start-with-us.html?service=Static%20Website%20%2B%20SEO">Request Tier 1</a>
+        <div class="bundle-selector" data-bundle-selector>
+          <div class="bundle-tabs" role="tablist" aria-label="Business operating systems">
+            <button id="bundle-tab-foundation" role="tab" aria-selected="true" aria-controls="bundle-foundation" data-bundle-index="0" type="button"><span>Foundation</span><small>$599</small></button>
+            <button id="bundle-tab-business-hub" role="tab" aria-selected="false" aria-controls="bundle-business-hub" data-bundle-index="1" tabindex="-1" type="button"><span>Business Hub</span><small>$1,499</small></button>
+            <button id="bundle-tab-operations" role="tab" aria-selected="false" aria-controls="bundle-operations" data-bundle-index="2" tabindex="-1" type="button"><span>Operations</span><small>$2,299</small></button>
+            <button id="bundle-tab-enterprise" role="tab" aria-selected="false" aria-controls="bundle-enterprise" data-bundle-index="3" tabindex="-1" type="button"><span>Enterprise</span><small>$2,799</small></button>
           </div>
 
-          <div class="price-card">
-            <div class="label">Tier 2</div>
-            <h3>Dynamic Website with QR & Status Page</h3>
-            <div class="price">$599 <small>one-time + $29.99/mo</small></div>
-            <p class="note">Everything in Tier 1, plus dynamic functionality for customer updates and trackable business links.</p>
-            <div class="tier-includes">Includes</div>
-            <ul>
-              <li>Dynamic website functionality</li>
-              <li>QR-code landing pages</li>
-              <li>Linktree-style business hub</li>
-              <li>Customer-facing status pages</li>
-              <li>Order tracking</li>
-              <li>Service progress tracking</li>
-              <li>Appointment status updates</li>
-            </ul>
-            <p class="note">Perfect for restaurants, print shops, auto shops, spas, and service-based businesses.</p>
-            <div class="spacer"></div>
-            <a class="btn btn-primary" href="start-with-us.html?service=Dynamic%20Website%20with%20QR%20%26%20Status%20Page">Request Tier 2</a>
+          <div class="bundle-stage">
+            <article class="bundle-panel" id="bundle-foundation" role="tabpanel" aria-labelledby="bundle-tab-foundation">
+              <div class="bundle-summary">
+                <span class="bundle-eyebrow">Foundation</span>
+                <h3>Your professional business home base.</h3>
+                <p>A polished public-facing website for businesses that need a credible online presence, a clear marketing foundation, lead capture, and dependable support.</p>
+                <div class="bundle-price"><strong>$599</strong><span>one-time setup</span></div>
+                <div class="bundle-monthly">$49.99<span>/month</span></div>
+                <a class="bundle-primary" href="start-with-us.html?service=Foundation%20Business%20Operating%20System">Customize Foundation</a>
+              </div>
+              <div class="bundle-capabilities">
+                <h4>What this system includes</h4>
+                <ul>
+                  <li class="is-included">Professional public-facing website</li>
+                  <li class="is-included">Lead and contact capture</li>
+                  <li class="is-included">Responsive mobile experience</li>
+                  <li class="is-included">Service galleries and forms</li>
+                  <li class="is-included">Search and marketing foundation</li>
+                  <li class="is-included">Managed hosting and support</li>
+                  <li class="is-unavailable">Internal admin portal</li>
+                  <li class="is-unavailable">Online ordering or booking</li>
+                  <li class="is-unavailable">Customer portal</li>
+                  <li class="is-unavailable">Multi-location operations</li>
+                </ul>
+                <div class="bundle-upgrade">
+                  <div><small>Next system</small><strong>Need to take action online?</strong><p>Business Hub adds ordering, booking, payments, and an internal admin portal without requiring customer accounts.</p></div>
+                  <button type="button" data-next-bundle="1">Explore Business Hub <span aria-hidden="true">→</span></button>
+                </div>
+              </div>
+            </article>
+
+            <article class="bundle-panel" id="bundle-business-hub" role="tabpanel" aria-labelledby="bundle-tab-business-hub" hidden>
+              <div class="bundle-summary">
+                <span class="bundle-eyebrow">Business Hub</span>
+                <h3>Serve customers online. Manage the business behind it.</h3>
+                <p>A public-facing business system paired with a secure internal admin portal. Customers can browse, inquire, order, book, or pay without creating an account or signing in.</p>
+                <div class="bundle-price"><strong>$1,499</strong><span>one-time setup</span></div>
+                <div class="bundle-monthly">$99<span>/month</span></div>
+                <a class="bundle-primary" href="start-with-us.html?service=Business%20Hub%20Business%20System">Customize Business Hub</a>
+              </div>
+              <div class="bundle-capabilities">
+                <h4>What this system includes</h4>
+                <ul>
+                  <li class="is-included">Everything in Foundation</li>
+                  <li class="is-included">Public ordering, booking, or inquiry flows</li>
+                  <li class="is-included">Stripe and payment functions as needed</li>
+                  <li class="is-included">Secure internal admin portal</li>
+                  <li class="is-included">Staff-managed content, menus, or services</li>
+                  <li class="is-included">Orders, requests, inventory, or availability</li>
+                  <li class="is-unavailable">Customer accounts or sign-in</li>
+                  <li class="is-unavailable">Customer/client portal</li>
+                  <li class="is-unavailable">Ongoing customer account access</li>
+                  <li class="is-unavailable">Multi-location management</li>
+                </ul>
+                <div class="bundle-upgrade">
+                  <div><small>Next system</small><strong>Do customers need to sign in?</strong><p>Operations adds a secure customer portal for ongoing access while keeping the internal admin portal for your team.</p></div>
+                  <button type="button" data-next-bundle="2">Explore Operations <span aria-hidden="true">→</span></button>
+                </div>
+              </div>
+            </article>
+
+            <article class="bundle-panel" id="bundle-operations" role="tabpanel" aria-labelledby="bundle-tab-operations" hidden>
+              <div class="bundle-summary">
+                <span class="bundle-eyebrow">Operations</span>
+                <h3>Give customers ongoing access.</h3>
+                <p>Everything in Business Hub, plus both a secure customer/client portal and an internal admin portal for businesses with ongoing customer relationships and workflows.</p>
+                <div class="bundle-price"><strong>$2,299</strong><span>one-time setup</span></div>
+                <div class="bundle-monthly">$149<span>/month</span></div>
+                <a class="bundle-primary" href="start-with-us.html?service=Operations%20Business%20Operating%20System">Customize Operations</a>
+              </div>
+              <div class="bundle-capabilities">
+                <h4>What this system includes</h4>
+                <ul>
+                  <li class="is-included">Everything in Business Hub</li>
+                  <li class="is-included">Secure customer/client portal</li>
+                  <li class="is-included">Customer accounts and sign-in</li>
+                  <li class="is-included">Ongoing status, history, or document access</li>
+                  <li class="is-included">Secure internal admin portal</li>
+                  <li class="is-included">Automated notifications</li>
+                  <li class="is-included">Connected customer and staff workflows</li>
+                  <li class="is-unavailable">Location-specific management</li>
+                  <li class="is-unavailable">Cross-location reporting</li>
+                  <li class="is-unavailable">Multi-location roles and permissions</li>
+                </ul>
+                <div class="bundle-upgrade">
+                  <div><small>Next system</small><strong>Operating across multiple locations?</strong><p>Enterprise adds location-specific workflows, permissions, reporting, inventory, and oversight in one connected system.</p></div>
+                  <button type="button" data-next-bundle="3">Explore Enterprise <span aria-hidden="true">→</span></button>
+                </div>
+              </div>
+            </article>
+
+            <article class="bundle-panel" id="bundle-enterprise" role="tabpanel" aria-labelledby="bundle-tab-enterprise" hidden>
+              <div class="bundle-summary">
+                <span class="bundle-eyebrow">Enterprise</span>
+                <h3>One operating system for every location.</h3>
+                <p>A complete business operating system for small businesses with multiple locations, combining customer access, staff tools, location-level control, and company-wide oversight.</p>
+                <div class="bundle-price"><strong>$2,799</strong><span>one-time setup</span></div>
+                <div class="bundle-monthly">$199<span>/month</span></div>
+                <a class="bundle-primary" href="start-with-us.html?service=Enterprise%20Business%20Operating%20System">Customize Enterprise</a>
+              </div>
+              <div class="bundle-capabilities">
+                <h4>What this system includes</h4>
+                <ul>
+                  <li class="is-included">Everything in Operations</li>
+                  <li class="is-included">Multiple locations in one system</li>
+                  <li class="is-included">Location-specific admin views and permissions</li>
+                  <li class="is-included">Cross-location dashboards and reporting</li>
+                  <li class="is-included">Location-based inventory, menus, or scheduling</li>
+                  <li class="is-included">Shared customer data and company-wide oversight</li>
+                  <li class="is-included">Multi-step automations and custom integrations</li>
+                  <li class="is-included">Managed hosting, security, and maintenance</li>
+                </ul>
+                <div class="bundle-upgrade bundle-upgrade-final">
+                  <div><small>Built around your company</small><strong>Need a multi-location scope?</strong><p>Tell us how each location operates and we’ll connect the right customer, staff, and management workflows.</p></div>
+                  <a href="start-with-us.html?service=Multi-Location%20Enterprise%20Scope">Plan multi-location scope <span aria-hidden="true">→</span></a>
+                </div>
+              </div>
+            </article>
           </div>
 
-          <div class="price-card">
-            <div class="label">Tier 3</div>
-            <h3>Dynamic Website with Payments & Scripted Chatbot</h3>
-            <div class="price">$999 <small>one-time + $29.99/mo</small></div>
-            <p class="note">Everything in Tier 2, plus logins, payments, booking flows, intake forms, and a guided chatbot experience.</p>
-            <div class="tier-includes">Includes</div>
-            <ul>
-              <li>Customer accounts</li>
-              <li>Secure user logins</li>
-              <li>Stripe or Square payment integration</li>
-              <li>Online payment collection</li>
-              <li>Online booking capabilities</li>
-              <li>Scripted chatbot</li>
-              <li>Customer intake forms</li>
-            </ul>
-            <p class="note">Perfect for businesses that accept online payments, reservations, bookings, or customer submissions.</p>
-            <div class="spacer"></div>
-            <a class="btn btn-primary" href="start-with-us.html?service=Dynamic%20Website%20with%20Payments%20%26%20Scripted%20Chatbot">Request Tier 3</a>
-          </div>
-
-          <div class="price-card">
-            <div class="label">Tier 4</div>
-            <h3>Business Portal Suite</h3>
-            <div class="price">$1,299 <small>one-time + $49.99/mo</small></div>
-            <p class="note">Everything in Tier 3, plus a custom management system for business operations, orders, invoices, and reporting.</p>
-            <div class="tier-includes">Includes</div>
-            <ul>
-              <li>Admin portal and client portal</li>
-              <li>User and subscription management</li>
-              <li>Inventory management</li>
-              <li>AI chatbot, Twilio SMS, and Resend email integration</li>
-              <li>Custom invoice generation and editing</li>
-              <li>Order management dashboards</li>
-              <li>Business reporting tools</li>
-            </ul>
-            <p class="note">Examples include custom systems like Living Word Imprints and CR8 Autos. This tier gives businesses complete control through a custom-built management system.</p>
-            <div class="spacer"></div>
-            <a class="btn btn-primary" href="start-with-us.html?service=Business%20Portal%20Suite">Request Tier 4</a>
-          </div>
-
-          <div class="price-card">
-            <div class="label">Tier 5</div>
-            <h3>AI Automation Suite</h3>
-            <div class="price">$1,699 <small>one-time + $49.99/mo</small></div>
-            <p class="note">Everything in Tier 4, plus AI-powered automation for leads, follow-up, reminders, internal alerts, and connected workflows.</p>
-            <div class="tier-includes">Includes</div>
-            <ul>
-              <li>AI-powered workflow automation</li>
-              <li>Lead capture automation</li>
-              <li>Automated email and SMS follow-ups</li>
-              <li>Google Sheets and CRM integration</li>
-              <li>Appointment reminders and internal team notifications</li>
-              <li>AI-assisted customer support workflows</li>
-              <li>Advanced invoice automation</li>
-              <li>API integrations and webhook automations</li>
-            </ul>
-            <p class="note">Perfect for businesses looking to reduce manual work, automate repetitive tasks, and scale operations efficiently.</p>
-            <div class="spacer"></div>
-            <a class="btn btn-primary" href="start-with-us.html?service=AI%20Automation%20Suite">Request Tier 5</a>
-          </div>
-        </div>
-
-        <div class="card comparison-card">
-          <div class="label">Market Comparison</div>
-          <h3>Priced lower than typical custom website builds.</h3>
-          <p>These market ranges are common for comparable custom website, portal, and automation builds. RE IMAGE keeps the entry point lower for small businesses while still building real operational tools.</p>
-          <div class="comparison-table-wrap">
-            <table class="comparison-table">
-              <thead>
-                <tr>
-                  <th>Tier</th>
-                  <th>Your Price</th>
-                  <th>Typical Market Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Static Website + SEO</td>
-                  <td>$449</td>
-                  <td>$800-$2,500</td>
-                </tr>
-                <tr>
-                  <td>Dynamic Website + Status Page</td>
-                  <td>$599</td>
-                  <td>$1,500-$4,000</td>
-                </tr>
-                <tr>
-                  <td>Payments + Logins + Chatbot</td>
-                  <td>$999</td>
-                  <td>$3,000-$8,000</td>
-                </tr>
-                <tr>
-                  <td>Business Portal Suite</td>
-                  <td>$1,299</td>
-                  <td>$5,000-$15,000+</td>
-                </tr>
-                <tr>
-                  <td>AI Automation Suite</td>
-                  <td>$1,699</td>
-                  <td>$8,000-$25,000+</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="bundle-included-note" aria-label="Included with every managed system">
+            <strong>Every managed system includes:</strong>
+            <span>Hosting support</span><span>Security updates</span><span>Software maintenance</span><span>Backups</span><span>Bug fixes</span><span>Reasonable content updates</span>
           </div>
         </div>
       </div>
@@ -330,7 +181,7 @@
         <div class="section-head">
           <div class="label">Next Step</div>
           <h2>Need help choosing?</h2>
-          <p>Choose a tier, tell us what your business needs, or schedule a consultation from the Start With Us page.</p>
+          <p>Choose a system, tell us what your business needs, or schedule a consultation from the Start With Us page.</p>
           <div class="btns">
             <a class="btn btn-primary" href="start-with-us.html">Start With Us</a>
             <a class="btn btn-secondary" href="our-work.html">View Our Work</a>
@@ -344,8 +195,8 @@
     <div class="footer-inner">
       <div class="footer-top">
         <div>
-          <img alt="RE IMAGE Business Solutions logo" src="logo.png" />
-          <p>Professional content, conversion-focused websites, and automation systems for small businesses ready to grow the right way.</p>
+          <img alt="RE IMAGE Business Solutions logo" src="assets/reimage-logo-2026-transparent.png" />
+          <p>Connected business operating systems built around the way your company sells, serves customers, and works.</p>
         </div>
         <div>
           <h4>Services</h4>
@@ -354,7 +205,7 @@
             <li><a href="growth-foundation.html">Growth Foundation</a></li>
             <li><a href="full-scale-system.html">Full Scale System</a></li>
             <li></li>
-            <li><a href="website-development.html">Website Development</a></li>
+            <li><a href="website-development.html">Business Operating Systems</a></li>
             <li><a href="ai-receptionists.html">AI Receptionists</a></li>
             <li><a href="ai-automation.html">AI Automation</a></li>
           </ul>
@@ -386,6 +237,44 @@
     if (menuBtn && navLinks) menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
     const yr = document.getElementById('yr');
     if (yr) yr.textContent = new Date().getFullYear();
+
+    const bundleSelector = document.querySelector('[data-bundle-selector]');
+    if (bundleSelector) {
+      const bundleTabs = Array.from(bundleSelector.querySelectorAll('[role="tab"]'));
+      const bundlePanels = Array.from(bundleSelector.querySelectorAll('[role="tabpanel"]'));
+
+      function selectBundle(index, moveFocus = false) {
+        bundleTabs.forEach((tab, tabIndex) => {
+          const selected = tabIndex === index;
+          tab.setAttribute('aria-selected', String(selected));
+          tab.tabIndex = selected ? 0 : -1;
+          if (selected && moveFocus) tab.focus();
+        });
+        bundlePanels.forEach((panel, panelIndex) => {
+          panel.hidden = panelIndex !== index;
+        });
+      }
+
+      bundleTabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => selectBundle(index));
+        tab.addEventListener('keydown', (event) => {
+          let nextIndex = index;
+          if (event.key === 'ArrowRight') nextIndex = (index + 1) % bundleTabs.length;
+          else if (event.key === 'ArrowLeft') nextIndex = (index - 1 + bundleTabs.length) % bundleTabs.length;
+          else if (event.key === 'Home') nextIndex = 0;
+          else if (event.key === 'End') nextIndex = bundleTabs.length - 1;
+          else return;
+          event.preventDefault();
+          selectBundle(nextIndex, true);
+        });
+      });
+
+      bundleSelector.querySelectorAll('[data-next-bundle]').forEach((button) => {
+        button.addEventListener('click', () => {
+          selectBundle(Number(button.dataset.nextBundle), true);
+        });
+      });
+    }
   </script>
   <script>
     (function(){
@@ -424,5 +313,6 @@
       });
     })();
   </script>
-<script src="ai-receptionist.js"></script></body>
+<script src="ai-receptionist.js?v=20260830-1"></script><script src="public-shell.js?v=20260803-3"></script>
+</body>
 </html>

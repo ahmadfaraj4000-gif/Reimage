@@ -5,35 +5,21 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Start With Us | RE IMAGE Business Solutions</title>
-<link href="logo.png" rel="icon"/>
-<meta content="Start a project or schedule a consultation with RE IMAGE Business Solutions." name="description"/>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&amp;family=Barlow+Condensed:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/><link href="styles.css" rel="stylesheet"/>
+<link href="assets/reimage-logo-2026-transparent.png" rel="icon"/>
+<meta content="Start a project or schedule a consultation with RE IMAGE Business Solutions." name="description"/><link href="styles.css?v=20260803-8" rel="stylesheet"/><link href="public-system.css?v=20260803-5" rel="stylesheet"/>
 
+<link href="public-shell.css?v=20260803-3" rel="stylesheet">
 </head>
-<body class="start-page">
+<body class="start-page public-unified">
 <nav class="navbar" id="navbar">
-<a class="nav-logo" href="index.html"><img alt="RE IMAGE Business Solutions logo" src="logo.png"/></a>
+<a class="nav-logo" href="index.html"><img alt="RE IMAGE Business Solutions logo" src="assets/reimage-logo-2026-transparent.png"/></a>
 <button aria-label="Open menu" class="menu-btn" id="menuBtn">☰</button>
 <ul class="nav-links" id="navLinks">
-<li><a href="index.html">Home</a></li>
-<li class="services-dropdown">
-<button aria-expanded="false" class="services-toggle" type="button">
-        Services <span>▾</span>
-</button>
-<div class="services-menu">
-<a href="business-funding.html">Business Funding</a>
-<a href="growth-foundation.html">Growth Foundation</a>
-<a href="full-scale-system.html">Full Scale System</a>
-<a href="website-development.html">Website Development</a>
-<a href="ai-receptionists.html">AI Receptionists</a>
-<a href="ai-automation.html">AI Automation</a>
-</div>
-</li>
-<li><a href="our-work.html">Our Work</a></li>
-<li><a href="index.html#about">About</a></li>
+<li><a href="website-development.html">Systems</a></li>
+<li><a href="products.html">Products</a></li>
+<li><a href="our-work.html">Portfolio</a></li>
 <li><a href="careers.html">Careers</a></li>
-<li><a href="https://login.reimagebs.com" rel="noopener" target="_blank">Client Portal</a></li>
-<li><a class="nav-cta active" href="start-with-us.html">Start With Us</a></li>
+<li><a class="nav-cta" href="start-with-us.html">Start With Us</a></li>
 </ul>
 </nav>
 <header class="hero">
@@ -49,15 +35,15 @@
 <h2>Tell us what you need</h2>
 <p style="margin-bottom:1.3rem;">Select “Consultation” to schedule a one-hour call.</p>
 <div class="form-proof">
-<span>✓ Fast response</span>
-<span>✓ Secure intake</span>
-<span>✓ Built for small businesses</span>
+<span>Fast response</span>
+<span>Secure intake</span>
+<span>Built for small businesses</span>
 </div>
 <form id="startForm">
 <div class="form-row"><div class="form-group"><label class="form-label" for="firstName">First Name</label><input class="form-input" id="firstName" name="first_name" required=""/></div><div class="form-group"><label class="form-label" for="lastName">Last Name</label><input class="form-input" id="lastName" name="last_name" required=""/></div></div>
 <div class="form-row"><div class="form-group"><label class="form-label" for="email">Email</label><input class="form-input" id="email" name="email" required="" type="email"/></div><div class="form-group"><label class="form-label" for="phone">Phone</label><input class="form-input" id="phone" name="phone" type="tel"/></div></div>
 <div class="form-group"><label class="form-label" for="businessName">Business Name</label><input class="form-input" id="businessName" name="business_name" required=""/></div>
-<div class="form-group"><label class="form-label" for="serviceChoice">Choose Service</label><select class="form-select" id="serviceChoice" name="service_choice" required=""><option value="">Select one</option><option value="Consultation">Consultation</option><option value="Business Funding">Business Funding</option><option value="Growth Foundation">Growth Foundation</option><option value="Full Scale System">Full Scale System</option><option value="Website Development">Website Development</option><option value="Static Website + SEO">Static Website + SEO</option><option value="Dynamic Website with QR & Status Page">Dynamic Website with QR & Status Page</option><option value="Dynamic Website with Payments & Scripted Chatbot">Dynamic Website with Payments & Scripted Chatbot</option><option value="Business Portal Suite">Business Portal Suite</option><option value="AI Automation Suite">AI Automation Suite</option><option value="AI Receptionist Phone">AI Receptionist Phone</option><option value="AI Web Receptionist Chatbot">AI Web Receptionist Chatbot</option><option value="AI Automation">AI Automation</option><option value="General Question">General Question</option></select></div>
+<div class="form-group"><label class="form-label" for="serviceChoice">Choose Service</label><select class="form-select" id="serviceChoice" name="service_choice" required=""><option value="">Select one</option><option value="Consultation">Consultation</option><option value="Employee Clock-In System">Employee Clock-In System</option><option value="Business Operating Systems">Business Operating Systems</option><option value="Foundation Business Operating System">Foundation Business Operating System</option><option value="CRM Business Operating System">CRM Business Operating System</option><option value="Operations Business Operating System">Operations Business Operating System</option><option value="Enterprise Business Operating System">Enterprise Business Operating System</option><option value="Business Funding">Business Funding</option><option value="Growth Foundation">Growth Foundation</option><option value="Full Scale System">Full Scale System</option><option value="AI Receptionist Phone">AI Receptionist Phone</option><option value="AI Web Receptionist Chatbot">AI Web Receptionist Chatbot</option><option value="AI Automation">AI Automation</option><option value="General Question">General Question</option></select></div>
 <div class="calendar-box" id="calendarBox"><h3>Schedule Consultation</h3><p>Choose a date and one-hour time slot.</p><div class="calendar-head"><button class="cal-btn" id="prevMonth" type="button">Prev</button><div class="calendar-title" id="calendarTitle"></div><button class="cal-btn" id="nextMonth" type="button">Next</button></div><div class="calendar-grid" id="calendarGrid"></div><div class="time-slots" id="timeSlots"></div><input id="consultationDate" name="consultation_date" type="hidden"/><input id="consultationTime" name="consultation_time" type="hidden"/></div>
 <div class="form-group" style="margin-top:1rem;"><label class="form-label" for="message">Tell us about your business</label><textarea class="form-textarea" id="message" name="message" placeholder="What are you trying to build, improve, or automate?" required=""></textarea></div>
 <button class="submit-btn" type="submit">Submit Request</button><div class="status" id="statusBox"></div>
@@ -65,7 +51,7 @@
 </section>
 </div>
 </main>
-<footer class="footer"><div class="footer-inner"><img alt="RE IMAGE Business Solutions logo" src="logo.png"/><div>© <span id="yr"></span> RE IMAGE Business Solutions</div><a href="index.html">Back to Home</a><a href="https://login.reimagebs.com" rel="noopener" target="_blank">Client Portal</a></div></footer>
+<footer class="footer"><div class="footer-inner"><img alt="RE IMAGE Business Solutions logo" src="assets/reimage-logo-2026-transparent.png"/><div>© <span id="yr"></span> RE IMAGE Business Solutions</div><a href="index.html">Back to Home</a><a href="https://login.reimagebs.com" rel="noopener" target="_blank">Client Portal</a></div></footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 // SINGLE SCRIPT TAG - Supabase + calendar + form logic
@@ -351,4 +337,5 @@ window.addEventListener('DOMContentLoaded', function () {
   });
 })();
 </script>
-<script src="ai-receptionist.js"></script></body></html>
+<script src="ai-receptionist.js?v=20260830-1"></script><script src="public-shell.js?v=20260803-3"></script>
+</body></html>

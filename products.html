@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Employee Clock-In System | RE IMAGE Products</title>
+  <meta name="description" content="A simple employee clock-in system with unique employee codes, wall-mount scanning, geofencing, live hours, and missed clock-out alerts.">
+  <link rel="icon" href="assets/reimage-logo-2026-transparent.png">
+  <link rel="stylesheet" href="styles.css?v=20260803-8">
+  <link rel="stylesheet" href="products.css?v=20260803-5">
+  <style>
+    /* Products must render at the same visual scale and nav position as the homepage. */
+    body.products-page .navbar {
+      position: sticky !important;
+      top: 0 !important;
+      left: auto !important;
+      width: min(1080px, calc(100% - 32px)) !important;
+      min-height: 54px !important;
+      margin: 0 auto !important;
+      padding: 5px 0 !important;
+      justify-content: center !important;
+      gap: .55rem !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      background: #fff !important;
+      box-shadow: 0 0 0 100vmax #fff, 0 1px 0 rgba(7,20,38,.08) !important;
+      backdrop-filter: none !important;
+      clip-path: inset(0 -100vmax -1px) !important;
+    }
+    body.products-page .nav-logo {
+      position: static !important;
+      margin: 0 .2rem 0 0 !important;
+      transform: none !important;
+    }
+    body.products-page .new-brand img {
+      width: 34px !important;
+      height: 34px !important;
+      border-radius: 9px !important;
+    }
+    body.products-page .nav-links {
+      position: static !important;
+      left: auto !important;
+      right: auto !important;
+      gap: .1rem !important;
+      margin: 0 !important;
+      transform: none !important;
+    }
+    body.products-page .nav-links a {
+      min-height: 38px !important;
+      padding: 0 .72rem !important;
+      font-size: .76rem !important;
+      font-weight: 500 !important;
+    }
+    body.products-page .nav-links a.nav-cta { padding: 0 1rem !important; }
+    body.products-page .commerce-hero {
+      width: min(1080px, calc(100% - 48px));
+      grid-template-columns: .92fr 1.08fr;
+      gap: clamp(42px, 5vw, 68px);
+    }
+    body.products-page .commerce-product-photo { width: min(460px, 100%); }
+    body.products-page .commerce-product-photo {
+      order: 2;
+      justify-self: end;
+    }
+    body.products-page .commerce-purchase {
+      order: 1;
+      justify-self: start;
+    }
+    body.products-page .commerce-purchase h1 {
+      max-width: 15ch !important;
+      font-family: var(--site-font-apple) !important;
+      font-size: clamp(2.5rem, 3.25vw, 3.5rem) !important;
+      font-weight: 760 !important;
+      line-height: .98 !important;
+      letter-spacing: -.06em !important;
+      text-transform: none !important;
+    }
+    @media (max-width: 980px) {
+      body.products-page .navbar {
+        width: calc(100% - 24px) !important;
+        min-height: 56px !important;
+        justify-content: space-between !important;
+        padding: 5px 0 !important;
+      }
+      body.products-page .nav-logo { margin: 0 !important; }
+      body.products-page .nav-links {
+        position: fixed !important;
+        top: 58px !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: 0 !important;
+        border-radius: 16px !important;
+      }
+    }
+    @media (max-width: 700px) {
+      body.products-page .commerce-hero {
+        width: calc(100% - 28px);
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      body.products-page .commerce-product-photo { width: min(360px, 94%); }
+      body.products-page .commerce-product-photo {
+        order: 1;
+        justify-self: center;
+      }
+      body.products-page .commerce-purchase { order: 2; }
+      body.products-page .commerce-purchase h1 { font-size: clamp(2.25rem, 9vw, 3rem) !important; }
+    }
+  </style>
+<link href="public-shell.css?v=20260803-3" rel="stylesheet">
+</head>
+<body class="products-page new-blue-home">
+  <nav class="navbar" id="navbar" aria-label="Main navigation">
+    <a class="nav-logo new-brand" href="index.html#home" aria-label="RE IMAGE homepage">
+      <img src="assets/reimage-logo-2026-transparent.png" alt="RE IMAGE">
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="website-development.html">Systems</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="our-work.html">Portfolio</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a class="nav-cta" href="start-with-us.html">Start With Us</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="commerce-hero" aria-labelledby="product-title">
+      <figure class="commerce-product-photo reveal">
+        <img src="assets/clock-in-wall-mount.png" alt="Blue RE IMAGE Scan to Clock In wall mount">
+        <figcaption>RE IMAGE wall-mounted clock-in point</figcaption>
+      </figure>
+
+      <div class="commerce-purchase reveal delay-one">
+        <span class="commerce-label">RE IMAGE Products</span>
+        <h1 id="product-title">Employee Clock-In System</h1>
+        <p class="commerce-summary">A simple wall-mounted clock for employee hours, geofence verification, and manager oversight.</p>
+        <div class="commerce-price" aria-label="299 dollars one time plus 14 dollars and 99 cents per month">
+          <div><strong>$299</strong><span>one-time setup</span></div>
+          <p><strong>$14.99</strong> / month</p>
+        </div>
+        <div class="commerce-actions">
+          <a class="product-button primary" href="start-with-us.html?service=Employee%20Clock-In%20System">Get the product</a>
+          <button class="product-button secondary" id="learnMoreBtn" type="button" aria-expanded="false" aria-controls="productDetails">Learn more</button>
+        </div>
+        <small>Monthly service includes hosting, security, maintenance, and support.</small>
+      </div>
+    </section>
+
+    <div class="product-detail-content" id="productDetails" hidden>
+    <section class="system-gallery" aria-labelledby="system-gallery-title">
+      <div class="system-gallery-heading reveal">
+        <span class="section-label">Real system screens</span>
+        <h2 id="system-gallery-title">See the complete clock-in system.</h2>
+        <p>The employee clock comes first. Then see how managers configure the location, enroll employees, track timecards, and review activity.</p>
+      </div>
+      <div class="system-gallery-list">
+        <figure class="system-shot system-shot-feature reveal">
+          <div class="system-shot-frame">
+            <img src="assets/clock-system-employee-access.png" alt="Employee time clock enrollment screen with the client logo obscured">
+          </div>
+          <figcaption><span>Employee view</span><strong>Clock in from the employee’s phone.</strong><p>A one-time enrollment code connects the right employee before clock-ins begin.</p></figcaption>
+        </figure>
+        <figure class="system-shot admin-shot reveal">
+          <div class="system-shot-frame">
+            <img src="assets/clock-system-configuration.png" alt="Manager clock configuration and policy screen">
+          </div>
+          <figcaption><span>Manager setup</span><strong>Control the clock and its policies.</strong><p>Set the wall tag destination, lunch behavior, alerts, and on-site verification.</p></figcaption>
+        </figure>
+        <figure class="system-shot admin-shot reveal">
+          <div class="system-shot-frame">
+            <img src="assets/clock-system-location-employees.png" alt="Manager location verification and employee enrollment screen">
+          </div>
+          <figcaption><span>Location + enrollment</span><strong>Set the geofence and add employees.</strong><p>Choose the approved radius, verify the shop location, and issue enrollment codes.</p></figcaption>
+        </figure>
+        <figure class="system-shot admin-shot reveal">
+          <div class="system-shot-frame">
+            <img src="assets/clock-system-timecards.png" alt="Manager employee timecards dashboard">
+          </div>
+          <figcaption><span>Timecards</span><strong>See the workweek at a glance.</strong><p>Review who is clocked in, active employees, daily paid hours, and weekly totals.</p></figcaption>
+        </figure>
+        <figure class="system-shot admin-shot reveal">
+          <div class="system-shot-frame">
+            <img src="assets/clock-system-activity.png" alt="Manager weekly timesheet and clock activity screen">
+          </div>
+          <figcaption><span>Activity history</span><strong>Keep every clock event organized.</strong><p>Review clock-ins, lunch actions, clock-outs, locations, and the source of each event.</p></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="client-example" aria-labelledby="example-title">
+      <div class="example-copy reveal">
+        <span class="section-label">Built into your business</span>
+        <h2 id="example-title">One connected system, from your website to your team.</h2>
+        <p>Using Car Craft as an example, the clock-in tools can live alongside the same connected website and admin experience the business already uses—giving management one clear place to see the workday.</p>
+        <a href="https://carcraftautobodytowing.com/" rel="noopener" target="_blank">View the Car Craft website <span aria-hidden="true">↗</span></a>
+      </div>
+      <a class="carcraft-screen reveal delay-one" href="https://carcraftautobodytowing.com/" rel="noopener" target="_blank" aria-label="Visit the Car Craft Auto Body website">
+        <span class="browser-bar"><i></i><i></i><i></i><b>carcraftautobodytowing.com</b></span>
+        <img src="assets/carcraft-home-new.png" alt="Car Craft Auto Body website screenshot">
+      </a>
+    </section>
+
+    <section class="product-features" aria-labelledby="features-title">
+      <div class="section-heading compact reveal">
+        <span>Everything you need</span>
+        <h2 id="features-title">A cleaner way to know who worked—and when.</h2>
+        <p>Simple for employees at the wall. Clear for managers from anywhere.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card reveal"><span class="feature-number">01</span><h3>Unique employee codes</h3><p>Create a private code for every employee so each clock-in is tied to the right person.</p></article>
+        <article class="feature-card reveal delay-one"><span class="feature-number">02</span><h3>Wall-mount scanning</h3><p>Employees scan the wall-mounted clock-in point, enter their code, and start or end their shift in seconds.</p></article>
+        <article class="feature-card reveal delay-two"><span class="feature-number">03</span><h3>Geofence verification</h3><p>Confirm clock-ins happen at your approved business location—not from down the road or at home.</p></article>
+        <article class="feature-card reveal"><span class="feature-number">04</span><h3>Live hour tracking</h3><p>See who is working, when each shift started, and total hours by employee or week.</p></article>
+        <article class="feature-card wide reveal delay-one"><span class="feature-number">05</span><h3>Missed clock-out alerts</h3><p>Spot employees who forgot to clock out before one missed tap turns into inaccurate payroll. Review and correct the shift from the manager dashboard.</p><span class="alert-sample"><b>Needs review</b> Mark E. has been clocked in for 12h 14m</span></article>
+      </div>
+    </section>
+
+    <section class="scan-section" id="how-it-works" aria-labelledby="scan-title">
+      <figure class="mount-product reveal">
+        <img src="assets/clock-in-wall-mount.png" alt="Blue RE IMAGE Scan to Clock In wall mount">
+        <figcaption>RE IMAGE wall-mounted clock-in point</figcaption>
+      </figure>
+      <div class="scan-copy reveal delay-one">
+        <span class="section-label">From scan to timesheet</span>
+        <h2 id="scan-title">One quick routine your whole team can follow.</h2>
+        <ol class="steps-list">
+          <li><span>1</span><div><h3>Scan at the wall</h3><p>The employee scans the mounted clock-in point with their phone.</p></div></li>
+          <li><span>2</span><div><h3>Enter their unique code</h3><p>The secure code identifies the employee without another account or password.</p></div></li>
+          <li><span>3</span><div><h3>Confirm the location</h3><p>The system checks the business geofence before accepting the clock-in.</p></div></li>
+          <li><span>4</span><div><h3>Track the shift live</h3><p>Managers see the shift, hours, and any missed clock-outs in the dashboard.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="product-final-cta reveal">
+      <span>Ready when your next shift starts.</span>
+      <h2>Stop chasing timesheets.</h2>
+      <p>Give your team a faster clock-in and give yourself cleaner hours.</p>
+      <a class="product-button primary" href="start-with-us.html?service=Employee%20Clock-In%20System">Start your clock-in system</a>
+    </section>
+    </div>
+  </main>
+
+  <footer class="minimal-footer">
+    <a class="new-brand" href="index.html#home" aria-label="RE IMAGE homepage"><img src="assets/reimage-logo-2026-transparent.png" alt="RE IMAGE"></a>
+    <p>Custom business operating systems, built around you.</p>
+    <div><a href="website-development.html">Systems</a><a href="products.html">Products</a><a href="our-work.html">Work</a><a href="start-with-us.html">Contact</a><a href="https://login.reimagebs.com">Client Login</a></div>
+    <small>© <span id="yr"></span>. All rights reserved.</small>
+  </footer>
+
+  <script>
+    const menuBtn=document.getElementById('menuBtn'),navLinks=document.getElementById('navLinks');
+    const learnMoreBtn=document.getElementById('learnMoreBtn'),productDetails=document.getElementById('productDetails');
+    menuBtn?.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open));});
+    document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');menuBtn?.setAttribute('aria-expanded','false');}));
+    learnMoreBtn?.addEventListener('click',()=>{const opening=productDetails.hidden;productDetails.hidden=!opening;learnMoreBtn.setAttribute('aria-expanded',String(opening));learnMoreBtn.textContent=opening?'Hide details':'Learn more';if(opening)requestAnimationFrame(()=>productDetails.scrollIntoView({behavior:'smooth',block:'start'}));});
+    document.getElementById('yr').textContent=new Date().getFullYear();
+  </script>
+<script src="public-shell.js?v=20260803-3"></script>
+</body>
+</html>
