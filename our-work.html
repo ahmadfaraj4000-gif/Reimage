@@ -21,76 +21,68 @@
 		.work-hero .hero-title.luxury-title { font-size: clamp(2.7rem, 5vw, 4.7rem); }
 		.work-hero .hero-sub.luxury-sub { max-width: 720px; }
 
+		.work-case-studies { padding-top: 1.25rem; }
 		.work-case-studies .section-inner { max-width: 1180px; }
-		.work-intro-row {
-			display: flex;
-			align-items: flex-end;
-			justify-content: space-between;
-			gap: 1.5rem;
-			margin-bottom: 2rem;
-		}
-		.work-intro-row .section-sub { max-width: 680px; }
-		.work-note {
-			font-size: .9rem;
-			line-height: 1.5;
-			border-radius: 999px;
-			padding: .7rem 1rem;
-			white-space: nowrap;
-		}
-		.build-proof-grid {
-			display: grid;
-			grid-template-columns: repeat(4, minmax(0, 1fr));
-			gap: .75rem;
-			margin: 0 0 2rem;
-		}
-		.build-proof-card {
-			padding: 1rem;
-			border-radius: 16px;
-			background: #ffffff;
-			border: 1px solid rgba(26,122,138,.25);
-			box-shadow: 0 14px 34px rgba(12,31,46,.08);
-		}
-		.build-proof-card strong {
-			display: block;
-			color: #a86d00;
-			font-size: .78rem;
-			letter-spacing: .1em;
-			text-transform: uppercase;
-			margin-bottom: .4rem;
-		}
-		.build-proof-card span {
-			display: block;
-			color: #274456;
-			font-size: .9rem;
-			line-height: 1.45;
-		}
-
 		.case-study-list {
 			display: grid;
 			gap: 1.15rem;
-			margin-top: 1.6rem;
+			margin-top: 0;
 		}
 		.case-study {
-			order: 10;
+			order: 60;
 			border-radius: 20px;
 			padding: 1.25rem;
 			overflow: hidden;
 		}
-		.case-carcraft { order: 1; }
-		.case-patio { order: 2; }
-		.case-rentme { order: 3; }
-		.case-living-word { order: 4; }
-		.case-anchor { order: 5; }
-		.case-cr8 { order: 18; }
-		.case-blesena { order: 19; }
-		.case-faraj { order: 20; }
+		.portfolio-category {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			margin: 2rem 0 .1rem;
+			padding: .2rem .2rem .55rem;
+		}
+		.portfolio-category::after {
+			content: "";
+			flex: 1;
+			height: 1px;
+			background: linear-gradient(90deg, rgba(26,122,138,.42), rgba(26,122,138,0));
+		}
+		.portfolio-category h2 {
+			flex: 0 0 auto;
+			margin: 0 !important;
+			font-size: clamp(1.35rem, 2.4vw, 1.9rem) !important;
+			line-height: 1.1 !important;
+			letter-spacing: .04em;
+			text-transform: uppercase;
+		}
+		.category-automotive { order: 10; margin-top: 0; }
+		.case-carcraft { order: 11; }
+		.case-cr8 { order: 12; }
+		.category-rentals { order: 20; }
+		.case-rentme { order: 21; }
+		.case-empire { order: 22; }
+		.category-food { order: 30; }
+		.case-patio { order: 31; }
+		.case-fusion { order: 32; }
+		.case-grab-go { order: 33; }
+		.case-lunch-box { order: 34; }
+		.category-real-estate { order: 40; }
+		.case-andaleeb { order: 41; }
+		.category-other { order: 50; }
+		.case-anchor { order: 51; }
+		.case-living-word { order: 52; }
+		.case-faraj { order: 53; }
 		.case-study-top {
 			display: grid;
-			grid-template-columns: minmax(300px, .8fr) minmax(0, 1.5fr);
-			gap: 1.25rem;
+			grid-template-columns: minmax(0, 1fr);
+			gap: 1.4rem;
 			align-items: stretch;
 		}
-		.case-copy { min-width: 0; }
+		.case-copy {
+			width: 100%;
+			min-width: 0;
+			padding: .1rem .15rem 0;
+		}
 		.case-kicker {
 			font-size: .72rem;
 			font-weight: 800;
@@ -100,10 +92,11 @@
 		}
 		.case-title-row {
 			display: flex;
-			align-items: center;
+			width: 100%;
+			align-items: flex-end;
 			justify-content: space-between;
-			gap: 1rem;
-			margin-bottom: .45rem;
+			gap: 1.5rem;
+			margin-bottom: .65rem;
 		}
 		.case-study h3 {
 			font-family: var(--site-font-apple);
@@ -114,22 +107,35 @@
 			margin: 0;
 		}
 		.case-link {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			flex: 0 0 auto;
+			margin-left: auto;
+			padding: .58rem .82rem;
+			border: 1px solid rgba(26,122,138,.28);
+			border-radius: 999px;
+			background: rgba(26,122,138,.08);
 			color: var(--teal-light);
 			font-size: .86rem;
 			font-weight: 700;
 			text-decoration: none;
 			white-space: nowrap;
 		}
-		.case-link:hover { text-decoration: underline; }
+		.case-link:hover {
+			background: rgba(26,122,138,.14);
+			border-color: rgba(26,122,138,.46);
+		}
 		.case-desc {
+			max-width: 920px;
 			color: #456072;
 			font-size: .95rem;
 			line-height: 1.62;
-			margin: 0 0 .85rem;
+			margin: 0 0 1rem;
 		}
 		.case-highlights {
 			display: grid;
-			grid-template-columns: repeat(2, minmax(0, 1fr));
+			grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
 			gap: .65rem;
 			margin: 0 0 .9rem;
 		}
@@ -151,7 +157,6 @@
 			font-weight: 500;
 			line-height: 1.5;
 		}
-		.case-highlights .case-highlight:last-child:nth-child(odd) { grid-column: 1 / -1; }
 		.case-tags {
 			display: flex;
 			flex-wrap: wrap;
@@ -172,7 +177,7 @@
 		.shot-strip-wrap {
 			min-width: 0;
 			min-height: 0;
-			height: 100%;
+			height: auto;
 			display: flex;
 			flex-direction: column;
 			overflow: hidden;
@@ -207,7 +212,8 @@
 		.shot-card {
 			position: relative;
 			width: 100%;
-			height: 100%;
+			height: auto;
+			aspect-ratio: 16 / 9;
 			min-width: 0;
 			min-height: 0;
 			border-radius: 14px;
@@ -237,8 +243,24 @@
 		}
 		.shot-card.wide-shot {
 			width: 100%;
-			height: 100%;
+			height: auto;
 			min-height: 0;
+		}
+		.shot-strip.shot-strip-scroll {
+			display: flex;
+			align-items: flex-start;
+			overflow-x: auto;
+			overflow-y: hidden;
+			padding-bottom: .7rem;
+			scroll-snap-type: x mandatory;
+			-webkit-overflow-scrolling: touch;
+		}
+		.shot-strip-scroll .shot-card,
+		.shot-strip-scroll .shot-card.wide-shot {
+			flex: 0 0 88%;
+			width: auto;
+			height: auto;
+			aspect-ratio: 16 / 9;
 		}
 		.shot-placeholder {
 			position: absolute;
@@ -271,9 +293,6 @@
 		}
 
 		@media (max-width: 900px) {
-			.work-intro-row { display: block; }
-			.work-note { display: inline-block; white-space: normal; margin-top: 1rem; border-radius: 14px; }
-			.build-proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 			.case-study-top { grid-template-columns: 1fr; }
 			.shot-strip-wrap { height: auto; min-height: 0; overflow: visible; }
 			.shot-strip {
@@ -298,7 +317,7 @@
 			.work-hero { min-height: 62vh; padding-top: 105px; }
 			.case-study { padding: 1rem; border-radius: 18px; }
 			.case-title-row { display: block; }
-			.case-link { display: inline-block; margin-top: .35rem; }
+			.case-link { display: inline-flex; margin: .55rem 0 0; }
 			.shot-card {
 				flex-basis: 94%;
 				height: auto;
@@ -311,7 +330,6 @@
 			.shot-scroll-label { font-size: .7rem; }
 			.case-highlights { grid-template-columns: 1fr; }
 			.case-highlights .case-highlight:last-child:nth-child(odd) { grid-column: auto; }
-			.build-proof-grid { grid-template-columns: 1fr; }
 		}
 .shot-card img {
 	transition: transform .35s ease;
@@ -624,7 +642,7 @@ body.gallery-open {
 }
 	</style>
 
-	<link href="public-system.css?v=20260803-5" rel="stylesheet">
+	<link href="public-system.css?v=20260903-1" rel="stylesheet">
 	<style>
 		/* Lock the portfolio hero to the homepage hero's exact viewport and type scale. */
 		body.work-page .work-hero {
@@ -742,25 +760,14 @@ body.gallery-open {
 		</section>
 		<section class="section portfolio work-case-studies" id="websites">
 			<div class="section-inner">
-				<div class="work-intro-row">
-					<div>
-						<div class="section-label">Website Portfolio</div>
-						<h2 class="section-title fade-up">Websites & Systems We've Built</h2>
-						<p class="section-sub fade-up">
-							A selection of website builds, internal tools, customer portals, and business systems created for small businesses across different industries.
-						</p>
-					</div>
-					<div class="work-note fade-up">Screenshot cards scroll left/right →</div>
-				</div>
-				<div class="build-proof-grid fade-up" aria-label="RE IMAGE engineering and growth approach">
-					<div class="build-proof-card"><strong>Google Search Indexing</strong><span>Schema, sitemaps, internal links, metadata, and hands-on indexing checks.</span></div>
-					<div class="build-proof-card"><strong>Speed &amp; Reliability</strong><span>Optimized media, lean code, dependable hosting, and tested mobile flows.</span></div>
-					<div class="build-proof-card"><strong>Security By Design</strong><span>Protected admin access, server-side secrets, and trusted payment handoffs.</span></div>
-					<div class="build-proof-card"><strong>Real Integrations</strong><span>Pushover alerts, Square, Clover, Supabase, and direct lead routing.</span></div>
-				</div>
-
 				<div class="case-study-list">
-					<article class="case-study fade-up" id="empire-elite-rides">
+					<div class="portfolio-category category-automotive"><h2>Automotive &amp; Body Shops</h2></div>
+					<div class="portfolio-category category-rentals"><h2>Rental &amp; Transportation</h2></div>
+					<div class="portfolio-category category-food"><h2>Food &amp; Hospitality</h2></div>
+					<div class="portfolio-category category-real-estate"><h2>Real Estate</h2></div>
+					<div class="portfolio-category category-other"><h2>Other Business Systems</h2></div>
+
+					<article class="case-study case-empire fade-up" id="empire-elite-rides">
 						<div class="case-study-top">
 							<div class="case-copy">
 								<div class="case-kicker">Luxury Transportation Website</div>
@@ -781,16 +788,17 @@ body.gallery-open {
 							</div>
 							<div class="shot-strip-wrap">
 								<div class="shot-scroll-label"><span>Project Screens</span><span>Scroll →</span></div>
-								<div class="shot-strip" aria-label="Empire Elite Rides website screenshots">
-									<div class="shot-card wide-shot"><img src="assets/empire-elite-home.png" alt="Empire Elite Rides homepage"><div class="shot-caption">Homepage</div></div>
-									<div class="shot-card wide-shot"><img src="assets/empire-elite-booking.png" alt="Empire Elite Rides reservation request form"><div class="shot-caption">Reservation Request</div></div>
-									<div class="shot-card wide-shot"><img src="assets/empire-elite-admin.png" alt="Empire Elite Rides private admin login"><div class="shot-caption">Admin Portal</div></div>
+								<div class="shot-strip shot-strip-scroll" aria-label="Empire Elite Rides website and admin portal screenshots">
+									<div class="shot-card wide-shot"><img src="assets/empire-elite-pricing-2026.png" alt="Empire Elite Rides instant ride pricing page"><div class="shot-caption">Instant Ride Pricing</div></div>
+									<div class="shot-card wide-shot"><img src="assets/empire-elite-booking-2026.png" alt="Empire Elite Rides six-step booking flow"><div class="shot-caption">Guided Booking Flow</div></div>
+									<div class="shot-card wide-shot"><img src="assets/empire-elite-admin-dashboard-2026.png" alt="Empire Elite Rides admin dashboard"><div class="shot-caption">Operations Dashboard</div></div>
+									<div class="shot-card wide-shot"><img src="assets/empire-elite-admin-bookings-2026.png" alt="Empire Elite Rides admin booking manager"><div class="shot-caption">Booking Management</div></div>
 								</div>
 							</div>
 						</div>
 					</article>
 
-					<article class="case-study fade-up" id="fusion-health">
+					<article class="case-study case-fusion fade-up" id="fusion-health">
 						<div class="case-study-top">
 							<div class="case-copy">
 								<div class="case-kicker">Juice Bar &amp; Online Ordering Website</div>
@@ -827,6 +835,7 @@ body.gallery-open {
 								<div class="case-kicker">Hospitality, Events &amp; Ordering Platform</div>
 								<div class="case-title-row">
 									<h3>The Patio</h3>
+									<a class="case-link" href="https://thepatioct.com" rel="noopener" target="_blank">Visit Site ↗</a>
 								</div>
 								<p class="case-desc">
 									A full hospitality platform that presents The Patio's garden atmosphere, cocktails, events, and putting green while connecting guests to a live menu, cart, space booking, and an operational admin portal.
@@ -847,6 +856,100 @@ body.gallery-open {
 									<div class="shot-card wide-shot"><img src="assets/patio-menu.png" alt="The Patio online drinks menu"><div class="shot-caption">Drinks Menu &amp; Ordering</div></div>
 									<div class="shot-card wide-shot"><img src="assets/patio-experience.png" alt="The Patio garden lounge and putting green"><div class="shot-caption">Venue Experience</div></div>
 									<div class="shot-card wide-shot"><img src="assets/patio-admin.png" alt="The Patio menu admin portal"><div class="shot-caption">Menu Admin</div></div>
+								</div>
+							</div>
+						</div>
+					</article>
+
+					<article class="case-study case-andaleeb fade-up" id="andaleeb-enterprises">
+						<div class="case-study-top">
+							<div class="case-copy">
+								<div class="case-kicker">Real Estate Portfolio Website</div>
+								<div class="case-title-row">
+									<h3>Andaleeb Enterprises</h3>
+								</div>
+								<p class="case-desc">
+									A polished website for Andaleeb Enterprises, a real estate investment company, built to showcase its property portfolio, community revitalization work, and company news in a clear, credible experience.
+								</p>
+								<div class="case-highlights">
+									<div class="case-highlight"><strong>Portfolio Showcase</strong><span>Property cards and category filters make retail, office, mixed-use, and residential investments easy to explore.</span></div>
+									<div class="case-highlight"><strong>Brand &amp; Credibility</strong><span>A video-led homepage, press coverage, and direct contact path present the company and its work with confidence.</span></div>
+								</div>
+								<div class="case-tags">
+									<span>Real Estate</span><span>Property Portfolio</span><span>Brand Story</span><span>News &amp; Press</span><span>Responsive Design</span>
+								</div>
+							</div>
+							<div class="shot-strip-wrap">
+								<div class="shot-scroll-label"><span>Project Screens</span><span>Scroll →</span></div>
+								<div class="shot-strip" aria-label="Andaleeb Enterprises website screenshots">
+									<div class="shot-card wide-shot"><img src="assets/andaleeb-home-2026.png" alt="Andaleeb Enterprises real estate investment homepage"><div class="shot-caption">Homepage</div></div>
+									<div class="shot-card wide-shot"><img src="assets/andaleeb-properties-2026.png" alt="Andaleeb Enterprises property portfolio"><div class="shot-caption">Property Portfolio</div></div>
+									<div class="shot-card wide-shot"><img src="assets/andaleeb-news-2026.png" alt="Andaleeb Enterprises company news and press coverage"><div class="shot-caption">News &amp; Press</div></div>
+									<div class="shot-card wide-shot"><img src="assets/andaleeb-contact-2026.png" alt="Andaleeb Enterprises contact page"><div class="shot-caption">Contact</div></div>
+								</div>
+							</div>
+						</div>
+					</article>
+
+					<article class="case-study case-grab-go fade-up" id="grab-and-go-881">
+						<div class="case-study-top">
+							<div class="case-copy">
+								<div class="case-kicker">Restaurant Story &amp; Online Ordering Website</div>
+								<div class="case-title-row">
+									<h3>881 Grab &amp; Go</h3>
+									<a class="case-link" href="https://the881grabandgo.com/#first-timers" rel="noopener" target="_blank">Visit Site ↗</a>
+								</div>
+								<p class="case-desc">
+									A story-driven restaurant website built around 881 Grab &amp; Go's standout fried fish sandwiches, island comfort food, and Philly attitude. The experience explains the restaurant's roots, shows what makes it different, and sends hungry customers directly to Toast to order.
+								</p>
+								<div class="case-highlights">
+									<div class="case-highlight"><strong>Direct Toast Ordering</strong><span>Clear ordering buttons connect customers directly to Toast from the homepage and featured dishes.</span></div>
+									<div class="case-highlight"><strong>Story &amp; Social Proof</strong><span>Brand storytelling, signature menu highlights, and real first-timer reactions show why the food stands apart.</span></div>
+								</div>
+								<div class="case-tags">
+									<span>Restaurant Website</span><span>Toast Ordering</span><span>Brand Story</span><span>Menu Highlights</span><span>Social Proof</span><span>Mobile First</span>
+								</div>
+							</div>
+							<div class="shot-strip-wrap">
+								<div class="shot-scroll-label"><span>Project Screens</span><span>Scroll →</span></div>
+								<div class="shot-strip shot-strip-scroll" aria-label="881 Grab and Go restaurant website screenshots">
+									<div class="shot-card wide-shot"><img src="assets/881-grab-go-home-2026.png" alt="881 Grab and Go restaurant homepage featuring the Cheyney Fish Sandwich"><div class="shot-caption">Homepage &amp; Story</div></div>
+									<div class="shot-card wide-shot"><img src="assets/881-grab-go-best-sellers-2026.png" alt="881 Grab and Go best sellers and direct online ordering"><div class="shot-caption">Best Sellers</div></div>
+									<div class="shot-card wide-shot"><img src="assets/881-grab-go-first-timers-2026.png" alt="881 Grab and Go first-timer customer reactions"><div class="shot-caption">First-Timer Reactions</div></div>
+								</div>
+							</div>
+						</div>
+					</article>
+
+					<article class="case-study case-lunch-box fade-up" id="lunch-box">
+						<div class="case-study-top">
+							<div class="case-copy">
+								<div class="case-kicker">Mobile Restaurant Website &amp; Operations System</div>
+								<div class="case-title-row">
+									<h3>Lunch Box</h3>
+									<a class="case-link" href="https://lunchboxct.com/index.html" rel="noopener" target="_blank">Visit Site ↗</a>
+								</div>
+								<p class="case-desc">
+									A complete digital experience for Lunch Box, built around a bold custom lunch-box concept and a front page that tells the story behind the food. We also created the menu, catering experience, ordering tools, and a private admin portal for managing the business as it moves.
+								</p>
+								<div class="case-highlights">
+									<div class="case-highlight"><strong>Self-Managed Menu</strong><span>The team can update food, pricing, photos, catering trays, specials, coupons, and ordering options from its admin portal.</span></div>
+									<div class="case-highlight"><strong>Brand Concept &amp; Story</strong><span>A distinctive Lunch Box visual system, founder story, and product presentation give the mobile restaurant a memorable identity.</span></div>
+									<div class="case-highlight"><strong>NFC Live Location</strong><span>An NFC tag opens a protected phone-based check-in that captures and publishes the truck's current pickup location for customers.</span></div>
+								</div>
+								<div class="case-tags">
+									<span>Custom Brand Concept</span><span>Online Menu</span><span>Admin Portal</span><span>NFC Check-In</span><span>Live Location</span><span>Catering</span><span>Mobile Ordering</span>
+								</div>
+							</div>
+							<div class="shot-strip-wrap">
+								<div class="shot-scroll-label"><span>Project Screens</span><span>Scroll →</span></div>
+								<div class="shot-strip shot-strip-scroll" aria-label="Lunch Box website and admin portal screenshots">
+									<div class="shot-card wide-shot"><img src="assets/lunch-box-home-2026.png" alt="Lunch Box homepage with live pickup location"><div class="shot-caption">Homepage &amp; Live Location</div></div>
+									<div class="shot-card wide-shot"><img src="assets/lunch-box-story-2026.png" alt="Lunch Box founder and brand story"><div class="shot-caption">Our Story</div></div>
+									<div class="shot-card wide-shot"><img src="assets/lunch-box-menu-2026.png" alt="Lunch Box online food menu"><div class="shot-caption">Online Menu</div></div>
+									<div class="shot-card wide-shot"><img src="assets/lunch-box-catering-2026.png" alt="Lunch Box catering menu"><div class="shot-caption">Catering</div></div>
+									<div class="shot-card wide-shot"><img src="assets/lunch-box-admin-overview-2026.png" alt="Lunch Box admin portal overview"><div class="shot-caption">Admin Overview</div></div>
+									<div class="shot-card wide-shot"><img src="assets/lunch-box-nfc-location-2026.png" alt="Lunch Box NFC truck location check-in system"><div class="shot-caption">NFC Truck Location</div></div>
 								</div>
 							</div>
 						</div>
@@ -960,11 +1063,12 @@ body.gallery-open {
 							</div>
 							<div class="shot-strip-wrap">
 								<div class="shot-scroll-label"><span>Project Screens</span><span>Scroll →</span></div>
-								<div class="shot-strip" aria-label="Rent Me CT website and operations screenshots">
-									<div class="shot-card wide-shot"><img src="assets/rentme-home-new.png" alt="Rent Me CT reservation homepage"><div class="shot-caption">Reservation Homepage</div></div>
-									<div class="shot-card wide-shot"><img src="assets/rentme-fleet-new.png" alt="Rent Me CT live vehicle fleet"><div class="shot-caption">Live Fleet</div></div>
-									<div class="shot-card wide-shot"><img src="assets/rentme-admin-dashboard-new.png" alt="Rent Me CT operations dashboard"><div class="shot-caption">Operations Dashboard</div></div>
-									<div class="shot-card wide-shot"><img src="assets/rentme-admin-booking-new.png" alt="Rent Me CT admin booking workflow"><div class="shot-caption">Admin Booking</div></div>
+								<div class="shot-strip shot-strip-scroll" aria-label="Rent Me CT website and operations screenshots">
+									<div class="shot-card wide-shot"><img src="assets/rentme-home-2026.png" alt="Rent Me CT reservation homepage and featured vehicles"><div class="shot-caption">Reservation Homepage</div></div>
+									<div class="shot-card wide-shot"><img src="assets/rentme-live-fleet-2026.png" alt="Rent Me CT searchable live vehicle fleet"><div class="shot-caption">Live Fleet</div></div>
+									<div class="shot-card wide-shot"><img src="assets/rentme-vehicle-details-2026.png" alt="Rent Me CT vehicle details and availability page"><div class="shot-caption">Vehicle Details</div></div>
+									<div class="shot-card wide-shot"><img src="assets/rentme-rental-manager-2026.png" alt="Rent Me CT rental manager operations screen"><div class="shot-caption">Rental Manager</div></div>
+									<div class="shot-card wide-shot"><img src="assets/rentme-fleet-manager-2026.png" alt="Rent Me CT admin fleet management screen"><div class="shot-caption">Fleet Management</div></div>
 									</div>
 							</div>
 						</div>
@@ -1050,49 +1154,6 @@ body.gallery-open {
 						</div>
 					</article>
 
-					<article class="case-study case-blesena fade-up">
-						<div class="case-study-top">
-							<div class="case-copy">
-								<div class="case-kicker">Roadside & inspection platform</div>
-								<div class="case-title-row">
-									<h3>Blesena</h3>
-									<a class="case-link" href="https://www.blesena.com" rel="noopener" target="_blank">Visit Site ↗</a>
-								</div>
-								<p class="case-desc">
-									Built a client and admin portal using Supabase for database and authentication. Added Google APIs for Google Maps, Gmail sign-in, and geo-tracking tools. Finished the build with the same SEO foundation: internal links, meta tags, FAQs, schema, sitemap, indexing support, and mobile optimization.
-								</p>
-								<div class="case-highlights">
-									<div class="case-highlight"><strong>Feature Focus</strong><span>Secure portals, Google sign-in, mapped service activity, geo-tracking tools, and an SEO-ready responsive public experience.</span></div>
-									<div class="case-highlight"><strong>What Makes It Different</strong><span>Location-aware roadside workflows connect customers and administrators around the real-world status of mobile service delivery.</span></div>
-								</div>
-								<div class="case-tags">
-									<span>Supabase</span><span>Google Maps API</span><span>Gmail Sign-In</span><span>Geo Tracking</span><span>SEO</span>
-								</div>
-							</div>
-							<div class="shot-strip-wrap">
-								<div class="shot-scroll-label"><span>Scroll →</span></div>
-								<div class="shot-strip" aria-label="Faraj Software Solutions screenshots">
-
-										<div class="shot-card">
-											<img src="assets/blesena-home.png" alt="Blesene Home Page">
-											<div class="shot-caption">Homepage</div>
-										</div>
-
-										<div class="shot-card">
-											<img src="assets/blesena-admin.png" alt="Blesena Admin Page">
-											<div class="shot-caption">Admin Portal</div>
-										</div>
-
-										<div class="shot-card">
-											<img src="assets/blesena-client.png" alt="Blesena Client Page">
-											<div class="shot-caption">Client Portal</div>
-										</div>
-
-									</div>
-							</div>
-						</div>
-					</article>
-
 					<article class="case-study case-cr8 fade-up" id="cr8-autos">
 						<div class="case-study-top">
 							<div class="case-copy">
@@ -1118,23 +1179,23 @@ body.gallery-open {
 								<div class="shot-strip" aria-label="Cr8 autos screenshots">
 
 										<div class="shot-card">
-											<img src="assets/cr8-home.png" alt="Faraj Software Solutions Homepage">
-											<div class="shot-caption">Homepage</div>
+											<img src="assets/cr8-online-estimate-2026.png" alt="CR8 Autos online auto body estimate homepage">
+											<div class="shot-caption">Online Estimate</div>
 										</div>
 
 										<div class="shot-card">
-											<img src="assets/cr8-booking.png" alt="Booking Page">
-											<div class="shot-caption">Booking Page</div>
+											<img src="assets/cr8-book-appointment-2026.png" alt="CR8 Autos appointment booking form">
+											<div class="shot-caption">Book an Appointment</div>
 										</div>
 
 										<div class="shot-card">
-											<img src="assets/cr8-admin.png" alt="Admin Portal">
-											<div class="shot-caption">Admin Portal</div>
+											<img src="assets/cr8-command-center-2026.png" alt="CR8 Autos Shop Command Center admin dashboard">
+											<div class="shot-caption">Shop Command Center</div>
 										</div>
 
 										<div class="shot-card">
-											<img src="assets/cr8-invoice.png" alt="Invoice Generator">
-											<div class="shot-caption">Invoice generator</div>
+											<img src="assets/cr8-estimate-leads-2026.png" alt="CR8 Autos estimate leads admin dashboard">
+											<div class="shot-caption">Estimate Leads</div>
 										</div>
 
 									</div>

@@ -556,18 +556,21 @@ body.public-unified .case-study-top {
 body.public-unified .case-title-row {
   display: flex !important;
   flex-wrap: wrap !important;
-  align-items: center !important;
+  width: 100% !important;
+  align-items: flex-end !important;
   justify-content: space-between !important;
-  gap: 14px !important;
+  gap: 18px !important;
 }
 
 body.public-unified .case-title-row h3 {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
   margin: 0 !important;
   font-size: clamp(2rem, 3.2vw, 3.5rem) !important;
 }
 
 body.public-unified .case-desc {
-  max-width: 760px !important;
+  max-width: 920px !important;
 }
 
 body.public-unified .case-highlight {
@@ -591,7 +594,8 @@ body.public-unified .case-highlight span {
 }
 
 body.public-unified .case-copy {
-  width: min(100%, 980px) !important;
+  width: 100% !important;
+  max-width: none !important;
 }
 
 body.public-unified .shot-strip-wrap,
