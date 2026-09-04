@@ -19,11 +19,17 @@ const generate = spawnSync(process.execPath, [path.join(root, 'scripts/generate-
 });
 if (generate.status !== 0) process.exit(generate.status || 1);
 
+const enhanceSeo = spawnSync(process.execPath, [path.join(root, 'scripts/enhance-public-seo.mjs')], {
+  cwd: root,
+  stdio: 'inherit'
+});
+if (enhanceSeo.status !== 0) process.exit(enhanceSeo.status || 1);
+
 const dist = path.join(root, 'dist');
 fs.rmSync(dist, { recursive: true, force: true });
 fs.mkdirSync(dist, { recursive: true });
 
-const allowedRootExtensions = new Set(['.html', '.css', '.js', '.png', '.jpg', '.jpeg', '.webp', '.svg', '.xml', '.txt']);
+const allowedRootExtensions = new Set(['.html', '.css', '.js', '.json', '.png', '.jpg', '.jpeg', '.webp', '.svg', '.xml', '.txt']);
 for (const entry of fs.readdirSync(root, { withFileTypes: true })) {
   if (entry.isFile() && (allowedRootExtensions.has(path.extname(entry.name).toLowerCase()) || entry.name === 'CNAME')) {
     fs.copyFileSync(path.join(root, entry.name), path.join(dist, entry.name));

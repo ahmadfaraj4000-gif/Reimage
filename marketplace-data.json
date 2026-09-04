@@ -16,7 +16,7 @@
     {
       "slug":"fusion-health-juice-bar","name":"Fusion Health Juice Bar","categories":["restaurants-drinks"],"featuredLabel":"RE IMAGE Pick","locationKey":"hartford","locationLabel":"Hartford","regionRank":1,
       "address":{"street":"879 New Britain Avenue","city":"Hartford","state":"CT","postalCode":"06106"},"phone":"860-461-0575","website":"https://fusionhealthjuicebar.com/","ctaLabel":"View Menu & Order","ctaUrl":"https://fusionhealthjuicebar.com/","image":"assets/fusion-health-menu.png","imageAlt":"Fusion Health Juice Bar menu with fresh juices, smoothies, bowls, and Jamaican-inspired drinks","schemaType":"Restaurant",
-      "specialties":["Peanut Punch","Fresh juices","Sea moss drinks"],"tags":["smoothies","acai bowls","wellness shots","jamaican","banana","nutmeg","oats","protein","almond milk","honey"],
+      "cuisine":["Jamaican","Juice bar","Smoothies"],"specialties":["Peanut Punch","Fresh juices","Sea moss drinks"],"tags":["smoothies","acai bowls","wellness shots","jamaican","banana","nutmeg","oats","protein","almond milk","honey"],
       "shortBio":"A Hartford juice bar serving Jamaican-inspired juices, smoothies, bowls, wellness shots, sea moss drinks, and its signature Peanut Punch.",
       "longBio":"Fusion Health Juice Bar brings fresh, energizing flavor to Hartford with Jamaican-inspired juices, smoothies, fruit bowls, wellness shots, and sea moss drinks. Its signature Peanut Punch blends peanut, banana, nutmeg, vanilla, oats, protein, almond milk, and honey for a rich local favorite.",
       "faq":[["What is Fusion Health Juice Bar known for?","Fusion is known for fresh juices, smoothies, bowls, wellness shots, sea moss drinks, and its Jamaican-inspired Peanut Punch."],["Where is Fusion Health Juice Bar?","Fusion is located at 879 New Britain Avenue in Hartford, Connecticut."],["Can I view the menu online?","Yes. Use the official website link on this page to view current menu and ordering options."]]
@@ -24,7 +24,7 @@
     {
       "slug":"881-grab-and-go","name":"881 Grab & Go","categories":["restaurants-drinks"],"locationKey":"hartford","locationLabel":"Hartford","regionRank":1,
       "address":{"street":"881 New Britain Avenue","city":"Hartford","state":"CT","postalCode":"06106"},"phone":"860-308-2393","website":"https://the881grabandgo.com/","ctaLabel":"Order Online","ctaUrl":"https://the881grabandgo.com/","image":"assets/881-grab-go-best-sellers-2026.png","imageAlt":"881 Grab & Go best sellers and online ordering menu","schemaType":"Restaurant",
-      "specialties":["Cheyney Fish Sandwich","Oxtail","Jerk chicken"],"tags":["island comfort food","philly","fried whiting","vegan curry chickpeas","takeout"],
+      "cuisine":["Caribbean","Jamaican","American"],"specialties":["Cheyney Fish Sandwich","Oxtail","Jerk chicken"],"tags":["island comfort food","philly","fried whiting","vegan curry chickpeas","takeout"],
       "shortBio":"Island comfort food with Philly attitude, including oxtail, jerk chicken, vegan curry chickpeas, and the signature Cheyney Fish Sandwich.",
       "longBio":"881 Grab & Go combines island comfort food with Philly attitude in Hartford. The menu spans oxtail, jerk chicken, vegan curry chickpeas, and the signature Cheyney Fish Sandwich: fried whiting layered with 881 aioli, pickled cabbage, and cheese.",
       "faq":[["What is the signature sandwich at 881 Grab & Go?","The Cheyney Fish Sandwich features fried whiting, 881 aioli, pickled cabbage, and cheese."],["Where is 881 Grab & Go?","The restaurant is at 881 New Britain Avenue in Hartford, Connecticut."],["Can I order online?","Yes. The official website provides current online ordering options."]]
@@ -32,7 +32,7 @@
     {
       "slug":"the-patio","name":"The Patio","categories":["nightlife-events","restaurants-drinks"],"featuredLabel":"RE IMAGE Pick","locationKey":"hartford","locationLabel":"Hartford","regionRank":1,
       "address":{"street":"2280 Main Street","city":"Hartford","state":"CT","postalCode":"06120"},"website":"https://thepatioct.com/","ctaLabel":"View Events & Menu","ctaUrl":"https://thepatioct.com/","image":"assets/patio-home-2026.jpg","imageAlt":"The Patio Hartford indoor-outdoor lounge and event destination","schemaType":"BarOrPub",
-      "specialties":["Cocktails","Live entertainment","Mini golf"],"tags":["private events","nightlife","garden lounge","drinks","events"],
+      "cuisine":["American","Cocktails"],"specialties":["Cocktails","Live entertainment","Mini golf"],"tags":["private events","nightlife","garden lounge","drinks","events"],
       "shortBio":"An indoor-outdoor Hartford destination for cocktails, live entertainment, private events, and mini golf in a garden-lounge setting.",
       "longBio":"The Patio is an indoor-outdoor Hartford destination built for memorable nights out. Its garden-lounge atmosphere brings together handcrafted cocktails, live entertainment, private events, and mini golf in one polished social setting.",
       "faq":[["What can I do at The Patio?","The Patio offers cocktails, live entertainment, private events, and mini golf."],["Where is The Patio in Hartford?","The current listed address is 2280 Main Street in Hartford, Connecticut."],["Does The Patio host private events?","Yes. Visit the official website for current event details and private-event information."]]
@@ -40,7 +40,7 @@
     {
       "slug":"lunch-box","name":"Lunch Box","categories":["restaurants-drinks"],"locationKey":"hartford","locationLabel":"Hartford","regionRank":1,
       "address":{"street":"104 Baltimore Street","city":"Hartford","state":"CT","postalCode":"06112"},"website":"https://lunchboxct.com/","ctaLabel":"Order or Request Catering","ctaUrl":"https://lunchboxct.com/","image":"assets/lunch-box-home-2026.png","imageAlt":"Lunch Box Hartford Caribbean food ordering website","schemaType":"Restaurant",
-      "specialties":["Jerk chicken","Escovitch fish","Catering trays"],"tags":["curry chicken","callaloo","fried dumplings","natural drinks","caribbean","takeout"],
+      "cuisine":["Caribbean","Jamaican"],"specialties":["Jerk chicken","Escovitch fish","Catering trays"],"tags":["curry chicken","callaloo","fried dumplings","natural drinks","caribbean","takeout"],
       "shortBio":"A Hartford Caribbean takeout and catering destination known for jerk chicken, curry chicken, escovitch fish, natural drinks, and party trays.",
       "longBio":"Lunch Box serves Hartford with Caribbean takeout and catering made for everyday meals and larger gatherings. Favorites include Jerk Chicken, Curry Chicken, Escovitch Fish, customizable lunch boxes, callaloo, fried dumplings, natural drinks, and full party trays.",
       "faq":[["What food does Lunch Box serve?","Lunch Box serves Caribbean favorites including jerk chicken, curry chicken, escovitch fish, callaloo, and fried dumplings."],["Does Lunch Box offer catering?","Yes. Catering trays and party-size options are available through the official site."],["Where is Lunch Box?","Lunch Box is at 104 Baltimore Street in Hartford, Connecticut."]]
@@ -48,7 +48,7 @@
     {
       "slug":"mi-buen-pastor-mexican-fusion","name":"Mi Buen Pastor Mexican Fusion","categories":["restaurants-drinks"],"locationKey":"hartford","locationLabel":"Hartford","regionRank":1,
       "address":{"street":"265 Newfield Avenue","city":"Hartford","state":"CT","postalCode":"06106"},"phone":"860-462-4076","website":"https://www.mibuenpastorct.com/","ctaLabel":"Order Online","ctaUrl":"https://www.mibuenpastorct.com/","image":"assets/marketplace/mi-buen-pastor.jpg","imageAlt":"Mexican dishes prepared by Mi Buen Pastor Mexican Fusion in Hartford","schemaType":"Restaurant",
-      "specialties":["Quesabirria tacos","Handmade tortillas","Aguas frescas"],"tags":["mexican fusion","tacos","burritos","burrito bowls","quesadillas","churros"],
+      "cuisine":["Mexican","Mexican fusion"],"specialties":["Quesabirria tacos","Handmade tortillas","Aguas frescas"],"tags":["mexican fusion","tacos","burritos","burrito bowls","quesadillas","churros"],
       "shortBio":"A Hartford Mexican-fusion restaurant serving handmade tortillas, quesabirria tacos, burritos, quesadillas, churros, and aguas frescas.",
       "longBio":"Mi Buen Pastor Mexican Fusion serves Hartford with fresh Mexican-fusion favorites and handmade tortillas. Its menu includes popular quesabirria tacos, tacos, burritos, burrito bowls, quesadillas, churros, and refreshing aguas frescas.",
       "faq":[["What is Mi Buen Pastor known for?","Popular specialties include quesabirria tacos and dishes made with fresh handmade tortillas."],["Where is Mi Buen Pastor?","The restaurant is at 265 Newfield Avenue in Hartford, Connecticut."],["Can I order online?","Yes. Visit the official website for the current menu and online ordering."]]

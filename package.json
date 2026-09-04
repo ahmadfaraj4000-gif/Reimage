@@ -7,6 +7,8 @@
     "marketplace:generate": "node scripts/generate-marketplace.mjs",
     "marketplace:seed": "node scripts/generate-marketplace-seed.mjs",
     "marketplace:sync": "node scripts/sync-marketplace-from-supabase.mjs",
+    "seo:generate": "node scripts/enhance-public-seo.mjs",
+    "seo:indexnow": "node scripts/submit-indexnow.mjs",
     "test": "node scripts/validate-marketplace.mjs",
     "build": "node scripts/build-public-site.mjs"
   }

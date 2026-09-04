@@ -80,6 +80,7 @@ const snapshot = {
       image: image?.url,
       imageAlt: image?.alt_text,
       schemaType: business.schema_type,
+      cuisine: business.cuisine || undefined,
       specialties: business.specialties || [],
       tags: business.tags || [],
       shortBio: business.short_bio,

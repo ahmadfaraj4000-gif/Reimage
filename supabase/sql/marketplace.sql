@@ -46,6 +46,7 @@ create table if not exists public.marketplace_businesses (
   secondary_cta_url text check (secondary_cta_url is null or secondary_cta_url ~* '^https?://'),
   short_bio text not null,
   long_bio text not null,
+  cuisine text[] not null default '{}',
   specialties text[] not null default '{}',
   tags text[] not null default '{}',
   faq jsonb not null default '[]'::jsonb check (jsonb_typeof(faq) = 'array'),
@@ -59,6 +60,9 @@ create table if not exists public.marketplace_businesses (
     or (location_type in ('service_area', 'online') and service_area is not null)
   )
 );
+
+alter table public.marketplace_businesses
+  add column if not exists cuisine text[] not null default '{}';
 
 create table if not exists public.marketplace_business_categories (
   business_id uuid not null references public.marketplace_businesses(id) on delete cascade,

@@ -1,6 +1,19 @@
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /reimage-admin-portal/
+Disallow: /reimage-login-portal/
+Disallow: /reimage-salesman-portal/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /reimage-admin-portal/
+Disallow: /reimage-login-portal/
+Disallow: /reimage-salesman-portal/
+
 User-agent: *
 Allow: /
 Disallow: /reimage-admin-portal/
 Disallow: /reimage-login-portal/
 Disallow: /reimage-salesman-portal/
+
 Sitemap: https://reimagebs.com/sitemap.xml

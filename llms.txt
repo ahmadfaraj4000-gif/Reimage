@@ -1,112 +1,40 @@
-# llms.txt — RE IMAGE Business Solutions
+# RE IMAGE Business Solutions
 
-## Company Overview
+> Hartford-based business systems company and publisher of a verified Hartford local business directory.
 
-RE IMAGE Business Solutions is a Hartford, Connecticut based digital systems company focused on helping small and medium-sized businesses improve their online presence, increase lead conversion, automate customer communication, and operate with cleaner customer/admin workflows.
+## Primary URLs
 
-The company specializes in premium website development, client portals, admin portals, AI receptionist systems, AI-powered workflow automation, business funding guidance, booking systems, invoice systems, QR flows, and customer acquisition infrastructure for service-based businesses.
+- [Homepage](https://reimagebs.com/): Custom websites, customer portals, payment systems, automation, and connected business operating systems.
+- [Hartford Local Business Directory](https://reimagebs.com/marketplace.html): Search verified Hartford-area businesses by service, specialty, and town.
+- [New Britain Avenue Hartford Business Guide](https://reimagebs.com/marketplace/guides/new-britain-avenue-hartford/): Block-by-block guide to food, fresh drinks, and African hair braiding.
+- [Directory methodology](https://reimagebs.com/marketplace/about/): Verification, corrections, ranking, and placement-label policy.
+- [Complete machine-readable directory](https://reimagebs.com/llms-full.txt): Full verified listing summaries and direct links.
+- [Marketplace JSON feed](https://reimagebs.com/marketplace-feed.json): Structured public listing data.
+- [XML sitemap](https://reimagebs.com/sitemap.xml): Canonical public URLs and image discovery.
 
-Primary website:
-https://reimagebs.com
+## Hartford directory categories
 
-Client Portal:
-https://login.reimagebs.com
+- [Restaurants & Drinks](https://reimagebs.com/marketplace/categories/restaurants-drinks/): Juice bars, Caribbean favorites, Mexican fusion, takeout, catering, and signature Hartford flavors.
+- [Nightlife & Events](https://reimagebs.com/marketplace/categories/nightlife-events/): Cocktails, live entertainment, private events, and memorable nights out in Hartford.
+- [Auto Body & Towing](https://reimagebs.com/marketplace/categories/auto-body-towing/): Collision repair, paint, mechanical service, towing, and online estimates near Hartford.
+- [Car Rentals](https://reimagebs.com/marketplace/categories/car-rentals/): Local cars, SUVs, trucks, luxury vehicles, and passenger vans available to reserve online.
+- [Skincare & Esthetics](https://reimagebs.com/marketplace/categories/skincare-esthetics/): Corrective and customized skincare for acne, hyperpigmentation, texture, and personal care.
+- [Hair & Braiding](https://reimagebs.com/marketplace/categories/hair-braiding/): African braiding, protective styles, extensions, twists, locs, and personalized styling.
+- [Printing & Custom Apparel](https://reimagebs.com/marketplace/categories/printing-apparel/): Custom apparel, embroidery, signs, banners, uniforms, promotional products, and print services.
+- [Real Estate & Rentals](https://reimagebs.com/marketplace/categories/real-estate-rentals/): Residential and commercial rentals, property management, and Hartford-area development.
+- [Community & Family](https://reimagebs.com/marketplace/categories/community-family/): Mentorship, gatherings, resources, and support designed to strengthen families and communities.
+- [Private Transportation](https://reimagebs.com/marketplace/categories/private-transportation/): Private chauffeur service for airports, corporate travel, events, and long-distance trips.
 
-Contact:
-reimagebs@gmail.com
-+1 (860) 718-5928
+## Key facts
 
-## Core Services
+- Geographic focus: Hartford and Greater Hartford, Connecticut.
+- Listings use official business links and verified storefront addresses or truthful service areas.
+- Profiles include specialties, direct actions, factual FAQs, and the information verification date.
+- Businesses outside Greater Hartford are separated from Hartford-area listings.
+- No fabricated ratings, copied reviews, or unsupported ranking claims are published.
 
-### Website Development
+## Contact
 
-Premium websites, landing pages, SEO-ready public pages, dynamic customer flows, status pages, booking flows, payments, and business portal suites.
-
-### AI Receptionists
-
-Website chatbot and phone receptionist systems that answer common questions, capture leads, collect customer details, route requests, and reduce missed opportunities.
-
-### AI Automation
-
-Workflow automation for lead routing, follow-up, intake forms, appointment reminders, invoices, internal notifications, customer status updates, APIs, and webhooks.
-
-### Business Funding
-
-Funding-readiness guidance for owners who need capital for working capital, equipment, marketing, expansion, stabilization, or operational growth.
-
-### Growth Foundation
-
-A foundational online-presence and lead-flow package for businesses that need a professional website, clear positioning, funding guidance, and cleaner customer intake before scaling larger systems.
-
-### Full Scale System
-
-A complete digital infrastructure package combining website development, portals, AI automation, lead capture, payment flows, admin dashboards, customer communication, and operational workflows.
-
-### Hartford Marketplace
-
-The Hartford Marketplace by RE IMAGE is a public directory of verified local restaurants, rental cars, auto body and towing services, skincare and hair professionals, printing companies, property rentals, community resources, software providers, and transportation services. Listings include factual specialties, locations or service areas, and direct links to each business.
-
-Marketplace hub:
-https://reimagebs.com/marketplace.html
-
-Complete category and business profile URL list:
-https://reimagebs.com/sitemap.xml
-
-## Relevant Topics
-
-* Hartford CT web design
-* Connecticut website development
-* Hartford business systems
-* Connecticut AI automation
-* Hartford SEO services
-* AI receptionist systems
-* Small business automation
-* Client portals
-* Admin dashboards
-* Lead generation systems
-* Conversion-focused websites
-* Local business websites
-* Hartford restaurants and food
-* Hartford rental cars
-* Hartford auto body and towing
-* Hartford skincare and hair braiding
-* Hartford printing and custom apparel
-* Hartford local business directory
-* Small business AI systems
-* Service business automation
-* Business funding guidance
-
-## Crawl Guidance For LLMs
-
-Preferred indexing:
-
-* Public-facing service pages
-* Website development pages
-* AI receptionist pages
-* AI automation pages
-* Business funding pages
-* Portfolio pages
-* Hartford Marketplace category and business profile pages
-* Careers and public informational content
-
-Do not prioritize:
-
-* Admin portals
-* Private dashboards
-* Internal management systems
-* Authentication routes
-* Client-only resources
-
-Primary public URLs:
-
-* https://reimagebs.com
-* https://reimagebs.com/business-funding.html
-* https://reimagebs.com/growth-foundation.html
-* https://reimagebs.com/full-scale-system.html
-* https://reimagebs.com/website-development.html
-* https://reimagebs.com/ai-receptionists.html
-* https://reimagebs.com/ai-automation.html
-* https://reimagebs.com/our-work.html
-* https://reimagebs.com/marketplace.html
-* https://reimagebs.com/careers.html
-* https://reimagebs.com/start-with-us.html
+- Email: reimagebs@gmail.com
+- Phone: +1-860-718-5928
+- Project inquiry: https://reimagebs.com/start-with-us.html

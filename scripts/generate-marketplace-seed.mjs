@@ -35,7 +35,7 @@ begin
       slug, name, status, location_type, location_label, location_keys, region_rank,
       street, city, state, postal_code, secondary_address, service_area, phone,
       website_url, primary_cta_label, primary_cta_url, secondary_cta_label, secondary_cta_url,
-      short_bio, long_bio, specialties, tags, faq, schema_type, verified_at, published_at
+      short_bio, long_bio, cuisine, specialties, tags, faq, schema_type, verified_at, published_at
     ) values (
       business_item ->> 'slug', business_item ->> 'name', 'published',
       case when business_item ? 'address' then 'storefront' else 'service_area' end,
@@ -47,6 +47,7 @@ begin
       business_item ->> 'website', business_item ->> 'ctaLabel', business_item ->> 'ctaUrl',
       business_item ->> 'secondaryCtaLabel', business_item ->> 'secondaryCtaUrl',
       business_item ->> 'shortBio', business_item ->> 'longBio',
+      case when business_item ? 'cuisine' then array(select jsonb_array_elements_text(business_item -> 'cuisine')) else '{}'::text[] end,
       array(select jsonb_array_elements_text(business_item -> 'specialties')),
       array(select jsonb_array_elements_text(business_item -> 'tags')),
       business_item -> 'faq', business_item ->> 'schemaType', (catalog ->> 'verifiedAt')::date, now()
@@ -58,7 +59,7 @@ begin
       secondary_address = excluded.secondary_address, service_area = excluded.service_area, phone = excluded.phone,
       website_url = excluded.website_url, primary_cta_label = excluded.primary_cta_label, primary_cta_url = excluded.primary_cta_url,
       secondary_cta_label = excluded.secondary_cta_label, secondary_cta_url = excluded.secondary_cta_url,
-      short_bio = excluded.short_bio, long_bio = excluded.long_bio, specialties = excluded.specialties,
+      short_bio = excluded.short_bio, long_bio = excluded.long_bio, cuisine = excluded.cuisine, specialties = excluded.specialties,
       tags = excluded.tags, faq = excluded.faq, schema_type = excluded.schema_type, verified_at = excluded.verified_at;
 
     select id into business_uuid from public.marketplace_businesses where slug = business_item ->> 'slug';

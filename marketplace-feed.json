@@ -1,0 +1,354 @@
+{
+  "schemaVersion": "1.0",
+  "name": "RE IMAGE Hartford Local Business Directory",
+  "url": "https://reimagebs.com/marketplace.html",
+  "focusArea": "Hartford and Greater Hartford, Connecticut",
+  "informationLastVerified": "2026-09-04",
+  "editorialPolicy": "https://reimagebs.com/marketplace/about/",
+  "featuredGuide": "https://reimagebs.com/marketplace/guides/new-britain-avenue-hartford/",
+  "categories": [
+    {
+      "slug": "restaurants-drinks",
+      "name": "Restaurants & Drinks",
+      "description": "Juice bars, Caribbean favorites, Mexican fusion, takeout, catering, and signature Hartford flavors.",
+      "url": "https://reimagebs.com/marketplace/categories/restaurants-drinks/"
+    },
+    {
+      "slug": "nightlife-events",
+      "name": "Nightlife & Events",
+      "description": "Cocktails, live entertainment, private events, and memorable nights out in Hartford.",
+      "url": "https://reimagebs.com/marketplace/categories/nightlife-events/"
+    },
+    {
+      "slug": "auto-body-towing",
+      "name": "Auto Body & Towing",
+      "description": "Collision repair, paint, mechanical service, towing, and online estimates near Hartford.",
+      "url": "https://reimagebs.com/marketplace/categories/auto-body-towing/"
+    },
+    {
+      "slug": "car-rentals",
+      "name": "Car Rentals",
+      "description": "Local cars, SUVs, trucks, luxury vehicles, and passenger vans available to reserve online.",
+      "url": "https://reimagebs.com/marketplace/categories/car-rentals/"
+    },
+    {
+      "slug": "skincare-esthetics",
+      "name": "Skincare & Esthetics",
+      "description": "Corrective and customized skincare for acne, hyperpigmentation, texture, and personal care.",
+      "url": "https://reimagebs.com/marketplace/categories/skincare-esthetics/"
+    },
+    {
+      "slug": "hair-braiding",
+      "name": "Hair & Braiding",
+      "description": "African braiding, protective styles, extensions, twists, locs, and personalized styling.",
+      "url": "https://reimagebs.com/marketplace/categories/hair-braiding/"
+    },
+    {
+      "slug": "printing-apparel",
+      "name": "Printing & Custom Apparel",
+      "description": "Custom apparel, embroidery, signs, banners, uniforms, promotional products, and print services.",
+      "url": "https://reimagebs.com/marketplace/categories/printing-apparel/"
+    },
+    {
+      "slug": "real-estate-rentals",
+      "name": "Real Estate & Rentals",
+      "description": "Residential and commercial rentals, property management, and Hartford-area development.",
+      "url": "https://reimagebs.com/marketplace/categories/real-estate-rentals/"
+    },
+    {
+      "slug": "community-family",
+      "name": "Community & Family",
+      "description": "Mentorship, gatherings, resources, and support designed to strengthen families and communities.",
+      "url": "https://reimagebs.com/marketplace/categories/community-family/"
+    },
+    {
+      "slug": "private-transportation",
+      "name": "Private Transportation",
+      "description": "Private chauffeur service for airports, corporate travel, events, and long-distance trips.",
+      "url": "https://reimagebs.com/marketplace/categories/private-transportation/"
+    }
+  ],
+  "businesses": [
+    {
+      "name": "Fusion Health Juice Bar",
+      "profile": "https://reimagebs.com/marketplace/businesses/fusion-health-juice-bar/",
+      "officialWebsite": "https://fusionhealthjuicebar.com/",
+      "category": [
+        "Restaurants & Drinks"
+      ],
+      "location": "879 New Britain Avenue, Hartford, CT 06106",
+      "specialties": [
+        "Peanut Punch",
+        "Fresh juices",
+        "Sea moss drinks"
+      ],
+      "description": "A Hartford juice bar serving Jamaican-inspired juices, smoothies, bowls, wellness shots, sea moss drinks, and its signature Peanut Punch.",
+      "primaryAction": {
+        "label": "View Menu & Order",
+        "url": "https://fusionhealthjuicebar.com/"
+      },
+      "informationLastVerified": "2026-09-04"
+    },
+    {
+      "name": "881 Grab & Go",
+      "profile": "https://reimagebs.com/marketplace/businesses/881-grab-and-go/",
+      "officialWebsite": "https://the881grabandgo.com/",
+      "category": [
+        "Restaurants & Drinks"
+      ],
+      "location": "881 New Britain Avenue, Hartford, CT 06106",
+      "specialties": [
+        "Cheyney Fish Sandwich",
+        "Oxtail",
+        "Jerk chicken"
+      ],
+      "description": "Island comfort food with Philly attitude, including oxtail, jerk chicken, vegan curry chickpeas, and the signature Cheyney Fish Sandwich.",
+      "primaryAction": {
+        "label": "Order Online",
+        "url": "https://the881grabandgo.com/"
+      },
+      "informationLastVerified": "2026-09-04"
+    },
+    {
+      "name": "The Patio",
+      "profile": "https://reimagebs.com/marketplace/businesses/the-patio/",
+      "officialWebsite": "https://thepatioct.com/",
+      "category": [
+        "Nightlife & Events",
+        "Restaurants & Drinks"
+      ],
+      "location": "2280 Main Street, Hartford, CT 06120",
+      "specialties": [
+        "Cocktails",
+        "Live entertainment",
+        "Mini golf"
+      ],
+      "description": "An indoor-outdoor Hartford destination for cocktails, live entertainment, private events, and mini golf in a garden-lounge setting.",
+      "primaryAction": {
+        "label": "View Events & Menu",
+        "url": "https://thepatioct.com/"
+      },
+      "informationLastVerified": "2026-09-04"
+    },
+    {
+      "name": "Lunch Box",
+      "profile": "https://reimagebs.com/marketplace/businesses/lunch-box/",
+      "officialWebsite": "https://lunchboxct.com/",
+      "category": [
+        "Restaurants & Drinks"
+      ],
+      "location": "104 Baltimore Street, Hartford, CT 06112",
+      "specialties": [
+        "Jerk chicken",
+        "Escovitch fish",
+        "Catering trays"
+      ],
+      "description": "A Hartford Caribbean takeout and catering destination known for jerk chicken, curry chicken, escovitch fish, natural drinks, and party trays.",
+      "primaryAction": {
+        "label": "Order or Request Catering",
+        "url": "https://lunchboxct.com/"
+      },
+      "informationLastVerified": "2026-09-04"
+    },
+    {
+      "name": "Mi Buen Pastor Mexican Fusion",
+      "profile": "https://reimagebs.com/marketplace/businesses/mi-buen-pastor-mexican-fusion/",
+      "officialWebsite": "https://www.mibuenpastorct.com/",
+      "category": [
+        "Restaurants & Drinks"
+      ],
+      "location": "265 Newfield Avenue, Hartford, CT 06106",
+      "specialties": [
+        "Quesabirria tacos",
+        "Handmade tortillas",
+        "Aguas frescas"
+      ],
+      "description": "A Hartford Mexican-fusion restaurant serving handmade tortillas, quesabirria tacos, burritos, quesadillas, churros, and aguas frescas.",
+      "primaryAction": {
+        "label": "Order Online",
+        "url": "https://www.mibuenpastorct.com/"
+      },
+      "informationLastVerified": "2026-09-04"
+    },
+    {
+      "name": "Car Craft Auto Body & Towing",
+      "profile": "https://reimagebs.com/marketplace/businesses/car-craft-auto-body-towing/",
+      "officialWebsite": "https://carcraftautobodytowing.com/",
+      "category": [
+        "Auto Body & Towing"
+      ],
+      "location": "8 South Street, West Hartford, CT 06110",
+      "specialties": [
+        "Online photo estimates",
+        "Collision repair",
+        "24/7 towing"
+      ],
+      "description": "Collision and body repair, paint, dents, bumper work, insurance claims, used vehicles, and 24/7 towing—with online photo estimates.",
+      "primaryAction": {
+        "label": "Get an Online Estimate",
+        "url": "https://carcraftautobodytowing.com/"
+      },
+      "informationLastVerified": "2026-09-04"
+    },
+    {
+      "name": "Rent Me CT",
+      "profile": "https://reimagebs.com/marketplace/businesses/rent-me-ct/",
+      "officialWebsite": "https://rentmect.com/",
+      "category": [
+        "Car Rentals"
+      ],
+      "location": "12 Holmes Circle, Farmington, CT 06032",
+      "specialties": [
+        "Cars & SUVs",
+        "Passenger vans",
+        "Online booking"
+      ],
+      "description": "A local Hartford-area rental company offering sedans, SUVs, luxury vehicles, trucks, and passenger vans with online booking.",
+      "primaryAction": {
+        "label": "Browse Vehicles",
+        "url": "https://rentmect.com/"
+      },
+      "informationLastVerified": "2026-09-04"
+    },
+    {
+      "name": "CR8 Autos",
+      "profile": "https://reimagebs.com/marketplace/businesses/cr8-autos/",
+      "officialWebsite": "https://cr8autos.com/",
+      "category": [
+        "Auto Body & Towing"
+      ],
+      "location": "2603 2nd Avenue, Watervliet, NY 12189",
+      "specialties": [
+        "Collision repair",
+        "Mechanical service",
+        "Online estimates"
+      ],
+      "description": "A Capital Region automotive shop providing collision repair, mechanical service, paint, rust repair, diagnostics, and online estimates.",
+      "primaryAction": {
+        "label": "Get an Estimate",
+        "url": "https://cr8autos.com/"
+      },
+      "informationLastVerified": "2026-09-04"
+    },
+    {
+      "name": "Empire Elite Rides",
+      "profile": "https://reimagebs.com/marketplace/businesses/empire-elite-rides/",
+      "officialWebsite": "https://empireeliterides.com/",
+      "category": [
+        "Private Transportation"
+      ],
+      "location": "Albany, Rensselaer, Saratoga, Glens Falls, Lake George, and surrounding New York areas",
+      "specialties": [
+        "Airport rides",
+        "Corporate travel",
+        "Private events"
+      ],
+      "description": "Private chauffeur service for airports, corporate travel, weddings, events, nights out, and long-distance rides across New York's Capital Region.",
+      "primaryAction": {
+        "label": "Price & Book a Ride",
+        "url": "https://empireeliterides.com/"
+      },
+      "informationLastVerified": "2026-09-04"
+    },
+    {
+      "name": "Techniq Skin & Beauty",
+      "profile": "https://reimagebs.com/marketplace/businesses/techniq-skin-beauty/",
+      "officialWebsite": "https://techniqskinandbeauty.com/",
+      "category": [
+        "Skincare & Esthetics"
+      ],
+      "location": "49 Tolland Turnpike, Suite 202, Manchester, CT 06042",
+      "specialties": [
+        "Hyperpigmentation",
+        "Acne-focused skincare",
+        "Custom facials"
+      ],
+      "description": "Customized facials and corrective skincare focused on acne, hyperpigmentation, texture, waxing, and personalized treatment plans.",
+      "primaryAction": {
+        "label": "Book a Treatment",
+        "url": "https://techniqskinandbeauty.com/"
+      },
+      "informationLastVerified": "2026-09-04"
+    },
+    {
+      "name": "Lorie’s African Hair Braiding",
+      "profile": "https://reimagebs.com/marketplace/businesses/lories-african-hair-braiding/",
+      "officialWebsite": "https://loriesafricanhairbraiding.com/",
+      "category": [
+        "Hair & Braiding"
+      ],
+      "location": "875 New Britain Avenue, Hartford, CT 06106",
+      "specialties": [
+        "Box braids",
+        "Knotless & Fulani styles",
+        "Locs & extensions"
+      ],
+      "description": "A longtime Hartford salon specializing in African braiding, protective styles, extensions, twists, cornrows, weaving, and locs.",
+      "primaryAction": {
+        "label": "View Styles & Contact",
+        "url": "https://loriesafricanhairbraiding.com/"
+      },
+      "informationLastVerified": "2026-09-04"
+    },
+    {
+      "name": "Living Word Imprints",
+      "profile": "https://reimagebs.com/marketplace/businesses/living-word-imprints/",
+      "officialWebsite": "https://livingwordimprints.com/",
+      "category": [
+        "Printing & Custom Apparel"
+      ],
+      "location": "450 Homestead Avenue, Hartford, CT 06112",
+      "specialties": [
+        "Custom apparel",
+        "Signs & banners",
+        "Embroidery"
+      ],
+      "description": "A one-stop Hartford print shop for custom apparel, embroidery, uniforms, signs, banners, promotional products, and everyday printing.",
+      "primaryAction": {
+        "label": "Start a Print Order",
+        "url": "https://livingwordimprints.com/"
+      },
+      "informationLastVerified": "2026-09-04"
+    },
+    {
+      "name": "Andaleeb Enterprises",
+      "profile": "https://reimagebs.com/marketplace/businesses/andaleeb-enterprises/",
+      "officialWebsite": "https://reimage-demo.github.io/Andaleeb-Enterprises/",
+      "category": [
+        "Real Estate & Rentals"
+      ],
+      "location": "Hartford, East Hartford, Clinton, and additional Connecticut communities",
+      "specialties": [
+        "Residential rentals",
+        "Commercial rentals",
+        "Property management"
+      ],
+      "description": "A Connecticut property-management and development business offering residential and commercial rentals across Hartford-area communities.",
+      "primaryAction": {
+        "label": "View Available Rentals",
+        "url": "https://reimage-demo.github.io/Andaleeb-Enterprises/"
+      },
+      "informationLastVerified": "2026-09-04"
+    },
+    {
+      "name": "The Anchor Collective",
+      "profile": "https://reimagebs.com/marketplace/businesses/the-anchor-collective/",
+      "officialWebsite": "https://theanchorllc.com/",
+      "category": [
+        "Community & Family"
+      ],
+      "location": "Hartford-area community and online resources",
+      "specialties": [
+        "Men’s mentorship",
+        "Family resources",
+        "Community gatherings"
+      ],
+      "description": "A family-centered organization helping men become steady anchors through mentorship, gatherings, podcasts, resources, and direct support.",
+      "primaryAction": {
+        "label": "Explore Programs & Events",
+        "url": "https://theanchorllc.com/"
+      },
+      "informationLastVerified": "2026-09-04"
+    }
+  ]
+}
