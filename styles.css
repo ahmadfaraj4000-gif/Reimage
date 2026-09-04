@@ -5884,6 +5884,12 @@ body:not(#reimage-letter-spacing-lock) :is(
 	letter-spacing: .1em !important;
 }
 
+/* Homepage supporting sentence: natural spacing for compact readability. */
+body:not(#reimage-letter-spacing-lock).home-page.new-blue-home .funnel-copy > p {
+	letter-spacing: 0 !important;
+	word-spacing: 0 !important;
+}
+
 /* ===== Public-site consistency audit: shared type rhythm and safe contrast ===== */
 :root {
 	--site-ink: #071426;
