@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" role="img" aria-labelledby="title desc">
+  <title id="title">Faraj Software Solutions</title>
+  <desc id="desc">Teal software mark beside the Faraj Software Solutions wordmark.</desc>
+  <defs>
+    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3c5" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#12afa4" stop-opacity=".12"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#12afa4"/>
+      <stop offset="1" stop-color="#22d3c5" stop-opacity=".34"/>
+    </linearGradient>
+  </defs>
+  <rect x="30" y="30" width="160" height="160" rx="50" fill="url(#mark)"/>
+  <rect x="63" y="76" width="102" height="14" rx="7" fill="url(#bar)"/>
+  <rect x="63" y="103" width="80" height="14" rx="7" fill="url(#bar)" opacity=".78"/>
+  <rect x="63" y="130" width="58" height="14" rx="7" fill="url(#bar)" opacity=".58"/>
+  <text x="225" y="103" fill="#07131f" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="800" letter-spacing="-2">Faraj Software</text>
+  <text x="228" y="148" fill="#527084" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" letter-spacing="5">SOLUTIONS</text>
+</svg>
