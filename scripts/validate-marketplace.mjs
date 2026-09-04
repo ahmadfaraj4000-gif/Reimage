@@ -80,6 +80,8 @@ const pricingPosition = homepage.indexOf('class="pricing-section"');
 const guidePosition = homepage.indexOf('class="marketplace-home-teaser"');
 const finalCtaPosition = homepage.indexOf('class="final-cta"');
 if (!(pricingPosition < guidePosition && guidePosition < finalCtaPosition)) errors.push('Homepage Hartford Local Guide must sit between pricing and the final CTA');
+const homepageSystemCtas = [...homepage.matchAll(/<a class="btn btn-primary" href="website-development\.html">Build Your System<\/a>/g)];
+if (homepageSystemCtas.length !== 2) errors.push('Homepage hero and final CTA must use the same Build Your System action');
 const shellCss = fs.readFileSync(path.join(root, 'public-shell.css'), 'utf8').toLowerCase();
 for (const forbiddenColor of ['#0d8f8a', '#eef9f7', '#fff8e9']) {
   if (shellCss.includes(forbiddenColor)) errors.push(`public-shell.css still contains retired teal/gold accent ${forbiddenColor}`);
