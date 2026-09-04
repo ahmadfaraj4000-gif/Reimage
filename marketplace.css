@@ -128,6 +128,8 @@ body.marketplace-page a { color: inherit; }
   font-style: normal;
 }
 
+.market-hero h1 em { color: var(--market-navy); }
+
 .market-hero h1 {
   max-width: 17ch;
   margin-inline: auto;
@@ -142,7 +144,7 @@ body.marketplace-page a { color: inherit; }
 .market-hero__copy {
   max-width: 730px;
   margin: 20px auto 28px;
-  color: var(--market-muted);
+  color: var(--market-navy);
   font-size: clamp(.88rem, .95vw, 1rem);
   letter-spacing: .015em;
   line-height: 1.62;
@@ -186,7 +188,9 @@ body.marketplace-page a { color: inherit; }
   font: 600 1.03rem/1.2 var(--site-font-apple);
 }
 
-.market-search input::placeholder { color: #8996a7; }
+.market-search input::placeholder { color: var(--market-navy); opacity: .62; }
+
+.market-search svg { stroke: var(--market-navy); }
 
 .market-search button,
 .button {

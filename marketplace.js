@@ -1,32 +1,4 @@
 (() => {
-  const navigation = document.getElementById('navbar');
-  const menuButton = document.getElementById('menuBtn');
-  const navLinks = document.getElementById('navLinks');
-
-  if (navigation && menuButton && navLinks) {
-    const closeMenu = () => {
-      navLinks.classList.remove('open');
-      menuButton.setAttribute('aria-expanded', 'false');
-      menuButton.setAttribute('aria-label', 'Open navigation');
-    };
-
-    menuButton.addEventListener('click', (event) => {
-      event.stopPropagation();
-      const open = navLinks.classList.toggle('open');
-      menuButton.setAttribute('aria-expanded', String(open));
-      menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
-    });
-    navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
-    document.addEventListener('click', (event) => { if (!navigation.contains(event.target)) closeMenu(); });
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && navLinks.classList.contains('open')) {
-        closeMenu();
-        menuButton.focus();
-      }
-    });
-    window.addEventListener('resize', () => { if (window.innerWidth > 980) closeMenu(); });
-  }
-
   document.querySelectorAll('.business-card img, .profile-hero__media img').forEach((image) => {
     image.addEventListener('error', () => {
       if (image.dataset.fallbackApplied) return;

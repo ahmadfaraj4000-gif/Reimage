@@ -8,7 +8,7 @@
 <link href="assets/reimage-logo-2026-transparent.png" rel="icon"/>
 <link href="styles.css?v=20260803-8" rel="stylesheet"/><link href="public-system.css?v=20260903-8" rel="stylesheet"/>
 
-<link href="public-shell.css?v=20260904-4" rel="stylesheet">
+<link href="public-shell.css?v=20260904-6" rel="stylesheet">
 <!-- REIMAGE-SEO:START -->
   <meta name="description" content="Tell RE IMAGE what your business needs and start a Hartford website, portal, automation, marketing, or connected business systems project.">
   <meta name="author" content="RE IMAGE Business Solutions">
@@ -39,7 +39,7 @@
 <body class="start-page public-unified">
 <nav class="navbar" id="navbar">
 <a class="nav-logo" href="index.html"><img alt="RE IMAGE Business Solutions logo" src="assets/reimage-logo-2026-transparent.png"/></a>
-<button aria-label="Open menu" class="menu-btn" id="menuBtn">☰</button>
+<button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navLinks"><svg aria-hidden="true" fill="none" height="24" viewBox="0 0 24 24" width="24"><rect fill="currentColor" height="2" rx="1" width="24" y="4"></rect><rect fill="currentColor" height="2" rx="1" width="24" y="11"></rect><rect fill="currentColor" height="2" rx="1" width="24" y="18"></rect></svg></button>
 <ul class="nav-links" id="navLinks">
 <li><a href="website-development.html">Systems</a></li>
 <li><a href="products.html">Products</a></li><li><a href="marketplace.html">Discover</a></li>
@@ -104,7 +104,8 @@ window.addEventListener('DOMContentLoaded', function () {
   const submitBtn = form.querySelector('.submit-btn');
 
   if (menuBtn && navLinks) menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
-  document.getElementById('yr').textContent = new Date().getFullYear();
+  const yearTarget = document.getElementById('yr');
+  if (yearTarget) yearTarget.textContent = new Date().getFullYear();
 
   const params = new URLSearchParams(window.location.search);
   if (params.get('service')) serviceChoice.value = params.get('service');
@@ -366,5 +367,5 @@ window.addEventListener('DOMContentLoaded', function () {
   });
 })();
 </script>
-<script src="ai-receptionist.js?v=20260830-1"></script><script src="public-shell.js?v=20260904-3"></script>
+<script src="ai-receptionist.js?v=20260830-1"></script><script src="public-shell.js?v=20260904-7"></script>
 </body></html>

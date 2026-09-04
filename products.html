@@ -106,7 +106,7 @@
       body.products-page .commerce-purchase h1 { font-size: clamp(2.25rem, 9vw, 3rem) !important; }
     }
   </style>
-<link href="public-shell.css?v=20260904-4" rel="stylesheet">
+<link href="public-shell.css?v=20260904-6" rel="stylesheet">
 <!-- REIMAGE-SEO:START -->
   <meta name="description" content="Explore RE IMAGE business tools, including an employee clock-in system with secure codes, QR access, geofencing, live hours, and alerts.">
   <meta name="author" content="RE IMAGE Business Solutions">
@@ -139,7 +139,7 @@
     <a class="nav-logo new-brand" href="index.html#home" aria-label="RE IMAGE homepage">
       <img src="assets/reimage-logo-2026-transparent.png" alt="RE IMAGE">
     </a>
-    <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navLinks"><svg aria-hidden="true" fill="none" height="24" viewBox="0 0 24 24" width="24"><rect fill="currentColor" height="2" rx="1" width="24" y="4"></rect><rect fill="currentColor" height="2" rx="1" width="24" y="11"></rect><rect fill="currentColor" height="2" rx="1" width="24" y="18"></rect></svg></button>
     <ul class="nav-links" id="navLinks">
       <li><a href="website-development.html">Systems</a></li>
       <li><a href="products.html">Products</a></li><li><a href="marketplace.html">Discover</a></li>
@@ -279,6 +279,6 @@
     learnMoreBtn?.addEventListener('click',()=>{const opening=productDetails.hidden;productDetails.hidden=!opening;learnMoreBtn.setAttribute('aria-expanded',String(opening));learnMoreBtn.textContent=opening?'Hide details':'Learn more';if(opening)requestAnimationFrame(()=>productDetails.scrollIntoView({behavior:'smooth',block:'start'}));});
     document.getElementById('yr').textContent=new Date().getFullYear();
   </script>
-<script src="public-shell.js?v=20260904-3"></script>
+<script src="public-shell.js?v=20260904-7"></script>
 </body>
 </html>

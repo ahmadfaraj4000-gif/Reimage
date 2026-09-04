@@ -5,6 +5,9 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const siteUrl = 'https://reimagebs.com';
 const logo = `${siteUrl}/assets/reimage-logo-2026-transparent.png`;
+const publicShellCss = 'public-shell.css?v=20260904-6';
+const publicShellJs = 'public-shell.js?v=20260904-7';
+const menuButton = '<button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navLinks"><svg aria-hidden="true" fill="none" height="24" viewBox="0 0 24 24" width="24"><rect fill="currentColor" height="2" rx="1" width="24" y="4"></rect><rect fill="currentColor" height="2" rx="1" width="24" y="11"></rect><rect fill="currentColor" height="2" rx="1" width="24" y="18"></rect></svg></button>';
 
 const pages = {
   'index.html': {
@@ -128,6 +131,9 @@ for (const [file, config] of Object.entries(pages)) {
   }
 
   let html = fs.readFileSync(absolute, 'utf8');
+  html = html.replace(/public-shell\.css\?v=[^"']+/g, publicShellCss);
+  html = html.replace(/public-shell\.js\?v=[^"']+/g, publicShellJs);
+  html = html.replace(/<button\b[^>]*\bid=["']menuBtn["'][^>]*>[\s\S]*?<\/button>/i, menuButton);
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${config.title}</title>`);
   html = html.replace(/<!-- REIMAGE-SEO:START -->[\s\S]*?<!-- REIMAGE-SEO:END -->\s*/gi, '');
   html = html.replace(/<link\b(?=[^>]*\brel=["']canonical["'])[^>]*>\s*/gi, '');

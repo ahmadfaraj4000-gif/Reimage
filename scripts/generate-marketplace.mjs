@@ -81,7 +81,7 @@ function validateData() {
 function navigation(active = 'marketplace') {
   return `<nav class="navbar" id="navbar" aria-label="Main navigation">
     <a class="nav-logo new-brand" href="/index.html" aria-label="RE IMAGE homepage"><img src="/assets/reimage-logo-2026-transparent.png" alt="RE IMAGE"></a>
-    <button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navLinks"><svg aria-hidden="true" fill="none" height="24" viewBox="0 0 24 24" width="24"><rect fill="currentColor" height="2" rx="1" width="24" y="4"></rect><rect fill="currentColor" height="2" rx="1" width="24" y="11"></rect><rect fill="currentColor" height="2" rx="1" width="24" y="18"></rect></svg></button>
     <ul class="nav-links" id="navLinks">
       <li><a href="/website-development.html">Systems</a></li>
       <li><a href="/products.html">Products</a></li>
@@ -141,8 +141,8 @@ function head({ title, description, canonical, image = `${siteUrl}/assets/reimag
   <meta name="twitter:description" content="${escapeHtml(description)}">
   <meta name="twitter:image" content="${absoluteImage}">
   <meta name="twitter:image:alt" content="${escapeHtml(imageAlt)}">
-  <link rel="stylesheet" href="/public-shell.css?v=20260904-4">
-  <link rel="stylesheet" href="/marketplace.css?v=20260904-7">
+  <link rel="stylesheet" href="/public-shell.css?v=20260904-6">
+  <link rel="stylesheet" href="/marketplace.css?v=20260904-8">
   ${schema.map((item) => `<script type="application/ld+json">${escapeJson(item)}</script>`).join('\n  ')}
 </head>`;
 }
@@ -201,7 +201,8 @@ function shell({ title, description, canonical, image, imageAlt, schema, body, p
   ${body}
   ${categoryDirectory()}
   ${footer()}
-  <script src="/marketplace.js?v=20260904-2" defer></script>
+  <script src="/public-shell.js?v=20260904-7" defer></script>
+  <script src="/marketplace.js?v=20260904-3" defer></script>
 </body>
 </html>\n`;
 }
