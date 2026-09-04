@@ -29,7 +29,7 @@ for (const file of pages) {
   if (!/<link rel="canonical" href="https:\/\/reimagebs\.com\//.test(html)) errors.push(`${relative}: missing canonical`);
   if (!/<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">/.test(html)) errors.push(`${relative}: missing full preview robots directives`);
   if (!/<meta name="twitter:title"/.test(html) || !/<meta name="twitter:image"/.test(html)) errors.push(`${relative}: incomplete Twitter metadata`);
-  if (!html.includes('/public-shell.js?v=20260904-7')) errors.push(`${relative}: missing canonical public navigation controller`);
+  if (!html.includes('/public-shell.js?v=20260904-8')) errors.push(`${relative}: missing canonical public navigation controller`);
   if (!html.includes('aria-controls="navLinks"')) errors.push(`${relative}: missing canonical mobile menu button`);
   if ((html.match(/<h1\b/g) || []).length !== 1) errors.push(`${relative}: expected exactly one H1`);
 
@@ -98,7 +98,7 @@ for (const file of publicPageFiles) {
   if (!/name=["']twitter:title["']/.test(html) || !/name=["']twitter:image["']/.test(html)) errors.push(`${file}: incomplete social metadata`);
   if (/name=["']keywords["']/i.test(html)) errors.push(`${file}: obsolete meta keywords tag should not be present`);
   if (!html.includes('public-shell.css?v=20260904-6')) errors.push(`${file}: missing canonical public navigation styles`);
-  if (!html.includes('public-shell.js?v=20260904-7')) errors.push(`${file}: missing canonical public navigation controller`);
+  if (!html.includes('public-shell.js?v=20260904-8')) errors.push(`${file}: missing canonical public navigation controller`);
   if (!html.includes('aria-controls="navLinks"')) errors.push(`${file}: missing canonical mobile menu button`);
   for (const image of html.matchAll(/<img\s+[^>]*>/gi)) if (!/\balt=["'][^"']*["']/i.test(image[0])) errors.push(`${file}: image missing alt attribute`);
   const schemaScripts = [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];

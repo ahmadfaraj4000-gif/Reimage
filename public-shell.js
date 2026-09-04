@@ -84,8 +84,8 @@
 
   footer.className = 'minimal-footer public-site-footer';
   footer.innerHTML = `
-    <a class="new-brand" href="index.html#home" aria-label="RE IMAGE homepage">
-      <img src="assets/reimage-logo-2026-transparent.png" alt="RE IMAGE">
+    <a class="new-brand" href="/index.html#home" aria-label="RE IMAGE homepage">
+      <img src="/assets/reimage-logo-2026-transparent.png" alt="RE IMAGE">
     </a>
     <p>Custom business operating systems, built around you.</p>
     <div>

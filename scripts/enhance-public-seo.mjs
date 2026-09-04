@@ -6,7 +6,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const siteUrl = 'https://reimagebs.com';
 const logo = `${siteUrl}/assets/reimage-logo-2026-transparent.png`;
 const publicShellCss = 'public-shell.css?v=20260904-6';
-const publicShellJs = 'public-shell.js?v=20260904-7';
+const publicShellJs = 'public-shell.js?v=20260904-8';
 const menuButton = '<button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navLinks"><svg aria-hidden="true" fill="none" height="24" viewBox="0 0 24 24" width="24"><rect fill="currentColor" height="2" rx="1" width="24" y="4"></rect><rect fill="currentColor" height="2" rx="1" width="24" y="11"></rect><rect fill="currentColor" height="2" rx="1" width="24" y="18"></rect></svg></button>';
 
 const pages = {
