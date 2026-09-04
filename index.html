@@ -19,7 +19,7 @@
   <meta name="twitter:image" content="https://reimagebs.com/assets/reimage-logo-2026-transparent.png">
   <link rel="icon" href="assets/reimage-logo-2026-transparent.png">
   <link rel="stylesheet" href="styles.css?v=20260903-9">
-<link href="public-shell.css?v=20260831-2" rel="stylesheet">
+<link href="public-shell.css?v=20260904-4" rel="stylesheet">
 </head>
 <body class="home-page new-blue-home">
   <nav class="navbar" id="navbar" aria-label="Main navigation">
@@ -30,6 +30,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="website-development.html">Systems</a></li>
       <li><a href="products.html">Products</a></li>
+      <li><a href="marketplace.html">Marketplace</a></li>
       <li><a href="our-work.html">Portfolio</a></li>
       <li><a href="careers.html">Careers</a></li>
       <li><a class="nav-cta" href="start-with-us.html">Start With Us</a></li>
@@ -87,6 +88,21 @@
       </div>
     </section>
 
+    <section class="marketplace-home-teaser" aria-labelledby="marketplace-home-title">
+      <div class="marketplace-home-copy">
+        <span>Hartford Marketplace</span>
+        <h2 id="marketplace-home-title">The local businesses you need, all in one place.</h2>
+        <p>Find Hartford restaurants, rental cars, auto body shops, skincare, braiding, printing, property rentals, and more—with direct links to order, book, call, or get an estimate.</p>
+        <div><a class="marketplace-home-primary" href="marketplace.html">Explore the marketplace <b aria-hidden="true">→</b></a><a href="start-with-us.html?service=Marketplace%20Listing">List your business</a></div>
+      </div>
+      <div class="marketplace-home-categories" aria-label="Popular marketplace categories">
+        <a href="marketplace/categories/restaurants-drinks/"><small>Eat & drink</small><strong>Restaurants</strong><span>Peanut Punch, quesabirria, Caribbean favorites and more</span></a>
+        <a href="marketplace/categories/auto-body-towing/"><small>Get back on the road</small><strong>Auto Body</strong><span>Collision repair, towing, and online photo estimates</span></a>
+        <a href="marketplace/categories/skincare-esthetics/"><small>Book local care</small><strong>Beauty</strong><span>Skincare, hyperpigmentation treatments, braiding and styling</span></a>
+        <a href="marketplace/categories/printing-apparel/"><small>Build your brand</small><strong>Business Services</strong><span>Printing, custom apparel, software, property, and community support</span></a>
+      </div>
+    </section>
+
     <section class="work-showcase" id="work">
       <div class="section-heading">
         <span>Client systems in action</span>
@@ -140,6 +156,6 @@
     document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');menuBtn?.setAttribute('aria-expanded','false');}));
     document.getElementById('yr').textContent=new Date().getFullYear();
   </script>
-<script src="public-shell.js?v=20260904-2"></script>
+<script src="public-shell.js?v=20260904-3"></script>
 </body>
 </html>

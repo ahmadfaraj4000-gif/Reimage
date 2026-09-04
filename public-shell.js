@@ -11,6 +11,13 @@
   const currentMenuButton = document.getElementById('menuBtn');
   const navLinks = document.getElementById('navLinks');
 
+  if (navLinks && !navLinks.querySelector('a[href$="marketplace.html"]')) {
+    const marketplaceItem = document.createElement('li');
+    marketplaceItem.innerHTML = '<a href="marketplace.html">Marketplace</a>';
+    const portfolioLink = navLinks.querySelector('a[href$="our-work.html"]');
+    navLinks.insertBefore(marketplaceItem, portfolioLink?.closest('li') || navLinks.lastElementChild);
+  }
+
   if (currentMenuButton && navLinks) {
     // Replace the button so older page-specific click handlers cannot toggle the
     // menu a second time. The public shell is the single mobile-nav controller.
@@ -70,6 +77,7 @@
     <div>
       <a href="website-development.html">Systems</a>
       <a href="products.html">Products</a>
+      <a href="marketplace.html">Marketplace</a>
       <a href="our-work.html">Portfolio</a>
       <a href="start-with-us.html">Contact</a>
       <a href="https://login.reimagebs.com">Client Login</a>

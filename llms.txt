@@ -42,6 +42,16 @@ A foundational online-presence and lead-flow package for businesses that need a 
 
 A complete digital infrastructure package combining website development, portals, AI automation, lead capture, payment flows, admin dashboards, customer communication, and operational workflows.
 
+### Hartford Marketplace
+
+The Hartford Marketplace by RE IMAGE is a public directory of verified local restaurants, rental cars, auto body and towing services, skincare and hair professionals, printing companies, property rentals, community resources, software providers, and transportation services. Listings include factual specialties, locations or service areas, and direct links to each business.
+
+Marketplace hub:
+https://reimagebs.com/marketplace.html
+
+Complete category and business profile URL list:
+https://reimagebs.com/sitemap.xml
+
 ## Relevant Topics
 
 * Hartford CT web design
@@ -56,6 +66,12 @@ A complete digital infrastructure package combining website development, portals
 * Lead generation systems
 * Conversion-focused websites
 * Local business websites
+* Hartford restaurants and food
+* Hartford rental cars
+* Hartford auto body and towing
+* Hartford skincare and hair braiding
+* Hartford printing and custom apparel
+* Hartford local business directory
 * Small business AI systems
 * Service business automation
 * Business funding guidance
@@ -70,6 +86,7 @@ Preferred indexing:
 * AI automation pages
 * Business funding pages
 * Portfolio pages
+* Hartford Marketplace category and business profile pages
 * Careers and public informational content
 
 Do not prioritize:
@@ -90,5 +107,6 @@ Primary public URLs:
 * https://reimagebs.com/ai-receptionists.html
 * https://reimagebs.com/ai-automation.html
 * https://reimagebs.com/our-work.html
+* https://reimagebs.com/marketplace.html
 * https://reimagebs.com/careers.html
 * https://reimagebs.com/start-with-us.html

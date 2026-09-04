@@ -1,0 +1,13 @@
+{
+  "name": "reimage-public-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "marketplace:generate": "node scripts/generate-marketplace.mjs",
+    "marketplace:seed": "node scripts/generate-marketplace-seed.mjs",
+    "marketplace:sync": "node scripts/sync-marketplace-from-supabase.mjs",
+    "test": "node scripts/validate-marketplace.mjs",
+    "build": "node scripts/build-public-site.mjs"
+  }
+}

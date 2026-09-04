@@ -3,3 +3,9 @@ verify_jwt = false
 
 [functions.qr-redirect]
 verify_jwt = false
+
+[functions.publish-marketplace]
+verify_jwt = true
+
+[functions.record-marketplace-event]
+verify_jwt = false

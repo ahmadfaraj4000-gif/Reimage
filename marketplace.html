@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hartford Business Marketplace | Restaurants, Rentals, Auto Body, Beauty &amp; More | RE IMAGE</title>
+  <meta name="description" content="Find Hartford restaurants, rental cars, auto body shops, skincare, African hair braiding, printing, property rentals, and local services with direct links.">
+  <meta name="author" content="RE IMAGE Business Solutions">
+  <meta name="theme-color" content="#0877e8">
+  <meta name="marketplace-events-endpoint" content="https://uybcjtigyujoyrunecto.supabase.co/functions/v1/record-marketplace-event">
+  <link rel="canonical" href="https://reimagebs.com/marketplace.html">
+  <link rel="icon" href="/assets/reimage-logo-2026-transparent.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Hartford Marketplace by RE IMAGE">
+  <meta property="og:title" content="Hartford Business Marketplace | Restaurants, Rentals, Auto Body, Beauty &amp; More | RE IMAGE">
+  <meta property="og:description" content="Find Hartford restaurants, rental cars, auto body shops, skincare, African hair braiding, printing, property rentals, and local services with direct links.">
+  <meta property="og:url" content="https://reimagebs.com/marketplace.html">
+  <meta property="og:image" content="https://reimagebs.com/assets/reimage-logo-2026-transparent.png">
+  <meta property="og:image:alt" content="Hartford Marketplace by RE IMAGE">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public-shell.css?v=20260904-4">
+  <link rel="stylesheet" href="/marketplace.css?v=20260904-2">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Hartford Marketplace by RE IMAGE","url":"https://reimagebs.com/marketplace.html","description":"Discover restaurants, rental cars, auto body shops, skincare, hair braiding, printing, property rentals, and local services in Hartford and Greater Hartford.","mainEntity":{"@type":"ItemList","numberOfItems":15,"itemListElement":[{"@type":"ListItem","position":1,"name":"Fusion Health Juice Bar","url":"https://reimagebs.com/marketplace/businesses/fusion-health-juice-bar/"},{"@type":"ListItem","position":2,"name":"881 Grab & Go","url":"https://reimagebs.com/marketplace/businesses/881-grab-and-go/"},{"@type":"ListItem","position":3,"name":"The Patio","url":"https://reimagebs.com/marketplace/businesses/the-patio/"},{"@type":"ListItem","position":4,"name":"Lunch Box","url":"https://reimagebs.com/marketplace/businesses/lunch-box/"},{"@type":"ListItem","position":5,"name":"Mi Buen Pastor Mexican Fusion","url":"https://reimagebs.com/marketplace/businesses/mi-buen-pastor-mexican-fusion/"},{"@type":"ListItem","position":6,"name":"Car Craft Auto Body & Towing","url":"https://reimagebs.com/marketplace/businesses/car-craft-auto-body-towing/"},{"@type":"ListItem","position":7,"name":"Rent Me CT","url":"https://reimagebs.com/marketplace/businesses/rent-me-ct/"},{"@type":"ListItem","position":8,"name":"CR8 Autos","url":"https://reimagebs.com/marketplace/businesses/cr8-autos/"},{"@type":"ListItem","position":9,"name":"Empire Elite Rides","url":"https://reimagebs.com/marketplace/businesses/empire-elite-rides/"},{"@type":"ListItem","position":10,"name":"Techniq Skin & Beauty","url":"https://reimagebs.com/marketplace/businesses/techniq-skin-beauty/"},{"@type":"ListItem","position":11,"name":"Lorie’s African Hair Braiding","url":"https://reimagebs.com/marketplace/businesses/lories-african-hair-braiding/"},{"@type":"ListItem","position":12,"name":"Living Word Imprints","url":"https://reimagebs.com/marketplace/businesses/living-word-imprints/"},{"@type":"ListItem","position":13,"name":"Andaleeb Enterprises","url":"https://reimagebs.com/marketplace/businesses/andaleeb-enterprises/"},{"@type":"ListItem","position":14,"name":"The Anchor Collective","url":"https://reimagebs.com/marketplace/businesses/the-anchor-collective/"},{"@type":"ListItem","position":15,"name":"Faraj Software Solutions","url":"https://reimagebs.com/marketplace/businesses/faraj-software-solutions/"}]}}</script>
+</head>
+<body class="marketplace-page marketplace-hub">
+  <a class="skip-link" href="#main-content">Skip to marketplace content</a>
+  <nav class="navbar" id="navbar" aria-label="Main navigation">
+    <a class="nav-logo" href="/index.html" aria-label="RE IMAGE homepage"><img src="/assets/reimage-logo-2026-transparent.png" alt="RE IMAGE"></a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/website-development.html">Systems</a></li>
+      <li><a href="/products.html">Products</a></li>
+      <li><a href="/marketplace.html" class="active" aria-current="page">Marketplace</a></li>
+      <li><a href="/our-work.html">Portfolio</a></li>
+      <li><a href="/careers.html">Careers</a></li>
+      <li><a class="nav-cta" href="/start-with-us.html">Start With Us</a></li>
+    </ul>
+  </nav>
+  <main id="main-content">
+    <section class="market-hero">
+      <div class="market-wrap market-hero__inner">
+        <p class="eyebrow"><span></span> Hartford Marketplace by RE IMAGE</p>
+        <h1>Find Hartford’s best<br><em>local businesses.</em></h1>
+        <p class="market-hero__copy">From restaurants and fresh juices to rental cars, auto body repair, skincare, braiding, printing, and more—start here.</p>
+        <form class="market-search" id="marketSearchForm" role="search">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m1.35-5.65a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
+          <label class="visually-hidden" for="marketSearch">Search Hartford businesses</label>
+          <input id="marketSearch" name="q" type="search" autocomplete="off" placeholder="Search food, cars, skincare, printing…">
+          <button type="submit">Search</button>
+        </form>
+        <div class="quick-searches" aria-label="Popular searches"><span>Popular:</span><button type="button" data-quick-search="peanut punch">Peanut Punch</button><button type="button" data-quick-search="online estimate">Online estimates</button><button type="button" data-quick-search="braids">Braids</button><button type="button" data-quick-search="quesabirria">Quesabirria</button></div>
+        <div class="market-trust"><span><strong>13</strong> Hartford-area businesses</span><span><strong>11</strong> service categories</span><span><strong>100%</strong> direct business links</span></div>
+      </div>
+    </section>
+
+    <section class="discovery-bar" aria-label="Marketplace filters">
+      <div class="market-wrap">
+        <div class="filter-block"><span class="filter-label">Explore by service</span><div class="chip-row" id="categoryFilters"><button class="filter-chip active" type="button" data-category="all" aria-pressed="true">All businesses</button><button class="filter-chip" type="button" data-category="restaurants-drinks" aria-pressed="false">Food &amp; Drinks</button><button class="filter-chip" type="button" data-category="nightlife-events" aria-pressed="false">Nightlife</button><button class="filter-chip" type="button" data-category="auto-body-towing" aria-pressed="false">Auto Body</button><button class="filter-chip" type="button" data-category="car-rentals" aria-pressed="false">Car Rentals</button><button class="filter-chip" type="button" data-category="skincare-esthetics" aria-pressed="false">Skincare</button><button class="filter-chip" type="button" data-category="hair-braiding" aria-pressed="false">Hair &amp; Braiding</button><button class="filter-chip" type="button" data-category="printing-apparel" aria-pressed="false">Printing</button><button class="filter-chip" type="button" data-category="real-estate-rentals" aria-pressed="false">Real Estate</button><button class="filter-chip" type="button" data-category="community-family" aria-pressed="false">Community</button><button class="filter-chip" type="button" data-category="business-software" aria-pressed="false">Software</button><button class="filter-chip" type="button" data-category="private-transportation" aria-pressed="false">Private Rides</button></div></div>
+        <div class="filter-block filter-block--locations"><span class="filter-label">Choose an area</span><label class="location-select"><span class="visually-hidden">Filter by area</span><select id="locationFilter"><option value="all">All locations</option><option value="hartford">Hartford</option><option value="west-hartford">West Hartford</option><option value="east-hartford">East Hartford</option><option value="manchester">Manchester</option><option value="farmington">Farmington</option><option value="other-connecticut">Other Connecticut</option><option value="beyond">Beyond Greater Hartford</option></select></label></div>
+      </div>
+    </section>
+
+    <section class="market-section featured-section" aria-labelledby="featuredTitle">
+      <div class="market-wrap">
+        <div class="section-heading"><div><p class="eyebrow">Featured around Hartford</p><h2 id="featuredTitle">Local standouts, one per category.</h2></div><p>Featured placement is clearly labeled. Organic listings stay independent.</p></div>
+        <div class="featured-rail" id="featuredRail"><article class="business-card business-card--featured" data-business-card data-slug="fusion-health-juice-bar" data-primary-category="restaurants-drinks" data-categories="restaurants-drinks" data-location="hartford" data-rank="1" data-search="fusion health juice bar hartford a hartford juice bar serving jamaican-inspired juices, smoothies, bowls, wellness shots, sea moss drinks, and its signature peanut punch. peanut punch fresh juices sea moss drinks smoothies acai bowls wellness shots jamaican banana nutmeg oats protein almond milk honey restaurants &amp; drinks">
+    <a class="business-card__media" href="/marketplace/businesses/fusion-health-juice-bar/" aria-label="View Fusion Health Juice Bar profile">
+      <img src="/assets/fusion-health-menu.png" alt="Fusion Health Juice Bar menu with fresh juices, smoothies, bowls, and Jamaican-inspired drinks" width="960" height="600" loading="lazy" decoding="async">
+      <span class="feature-badge">RE IMAGE Pick</span>
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/restaurants-drinks/">Food &amp; Drinks</a><span>Hartford</span></div>
+      <h3><a href="/marketplace/businesses/fusion-health-juice-bar/">Fusion Health Juice Bar</a></h3>
+      <p>A Hartford juice bar serving Jamaican-inspired juices, smoothies, bowls, wellness shots, sea moss drinks, and its signature Peanut Punch.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Peanut Punch</li><li>Fresh juices</li><li>Sea moss drinks</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://fusionhealthjuicebar.com/" target="_blank" rel="noopener">View Menu &amp; Order</a><a class="text-link" href="/marketplace/businesses/fusion-health-juice-bar/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card business-card--featured" data-business-card data-slug="the-patio" data-primary-category="nightlife-events" data-categories="nightlife-events restaurants-drinks" data-location="hartford" data-rank="1" data-search="the patio hartford an indoor-outdoor hartford destination for cocktails, live entertainment, private events, and mini golf in a garden-lounge setting. cocktails live entertainment mini golf private events nightlife garden lounge drinks events nightlife &amp; events restaurants &amp; drinks">
+    <a class="business-card__media" href="/marketplace/businesses/the-patio/" aria-label="View The Patio profile">
+      <img src="/assets/patio-home-2026.jpg" alt="The Patio Hartford indoor-outdoor lounge and event destination" width="960" height="600" loading="lazy" decoding="async">
+      <span class="feature-badge">RE IMAGE Pick</span>
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/nightlife-events/">Nightlife</a><span>Hartford</span></div>
+      <h3><a href="/marketplace/businesses/the-patio/">The Patio</a></h3>
+      <p>An indoor-outdoor Hartford destination for cocktails, live entertainment, private events, and mini golf in a garden-lounge setting.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Cocktails</li><li>Live entertainment</li><li>Mini golf</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://thepatioct.com/" target="_blank" rel="noopener">View Events &amp; Menu</a><a class="text-link" href="/marketplace/businesses/the-patio/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card business-card--featured" data-business-card data-slug="car-craft-auto-body-towing" data-primary-category="auto-body-towing" data-categories="auto-body-towing" data-location="west-hartford" data-rank="2" data-search="car craft auto body &amp; towing west hartford collision and body repair, paint, dents, bumper work, insurance claims, used vehicles, and 24/7 towing—with online photo estimates. online photo estimates collision repair 24/7 towing paint scratches dents bumper repair insurance repair used cars auto body auto body &amp; towing">
+    <a class="business-card__media" href="/marketplace/businesses/car-craft-auto-body-towing/" aria-label="View Car Craft Auto Body &amp; Towing profile">
+      <img src="/assets/carcraft-photo-estimate.png" alt="Car Craft Auto Body online photo estimate tool for collision damage" width="960" height="600" loading="lazy" decoding="async">
+      <span class="feature-badge">RE IMAGE Pick</span>
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/auto-body-towing/">Auto Body</a><span>West Hartford</span></div>
+      <h3><a href="/marketplace/businesses/car-craft-auto-body-towing/">Car Craft Auto Body &amp; Towing</a></h3>
+      <p>Collision and body repair, paint, dents, bumper work, insurance claims, used vehicles, and 24/7 towing—with online photo estimates.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Online photo estimates</li><li>Collision repair</li><li>24/7 towing</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://carcraftautobodytowing.com/" target="_blank" rel="noopener">Get an Online Estimate</a><a class="text-link" href="/marketplace/businesses/car-craft-auto-body-towing/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card business-card--featured" data-business-card data-slug="rent-me-ct" data-primary-category="car-rentals" data-categories="car-rentals" data-location="farmington" data-rank="2" data-search="rent me ct farmington a local hartford-area rental company offering sedans, suvs, luxury vehicles, trucks, and passenger vans with online booking. cars &amp; suvs passenger vans online booking sedans luxury vehicles trucks rental car live availability 250 daily miles car rentals">
+    <a class="business-card__media" href="/marketplace/businesses/rent-me-ct/" aria-label="View Rent Me CT profile">
+      <img src="/assets/rentme-live-fleet-2026.png" alt="Rent Me CT live rental fleet with available cars and SUVs" width="960" height="600" loading="lazy" decoding="async">
+      <span class="feature-badge">RE IMAGE Pick</span>
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/car-rentals/">Car Rentals</a><span>Farmington</span></div>
+      <h3><a href="/marketplace/businesses/rent-me-ct/">Rent Me CT</a></h3>
+      <p>A local Hartford-area rental company offering sedans, SUVs, luxury vehicles, trucks, and passenger vans with online booking.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Cars &amp; SUVs</li><li>Passenger vans</li><li>Online booking</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://rentmect.com/" target="_blank" rel="noopener">Browse Vehicles</a><a class="text-link" href="/marketplace/businesses/rent-me-ct/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card business-card--featured" data-business-card data-slug="techniq-skin-beauty" data-primary-category="skincare-esthetics" data-categories="skincare-esthetics" data-location="manchester" data-rank="2" data-search="techniq skin &amp; beauty manchester customized facials and corrective skincare focused on acne, hyperpigmentation, texture, waxing, and personalized treatment plans. hyperpigmentation acne-focused skincare custom facials esthetician skin reset corrective skincare texture waxing facials skincare &amp; esthetics">
+    <a class="business-card__media" href="/marketplace/businesses/techniq-skin-beauty/" aria-label="View Techniq Skin &amp; Beauty profile">
+      <img src="/assets/techniq-home.png" alt="Techniq Skin and Beauty customized skincare services website" width="960" height="600" loading="lazy" decoding="async">
+      <span class="feature-badge">RE IMAGE Pick</span>
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/skincare-esthetics/">Skincare</a><span>Manchester</span></div>
+      <h3><a href="/marketplace/businesses/techniq-skin-beauty/">Techniq Skin &amp; Beauty</a></h3>
+      <p>Customized facials and corrective skincare focused on acne, hyperpigmentation, texture, waxing, and personalized treatment plans.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Hyperpigmentation</li><li>Acne-focused skincare</li><li>Custom facials</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://techniqskinandbeauty.com/" target="_blank" rel="noopener">Book a Treatment</a><a class="text-link" href="/marketplace/businesses/techniq-skin-beauty/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card business-card--featured" data-business-card data-slug="lories-african-hair-braiding" data-primary-category="hair-braiding" data-categories="hair-braiding" data-location="hartford" data-rank="1" data-search="lorie’s african hair braiding hartford a longtime hartford salon specializing in african braiding, protective styles, extensions, twists, cornrows, weaving, and locs. box braids knotless &amp; fulani styles locs &amp; extensions feed-in braids boho braids twists cornrows weaving dreadlocks protective styles hair &amp; braiding">
+    <a class="business-card__media" href="/marketplace/businesses/lories-african-hair-braiding/" aria-label="View Lorie’s African Hair Braiding profile">
+      <img src="/assets/marketplace/lories-braids.png" alt="African braid styling by Lorie&#039;s African Hair Braiding in Hartford" width="960" height="600" loading="lazy" decoding="async">
+      <span class="feature-badge">RE IMAGE Pick</span>
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/hair-braiding/">Hair &amp; Braiding</a><span>Hartford</span></div>
+      <h3><a href="/marketplace/businesses/lories-african-hair-braiding/">Lorie’s African Hair Braiding</a></h3>
+      <p>A longtime Hartford salon specializing in African braiding, protective styles, extensions, twists, cornrows, weaving, and locs.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Box braids</li><li>Knotless &amp; Fulani styles</li><li>Locs &amp; extensions</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://loriesafricanhairbraiding.com/" target="_blank" rel="noopener">View Styles &amp; Contact</a><a class="text-link" href="/marketplace/businesses/lories-african-hair-braiding/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card business-card--featured" data-business-card data-slug="living-word-imprints" data-primary-category="printing-apparel" data-categories="printing-apparel" data-location="hartford east-hartford" data-rank="1" data-search="living word imprints hartford &amp; east hartford a one-stop hartford print shop for custom apparel, embroidery, uniforms, signs, banners, promotional products, and everyday printing. custom apparel signs &amp; banners embroidery screen printing direct to garment school uniforms business cards brochures labels promotional products copy shop printing &amp; custom apparel">
+    <a class="business-card__media" href="/marketplace/businesses/living-word-imprints/" aria-label="View Living Word Imprints profile">
+      <img src="/assets/living-word-status-page.png" alt="Living Word Imprints online print order status page" width="960" height="600" loading="lazy" decoding="async">
+      <span class="feature-badge">RE IMAGE Pick</span>
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/printing-apparel/">Printing</a><span>Hartford &amp; East Hartford</span></div>
+      <h3><a href="/marketplace/businesses/living-word-imprints/">Living Word Imprints</a></h3>
+      <p>A one-stop Hartford print shop for custom apparel, embroidery, uniforms, signs, banners, promotional products, and everyday printing.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Custom apparel</li><li>Signs &amp; banners</li><li>Embroidery</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://livingwordimprints.com/" target="_blank" rel="noopener">Start a Print Order</a><a class="text-link" href="/marketplace/businesses/living-word-imprints/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card business-card--featured" data-business-card data-slug="andaleeb-enterprises" data-primary-category="real-estate-rentals" data-categories="real-estate-rentals" data-location="hartford east-hartford other-connecticut" data-rank="3" data-search="andaleeb enterprises hartford, east hartford &amp; clinton a connecticut property-management and development business offering residential and commercial rentals across hartford-area communities. residential rentals commercial rentals property management apartments available rentals development mixed use hartford property real estate &amp; rentals">
+    <a class="business-card__media" href="/marketplace/businesses/andaleeb-enterprises/" aria-label="View Andaleeb Enterprises profile">
+      <img src="/assets/andaleeb-properties-2026.png" alt="Andaleeb Enterprises residential and commercial property listings" width="960" height="600" loading="lazy" decoding="async">
+      <span class="feature-badge">RE IMAGE Pick</span>
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/real-estate-rentals/">Real Estate</a><span>Hartford, East Hartford &amp; Clinton</span></div>
+      <h3><a href="/marketplace/businesses/andaleeb-enterprises/">Andaleeb Enterprises</a></h3>
+      <p>A Connecticut property-management and development business offering residential and commercial rentals across Hartford-area communities.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Residential rentals</li><li>Commercial rentals</li><li>Property management</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://acedevelopments10.managebuilding.com/Resident/public/home" target="_blank" rel="noopener">View Available Rentals</a><a class="text-link" href="/marketplace/businesses/andaleeb-enterprises/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card business-card--featured" data-business-card data-slug="the-anchor-collective" data-primary-category="community-family" data-categories="community-family" data-location="hartford other-connecticut" data-rank="3" data-search="the anchor collective hartford-area &amp; online a family-centered organization helping men become steady anchors through mentorship, gatherings, podcasts, resources, and direct support. men’s mentorship family resources community gatherings podcasts fatherhood direct support families community community &amp; family">
+    <a class="business-card__media" href="/marketplace/businesses/the-anchor-collective/" aria-label="View The Anchor Collective profile">
+      <img src="/assets/anchor-home.png" alt="The Anchor Collective family and community mentorship website" width="960" height="600" loading="lazy" decoding="async">
+      <span class="feature-badge">RE IMAGE Pick</span>
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/community-family/">Community</a><span>Hartford-area &amp; online</span></div>
+      <h3><a href="/marketplace/businesses/the-anchor-collective/">The Anchor Collective</a></h3>
+      <p>A family-centered organization helping men become steady anchors through mentorship, gatherings, podcasts, resources, and direct support.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Men’s mentorship</li><li>Family resources</li><li>Community gatherings</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://theanchorllc.com/" target="_blank" rel="noopener">Explore Programs &amp; Events</a><a class="text-link" href="/marketplace/businesses/the-anchor-collective/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card business-card--featured" data-business-card data-slug="faraj-software-solutions" data-primary-category="business-software" data-categories="business-software" data-location="hartford manchester other-connecticut" data-rank="3" data-search="faraj software solutions greater hartford &amp; online practical scheduling, pricing, margin, and custom software tools designed around how small businesses actually operate. shift planning pricing &amp; margins custom applications labor cost schedule pricing assistant pro small business software workflows business software">
+    <a class="business-card__media" href="/marketplace/businesses/faraj-software-solutions/" aria-label="View Faraj Software Solutions profile">
+      <img src="/assets/faraj-home.png" alt="Faraj Software Solutions small-business software website" width="960" height="600" loading="lazy" decoding="async">
+      <span class="feature-badge">RE IMAGE Pick</span>
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/business-software/">Software</a><span>Greater Hartford &amp; online</span></div>
+      <h3><a href="/marketplace/businesses/faraj-software-solutions/">Faraj Software Solutions</a></h3>
+      <p>Practical scheduling, pricing, margin, and custom software tools designed around how small businesses actually operate.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Shift planning</li><li>Pricing &amp; margins</li><li>Custom applications</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://farajsoftwaresolutions.com/" target="_blank" rel="noopener">Explore Business Software</a><a class="text-link" href="/marketplace/businesses/faraj-software-solutions/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card business-card--featured" data-business-card data-slug="empire-elite-rides" data-primary-category="private-transportation" data-categories="private-transportation" data-location="beyond" data-rank="4" data-search="empire elite rides new york capital region private chauffeur service for airports, corporate travel, weddings, events, nights out, and long-distance rides across new york&#039;s capital region. airport rides corporate travel private events chauffeur weddings long distance luxury suv albany new york private transportation">
+    <a class="business-card__media" href="/marketplace/businesses/empire-elite-rides/" aria-label="View Empire Elite Rides profile">
+      <img src="/assets/empire-elite-booking-2026.png" alt="Empire Elite Rides private chauffeur pricing and booking website" width="960" height="600" loading="lazy" decoding="async">
+      <span class="feature-badge">RE IMAGE Pick</span>
+      <span class="area-badge">Beyond Greater Hartford</span>
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/private-transportation/">Private Rides</a><span>New York Capital Region</span></div>
+      <h3><a href="/marketplace/businesses/empire-elite-rides/">Empire Elite Rides</a></h3>
+      <p>Private chauffeur service for airports, corporate travel, weddings, events, nights out, and long-distance rides across New York&#039;s Capital Region.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Airport rides</li><li>Corporate travel</li><li>Private events</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://empireeliterides.com/" target="_blank" rel="noopener">Price &amp; Book a Ride</a><a class="text-link" href="/marketplace/businesses/empire-elite-rides/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article></div>
+      </div>
+    </section>
+
+    <section class="market-section directory-section" aria-labelledby="directoryTitle">
+      <div class="market-wrap">
+        <div class="directory-heading"><div><p class="eyebrow">The local directory</p><h2 id="directoryTitle">Businesses in and around Hartford</h2></div><p class="results-count" id="resultsCount" aria-live="polite">13 businesses</p></div>
+        <div class="active-filters" id="activeFilters" hidden></div>
+        <div class="business-grid" id="businessGrid"><article class="business-card" data-business-card data-slug="fusion-health-juice-bar" data-primary-category="restaurants-drinks" data-categories="restaurants-drinks" data-location="hartford" data-rank="1" data-search="fusion health juice bar hartford a hartford juice bar serving jamaican-inspired juices, smoothies, bowls, wellness shots, sea moss drinks, and its signature peanut punch. peanut punch fresh juices sea moss drinks smoothies acai bowls wellness shots jamaican banana nutmeg oats protein almond milk honey restaurants &amp; drinks">
+    <a class="business-card__media" href="/marketplace/businesses/fusion-health-juice-bar/" aria-label="View Fusion Health Juice Bar profile">
+      <img src="/assets/fusion-health-menu.png" alt="Fusion Health Juice Bar menu with fresh juices, smoothies, bowls, and Jamaican-inspired drinks" width="960" height="600" loading="lazy" decoding="async">
+
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/restaurants-drinks/">Food &amp; Drinks</a><span>Hartford</span></div>
+      <h3><a href="/marketplace/businesses/fusion-health-juice-bar/">Fusion Health Juice Bar</a></h3>
+      <p>A Hartford juice bar serving Jamaican-inspired juices, smoothies, bowls, wellness shots, sea moss drinks, and its signature Peanut Punch.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Peanut Punch</li><li>Fresh juices</li><li>Sea moss drinks</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://fusionhealthjuicebar.com/" target="_blank" rel="noopener">View Menu &amp; Order</a><a class="text-link" href="/marketplace/businesses/fusion-health-juice-bar/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card" data-business-card data-slug="881-grab-and-go" data-primary-category="restaurants-drinks" data-categories="restaurants-drinks" data-location="hartford" data-rank="1" data-search="881 grab &amp; go hartford island comfort food with philly attitude, including oxtail, jerk chicken, vegan curry chickpeas, and the signature cheyney fish sandwich. cheyney fish sandwich oxtail jerk chicken island comfort food philly fried whiting vegan curry chickpeas takeout restaurants &amp; drinks">
+    <a class="business-card__media" href="/marketplace/businesses/881-grab-and-go/" aria-label="View 881 Grab &amp; Go profile">
+      <img src="/assets/881-grab-go-best-sellers-2026.png" alt="881 Grab &amp; Go best sellers and online ordering menu" width="960" height="600" loading="lazy" decoding="async">
+
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/restaurants-drinks/">Food &amp; Drinks</a><span>Hartford</span></div>
+      <h3><a href="/marketplace/businesses/881-grab-and-go/">881 Grab &amp; Go</a></h3>
+      <p>Island comfort food with Philly attitude, including oxtail, jerk chicken, vegan curry chickpeas, and the signature Cheyney Fish Sandwich.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Cheyney Fish Sandwich</li><li>Oxtail</li><li>Jerk chicken</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://the881grabandgo.com/" target="_blank" rel="noopener">Order Online</a><a class="text-link" href="/marketplace/businesses/881-grab-and-go/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card" data-business-card data-slug="the-patio" data-primary-category="nightlife-events" data-categories="nightlife-events restaurants-drinks" data-location="hartford" data-rank="1" data-search="the patio hartford an indoor-outdoor hartford destination for cocktails, live entertainment, private events, and mini golf in a garden-lounge setting. cocktails live entertainment mini golf private events nightlife garden lounge drinks events nightlife &amp; events restaurants &amp; drinks">
+    <a class="business-card__media" href="/marketplace/businesses/the-patio/" aria-label="View The Patio profile">
+      <img src="/assets/patio-home-2026.jpg" alt="The Patio Hartford indoor-outdoor lounge and event destination" width="960" height="600" loading="lazy" decoding="async">
+
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/nightlife-events/">Nightlife</a><span>Hartford</span></div>
+      <h3><a href="/marketplace/businesses/the-patio/">The Patio</a></h3>
+      <p>An indoor-outdoor Hartford destination for cocktails, live entertainment, private events, and mini golf in a garden-lounge setting.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Cocktails</li><li>Live entertainment</li><li>Mini golf</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://thepatioct.com/" target="_blank" rel="noopener">View Events &amp; Menu</a><a class="text-link" href="/marketplace/businesses/the-patio/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card" data-business-card data-slug="lunch-box" data-primary-category="restaurants-drinks" data-categories="restaurants-drinks" data-location="hartford" data-rank="1" data-search="lunch box hartford a hartford caribbean takeout and catering destination known for jerk chicken, curry chicken, escovitch fish, natural drinks, and party trays. jerk chicken escovitch fish catering trays curry chicken callaloo fried dumplings natural drinks caribbean takeout restaurants &amp; drinks">
+    <a class="business-card__media" href="/marketplace/businesses/lunch-box/" aria-label="View Lunch Box profile">
+      <img src="/assets/lunch-box-home-2026.png" alt="Lunch Box Hartford Caribbean food ordering website" width="960" height="600" loading="lazy" decoding="async">
+
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/restaurants-drinks/">Food &amp; Drinks</a><span>Hartford</span></div>
+      <h3><a href="/marketplace/businesses/lunch-box/">Lunch Box</a></h3>
+      <p>A Hartford Caribbean takeout and catering destination known for jerk chicken, curry chicken, escovitch fish, natural drinks, and party trays.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Jerk chicken</li><li>Escovitch fish</li><li>Catering trays</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://lunchboxct.com/" target="_blank" rel="noopener">Order or Request Catering</a><a class="text-link" href="/marketplace/businesses/lunch-box/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card" data-business-card data-slug="mi-buen-pastor-mexican-fusion" data-primary-category="restaurants-drinks" data-categories="restaurants-drinks" data-location="hartford" data-rank="1" data-search="mi buen pastor mexican fusion hartford a hartford mexican-fusion restaurant serving handmade tortillas, quesabirria tacos, burritos, quesadillas, churros, and aguas frescas. quesabirria tacos handmade tortillas aguas frescas mexican fusion tacos burritos burrito bowls quesadillas churros restaurants &amp; drinks">
+    <a class="business-card__media" href="/marketplace/businesses/mi-buen-pastor-mexican-fusion/" aria-label="View Mi Buen Pastor Mexican Fusion profile">
+      <img src="/assets/marketplace/mi-buen-pastor.jpg" alt="Mexican dishes prepared by Mi Buen Pastor Mexican Fusion in Hartford" width="960" height="600" loading="lazy" decoding="async">
+
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/restaurants-drinks/">Food &amp; Drinks</a><span>Hartford</span></div>
+      <h3><a href="/marketplace/businesses/mi-buen-pastor-mexican-fusion/">Mi Buen Pastor Mexican Fusion</a></h3>
+      <p>A Hartford Mexican-fusion restaurant serving handmade tortillas, quesabirria tacos, burritos, quesadillas, churros, and aguas frescas.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Quesabirria tacos</li><li>Handmade tortillas</li><li>Aguas frescas</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://www.mibuenpastorct.com/" target="_blank" rel="noopener">Order Online</a><a class="text-link" href="/marketplace/businesses/mi-buen-pastor-mexican-fusion/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card" data-business-card data-slug="car-craft-auto-body-towing" data-primary-category="auto-body-towing" data-categories="auto-body-towing" data-location="west-hartford" data-rank="2" data-search="car craft auto body &amp; towing west hartford collision and body repair, paint, dents, bumper work, insurance claims, used vehicles, and 24/7 towing—with online photo estimates. online photo estimates collision repair 24/7 towing paint scratches dents bumper repair insurance repair used cars auto body auto body &amp; towing">
+    <a class="business-card__media" href="/marketplace/businesses/car-craft-auto-body-towing/" aria-label="View Car Craft Auto Body &amp; Towing profile">
+      <img src="/assets/carcraft-photo-estimate.png" alt="Car Craft Auto Body online photo estimate tool for collision damage" width="960" height="600" loading="lazy" decoding="async">
+
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/auto-body-towing/">Auto Body</a><span>West Hartford</span></div>
+      <h3><a href="/marketplace/businesses/car-craft-auto-body-towing/">Car Craft Auto Body &amp; Towing</a></h3>
+      <p>Collision and body repair, paint, dents, bumper work, insurance claims, used vehicles, and 24/7 towing—with online photo estimates.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Online photo estimates</li><li>Collision repair</li><li>24/7 towing</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://carcraftautobodytowing.com/" target="_blank" rel="noopener">Get an Online Estimate</a><a class="text-link" href="/marketplace/businesses/car-craft-auto-body-towing/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card" data-business-card data-slug="rent-me-ct" data-primary-category="car-rentals" data-categories="car-rentals" data-location="farmington" data-rank="2" data-search="rent me ct farmington a local hartford-area rental company offering sedans, suvs, luxury vehicles, trucks, and passenger vans with online booking. cars &amp; suvs passenger vans online booking sedans luxury vehicles trucks rental car live availability 250 daily miles car rentals">
+    <a class="business-card__media" href="/marketplace/businesses/rent-me-ct/" aria-label="View Rent Me CT profile">
+      <img src="/assets/rentme-live-fleet-2026.png" alt="Rent Me CT live rental fleet with available cars and SUVs" width="960" height="600" loading="lazy" decoding="async">
+
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/car-rentals/">Car Rentals</a><span>Farmington</span></div>
+      <h3><a href="/marketplace/businesses/rent-me-ct/">Rent Me CT</a></h3>
+      <p>A local Hartford-area rental company offering sedans, SUVs, luxury vehicles, trucks, and passenger vans with online booking.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Cars &amp; SUVs</li><li>Passenger vans</li><li>Online booking</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://rentmect.com/" target="_blank" rel="noopener">Browse Vehicles</a><a class="text-link" href="/marketplace/businesses/rent-me-ct/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card" data-business-card data-slug="techniq-skin-beauty" data-primary-category="skincare-esthetics" data-categories="skincare-esthetics" data-location="manchester" data-rank="2" data-search="techniq skin &amp; beauty manchester customized facials and corrective skincare focused on acne, hyperpigmentation, texture, waxing, and personalized treatment plans. hyperpigmentation acne-focused skincare custom facials esthetician skin reset corrective skincare texture waxing facials skincare &amp; esthetics">
+    <a class="business-card__media" href="/marketplace/businesses/techniq-skin-beauty/" aria-label="View Techniq Skin &amp; Beauty profile">
+      <img src="/assets/techniq-home.png" alt="Techniq Skin and Beauty customized skincare services website" width="960" height="600" loading="lazy" decoding="async">
+
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/skincare-esthetics/">Skincare</a><span>Manchester</span></div>
+      <h3><a href="/marketplace/businesses/techniq-skin-beauty/">Techniq Skin &amp; Beauty</a></h3>
+      <p>Customized facials and corrective skincare focused on acne, hyperpigmentation, texture, waxing, and personalized treatment plans.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Hyperpigmentation</li><li>Acne-focused skincare</li><li>Custom facials</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://techniqskinandbeauty.com/" target="_blank" rel="noopener">Book a Treatment</a><a class="text-link" href="/marketplace/businesses/techniq-skin-beauty/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card" data-business-card data-slug="lories-african-hair-braiding" data-primary-category="hair-braiding" data-categories="hair-braiding" data-location="hartford" data-rank="1" data-search="lorie’s african hair braiding hartford a longtime hartford salon specializing in african braiding, protective styles, extensions, twists, cornrows, weaving, and locs. box braids knotless &amp; fulani styles locs &amp; extensions feed-in braids boho braids twists cornrows weaving dreadlocks protective styles hair &amp; braiding">
+    <a class="business-card__media" href="/marketplace/businesses/lories-african-hair-braiding/" aria-label="View Lorie’s African Hair Braiding profile">
+      <img src="/assets/marketplace/lories-braids.png" alt="African braid styling by Lorie&#039;s African Hair Braiding in Hartford" width="960" height="600" loading="lazy" decoding="async">
+
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/hair-braiding/">Hair &amp; Braiding</a><span>Hartford</span></div>
+      <h3><a href="/marketplace/businesses/lories-african-hair-braiding/">Lorie’s African Hair Braiding</a></h3>
+      <p>A longtime Hartford salon specializing in African braiding, protective styles, extensions, twists, cornrows, weaving, and locs.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Box braids</li><li>Knotless &amp; Fulani styles</li><li>Locs &amp; extensions</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://loriesafricanhairbraiding.com/" target="_blank" rel="noopener">View Styles &amp; Contact</a><a class="text-link" href="/marketplace/businesses/lories-african-hair-braiding/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card" data-business-card data-slug="living-word-imprints" data-primary-category="printing-apparel" data-categories="printing-apparel" data-location="hartford east-hartford" data-rank="1" data-search="living word imprints hartford &amp; east hartford a one-stop hartford print shop for custom apparel, embroidery, uniforms, signs, banners, promotional products, and everyday printing. custom apparel signs &amp; banners embroidery screen printing direct to garment school uniforms business cards brochures labels promotional products copy shop printing &amp; custom apparel">
+    <a class="business-card__media" href="/marketplace/businesses/living-word-imprints/" aria-label="View Living Word Imprints profile">
+      <img src="/assets/living-word-status-page.png" alt="Living Word Imprints online print order status page" width="960" height="600" loading="lazy" decoding="async">
+
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/printing-apparel/">Printing</a><span>Hartford &amp; East Hartford</span></div>
+      <h3><a href="/marketplace/businesses/living-word-imprints/">Living Word Imprints</a></h3>
+      <p>A one-stop Hartford print shop for custom apparel, embroidery, uniforms, signs, banners, promotional products, and everyday printing.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Custom apparel</li><li>Signs &amp; banners</li><li>Embroidery</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://livingwordimprints.com/" target="_blank" rel="noopener">Start a Print Order</a><a class="text-link" href="/marketplace/businesses/living-word-imprints/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card" data-business-card data-slug="andaleeb-enterprises" data-primary-category="real-estate-rentals" data-categories="real-estate-rentals" data-location="hartford east-hartford other-connecticut" data-rank="3" data-search="andaleeb enterprises hartford, east hartford &amp; clinton a connecticut property-management and development business offering residential and commercial rentals across hartford-area communities. residential rentals commercial rentals property management apartments available rentals development mixed use hartford property real estate &amp; rentals">
+    <a class="business-card__media" href="/marketplace/businesses/andaleeb-enterprises/" aria-label="View Andaleeb Enterprises profile">
+      <img src="/assets/andaleeb-properties-2026.png" alt="Andaleeb Enterprises residential and commercial property listings" width="960" height="600" loading="lazy" decoding="async">
+
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/real-estate-rentals/">Real Estate</a><span>Hartford, East Hartford &amp; Clinton</span></div>
+      <h3><a href="/marketplace/businesses/andaleeb-enterprises/">Andaleeb Enterprises</a></h3>
+      <p>A Connecticut property-management and development business offering residential and commercial rentals across Hartford-area communities.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Residential rentals</li><li>Commercial rentals</li><li>Property management</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://acedevelopments10.managebuilding.com/Resident/public/home" target="_blank" rel="noopener">View Available Rentals</a><a class="text-link" href="/marketplace/businesses/andaleeb-enterprises/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card" data-business-card data-slug="the-anchor-collective" data-primary-category="community-family" data-categories="community-family" data-location="hartford other-connecticut" data-rank="3" data-search="the anchor collective hartford-area &amp; online a family-centered organization helping men become steady anchors through mentorship, gatherings, podcasts, resources, and direct support. men’s mentorship family resources community gatherings podcasts fatherhood direct support families community community &amp; family">
+    <a class="business-card__media" href="/marketplace/businesses/the-anchor-collective/" aria-label="View The Anchor Collective profile">
+      <img src="/assets/anchor-home.png" alt="The Anchor Collective family and community mentorship website" width="960" height="600" loading="lazy" decoding="async">
+
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/community-family/">Community</a><span>Hartford-area &amp; online</span></div>
+      <h3><a href="/marketplace/businesses/the-anchor-collective/">The Anchor Collective</a></h3>
+      <p>A family-centered organization helping men become steady anchors through mentorship, gatherings, podcasts, resources, and direct support.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Men’s mentorship</li><li>Family resources</li><li>Community gatherings</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://theanchorllc.com/" target="_blank" rel="noopener">Explore Programs &amp; Events</a><a class="text-link" href="/marketplace/businesses/the-anchor-collective/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card" data-business-card data-slug="faraj-software-solutions" data-primary-category="business-software" data-categories="business-software" data-location="hartford manchester other-connecticut" data-rank="3" data-search="faraj software solutions greater hartford &amp; online practical scheduling, pricing, margin, and custom software tools designed around how small businesses actually operate. shift planning pricing &amp; margins custom applications labor cost schedule pricing assistant pro small business software workflows business software">
+    <a class="business-card__media" href="/marketplace/businesses/faraj-software-solutions/" aria-label="View Faraj Software Solutions profile">
+      <img src="/assets/faraj-home.png" alt="Faraj Software Solutions small-business software website" width="960" height="600" loading="lazy" decoding="async">
+
+
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/business-software/">Software</a><span>Greater Hartford &amp; online</span></div>
+      <h3><a href="/marketplace/businesses/faraj-software-solutions/">Faraj Software Solutions</a></h3>
+      <p>Practical scheduling, pricing, margin, and custom software tools designed around how small businesses actually operate.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Shift planning</li><li>Pricing &amp; margins</li><li>Custom applications</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://farajsoftwaresolutions.com/" target="_blank" rel="noopener">Explore Business Software</a><a class="text-link" href="/marketplace/businesses/faraj-software-solutions/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article></div>
+        <div class="empty-state" id="emptyState" hidden><span>0 results</span><h3>No exact matches yet.</h3><p>Try a broader service, clear the town filter, or tell RE IMAGE which Hartford business should be added.</p><button class="button button--primary" id="clearFilters" type="button">Clear filters</button></div>
+      </div>
+    </section>
+
+    <section class="market-section beyond-section" id="beyond" aria-labelledby="beyondTitle">
+      <div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Beyond Greater Hartford</p><h2 id="beyondTitle">Trusted businesses farther out.</h2></div><p>These RE IMAGE clients serve New York and other markets outside Connecticut’s capital region.</p></div><div class="business-grid business-grid--two" id="beyondGrid"><article class="business-card" data-business-card data-slug="cr8-autos" data-primary-category="auto-body-towing" data-categories="auto-body-towing" data-location="beyond" data-rank="4" data-search="cr8 autos watervliet, new york a capital region automotive shop providing collision repair, mechanical service, paint, rust repair, diagnostics, and online estimates. collision repair mechanical service online estimates paint rust repair diagnostics suspension exhaust new york capital region auto body &amp; towing">
+    <a class="business-card__media" href="/marketplace/businesses/cr8-autos/" aria-label="View CR8 Autos profile">
+      <img src="/assets/cr8-online-estimate-2026.png" alt="CR8 Autos online estimate form for auto body and mechanical work" width="960" height="600" loading="lazy" decoding="async">
+
+      <span class="area-badge">Beyond Greater Hartford</span>
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/auto-body-towing/">Auto Body</a><span>Watervliet, New York</span></div>
+      <h3><a href="/marketplace/businesses/cr8-autos/">CR8 Autos</a></h3>
+      <p>A Capital Region automotive shop providing collision repair, mechanical service, paint, rust repair, diagnostics, and online estimates.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Collision repair</li><li>Mechanical service</li><li>Online estimates</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://cr8autos.com/" target="_blank" rel="noopener">Get an Estimate</a><a class="text-link" href="/marketplace/businesses/cr8-autos/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article><article class="business-card" data-business-card data-slug="empire-elite-rides" data-primary-category="private-transportation" data-categories="private-transportation" data-location="beyond" data-rank="4" data-search="empire elite rides new york capital region private chauffeur service for airports, corporate travel, weddings, events, nights out, and long-distance rides across new york&#039;s capital region. airport rides corporate travel private events chauffeur weddings long distance luxury suv albany new york private transportation">
+    <a class="business-card__media" href="/marketplace/businesses/empire-elite-rides/" aria-label="View Empire Elite Rides profile">
+      <img src="/assets/empire-elite-booking-2026.png" alt="Empire Elite Rides private chauffeur pricing and booking website" width="960" height="600" loading="lazy" decoding="async">
+
+      <span class="area-badge">Beyond Greater Hartford</span>
+    </a>
+    <div class="business-card__body">
+      <div class="business-card__meta"><a href="/marketplace/categories/private-transportation/">Private Rides</a><span>New York Capital Region</span></div>
+      <h3><a href="/marketplace/businesses/empire-elite-rides/">Empire Elite Rides</a></h3>
+      <p>Private chauffeur service for airports, corporate travel, weddings, events, nights out, and long-distance rides across New York&#039;s Capital Region.</p>
+      <ul class="specialty-list" aria-label="Specialties"><li>Airport rides</li><li>Corporate travel</li><li>Private events</li></ul>
+      <div class="business-card__actions"><a class="button button--primary" href="https://empireeliterides.com/" target="_blank" rel="noopener">Price &amp; Book a Ride</a><a class="text-link" href="/marketplace/businesses/empire-elite-rides/">View profile <span aria-hidden="true">→</span></a></div>
+    </div>
+  </article></div></div>
+    </section>
+
+    <section class="owner-cta"><div class="market-wrap owner-cta__inner"><div><p class="eyebrow">Built for local business</p><h2>Own a business Hartford should know?</h2><p>Join the directory or ask about the one featured placement available in your category.</p></div><div class="owner-cta__actions"><a class="button button--light" href="/start-with-us.html?service=Marketplace%20Listing">Get listed</a><a class="button button--gold" href="/start-with-us.html?service=Featured%20Marketplace%20Placement">Feature your business</a></div></div></section>
+    <script id="marketplaceData" type="application/json">{"categories":[{"slug":"restaurants-drinks","name":"Restaurants & Drinks","shortName":"Food & Drinks","description":"Juice bars, Caribbean favorites, Mexican fusion, takeout, catering, and signature Hartford flavors.","featured":"fusion-health-juice-bar"},{"slug":"nightlife-events","name":"Nightlife & Events","shortName":"Nightlife","description":"Cocktails, live entertainment, private events, and memorable nights out in Hartford.","featured":"the-patio"},{"slug":"auto-body-towing","name":"Auto Body & Towing","shortName":"Auto Body","description":"Collision repair, paint, mechanical service, towing, and online estimates near Hartford.","featured":"car-craft-auto-body-towing"},{"slug":"car-rentals","name":"Car Rentals","shortName":"Car Rentals","description":"Local cars, SUVs, trucks, luxury vehicles, and passenger vans available to reserve online.","featured":"rent-me-ct"},{"slug":"skincare-esthetics","name":"Skincare & Esthetics","shortName":"Skincare","description":"Corrective and customized skincare for acne, hyperpigmentation, texture, and personal care.","featured":"techniq-skin-beauty"},{"slug":"hair-braiding","name":"Hair & Braiding","shortName":"Hair & Braiding","description":"African braiding, protective styles, extensions, twists, locs, and personalized styling.","featured":"lories-african-hair-braiding"},{"slug":"printing-apparel","name":"Printing & Custom Apparel","shortName":"Printing","description":"Custom apparel, embroidery, signs, banners, uniforms, promotional products, and print services.","featured":"living-word-imprints"},{"slug":"real-estate-rentals","name":"Real Estate & Rentals","shortName":"Real Estate","description":"Residential and commercial rentals, property management, and Hartford-area development.","featured":"andaleeb-enterprises"},{"slug":"community-family","name":"Community & Family","shortName":"Community","description":"Mentorship, gatherings, resources, and support designed to strengthen families and communities.","featured":"the-anchor-collective"},{"slug":"business-software","name":"Business Software","shortName":"Software","description":"Practical scheduling, pricing, workflow, and custom software tools for growing businesses.","featured":"faraj-software-solutions"},{"slug":"private-transportation","name":"Private Transportation","shortName":"Private Rides","description":"Private chauffeur service for airports, corporate travel, events, and long-distance trips.","featured":"empire-elite-rides"}],"businesses":[{"slug":"fusion-health-juice-bar","name":"Fusion Health Juice Bar","categories":["restaurants-drinks"],"locationKey":"hartford","regionRank":1,"specialties":["Peanut Punch","Fresh juices","Sea moss drinks"],"tags":["smoothies","acai bowls","wellness shots","jamaican","banana","nutmeg","oats","protein","almond milk","honey"],"shortBio":"A Hartford juice bar serving Jamaican-inspired juices, smoothies, bowls, wellness shots, sea moss drinks, and its signature Peanut Punch."},{"slug":"881-grab-and-go","name":"881 Grab & Go","categories":["restaurants-drinks"],"locationKey":"hartford","regionRank":1,"specialties":["Cheyney Fish Sandwich","Oxtail","Jerk chicken"],"tags":["island comfort food","philly","fried whiting","vegan curry chickpeas","takeout"],"shortBio":"Island comfort food with Philly attitude, including oxtail, jerk chicken, vegan curry chickpeas, and the signature Cheyney Fish Sandwich."},{"slug":"the-patio","name":"The Patio","categories":["nightlife-events","restaurants-drinks"],"locationKey":"hartford","regionRank":1,"specialties":["Cocktails","Live entertainment","Mini golf"],"tags":["private events","nightlife","garden lounge","drinks","events"],"shortBio":"An indoor-outdoor Hartford destination for cocktails, live entertainment, private events, and mini golf in a garden-lounge setting."},{"slug":"lunch-box","name":"Lunch Box","categories":["restaurants-drinks"],"locationKey":"hartford","regionRank":1,"specialties":["Jerk chicken","Escovitch fish","Catering trays"],"tags":["curry chicken","callaloo","fried dumplings","natural drinks","caribbean","takeout"],"shortBio":"A Hartford Caribbean takeout and catering destination known for jerk chicken, curry chicken, escovitch fish, natural drinks, and party trays."},{"slug":"mi-buen-pastor-mexican-fusion","name":"Mi Buen Pastor Mexican Fusion","categories":["restaurants-drinks"],"locationKey":"hartford","regionRank":1,"specialties":["Quesabirria tacos","Handmade tortillas","Aguas frescas"],"tags":["mexican fusion","tacos","burritos","burrito bowls","quesadillas","churros"],"shortBio":"A Hartford Mexican-fusion restaurant serving handmade tortillas, quesabirria tacos, burritos, quesadillas, churros, and aguas frescas."},{"slug":"car-craft-auto-body-towing","name":"Car Craft Auto Body & Towing","categories":["auto-body-towing"],"locationKey":"west-hartford","regionRank":2,"specialties":["Online photo estimates","Collision repair","24/7 towing"],"tags":["paint","scratches","dents","bumper repair","insurance repair","used cars","auto body"],"shortBio":"Collision and body repair, paint, dents, bumper work, insurance claims, used vehicles, and 24/7 towing—with online photo estimates."},{"slug":"rent-me-ct","name":"Rent Me CT","categories":["car-rentals"],"locationKey":"farmington","regionRank":2,"specialties":["Cars & SUVs","Passenger vans","Online booking"],"tags":["sedans","luxury vehicles","trucks","rental car","live availability","250 daily miles"],"shortBio":"A local Hartford-area rental company offering sedans, SUVs, luxury vehicles, trucks, and passenger vans with online booking."},{"slug":"cr8-autos","name":"CR8 Autos","categories":["auto-body-towing"],"locationKey":"beyond","regionRank":4,"specialties":["Collision repair","Mechanical service","Online estimates"],"tags":["paint","rust repair","diagnostics","suspension","exhaust","new york","capital region"],"shortBio":"A Capital Region automotive shop providing collision repair, mechanical service, paint, rust repair, diagnostics, and online estimates."},{"slug":"empire-elite-rides","name":"Empire Elite Rides","categories":["private-transportation"],"locationKey":"beyond","regionRank":4,"specialties":["Airport rides","Corporate travel","Private events"],"tags":["chauffeur","weddings","long distance","luxury suv","albany","new york"],"shortBio":"Private chauffeur service for airports, corporate travel, weddings, events, nights out, and long-distance rides across New York's Capital Region."},{"slug":"techniq-skin-beauty","name":"Techniq Skin & Beauty","categories":["skincare-esthetics"],"locationKey":"manchester","regionRank":2,"specialties":["Hyperpigmentation","Acne-focused skincare","Custom facials"],"tags":["esthetician","skin reset","corrective skincare","texture","waxing","facials"],"shortBio":"Customized facials and corrective skincare focused on acne, hyperpigmentation, texture, waxing, and personalized treatment plans."},{"slug":"lories-african-hair-braiding","name":"Lorie’s African Hair Braiding","categories":["hair-braiding"],"locationKey":"hartford","regionRank":1,"specialties":["Box braids","Knotless & Fulani styles","Locs & extensions"],"tags":["feed-in braids","boho braids","twists","cornrows","weaving","dreadlocks","protective styles"],"shortBio":"A longtime Hartford salon specializing in African braiding, protective styles, extensions, twists, cornrows, weaving, and locs."},{"slug":"living-word-imprints","name":"Living Word Imprints","categories":["printing-apparel"],"locationKey":"hartford","regionRank":1,"specialties":["Custom apparel","Signs & banners","Embroidery"],"tags":["screen printing","direct to garment","school uniforms","business cards","brochures","labels","promotional products","copy shop"],"shortBio":"A one-stop Hartford print shop for custom apparel, embroidery, uniforms, signs, banners, promotional products, and everyday printing."},{"slug":"andaleeb-enterprises","name":"Andaleeb Enterprises","categories":["real-estate-rentals"],"locationKey":"other-connecticut","regionRank":3,"specialties":["Residential rentals","Commercial rentals","Property management"],"tags":["apartments","available rentals","development","mixed use","hartford property"],"shortBio":"A Connecticut property-management and development business offering residential and commercial rentals across Hartford-area communities."},{"slug":"the-anchor-collective","name":"The Anchor Collective","categories":["community-family"],"locationKey":"other-connecticut","regionRank":3,"specialties":["Men’s mentorship","Family resources","Community gatherings"],"tags":["podcasts","fatherhood","direct support","families","community"],"shortBio":"A family-centered organization helping men become steady anchors through mentorship, gatherings, podcasts, resources, and direct support."},{"slug":"faraj-software-solutions","name":"Faraj Software Solutions","categories":["business-software"],"locationKey":"other-connecticut","regionRank":3,"specialties":["Shift planning","Pricing & margins","Custom applications"],"tags":["labor cost","schedule","pricing assistant pro","small business software","workflows"],"shortBio":"Practical scheduling, pricing, margin, and custom software tools designed around how small businesses actually operate."}]}</script>
+  </main>
+  <footer class="marketplace-footer">
+    <div class="marketplace-footer__top">
+      <div class="marketplace-footer__brand"><a href="/index.html" aria-label="RE IMAGE homepage"><img src="/assets/reimage-logo-2026-transparent.png" alt="RE IMAGE"></a><p>Helping people discover the businesses that keep Hartford moving.</p></div>
+      <div><h2>Explore</h2><a href="/marketplace.html">All businesses</a><a href="/marketplace/categories/restaurants-drinks/">Food &amp; Drinks</a><a href="/marketplace/categories/nightlife-events/">Nightlife</a><a href="/marketplace/categories/auto-body-towing/">Auto Body</a><a href="/marketplace/categories/car-rentals/">Car Rentals</a><a href="/marketplace/categories/skincare-esthetics/">Skincare</a><a href="/marketplace/categories/hair-braiding/">Hair &amp; Braiding</a></div>
+      <div><h2>More services</h2><a href="/marketplace/categories/printing-apparel/">Printing</a><a href="/marketplace/categories/real-estate-rentals/">Real Estate</a><a href="/marketplace/categories/community-family/">Community</a><a href="/marketplace/categories/business-software/">Software</a><a href="/marketplace/categories/private-transportation/">Private Rides</a><a href="/our-work.html">RE IMAGE portfolio</a></div>
+      <div><h2>For business owners</h2><a href="/start-with-us.html?service=Marketplace%20Listing">Get listed</a><a href="/start-with-us.html?service=Featured%20Marketplace%20Placement">Feature your business</a><a href="/start-with-us.html">Contact RE IMAGE</a></div>
+    </div>
+    <div class="marketplace-footer__bottom"><span>© 2026 RE IMAGE Business Solutions.</span><span>Hartford, Connecticut</span></div>
+  </footer>
+  <script src="/marketplace.js?v=20260904-1" defer></script>
+</body>
+</html>

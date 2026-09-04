@@ -270,3 +270,50 @@ body footer.public-site-footer > small {
     grid-row: auto !important;
   }
 }
+
+/* Homepage marketplace discovery block */
+.marketplace-home-teaser {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: clamp(42px, 7vw, 92px);
+  align-items: center;
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: clamp(86px, 10vw, 140px) 0;
+}
+.marketplace-home-copy > span {
+  color: #0d8f8a;
+  font: 800 .72rem/1.2 var(--site-font-apple);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.marketplace-home-copy h2 {
+  margin: 16px 0 22px;
+  color: #071426;
+  font: 800 clamp(2.35rem, 5vw, 4.4rem)/1.02 var(--site-font-apple);
+  letter-spacing: -.055em;
+}
+.marketplace-home-copy p {
+  margin: 0 0 30px;
+  color: #657083;
+  font: 500 1rem/1.72 var(--site-font-apple);
+}
+.marketplace-home-copy > div { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+.marketplace-home-copy > div a { color: #0877e8; font: 750 .85rem/1 var(--site-font-apple); text-decoration: none; }
+.marketplace-home-copy > div a.marketplace-home-primary { display: inline-flex; align-items: center; gap: 12px; min-height: 50px; border-radius: 999px; padding: 0 22px; background: #0877e8; color: #fff; box-shadow: 0 14px 30px rgba(8,119,232,.2); }
+.marketplace-home-categories { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+.marketplace-home-categories a { display: flex; min-height: 190px; flex-direction: column; justify-content: flex-end; border: 1px solid #dfe7ec; border-radius: 22px; padding: 24px; background: linear-gradient(145deg,#fff,#f4f8fa); color: #071426; box-shadow: 0 18px 50px rgba(7,20,38,.06); text-decoration: none; transition: transform .25s ease, box-shadow .25s ease; }
+.marketplace-home-categories a:nth-child(2) { background: linear-gradient(145deg,#edf6ff,#fff); }
+.marketplace-home-categories a:nth-child(3) { background: linear-gradient(145deg,#eef9f7,#fff); }
+.marketplace-home-categories a:nth-child(4) { background: linear-gradient(145deg,#fff8e9,#fff); }
+.marketplace-home-categories a:hover { transform: translateY(-4px); box-shadow: 0 24px 62px rgba(7,20,38,.11); }
+.marketplace-home-categories small { color: #0d8f8a; font: 800 .65rem/1.2 var(--site-font-apple); letter-spacing: .1em; text-transform: uppercase; }
+.marketplace-home-categories strong { margin: 9px 0 8px; font: 800 1.25rem/1.15 var(--site-font-apple); letter-spacing: -.03em; }
+.marketplace-home-categories span { color: #657083; font: 500 .78rem/1.5 var(--site-font-apple); }
+@media (max-width: 820px) {
+  .marketplace-home-teaser { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .marketplace-home-categories { grid-template-columns: 1fr; }
+  .marketplace-home-categories a { min-height: 160px; }
+}
