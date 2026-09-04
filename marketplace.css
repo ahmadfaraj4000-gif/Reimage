@@ -1,5 +1,5 @@
 :root {
-  --market-blue: #0877e8;
+  --market-blue: #076fd9;
   --market-blue-dark: #075db5;
   --market-navy: #071426;
   --market-ink: #10263a;
@@ -25,6 +25,15 @@ body.marketplace-page {
   font-family: var(--site-font-apple);
   -webkit-font-smoothing: antialiased;
 }
+
+body.marketplace-page:not(#reimage-letter-spacing-lock),
+body.marketplace-page:not(#reimage-letter-spacing-lock) * { letter-spacing: .012em !important; }
+
+body.marketplace-page :is(.eyebrow, .filter-label, .feature-badge, .area-badge, .business-card__meta a, .profile-info__label) {
+  letter-spacing: .1em !important;
+}
+
+body.marketplace-page .navbar .nav-links a.nav-cta { background: #076fd9 !important; }
 
 body.marketplace-page img { max-width: 100%; }
 

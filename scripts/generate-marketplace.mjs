@@ -64,7 +64,7 @@ function validateData() {
 
 function navigation(active = 'marketplace') {
   return `<nav class="navbar" id="navbar" aria-label="Main navigation">
-    <a class="nav-logo" href="/index.html" aria-label="RE IMAGE homepage"><img src="/assets/reimage-logo-2026-transparent.png" alt="RE IMAGE"></a>
+    <a class="nav-logo new-brand" href="/index.html" aria-label="RE IMAGE homepage"><img src="/assets/reimage-logo-2026-transparent.png" alt="RE IMAGE"></a>
     <button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="/website-development.html">Systems</a></li>
@@ -110,7 +110,7 @@ function head({ title, description, canonical, image = `${siteUrl}/assets/reimag
   <meta property="og:image:alt" content="Hartford Marketplace by RE IMAGE">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="/public-shell.css?v=20260904-4">
-  <link rel="stylesheet" href="/marketplace.css?v=20260904-6">
+  <link rel="stylesheet" href="/marketplace.css?v=20260904-7">
   ${schema.map((item) => `<script type="application/ld+json">${escapeJson(item)}</script>`).join('\n  ')}
 </head>`;
 }
