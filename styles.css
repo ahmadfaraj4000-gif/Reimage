@@ -5214,6 +5214,100 @@ html {
 	.home-page.new-blue-home .brand-strip-track a:hover { transform: none; }
 }
 
+/* Current portfolio previews: preserve the full screen and give each card room. */
+.home-page.new-blue-home .project-pair {
+	align-items: stretch;
+}
+
+.home-page.new-blue-home .project-card {
+	display: flex;
+	flex-direction: column;
+	padding: 18px;
+	border: 1px solid var(--brand-line);
+	background: #fff;
+}
+
+.home-page.new-blue-home .project-card .project-screen {
+	width: 100%;
+	height: auto !important;
+	aspect-ratio: 16 / 9;
+	border-radius: 22px;
+	background: #f2f6fa;
+	box-shadow: none;
+}
+
+.home-page.new-blue-home .project-card .project-screen img {
+	object-fit: contain !important;
+	object-position: center !important;
+}
+
+.home-page.new-blue-home .project-card > div:last-child {
+	display: flex;
+	flex: 1;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	padding: 24px 14px 16px;
+	text-align: center;
+}
+
+/* Simple, centered value cards with no decorative numbering. */
+.home-page.new-blue-home .benefit-grid {
+	counter-reset: none;
+}
+
+.home-page.new-blue-home .benefit-grid article {
+	align-items: center;
+	min-height: 260px;
+	padding: 38px 30px;
+	text-align: center;
+}
+
+.home-page.new-blue-home .benefit-grid article::before {
+	display: none !important;
+	content: none !important;
+}
+
+.home-page.new-blue-home .benefit-grid h3 {
+	margin: 0 0 14px;
+}
+
+.home-page.new-blue-home .benefit-grid p {
+	max-width: 27ch;
+	margin: 0 auto;
+}
+
+body.public-unified.work-page .shot-card img {
+	object-fit: cover !important;
+	object-position: top center !important;
+	background: #f2f6fa !important;
+}
+
+@media (max-width: 700px) {
+	.home-page.new-blue-home .project-card {
+		padding: 12px;
+		border-radius: 24px;
+	}
+
+	.home-page.new-blue-home .project-card .project-screen {
+		height: auto !important;
+		border-radius: 18px;
+	}
+
+	.home-page.new-blue-home .project-card > div:last-child {
+		padding: 22px 12px 16px;
+	}
+
+	.home-page.new-blue-home .benefit-grid article {
+		min-height: 190px;
+		padding: 32px 24px;
+	}
+
+	.home-page.new-blue-home .benefit-grid h3 {
+		margin: 0 0 12px;
+	}
+}
+
 /* Public-page lock: use the homepage navigation viewport on every matching page. */
 body.new-blue-home .navbar {
 	position: sticky !important;

@@ -14,7 +14,7 @@
 		name="keywords"
 	/>
 	<meta content="RE IMAGE Business Solutions" name="author" />
-	<link href="styles.css?v=20260803-8" rel="stylesheet" />
+	<link href="styles.css?v=20260903-11" rel="stylesheet" />
 	<style>
 		/* ===== Compact Our Work case-study layout ===== */
 		.work-hero { min-height: 72vh; padding-bottom: 70px; }
@@ -157,21 +157,23 @@
 			font-weight: 500;
 			line-height: 1.5;
 		}
-		.case-tags {
-			display: flex;
-			flex-wrap: wrap;
-			gap: .45rem;
+		.case-features {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+			column-gap: 2rem;
+			row-gap: .45rem;
+			margin: 0;
+			padding-left: 1.15rem;
 		}
-		.case-tags span {
-			font-size: .72rem;
-			font-weight: 800;
-			letter-spacing: .04em;
-			text-transform: uppercase;
+		.case-features li {
+			color: #456072;
+			font-size: .88rem;
+			font-weight: 600;
+			line-height: 1.45;
+			padding-left: .1rem;
+		}
+		.case-features li::marker {
 			color: var(--teal-light);
-			background: rgba(26,122,138,.16);
-			border: 1px solid rgba(43,163,184,.28);
-			border-radius: 999px;
-			padding: .34rem .62rem;
 		}
 
 		.shot-strip-wrap {
@@ -329,7 +331,7 @@
 			.shot-strip-wrap { min-height: 0; }
 			.shot-scroll-label { font-size: .7rem; }
 			.case-highlights { grid-template-columns: 1fr; }
-			.case-highlights .case-highlight:last-child:nth-child(odd) { grid-column: auto; }
+			.case-features { grid-template-columns: 1fr; }
 		}
 .shot-card img {
 	transition: transform .35s ease;
@@ -642,7 +644,7 @@ body.gallery-open {
 }
 	</style>
 
-	<link href="public-system.css?v=20260903-1" rel="stylesheet">
+	<link href="public-system.css?v=20260904-1" rel="stylesheet">
 	<style>
 		/* Lock the portfolio hero to the homepage hero's exact viewport and type scale. */
 		body.work-page .work-hero {
@@ -747,13 +749,13 @@ body.gallery-open {
 			<div class="hero-inner luxury-hero">
 				<div class="hero-content luxury-copy">
 					<div class="hero-kicker">Our Work</div>
-					<h1 class="hero-title luxury-title">Business systems built for real businesses.</h1>
+					<h1 class="hero-title luxury-title">Operating Systems built for real businesses.</h1>
 					<p class="hero-sub luxury-sub">
 						Explore customer-facing platforms, CRM tools, internal operating systems, portals, automations, and AI receptionist work built for businesses that want to serve customers better and operate cleaner behind the scenes.
 					</p>
 					<div class="hero-btns luxury-actions">
 						<a class="btn btn-primary" href="#websites">View Websites</a>
-						<a class="btn btn-outline" href="#project-screenshots">View Project Screenshots</a>
+						<a class="btn btn-outline" href="#marketing-services">View Marketing Services</a>
 					</div>
 				</div>
 			</div>
@@ -776,15 +778,22 @@ body.gallery-open {
 									<a class="case-link" href="https://empireeliterides.com" rel="noopener" target="_blank">Visit Site ↗</a>
 								</div>
 								<p class="case-desc">
-									A premium transportation website built to present the fleet, service options, and booking path with the same polished feel customers expect from a high-end ride.
+									A premium transportation website that makes ride pricing, booking, payment, and daily administration easy to manage.
 								</p>
 								<div class="case-highlights">
-									<div class="case-highlight"><strong>Instant Pushover Alerts</strong><span>Every ride request alerts the team immediately.</span></div>
-									<div class="case-highlight"><strong>Luxury Booking</strong><span>Fleet, airport, event, and reservation paths in one polished flow.</span></div>
+									<div class="case-highlight"><strong>Smart Ride Pricing</strong><span>Pricing accounts for ride details, timing, demand, and service conditions.</span></div>
+									<div class="case-highlight"><strong>Easy Address Entry</strong><span>Customers can search for an address or use their current location.</span></div>
 								</div>
-								<div class="case-tags">
-									<span>Pushover Alerts</span><span>Fleet Showcase</span><span>Ride Requests</span><span>Mobile First</span><span>Local SEO</span>
-								</div>
+								<ul class="case-features">
+									<li>Guided ride booking</li>
+									<li>Phone notifications for administrators</li>
+									<li>Online payment integration</li>
+									<li>Admin booking management</li>
+									<li>Search engine optimization</li>
+									<li>AI optimization</li>
+									<li>Google indexing</li>
+									<li>Bing indexing</li>
+								</ul>
 							</div>
 							<div class="shot-strip-wrap">
 								<div class="shot-scroll-label"><span>Project Screens</span><span>Scroll →</span></div>
@@ -807,22 +816,28 @@ body.gallery-open {
 									<a class="case-link" href="https://fusionhealthjuicebar.com" rel="noopener" target="_blank">Visit Site ↗</a>
 								</div>
 								<p class="case-desc">
-									A bright, product-led website for Fusion Health Juice Bar that brings fresh juices, smoothies, wellness blends, acai bowls, baked patties, Peanut Punch, ordering, and customer reactions into one mobile-friendly experience.
+									A modern, mobile-friendly food website that presents the menu clearly and connects customers with online ordering.
 								</p>
 								<div class="case-highlights">
-									<div class="case-highlight"><strong>Feature Focus</strong><span>Visual menu discovery, DoorDash favorites, direct ordering paths, location details, branded product photography, and embedded customer reactions.</span></div>
-									<div class="case-highlight"><strong>What Makes It Different</strong><span>Colorful product presentation and real social proof translate the shop's Jamaican-Hartford personality into a site that feels as energetic as the menu.</span></div>
+									<div class="case-highlight"><strong>Modern Food Website</strong><span>A clean, visual experience built around the brand and its menu.</span></div>
+									<div class="case-highlight"><strong>Delivery App Connections</strong><span>Customers can move directly from featured food to delivery ordering.</span></div>
 								</div>
-								<div class="case-tags">
-									<span>Menu System</span><span>Online Ordering</span><span>Product Photography</span><span>Social Proof</span><span>Mobile First</span><span>Local SEO</span>
-								</div>
+								<ul class="case-features">
+									<li>Menu and product showcase</li>
+									<li>Customer stories and social proof</li>
+									<li>Mobile-friendly design</li>
+									<li>Search engine optimization</li>
+									<li>AI optimization</li>
+									<li>Google indexing</li>
+									<li>Bing indexing</li>
+								</ul>
 							</div>
 							<div class="shot-strip-wrap">
 								<div class="shot-scroll-label"><span>Project Screens</span><span>Scroll →</span></div>
 								<div class="shot-strip" aria-label="Fusion Health Juice Bar website screenshots">
 									<div class="shot-card wide-shot"><img src="assets/fusion-health-home.png" alt="Fusion Health Juice Bar homepage"><div class="shot-caption">Homepage</div></div>
 									<div class="shot-card wide-shot"><img src="assets/fusion-health-menu.png" alt="Fusion Health Juice Bar menu"><div class="shot-caption">Full Menu</div></div>
-									<div class="shot-card wide-shot"><img src="assets/fusion-health-doordash.png" alt="Fusion Health Juice Bar DoorDash favorites"><div class="shot-caption">DoorDash Favorites</div></div>
+									<div class="shot-card wide-shot"><img src="assets/fusion-health-delivery-apps.png" alt="Fusion Health Juice Bar delivery app favorites"><div class="shot-caption">Delivery App Favorites</div></div>
 									<div class="shot-card wide-shot"><img src="assets/fusion-health-reactions.png" alt="Fusion Health Juice Bar customer reactions"><div class="shot-caption">Customer Reactions</div></div>
 								</div>
 							</div>
@@ -838,24 +853,29 @@ body.gallery-open {
 									<a class="case-link" href="https://thepatioct.com" rel="noopener" target="_blank">Visit Site ↗</a>
 								</div>
 								<p class="case-desc">
-									A full hospitality platform that presents The Patio's garden atmosphere, cocktails, events, and putting green while connecting guests to a live menu, cart, space booking, and an operational admin portal.
+									A hospitality website and ordering system that presents the venue while giving the team control over menu and order operations.
 								</p>
 								<div class="case-highlights">
-									<div class="case-highlight"><strong>Clover Checkout</strong><span>The custom menu and cart connect directly to Clover for payment.</span></div>
-									<div class="case-highlight"><strong>Fast &amp; Reliable</strong><span>Optimized media, lean code, and careful third-party loading.</span></div>
-									<div class="case-highlight"><strong>Protected Operations</strong><span>Clover handles card data; authenticated access protects menu administration.</span></div>
+									<div class="case-highlight"><strong>Editable Menu Management</strong><span>The team can update and customize its menu from a private admin area.</span></div>
+									<div class="case-highlight"><strong>Customer Order Status</strong><span>Customers can check when their order is ready.</span></div>
 								</div>
-								<div class="case-tags">
-									<span>Clover Checkout</span><span>Speed Optimized</span><span>Protected Admin</span><span>Menu Management</span><span>Space Booking</span><span>Reliable Hosting</span>
-								</div>
+								<ul class="case-features">
+									<li>Phone notifications for new orders</li>
+									<li>Online ordering</li>
+									<li>Payment integration with the existing point-of-sale system</li>
+									<li>Event and space booking</li>
+									<li>Search engine optimization</li>
+									<li>AI optimization</li>
+									<li>Google indexing</li>
+									<li>Bing indexing</li>
+								</ul>
 							</div>
 							<div class="shot-strip-wrap">
 								<div class="shot-scroll-label"><span>Project Screens</span><span>Scroll →</span></div>
 								<div class="shot-strip" aria-label="The Patio website and admin screenshots">
-									<div class="shot-card wide-shot"><img src="assets/patio-home.png" alt="The Patio homepage"><div class="shot-caption">Homepage</div></div>
-									<div class="shot-card wide-shot"><img src="assets/patio-menu.png" alt="The Patio online drinks menu"><div class="shot-caption">Drinks Menu &amp; Ordering</div></div>
-									<div class="shot-card wide-shot"><img src="assets/patio-experience.png" alt="The Patio garden lounge and putting green"><div class="shot-caption">Venue Experience</div></div>
-									<div class="shot-card wide-shot"><img src="assets/patio-admin.png" alt="The Patio menu admin portal"><div class="shot-caption">Menu Admin</div></div>
+									<div class="shot-card wide-shot"><img src="assets/patio-home-2026.jpg" alt="Current Patio homepage"><div class="shot-caption">Homepage</div></div>
+									<div class="shot-card wide-shot"><img src="assets/patio-drinks-2026.jpg" alt="The Patio online cocktail menu featuring signature drinks"><div class="shot-caption">Cocktail Menu</div></div>
+									<div class="shot-card wide-shot"><img src="assets/patio-ordering-2026.jpg" alt="The Patio drink ordering cart"><div class="shot-caption">Online Drink Ordering</div></div>
 								</div>
 							</div>
 						</div>
@@ -869,15 +889,22 @@ body.gallery-open {
 									<h3>Andaleeb Enterprises</h3>
 								</div>
 								<p class="case-desc">
-									A polished website for Andaleeb Enterprises, a real estate investment company, built to showcase its property portfolio, community revitalization work, and company news in a clear, credible experience.
+									A modern luxury real estate website created to present the portfolio clearly to banks, development partners, and the surrounding community.
 								</p>
 								<div class="case-highlights">
-									<div class="case-highlight"><strong>Portfolio Showcase</strong><span>Property cards and category filters make retail, office, mixed-use, and residential investments easy to explore.</span></div>
-									<div class="case-highlight"><strong>Brand &amp; Credibility</strong><span>A video-led homepage, press coverage, and direct contact path present the company and its work with confidence.</span></div>
+									<div class="case-highlight"><strong>Investor-Ready Portfolio</strong><span>Properties are organized and presented for lenders and development partnerships.</span></div>
+									<div class="case-highlight"><strong>Visual Brand Story</strong><span>Strong photography and precise writing communicate the company's vision.</span></div>
 								</div>
-								<div class="case-tags">
-									<span>Real Estate</span><span>Property Portfolio</span><span>Brand Story</span><span>News &amp; Press</span><span>Responsive Design</span>
-								</div>
+								<ul class="case-features">
+									<li>Property categories and listings</li>
+									<li>Company news and press coverage</li>
+									<li>Lender and partner positioning</li>
+									<li>Mobile-friendly design</li>
+									<li>Search engine optimization</li>
+									<li>AI optimization</li>
+									<li>Google indexing</li>
+									<li>Bing indexing</li>
+								</ul>
 							</div>
 							<div class="shot-strip-wrap">
 								<div class="shot-scroll-label"><span>Project Screens</span><span>Scroll →</span></div>
@@ -900,15 +927,21 @@ body.gallery-open {
 									<a class="case-link" href="https://the881grabandgo.com/#first-timers" rel="noopener" target="_blank">Visit Site ↗</a>
 								</div>
 								<p class="case-desc">
-									A story-driven restaurant website built around 881 Grab &amp; Go's standout fried fish sandwiches, island comfort food, and Philly attitude. The experience explains the restaurant's roots, shows what makes it different, and sends hungry customers directly to Toast to order.
+									A modern restaurant website that tells the 881 Grab &amp; Go story, showcases signature food, and connects customers with online ordering.
 								</p>
 								<div class="case-highlights">
-									<div class="case-highlight"><strong>Direct Toast Ordering</strong><span>Clear ordering buttons connect customers directly to Toast from the homepage and featured dishes.</span></div>
-									<div class="case-highlight"><strong>Story &amp; Social Proof</strong><span>Brand storytelling, signature menu highlights, and real first-timer reactions show why the food stands apart.</span></div>
+									<div class="case-highlight"><strong>Modern Food Website</strong><span>A clean, visual experience built around the brand and its signature food.</span></div>
+									<div class="case-highlight"><strong>Delivery App Connections</strong><span>Customers can move directly from featured food to delivery ordering.</span></div>
 								</div>
-								<div class="case-tags">
-									<span>Restaurant Website</span><span>Toast Ordering</span><span>Brand Story</span><span>Menu Highlights</span><span>Social Proof</span><span>Mobile First</span>
-								</div>
+								<ul class="case-features">
+									<li>Menu and product showcase</li>
+									<li>Customer stories and social proof</li>
+									<li>Mobile-friendly design</li>
+									<li>Search engine optimization</li>
+									<li>AI optimization</li>
+									<li>Google indexing</li>
+									<li>Bing indexing</li>
+								</ul>
 							</div>
 							<div class="shot-strip-wrap">
 								<div class="shot-scroll-label"><span>Project Screens</span><span>Scroll →</span></div>
@@ -930,16 +963,23 @@ body.gallery-open {
 									<a class="case-link" href="https://lunchboxct.com/index.html" rel="noopener" target="_blank">Visit Site ↗</a>
 								</div>
 								<p class="case-desc">
-									A complete digital experience for Lunch Box, built around a bold custom lunch-box concept and a front page that tells the story behind the food. We also created the menu, catering experience, ordering tools, and a private admin portal for managing the business as it moves.
+									A bold food-truck website and operations system that presents the brand, supports ordering, and keeps customers informed as the truck changes locations.
 								</p>
 								<div class="case-highlights">
-									<div class="case-highlight"><strong>Self-Managed Menu</strong><span>The team can update food, pricing, photos, catering trays, specials, coupons, and ordering options from its admin portal.</span></div>
-									<div class="case-highlight"><strong>Brand Concept &amp; Story</strong><span>A distinctive Lunch Box visual system, founder story, and product presentation give the mobile restaurant a memorable identity.</span></div>
-									<div class="case-highlight"><strong>NFC Live Location</strong><span>An NFC tag opens a protected phone-based check-in that captures and publishes the truck's current pickup location for customers.</span></div>
+									<div class="case-highlight"><strong>Live Location Tracker</strong><span>Keeps the food truck's current pickup location visible to customers.</span></div>
+									<div class="case-highlight"><strong>Editable Menu Management</strong><span>The team can update food, pricing, photos, catering, and specials.</span></div>
 								</div>
-								<div class="case-tags">
-									<span>Custom Brand Concept</span><span>Online Menu</span><span>Admin Portal</span><span>NFC Check-In</span><span>Live Location</span><span>Catering</span><span>Mobile Ordering</span>
-								</div>
+								<ul class="case-features">
+									<li>Phone notifications for new orders</li>
+									<li>Customer order status page</li>
+									<li>Payment integration with the existing point-of-sale system</li>
+									<li>Online menu, ordering, and catering</li>
+									<li>Brand story and product presentation</li>
+									<li>Search engine optimization</li>
+									<li>AI optimization</li>
+									<li>Google indexing</li>
+									<li>Bing indexing</li>
+								</ul>
 							</div>
 							<div class="shot-strip-wrap">
 								<div class="shot-scroll-label"><span>Project Screens</span><span>Scroll →</span></div>
@@ -949,7 +989,7 @@ body.gallery-open {
 									<div class="shot-card wide-shot"><img src="assets/lunch-box-menu-2026.png" alt="Lunch Box online food menu"><div class="shot-caption">Online Menu</div></div>
 									<div class="shot-card wide-shot"><img src="assets/lunch-box-catering-2026.png" alt="Lunch Box catering menu"><div class="shot-caption">Catering</div></div>
 									<div class="shot-card wide-shot"><img src="assets/lunch-box-admin-overview-2026.png" alt="Lunch Box admin portal overview"><div class="shot-caption">Admin Overview</div></div>
-									<div class="shot-card wide-shot"><img src="assets/lunch-box-nfc-location-2026.png" alt="Lunch Box NFC truck location check-in system"><div class="shot-caption">NFC Truck Location</div></div>
+									<div class="shot-card wide-shot"><img src="assets/lunch-box-live-location-2026.png" alt="Lunch Box live truck location management"><div class="shot-caption">Live Truck Location</div></div>
 								</div>
 							</div>
 						</div>
@@ -964,15 +1004,23 @@ body.gallery-open {
 									<a class="case-link" href="https://theanchorllc.com" rel="noopener" target="_blank">Visit Site ↗</a>
 								</div>
 								<p class="case-desc">
-									A mission-led platform for men, fathers, mentors, and families, bringing public events, resources, podcasts, membership, and private community tools into one connected system.
+									A website made for the community, by the community, connecting members with events, volunteering, media, and one another.
 								</p>
 								<div class="case-highlights">
-									<div class="case-highlight"><strong>Feature Focus</strong><span>Public mission and event content, podcast publishing, secure member accounts, RSVPs, resources, community tools, and a private administration dashboard.</span></div>
-									<div class="case-highlight"><strong>What Makes It Different</strong><span>The public story and private community operations live in one system, allowing the organization to publish, connect members, and manage programs without splitting the experience across disconnected tools.</span></div>
+									<div class="case-highlight"><strong>Member Community Portal</strong><span>Members can volunteer, join events, and engage with community posts.</span></div>
+									<div class="case-highlight"><strong>Admin Publishing Hub</strong><span>The organization can publish podcasts, events, stories, and updates.</span></div>
 								</div>
-								<div class="case-tags">
-									<span>Community Platform</span><span>Member Portal</span><span>Podcast Publishing</span><span>Events &amp; RSVPs</span><span>Admin Dashboard</span><span>Secure Login</span>
-								</div>
+								<ul class="case-features">
+									<li>Volunteer and event participation</li>
+									<li>Post likes, comments, and engagement</li>
+									<li>Gym partner matching</li>
+									<li>Secure member logins</li>
+									<li>Community resources</li>
+									<li>Search engine optimization</li>
+									<li>AI optimization</li>
+									<li>Google indexing</li>
+									<li>Bing indexing</li>
+								</ul>
 							</div>
 							<div class="shot-strip-wrap">
 								<div class="shot-scroll-label"><span>Project Screens</span><span>Scroll →</span></div>
@@ -995,18 +1043,23 @@ body.gallery-open {
 									<a class="case-link" href="https://status.livingwordimprints.com" rel="noopener" target="_blank">Status Page ↗</a>
 								</div>
 								<p class="case-desc">
-									Digitized Living Word Imprints' invoice system with an edit, preview, and print/PDF workflow that saves customer and order information directly to the database. The system gives the team a cleaner way to manage returning customers, review order history, and keep invoice records organized.
-								</p>
-								<p class="case-desc">
-									We also built employee and manager logins with different permission tiers, inventory and revenue tracking, Resend email integration, and a customer-facing status page so customers can check orders themselves and call the store less.
+									A connected print-shop system for invoices, customers, inventory, staff, store information, and customer order updates.
 								</p>
 								<div class="case-highlights">
-									<div class="case-highlight"><strong>Feature Focus</strong><span>Invoices, saved customer records, inventory, revenue reporting, email updates, staff permissions, and live order status.</span></div>
-									<div class="case-highlight"><strong>What Makes It Different</strong><span>One connected operating system serves staff, managers, and customers while replacing scattered manual print-shop workflows.</span></div>
+									<div class="case-highlight"><strong>Invoice &amp; Customer System</strong><span>Invoices and customer records stay organized in one workspace.</span></div>
+									<div class="case-highlight"><strong>Customer Order Status</strong><span>Customers can check order progress without calling the store.</span></div>
 								</div>
-								<div class="case-tags">
-									<span>Invoice System</span><span>Customer Database</span><span>Role-Based Logins</span><span>Inventory Tracking</span><span>Revenue Reports</span><span>Resend Email</span><span>Status Page</span>
-								</div>
+								<ul class="case-features">
+									<li>Inventory tracking</li>
+									<li>Store locator</li>
+									<li>Automated customer emails</li>
+									<li>Employee and manager logins</li>
+									<li>Revenue reporting</li>
+									<li>Search engine optimization</li>
+									<li>AI optimization</li>
+									<li>Google indexing</li>
+									<li>Bing indexing</li>
+								</ul>
 							</div>
 							<div class="shot-strip-wrap">
 								<div class="shot-scroll-label"><span>Scroll →</span></div>
@@ -1051,15 +1104,25 @@ body.gallery-open {
 									<a class="case-link" href="https://rentmect.com/" rel="noopener" target="_blank">Visit Site ↗</a>
 								</div>
 								<p class="case-desc">
-									A complete rental platform connecting a public fleet and reservation experience with customer verification, document collection, payments, messaging, and a purpose-built operations center for the Rent Me CT team.
+									A complete vehicle-rental website and operations system that gives the team control over bookings, fleet activity, customers, payments, and daily administration.
 								</p>
 								<div class="case-highlights">
-									<div class="case-highlight"><strong>Feature Focus</strong><span>Live fleet availability, date-based reservations, Square payments, Twilio verification, license and insurance uploads, customer messaging, return monitoring, and admin booking tools.</span></div>
-									<div class="case-highlight"><strong>What Makes It Different</strong><span>The customer journey and daily rental operations share one system, giving staff a clear view of overdue returns, documents, deposits, bookings, and vehicle readiness.</span></div>
+									<div class="case-highlight"><strong>Complete Rental Operations</strong><span>Bookings, fleet activity, returns, deposits, and vehicle readiness stay in one system.</span></div>
+									<div class="case-highlight"><strong>Driver &amp; Document Verification</strong><span>Driver licenses and insurance documents can be reviewed before pickup.</span></div>
 								</div>
-								<div class="case-tags">
-									<span>Supabase</span><span>Booking System</span><span>Admin Portal</span><span>Client Portal</span><span>Local SEO</span>
-								</div>
+								<ul class="case-features">
+									<li>Automated customer emails</li>
+									<li>Toll tracking</li>
+									<li>Maintenance tracking</li>
+									<li>Online payment integration</li>
+									<li>Employee logins</li>
+									<li>Admin audit history</li>
+									<li>Live fleet and booking management</li>
+									<li>Search engine optimization</li>
+									<li>AI optimization</li>
+									<li>Google indexing</li>
+									<li>Bing indexing</li>
+								</ul>
 							</div>
 							<div class="shot-strip-wrap">
 								<div class="shot-scroll-label"><span>Project Screens</span><span>Scroll →</span></div>
@@ -1082,17 +1145,23 @@ body.gallery-open {
 									<h3>Car Craft Auto Body &amp; Towing</h3>
 									<a class="case-link" href="https://carcraftautobodytowing.com/" rel="noopener" target="_blank">Visit Site ↗</a>
 								</div>
-				<p class="case-desc">
-					A guided photo-estimate system lets drivers send vehicle damage from their phone before visiting. Since launch, it has increased inbound leads by <strong>35%</strong> and gives the shop better information for follow-up.
-				</p>
+								<p class="case-desc">
+									A lead-generating auto body website and admin system that helps customers request estimates and helps the team manage daily work.
+								</p>
 								<div class="case-highlights">
-									<div class="case-highlight"><strong>Submit Your Photos</strong><span>Drivers send damage photos from their phone before visiting the shop.</span></div>
-									<div class="case-highlight"><strong>Instant Pushover Alerts</strong><span>The shop is notified as soon as a new estimate arrives.</span></div>
-									<div class="case-highlight"><strong>Private Dashboard</strong><span>Estimate leads, follow-ups, appointments, and inventory in one secure workspace.</span></div>
+									<div class="case-highlight"><strong>Online Estimate Leads</strong><span>Customers can submit vehicle details and damage photos online.</span></div>
+									<div class="case-highlight"><strong>Admin Time Clock</strong><span>Employees can clock in and out through the business admin system.</span></div>
 								</div>
-								<div class="case-tags">
-									<span>Photo Estimates</span><span>Pushover Alerts</span><span>35% Lead Growth</span><span>Lead Dashboard</span><span>Inventory Management</span><span>Local SEO</span>
-								</div>
+								<ul class="case-features">
+									<li>Phone notifications for new leads</li>
+									<li>Appointment and lead management</li>
+									<li>Inventory management</li>
+									<li>Private admin portal</li>
+									<li>Search engine optimization</li>
+									<li>AI optimization</li>
+									<li>Google indexing</li>
+									<li>Bing indexing</li>
+								</ul>
 							</div>
 							<div class="shot-strip-wrap">
 								<div class="shot-scroll-label"><span>Project Screens</span><span>Scroll →</span></div>
@@ -1115,15 +1184,23 @@ body.gallery-open {
 									<a class="case-link" href="https://farajsoftwaresolutions.com" rel="noopener" target="_blank">Visit Site ↗</a>
 								</div>
 								<p class="case-desc">
-									Created the website, client portal, and admin portal for a software business, including Stripe payment integration and a web app for tracking labor costs. We also built a live market tracker using Federal Reserve API data, plus SEO work including internal links, meta tags, schema, llms.txt, sitemap, FAQs, indexing support, and mobile optimization.
+									A software company website built for small businesses looking to use custom tools to improve pricing, scheduling, and profitability.
 								</p>
 								<div class="case-highlights">
-									<div class="case-highlight"><strong>Feature Focus</strong><span>Stripe payments, secure client and admin spaces, a labor-cost tool, and live economic data from the Federal Reserve API.</span></div>
-									<div class="case-highlight"><strong>What Makes It Different</strong><span>The site demonstrates the company's technical capability through useful live products, not just a static list of software services.</span></div>
+									<div class="case-highlight"><strong>Small Business Web Apps</strong><span>Custom tools support smarter pricing, scheduling, and business decisions.</span></div>
+									<div class="case-highlight"><strong>Custom Market Signals</strong><span>Key economic data is organized into clear business signals.</span></div>
 								</div>
-								<div class="case-tags">
-									<span>Supabase</span><span>Admin Portal</span><span>Client Portal</span><span>Stripe Payments</span><span>Labor Cost App</span><span>Federal Reserve API</span><span>SEO</span>
-								</div>
+								<ul class="case-features">
+									<li>Online payment processing</li>
+									<li>Secure client logins</li>
+									<li>Secure admin logins</li>
+									<li>Restaurant pricing tool</li>
+									<li>Smart schedule builder</li>
+									<li>Search engine optimization</li>
+									<li>AI optimization</li>
+									<li>Google indexing</li>
+									<li>Bing indexing</li>
+								</ul>
 							</div>
 							<div class="shot-strip-wrap">
 								<div class="shot-scroll-label"><span>Scroll →</span></div>
@@ -1135,8 +1212,8 @@ body.gallery-open {
 										</div>
 
 										<div class="shot-card">
-											<img src="assets/faraj-market-tracker.png" alt="Live API Tracker">
-											<div class="shot-caption">Live API Tracker</div>
+											<img src="assets/faraj-market-tracker.png" alt="Faraj Software Solutions custom market signals dashboard">
+											<div class="shot-caption">Market Signals</div>
 										</div>
 
 										<div class="shot-card">
@@ -1163,16 +1240,22 @@ body.gallery-open {
 									<a class="case-link" href="https://www.cr8autos.com" rel="noopener" target="_blank">Visit Site ↗</a>
 								</div>
 								<p class="case-desc">
-									Built the full front-end website, booking system, admin portal, and online invoice generator. Used Supabase for the database and authentication setup. Added local SEO work, internal links, meta tags, FAQs, schema, sitemap, indexing support, and mobile optimization.
+									An auto body website and business system that turns online interest into organized estimates, appointments, customers, and invoices.
 								</p>
 								<div class="case-highlights">
-									<div class="case-highlight"><strong>Instant Pushover Alerts</strong><span>Every new booking alerts the team immediately.</span></div>
-									<div class="case-highlight"><strong>Booking To Invoice</strong><span>Appointments, admin records, and invoice creation work together.</span></div>
-									<div class="case-highlight"><strong>Google Search Setup</strong><span>Local pages, schema, sitemap submission, indexing, and mobile SEO.</span></div>
+									<div class="case-highlight"><strong>Invoice Generator</strong><span>The team can create and manage professional customer invoices.</span></div>
+									<div class="case-highlight"><strong>Online Estimates</strong><span>Customers can request an estimate before visiting the shop.</span></div>
 								</div>
-								<div class="case-tags">
-									<span>Pushover Alerts</span><span>Booking System</span><span>Admin Portal</span><span>Invoice Generator</span><span>Google Indexing</span><span>Local SEO</span>
-								</div>
+								<ul class="case-features">
+									<li>Appointment booking</li>
+									<li>Estimate lead management</li>
+									<li>Customer records</li>
+									<li>Private admin portal</li>
+									<li>Search engine optimization</li>
+									<li>AI optimization</li>
+									<li>Google indexing</li>
+									<li>Bing indexing</li>
+								</ul>
 							</div>
 							<div class="shot-strip-wrap">
 								<div class="shot-scroll-label"><span>Scroll →</span></div>
@@ -1207,15 +1290,38 @@ body.gallery-open {
 			</div>
 		</section>
 
-		<section class="section social-work-section" id="project-screenshots">
+		<section class="section social-work-section marketing-services-section" id="marketing-services">
 			<div class="section-inner">
-				<div class="section-label">Project Screenshots</div>
-				<h2 class="section-title fade-up">Content We've Created</h2>
-				<p class="section-sub fade-up">
-					Video content designed to make brands look active, polished, and professional across Instagram and social platforms.
+				<div class="section-label">Marketing Services</div>
+				<h2 class="section-title fade-up">Build attention around the business.</h2>
+				<p class="section-sub marketing-services-intro fade-up">
+					Focused campaigns, real-world activations, and original content that give customers a reason to notice, visit, and return.
 				</p>
 
-				<div class="social-video-grid">
+				<div class="marketing-service-grid">
+					<article class="marketing-service-card fade-up" id="cross-promotions">
+						<span class="marketing-service-kicker">Cross Promotions</span>
+						<h3>Bring the right audiences together.</h3>
+						<p>Collaborative campaigns that connect complementary local brands and create a stronger reason for both audiences to engage.</p>
+					</article>
+
+					<article class="marketing-service-card fade-up" id="events-marketing" style="transition-delay:.12s">
+						<span class="marketing-service-kicker">Events</span>
+						<h3>Turn an occasion into momentum.</h3>
+						<p>Event promotion built around a clear message, coordinated rollout, and content that extends the moment beyond the day itself.</p>
+					</article>
+				</div>
+
+				<div class="marketing-content-block" id="content-marketing">
+					<div class="marketing-content-heading fade-up">
+						<div>
+							<span class="marketing-service-kicker">Content</span>
+							<h3>Give people something worth watching.</h3>
+						</div>
+						<p>Brand-led short-form content designed to show the business clearly, hold attention, and support every campaign around it.</p>
+					</div>
+
+					<div class="social-video-grid">
 					<a class="social-video-card fade-up" href="https://www.instagram.com/reel/DXediSIAS3N/?igsh=YmZoaWl1b3ptbHZj" rel="noopener" target="_blank" aria-label="Watch Instagram video 1">
 						<img alt="Social media video cover 1" src="video-cover-1.png" />
 						<span class="play-button" aria-hidden="true">
@@ -1254,6 +1360,7 @@ body.gallery-open {
 							<span>Watch on Instagram</span>
 						</div>
 					</a>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -1295,7 +1402,7 @@ body.gallery-open {
 					<div class="footer-col-title">Our Work</div>
 					<ul>
 						<li><a href="#websites">Websites</a></li>
-						<li><a href="#project-screenshots">Project Screenshots</a></li>
+						<li><a href="#marketing-services">Marketing Services</a></li>
 						<li><a href="https://cr8autos.com" rel="noopener" target="_blank">CR8 Autos</a></li>
 					</ul>
 				</div>

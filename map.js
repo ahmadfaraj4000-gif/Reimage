@@ -11,7 +11,7 @@ const businesses = [
     action: "Request a photo estimate",
     hotspot: "Start photo estimate",
     website: "https://carcraftautobodytowing.com/",
-    gallery: ["assets/carcraft-home-new.png", "assets/carcraft-photo-estimate.png", "assets/carcraft-inventory.png"]
+    gallery: ["assets/carcraft-home-new.png", "assets/carcraft-photo-estimate.png", "assets/carcraft-admin-dashboard.png"]
   },
   {
     id: "rentme",
@@ -25,7 +25,7 @@ const businesses = [
     action: "Browse available rentals",
     hotspot: "Reserve a vehicle",
     website: "https://rentmect.com/",
-    gallery: ["assets/rentme-home-new.png", "assets/rentme-fleet-new.png", "assets/rentme-client.png"]
+    gallery: ["assets/rentme-home-2026.png", "assets/rentme-live-fleet-2026.png", "assets/rentme-vehicle-details-2026.png"]
   },
   {
     id: "fusion",
@@ -39,7 +39,7 @@ const businesses = [
     action: "View menu & order",
     hotspot: "Open the menu",
     website: "https://fusionhealthjuicebar.com",
-    gallery: ["assets/fusion-health-home.png", "assets/fusion-health-menu.png", "assets/fusion-health-doordash.png"]
+    gallery: ["assets/fusion-health-home.png", "assets/fusion-health-menu.png", "assets/fusion-health-delivery-apps.png"]
   },
   {
     id: "patio",
@@ -52,8 +52,8 @@ const businesses = [
     description: "A full hospitality platform connecting guests to the venue, cocktails, events, a live menu, and space-booking experiences.",
     action: "Explore the experience",
     hotspot: "View venue experience",
-    website: "our-work.html#websites",
-    gallery: ["assets/patio-experience.png", "assets/patio-home.png", "assets/patio-menu.png"]
+    website: "https://thepatioct.com",
+    gallery: ["assets/patio-home-2026.jpg", "assets/patio-drinks-2026.jpg", "assets/patio-ordering-2026.jpg"]
   },
   {
     id: "livingword",
@@ -81,7 +81,7 @@ const businesses = [
     action: "Request a private ride",
     hotspot: "Start a reservation",
     website: "https://empireeliterides.com",
-    gallery: ["assets/empire-elite-home.png", "assets/empire-elite-booking.png", "assets/empire-elite-admin.png"]
+    gallery: ["assets/empire-elite-pricing-2026.png", "assets/empire-elite-booking-2026.png", "assets/empire-elite-admin-dashboard-2026.png"]
   }
 ];
 
