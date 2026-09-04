@@ -114,9 +114,11 @@ body.marketplace-page .navbar .nav-links a.active {
   position: relative;
   z-index: 1;
   display: flex;
+  min-height: clamp(500px, 68svh, 640px);
   flex-direction: column;
   align-items: center;
-  padding: clamp(84px, 9vw, 126px) 0 clamp(78px, 8vw, 108px);
+  justify-content: center;
+  padding: clamp(32px, 5vh, 56px) 0;
   text-align: center;
 }
 
@@ -139,14 +141,25 @@ body.marketplace-page .navbar .nav-links a.active {
   font-style: normal;
 }
 
-.market-hero h1 { margin-inline: auto; }
+.market-hero h1 {
+  max-width: 17ch;
+  margin-inline: auto;
+  font-family: var(--site-font-apple);
+  font-size: clamp(2.5rem, 3.15vw, 3.4rem);
+  font-weight: 760;
+  letter-spacing: .012em;
+  line-height: 1.04;
+  word-spacing: .08em;
+}
 
 .market-hero__copy {
   max-width: 730px;
-  margin: 28px auto 38px;
+  margin: 20px auto 28px;
   color: var(--market-muted);
-  font-size: clamp(1.05rem, 2vw, 1.3rem);
-  line-height: 1.65;
+  font-size: clamp(.88rem, .95vw, 1rem);
+  letter-spacing: .015em;
+  line-height: 1.62;
+  word-spacing: .07em;
 }
 
 .market-search {
@@ -759,9 +772,9 @@ body.marketplace-page .navbar .nav-links a.active {
 @media (max-width: 760px) {
   .market-wrap { width: min(100% - 28px, 1200px); }
   body.marketplace-page .navbar { width: calc(100% - 24px) !important; }
-  .market-hero__inner { padding: 72px 0 76px; }
-  .market-hero h1 { font-size: clamp(2.9rem, 14vw, 4.5rem); }
-  .market-hero__copy { margin-top: 22px; }
+  .market-hero__inner { min-height: clamp(430px, 68svh, 560px); padding: clamp(28px, 5vh, 44px) 0; }
+  .market-hero h1 { font-size: clamp(2.25rem, 6.5vw, 3rem); word-spacing: .075em; }
+  .market-hero__copy { margin-top: 18px; }
   .market-search { grid-template-columns: 22px 1fr; padding: 8px 14px; border-radius: 16px; }
   .market-search button { grid-column: 1 / -1; width: 100%; }
   .market-trust { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 34px; }
@@ -796,6 +809,9 @@ body.marketplace-page .navbar .nav-links a.active {
 }
 
 @media (max-width: 440px) {
+  .market-hero__inner { min-height: clamp(430px, 68svh, 520px); padding: 24px 0; }
+  .market-hero h1 { font-size: clamp(1.95rem, 9vw, 2.4rem); word-spacing: .065em; }
+  .market-hero__copy { font-size: .88rem; line-height: 1.58; }
   .discovery-bar .market-wrap { grid-template-columns: minmax(0, 1fr) 132px; }
   .location-select select { width: 132px; }
   .market-section { padding: 64px 0; }

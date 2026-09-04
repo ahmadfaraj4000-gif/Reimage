@@ -110,7 +110,7 @@ function head({ title, description, canonical, image = `${siteUrl}/assets/reimag
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/public-shell.css?v=20260904-4">
-  <link rel="stylesheet" href="/marketplace.css?v=20260904-3">
+  <link rel="stylesheet" href="/marketplace.css?v=20260904-4">
   ${schema.map((item) => `<script type="application/ld+json">${escapeJson(item)}</script>`).join('\n  ')}
 </head>`;
 }
