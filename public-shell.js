@@ -16,6 +16,7 @@
     // menu a second time. The public shell is the single mobile-nav controller.
     const menuButton = currentMenuButton.cloneNode(true);
     currentMenuButton.replaceWith(menuButton);
+    menuButton.type = 'button';
 
     const closeMenu = () => {
       navLinks.classList.remove('open');
@@ -31,6 +32,7 @@
 
     menuButton.setAttribute('aria-expanded', String(navLinks.classList.contains('open')));
     menuButton.addEventListener('click', (event) => {
+      event.preventDefault();
       event.stopPropagation();
       toggleMenu();
     });

@@ -250,13 +250,10 @@
   </footer>
 
   <script>
-    const menuBtn=document.getElementById('menuBtn'),navLinks=document.getElementById('navLinks');
     const learnMoreBtn=document.getElementById('learnMoreBtn'),productDetails=document.getElementById('productDetails');
-    menuBtn?.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open));});
-    document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');menuBtn?.setAttribute('aria-expanded','false');}));
     learnMoreBtn?.addEventListener('click',()=>{const opening=productDetails.hidden;productDetails.hidden=!opening;learnMoreBtn.setAttribute('aria-expanded',String(opening));learnMoreBtn.textContent=opening?'Hide details':'Learn more';if(opening)requestAnimationFrame(()=>productDetails.scrollIntoView({behavior:'smooth',block:'start'}));});
     document.getElementById('yr').textContent=new Date().getFullYear();
   </script>
-<script src="public-shell.js?v=20260831-1"></script>
+<script src="public-shell.js?v=20260904-2"></script>
 </body>
 </html>
