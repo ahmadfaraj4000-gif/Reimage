@@ -675,15 +675,59 @@ body.public-unified.work-page .marketing-content-heading p {
 }
 
 body.public-unified.work-page .marketing-content-block .social-video-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
   max-width: none !important;
   gap: 20px !important;
   margin: 0 !important;
 }
 
 body.public-unified.work-page .marketing-content-block .social-video-card {
-  max-width: 340px !important;
-  justify-self: center !important;
+  flex: 0 1 calc((100% - 60px) / 4) !important;
+  width: calc((100% - 60px) / 4) !important;
+  max-width: 274px !important;
+}
+
+body.public-unified.work-page .marketing-content-block .social-video-card.has-native-play .play-button {
+  display: none !important;
+}
+
+body.public-unified.work-page .contact .work-cta-content {
+  display: block !important;
+  width: min(980px, 100%) !important;
+  max-width: 980px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+
+body.public-unified.work-page .contact .work-cta-content .section-label {
+  display: flex !important;
+  width: 100% !important;
+  justify-content: center !important;
+}
+
+body.public-unified.work-page .contact .work-cta-content .section-title {
+  max-width: 16ch !important;
+  margin: 0 auto 20px !important;
+}
+
+body.public-unified.work-page .contact .work-cta-content .section-sub {
+  max-width: 720px !important;
+  margin: 0 auto !important;
+}
+
+body.public-unified.work-page .contact .work-cta-content .hero-btns {
+  justify-content: center !important;
+  margin: 27px auto 0 !important;
+}
+
+@media (min-width: 821px) and (max-width: 1100px) {
+  body.public-unified.work-page .marketing-content-block .social-video-card {
+    flex-basis: calc((100% - 40px) / 3) !important;
+    width: calc((100% - 40px) / 3) !important;
+  }
 }
 
 body.public-unified .case-study-list {
@@ -1531,6 +1575,24 @@ body.public-unified :focus-visible {
     padding: 66px 18px !important;
   }
 
+  body.public-unified.work-page .marketing-services-section .section-inner,
+  body.public-unified.work-page .marketing-service-grid,
+  body.public-unified.work-page .marketing-service-card,
+  body.public-unified.work-page .marketing-content-block,
+  body.public-unified.work-page .contact .work-cta-content {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  body.public-unified.work-page .marketing-services-section h2,
+  body.public-unified.work-page .marketing-services-section h3,
+  body.public-unified.work-page .marketing-services-section p,
+  body.public-unified.work-page .contact .work-cta-content h2,
+  body.public-unified.work-page .contact .work-cta-content p {
+    overflow-wrap: anywhere !important;
+  }
+
   body.public-unified.work-page .marketing-services-section .section-title {
     max-width: 100% !important;
     font-size: clamp(2rem, 6.5vw, 2.5rem) !important;
@@ -1590,10 +1652,18 @@ body.public-unified :focus-visible {
   }
 
   body.public-unified.work-page .marketing-content-block .social-video-grid {
-    grid-template-columns: minmax(0, 1fr) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
     max-width: 310px !important;
     gap: 16px !important;
     margin: 0 auto !important;
+  }
+
+  body.public-unified.work-page .marketing-content-block .social-video-card {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    max-width: 310px !important;
   }
 
   body.public-unified.work-page .shot-card,
