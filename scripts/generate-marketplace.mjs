@@ -19,6 +19,22 @@ const categoryName = (slug) => categoryMap.get(slug)?.name || slug;
 const categoryUrl = (slug) => `/marketplace/categories/${slug}/`;
 const profileUrl = (slug) => `/marketplace/businesses/${slug}/`;
 
+const logoSources = {
+  'fusion-health-juice-bar': { src: 'assets/fusion-health-home.png', width: 1672, height: 941, viewBox: '350 8 110 66' },
+  '881-grab-and-go': { src: 'assets/881-grab-go-home-2026.png', width: 1920, height: 989, viewBox: '375 9 188 58' },
+  'the-patio': { src: 'assets/patio-home-2026.jpg', width: 1672, height: 941, viewBox: '110 7 130 73' },
+  'lunch-box': { src: 'assets/lunch-box-home-2026.png', width: 1920, height: 989, viewBox: '100 5 92 66' },
+  'car-craft-auto-body-towing': { src: 'assets/carcraft-home-new.png', width: 1672, height: 941, viewBox: '202 10 104 58' },
+  'rent-me-ct': { src: 'assets/rentme-home-2026.png', width: 1920, height: 989, viewBox: '388 40 150 55' },
+  'cr8-autos': { src: 'assets/cr8-book-appointment-2026.png', width: 1920, height: 989, viewBox: '45 9 150 75' },
+  'empire-elite-rides': { src: 'assets/empire-elite-pricing-2026.png', width: 1920, height: 989, viewBox: '88 23 225 58' },
+  'techniq-skin-beauty': { src: 'assets/techniq-home.png', width: 1920, height: 989, viewBox: '398 14 310 65' },
+  'living-word-imprints': { src: 'assets/living-word-status-page.png', width: 2938, height: 1667, viewBox: '1205 475 530 205' },
+  'andaleeb-enterprises': { src: 'assets/andaleeb-home-2026.png', width: 1920, height: 989, viewBox: '58 20 245 51' },
+  'the-anchor-collective': { src: 'assets/anchor-home.png', width: 1672, height: 941, viewBox: '308 11 305 48' },
+  'faraj-software-solutions': { src: 'assets/faraj-home.png', width: 1920, height: 989, viewBox: '388 7 286 65' }
+};
+
 function validateData() {
   const categorySlugs = new Set();
   const businessSlugs = new Set();
@@ -94,7 +110,7 @@ function head({ title, description, canonical, image = `${siteUrl}/assets/reimag
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/public-shell.css?v=20260904-4">
-  <link rel="stylesheet" href="/marketplace.css?v=20260904-2">
+  <link rel="stylesheet" href="/marketplace.css?v=20260904-3">
   ${schema.map((item) => `<script type="application/ld+json">${escapeJson(item)}</script>`).join('\n  ')}
 </head>`;
 }
@@ -108,14 +124,24 @@ function directionsUrl(business) {
   return business.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressText(business))}` : '';
 }
 
+function businessLogo(business) {
+  const logo = logoSources[business.slug];
+  const title = `${business.name} logo`;
+  if (logo) {
+    return `<svg class="business-logo" viewBox="${logo.viewBox}" role="img" aria-label="${escapeHtml(title)}" preserveAspectRatio="xMidYMid meet"><image href="/${logo.src}" width="${logo.width}" height="${logo.height}" decoding="async"></image></svg>`;
+  }
+  const initials = business.name.split(/\s+/).filter(Boolean).slice(0, 2).map((word) => word[0]).join('').toUpperCase();
+  return `<span class="business-wordmark" role="img" aria-label="${escapeHtml(title)}"><span aria-hidden="true">${escapeHtml(initials)}</span><strong>${escapeHtml(business.name)}</strong></span>`;
+}
+
 function card(business, options = {}) {
   const primary = categoryMap.get(business.categories[0]);
   const isBeyond = business.regionRank === 4;
   const featured = options.featured;
   const searchText = [business.name, business.locationLabel, business.shortBio, ...business.specialties, ...business.tags, ...business.categories.map(categoryName)].join(' ').toLowerCase();
   return `<article class="business-card${featured ? ' business-card--featured' : ''}" data-business-card data-slug="${business.slug}" data-primary-category="${business.categories[0]}" data-categories="${business.categories.join(' ')}" data-location="${(business.locations || [business.locationKey]).join(' ')}" data-rank="${business.regionRank}" data-search="${escapeHtml(searchText)}">
-    <a class="business-card__media" href="${profileUrl(business.slug)}" aria-label="View ${escapeHtml(business.name)} profile">
-      <img src="${business.image.startsWith('http') ? business.image : `/${business.image}`}" alt="${escapeHtml(business.imageAlt)}" width="960" height="600" loading="lazy" decoding="async">
+    <a class="business-card__media business-card__logo" href="${profileUrl(business.slug)}" aria-label="View ${escapeHtml(business.name)} profile">
+      <span class="business-logo-stage">${businessLogo(business)}</span>
       ${featured ? `<span class="feature-badge">${escapeHtml(business.featuredLabel || 'Featured')}</span>` : ''}
       ${isBeyond ? '<span class="area-badge">Beyond Greater Hartford</span>' : ''}
     </a>
@@ -166,8 +192,7 @@ function generateHub() {
   const body = `<main id="main-content">
     <section class="market-hero">
       <div class="market-wrap market-hero__inner">
-        <p class="eyebrow"><span></span> Hartford Marketplace by RE IMAGE</p>
-        <h1>Find Hartford’s best<br><em>local businesses.</em></h1>
+        <h1>Find Hartford’s best <em>local businesses.</em></h1>
         <p class="market-hero__copy">From restaurants and fresh juices to rental cars, auto body repair, skincare, braiding, printing, and more—start here.</p>
         <form class="market-search" id="marketSearchForm" role="search">
           <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m1.35-5.65a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
@@ -175,15 +200,13 @@ function generateHub() {
           <input id="marketSearch" name="q" type="search" autocomplete="off" placeholder="Search food, cars, skincare, printing…">
           <button type="submit">Search</button>
         </form>
-        <div class="quick-searches" aria-label="Popular searches"><span>Popular:</span><button type="button" data-quick-search="peanut punch">Peanut Punch</button><button type="button" data-quick-search="online estimate">Online estimates</button><button type="button" data-quick-search="braids">Braids</button><button type="button" data-quick-search="quesabirria">Quesabirria</button></div>
-        <div class="market-trust"><span><strong>${hartfordBusinesses.length}</strong> Hartford-area businesses</span><span><strong>${data.categories.length}</strong> service categories</span><span><strong>100%</strong> direct business links</span></div>
       </div>
     </section>
 
     <section class="discovery-bar" aria-label="Marketplace filters">
       <div class="market-wrap">
-        <div class="filter-block"><span class="filter-label">Explore by service</span><div class="chip-row" id="categoryFilters"><button class="filter-chip active" type="button" data-category="all" aria-pressed="true">All businesses</button>${data.categories.map((category) => `<button class="filter-chip" type="button" data-category="${category.slug}" aria-pressed="false">${escapeHtml(category.shortName)}</button>`).join('')}</div></div>
-        <div class="filter-block filter-block--locations"><span class="filter-label">Choose an area</span><label class="location-select"><span class="visually-hidden">Filter by area</span><select id="locationFilter"><option value="all">All locations</option><option value="hartford">Hartford</option><option value="west-hartford">West Hartford</option><option value="east-hartford">East Hartford</option><option value="manchester">Manchester</option><option value="farmington">Farmington</option><option value="other-connecticut">Other Connecticut</option><option value="beyond">Beyond Greater Hartford</option></select></label></div>
+        <div class="filter-block"><span class="visually-hidden">Explore by service</span><div class="chip-row" id="categoryFilters"><button class="filter-chip active" type="button" data-category="all" aria-pressed="true">All businesses</button>${data.categories.map((category) => `<button class="filter-chip" type="button" data-category="${category.slug}" aria-pressed="false">${escapeHtml(category.shortName)}</button>`).join('')}</div></div>
+        <div class="filter-block filter-block--locations"><label class="location-select"><span class="visually-hidden">Filter by area</span><select id="locationFilter"><option value="all">All locations</option><option value="hartford">Hartford</option><option value="west-hartford">West Hartford</option><option value="east-hartford">East Hartford</option><option value="manchester">Manchester</option><option value="farmington">Farmington</option><option value="other-connecticut">Other Connecticut</option><option value="beyond">Beyond Greater Hartford</option></select></label></div>
       </div>
     </section>
 
@@ -256,7 +279,7 @@ function generateProfile(business) {
   const related = data.businesses.filter((item) => item.slug !== business.slug && item.categories.some((slug) => business.categories.includes(slug))).sort((a, b) => a.regionRank - b.regionRank).slice(0, 3);
   const address = addressText(business);
   const body = `<main id="main-content" data-profile-business="${business.slug}" data-profile-category="${business.categories[0]}">
-    <section class="profile-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Marketplace</a><span>/</span><a href="${categoryUrl(primary.slug)}">${escapeHtml(primary.shortName)}</a><span>/</span><span aria-current="page">${escapeHtml(business.name)}</span></nav><div class="profile-hero__grid"><div class="profile-hero__media"><img src="${business.image.startsWith('http') ? business.image : `/${business.image}`}" alt="${escapeHtml(business.imageAlt)}" width="1200" height="750" decoding="async"><span>${escapeHtml(business.locationLabel)}</span></div><div class="profile-hero__copy"><p class="eyebrow">${escapeHtml(primary.name)}</p><h1>${escapeHtml(business.name)}</h1><p class="profile-lead">${escapeHtml(business.longBio)}</p><ul class="specialty-list specialty-list--large">${business.specialties.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul><div class="profile-actions"><a class="button button--primary" href="${business.ctaUrl}" target="_blank" rel="noopener">${escapeHtml(business.ctaLabel)} ↗</a>${business.address ? `<a class="button button--outline" href="${directionsUrl(business)}" target="_blank" rel="noopener">Get directions</a>` : ''}</div></div></div></div></section>
+    <section class="profile-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Marketplace</a><span>/</span><a href="${categoryUrl(primary.slug)}">${escapeHtml(primary.shortName)}</a><span>/</span><span aria-current="page">${escapeHtml(business.name)}</span></nav><div class="profile-hero__grid"><div class="profile-hero__media profile-hero__logo"><span class="business-logo-stage">${businessLogo(business)}</span><span class="profile-location">${escapeHtml(business.locationLabel)}</span></div><div class="profile-hero__copy"><p class="eyebrow">${escapeHtml(primary.name)}</p><h1>${escapeHtml(business.name)}</h1><p class="profile-lead">${escapeHtml(business.longBio)}</p><ul class="specialty-list specialty-list--large">${business.specialties.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul><div class="profile-actions"><a class="button button--primary" href="${business.ctaUrl}" target="_blank" rel="noopener">${escapeHtml(business.ctaLabel)} ↗</a>${business.address ? `<a class="button button--outline" href="${directionsUrl(business)}" target="_blank" rel="noopener">Get directions</a>` : ''}</div></div></div></div></section>
     <section class="profile-details"><div class="market-wrap profile-details__grid"><div class="profile-story"><p class="eyebrow">What they do</p><h2>A closer look at ${escapeHtml(business.name)}.</h2><p>${escapeHtml(business.longBio)}</p><h3>Specialties and services</h3><div class="tag-cloud">${[...business.specialties, ...business.tags].map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div></div><aside class="profile-info"><p class="profile-info__label">Business information</p><dl><div><dt>${business.address ? 'Address' : 'Service area'}</dt><dd>${escapeHtml(address)}</dd></div>${business.secondaryAddress ? `<div><dt>Second location</dt><dd>${escapeHtml(business.secondaryAddress)}</dd></div>` : ''}${business.phone ? `<div><dt>Phone</dt><dd><a href="tel:${business.phone.replace(/[^\d+]/g, '')}">${escapeHtml(business.phone)}</a></dd></div>` : ''}<div><dt>Official website</dt><dd><a href="${business.website}" target="_blank" rel="noopener">Visit ${escapeHtml(business.name)} ↗</a></dd></div><div><dt>Information verified</dt><dd><time datetime="${data.verifiedAt}">${formatDate(data.verifiedAt)}</time></dd></div></dl>${business.secondaryCtaUrl ? `<a class="button button--outline button--full" href="${business.secondaryCtaUrl}" target="_blank" rel="noopener">${escapeHtml(business.secondaryCtaLabel)}</a>` : ''}</aside></div></section>
     <section class="profile-faq"><div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Quick answers</p><h2>Know before you go.</h2></div></div><div class="faq-grid">${business.faq.map(([question, answer]) => `<details><summary>${escapeHtml(question)}<span aria-hidden="true">+</span></summary><p>${escapeHtml(answer)}</p></details>`).join('')}</div></div></section>
     ${related.length ? `<section class="market-section related-section"><div class="market-wrap"><div class="directory-heading"><div><p class="eyebrow">Keep exploring</p><h2>More ${escapeHtml(primary.shortName)}</h2></div><a class="text-link" href="${categoryUrl(primary.slug)}">View category →</a></div><div class="business-grid">${related.map((item) => card(item)).join('')}</div></div></section>` : ''}
