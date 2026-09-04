@@ -78,15 +78,16 @@ function navigation(active = 'marketplace') {
 }
 
 function footer() {
-  return `<footer class="marketplace-footer">
-    <div class="marketplace-footer__top">
-      <div class="marketplace-footer__brand"><a href="/index.html" aria-label="RE IMAGE homepage"><img src="/assets/reimage-logo-2026-transparent.png" alt="RE IMAGE"></a><p>Helping people discover the businesses that keep Hartford moving.</p></div>
-      <div><h2>Explore</h2><a href="/marketplace.html">All businesses</a>${data.categories.slice(0, 6).map((category) => `<a href="${categoryUrl(category.slug)}">${escapeHtml(category.shortName)}</a>`).join('')}</div>
-      <div><h2>More services</h2>${data.categories.slice(6).map((category) => `<a href="${categoryUrl(category.slug)}">${escapeHtml(category.shortName)}</a>`).join('')}<a href="/our-work.html">RE IMAGE portfolio</a></div>
-      <div><h2>For business owners</h2><a href="/start-with-us.html?service=Marketplace%20Listing">Get listed</a><a href="/start-with-us.html?service=Featured%20Marketplace%20Placement">Feature your business</a><a href="/start-with-us.html">Contact RE IMAGE</a></div>
-    </div>
-    <div class="marketplace-footer__bottom"><span>© ${new Date().getFullYear()} RE IMAGE Business Solutions.</span><span>Hartford, Connecticut</span></div>
+  return `<footer class="minimal-footer public-site-footer">
+    <a class="new-brand" href="/index.html#home" aria-label="RE IMAGE homepage"><img src="/assets/reimage-logo-2026-transparent.png" alt="RE IMAGE"></a>
+    <p>Custom business operating systems, built around you.</p>
+    <div><a href="/website-development.html">Systems</a><a href="/products.html">Products</a><a href="/marketplace.html">Marketplace</a><a href="/our-work.html">Portfolio</a><a href="/start-with-us.html">Contact</a><a href="https://login.reimagebs.com">Client Login</a></div>
+    <small>© ${new Date().getFullYear()} RE IMAGE Business Solutions. All rights reserved.</small>
   </footer>`;
+}
+
+function categoryDirectory() {
+  return `<nav class="marketplace-category-directory" aria-label="Marketplace categories"><div class="market-wrap"><strong>Browse Marketplace</strong><div><a href="/marketplace.html">All businesses</a>${data.categories.map((category) => `<a href="${categoryUrl(category.slug)}">${escapeHtml(category.shortName)}</a>`).join('')}</div></div></nav>`;
 }
 
 function head({ title, description, canonical, image = `${siteUrl}/assets/reimage-logo-2026-transparent.png`, schema = [] }) {
@@ -108,11 +109,8 @@ function head({ title, description, canonical, image = `${siteUrl}/assets/reimag
   <meta property="og:image" content="${image.startsWith('http') ? image : `${siteUrl}/${image.replace(/^\//, '')}`}">
   <meta property="og:image:alt" content="Hartford Marketplace by RE IMAGE">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/public-shell.css?v=20260904-4">
-  <link rel="stylesheet" href="/marketplace.css?v=20260904-5">
+  <link rel="stylesheet" href="/marketplace.css?v=20260904-6">
   ${schema.map((item) => `<script type="application/ld+json">${escapeJson(item)}</script>`).join('\n  ')}
 </head>`;
 }
@@ -124,6 +122,10 @@ function addressText(business) {
 
 function directionsUrl(business) {
   return business.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressText(business))}` : '';
+}
+
+function profileFaqs(business) {
+  return business.faq.filter(([question]) => !/\bwhere\b|pick up|in connecticut|where does .* operate/i.test(question));
 }
 
 function businessLogo(business) {
@@ -160,13 +162,14 @@ function card(business, options = {}) {
 function shell({ title, description, canonical, image, schema, body, pageClass = '' }) {
   return `<!doctype html>
 <html lang="en">
-${head({ title, description, canonical, image, schema })}
+  ${head({ title, description, canonical, image, schema })}
 <body class="marketplace-page ${pageClass}">
   <a class="skip-link" href="#main-content">Skip to marketplace content</a>
   ${navigation()}
   ${body}
+  ${categoryDirectory()}
   ${footer()}
-  <script src="/marketplace.js?v=20260904-1" defer></script>
+  <script src="/marketplace.js?v=20260904-2" defer></script>
 </body>
 </html>\n`;
 }
@@ -272,7 +275,7 @@ function profileSchema(business) {
       { '@type': 'ListItem', position: 3, name: business.name, item: `${siteUrl}${profileUrl(business.slug)}` }
     ]
   }, {
-    '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: business.faq.map(([question, answer]) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } }))
+    '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: profileFaqs(business).map(([question, answer]) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } }))
   }];
 }
 
@@ -280,10 +283,11 @@ function generateProfile(business) {
   const primary = categoryMap.get(business.categories[0]);
   const related = data.businesses.filter((item) => item.slug !== business.slug && item.categories.some((slug) => business.categories.includes(slug))).sort((a, b) => a.regionRank - b.regionRank).slice(0, 3);
   const address = addressText(business);
+  const faqs = profileFaqs(business);
   const body = `<main id="main-content" data-profile-business="${business.slug}" data-profile-category="${business.categories[0]}">
-    <section class="profile-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Marketplace</a><span>/</span><a href="${categoryUrl(primary.slug)}">${escapeHtml(primary.shortName)}</a><span>/</span><span aria-current="page">${escapeHtml(business.name)}</span></nav><div class="profile-hero__grid"><div class="profile-hero__media profile-hero__logo"><span class="business-logo-stage business-logo-stage--${business.slug}">${businessLogo(business)}</span><span class="profile-location">${escapeHtml(business.locationLabel)}</span></div><div class="profile-hero__copy"><p class="eyebrow">${escapeHtml(primary.name)}</p><h1>${escapeHtml(business.name)}</h1><p class="profile-lead">${escapeHtml(business.longBio)}</p><ul class="specialty-list specialty-list--large">${business.specialties.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul><div class="profile-actions"><a class="button button--primary" href="${business.ctaUrl}" target="_blank" rel="noopener">${escapeHtml(business.ctaLabel)} ↗</a>${business.address ? `<a class="button button--outline" href="${directionsUrl(business)}" target="_blank" rel="noopener">Get directions</a>` : ''}</div></div></div></div></section>
-    <section class="profile-details"><div class="market-wrap profile-details__grid"><div class="profile-story"><p class="eyebrow">What they do</p><h2>A closer look at ${escapeHtml(business.name)}.</h2><p>${escapeHtml(business.longBio)}</p><h3>Specialties and services</h3><div class="tag-cloud">${[...business.specialties, ...business.tags].map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div></div><aside class="profile-info"><p class="profile-info__label">Business information</p><dl><div><dt>${business.address ? 'Address' : 'Service area'}</dt><dd>${escapeHtml(address)}</dd></div>${business.secondaryAddress ? `<div><dt>Second location</dt><dd>${escapeHtml(business.secondaryAddress)}</dd></div>` : ''}${business.phone ? `<div><dt>Phone</dt><dd><a href="tel:${business.phone.replace(/[^\d+]/g, '')}">${escapeHtml(business.phone)}</a></dd></div>` : ''}<div><dt>Official website</dt><dd><a href="${business.website}" target="_blank" rel="noopener">Visit ${escapeHtml(business.name)} ↗</a></dd></div><div><dt>Information verified</dt><dd><time datetime="${data.verifiedAt}">${formatDate(data.verifiedAt)}</time></dd></div></dl>${business.secondaryCtaUrl ? `<a class="button button--outline button--full" href="${business.secondaryCtaUrl}" target="_blank" rel="noopener">${escapeHtml(business.secondaryCtaLabel)}</a>` : ''}</aside></div></section>
-    <section class="profile-faq"><div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Quick answers</p><h2>Know before you go.</h2></div></div><div class="faq-grid">${business.faq.map(([question, answer]) => `<details><summary>${escapeHtml(question)}<span aria-hidden="true">+</span></summary><p>${escapeHtml(answer)}</p></details>`).join('')}</div></div></section>
+    <section class="profile-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Marketplace</a><span>/</span><a href="${categoryUrl(primary.slug)}">${escapeHtml(primary.shortName)}</a><span>/</span><span aria-current="page">${escapeHtml(business.name)}</span></nav><div class="profile-hero__grid"><div class="profile-hero__media profile-hero__logo"><span class="business-logo-stage business-logo-stage--${business.slug}">${businessLogo(business)}</span></div><div class="profile-hero__copy"><p class="eyebrow">${escapeHtml(primary.name)}</p><h1>${escapeHtml(business.name)}</h1><p class="profile-lead">${escapeHtml(business.shortBio)}</p><div class="profile-actions"><a class="button button--primary" href="${business.ctaUrl}" target="_blank" rel="noopener">${escapeHtml(business.ctaLabel)} ↗</a>${business.address ? `<a class="button button--outline" href="${directionsUrl(business)}" target="_blank" rel="noopener">Get directions</a>` : ''}</div></div></div></div></section>
+    <section class="profile-details"><div class="market-wrap profile-details__grid"><div class="profile-story"><p class="eyebrow">Services and specialties</p><h2>What ${escapeHtml(business.name)} offers.</h2><p>${escapeHtml(business.longBio)}</p><div class="tag-cloud">${[...business.specialties, ...business.tags].map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div></div><aside class="profile-info"><p class="profile-info__label">Business information</p><dl><div><dt>${business.address ? 'Address' : 'Service area'}</dt><dd>${escapeHtml(address)}</dd></div>${business.secondaryAddress ? `<div><dt>Second location</dt><dd>${escapeHtml(business.secondaryAddress)}</dd></div>` : ''}${business.phone ? `<div><dt>Phone</dt><dd><a href="tel:${business.phone.replace(/[^\d+]/g, '')}">${escapeHtml(business.phone)}</a></dd></div>` : ''}<div><dt>Official website</dt><dd><a href="${business.website}" target="_blank" rel="noopener">Visit ${escapeHtml(business.name)} ↗</a></dd></div><div><dt>Information verified</dt><dd><time datetime="${data.verifiedAt}">${formatDate(data.verifiedAt)}</time></dd></div></dl>${business.secondaryCtaUrl ? `<a class="button button--outline button--full" href="${business.secondaryCtaUrl}" target="_blank" rel="noopener">${escapeHtml(business.secondaryCtaLabel)}</a>` : ''}</aside></div></section>
+    ${faqs.length ? `<section class="profile-faq"><div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Quick answers</p><h2>Know before you go.</h2></div></div><div class="faq-grid">${faqs.map(([question, answer]) => `<details><summary>${escapeHtml(question)}<span aria-hidden="true">+</span></summary><p>${escapeHtml(answer)}</p></details>`).join('')}</div></div></section>` : ''}
     ${related.length ? `<section class="market-section related-section"><div class="market-wrap"><div class="directory-heading"><div><p class="eyebrow">Keep exploring</p><h2>More ${escapeHtml(primary.shortName)}</h2></div><a class="text-link" href="${categoryUrl(primary.slug)}">View category →</a></div><div class="business-grid">${related.map((item) => card(item)).join('')}</div></div></section>` : ''}
     <section class="profile-owner-note"><div class="market-wrap"><p>Own or manage this business? <a href="/start-with-us.html?service=Marketplace%20Listing">Request an information update</a>.</p></div></section>
   </main>`;
