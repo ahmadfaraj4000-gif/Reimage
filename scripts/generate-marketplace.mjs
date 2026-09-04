@@ -33,8 +33,7 @@ const logoAssets = {
   'lories-african-hair-braiding': 'assets/marketplace/logos/lories-african-hair-braiding.png',
   'living-word-imprints': 'assets/marketplace/logos/living-word-imprints.png',
   'andaleeb-enterprises': 'assets/marketplace/logos/andaleeb-enterprises.webp',
-  'the-anchor-collective': 'assets/marketplace/logos/the-anchor-collective.png',
-  'faraj-software-solutions': 'assets/marketplace/logos/faraj-software-solutions.svg'
+  'the-anchor-collective': 'assets/marketplace/logos/the-anchor-collective.png'
 };
 
 function validateData() {
@@ -69,7 +68,7 @@ function navigation(active = 'marketplace') {
     <ul class="nav-links" id="navLinks">
       <li><a href="/website-development.html">Systems</a></li>
       <li><a href="/products.html">Products</a></li>
-      <li><a href="/marketplace.html"${active === 'marketplace' ? ' class="active" aria-current="page"' : ''}>Marketplace</a></li>
+      <li><a href="/marketplace.html"${active === 'marketplace' ? ' class="active" aria-current="page"' : ''}>Discover</a></li>
       <li><a href="/our-work.html">Portfolio</a></li>
       <li><a href="/careers.html">Careers</a></li>
       <li><a class="nav-cta" href="/start-with-us.html">Start With Us</a></li>
@@ -81,7 +80,7 @@ function footer() {
   return `<footer class="minimal-footer public-site-footer">
     <a class="new-brand" href="/index.html#home" aria-label="RE IMAGE homepage"><img src="/assets/reimage-logo-2026-transparent.png" alt="RE IMAGE"></a>
     <p>Custom business operating systems, built around you.</p>
-    <div><a href="/website-development.html">Systems</a><a href="/products.html">Products</a><a href="/marketplace.html">Marketplace</a><a href="/our-work.html">Portfolio</a><a href="/start-with-us.html">Contact</a><a href="https://login.reimagebs.com">Client Login</a></div>
+    <div><a href="/website-development.html">Systems</a><a href="/products.html">Products</a><a href="/marketplace.html">Discover</a><a href="/our-work.html">Portfolio</a><a href="/start-with-us.html">Contact</a><a href="https://login.reimagebs.com">Client Login</a></div>
     <small>© ${new Date().getFullYear()} RE IMAGE Business Solutions. All rights reserved.</small>
   </footer>`;
 }
@@ -217,7 +216,7 @@ function generateHub() {
 
     <section class="market-section featured-section" aria-labelledby="featuredTitle">
       <div class="market-wrap">
-        <div class="section-heading"><div><p class="eyebrow">Featured around Hartford</p><h2 id="featuredTitle">Local standouts, one per category.</h2></div><p>Featured placement is clearly labeled. Organic listings stay independent.</p></div>
+        <div class="section-heading"><div><p class="eyebrow">Featured around Hartford</p><h2 id="featuredTitle">Local standouts, one per category.</h2></div></div>
         <div class="featured-rail" id="featuredRail">${featured.map((business) => card(business, { featured: true })).join('')}</div>
       </div>
     </section>
@@ -253,7 +252,7 @@ function generateCategory(category) {
   }];
   const body = `<main id="main-content">
     <section class="category-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Marketplace</a><span>/</span><span aria-current="page">${escapeHtml(category.name)}</span></nav><p class="eyebrow">${businesses.some((business) => business.regionRank < 4) ? 'Hartford local guide' : 'Beyond Greater Hartford'}</p><h1>${escapeHtml(category.name)}<br><em>${escapeHtml(categoryLocation)}.</em></h1><p>${escapeHtml(category.description)}</p><a class="back-link" href="/marketplace.html">← Search all Hartford businesses</a></div></section>
-    <section class="market-section category-feature"><div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Featured ${escapeHtml(category.shortName)}</p><h2>Start with a local standout.</h2></div><p>Featured placement is disclosed and does not change the directory’s organic ordering.</p></div><div class="featured-single">${card(featured, { featured: true })}</div></div></section>
+    <section class="market-section category-feature"><div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Featured ${escapeHtml(category.shortName)}</p><h2>Start with a local standout.</h2></div></div><div class="featured-single">${card(featured, { featured: true })}</div></div></section>
     <section class="market-section"><div class="market-wrap"><div class="directory-heading"><div><p class="eyebrow">Browse the category</p><h2>${businesses.length} ${businesses.length === 1 ? 'business' : 'businesses'} to explore</h2></div><a class="text-link" href="/marketplace.html?category=${category.slug}">Open filtered marketplace →</a></div><div class="business-grid">${businesses.map((business) => card(business)).join('')}</div></div></section>
     <section class="category-copy"><div class="market-wrap category-copy__inner"><div><p class="eyebrow">Find the right fit</p><h2>Clear details. Direct local connections.</h2></div><p>Every profile includes specialties, verified location or service-area information, and a direct path to the business. RE IMAGE does not add fabricated ratings or hide paid placements inside organic results.</p></div></section>
   </main>`;

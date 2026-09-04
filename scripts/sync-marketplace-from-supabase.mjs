@@ -15,13 +15,22 @@ async function get(table, query = '') {
   return response.json();
 }
 
-const [categories, businesses, links, media, features] = await Promise.all([
+const [syncedCategories, syncedBusinesses, links, media, features] = await Promise.all([
   get('marketplace_categories', 'select=*&is_active=eq.true&order=display_order.asc'),
   get('marketplace_businesses', 'select=*&status=eq.published&order=region_rank.asc,name.asc'),
   get('marketplace_business_categories', 'select=business_id,category_id,is_primary'),
   get('marketplace_media', 'select=*&is_primary=eq.true&order=display_order.asc'),
   get('marketplace_active_features', 'select=category_id,business_id,placement_type,public_label,status,starts_at,ends_at')
 ]);
+
+// Keep retired directory sections out of public builds even if an older
+// published record still exists in Supabase.
+const retiredCategorySlugs = new Set(['business-software']);
+const categories = syncedCategories.filter((category) => !retiredCategorySlugs.has(category.slug));
+const activeCategoryIds = new Set(categories.map((category) => category.id));
+const businesses = syncedBusinesses.filter((business) =>
+  links.some((link) => link.business_id === business.id && activeCategoryIds.has(link.category_id))
+);
 
 const categoryById = new Map(categories.map((category) => [category.id, category]));
 const primaryMedia = new Map(media.map((item) => [item.business_id, item]));

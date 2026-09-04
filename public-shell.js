@@ -13,7 +13,7 @@
 
   if (navLinks && !navLinks.querySelector('a[href$="marketplace.html"]')) {
     const marketplaceItem = document.createElement('li');
-    marketplaceItem.innerHTML = '<a href="marketplace.html">Marketplace</a>';
+    marketplaceItem.innerHTML = '<a href="marketplace.html">Discover</a>';
     const portfolioLink = navLinks.querySelector('a[href$="our-work.html"]');
     navLinks.insertBefore(marketplaceItem, portfolioLink?.closest('li') || navLinks.lastElementChild);
   }
@@ -77,7 +77,7 @@
     <div>
       <a href="website-development.html">Systems</a>
       <a href="products.html">Products</a>
-      <a href="marketplace.html">Marketplace</a>
+      <a href="marketplace.html">Discover</a>
       <a href="our-work.html">Portfolio</a>
       <a href="start-with-us.html">Contact</a>
       <a href="https://login.reimagebs.com">Client Login</a>
