@@ -71,6 +71,19 @@ const hub = fs.readFileSync(path.join(root, 'marketplace.html'), 'utf8');
 for (const phrase of ['Peanut Punch', 'Cheyney Fish Sandwich', 'hyperpigmentation', 'Online photo estimates', 'Custom apparel']) {
   if (!hub.toLowerCase().includes(phrase.toLowerCase())) errors.push(`Hub search content is missing ${phrase}`);
 }
+if (!hub.includes('class="button button--primary market-hero__featured-cta"') || !hub.includes('service=Featured%20Marketplace%20Placement">Get Featured</a>')) {
+  errors.push('Discover hero is missing the Get Featured CTA below search');
+}
+
+const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+const pricingPosition = homepage.indexOf('class="pricing-section"');
+const guidePosition = homepage.indexOf('class="marketplace-home-teaser"');
+const finalCtaPosition = homepage.indexOf('class="final-cta"');
+if (!(pricingPosition < guidePosition && guidePosition < finalCtaPosition)) errors.push('Homepage Hartford Local Guide must sit between pricing and the final CTA');
+const shellCss = fs.readFileSync(path.join(root, 'public-shell.css'), 'utf8').toLowerCase();
+for (const forbiddenColor of ['#0d8f8a', '#eef9f7', '#fff8e9']) {
+  if (shellCss.includes(forbiddenColor)) errors.push(`public-shell.css still contains retired teal/gold accent ${forbiddenColor}`);
+}
 
 const corridor = fs.readFileSync(path.join(root, 'marketplace/guides/new-britain-avenue-hartford/index.html'), 'utf8');
 for (const phrase of ['875 New Britain Avenue', '879 New Britain Avenue', '881 New Britain Avenue', 'Peanut Punch', 'Cheyney Fish Sandwich']) {

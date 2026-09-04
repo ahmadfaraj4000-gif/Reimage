@@ -219,6 +219,11 @@ body.marketplace-page a.button--primary { color: #fff !important; }
 .market-search button:hover,
 .button--primary:hover { background: var(--market-blue-dark); transform: translateY(-1px); }
 
+.market-hero__featured-cta {
+  min-width: 150px;
+  margin-top: 22px;
+}
+
 .button--outline {
   border-color: var(--market-line);
   background: #fff;
@@ -230,12 +235,9 @@ body.marketplace-page a.button--outline { color: var(--market-navy); }
 .button--outline:hover { border-color: var(--market-blue); color: var(--market-blue); }
 
 .button--light,
-.button--gold,
-body.marketplace-page a.button--light,
-body.marketplace-page a.button--gold { background: var(--market-blue); color: #fff !important; }
+body.marketplace-page a.button--light { background: var(--market-blue); color: #fff !important; }
 
-.button--light:hover,
-.button--gold:hover { background: var(--market-blue-dark); transform: translateY(-1px); }
+.button--light:hover { background: var(--market-blue-dark); transform: translateY(-1px); }
 
 .button--full { width: 100%; }
 
