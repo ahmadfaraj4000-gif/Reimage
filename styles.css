@@ -6131,3 +6131,29 @@ body:not(#reimage-systems-lock).systems-page .systems-catalog .bundle-selector {
 		margin-bottom: 28px !important;
 	}
 }
+
+/* Keep the work showcase heading inside the first mobile screen. */
+@media (max-width: 700px) {
+  body.home-page.new-blue-home #home .funnel-hero {
+    min-height: 0 !important;
+    padding: 24px 0 !important;
+  }
+
+  body.home-page.new-blue-home #home .funnel-hero h1 {
+    max-width: 22ch !important;
+    margin-bottom: 14px !important;
+    font-size: clamp(1.5rem, 7vw, 1.875rem) !important;
+  }
+
+  body.home-page.new-blue-home #home .hero-btns { margin-top: 18px; }
+
+  body.home-page.new-blue-home #home .client-proof { padding: 18px 14px; }
+  body.home-page.new-blue-home #home .client-proof h2 { margin-bottom: 10px !important; }
+
+  body.home-page.new-blue-home #home .work-showcase { padding-top: 24px; }
+  body.home-page.new-blue-home #home .work-showcase .section-heading > span { margin-bottom: 8px; }
+  body.home-page.new-blue-home #home .work-showcase .section-heading h2 {
+    max-width: none;
+    font-size: clamp(1.5rem, 6.7vw, 1.75rem) !important;
+  }
+}
