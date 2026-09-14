@@ -144,6 +144,7 @@ function head({ title, description, canonical, image = `${siteUrl}/assets/reimag
   <link rel="stylesheet" href="/public-shell.css?v=20260904-6">
   <link rel="stylesheet" href="/marketplace.css?v=20260914-2">
   ${schema.map((item) => `<script type="application/ld+json">${escapeJson(item)}</script>`).join('\n  ')}
+  <link rel="stylesheet" href="/public-typography.css?v=20260914-1">
 </head>`;
 }
 
