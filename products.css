@@ -237,11 +237,46 @@
   .reveal, .product-detail-content { animation: none; }.product-button, .carcraft-screen img { transition: none; }
 }
 
-.business-card-product { width: min(1180px, calc(100% - 48px)); margin: 0 auto 48px; padding: clamp(24px, 4vw, 48px); display: grid; grid-template-columns: 1.4fr 1fr; align-items: center; gap: 36px; border: 1px solid var(--product-line); border-radius: 24px; background: #fff; }
-.business-card-product h2 { margin: 0; color: var(--product-ink); font: 760 clamp(1.8rem, 3vw, 2.7rem)/1.08 var(--site-font-apple); letter-spacing: -.045em; text-transform: none; }
-.business-card-product .commerce-actions { margin-top: 24px; flex-wrap: wrap; }
-.business-card-purchase { padding: 28px; border-radius: 18px; background: #edf5ff; }
-.business-card-purchase .business-card-price { margin: 0 0 12px; color: var(--product-blue); font-size: 3rem; font-weight: 760; letter-spacing: -.05em; }
-.business-card-purchase p { color: var(--product-muted); line-height: 1.5; }
-.business-card-purchase .product-button { margin-top: 18px; }
-@media (max-width: 700px) { .business-card-product { grid-template-columns: 1fr; width: calc(100% - 32px); gap: 24px; } }
+/* Match the clock-in product, with the card photo on the left. */
+body.products-page .business-card-product {
+  width: min(1080px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: clamp(40px, 5vw, 64px) 0;
+  display: grid;
+  grid-template-columns: 1.08fr .92fr;
+  gap: clamp(42px, 5vw, 68px);
+  align-items: center;
+  border: 0;
+  border-top: 1px solid var(--product-line);
+  background: transparent;
+}
+body.products-page .business-card-photo {
+  width: min(460px, 100%);
+  margin: 0;
+  padding: 12px;
+  border: 1px solid #dce4ec;
+  border-radius: 30px;
+  background: white;
+  box-shadow: 0 30px 90px rgba(7,20,38,.13);
+}
+.business-card-photo img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; border-radius: 21px; }
+.business-card-photo figcaption { padding: 14px 8px 4px; color: #768294; font-size: .67rem; font-weight: 650; text-align: center; }
+body.products-page #business-card-title {
+  max-width: 15ch !important;
+  margin: 0 !important;
+  color: var(--product-ink) !important;
+  font: 760 clamp(2.5rem, 3.25vw, 3.5rem)/.98 var(--site-font-apple) !important;
+  letter-spacing: -.06em !important;
+  text-transform: none !important;
+}
+.business-card-copy { min-width: 0; }
+body.products-page .business-card-copy .business-card-included { margin: 14px 0 0; color: var(--product-muted); font-size: .82rem; line-height: 1.5; }
+.business-card-examples { display: flex; flex-wrap: wrap; gap: 12px 22px; margin-top: 20px; }
+.business-card-examples a { color: var(--product-blue); font-size: .78rem; font-weight: 650; text-decoration: none; }
+.business-card-examples a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.business-card-examples a:focus-visible { outline: 2px solid var(--product-blue); outline-offset: 4px; }
+@media (max-width: 700px) {
+  body.products-page .business-card-product { width: calc(100% - 28px); grid-template-columns: 1fr; gap: 32px; }
+  body.products-page .business-card-photo { width: min(360px, 94%); justify-self: center; }
+  body.products-page #business-card-title { font-size: clamp(2.25rem, 9vw, 3rem) !important; }
+}
