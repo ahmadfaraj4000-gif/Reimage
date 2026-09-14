@@ -1,10 +1,13 @@
 :root {
   color-scheme: light;
-  --blue: #0877e8;
-  --blue-dark: #0348bf;
+  --blue: #076fd9;
+  --ink: #071426;
+  --muted: #5f6f82;
+  --soft: #f3f6fa;
+  --line: #dfe5ec;
   --white: #ffffff;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
-  color: var(--blue);
+  color: var(--ink);
   background: var(--white);
 }
 * { box-sizing: border-box; }
@@ -21,10 +24,10 @@ body {
   position: relative;
   width: min(100%, 420px);
   padding: 28px;
-  border: 1px solid #dceafa;
+  border: 1px solid var(--line);
   border-radius: 22px;
   background: var(--white);
-  box-shadow: 0 16px 48px #0877e80c;
+  box-shadow: 0 16px 48px #076fd90c;
   text-align: center;
 }
 .quick-frame::before {
@@ -40,7 +43,7 @@ body {
 .brand-logo { display: block; width: 128px; height: auto; margin: 0 auto 12px; }
 h1 { margin: 0; font-size: 32px; line-height: 1.1; font-weight: 800; letter-spacing: -.04em; }
 h1 span { color: var(--blue); }
-.subtitle { margin: 8px 0 24px; color: #657083; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+.subtitle { margin: 8px 0 24px; color: var(--muted); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
 .quick-links { display: grid; gap: 10px; }
 .quick-link {
   min-height: 58px;
@@ -48,26 +51,26 @@ h1 span { color: var(--blue); }
   display: grid;
   grid-template-columns: 32px 1fr;
   align-items: center;
-  border: 1px solid #cce1f8;
+  border: 1px solid var(--line);
   border-radius: 11px;
   background: white;
   color: var(--blue);
-  box-shadow: 0 6px 16px #0877e809;
+  box-shadow: 0 6px 16px #076fd909;
   text-decoration: none;
   font-size: 14px;
   font-weight: 750;
   transition: transform 160ms ease, box-shadow 160ms ease;
 }
-.link-icon { width: 32px; height: 32px; padding: 7px; border-radius: 7px; color: var(--blue); background: #edf5ff; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.link-icon { width: 32px; height: 32px; padding: 7px; border-radius: 7px; color: var(--blue); background: var(--soft); fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .link-label { padding-right: 32px; text-align: center; }
 .save-contact { background: var(--blue); border-color: var(--blue); color: white; }
 .save-contact .link-icon { color: white; background: #ffffff24; }
-.discover .link-icon { color: var(--blue); background: #edf5ff; }
+.discover .link-icon { color: var(--blue); background: var(--soft); }
 .quick-link:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
-@media (hover: hover) { .quick-link:hover { transform: translateY(-2px); box-shadow: 0 10px 22px #0877e820; } }
+@media (hover: hover) { .quick-link:hover { transform: translateY(-2px); box-shadow: 0 10px 22px #076fd920; } }
 .quick-link:active { transform: translateY(1px); }
-.frame-footer { margin-top: 22px; padding-top: 17px; border-top: 1px solid #0877e820; }
-.frame-footer p { margin: 0; color: #657083; font-size: 11px; line-height: 1.7; }
+.frame-footer { margin-top: 22px; padding-top: 17px; border-top: 1px solid var(--line); }
+.frame-footer p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.7; }
 .frame-footer strong { color: var(--blue); font-weight: 650; }
 @media (max-height: 650px) {
   .quick-frame { padding: 20px; border-radius: 18px; }
@@ -91,12 +94,12 @@ h1 span { color: var(--blue); }
 h1 { font-size: 26px; }
 .copy-field { display: block; width: 100%; border: 0; padding: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; user-select: text; -webkit-user-select: text; }
 .person-name { min-height: 34px; font-weight: 800; letter-spacing: -.035em; }
-.person-title { min-height: 30px; color: #657083; font-size: 13px; }
+.person-title { min-height: 30px; color: var(--muted); font-size: 13px; }
 .contact-info { margin-top: 5px; }
 .contact-info .copy-field { min-height: 36px; font-size: 14px; }
 .copy-field span { margin-left: 5px; }
 .copy-field:focus-visible, .powered-by a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
-.copy-hint { margin: 3px 0 12px; min-height: 14px; font-size: 10px; line-height: 14px; color: #657083; }
+.copy-hint { margin: 3px 0 12px; min-height: 14px; font-size: 10px; line-height: 14px; color: var(--muted); }
 .quick-links { gap: 8px; }
 .quick-link { min-height: 48px; padding-block: 7px; }
 .frame-footer { margin-top: 14px; padding-top: 10px; }
