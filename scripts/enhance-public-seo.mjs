@@ -51,8 +51,8 @@ const pages = {
     type: 'Service', serviceType: 'Social media management'
   },
   'products.html': {
-    title: 'Business Cards, Landing Pages & Business Tools | RE IMAGE',
-    description: 'Explore RE IMAGE business tools: customized business cards with personal landing pages for $149.99, plus employee clock-in systems.',
+    title: 'QR Stands, Business Cards & Business Tools | RE IMAGE',
+    description: 'Explore RE IMAGE QR display stands from $29.99, stands with custom landing pages for $99.99, business-card packages for $99.99, and employee clock-in systems.',
     type: 'CollectionPage'
   },
   'our-work.html': {

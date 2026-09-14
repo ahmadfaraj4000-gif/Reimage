@@ -261,7 +261,7 @@ body.products-page .business-card-photo {
 }
 .business-card-photo img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; border-radius: 21px; }
 .business-card-photo figcaption { padding: 14px 8px 4px; color: #768294; font-size: .67rem; font-weight: 650; text-align: center; }
-body.products-page #business-card-title {
+body.products-page :is(#business-card-title, #qr-stand-title) {
   max-width: 15ch !important;
   margin: 0 !important;
   color: var(--product-ink) !important;
@@ -278,5 +278,20 @@ body.products-page .business-card-copy .business-card-included { margin: 14px 0 
 @media (max-width: 700px) {
   body.products-page .business-card-product { width: calc(100% - 28px); grid-template-columns: 1fr; gap: 32px; }
   body.products-page .business-card-photo { width: min(360px, 94%); justify-self: center; }
-  body.products-page #business-card-title { font-size: clamp(2.25rem, 9vw, 3rem) !important; }
+  body.products-page :is(#business-card-title, #qr-stand-title) { font-size: clamp(2.25rem, 9vw, 3rem) !important; }
+}
+
+body.products-page .qr-stand-product { grid-template-columns: .92fr 1.08fr; }
+.qr-stand-product .business-card-photo { order: 2; justify-self: end; }
+.qr-stand-product .business-card-copy { order: 1; }
+.qr-stand-options { display: grid; gap: 20px; margin-top: 26px; }
+.qr-stand-option { padding-top: 20px; border-top: 1px solid var(--product-line); }
+.qr-option-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+body.products-page .qr-option-heading h3 { margin: 0 !important; font: 700 1rem/1.3 var(--site-font-apple) !important; color: var(--product-ink) !important; text-transform: none !important; letter-spacing: 0 !important; }
+.qr-option-heading strong { color: var(--product-blue); font-size: 1.8rem; font-weight: 760; letter-spacing: -.04em; white-space: nowrap; }
+.qr-stand-option p { margin: 10px 0 16px; color: var(--product-muted); font-size: .86rem; line-height: 1.6; }
+@media (max-width: 700px) {
+  body.products-page .qr-stand-product { grid-template-columns: 1fr; }
+  .qr-stand-product .business-card-photo { order: 1; justify-self: center; }
+  .qr-stand-product .business-card-copy { order: 2; }
 }
