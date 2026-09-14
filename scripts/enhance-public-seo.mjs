@@ -52,7 +52,7 @@ const pages = {
   },
   'products.html': {
     title: 'QR Stands, Business Cards & Business Tools | RE IMAGE',
-    description: 'Explore RE IMAGE QR display stands from $29.99, stands with custom landing pages for $99.99, business-card packages for $99.99, and employee clock-in systems.',
+    description: 'Explore RE IMAGE QR display stands from $29.99, stands with custom landing pages for $99.99, business-card packages for $99.99, and Time Stations.',
     type: 'CollectionPage'
   },
   'our-work.html': {
