@@ -236,3 +236,12 @@
 @media (prefers-reduced-motion: reduce) {
   .reveal, .product-detail-content { animation: none; }.product-button, .carcraft-screen img { transition: none; }
 }
+
+.business-card-product { width: min(1180px, calc(100% - 48px)); margin: 0 auto 48px; padding: clamp(24px, 4vw, 48px); display: grid; grid-template-columns: 1.4fr 1fr; align-items: center; gap: 36px; border: 1px solid var(--product-line); border-radius: 24px; background: #fff; }
+.business-card-product h2 { margin: 0; color: var(--product-ink); font: 760 clamp(1.8rem, 3vw, 2.7rem)/1.08 var(--site-font-apple); letter-spacing: -.045em; text-transform: none; }
+.business-card-product .commerce-actions { margin-top: 24px; flex-wrap: wrap; }
+.business-card-purchase { padding: 28px; border-radius: 18px; background: #edf5ff; }
+.business-card-purchase .business-card-price { margin: 0 0 12px; color: var(--product-blue); font-size: 3rem; font-weight: 760; letter-spacing: -.05em; }
+.business-card-purchase p { color: var(--product-muted); line-height: 1.5; }
+.business-card-purchase .product-button { margin-top: 18px; }
+@media (max-width: 700px) { .business-card-product { grid-template-columns: 1fr; width: calc(100% - 32px); gap: 24px; } }
