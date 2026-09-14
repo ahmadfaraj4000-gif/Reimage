@@ -76,14 +76,11 @@ if (!hub.includes('class="button button--primary market-hero__featured-cta"') ||
 }
 
 const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-if (!homepage.includes('Websites, marketing, and custom business systems built to work together.')) errors.push('Homepage is missing the approved hero supporting copy');
-if (!homepage.includes('styles.css?v=20260904-10')) errors.push('Homepage is missing the current typography stylesheet version');
-const pricingPosition = homepage.indexOf('class="pricing-section"');
-const guidePosition = homepage.indexOf('class="marketplace-home-teaser"');
-const finalCtaPosition = homepage.indexOf('class="final-cta"');
-if (!(pricingPosition < guidePosition && guidePosition < finalCtaPosition)) errors.push('Homepage Hartford Local Guide must sit between pricing and the final CTA');
-const homepageSystemCtas = [...homepage.matchAll(/<a class="btn btn-primary" href="website-development\.html">Build Your System<\/a>/g)];
-if (homepageSystemCtas.length !== 2) errors.push('Homepage hero and final CTA must use the same Build Your System action');
+const landingLinks = [...homepage.matchAll(/<a\b[^>]*href="([^"]+)"/g)].map(match => match[1]);
+if (landingLinks.join(',') !== 'our-work.html,website-development.html,marketplace.html') errors.push('Landing page must link to Portfolio, Systems, and Discover in that order');
+for (const target of landingLinks) if (!fs.existsSync(path.join(root, target))) errors.push(`Landing destination missing: ${target}`);
+if (!homepage.includes('Trusted by businesses in') || !homepage.includes('Connecticut &amp; New York')) errors.push('Landing page is missing its regional trust line');
+if (!homepage.includes('assets/landing.css?v=20260914-1')) errors.push('Landing page is missing its dedicated responsive stylesheet');
 const shellCss = fs.readFileSync(path.join(root, 'public-shell.css'), 'utf8').toLowerCase();
 for (const forbiddenColor of ['#0d8f8a', '#eef9f7', '#fff8e9']) {
   if (shellCss.includes(forbiddenColor)) errors.push(`public-shell.css still contains retired teal/gold accent ${forbiddenColor}`);
@@ -114,9 +111,12 @@ for (const file of publicPageFiles) {
   if (!/id=["']reimage-seo-schema["']/.test(html)) errors.push(`${file}: missing site entity schema`);
   if (!/name=["']twitter:title["']/.test(html) || !/name=["']twitter:image["']/.test(html)) errors.push(`${file}: incomplete social metadata`);
   if (/name=["']keywords["']/i.test(html)) errors.push(`${file}: obsolete meta keywords tag should not be present`);
+  // The compact homepage exposes its three destinations directly, without a menu.
+  if (file !== 'index.html') {
   if (!html.includes('public-shell.css?v=20260904-6')) errors.push(`${file}: missing canonical public navigation styles`);
   if (!html.includes('public-shell.js?v=20260904-8')) errors.push(`${file}: missing canonical public navigation controller`);
   if (!html.includes('aria-controls="navLinks"')) errors.push(`${file}: missing canonical mobile menu button`);
+  }
   for (const image of html.matchAll(/<img\s+[^>]*>/gi)) if (!/\balt=["'][^"']*["']/i.test(image[0])) errors.push(`${file}: image missing alt attribute`);
   const schemaScripts = [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];
   if (!schemaScripts.length) errors.push(`${file}: missing JSON-LD`);
