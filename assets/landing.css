@@ -60,8 +60,8 @@ h1 span { color: var(--blue); }
 }
 .link-icon { width: 32px; height: 32px; padding: 7px; border-radius: 7px; color: var(--blue); background: #edf5ff; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .link-label { padding-right: 32px; text-align: center; }
-.portfolio { background: var(--blue); border-color: var(--blue); color: white; }
-.portfolio .link-icon { color: white; background: #ffffff24; }
+.save-contact { background: var(--blue); border-color: var(--blue); color: white; }
+.save-contact .link-icon { color: white; background: #ffffff24; }
 .discover .link-icon { color: var(--blue); background: #edf5ff; }
 .quick-link:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
 @media (hover: hover) { .quick-link:hover { transform: translateY(-2px); box-shadow: 0 10px 22px #0877e820; } }
@@ -121,4 +121,13 @@ h1 { font-size: 26px; }
   .quick-link { padding-inline: 8px; grid-template-columns: 26px 1fr; font-size: 12px; }
   .link-icon { width: 26px; height: 26px; padding: 5px; }
   .link-label { padding-right: 0; }
+}
+
+.save-contact { grid-column: 1 / -1; }
+@media (max-height: 700px) and (max-width: 559px) {
+  .quick-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .quick-link { padding-inline: 8px; grid-template-columns: 26px 1fr; font-size: 12px; }
+  .link-icon { width: 26px; height: 26px; padding: 5px; }
+  .link-label { padding-right: 0; }
+  .save-contact .link-label { padding-right: 26px; }
 }
