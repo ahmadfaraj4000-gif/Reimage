@@ -27,6 +27,6 @@ document.querySelectorAll('[data-copy]').forEach(button => {
     } catch {
       status.textContent = 'Press and hold the detail to select and copy';
     }
-    resetStatus = setTimeout(() => { status.textContent = 'Tap any contact detail to copy'; }, 3000);
+    resetStatus = setTimeout(() => { status.textContent = ''; }, 3000);
   });
 });
