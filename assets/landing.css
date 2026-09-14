@@ -101,7 +101,7 @@ h1 { font-size: 26px; }
 .quick-link { min-height: 48px; padding-block: 7px; }
 .frame-footer { margin-top: 14px; padding-top: 10px; }
 .frame-footer p { font-size: 10px; line-height: 1.5; }
-.frame-footer .powered-by { margin-top: 8px; font-size: 9px; }
+.frame-footer .powered-by { margin-top: 0; font-size: 9px; }
 .powered-by a { color: var(--blue); font-weight: 700; text-decoration: none; }
 @media (max-height: 600px) {
   body { padding-top: max(8px, env(safe-area-inset-top)); padding-bottom: max(8px, env(safe-area-inset-bottom)); }
@@ -114,4 +114,11 @@ h1 { font-size: 26px; }
   .copy-hint { margin-bottom: 8px; }
   .quick-link { min-height: 44px; padding-block: 5px; }
   .frame-footer { margin-top: 10px; padding-top: 8px; }
+}
+
+@media (max-height: 520px) and (max-width: 559px) {
+  .quick-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .quick-link { padding-inline: 8px; grid-template-columns: 26px 1fr; font-size: 12px; }
+  .link-icon { width: 26px; height: 26px; padding: 5px; }
+  .link-label { padding-right: 0; }
 }
