@@ -77,7 +77,7 @@ if (!hub.includes('class="button button--primary market-hero__featured-cta"') ||
 
 const homepage = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 if (!homepage.includes('Websites, marketing, and custom business systems built to work together.')) errors.push('Homepage is missing the approved hero supporting copy');
-if (!homepage.includes('styles.css?v=20260914-1')) errors.push('Homepage is missing the current typography stylesheet version');
+if (!homepage.includes('styles.css?v=20260914-2')) errors.push('Homepage is missing the current typography stylesheet version');
 const pricingPosition = homepage.indexOf('class="pricing-section"');
 const guidePosition = homepage.indexOf('class="marketplace-home-teaser"');
 const finalCtaPosition = homepage.indexOf('class="final-cta"');
