@@ -142,7 +142,7 @@ function head({ title, description, canonical, image = `${siteUrl}/assets/reimag
   <meta name="twitter:image" content="${absoluteImage}">
   <meta name="twitter:image:alt" content="${escapeHtml(imageAlt)}">
   <link rel="stylesheet" href="/public-shell.css?v=20260904-6">
-  <link rel="stylesheet" href="/marketplace.css?v=20260904-9">
+  <link rel="stylesheet" href="/marketplace.css?v=20260914-2">
   ${schema.map((item) => `<script type="application/ld+json">${escapeJson(item)}</script>`).join('\n  ')}
 </head>`;
 }
@@ -202,7 +202,7 @@ function shell({ title, description, canonical, image, imageAlt, schema, body, p
   ${categoryDirectory()}
   ${footer()}
   <script src="/public-shell.js?v=20260904-8" defer></script>
-  <script src="/marketplace.js?v=20260904-3" defer></script>
+  <script src="/marketplace.js?v=20260914-1" defer></script>
 </body>
 </html>\n`;
 }
@@ -264,15 +264,8 @@ function generateHub() {
 
     <section class="market-section featured-section" aria-labelledby="featuredTitle">
       <div class="market-wrap">
-        <div class="section-heading"><div><p class="eyebrow">Featured around Hartford</p><h2 id="featuredTitle">Local standouts, one per category.</h2></div></div>
+        <div class="section-heading"><div><p class="eyebrow">Featured around Hartford</p><h2 id="featuredTitle">Local standouts.</h2></div></div>
         <div class="featured-rail" id="featuredRail">${featured.map((business) => card(business, { featured: true })).join('')}</div>
-      </div>
-    </section>
-
-    <section class="market-section corridor-promo" aria-labelledby="corridorPromoTitle">
-      <div class="market-wrap corridor-promo__inner">
-        <div><p class="eyebrow">Hartford street guide</p><h2 id="corridorPromoTitle">Three storefronts. Six street numbers.</h2><p>Lorie’s at 875, Fusion Health Juice Bar at 879, and 881 Grab &amp; Go at 881 sit together on New Britain Avenue. See what each spot is known for, plus Mexican fusion nearby.</p></div>
-        <a class="button button--primary" href="${guidePath}">Explore New Britain Avenue</a>
       </div>
     </section>
 

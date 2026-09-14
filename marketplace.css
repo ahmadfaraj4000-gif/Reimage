@@ -353,6 +353,11 @@ body.marketplace-page a.button--light { background: var(--market-blue); color: #
 
 .featured-section { border-bottom: 1px solid var(--market-line); background: #fff; }
 
+.marketplace-hub .featured-section,
+.marketplace-hub .directory-section { padding-block: clamp(28px, 3vw, 40px); }
+
+.marketplace-hub .featured-section[hidden] { display: none; }
+
 .section-heading,
 .directory-heading {
   display: flex;
@@ -376,6 +381,10 @@ body.marketplace-page a.button--light { background: var(--market-blue); color: #
   font-weight: 800;
   letter-spacing: -.055em;
   line-height: 1.06;
+}
+
+.marketplace-hub h2 {
+  font-size: clamp(1rem, 2vw, 1.725rem);
 }
 
 .section-heading > p {

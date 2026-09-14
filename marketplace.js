@@ -121,11 +121,15 @@
     });
 
     if (featuredRail) {
+      let visibleFeatured = 0;
       featuredRail.querySelectorAll('[data-business-card]').forEach((card) => {
         const categoryMatch = state.category === 'all' || card.dataset.categories.split(' ').includes(state.category);
         const locationMatch = state.location === 'all' || card.dataset.location.split(' ').includes(state.location);
         card.hidden = !(categoryMatch && locationMatch);
+        if (!card.hidden) visibleFeatured += 1;
       });
+      const featuredSection = featuredRail.closest('.featured-section');
+      if (featuredSection) featuredSection.hidden = Boolean(state.query) || visibleFeatured === 0;
     }
 
     if (beyondSection) beyondSection.hidden = visibleBeyond === 0;
@@ -139,7 +143,8 @@
     if (state.location !== 'all') labels.push(locationFilter.selectedOptions[0]?.textContent.trim());
     if (activeFilters) {
       activeFilters.hidden = labels.length === 0;
-      activeFilters.innerHTML = labels.length ? `<span>Showing ${labels.join(' · ')}</span><button type="button" data-clear-all>Clear all</button>` : '';
+      activeFilters.innerHTML = labels.length ? '<span></span><button type="button" data-clear-all>Clear all</button>' : '';
+      if (labels.length) activeFilters.querySelector('span').textContent = `Showing ${labels.join(' · ')}`;
       activeFilters.querySelector('[data-clear-all]')?.addEventListener('click', clearAll);
     }
 
