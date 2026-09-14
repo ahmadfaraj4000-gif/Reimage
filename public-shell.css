@@ -337,3 +337,35 @@ body footer.public-site-footer > small {
   .marketplace-home-categories { grid-template-columns: 1fr; }
   .marketplace-home-categories a { min-height: 160px; }
 }
+
+/* Keep the homepage guide compact despite legacy global heading rules. */
+body.home-page .marketplace-home-teaser {
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: clamp(28px, 4vw, 56px);
+  padding: 48px 0;
+}
+body.home-page #marketplace-home-title {
+  width: auto !important;
+  max-width: 18ch !important;
+  margin: 12px 0 16px !important;
+  font: 760 clamp(1.8rem, 2.5vw, 2.5rem)/1.1 var(--site-font-apple) !important;
+  letter-spacing: -.035em !important;
+  text-transform: none !important;
+  color: var(--site-ink) !important;
+}
+body.home-page .marketplace-home-copy p { margin-bottom: 20px; font-size: .9rem; }
+body.home-page .marketplace-home-copy > div { gap: 14px 18px; }
+body.home-page .marketplace-home-categories { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+body.home-page .marketplace-home-categories a { min-height: 140px; padding: 18px; border-radius: 16px; }
+body.home-page .marketplace-home-categories strong { font-size: 1.1rem; margin: 7px 0; }
+body.home-page .marketplace-home-copy > span,
+body.home-page .marketplace-home-copy > div a,
+body.home-page .marketplace-home-categories small { color: var(--site-blue); }
+body.home-page .marketplace-home-copy > div a.marketplace-home-primary { background: var(--site-blue); color: #fff; }
+@media (max-width: 820px) {
+  body.home-page .marketplace-home-teaser { grid-template-columns: 1fr; gap: 24px; padding: 32px 0; }
+  body.home-page #marketplace-home-title { max-width: none !important; }
+  body.home-page .marketplace-home-categories a { min-height: 120px; padding: 14px; }
+  body.home-page .marketplace-home-categories strong { font-size: 1rem; }
+  body.home-page .marketplace-home-categories span { font-size: .73rem; }
+}
