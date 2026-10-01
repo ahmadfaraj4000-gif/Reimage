@@ -8,6 +8,12 @@
   "featuredGuide": "https://reimagebs.com/marketplace/guides/new-britain-avenue-hartford/",
   "categories": [
     {
+      "slug": "medical-healthcare",
+      "name": "Medical & Healthcare",
+      "description": "Physician collaboration, medical education, and initiatives supporting healthcare teams and communities.",
+      "url": "https://reimagebs.com/marketplace/categories/medical-healthcare/"
+    },
+    {
       "slug": "restaurants-drinks",
       "name": "Restaurants & Drinks",
       "description": "Juice bars, Caribbean favorites, Mexican fusion, takeout, catering, and signature Hartford flavors.",
@@ -69,6 +75,46 @@
     }
   ],
   "businesses": [
+    {
+      "name": "Amanah Medical Care",
+      "profile": "https://reimagebs.com/marketplace/businesses/amanah-medical-care/",
+      "officialWebsite": "https://amanahmedicalcare.com/",
+      "category": [
+        "Medical & Healthcare"
+      ],
+      "location": "980 N Michigan Ave Ste 1090 #733359, Chicago, IL 60611",
+      "specialties": [
+        "Physician collaboration",
+        "Medical education",
+        "Hospital partnerships"
+      ],
+      "description": "A Chicago-based, physician-led initiative developing consultation, teaching, and hospital collaboration to support healthcare teams in underserved communities.",
+      "primaryAction": {
+        "label": "Visit Website",
+        "url": "https://amanahmedicalcare.com/"
+      },
+      "informationLastVerified": "2026-09-04"
+    },
+    {
+      "name": "Jam Roc Restaurant & Lounge",
+      "profile": "https://reimagebs.com/marketplace/businesses/jam-roc/",
+      "officialWebsite": "https://reimage-demo.github.io/jamroc/index.html",
+      "category": [
+        "Restaurants & Drinks"
+      ],
+      "location": "3395 Main St, Hartford, CT 06120",
+      "specialties": [
+        "Jamaican food",
+        "Jerk chicken",
+        "Seafood"
+      ],
+      "description": "A Jamaican bar and grill in Hartford serving island favorites, jerk chicken, and fresh seafood.",
+      "primaryAction": {
+        "label": "Visit Website",
+        "url": "https://reimage-demo.github.io/jamroc/index.html"
+      },
+      "informationLastVerified": "2026-09-04"
+    },
     {
       "name": "Fusion Health Juice Bar",
       "profile": "https://reimagebs.com/marketplace/businesses/fusion-health-juice-bar/",

@@ -90,6 +90,20 @@ const snapshot = {
   })
 };
 
+// Explicitly repository-published listings remain available until managed in
+// Supabase. Synced records take precedence once those listings are added there.
+const repositoryCatalog = JSON.parse(fs.readFileSync(path.join(root, 'marketplace-data.json'), 'utf8'));
+for (const business of repositoryCatalog.businesses.filter((item) => item.repositoryPublished)) {
+  if (snapshot.businesses.some((item) => item.slug === business.slug)) continue;
+  for (const slug of business.categories) {
+    if (snapshot.categories.some((item) => item.slug === slug)) continue;
+    const category = repositoryCatalog.categories.find((item) => item.slug === slug);
+    if (!category) throw new Error(`Missing repository category: ${slug}`);
+    snapshot.categories.push(category);
+  }
+  snapshot.businesses.push(business);
+}
+
 const destination = process.env.MARKETPLACE_DATA_PATH || path.join(root, '.marketplace-data.generated.json');
 fs.writeFileSync(destination, `${JSON.stringify(snapshot, null, 2)}\n`);
 console.log(`Synced ${snapshot.businesses.length} published businesses from Supabase to ${destination}.`);

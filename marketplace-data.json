@@ -1,6 +1,7 @@
 {
   "verifiedAt": "2026-09-04",
   "categories": [
+    {"slug":"medical-healthcare","name":"Medical & Healthcare","shortName":"Healthcare","description":"Physician collaboration, medical education, and initiatives supporting healthcare teams and communities.","featured":"amanah-medical-care"},
     {"slug":"restaurants-drinks","name":"Restaurants & Drinks","shortName":"Food & Drinks","description":"Juice bars, Caribbean favorites, Mexican fusion, takeout, catering, and signature Hartford flavors.","featured":"fusion-health-juice-bar"},
     {"slug":"nightlife-events","name":"Nightlife & Events","shortName":"Nightlife","description":"Cocktails, live entertainment, private events, and memorable nights out in Hartford.","featured":"the-patio"},
     {"slug":"auto-body-towing","name":"Auto Body & Towing","shortName":"Auto Body","description":"Collision repair, paint, mechanical service, towing, and online estimates near Hartford.","featured":"car-craft-auto-body-towing"},
@@ -13,6 +14,22 @@
     {"slug":"private-transportation","name":"Private Transportation","shortName":"Private Rides","description":"Private chauffeur service for airports, corporate travel, events, and long-distance trips.","featured":"empire-elite-rides"}
   ],
   "businesses": [
+    {
+      "slug":"amanah-medical-care","repositoryPublished":true,"name":"Amanah Medical Care","categories":["medical-healthcare"],"locationKey":"beyond","locationLabel":"Chicago, Illinois","regionRank":4,
+      "address":{"street":"980 N Michigan Ave Ste 1090 #733359","city":"Chicago","state":"IL","postalCode":"60611"},"phone":"505-218-7319","website":"https://amanahmedicalcare.com/","ctaLabel":"Visit Website","ctaUrl":"https://amanahmedicalcare.com/","image":"assets/marketplace/logos/amanah-medical-care.png","imageAlt":"Amanah Medical Care logo","schemaType":"Organization",
+      "specialties":["Physician collaboration","Medical education","Hospital partnerships"],"tags":["healthcare","physicians","teaching","medical","international collaboration"],
+      "shortBio":"A Chicago-based, physician-led initiative developing consultation, teaching, and hospital collaboration to support healthcare teams in underserved communities.",
+      "longBio":"Amanah Medical Care connects physician expertise with healthcare teams in resource-limited settings. Rooted in Islamic values of service and compassion, the initiative is developing a model for consultation, medical education, and hospital collaboration. Its website provides information about physician participation and institutional partnerships.",
+      "faq":[["What is Amanah Medical Care?","Amanah is a physician-led initiative developing consultation, teaching, and hospital collaboration to support healthcare teams in underserved communities."],["How can physicians or institutions get involved?","Visit Amanah’s website for physician participation and institutional collaboration inquiries."]]
+    },
+    {
+      "slug":"jam-roc","repositoryPublished":true,"name":"Jam Roc Restaurant & Lounge","categories":["restaurants-drinks"],"locationKey":"hartford","locationLabel":"Hartford","regionRank":1,
+      "address":{"street":"3395 Main St","city":"Hartford","state":"CT","postalCode":"06120"},"website":"https://reimage-demo.github.io/jamroc/index.html","ctaLabel":"Visit Website","ctaUrl":"https://reimage-demo.github.io/jamroc/index.html","image":"assets/marketplace/logos/jam-roc.webp","imageAlt":"Jam Roc Restaurant & Lounge logo","schemaType":"Restaurant",
+      "cuisine":["Jamaican"],"specialties":["Jamaican food","Jerk chicken","Seafood"],"tags":["bar and grill","jamaican","restaurant","lounge","oxtail"],
+      "shortBio":"A Jamaican bar and grill in Hartford serving island favorites, jerk chicken, and fresh seafood.",
+      "longBio":"Jam Roc Restaurant & Lounge brings Jamaican food and island spirit to 3395 Main St in Hartford. Explore Jamaican classics including jerk chicken, slow-braised oxtail, and seafood on its website.",
+      "faq":[["What kind of food does Jam Roc serve?","Jam Roc is a Jamaican bar and grill serving Jamaican classics, jerk chicken, oxtail, and seafood."],["Where is Jam Roc?","Jam Roc is at 3395 Main St, Hartford, CT 06120."]]
+    },
     {
       "slug":"fusion-health-juice-bar","name":"Fusion Health Juice Bar","categories":["restaurants-drinks"],"featuredLabel":"RE IMAGE Pick","locationKey":"hartford","locationLabel":"Hartford","regionRank":1,
       "address":{"street":"879 New Britain Avenue","city":"Hartford","state":"CT","postalCode":"06106"},"phone":"860-461-0575","website":"https://fusionhealthjuicebar.com/","ctaLabel":"View Menu & Order","ctaUrl":"https://fusionhealthjuicebar.com/","image":"assets/fusion-health-menu.png","imageAlt":"Fusion Health Juice Bar menu with fresh juices, smoothies, bowls, and Jamaican-inspired drinks","schemaType":"Restaurant",

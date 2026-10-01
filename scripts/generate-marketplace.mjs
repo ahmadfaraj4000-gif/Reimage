@@ -22,6 +22,8 @@ const categoryUrl = (slug) => `/marketplace/categories/${slug}/`;
 const profileUrl = (slug) => `/marketplace/businesses/${slug}/`;
 
 const logoAssets = {
+  'amanah-medical-care': 'assets/marketplace/logos/amanah-medical-care.png',
+  'jam-roc': 'assets/marketplace/logos/jam-roc.webp',
   'fusion-health-juice-bar': 'assets/marketplace/logos/fusion-health-juice-bar.png',
   '881-grab-and-go': 'assets/marketplace/logos/881-grab-and-go.png',
   'the-patio': 'assets/marketplace/logos/the-patio.webp',
@@ -239,7 +241,7 @@ function hubSchema() {
 function generateHub() {
   const hartfordBusinesses = data.businesses.filter((business) => business.regionRank < 4);
   const beyondBusinesses = data.businesses.filter((business) => business.regionRank === 4);
-  const featured = data.categories.map((category) => businessMap.get(category.featured)).filter(Boolean);
+  const featured = data.categories.map((category) => businessMap.get(category.featured)).filter((business) => business && business.regionRank < 4);
   const embedded = escapeJson({ categories: data.categories, businesses: data.businesses.map((business) => ({ slug: business.slug, name: business.name, categories: business.categories, locationKey: business.locationKey, regionRank: business.regionRank, specialties: business.specialties, tags: business.tags, shortBio: business.shortBio })) });
   const body = `<main id="main-content">
     <section class="market-hero">
