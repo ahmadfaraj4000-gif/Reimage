@@ -25,7 +25,7 @@
     website: {
       label: "Website Development",
       price:
-        "Website pricing starts at $449 one-time + $29.99/month for Static Website + SEO, with dynamic, payment, portal, and AI automation tiers available up to $1,699 one-time + $49.99/month.",
+        "Foundation is $999 setup + $49.99/month, Business Hub is $1,899 setup + $99/month, and Operations is $2,699 setup + $149/month. Enterprise has custom pricing for setup and monthly service.",
       summary:
         "Website Development is best when your business needs a professional online presence, SEO, forms, QR or status pages, booking, payments, portals, invoice tools, or automation."
     },
@@ -104,45 +104,36 @@
   };
 
   const WEBSITE_PLANS = {
-    static: {
-      label: "Static Website + SEO",
-      downPayment: "$449 one-time",
-      monthly: "$29.99/month",
-      pages: "clean professional website",
-      includes: "mobile-friendly design, Google and Bing indexing, sitemap, robots.txt, llms.txt, basic SEO, analytics, contact forms, hosting, and maintenance",
+    foundation: {
+      label: "Foundation",
+      downPayment: "$999 one-time setup",
+      monthly: "$49.99/month",
+      pages: "custom customer-facing website",
+      includes: "lead and contact capture, responsive mobile design, service galleries and forms, search foundation, managed hosting, and support",
       bestFor: "businesses that need a professional online presence and want to be found online."
     },
-    dynamic: {
-      label: "Dynamic Website with QR & Status Page",
-      downPayment: "$599 one-time",
-      monthly: "$29.99/month",
-      pages: "dynamic website functionality",
-      includes: "QR-code landing pages, linktree-style business hub, customer-facing status pages, order tracking, service progress tracking, and appointment status updates",
-      bestFor: "restaurants, print shops, auto shops, spas, and service-based businesses."
-    },
-    payments: {
-      label: "Dynamic Website with Payments & Scripted Chatbot",
-      downPayment: "$999 one-time",
-      monthly: "$29.99/month",
-      pages: "dynamic website with customer actions",
-      includes: "customer accounts, secure user logins, Stripe or Square payment integration, online payment collection, online booking, scripted chatbot, and intake forms",
+    businessHub: {
+      label: "Business Hub",
+      downPayment: "$1,899 one-time setup",
+      monthly: "$99/month",
+      pages: "public-facing business system",
+      includes: "everything in Foundation, a secure internal admin portal, online ordering or booking, payment integration, inventory or availability, and content and service management",
       bestFor: "businesses that accept online payments, reservations, bookings, or customer submissions."
     },
-    portal: {
-      label: "Business Portal Suite",
-      downPayment: "$1,299 one-time",
-      monthly: "$49.99/month",
-      pages: "custom portal and management system",
-      includes: "admin portal, client portal, user management, subscriptions, inventory, AI chatbot, Twilio SMS, Resend email, custom invoices, order dashboards, and reporting",
+    operations: {
+      label: "Operations",
+      downPayment: "$2,699 one-time setup",
+      monthly: "$149/month",
+      pages: "connected customer and workflow system",
+      includes: "everything in Business Hub, a secure customer portal, customer and lead records, workflow status controls, automated notifications, and staff authentication",
       bestFor: "businesses that need control over operations through a custom management system."
     },
-    ai: {
-      label: "AI Automation Suite",
-      downPayment: "$1,699 one-time",
-      monthly: "$49.99/month",
-      pages: "website, portal, and automation system",
-      includes: "AI workflow automation, lead capture, email and SMS follow-ups, Google Sheets or CRM integration, appointment reminders, team notifications, support workflows, invoice automation, APIs, and webhooks",
-      bestFor: "businesses looking to reduce manual work, automate repetitive tasks, and scale operations efficiently."
+    enterprise: {
+      label: "Enterprise",
+      customPricing: true,
+      pages: "complete multi-location business operating system",
+      includes: "everything in Operations, multiple locations, custom roles and permissions, advanced dashboards, multi-step automations, and custom integrations",
+      bestFor: "businesses that need connected customer, staff, and management workflows across multiple locations."
     }
   };
 
@@ -576,7 +567,7 @@
 
   function pricingChipsForActiveService() {
     const keys = activeServiceKeys();
-    if (keys.includes("website")) return ["Static + SEO", "Status Page", "Portal Suite", "AI Automation Suite"];
+    if (keys.includes("website")) return ["Foundation", "Business Hub", "Operations", "Enterprise"];
     if (isReceptionistService(keys)) return ["Starter", "Growth", "Pro", "Start a project"];
     return ["Start a project", "Help me choose", "Other services"];
   }
@@ -861,12 +852,17 @@
 
   function websitePlanKeyFromText(text) {
     const t = clean(text);
-    if (t.includes("ai automation suite") || (t.includes("ai") && t.includes("automation") && t.includes("suite"))) return "ai";
-    if (t.includes("business portal") || t.includes("portal suite") || (t.includes("admin") && t.includes("portal"))) return "portal";
-    if (t.includes("payment") || t.includes("payments") || t.includes("stripe") || t.includes("square") || t.includes("chatbot") || t.includes("logins")) return "payments";
-    if (t.includes("qr") || t.includes("status") || t.includes("order tracking") || t.includes("dynamic")) return "dynamic";
-    if (t.includes("static") || t.includes("seo")) return "static";
+    if (/enterprise|multi[ -]location|multiple locations|custom integrations|ai automation suite/.test(t)) return "enterprise";
+    if (/operations|customer portal|client portal|customer account|business portal|portal suite|logins|order tracking|workflow|status/.test(t)) return "operations";
+    if (/business hub|payment|stripe|square|booking|ordering|inventory|admin portal|dynamic|chatbot/.test(t)) return "businessHub";
+    if (/static|seo|qr/.test(t) || (t.includes("foundation") && !t.includes("growth foundation"))) return "foundation";
     return "";
+  }
+
+  function websitePlanPrice(plan) {
+    return plan.customPricing
+      ? "Custom pricing — setup and monthly service quoted to fit your business"
+      : `${plan.downPayment} + ${plan.monthly}`;
   }
 
   function websitePlanSummary(planKey) {
@@ -874,7 +870,7 @@
     if (!plan) return "";
 
     return [
-      `${plan.label}: ${plan.downPayment} + ${plan.monthly}`,
+      `${plan.label}: ${websitePlanPrice(plan)}`,
       `Includes ${plan.pages}, ${plan.includes}.`,
       `Best for ${plan.bestFor}`
     ].join("\n");
@@ -882,22 +878,13 @@
 
   function allWebsitePlanPricing() {
     return [
-      "Website Development pricing:",
-      "",
-      websitePlanSummary("static"),
-      "",
-      websitePlanSummary("dynamic"),
-      "",
-      websitePlanSummary("payments"),
-      "",
-      websitePlanSummary("portal"),
-      "",
-      websitePlanSummary("ai")
-    ].join("\n");
+      "Business Operating Systems pricing:",
+      ...Object.keys(WEBSITE_PLANS).map(websitePlanSummary)
+    ].join("\n\n");
   }
 
   function shortWebsitePricing() {
-    return "Website pricing starts at $449 one-time + $29.99/month for Static Website + SEO. Dynamic/status pages are $599, payments/logins/chatbot is $999, Business Portal Suite is $1,299, and AI Automation Suite is $1,699.";
+    return SERVICES.website.price;
   }
 
   function websiteQualifierReply() {
@@ -913,7 +900,7 @@
       "",
       "To point you toward the right website setup, which sounds closer to what you need?",
       "",
-      "Static is best for a clean SEO-ready presence. Dynamic/status is better for QR links and order updates. Payments, Portal, and AI Automation tiers are for bookings, logins, payments, dashboards, invoices, follow-up, and backend-connected operations."
+      "Foundation covers your website and search presence. Business Hub adds booking, payments, and internal admin tools. Operations adds customer portals and workflows. Enterprise connects multiple locations with custom pricing."
     ].join("\n");
   }
 
@@ -938,8 +925,8 @@
       "",
       "The first thing I would narrow down is the website setup:",
       "",
-      "Static Website + SEO: best for a clean professional site and search visibility.",
-      "Dynamic/status tiers: better if you need QR pages, order updates, booking/forms, payments, portals, invoices, or backend-connected operations.",
+      "Foundation: best for a professional website, lead capture, and search visibility.",
+      "Business Hub adds booking, payments, and admin tools. Operations adds customer portals and workflows. Enterprise supports multiple locations with custom pricing.",
       "",
       "Which sounds closer to what you need?"
     ];
@@ -1032,30 +1019,9 @@
   }
 
   function recommendWebsitePlan() {
-    const type = clean(state.memory.qualification.websiteType);
-    const updates = clean(state.memory.qualification.websiteUpdates);
-    const problem = clean([state.memory.currentProblem, state.memory.problem, state.memory.primaryPainPoint].join(" "));
-
-    if (
-      type.includes("dynamic") ||
-      updates.includes("weekly") ||
-      updates.includes("seasonal") ||
-      problem.includes("seo") ||
-      problem.includes("campaign") ||
-      problem.includes("analytics") ||
-      problem.includes("update often") ||
-      problem.includes("portal") ||
-      problem.includes("admin") ||
-      problem.includes("supabase") ||
-      problem.includes("backend") ||
-      problem.includes("login") ||
-      problem.includes("dashboard") ||
-      problem.includes("customer data")
-    ) {
-      return "dynamic";
-    }
-
-    return "static";
+    const q = state.memory.qualification;
+    const needs = [WEBSITE_PLANS[q.websiteType]?.label || q.websiteType, state.memory.currentProblem, state.memory.problem, state.memory.primaryPainPoint].join(" ");
+    return websitePlanKeyFromText(needs) || (Object.hasOwn(WEBSITE_PLANS, q.websiteType) ? q.websiteType : "foundation");
   }
 
   function websitePlanRecommendationReply() {
@@ -1065,7 +1031,7 @@
 
     return [
       `Based on what you shared, I would lean toward the ${plan.label}.`,
-      `${plan.label} pricing is ${plan.downPayment} + ${plan.monthly}.`,
+      `${plan.label}: ${websitePlanPrice(plan)}.`,
       `It includes ${plan.includes}.`
     ].join("\n");
   }
@@ -1249,11 +1215,7 @@
         "• AI Receptionist Phone",
         "• AI Automation",
         "• Website Development",
-        "• Static Website + SEO - $449 one-time + $29.99/month",
-        "• Dynamic Website + Status Page - $599 one-time + $29.99/month",
-        "• Payments + Logins + Chatbot - $999 one-time + $29.99/month",
-        "• Business Portal Suite - $1,299 one-time + $49.99/month",
-        "• AI Automation Suite - $1,699 one-time + $49.99/month",
+        ...Object.values(WEBSITE_PLANS).map((plan) => `• ${plan.label} - ${websitePlanPrice(plan)}`),
         "• Business Funding",
         "• Growth Foundation",
         "• Full Scale System"
@@ -1546,7 +1508,7 @@
               "Since you need this quickly, you can start a request now and RE IMAGE can use the details to follow up faster."
             ].join("\n")
           : reply,
-        chips: urgent ? ["Start a project", "Static + SEO", "Status Page"] : ["Static + SEO", "Status Page", "Portal Suite", "Not sure"]
+        chips: urgent ? ["Start a project", "Foundation", "Business Hub"] : ["Foundation", "Business Hub", "Operations", "Not sure"]
       };
     }
 
@@ -1977,8 +1939,10 @@
     const protectedTerms = [
       "Business Funding",
       "Website Development",
-      "Static Website + SEO",
-      "Dynamic Website with QR & Status Page",
+      "Foundation",
+      "Business Hub",
+      "Operations",
+      "Enterprise",
       "AI Receptionist Phone",
       "AI Web Receptionist",
       "AI Automation",
@@ -2764,7 +2728,7 @@
       state.step = null;
       updateMemory(text, keys[0]);
       const chips = keys[0] === "website"
-        ? ["Static + SEO", "Status Page", "Portal Suite", "Not sure"]
+        ? ["Foundation", "Business Hub", "Operations", "Not sure"]
         : ["Pricing", "Start a project", "Help me choose"];
       await smartBot(serviceBusinessIntroReply(keys[0], text), chips, text);
       return true;
@@ -2780,7 +2744,7 @@
     const websitePlan = websitePlanKeyFromText(label);
 
     if ((receptionistPlan || websitePlan) && !(websitePlan && state.step === "websiteType")) {
-      await smartBot(salesPricingReply(label), receptionistPlan ? ["Start a project", "Growth", "Pro"] : ["Start a project", "Static + SEO", "Portal Suite"], label);
+      await smartBot(salesPricingReply(label), receptionistPlan ? ["Start a project", "Growth", "Pro"] : ["Start a project", "Foundation", "Operations"], label);
       return true;
     }
 
@@ -2870,7 +2834,7 @@
     }
 
     if (t.includes("scope website") || t.includes("website setup")) {
-      await smartBot(websiteQualifierReply(), ["Static + SEO", "Status Page", "Portal Suite", "Not sure"], label);
+      await smartBot(websiteQualifierReply(), ["Foundation", "Business Hub", "Operations", "Not sure"], label);
       return true;
     }
 
@@ -2963,7 +2927,7 @@
       state.busy = false;
 
       const chips = requestedServices[0] === "website"
-        ? ["Start a project", "Static + SEO", "Status Page"]
+        ? ["Start a project", "Foundation", "Business Hub"]
         : ["Start a project", "Pricing", "Help me choose"];
 
       return smartBot(serviceBusinessIntroReply(requestedServices[0], text), chips, text);
@@ -3047,7 +3011,7 @@
       case "growth":
       case "full":
       case "funding":
-        return smartBot(serviceIntentReply(intent), intent === "website" ? ["Static + SEO", "Status Page", "Portal Suite", "Not sure"] : ["Pricing", "Start a project", "Help me choose"], text);
+        return smartBot(serviceIntentReply(intent), intent === "website" ? ["Foundation", "Business Hub", "Operations", "Not sure"] : ["Pricing", "Start a project", "Help me choose"], text);
 
       case "choose":
         return smartBot(recommendationReply(), ["Pricing", "Start a project", "Client portal"], text);

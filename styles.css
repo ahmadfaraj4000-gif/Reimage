@@ -5532,6 +5532,22 @@ body.public-unified .bundle-price strong {
 	letter-spacing: -.08em;
 }
 
+.web-price .setup-custom {
+	font-size: clamp(1.6rem, 2.2vw, 2rem);
+	letter-spacing: -.04em;
+}
+
+body.public-unified .bundle-price-custom strong {
+	font-size: clamp(2rem, 4vw, 3.5rem);
+	line-height: 1.05;
+	letter-spacing: -.05em;
+}
+
+body.public-unified .bundle-price-custom + .bundle-monthly {
+	font-size: 1rem;
+	line-height: 1.4;
+}
+
 body.public-unified .bundle-price span {
 	max-width: 68px;
 	color: #778397;
