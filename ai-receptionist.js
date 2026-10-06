@@ -25,7 +25,7 @@
     website: {
       label: "Website Development",
       price:
-        "Foundation is $999 setup + $49.99/month, Business Hub is $1,899 setup + $99/month, and Operations is $2,699 setup + $149/month. Enterprise has custom pricing for setup and monthly service.",
+        "Foundation is $999 setup + $49.99/month, Business Hub is $1,899 setup + $129/month, and Operations is $2,699 setup + $159/month. Enterprise has custom pricing for setup and monthly service.",
       summary:
         "Website Development is best when your business needs a professional online presence, SEO, forms, QR or status pages, booking, payments, portals, invoice tools, or automation."
     },
@@ -115,7 +115,7 @@
     businessHub: {
       label: "Business Hub",
       downPayment: "$1,899 one-time setup",
-      monthly: "$99/month",
+      monthly: "$129/month",
       pages: "public-facing business system",
       includes: "everything in Foundation, a secure internal admin portal, online ordering or booking, payment integration, inventory or availability, and content and service management",
       bestFor: "businesses that accept online payments, reservations, bookings, or customer submissions."
@@ -123,7 +123,7 @@
     operations: {
       label: "Operations",
       downPayment: "$2,699 one-time setup",
-      monthly: "$149/month",
+      monthly: "$159/month",
       pages: "connected customer and workflow system",
       includes: "everything in Business Hub, a secure customer portal, customer and lead records, workflow status controls, automated notifications, and staff authentication",
       bestFor: "businesses that need control over operations through a custom management system."
