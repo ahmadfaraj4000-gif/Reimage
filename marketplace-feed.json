@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "1.1",
   "name": "RE IMAGE Hartford Local Business Directory",
   "url": "https://reimagebs.com/marketplace.html",
   "focusArea": "Hartford and Greater Hartford, Connecticut",
@@ -11,75 +11,262 @@
       "slug": "car-audio-detailing",
       "name": "Car Audio & Detailing",
       "description": "Car audio, auto electronics repair, electrical installation, and detailing in Hartford and Wethersfield.",
+      "topics": [
+        "car audio installation",
+        "auto electronics repair",
+        "auto detailing",
+        "car electrical installation"
+      ],
+      "guide": "Looking for car audio installation or auto detailing around Hartford? Compare the listed services, store locations, and appointment options. Describe your vehicle and the work you need when contacting the shop so it can confirm compatibility, timing, and an estimate.",
       "url": "https://reimagebs.com/marketplace/categories/car-audio-detailing/"
     },
     {
       "slug": "medical-healthcare",
       "name": "Medical & Healthcare",
       "description": "Physician collaboration, medical education, and initiatives supporting healthcare teams and communities.",
+      "topics": [
+        "physician collaboration",
+        "medical education",
+        "healthcare partnerships"
+      ],
+      "guide": "Explore the healthcare initiatives represented in this directory, including physician collaboration, teaching, and hospital partnerships. These listings describe organizations and participation opportunities. Check the official website to understand the initiative’s scope and how to inquire.",
       "url": "https://reimagebs.com/marketplace/categories/medical-healthcare/"
     },
     {
       "slug": "restaurants-drinks",
       "name": "Restaurants & Drinks",
       "description": "Juice bars, Caribbean favorites, Mexican fusion, takeout, catering, and signature Hartford flavors.",
+      "topics": [
+        "Hartford restaurants",
+        "Jamaican food",
+        "Caribbean takeout",
+        "Mexican fusion",
+        "juice bars",
+        "smoothies"
+      ],
+      "guide": "Find Hartford food and drink options by the meal or specialty you want: Jamaican and Caribbean favorites, Mexican fusion, fresh juice, smoothies, and takeout. Browse the businesses below, then open their official menus for current dishes, ordering options, and hours.",
       "url": "https://reimagebs.com/marketplace/categories/restaurants-drinks/"
     },
     {
       "slug": "nightlife-events",
       "name": "Nightlife & Events",
       "description": "Cocktails, live entertainment, private events, and memorable nights out in Hartford.",
+      "topics": [
+        "Hartford nightlife",
+        "cocktail bars",
+        "private events",
+        "live entertainment"
+      ],
+      "guide": "Planning a night out or a private gathering in Hartford? Explore the listed venues and their event information. Confirm the current entertainment schedule, group arrangements, food and drink options, and reservation details directly with the venue.",
       "url": "https://reimagebs.com/marketplace/categories/nightlife-events/"
     },
     {
       "slug": "auto-body-towing",
       "name": "Auto Body & Towing",
       "description": "Collision repair, paint, mechanical service, towing, and online estimates near Hartford.",
+      "topics": [
+        "auto body repair",
+        "collision repair",
+        "towing services",
+        "car paint repair"
+      ],
+      "guide": "Compare auto body and towing businesses by the work your vehicle needs and the area the shop serves. Use the profile links to ask about collision estimates, paint work, mechanical service, or towing. Connecticut and New York listings are labeled separately so you can choose the right location.",
       "url": "https://reimagebs.com/marketplace/categories/auto-body-towing/"
     },
     {
       "slug": "car-rentals",
       "name": "Car Rentals",
       "description": "Local cars, SUVs, trucks, luxury vehicles, and passenger vans available to reserve online.",
+      "topics": [
+        "car rentals near Hartford",
+        "Farmington car rentals",
+        "SUV rentals",
+        "passenger van rentals"
+      ],
+      "guide": "Explore a local vehicle-rental option for daily travel, group trips, or a larger vehicle. Follow the rental company’s booking link to confirm available cars, SUVs, trucks, or passenger vans for your dates. Rates, deposits, pickup arrangements, and driver requirements come from the provider.",
       "url": "https://reimagebs.com/marketplace/categories/car-rentals/"
     },
     {
       "slug": "skincare-esthetics",
       "name": "Skincare & Esthetics",
       "description": "Corrective and customized skincare for acne, hyperpigmentation, texture, and personal care.",
+      "topics": [
+        "Manchester skincare",
+        "esthetician near Hartford",
+        "customized facials",
+        "acne skincare",
+        "hyperpigmentation skincare"
+      ],
+      "guide": "Explore a Manchester skincare business offering customized and corrective skincare. Read the profile for its specialties, then contact the provider about consultations and the services available for your concerns. The directory does not diagnose skin conditions or promise treatment outcomes.",
       "url": "https://reimagebs.com/marketplace/categories/skincare-esthetics/"
     },
     {
       "slug": "hair-braiding",
       "name": "Hair & Braiding",
       "description": "African braiding, protective styles, extensions, twists, locs, and personalized styling.",
+      "topics": [
+        "African hair braiding Hartford",
+        "protective hairstyles",
+        "twists",
+        "locs",
+        "hair extensions"
+      ],
+      "guide": "Find an African hair-braiding business in Hartford and explore protective styles, twists, locs, and extensions. Bring your preferred style, hair length, and timing to the booking conversation. Confirm service duration, hair requirements, and the final price with the stylist.",
       "url": "https://reimagebs.com/marketplace/categories/hair-braiding/"
     },
     {
       "slug": "printing-apparel",
       "name": "Printing & Custom Apparel",
       "description": "Custom apparel, embroidery, signs, banners, uniforms, promotional products, and print services.",
+      "topics": [
+        "custom printing Hartford",
+        "custom apparel",
+        "embroidery",
+        "business uniforms",
+        "signs and banners"
+      ],
+      "guide": "Compare printing and custom-apparel options for business uniforms, events, signs, banners, and promotional products. Prepare your artwork, quantity, sizes, and deadline before requesting a quote. Ask the provider about proofs, production timing, and pickup or delivery.",
       "url": "https://reimagebs.com/marketplace/categories/printing-apparel/"
     },
     {
       "slug": "real-estate-rentals",
       "name": "Real Estate & Rentals",
       "description": "Residential and commercial rentals, property management, and Hartford-area development.",
+      "topics": [
+        "Hartford property rentals",
+        "East Hartford rentals",
+        "commercial rentals",
+        "property management"
+      ],
+      "guide": "Explore a property business serving Hartford, East Hartford, and Clinton. Use the official website for current residential or commercial availability and property-management inquiries. This directory describes the business; it does not represent a live inventory of vacant properties.",
       "url": "https://reimagebs.com/marketplace/categories/real-estate-rentals/"
     },
     {
       "slug": "community-family",
       "name": "Community & Family",
       "description": "Mentorship, gatherings, resources, and support designed to strengthen families and communities.",
+      "topics": [
+        "Hartford community resources",
+        "family support",
+        "mentorship",
+        "community gatherings"
+      ],
+      "guide": "Explore a Hartford-area and online community organization focused on mentorship, gatherings, and resources. Read its profile to understand the activities described, then contact the organization for current participation opportunities, schedules, and availability.",
       "url": "https://reimagebs.com/marketplace/categories/community-family/"
     },
     {
       "slug": "private-transportation",
       "name": "Private Transportation",
       "description": "Private chauffeur service for airports, corporate travel, events, and long-distance trips.",
+      "topics": [
+        "private chauffeur New York Capital Region",
+        "airport transportation",
+        "corporate car service",
+        "private event transportation"
+      ],
+      "guide": "Find a private-transportation provider serving New York’s Capital Region. Explore airport, corporate, event, and long-distance ride options, then request availability for your route and date. This listing is outside Greater Hartford and is labeled accordingly.",
       "url": "https://reimagebs.com/marketplace/categories/private-transportation/"
     }
   ],
+  "locations": [
+    {
+      "slug": "hartford",
+      "name": "Hartford",
+      "title": "Hartford, CT Local Businesses",
+      "description": "Explore Hartford restaurants, juice bars, hair braiding, car audio, printing, property services, and community organizations. Check each profile for its storefront or service area.",
+      "url": "https://reimagebs.com/marketplace/locations/hartford/",
+      "businesses": [
+        "https://reimagebs.com/marketplace/businesses/action-audio/",
+        "https://reimagebs.com/marketplace/businesses/jam-roc/",
+        "https://reimagebs.com/marketplace/businesses/fusion-health-juice-bar/",
+        "https://reimagebs.com/marketplace/businesses/881-grab-and-go/",
+        "https://reimagebs.com/marketplace/businesses/the-patio/",
+        "https://reimagebs.com/marketplace/businesses/lunch-box/",
+        "https://reimagebs.com/marketplace/businesses/mi-buen-pastor-mexican-fusion/",
+        "https://reimagebs.com/marketplace/businesses/lories-african-hair-braiding/",
+        "https://reimagebs.com/marketplace/businesses/living-word-imprints/",
+        "https://reimagebs.com/marketplace/businesses/andaleeb-enterprises/",
+        "https://reimagebs.com/marketplace/businesses/the-anchor-collective/"
+      ]
+    },
+    {
+      "slug": "west-hartford",
+      "name": "West Hartford",
+      "title": "West Hartford, CT Local Businesses",
+      "description": "Find businesses listed for West Hartford, including auto body repair and towing. Compare service details and follow official links for estimates and availability.",
+      "url": "https://reimagebs.com/marketplace/locations/west-hartford/",
+      "businesses": [
+        "https://reimagebs.com/marketplace/businesses/car-craft-auto-body-towing/"
+      ]
+    },
+    {
+      "slug": "east-hartford",
+      "name": "East Hartford",
+      "title": "East Hartford, CT Business Services",
+      "description": "Browse businesses serving East Hartford, including custom printing, apparel, and property services. Profiles distinguish service areas from storefront addresses.",
+      "url": "https://reimagebs.com/marketplace/locations/east-hartford/",
+      "businesses": [
+        "https://reimagebs.com/marketplace/businesses/living-word-imprints/",
+        "https://reimagebs.com/marketplace/businesses/andaleeb-enterprises/"
+      ]
+    },
+    {
+      "slug": "manchester",
+      "name": "Manchester",
+      "title": "Manchester, CT Local Businesses",
+      "description": "Explore businesses listed in Manchester, including skincare and esthetics. Read specialties and use official business links to confirm consultations and appointment availability.",
+      "url": "https://reimagebs.com/marketplace/locations/manchester/",
+      "businesses": [
+        "https://reimagebs.com/marketplace/businesses/techniq-skin-beauty/"
+      ]
+    },
+    {
+      "slug": "farmington",
+      "name": "Farmington",
+      "title": "Farmington, CT Local Businesses",
+      "description": "Find businesses listed for Farmington, including car rentals. Check vehicle options through the provider and confirm current availability, pricing, and pickup details.",
+      "url": "https://reimagebs.com/marketplace/locations/farmington/",
+      "businesses": [
+        "https://reimagebs.com/marketplace/businesses/rent-me-ct/"
+      ]
+    },
+    {
+      "slug": "other-connecticut",
+      "name": "Other Connecticut",
+      "title": "More Connecticut Businesses & Services",
+      "description": "Explore businesses with additional Connecticut locations or service areas, including Wethersfield and Clinton. Check individual profiles for the precise areas and services offered.",
+      "url": "https://reimagebs.com/marketplace/locations/other-connecticut/",
+      "businesses": [
+        "https://reimagebs.com/marketplace/businesses/action-audio/",
+        "https://reimagebs.com/marketplace/businesses/andaleeb-enterprises/",
+        "https://reimagebs.com/marketplace/businesses/the-anchor-collective/"
+      ]
+    },
+    {
+      "slug": "beyond",
+      "name": "Beyond Greater Hartford",
+      "title": "Businesses Beyond Greater Hartford",
+      "description": "Explore RE IMAGE directory listings outside Greater Hartford, including New York auto services and private transportation, plus a Chicago-based healthcare initiative.",
+      "url": "https://reimagebs.com/marketplace/locations/beyond/",
+      "businesses": [
+        "https://reimagebs.com/marketplace/businesses/amanah-medical-care/",
+        "https://reimagebs.com/marketplace/businesses/cr8-autos/",
+        "https://reimagebs.com/marketplace/businesses/empire-elite-rides/"
+      ]
+    }
+  ],
+  "businessDecisionResource": {
+    "url": "https://reimagebs.com/market-signals.html",
+    "topics": [
+      "Small business loan decisions",
+      "Small business hiring decisions",
+      "Small business pricing decisions",
+      "Business cost pressure",
+      "M2 money supply growth"
+    ],
+    "snapshot": "https://reimagebs.com/data/market/latest.json",
+    "methodology": "https://reimagebs.com/market-signals.html#methodology"
+  },
   "businesses": [
     {
       "name": "Action Audio",

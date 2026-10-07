@@ -150,11 +150,17 @@ function renderPage(data) {
 }
 
 export async function loadIndicators() {
+  const requestedHash = typeof window !== 'undefined' ? window.location.hash : '';
   renderModel();
   try {
     const response = await fetch('/data/market/latest.json', {cache:'no-store', signal:AbortSignal.timeout(15000)});
     if (!response.ok) throw new Error('Snapshot request failed');
     renderPage(validateSnapshot(await response.json()));
+    // Filling the indicator cards changes document height. Keep incoming guide
+    // links aligned after the data arrives, unless the visitor chose another link.
+    if (requestedHash && window.location.hash === requestedHash) {
+      requestAnimationFrame(() => document.getElementById(requestedHash.slice(1))?.scrollIntoView({block:'start'}));
+    }
   } catch {
     text('dataStatus', 'Market data is temporarily unavailable.');
     text('pressureTier', 'Score unavailable');

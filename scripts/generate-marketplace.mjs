@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { categoryTopics, locationFilters, marketSearch } from './search-content.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dataPath = process.env.MARKETPLACE_DATA_PATH || path.join(root, 'marketplace-data.json');
@@ -20,6 +21,23 @@ const formatDate = (iso) => new Date(`${iso}T12:00:00`).toLocaleDateString('en-U
 const categoryName = (slug) => categoryMap.get(slug)?.name || slug;
 const categoryUrl = (slug) => `/marketplace/categories/${slug}/`;
 const profileUrl = (slug) => `/marketplace/businesses/${slug}/`;
+const locationUrl = (slug) => `/marketplace/locations/${slug}/`;
+const businessesInLocation = (slug) => data.businesses.filter(business => (business.locations || [business.locationKey]).includes(slug));
+const populatedLocations = locationFilters.filter(location => businessesInLocation(location.slug).length);
+const searchUpdatedAt = [data.verifiedAt, marketSearch.reviewed].sort().at(-1);
+const topicFor = category => categoryTopics[category.slug] || { heading: category.name, terms: [category.name], copy: category.description };
+
+function faqSchema(faqs, pageUrl) {
+  return { '@type': 'FAQPage', '@id': `${pageUrl}#faq`, mainEntity: faqs.map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })) };
+}
+
+function faqSection(faqs, title) {
+  return `<section class="profile-faq" id="faq"><div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Before you choose</p><h2>${escapeHtml(title)}</h2></div></div><div class="faq-grid">${faqs.map(([question, answer]) => `<details><summary>${escapeHtml(question)}<span aria-hidden="true">+</span></summary><p>${escapeHtml(answer)}</p></details>`).join('')}</div></div></section>`;
+}
+
+function browseGuides() {
+  return `<section class="market-section discovery-guides" id="browse-guides"><div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Explore by service or place</p><h2>Find the local business you need.</h2></div></div><p>Browse a dedicated guide for every service filter, with business specialties, locations, and official links.</p><div class="discovery-guide-grid">${data.categories.map(category => `<article><h3><a href="${categoryUrl(category.slug)}">${escapeHtml(category.name)}</a></h3><p>${escapeHtml(category.description)}</p></article>`).join('')}</div><h3>Browse businesses by area</h3><p>Choose Hartford, a nearby town, other Connecticut service areas, or the clearly marked listings beyond Greater Hartford.</p><ul class="discovery-location-links">${populatedLocations.map(location => `<li><a href="${locationUrl(location.slug)}">${escapeHtml(location.name)} businesses</a></li>`).join('')}</ul><p class="directory-owner-resource">Planning your next business move? Read <a href="/market-signals.html">economic signals for business loan, hiring, and pricing decisions</a>.</p></div></section>`;
+}
 
 const logoAssets = {
   'action-audio': 'assets/marketplace/logos/action-audio.webp',
@@ -106,7 +124,7 @@ function footer() {
 }
 
 function categoryDirectory() {
-  return `<nav class="marketplace-category-directory" aria-label="Hartford business categories"><div class="market-wrap"><strong>Browse local businesses</strong><div><a href="/marketplace.html">All businesses</a>${data.categories.map((category) => `<a href="${categoryUrl(category.slug)}">${escapeHtml(category.shortName)}</a>`).join('')}<a href="${guidePath}">New Britain Avenue guide</a><a href="${editorialPath}">About this directory</a></div></div></nav>`;
+  return `<nav class="marketplace-category-directory" aria-label="Hartford business categories"><div class="market-wrap"><strong>Browse local businesses</strong><div><a href="/marketplace.html">All businesses</a>${data.categories.map((category) => `<a href="${categoryUrl(category.slug)}">${escapeHtml(category.name)}</a>`).join('')}${populatedLocations.map(location => `<a href="${locationUrl(location.slug)}">${escapeHtml(location.name)}</a>`).join('')}<a href="${guidePath}">New Britain Avenue guide</a><a href="${editorialPath}">About this directory</a></div></div></nav>`;
 }
 
 function absoluteAsset(value) {
@@ -145,7 +163,7 @@ function head({ title, description, canonical, image = `${siteUrl}/assets/reimag
   <meta name="twitter:image" content="${absoluteImage}">
   <meta name="twitter:image:alt" content="${escapeHtml(imageAlt)}">
   <link rel="stylesheet" href="/public-shell.css?v=20261006-1">
-  <link rel="stylesheet" href="/marketplace.css?v=20260914-2">
+  <link rel="stylesheet" href="/marketplace.css?v=20261006-2">
   ${schema.map((item) => `<script type="application/ld+json">${escapeJson(item)}</script>`).join('\n  ')}
   <link rel="stylesheet" href="/public-typography.css?v=20260914-1">
 </head>`;
@@ -206,7 +224,7 @@ function shell({ title, description, canonical, image, imageAlt, schema, body, p
   ${categoryDirectory()}
   ${footer()}
   <script src="/public-shell.js?v=20261006-1" defer></script>
-  <script src="/marketplace.js?v=20260914-1" defer></script>
+  <script src="/marketplace.js?v=20261006-2" defer></script>
 </body>
 </html>\n`;
 }
@@ -228,7 +246,8 @@ function hubSchema() {
       {
         '@type': 'CollectionPage', '@id': `${siteUrl}/marketplace.html#webpage`, name: 'Hartford Local Business Directory by RE IMAGE', url: `${siteUrl}/marketplace.html`,
         description: 'Discover restaurants, rental cars, auto body shops, skincare, hair braiding, printing, property rentals, and local services in Hartford and Greater Hartford.',
-        isPartOf: { '@id': `${siteUrl}/#website` }, publisher: { '@id': `${siteUrl}/#organization` }, dateModified: data.verifiedAt, inLanguage: 'en-US',
+        isPartOf: { '@id': `${siteUrl}/#website` }, publisher: { '@id': `${siteUrl}/#organization` }, dateModified: searchUpdatedAt, inLanguage: 'en-US',
+        hasPart: [...data.categories.map(category => ({ '@type': 'CollectionPage', name: category.name, url: `${siteUrl}${categoryUrl(category.slug)}` })), ...populatedLocations.map(location => ({ '@type': 'CollectionPage', name: location.title, url: `${siteUrl}${locationUrl(location.slug)}` }))],
         about: { '@type': 'City', name: 'Hartford', containedInPlace: { '@type': 'State', name: 'Connecticut' } },
         mainEntity: {
           '@type': 'ItemList', name: 'Businesses in Hartford and Greater Hartford', numberOfItems: data.businesses.length,
@@ -247,7 +266,7 @@ function generateHub() {
   const body = `<main id="main-content">
     <section class="market-hero">
       <div class="market-wrap market-hero__inner">
-        <h1>Find Hartford’s best <em>local businesses.</em></h1>
+        <h1>Discover Hartford’s <em>local businesses.</em></h1>
         <p class="market-hero__copy">From restaurants and fresh juices to rental cars, auto body repair, skincare, braiding, printing, and more—start here.</p>
         <form class="market-search" id="marketSearchForm" role="search">
           <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m1.35-5.65a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
@@ -261,8 +280,8 @@ function generateHub() {
 
     <section class="discovery-bar" aria-label="Marketplace filters">
       <div class="market-wrap">
-        <div class="filter-block"><span class="visually-hidden">Explore by service</span><div class="chip-row" id="categoryFilters"><button class="filter-chip active" type="button" data-category="all" aria-pressed="true">All businesses</button>${data.categories.map((category) => `<button class="filter-chip" type="button" data-category="${category.slug}" aria-pressed="false">${escapeHtml(category.shortName)}</button>`).join('')}</div></div>
-        <div class="filter-block filter-block--locations"><label class="location-select"><span class="visually-hidden">Filter by area</span><select id="locationFilter"><option value="all">All locations</option><option value="hartford">Hartford</option><option value="west-hartford">West Hartford</option><option value="east-hartford">East Hartford</option><option value="manchester">Manchester</option><option value="farmington">Farmington</option><option value="other-connecticut">Other Connecticut</option><option value="beyond">Beyond Greater Hartford</option></select></label></div>
+        <div class="filter-block"><span class="visually-hidden">Explore by service</span><div class="chip-row" id="categoryFilters"><button class="filter-chip active" type="button" data-category="all" aria-pressed="true">All businesses</button>${data.categories.map((category) => `<a class="filter-chip" href="${categoryUrl(category.slug)}" data-category="${category.slug}" aria-current="false">${escapeHtml(category.shortName)}</a>`).join('')}</div></div>
+        <div class="filter-block filter-block--locations"><label class="location-select"><span class="visually-hidden">Filter by area</span><select id="locationFilter"><option value="all">All locations</option>${locationFilters.map(location => `<option value="${location.slug}">${escapeHtml(location.name)}</option>`).join('')}</select></label></div>
       </div>
     </section>
 
@@ -286,33 +305,67 @@ function generateHub() {
       <div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Beyond Greater Hartford</p><h2 id="beyondTitle">Trusted businesses farther out.</h2></div><p>These RE IMAGE clients serve New York and other markets outside Connecticut’s capital region.</p></div><div class="business-grid business-grid--two" id="beyondGrid">${beyondBusinesses.map((business) => card(business)).join('')}</div></div>
     </section>
 
+    ${browseGuides()}
     <section class="owner-cta"><div class="market-wrap owner-cta__inner"><div><p class="eyebrow">Built for local business</p><h2>Own a business Hartford should know?</h2><p>Join the directory or ask about the one featured placement available in your category.</p></div><div class="owner-cta__actions"><a class="button button--light" href="/start-with-us.html?service=Marketplace%20Listing">Get listed</a><a class="button button--primary" href="/start-with-us.html?service=Featured%20Marketplace%20Placement">Feature your business</a></div></div></section>
     <script id="marketplaceData" type="application/json">${embedded}</script>
   </main>`;
 
-  return shell({ title: 'Hartford Local Business Directory | Food, Cars, Beauty & More | RE IMAGE', description: 'Find Hartford restaurants, rental cars, auto body shops, skincare, African hair braiding, printing, property rentals, and local services with verified details and direct links.', canonical: `${siteUrl}/marketplace.html`, imageAlt: 'RE IMAGE Hartford local business directory', schema: hubSchema(), body, pageClass: 'marketplace-hub' });
+  return shell({ title: 'Discover Hartford Businesses, Services & Local Guides | RE IMAGE', description: 'Find Hartford restaurants, rental cars, auto body shops, skincare, African hair braiding, printing, property rentals, and local services with verified details and direct links.', canonical: `${siteUrl}/marketplace.html`, imageAlt: 'RE IMAGE Hartford local business directory', schema: hubSchema(), body, pageClass: 'marketplace-hub' });
 }
 
 function generateCategory(category) {
   const businesses = data.businesses.filter((business) => business.categories.includes(category.slug)).sort((a, b) => a.regionRank - b.regionRank || a.name.localeCompare(b.name));
   const featured = businessMap.get(category.featured);
-  const categoryLocation = businesses.some((business) => business.regionRank < 4) ? 'in Hartford, CT' : 'beyond Greater Hartford';
+  const categoryLocation = businesses.some((business) => business.regionRank < 4) ? 'in Greater Hartford, CT' : 'beyond Greater Hartford';
+  const topic = topicFor(category);
+  const categoryFaqs = [
+    [`Which ${category.name.toLowerCase()} businesses are listed?`, `${businesses.map(business => business.name).join(', ')} ${businesses.length === 1 ? 'is listed' : 'are listed'} in this category. Check each profile for specialties, location or service area, and the official business website.`],
+    [`Where do these ${category.name.toLowerCase()} businesses operate?`, `The listed locations or service areas are ${[...new Set(businesses.map(business => business.locationLabel))].join('; ')}. A service area is not necessarily a storefront. Confirm the specific location and availability directly with the business.`],
+    [`How do I compare ${category.name.toLowerCase()} providers?`, topic.copy]
+  ];
   const breadcrumb = { '@type': 'BreadcrumbList', '@id': `${siteUrl}${categoryUrl(category.slug)}#breadcrumb`, itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Discover', item: `${siteUrl}/marketplace.html` }, { '@type': 'ListItem', position: 2, name: category.name, item: `${siteUrl}${categoryUrl(category.slug)}` }] };
   const schema = [{
     '@context': 'https://schema.org', '@graph': [{
       '@type': 'CollectionPage', '@id': `${siteUrl}${categoryUrl(category.slug)}#webpage`, name: `${category.name} ${categoryLocation}`, url: `${siteUrl}${categoryUrl(category.slug)}`, description: category.description,
-      isPartOf: { '@id': `${siteUrl}/#website` }, publisher: { '@id': `${siteUrl}/#organization` }, dateModified: data.verifiedAt, inLanguage: 'en-US',
-      about: [{ '@type': 'Thing', name: category.name }, { '@type': 'City', name: 'Hartford', containedInPlace: { '@type': 'State', name: 'Connecticut' } }], breadcrumb: { '@id': breadcrumb['@id'] },
+      isPartOf: { '@id': `${siteUrl}/#website` }, publisher: { '@id': `${siteUrl}/#organization` }, dateModified: searchUpdatedAt, inLanguage: 'en-US',
+      about: [{ '@type': 'Thing', name: category.name }, ...businesses.map(business => ({ '@type': 'Place', name: business.locationLabel }))], keywords: topic.terms.join(', '), breadcrumb: { '@id': breadcrumb['@id'] },
       mainEntity: { '@type': 'ItemList', name: `${category.name} near Hartford`, numberOfItems: businesses.length, itemListElement: businesses.map((business, index) => ({ '@type': 'ListItem', position: index + 1, name: business.name, item: { '@type': business.schemaType || 'Organization', '@id': `${siteUrl}${profileUrl(business.slug)}#business`, name: business.name, url: `${siteUrl}${profileUrl(business.slug)}` } })) }
-    }, breadcrumb]
+    }, breadcrumb, faqSchema(categoryFaqs, `${siteUrl}${categoryUrl(category.slug)}`)]
   }];
   const body = `<main id="main-content">
     <section class="category-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Discover</a><span>/</span><span aria-current="page">${escapeHtml(category.name)}</span></nav><p class="eyebrow">${businesses.some((business) => business.regionRank < 4) ? 'Hartford local guide' : 'Beyond Greater Hartford'}</p><h1>${escapeHtml(category.name)}<br><em>${escapeHtml(categoryLocation)}.</em></h1><p>${escapeHtml(category.description)}</p><a class="back-link" href="/marketplace.html">← Search all Hartford businesses</a></div></section>
     <section class="market-section category-feature"><div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Featured ${escapeHtml(category.shortName)}</p><h2>Start with a local standout.</h2></div></div><div class="featured-single">${card(featured, { featured: true })}</div></div></section>
     <section class="market-section"><div class="market-wrap"><div class="directory-heading"><div><p class="eyebrow">Browse the category</p><h2>${businesses.length} ${businesses.length === 1 ? 'business' : 'businesses'} to explore</h2></div><a class="text-link" href="/marketplace.html?category=${category.slug}">Open filtered marketplace →</a></div><div class="business-grid">${businesses.map((business) => card(business)).join('')}</div></div></section>
-    <section class="category-copy"><div class="market-wrap category-copy__inner"><div><p class="eyebrow">Find the right fit</p><h2>Clear details. Direct local connections.</h2></div><p>Every profile includes specialties, verified location or service-area information, and a direct path to the business. RE IMAGE does not add fabricated ratings or hide paid placements inside organic results.</p></div></section>
+    <section class="category-copy"><div class="market-wrap category-copy__inner"><div><p class="eyebrow">Find the right fit</p><h2>${escapeHtml(topic.heading)}</h2></div><div><p>${escapeHtml(topic.copy)}</p><p>Explore: ${topic.terms.map(escapeHtml).join(', ')}.</p></div></div></section>
+    ${faqSection(categoryFaqs, `${category.name}: common questions`)}
   </main>`;
-  return shell({ title: `${category.name} ${categoryLocation} | RE IMAGE Local Guide`, description: `${category.description} Browse verified local profiles, specialties, locations, and direct business links.`, canonical: `${siteUrl}${categoryUrl(category.slug)}`, image: logoAssets[featured.slug] || featured.image, imageAlt: `${featured.name} logo — featured ${category.shortName} business`, schema, body, pageClass: 'marketplace-category' });
+  return shell({ title: `${category.name} ${categoryLocation} | RE IMAGE Local Guide`, description: `${category.description} Compare specialties and contact businesses through official links.`, canonical: `${siteUrl}${categoryUrl(category.slug)}`, image: logoAssets[featured.slug] || featured.image, imageAlt: `${featured.name} logo — featured ${category.shortName} business`, schema, body, pageClass: 'marketplace-category' });
+}
+
+function generateLocation(location) {
+  const businesses = businessesInLocation(location.slug).sort((a,b) => a.name.localeCompare(b.name));
+  const categories = data.categories.filter(category => businesses.some(business => business.categories.includes(category.slug)));
+  const pageUrl = `${siteUrl}${locationUrl(location.slug)}`;
+  const faqs = [
+    [`Which businesses are listed for ${location.name}?`, `${businesses.map(business => business.name).join(', ')} ${businesses.length === 1 ? 'is included' : 'are included'} in this area guide. Each profile links to the business’s official website for current services and inquiries.`],
+    [`What services can I find in the ${location.name} guide?`, `The current listings cover ${categories.map(category => category.name.toLowerCase()).join(', ')}. Use the category guides to compare the wider directory, or the area filter to narrow your search.`],
+    ['Does a listing mean the business has a storefront in this area?', 'Not always. This guide includes businesses tagged for a location or service area. Each business card and profile identifies its listed location; check the official website to confirm where services are provided.']
+  ];
+  const breadcrumb = {'@type':'BreadcrumbList','@id':`${pageUrl}#breadcrumb`,itemListElement:[
+    {'@type':'ListItem',position:1,name:'Discover',item:`${siteUrl}/marketplace.html`},
+    {'@type':'ListItem',position:2,name:location.name,item:pageUrl}
+  ]};
+  const schema = [{'@context':'https://schema.org','@graph':[
+    {'@type':'CollectionPage','@id':`${pageUrl}#webpage`,name:location.title,url:pageUrl,description:location.description,dateModified:searchUpdatedAt,inLanguage:'en-US',isPartOf:{'@id':`${siteUrl}/#website`},publisher:{'@id':`${siteUrl}/#organization`},about:{'@type':'Place',name:location.name},breadcrumb:{'@id':breadcrumb['@id']},mainEntity:{'@type':'ItemList',numberOfItems:businesses.length,itemListElement:businesses.map((business,index)=>({'@type':'ListItem',position:index+1,name:business.name,url:`${siteUrl}${profileUrl(business.slug)}`}))}},
+    breadcrumb,faqSchema(faqs,pageUrl)
+  ]}];
+  const body = `<main id="main-content">
+    <section class="category-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Discover</a><span>/</span><span aria-current="page">${escapeHtml(location.name)}</span></nav><p class="eyebrow">Browse by area</p><h1>${escapeHtml(location.title)}</h1><p>${escapeHtml(location.description)}</p><a class="back-link" href="/marketplace.html?location=${location.slug}">Open this area in Discover →</a></div></section>
+    <section class="market-section"><div class="market-wrap"><div class="directory-heading"><div><p class="eyebrow">Locations &amp; service areas</p><h2>${businesses.length} ${businesses.length === 1 ? 'business' : 'businesses'} to explore</h2></div></div><div class="business-grid">${businesses.map(business=>card(business)).join('')}</div></div></section>
+    <section class="category-copy"><div class="market-wrap"><h2>Services listed for ${escapeHtml(location.name)}</h2><ul class="discovery-location-links">${categories.map(category=>`<li><a href="${categoryUrl(category.slug)}">${escapeHtml(category.name)}</a></li>`).join('')}</ul><p>Browse each profile for specialties and contact options. Service areas can span multiple towns; current prices, booking availability, and opening hours are confirmed directly by the business.</p></div></section>
+    ${faqSection(faqs, `${location.name} business guide: common questions`)}
+  </main>`;
+  return shell({title:`${location.title} | RE IMAGE Discover`,description:location.description,canonical:pageUrl,schema,body,pageClass:'marketplace-location'});
 }
 
 function profileSchema(business) {
@@ -429,9 +482,11 @@ function generateEditorialPage() {
 
 function generateMarketplaceFeed() {
   return `${JSON.stringify({
-    schemaVersion: '1.0', name: 'RE IMAGE Hartford Local Business Directory', url: `${siteUrl}/marketplace.html`, focusArea: 'Hartford and Greater Hartford, Connecticut', informationLastVerified: data.verifiedAt,
+    schemaVersion: '1.1', name: 'RE IMAGE Hartford Local Business Directory', url: `${siteUrl}/marketplace.html`, focusArea: 'Hartford and Greater Hartford, Connecticut', informationLastVerified: data.verifiedAt,
     editorialPolicy: `${siteUrl}${editorialPath}`, featuredGuide: `${siteUrl}${guidePath}`,
-    categories: data.categories.map(({ slug, name, description }) => ({ slug, name, description, url: `${siteUrl}${categoryUrl(slug)}` })),
+    categories: data.categories.map(category => ({ slug: category.slug, name: category.name, description: category.description, topics: topicFor(category).terms, guide: topicFor(category).copy, url: `${siteUrl}${categoryUrl(category.slug)}` })),
+    locations: populatedLocations.map(location => ({ ...location, url: `${siteUrl}${locationUrl(location.slug)}`, businesses: businessesInLocation(location.slug).map(business => `${siteUrl}${profileUrl(business.slug)}`) })),
+    businessDecisionResource: { url: `${siteUrl}/market-signals.html`, topics: marketSearch.topics, snapshot: `${siteUrl}/data/market/latest.json`, methodology: `${siteUrl}/market-signals.html#methodology` },
     businesses: data.businesses.map((business) => ({
       name: business.name, profile: `${siteUrl}${profileUrl(business.slug)}`, officialWebsite: business.website, category: business.categories.map(categoryName),
       location: business.address ? addressText(business) : business.serviceArea, specialties: business.specialties, description: business.shortBio, primaryAction: { label: business.ctaLabel, url: business.ctaUrl }, informationLastVerified: data.verifiedAt
@@ -440,12 +495,12 @@ function generateMarketplaceFeed() {
 }
 
 function generateLlmsSummary() {
-  return `# RE IMAGE Business Solutions\n\n> Hartford-based business systems company and publisher of a verified Hartford local business directory.\n\n## Primary URLs\n\n- [Homepage](${siteUrl}/): Custom websites, customer portals, payment systems, automation, and connected business operating systems.\n- [Hartford Local Business Directory](${siteUrl}/marketplace.html): Search verified Hartford-area businesses by service, specialty, and town.\n- [New Britain Avenue Hartford Business Guide](${siteUrl}${guidePath}): Block-by-block guide to food, fresh drinks, and African hair braiding.\n- [Directory methodology](${siteUrl}${editorialPath}): Verification, corrections, ranking, and placement-label policy.\n- [Complete machine-readable directory](${siteUrl}/llms-full.txt): Full verified listing summaries and direct links.\n- [Marketplace JSON feed](${siteUrl}/marketplace-feed.json): Structured public listing data.\n- [XML sitemap](${siteUrl}/sitemap.xml): Canonical public URLs and image discovery.\n\n## Hartford directory categories\n\n${data.categories.map((category) => `- [${category.name}](${siteUrl}${categoryUrl(category.slug)}): ${category.description}`).join('\n')}\n\n## Key facts\n\n- Geographic focus: Hartford and Greater Hartford, Connecticut.\n- Listings use official business links and verified storefront addresses or truthful service areas.\n- Profiles include specialties, direct actions, factual FAQs, and the information verification date.\n- Businesses outside Greater Hartford are separated from Hartford-area listings.\n- No fabricated ratings, copied reviews, or unsupported ranking claims are published.\n\n## Contact\n\n- Email: reimagebs@gmail.com\n- Phone: +1-860-718-5928\n- Project inquiry: ${siteUrl}/start-with-us.html\n`;
+  return `# RE IMAGE Business Solutions\n\n> Hartford-based business systems company and publisher of a verified Hartford local business directory.\n\n## Primary URLs\n\n- [Homepage](${siteUrl}/): Custom websites, customer portals, payment systems, automation, and connected business operating systems.\n- [Business loan, hiring, and pricing decisions](${siteUrl}/market-signals.html): National FRED and BLS indicators, source dates, M2 projection, decision guides, and a transparent RE IMAGE pressure model.\n- [Published economic data](${siteUrl}/data/market/latest.json): Timestamped observations and model components; M2 projection is money-supply growth, not a CPI forecast.\n- [Hartford Local Business Directory](${siteUrl}/marketplace.html): Search verified Hartford-area businesses by service, specialty, and town.\n- [New Britain Avenue Hartford Business Guide](${siteUrl}${guidePath}): Block-by-block guide to food, fresh drinks, and African hair braiding.\n- [Directory methodology](${siteUrl}${editorialPath}): Verification, corrections, ranking, and placement-label policy.\n- [Complete machine-readable directory](${siteUrl}/llms-full.txt): Full verified listing summaries and direct links.\n- [Marketplace JSON feed](${siteUrl}/marketplace-feed.json): Structured public listing data.\n- [XML sitemap](${siteUrl}/sitemap.xml): Canonical public URLs and image discovery.\n\n## Hartford directory categories\n\n${data.categories.map((category) => `- [${category.name}](${siteUrl}${categoryUrl(category.slug)}): ${category.description}`).join('\n')}\n\n## Location guides\n\n${populatedLocations.map(location => `- [${location.title}](${siteUrl}${locationUrl(location.slug)}): ${location.description}`).join('\n')}\n\n## Key facts\n\n- Geographic focus: Hartford and Greater Hartford, Connecticut.\n- Listings use official business links and verified storefront addresses or truthful service areas.\n- Profiles include specialties, direct actions, factual FAQs, and the information verification date.\n- Businesses outside Greater Hartford are separated from Hartford-area listings.\n- No fabricated ratings, copied reviews, or unsupported ranking claims are published.\n\n## Contact\n\n- Email: reimagebs@gmail.com\n- Phone: +1-860-718-5928\n- Project inquiry: ${siteUrl}/start-with-us.html\n`;
 }
 
 function generateLlmsFull() {
   const listings = data.businesses.map((business) => `## ${business.name}\n\n- RE IMAGE profile: ${siteUrl}${profileUrl(business.slug)}\n- Official website: ${business.website}\n- Category: ${business.categories.map(categoryName).join(', ')}\n- Location or service area: ${business.address ? addressText(business) : business.serviceArea}\n- Specialties: ${business.specialties.join(', ')}\n- Summary: ${business.shortBio}\n- Primary action: ${business.ctaLabel} — ${business.ctaUrl}\n- Information last verified: ${data.verifiedAt}`).join('\n\n');
-  return `# RE IMAGE Hartford Local Business Directory — Full Listing Reference\n\n> Public facts for citation and discovery. Prefer each RE IMAGE profile for complete visible context and the official business link for transactions.\n\nDirectory: ${siteUrl}/marketplace.html\nEditorial policy: ${siteUrl}${editorialPath}\nInformation last verified: ${data.verifiedAt}\n\n${listings}\n`;
+  return `# RE IMAGE Hartford Local Business Directory — Full Listing Reference\n\n> Public facts for citation and discovery. Prefer each RE IMAGE profile for complete visible context and the official business link for transactions.\n\nDirectory: ${siteUrl}/marketplace.html\nEditorial policy: ${siteUrl}${editorialPath}\nInformation last verified: ${data.verifiedAt}\n\n## Business decision resource\n\n${siteUrl}/market-signals.html\nNational economic indicators for small-business loan, hiring, and pricing decisions. Published by RE IMAGE; not an assessment of a particular loan, employee, or price. Source dates and methodology are visible on the page. M2 is a linear money-supply projection and is weighted at 25%; it is not a CPI forecast.\n\n## Category guides\n\n${data.categories.map(category => `### ${category.name}\n\nURL: ${siteUrl}${categoryUrl(category.slug)}\n${topicFor(category).copy}\nTopics: ${topicFor(category).terms.join(', ')}`).join('\n\n')}\n\n## Location guides\n\n${populatedLocations.map(location => `### ${location.title}\n\nURL: ${siteUrl}${locationUrl(location.slug)}\n${location.description}\nListed businesses: ${businessesInLocation(location.slug).map(business => business.name).join(', ')}`).join('\n\n')}\n\n${listings}\n`;
 }
 
 function write(relativePath, contents) {
@@ -457,19 +512,21 @@ function write(relativePath, contents) {
 function generateSitemap() {
   const urls = [
     { loc: `${siteUrl}/`, priority: '1.0', image: `${siteUrl}/assets/reimage-logo-2026-transparent.png` },
-    { loc: `${siteUrl}/marketplace.html`, priority: '1.0', image: `${siteUrl}/assets/reimage-logo-2026-transparent.png` },
+    { loc: `${siteUrl}/marketplace.html`, lastmod: searchUpdatedAt, priority: '1.0', image: `${siteUrl}/assets/reimage-logo-2026-transparent.png` },
     { loc: `${siteUrl}${guidePath}`, priority: '0.9', image: absoluteAsset(logoAssets['fusion-health-juice-bar']) },
     { loc: `${siteUrl}${editorialPath}`, priority: '0.6', image: `${siteUrl}/assets/reimage-logo-2026-transparent.png` },
-    ...data.categories.map((category) => ({ loc: `${siteUrl}${categoryUrl(category.slug)}`, priority: '0.8', image: absoluteAsset(logoAssets[category.featured] || businessMap.get(category.featured).image) })),
+    ...data.categories.map((category) => ({ loc: `${siteUrl}${categoryUrl(category.slug)}`, lastmod: searchUpdatedAt, priority: '0.8', image: absoluteAsset(logoAssets[category.featured] || businessMap.get(category.featured).image) })),
+    ...populatedLocations.map(location => ({ loc: `${siteUrl}${locationUrl(location.slug)}`, lastmod: searchUpdatedAt, priority: '0.7', image: `${siteUrl}/assets/reimage-logo-2026-transparent.png` })),
     ...data.businesses.map((business) => ({ loc: `${siteUrl}${profileUrl(business.slug)}`, priority: '0.8', image: absoluteAsset(logoAssets[business.slug] || business.image) })),
-    ...['website-development.html', 'products.html', 'our-work.html', 'careers.html', 'market-signals.html', 'start-with-us.html', 'ai-receptionists.html', 'ai-automation.html', 'business-funding.html', 'growth-foundation.html', 'full-scale-system.html', 'social-media-management.html', 'map.html'].map((page) => ({ loc: `${siteUrl}/${page}`, priority: '0.6', image: `${siteUrl}/assets/reimage-logo-2026-transparent.png` }))
+    ...['website-development.html', 'products.html', 'our-work.html', 'careers.html', 'market-signals.html', 'start-with-us.html', 'ai-receptionists.html', 'ai-automation.html', 'business-funding.html', 'growth-foundation.html', 'full-scale-system.html', 'social-media-management.html', 'map.html'].map((page) => ({ loc: `${siteUrl}/${page}`, lastmod: page === 'market-signals.html' ? marketSearch.reviewed : data.verifiedAt, priority: '0.6', image: `${siteUrl}/assets/reimage-logo-2026-transparent.png` }))
   ];
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls.map(({ loc, priority, image }) => `  <url><loc>${escapeHtml(loc)}</loc><lastmod>${data.verifiedAt}</lastmod><changefreq>weekly</changefreq><priority>${priority}</priority>${image ? `<image:image><image:loc>${escapeHtml(image)}</image:loc></image:image>` : ''}</url>`).join('\n')}\n</urlset>\n`;
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls.map(({ loc, priority, image, lastmod = data.verifiedAt }) => `  <url><loc>${escapeHtml(loc)}</loc><lastmod>${lastmod}</lastmod><changefreq>weekly</changefreq><priority>${priority}</priority>${image ? `<image:image><image:loc>${escapeHtml(image)}</image:loc></image:image>` : ''}</url>`).join('\n')}\n</urlset>\n`;
 }
 
 validateData();
 write('marketplace.html', generateHub());
 data.categories.forEach((category) => write(`marketplace/categories/${category.slug}/index.html`, generateCategory(category)));
+populatedLocations.forEach(location => write(`marketplace/locations/${location.slug}/index.html`, generateLocation(location)));
 data.businesses.forEach((business) => write(`marketplace/businesses/${business.slug}/index.html`, generateProfile(business)));
 write('marketplace/guides/new-britain-avenue-hartford/index.html', generateCorridorGuide());
 write('marketplace/about/index.html', generateEditorialPage());
@@ -479,4 +536,4 @@ write('llms-full.txt', generateLlmsFull());
 write('sitemap.xml', generateSitemap());
 write('robots.txt', `User-agent: OAI-SearchBot\nAllow: /\nDisallow: /reimage-admin-portal/\nDisallow: /reimage-login-portal/\nDisallow: /reimage-salesman-portal/\n\nUser-agent: ChatGPT-User\nAllow: /\nDisallow: /reimage-admin-portal/\nDisallow: /reimage-login-portal/\nDisallow: /reimage-salesman-portal/\n\nUser-agent: *\nAllow: /\nDisallow: /reimage-admin-portal/\nDisallow: /reimage-login-portal/\nDisallow: /reimage-salesman-portal/\n\nSitemap: ${siteUrl}/sitemap.xml\n`);
 
-console.log(`Generated marketplace hub, ${data.categories.length} category pages, ${data.businesses.length} business profiles, two trust/guide pages, AI feeds, sitemap.xml, and robots.txt.`);
+console.log(`Generated marketplace hub, ${data.categories.length} category pages, ${populatedLocations.length} location guides, ${data.businesses.length} business profiles, two trust/guide pages, AI feeds, sitemap.xml, and robots.txt.`);

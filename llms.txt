@@ -5,6 +5,8 @@
 ## Primary URLs
 
 - [Homepage](https://reimagebs.com/): Custom websites, customer portals, payment systems, automation, and connected business operating systems.
+- [Business loan, hiring, and pricing decisions](https://reimagebs.com/market-signals.html): National FRED and BLS indicators, source dates, M2 projection, decision guides, and a transparent RE IMAGE pressure model.
+- [Published economic data](https://reimagebs.com/data/market/latest.json): Timestamped observations and model components; M2 projection is money-supply growth, not a CPI forecast.
 - [Hartford Local Business Directory](https://reimagebs.com/marketplace.html): Search verified Hartford-area businesses by service, specialty, and town.
 - [New Britain Avenue Hartford Business Guide](https://reimagebs.com/marketplace/guides/new-britain-avenue-hartford/): Block-by-block guide to food, fresh drinks, and African hair braiding.
 - [Directory methodology](https://reimagebs.com/marketplace/about/): Verification, corrections, ranking, and placement-label policy.
@@ -26,6 +28,16 @@
 - [Real Estate & Rentals](https://reimagebs.com/marketplace/categories/real-estate-rentals/): Residential and commercial rentals, property management, and Hartford-area development.
 - [Community & Family](https://reimagebs.com/marketplace/categories/community-family/): Mentorship, gatherings, resources, and support designed to strengthen families and communities.
 - [Private Transportation](https://reimagebs.com/marketplace/categories/private-transportation/): Private chauffeur service for airports, corporate travel, events, and long-distance trips.
+
+## Location guides
+
+- [Hartford, CT Local Businesses](https://reimagebs.com/marketplace/locations/hartford/): Explore Hartford restaurants, juice bars, hair braiding, car audio, printing, property services, and community organizations. Check each profile for its storefront or service area.
+- [West Hartford, CT Local Businesses](https://reimagebs.com/marketplace/locations/west-hartford/): Find businesses listed for West Hartford, including auto body repair and towing. Compare service details and follow official links for estimates and availability.
+- [East Hartford, CT Business Services](https://reimagebs.com/marketplace/locations/east-hartford/): Browse businesses serving East Hartford, including custom printing, apparel, and property services. Profiles distinguish service areas from storefront addresses.
+- [Manchester, CT Local Businesses](https://reimagebs.com/marketplace/locations/manchester/): Explore businesses listed in Manchester, including skincare and esthetics. Read specialties and use official business links to confirm consultations and appointment availability.
+- [Farmington, CT Local Businesses](https://reimagebs.com/marketplace/locations/farmington/): Find businesses listed for Farmington, including car rentals. Check vehicle options through the provider and confirm current availability, pricing, and pickup details.
+- [More Connecticut Businesses & Services](https://reimagebs.com/marketplace/locations/other-connecticut/): Explore businesses with additional Connecticut locations or service areas, including Wethersfield and Clinton. Check individual profiles for the precise areas and services offered.
+- [Businesses Beyond Greater Hartford](https://reimagebs.com/marketplace/locations/beyond/): Explore RE IMAGE directory listings outside Greater Hartford, including New York auto services and private transportation, plus a Chicago-based healthcare initiative.
 
 ## Key facts
 

@@ -1,6 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { marketSearch } from './search-content.mjs';
+import { marketSearchHtml, marketSearchSchema } from './market-search.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const siteUrl = 'https://reimagebs.com';
@@ -11,8 +13,8 @@ const menuButton = '<button class="menu-btn" id="menuBtn" type="button" aria-lab
 
 const pages = {
   'market-signals.html': {
-    title: 'Market Signals & Business Pressure | RE IMAGE',
-    description: 'Track business cost pressure, money supply, inflation, fuel, labor, and interest rates with RE IMAGE’s public market dashboard and year-to-date M2 projection.',
+    title: marketSearch.title,
+    description: marketSearch.description,
     type: 'WebPage'
   },
   'index.html': {
@@ -136,10 +138,25 @@ for (const [file, config] of Object.entries(pages)) {
   }
 
   let html = fs.readFileSync(absolute, 'utf8');
+  if (file === 'market-signals.html') {
+    const snapshot = JSON.parse(fs.readFileSync(path.join(root, 'data/market/latest.json'), 'utf8'));
+    graph[2].about = marketSearch.topics.map(name => ({ '@type': 'Thing', name }));
+    graph[2].dateModified = snapshot.updated_at;
+    graph[2].breadcrumb = { '@id': `${canonical}#breadcrumb` };
+    graph[2].hasPart = marketSearch.decisions.map(item => ({ '@id': `${canonical}#${item.id}` }));
+    graph[2].mainEntity = { '@id': `${canonical}#economic-data` };
+    graph.push(...marketSearchSchema(snapshot, canonical));
+    const content = marketSearchHtml(snapshot);
+    if (html.includes('<!-- MARKET-SEARCH:START -->')) {
+      html = html.replace(/<!-- MARKET-SEARCH:START -->[\s\S]*?<!-- MARKET-SEARCH:END -->/, () => content);
+    } else {
+      html = html.replace('    <section class="signals-methodology', `${content}\n    <section class="signals-methodology`);
+    }
+  }
   html = html.replace(/public-shell\.css\?v=[^"']+/g, publicShellCss);
   html = html.replace(/public-shell\.js\?v=[^"']+/g, publicShellJs);
   html = html.replace(/<button\b[^>]*\bid=["']menuBtn["'][^>]*>[\s\S]*?<\/button>/i, menuButton);
-  html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${config.title}</title>`);
+  html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${file === 'market-signals.html' ? escapeAttribute(config.title) : config.title}</title>`);
   html = html.replace(/<!-- REIMAGE-SEO:START -->[\s\S]*?<!-- REIMAGE-SEO:END -->\s*/gi, '');
   html = html.replace(/<link\b(?=[^>]*\brel=["']canonical["'])[^>]*>\s*/gi, '');
   html = html.replace(/<meta\b(?=[^>]*(?:name|property)=["'](?:description|keywords|author|robots|googlebot|bingbot|theme-color|og:[^"']+|twitter:[^"']+)["'])[^>]*>\s*/gi, '');

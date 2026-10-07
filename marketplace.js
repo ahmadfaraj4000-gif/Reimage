@@ -105,7 +105,7 @@
     categoryFilters.querySelectorAll('[data-category]').forEach((button) => {
       const active = button.dataset.category === state.category;
       button.classList.toggle('active', active);
-      button.setAttribute('aria-pressed', String(active));
+      button.setAttribute(button.tagName === 'A' ? 'aria-current' : 'aria-pressed', String(active));
     });
 
     const organicCards = [...businessGrid.querySelectorAll('[data-business-card]'), ...(beyondGrid ? [...beyondGrid.querySelectorAll('[data-business-card]')] : [])];
@@ -176,6 +176,8 @@
   categoryFilters.addEventListener('click', (event) => {
     const button = event.target.closest('[data-category]');
     if (!button) return;
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    event.preventDefault();
     state.category = button.dataset.category;
     renderFilters();
   });

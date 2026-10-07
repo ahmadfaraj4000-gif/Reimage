@@ -102,3 +102,17 @@
 @media(max-width:700px){.signals-main{padding:0 18px}.signals-hero{display:block;padding:35px 0 25px}.signals-hero h1{font-size:37px}.signals-intro{font-size:14px}.signals-text-link{display:inline-block;margin-top:22px}.signals-overview,.method-grid{grid-template-columns:1fr}.signals-panel-heading{align-items:center}.pressure-reading strong{font-size:80px}.operating-direction{flex-direction:row;align-items:center}.m2-stat-grid strong{font-size:36px}.signals-section{margin-top:42px}.signals-section-heading{display:block}.signals-section-heading>p{margin-top:14px;max-width:100%}.signals-cta{display:block;padding:25px;margin:45px 0}.signals-button{margin-top:24px}.signal-card{padding:20px}.signals-grid{gap:12px}.signals-status{font-size:10px}.signals-methodology{padding-top:30px}}
 @media(max-width:480px){.signals-grid{grid-template-columns:1fr}.m2-stat-grid .signals-kicker{font-size:8px!important}.signals-panel-heading h2{font-size:16px}.signals-panel-heading{gap:10px}.m2-stat-grid strong{font-size:34px}.m2-chart-legend{gap:12px}.signals-hero h1{font-size:34px}}
 @media(prefers-reduced-motion:reduce){.market-signals-page *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.decision-jump-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.decision-jump-links a{color:var(--ms-teal);font-size:12px;text-decoration:none;padding:8px 13px;border:1px solid var(--ms-line);border-radius:99px;background:white}
+.decision-byline{font-size:11px;color:var(--ms-muted);margin:0 0 22px}
+.decision-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.decision-grid article{padding:26px;background:#fff;border:1px solid var(--ms-line);border-radius:16px;scroll-margin-top:90px}
+.decision-grid h3{font-size:20px;margin:0 0 16px}.decision-grid h4{font-size:13px;margin:22px 0 8px}
+.decision-grid p{font-size:13px;line-height:1.8;color:var(--ms-muted)}
+.decision-grid a,.published-data a{color:var(--ms-teal);text-underline-offset:3px;font-size:12px}
+.decision-grid .signals-eyebrow{font-size:10px!important;color:var(--ms-teal)}
+.decision-grid .decision-source{font-size:11px;margin-top:20px}.decision-source a{font-size:11px}
+.decision-faq .method-notes{display:grid;grid-template-columns:1fr 1fr;gap:0 32px}
+.decision-faq p,.published-data p{font-size:13px;line-height:1.8;color:var(--ms-muted)}
+.published-data h2{font-size:24px}.published-data th[scope=row]{white-space:normal;min-width:145px}
+@media(max-width:900px){.decision-grid{grid-template-columns:1fr}.decision-faq .method-notes{grid-template-columns:1fr}}
