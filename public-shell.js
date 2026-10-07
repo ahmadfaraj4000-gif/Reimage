@@ -13,6 +13,11 @@
   const closeMore = () => { if (moreMenu) moreMenu.open = false; };
 
   if (moreMenu) {
+    let keyboardNavigation = false;
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Tab') keyboardNavigation = true;
+    });
+    document.addEventListener('pointerdown', () => { keyboardNavigation = false; }, { capture: true });
     moreMenu.addEventListener('toggle', () => {
       moreToggle.setAttribute('aria-expanded', String(moreMenu.open));
     });
@@ -27,9 +32,9 @@
     moreMenu.addEventListener('focusout', (event) => {
       // A pointer press can blur summary with no next focused element (notably
       // in Safari). Hiding the links here would swallow the following click.
-      // Only a known focus move outside should dismiss this menu; outside
+      // Only keyboard focus moving outside should dismiss this menu; outside
       // pointer clicks are handled by the document listener below.
-      if (event.relatedTarget && !moreMenu.contains(event.relatedTarget)) closeMore();
+      if (keyboardNavigation && event.relatedTarget && !moreMenu.contains(event.relatedTarget)) closeMore();
     });
     document.addEventListener('click', (event) => {
       if (!moreMenu.contains(event.target)) closeMore();
@@ -76,10 +81,20 @@
       toggleMenu();
     }, { capture: true });
 
-    // Let native link activation finish before hiding its containing details.
-    navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-      setTimeout(closeMenu, 0);
+    // Cross-page links must stay visible throughout native touch activation.
+    // Only an in-page anchor needs to dismiss the menu without a page change.
+    navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', (event) => {
+      if (event.defaultPrevented || event.button > 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const target = new URL(link.href, window.location.href);
+      const current = new URL(window.location.href);
+      if (target.origin === current.origin && target.pathname === current.pathname && target.search === current.search && target.hash) {
+        setTimeout(closeMenu, 0);
+      }
     }));
+
+    // Reset after navigation, including when Back restores a page from cache.
+    window.addEventListener('pagehide', closeMenu);
+    window.addEventListener('pageshow', closeMenu);
 
     document.addEventListener('click', (event) => {
       if (!navigation.contains(event.target)) closeMenu();

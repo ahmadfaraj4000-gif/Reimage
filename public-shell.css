@@ -133,6 +133,8 @@ body nav#navbar .nav-more[open] summary::after { transform: translateY(1px) rota
 body nav#navbar .nav-more summary:hover,
 body nav#navbar .nav-more.active summary { color: var(--shell-blue); }
 body nav#navbar .nav-more summary:focus-visible { outline: 2px solid var(--shell-blue); outline-offset: 2px; }
+body nav#navbar .nav-more summary,
+body nav#navbar .nav-links a { touch-action: manipulation; cursor: pointer; }
 body nav#navbar .nav-more-links {
   position: absolute; top: calc(100% + 8px); left: 0; min-width: 190px;
   margin: 0; padding: 7px; list-style: none; border: 1px solid var(--shell-line);

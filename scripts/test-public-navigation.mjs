@@ -57,7 +57,7 @@ function fixture() {
     document, window, URL, Date, setTimeout: callback => timers.push(callback),
   });
   menu.open = true;
-  return {document, menu, summary, button, nav, links, timers};
+  return {document, window, menu, summary, button, nav, links, timers};
 }
 
 function focusout(element, relatedTarget) {
@@ -73,11 +73,14 @@ test('pointer blur without a focus destination keeps links available for activat
   links[0].dispatchEvent(new Event('click'));
   assert.equal(menu.open, true, 'link must remain visible through native click activation');
   timers.forEach(callback => callback());
-  assert.equal(menu.open, false);
+  assert.equal(menu.open, true, 'cross-page activation never hides the link before navigation');
 });
 
 test('keyboard focus moves within the dropdown without hiding it, and dismisses on exit', () => {
-  const {menu, links, button} = fixture();
+  const {document, menu, links, button} = fixture();
+  const tab = new Event('keydown');
+  Object.defineProperty(tab, 'key', {value: 'Tab'});
+  document.dispatchEvent(tab);
   focusout(menu, links[0]);
   focusout(menu, links[1]);
   assert.equal(menu.open, true);
@@ -99,4 +102,45 @@ test('outside click dismisses More', () => {
   const {document, menu} = fixture();
   document.dispatchEvent(new Event('click'));
   assert.equal(menu.open, false);
+});
+
+
+test('touch focus changes cannot dismiss the submenu before a tap activates', () => {
+  const {document, menu, button} = fixture();
+  const tab = new Event('keydown');
+  Object.defineProperty(tab, 'key', {value: 'Tab'});
+  document.dispatchEvent(tab);
+  document.dispatchEvent(new Event('pointerdown'));
+  focusout(menu, button);
+  assert.equal(menu.open, true);
+});
+
+test('mobile cross-page links remain available until pagehide, then Back restores a closed menu', () => {
+  for (const index of [0, 1]) {
+    const {window, menu, nav, links, timers} = fixture();
+    nav.classList.toggle('open', true);
+    links[index].dispatchEvent(new Event('click'));
+    timers.forEach(callback => callback());
+    assert.equal(nav.classList.contains('open'), true);
+    assert.equal(menu.open, true);
+    window.dispatchEvent(new Event('pagehide'));
+    assert.equal(nav.classList.contains('open'), false);
+    assert.equal(menu.open, false);
+    nav.classList.toggle('open', true);
+    menu.open = true;
+    window.dispatchEvent(new Event('pageshow'));
+    assert.equal(nav.classList.contains('open'), false);
+    assert.equal(menu.open, false);
+  }
+});
+
+test('same-page anchors still dismiss the mobile menu after click activation', () => {
+  const {menu, nav, links, timers} = fixture();
+  nav.classList.toggle('open', true);
+  links[0].href = 'https://reimagebs.com/#home';
+  links[0].dispatchEvent(new Event('click'));
+  assert.equal(menu.open, true);
+  timers.forEach(callback => callback());
+  assert.equal(menu.open, false);
+  assert.equal(nav.classList.contains('open'), false);
 });

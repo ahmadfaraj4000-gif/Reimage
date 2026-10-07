@@ -162,7 +162,7 @@ function head({ title, description, canonical, image = `${siteUrl}/assets/reimag
   <meta name="twitter:description" content="${escapeHtml(description)}">
   <meta name="twitter:image" content="${absoluteImage}">
   <meta name="twitter:image:alt" content="${escapeHtml(imageAlt)}">
-  <link rel="stylesheet" href="/public-shell.css?v=20261006-1">
+  <link rel="stylesheet" href="/public-shell.css?v=20261007-2">
   <link rel="stylesheet" href="/marketplace.css?v=20261006-2">
   ${schema.map((item) => `<script type="application/ld+json">${escapeJson(item)}</script>`).join('\n  ')}
   <link rel="stylesheet" href="/public-typography.css?v=20260914-1">
@@ -223,7 +223,7 @@ function shell({ title, description, canonical, image, imageAlt, schema, body, p
   ${body}
   ${categoryDirectory()}
   ${footer()}
-  <script src="/public-shell.js?v=20261007-1" defer></script>
+  <script src="/public-shell.js?v=20261007-2" defer></script>
   <script src="/marketplace.js?v=20261006-2" defer></script>
 </body>
 </html>\n`;
