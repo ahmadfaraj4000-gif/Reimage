@@ -79,13 +79,13 @@ function renderChart(indicator, projection, available) {
   const ticks = [low, (low + high) / 2, high];
   container.innerHTML = `<svg viewBox="0 0 510 145" role="img" aria-labelledby="m2ChartTitle m2ChartDescription">
     <title id="m2ChartTitle">M2 growth since December ${projection.year - 1}</title>
-    <desc id="m2ChartDescription">Observed growth ${fmt(projection.ytd_growth)}% through ${month(projection.observation_date)}. Linear year-end projection ${fmt(projected)}%. Dashed gold line indicates projection.</desc>
-    ${ticks.map(v=>`<line x1="42" y1="${y(v)}" x2="484" y2="${y(v)}" stroke="#e5ebea"/><text x="32" y="${y(v)+3}" text-anchor="end" fill="#586875" font-size="9">${fmt(v,1)}%</text>`).join('')}
-    <path d="${line} L${x(last.m)},112 L42,112 Z" fill="#1a7a8a0d"/>
-    <path d="${line}" fill="none" stroke="#1a7a8a" stroke-width="2.5" stroke-linejoin="round"/>
-    ${last.m < 12 ? `<path d="M${x(last.m)},${y(last.v)} L484,${y(projected)}" fill="none" stroke="#c8922a" stroke-width="2" stroke-dasharray="5 5"/>` : ''}
-    <circle cx="${x(last.m)}" cy="${y(last.v)}" r="4" fill="#1a7a8a" stroke="white" stroke-width="2"/>
-    <text x="42" y="137" fill="#586875" font-size="9">Dec ${projection.year - 1}</text><text x="263" y="137" text-anchor="middle" fill="#586875" font-size="9">Jun</text><text x="484" y="137" text-anchor="end" fill="#586875" font-size="9">Dec ${projection.year}</text>
+    <desc id="m2ChartDescription">Observed growth ${fmt(projection.ytd_growth)}% through ${month(projection.observation_date)}. Linear year-end projection ${fmt(projected)}%. Dashed line indicates projection.</desc>
+    ${ticks.map(v=>`<line x1="42" y1="${y(v)}" x2="484" y2="${y(v)}" stroke="#dfe5ec"/><text x="32" y="${y(v)+3}" text-anchor="end" fill="#657083" font-size="11">${fmt(v,1)}%</text>`).join('')}
+    <path d="${line} L${x(last.m)},112 L42,112 Z" fill="#0877e80d"/>
+    <path d="${line}" fill="none" stroke="#0877e8" stroke-width="2.5" stroke-linejoin="round"/>
+    ${last.m < 12 ? `<path d="M${x(last.m)},${y(last.v)} L484,${y(projected)}" fill="none" stroke="#0877e8" stroke-width="2" stroke-dasharray="5 5"/>` : ''}
+    <circle cx="${x(last.m)}" cy="${y(last.v)}" r="4" fill="#0877e8" stroke="white" stroke-width="2"/>
+    <text x="42" y="137" fill="#657083" font-size="11">Dec ${projection.year - 1}</text><text x="263" y="137" text-anchor="middle" fill="#657083" font-size="11">Jun</text><text x="484" y="137" text-anchor="end" fill="#657083" font-size="11">Dec ${projection.year}</text>
   </svg>`;
 }
 
@@ -132,19 +132,18 @@ function renderPage(data) {
   const warning = document.getElementById('dataWarning');
   warning.hidden = !warnings.length;
   warning.textContent = warnings.join(' ');
-  document.getElementById('signalsGrid').innerHTML = ORDER.map((id,index) => {
+  document.getElementById('signalsGrid').innerHTML = ORDER.map(id => {
     const item = data.indicators.find(i=>i.series === id);
     const meta = META[id];
     const changeLabel = id === 'M2SL' && finite(state.projection)
       ? `${signed(state.projection)}% projected full year · ${formatChange(item)} (context)`
       : formatChange(item);
     const observed = id === 'ENERGY_FUEL' ? new Date(`${item.observation_date}T12:00:00Z`).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}) : month(item.observation_date);
-    return `<article class="signal-card${id === 'M2SL' ? ' signal-card-m2' : ''}">
-      <div class="signal-card-top"><span class="signal-number">${String(index+1).padStart(2,'0')}</span><span class="signal-weight">${meta.weight ? `${meta.weight}% of score` : 'Context signal'}</span></div>
-      <h3>${meta.name}</h3><div class="signal-value">${formatCurrent(item)}</div><div class="signal-unit">${escapeHtml(item.unit)}${id === 'M2SL' ? ' · displayed in trillions' : ''}</div>
+    return `<article class="signal-card">
+      <div class="signal-card-heading"><h3>${meta.name}</h3><span class="signal-weight">${meta.weight ? `${meta.weight}% of score` : 'Context signal'}</span></div><div class="signal-value">${formatCurrent(item)}</div><div class="signal-unit">${escapeHtml(item.unit)}${id === 'M2SL' ? ' · displayed in trillions' : ''}</div>
       <div class="signal-change">${changeLabel}</div><p>${meta.impact}</p>
       <div class="signal-watch"><strong>What to watch</strong><p>${meta.watch}</p></div>
-      <div class="signal-source"><span>Observed ${escapeHtml(observed)}</span><a href="${escapeHtml(item.source_url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.source)} · ${escapeHtml(item.source_series)} ↗</a></div>
+      <div class="signal-source"><span>Observed ${escapeHtml(observed)}</span><a href="${escapeHtml(item.source_url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.source)} · ${escapeHtml(item.source_series)}</a></div>
     </article>`;
   }).join('');
 }
