@@ -25,9 +25,12 @@
       }
     });
     moreMenu.addEventListener('focusout', (event) => {
-      if (!moreMenu.contains(event.relatedTarget)) closeMore();
+      // A pointer press can blur summary with no next focused element (notably
+      // in Safari). Hiding the links here would swallow the following click.
+      // Only a known focus move outside should dismiss this menu; outside
+      // pointer clicks are handled by the document listener below.
+      if (event.relatedTarget && !moreMenu.contains(event.relatedTarget)) closeMore();
     });
-    moreMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMore));
     document.addEventListener('click', (event) => {
       if (!moreMenu.contains(event.target)) closeMore();
     });
@@ -73,7 +76,10 @@
       toggleMenu();
     }, { capture: true });
 
-    navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+    // Let native link activation finish before hiding its containing details.
+    navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+      setTimeout(closeMenu, 0);
+    }));
 
     document.addEventListener('click', (event) => {
       if (!navigation.contains(event.target)) closeMenu();

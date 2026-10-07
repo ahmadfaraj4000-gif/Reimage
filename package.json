@@ -9,7 +9,7 @@
     "marketplace:sync": "node scripts/sync-marketplace-from-supabase.mjs",
     "seo:generate": "node scripts/enhance-public-seo.mjs",
     "seo:indexnow": "node scripts/submit-indexnow.mjs",
-    "test": "node scripts/validate-marketplace.mjs && node scripts/validate-search.mjs",
+    "test": "node scripts/validate-marketplace.mjs && node scripts/validate-search.mjs && node --test scripts/test-public-navigation.mjs",
     "build": "node scripts/build-public-site.mjs"
   }
 }
