@@ -128,7 +128,9 @@ test('mobile cross-page links remain available until pagehide, then Back restore
     assert.equal(menu.open, false);
     nav.classList.toggle('open', true);
     menu.open = true;
-    window.dispatchEvent(new Event('pageshow'));
+    const restored = new Event('pageshow');
+    Object.defineProperty(restored, 'persisted', {value: true});
+    window.dispatchEvent(restored);
     assert.equal(nav.classList.contains('open'), false);
     assert.equal(menu.open, false);
   }
@@ -143,4 +145,13 @@ test('same-page anchors still dismiss the mobile menu after click activation', (
   timers.forEach(callback => callback());
   assert.equal(menu.open, false);
   assert.equal(nav.classList.contains('open'), false);
+});
+
+
+test('finishing the initial page load does not close a menu already opened by the visitor', () => {
+  const {window, menu, nav} = fixture();
+  nav.classList.toggle('open', true);
+  window.dispatchEvent(new Event('pageshow'));
+  assert.equal(menu.open, true);
+  assert.equal(nav.classList.contains('open'), true);
 });

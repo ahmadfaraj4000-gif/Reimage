@@ -94,7 +94,9 @@
 
     // Reset after navigation, including when Back restores a page from cache.
     window.addEventListener('pagehide', closeMenu);
-    window.addEventListener('pageshow', closeMenu);
+    window.addEventListener('pageshow', (event) => {
+      if (event.persisted) closeMenu();
+    });
 
     document.addEventListener('click', (event) => {
       if (!navigation.contains(event.target)) closeMenu();

@@ -223,7 +223,7 @@ function shell({ title, description, canonical, image, imageAlt, schema, body, p
   ${body}
   ${categoryDirectory()}
   ${footer()}
-  <script src="/public-shell.js?v=20261007-2" defer></script>
+  <script src="/public-shell.js?v=20261007-3" defer></script>
   <script src="/marketplace.js?v=20261006-2" defer></script>
 </body>
 </html>\n`;
