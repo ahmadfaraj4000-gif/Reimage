@@ -29,7 +29,7 @@ for (const file of pages) {
   if (!/<link rel="canonical" href="https:\/\/reimagebs\.com\//.test(html)) errors.push(`${relative}: missing canonical`);
   if (!/<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">/.test(html)) errors.push(`${relative}: missing full preview robots directives`);
   if (!/<meta name="twitter:title"/.test(html) || !/<meta name="twitter:image"/.test(html)) errors.push(`${relative}: incomplete Twitter metadata`);
-  if (!html.includes('/public-shell.js?v=20260904-8')) errors.push(`${relative}: missing canonical public navigation controller`);
+  if (!html.includes('/public-shell.js?v=20261006-1')) errors.push(`${relative}: missing canonical public navigation controller`);
   if (!html.includes('aria-controls="navLinks"')) errors.push(`${relative}: missing canonical mobile menu button`);
   if ((html.match(/<h1\b/g) || []).length !== 1) errors.push(`${relative}: expected exactly one H1`);
 
@@ -104,9 +104,11 @@ try { JSON.parse(fs.readFileSync(path.join(root, 'marketplace-feed.json'), 'utf8
 const transparentLogo = fs.readFileSync(path.join(root, 'assets/marketplace/logos/mi-buen-pastor-mexican-fusion-transparent.png'));
 if (transparentLogo[25] !== 6 && transparentLogo[25] !== 4) errors.push('Mi Buen Pastor logo does not contain an alpha channel');
 
-const publicPageFiles = ['index.html', 'website-development.html', 'ai-receptionists.html', 'ai-automation.html', 'business-funding.html', 'growth-foundation.html', 'full-scale-system.html', 'social-media-management.html', 'products.html', 'our-work.html', 'careers.html', 'start-with-us.html', 'map.html'];
+const publicPageFiles = ['index.html', 'website-development.html', 'ai-receptionists.html', 'ai-automation.html', 'business-funding.html', 'growth-foundation.html', 'full-scale-system.html', 'social-media-management.html', 'products.html', 'our-work.html', 'careers.html', 'market-signals.html', 'start-with-us.html', 'map.html'];
 for (const file of publicPageFiles) {
   const html = fs.readFileSync(path.join(root, file), 'utf8');
+  const navigation = html.match(/<nav\b[\s\S]*?<\/nav>/)?.[0] || '';
+  if (!navigation.includes('class="nav-more"') || !navigation.includes('href="/market-signals.html"') || !navigation.includes('href="/careers.html"')) errors.push(`${file}: missing More menu destinations`);
   if ((html.match(/<title>/gi) || []).length !== 1) errors.push(`${file}: expected one title`);
   if ((html.match(/\brel=["']canonical["']/gi) || []).length !== 1) errors.push(`${file}: expected one canonical`);
   if ((html.match(/\bname=["']description["']/gi) || []).length !== 1) errors.push(`${file}: expected one meta description`);
@@ -114,8 +116,8 @@ for (const file of publicPageFiles) {
   if (!/id=["']reimage-seo-schema["']/.test(html)) errors.push(`${file}: missing site entity schema`);
   if (!/name=["']twitter:title["']/.test(html) || !/name=["']twitter:image["']/.test(html)) errors.push(`${file}: incomplete social metadata`);
   if (/name=["']keywords["']/i.test(html)) errors.push(`${file}: obsolete meta keywords tag should not be present`);
-  if (!html.includes('public-shell.css?v=20260904-6')) errors.push(`${file}: missing canonical public navigation styles`);
-  if (!html.includes('public-shell.js?v=20260904-8')) errors.push(`${file}: missing canonical public navigation controller`);
+  if (!html.includes('public-shell.css?v=20261006-1')) errors.push(`${file}: missing canonical public navigation styles`);
+  if (!html.includes('public-shell.js?v=20261006-1')) errors.push(`${file}: missing canonical public navigation controller`);
   if (!html.includes('aria-controls="navLinks"')) errors.push(`${file}: missing canonical mobile menu button`);
   for (const image of html.matchAll(/<img\s+[^>]*>/gi)) if (!/\balt=["'][^"']*["']/i.test(image[0])) errors.push(`${file}: image missing alt attribute`);
   const schemaScripts = [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];

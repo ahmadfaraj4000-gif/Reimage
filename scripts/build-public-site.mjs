@@ -37,4 +37,5 @@ for (const entry of fs.readdirSync(root, { withFileTypes: true })) {
 }
 fs.cpSync(path.join(root, 'assets'), path.join(dist, 'assets'), { recursive: true });
 fs.cpSync(path.join(root, 'marketplace'), path.join(dist, 'marketplace'), { recursive: true });
+fs.cpSync(path.join(root, 'data/market'), path.join(dist, 'data/market'), { recursive: true });
 console.log('Built static public website in dist/.');

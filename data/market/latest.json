@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "model_version": "reimage-m2-2026-1",
+  "updated_at": "2026-10-07T02:46:22+00:00",
+  "indicators": [
+    {
+      "series": "M2SL",
+      "name": "Money supply (M2)",
+      "current": 23342.8,
+      "change": 5.6589084127717015,
+      "unit": "Billions of dollars",
+      "change_unit": "%",
+      "cadence": "year-over-year",
+      "observation_date": "2026-08-01",
+      "comparison_date": "2025-08-01",
+      "source": "FRED",
+      "source_series": "M2SL",
+      "source_url": "https://fred.stlouisfed.org/series/M2SL",
+      "history": [
+        {
+          "date": "2025-12-01",
+          "value": 22355.3
+        },
+        {
+          "date": "2026-01-01",
+          "value": 22413.4
+        },
+        {
+          "date": "2026-02-01",
+          "value": 22598.7
+        },
+        {
+          "date": "2026-03-01",
+          "value": 22640.3
+        },
+        {
+          "date": "2026-04-01",
+          "value": 22756.6
+        },
+        {
+          "date": "2026-05-01",
+          "value": 23013.7
+        },
+        {
+          "date": "2026-06-01",
+          "value": 23114.9
+        },
+        {
+          "date": "2026-07-01",
+          "value": 23217.9
+        },
+        {
+          "date": "2026-08-01",
+          "value": 23342.8
+        }
+      ]
+    },
+    {
+      "series": "CPIAUCSL",
+      "name": "Consumer prices",
+      "current": 334.131,
+      "change": 3.353016322755642,
+      "unit": "Index",
+      "change_unit": "%",
+      "cadence": "year-over-year",
+      "observation_date": "2026-08-01",
+      "comparison_date": "2025-08-01",
+      "source": "FRED",
+      "source_series": "CPIAUCSL",
+      "source_url": "https://fred.stlouisfed.org/series/CPIAUCSL"
+    },
+    {
+      "series": "PPIFIS",
+      "name": "Producer services costs",
+      "current": 157.411,
+      "change": 5.413622452737954,
+      "unit": "Index",
+      "change_unit": "%",
+      "cadence": "year-over-year",
+      "observation_date": "2026-08-01",
+      "comparison_date": "2025-08-01",
+      "source": "FRED",
+      "source_series": "PPIFIS",
+      "source_url": "https://fred.stlouisfed.org/series/PPIFIS"
+    },
+    {
+      "series": "ENERGY_FUEL",
+      "name": "Energy & fuel",
+      "current": 96.16,
+      "change": 49.61879570561693,
+      "unit": "Dollars per barrel",
+      "change_unit": "%",
+      "cadence": "year-over-year",
+      "observation_date": "2026-09-29",
+      "comparison_date": "2025-09-29",
+      "source": "FRED",
+      "source_series": "DCOILWTICO",
+      "source_url": "https://fred.stlouisfed.org/series/DCOILWTICO"
+    },
+    {
+      "series": "FEDFUNDS",
+      "name": "Interest rates",
+      "current": 3.75,
+      "change": -0.46999999999999975,
+      "unit": "Percent",
+      "change_unit": "percentage points",
+      "cadence": "12-month change",
+      "observation_date": "2026-09-01",
+      "comparison_date": "2025-09-01",
+      "source": "FRED",
+      "source_series": "FEDFUNDS",
+      "source_url": "https://fred.stlouisfed.org/series/FEDFUNDS"
+    },
+    {
+      "series": "LABOR_COST",
+      "name": "Labor costs",
+      "current": 37.81,
+      "change": 3.0245231607629375,
+      "unit": "Dollars per hour",
+      "change_unit": "%",
+      "cadence": "year-over-year",
+      "observation_date": "2026-09-01",
+      "comparison_date": "2025-09-01",
+      "source": "BLS",
+      "source_series": "CES0500000003",
+      "source_url": "https://data.bls.gov/timeseries/CES0500000003"
+    },
+    {
+      "series": "UMCSENT",
+      "name": "Consumer sentiment",
+      "current": 51.7,
+      "change": -6.5,
+      "unit": "Index",
+      "change_unit": "index points",
+      "cadence": "12-month change",
+      "observation_date": "2026-08-01",
+      "comparison_date": "2025-08-01",
+      "source": "FRED",
+      "source_series": "UMCSENT",
+      "source_url": "https://fred.stlouisfed.org/series/UMCSENT"
+    }
+  ],
+  "m2_projection": {
+    "year": 2026,
+    "method": "linear",
+    "baseline_date": "2025-12-01",
+    "baseline_value": 22355.3,
+    "observation_date": "2026-08-01",
+    "months_covered": 8,
+    "ytd_growth": 4.417297016814814,
+    "projected_annual_growth": 6.625945525222221
+  },
+  "pressure_signal": {
+    "score": 49,
+    "tier": "Moderate pressure",
+    "components": [
+      {
+        "series": "M2SL",
+        "weight": 0.25,
+        "ceiling": 15,
+        "input": 6.625945525222221,
+        "normalized": 44.17297016814814,
+        "contribution": 11.043242542037035
+      },
+      {
+        "series": "PPIFIS",
+        "weight": 0.25,
+        "ceiling": 12,
+        "input": 5.413622452737954,
+        "normalized": 45.113520439482954,
+        "contribution": 11.278380109870739
+      },
+      {
+        "series": "ENERGY_FUEL",
+        "weight": 0.2,
+        "ceiling": 40,
+        "input": 49.61879570561693,
+        "normalized": 100,
+        "contribution": 20.0
+      },
+      {
+        "series": "FEDFUNDS",
+        "weight": 0.1,
+        "ceiling": 6,
+        "input": -0.46999999999999975,
+        "normalized": 7.8333333333333295,
+        "contribution": 0.783333333333333
+      },
+      {
+        "series": "LABOR_COST",
+        "weight": 0.15,
+        "ceiling": 10,
+        "input": 3.0245231607629375,
+        "normalized": 30.245231607629375,
+        "contribution": 4.536784741144406
+      },
+      {
+        "series": "CPIAUCSL",
+        "weight": 0.05,
+        "ceiling": 15,
+        "input": 3.353016322755642,
+        "normalized": 22.353442151704282,
+        "contribution": 1.117672107585214
+      }
+    ]
+  },
+  "trend_signal": {
+    "score": 44.21278851637454,
+    "label": "Rising"
+  }
+}

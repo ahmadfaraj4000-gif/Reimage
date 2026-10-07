@@ -4,6 +4,8 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
+  schedule:
+    - cron: '17 */12 * * *'
   repository_dispatch:
     types: [marketplace_publish]
 
@@ -32,14 +34,35 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Test market calculations and snapshot handling
+        run: |
+          python -m unittest discover -s scripts -p 'test_market_data.py'
+          node --test scripts/test-market-signals.mjs
+
+      - name: Refresh market signals
+        run: python scripts/market_data.py
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+
       - name: Build site
         run: npm run build
         env:
           SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
 
+      - name: Validate public website
+        run: npm test
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: dist
 
@@ -55,6 +78,7 @@ jobs:
 
   notify-search:
     needs: deploy
+    if: github.event_name != 'schedule'
     runs-on: ubuntu-latest
     continue-on-error: true
 

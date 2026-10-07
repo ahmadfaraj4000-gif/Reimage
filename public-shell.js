@@ -8,6 +8,30 @@
 
   const currentMenuButton = document.getElementById('menuBtn');
   const navLinks = document.getElementById('navLinks');
+  const moreMenu = navLinks?.querySelector('.nav-more');
+  const moreToggle = moreMenu?.querySelector('summary');
+  const closeMore = () => { if (moreMenu) moreMenu.open = false; };
+
+  if (moreMenu) {
+    moreMenu.addEventListener('toggle', () => {
+      moreToggle.setAttribute('aria-expanded', String(moreMenu.open));
+    });
+    moreMenu.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && moreMenu.open) {
+        event.preventDefault();
+        event.stopPropagation();
+        closeMore();
+        moreToggle.focus();
+      }
+    });
+    moreMenu.addEventListener('focusout', (event) => {
+      if (!moreMenu.contains(event.relatedTarget)) closeMore();
+    });
+    moreMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMore));
+    document.addEventListener('click', (event) => {
+      if (!moreMenu.contains(event.target)) closeMore();
+    });
+  }
 
   if (navLinks && !navLinks.querySelector('a[href$="marketplace.html"]')) {
     const marketplaceItem = document.createElement('li');
@@ -26,6 +50,7 @@
     menuButton.setAttribute('aria-controls', navLinks.id || 'navLinks');
 
     const closeMenu = () => {
+      closeMore();
       navLinks.classList.remove('open');
       document.body.classList.remove('public-menu-open');
       menuButton.setAttribute('aria-expanded', 'false');
@@ -34,6 +59,7 @@
 
     const toggleMenu = () => {
       const isOpen = navLinks.classList.toggle('open');
+      if (!isOpen) closeMore();
       document.body.classList.toggle('public-menu-open', isOpen);
       menuButton.setAttribute('aria-expanded', String(isOpen));
       menuButton.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
@@ -74,6 +100,7 @@
       if (isCurrent) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');
     });
+    moreMenu?.classList.toggle('active', Boolean(moreMenu.querySelector('[aria-current="page"]')));
   }
 
   let footer = document.querySelector('footer');

@@ -90,7 +90,7 @@ function navigation(active = 'marketplace') {
       <li><a href="/products.html">Products</a></li>
       <li><a href="/marketplace.html"${active === 'marketplace' ? ' class="active" aria-current="page"' : ''}>Discover</a></li>
       <li><a href="/our-work.html">Portfolio</a></li>
-      <li><a href="/careers.html">Careers</a></li>
+      <li><details class="nav-more"><summary aria-expanded="false" aria-controls="moreLinks">More</summary><ul class="nav-more-links" id="moreLinks"><li><a href="/careers.html">Careers</a></li><li><a href="/market-signals.html">Market Signals</a></li></ul></details></li>
       <li><a class="nav-cta" href="/start-with-us.html">Start With Us</a></li>
     </ul>
   </nav>`;
@@ -144,7 +144,7 @@ function head({ title, description, canonical, image = `${siteUrl}/assets/reimag
   <meta name="twitter:description" content="${escapeHtml(description)}">
   <meta name="twitter:image" content="${absoluteImage}">
   <meta name="twitter:image:alt" content="${escapeHtml(imageAlt)}">
-  <link rel="stylesheet" href="/public-shell.css?v=20260904-6">
+  <link rel="stylesheet" href="/public-shell.css?v=20261006-1">
   <link rel="stylesheet" href="/marketplace.css?v=20260914-2">
   ${schema.map((item) => `<script type="application/ld+json">${escapeJson(item)}</script>`).join('\n  ')}
   <link rel="stylesheet" href="/public-typography.css?v=20260914-1">
@@ -205,7 +205,7 @@ function shell({ title, description, canonical, image, imageAlt, schema, body, p
   ${body}
   ${categoryDirectory()}
   ${footer()}
-  <script src="/public-shell.js?v=20260904-8" defer></script>
+  <script src="/public-shell.js?v=20261006-1" defer></script>
   <script src="/marketplace.js?v=20260914-1" defer></script>
 </body>
 </html>\n`;
@@ -462,7 +462,7 @@ function generateSitemap() {
     { loc: `${siteUrl}${editorialPath}`, priority: '0.6', image: `${siteUrl}/assets/reimage-logo-2026-transparent.png` },
     ...data.categories.map((category) => ({ loc: `${siteUrl}${categoryUrl(category.slug)}`, priority: '0.8', image: absoluteAsset(logoAssets[category.featured] || businessMap.get(category.featured).image) })),
     ...data.businesses.map((business) => ({ loc: `${siteUrl}${profileUrl(business.slug)}`, priority: '0.8', image: absoluteAsset(logoAssets[business.slug] || business.image) })),
-    ...['website-development.html', 'products.html', 'our-work.html', 'careers.html', 'start-with-us.html', 'ai-receptionists.html', 'ai-automation.html', 'business-funding.html', 'growth-foundation.html', 'full-scale-system.html', 'social-media-management.html', 'map.html'].map((page) => ({ loc: `${siteUrl}/${page}`, priority: '0.6', image: `${siteUrl}/assets/reimage-logo-2026-transparent.png` }))
+    ...['website-development.html', 'products.html', 'our-work.html', 'careers.html', 'market-signals.html', 'start-with-us.html', 'ai-receptionists.html', 'ai-automation.html', 'business-funding.html', 'growth-foundation.html', 'full-scale-system.html', 'social-media-management.html', 'map.html'].map((page) => ({ loc: `${siteUrl}/${page}`, priority: '0.6', image: `${siteUrl}/assets/reimage-logo-2026-transparent.png` }))
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls.map(({ loc, priority, image }) => `  <url><loc>${escapeHtml(loc)}</loc><lastmod>${data.verifiedAt}</lastmod><changefreq>weekly</changefreq><priority>${priority}</priority>${image ? `<image:image><image:loc>${escapeHtml(image)}</image:loc></image:image>` : ''}</url>`).join('\n')}\n</urlset>\n`;
 }
