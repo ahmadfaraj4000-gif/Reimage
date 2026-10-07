@@ -22,6 +22,7 @@ const categoryUrl = (slug) => `/marketplace/categories/${slug}/`;
 const profileUrl = (slug) => `/marketplace/businesses/${slug}/`;
 
 const logoAssets = {
+  'action-audio': 'assets/marketplace/logos/action-audio.webp',
   'amanah-medical-care': 'assets/marketplace/logos/amanah-medical-care.png',
   'jam-roc': 'assets/marketplace/logos/jam-roc.webp',
   'fusion-health-juice-bar': 'assets/marketplace/logos/fusion-health-juice-bar.png',

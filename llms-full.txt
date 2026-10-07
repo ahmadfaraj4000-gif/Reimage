@@ -6,6 +6,17 @@ Directory: https://reimagebs.com/marketplace.html
 Editorial policy: https://reimagebs.com/marketplace/about/
 Information last verified: 2026-09-04
 
+## Action Audio
+
+- RE IMAGE profile: https://reimagebs.com/marketplace/businesses/action-audio/
+- Official website: https://reimage-demo.github.io/action-audio/
+- Category: Car Audio & Detailing
+- Location or service area: Hartford and Wethersfield, Connecticut
+- Specialties: Auto electronics repair, Auto detailing, Electrical installation
+- Summary: Car audio, auto electronics repair, detailing, and electrical installation in Hartford and Wethersfield. Serving Connecticut drivers since 1983.
+- Primary action: Book an appointment — https://reimage-demo.github.io/action-audio/book.html
+- Information last verified: 2026-09-04
+
 ## Amanah Medical Care
 
 - RE IMAGE profile: https://reimagebs.com/marketplace/businesses/amanah-medical-care/

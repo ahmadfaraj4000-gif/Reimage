@@ -1,6 +1,7 @@
 {
   "verifiedAt": "2026-09-04",
   "categories": [
+    {"slug":"car-audio-detailing","name":"Car Audio & Detailing","shortName":"Car Audio","description":"Car audio, auto electronics repair, electrical installation, and detailing in Hartford and Wethersfield.","featured":"action-audio"},
     {"slug":"medical-healthcare","name":"Medical & Healthcare","shortName":"Healthcare","description":"Physician collaboration, medical education, and initiatives supporting healthcare teams and communities.","featured":"amanah-medical-care"},
     {"slug":"restaurants-drinks","name":"Restaurants & Drinks","shortName":"Food & Drinks","description":"Juice bars, Caribbean favorites, Mexican fusion, takeout, catering, and signature Hartford flavors.","featured":"fusion-health-juice-bar"},
     {"slug":"nightlife-events","name":"Nightlife & Events","shortName":"Nightlife","description":"Cocktails, live entertainment, private events, and memorable nights out in Hartford.","featured":"the-patio"},
@@ -14,6 +15,60 @@
     {"slug":"private-transportation","name":"Private Transportation","shortName":"Private Rides","description":"Private chauffeur service for airports, corporate travel, events, and long-distance trips.","featured":"empire-elite-rides"}
   ],
   "businesses": [
+    {
+      "slug": "action-audio",
+      "repositoryPublished": true,
+      "name": "Action Audio",
+      "categories": [
+        "car-audio-detailing"
+      ],
+      "locationKey": "hartford",
+      "locations": [
+        "hartford",
+        "other-connecticut"
+      ],
+      "locationLabel": "Hartford & Wethersfield",
+      "regionRank": 1,
+      "serviceArea": "Hartford and Wethersfield, Connecticut",
+      "phone": "860-667-6330",
+      "website": "https://reimage-demo.github.io/action-audio/",
+      "ctaLabel": "Book an appointment",
+      "ctaUrl": "https://reimage-demo.github.io/action-audio/book.html",
+      "image": "assets/marketplace/logos/action-audio.webp",
+      "imageAlt": "The Action Audio Store logo",
+      "schemaType": "AutomotiveBusiness",
+      "specialties": [
+        "Auto electronics repair",
+        "Auto detailing",
+        "Electrical installation"
+      ],
+      "tags": [
+        "car audio",
+        "speakers",
+        "subwoofers",
+        "amplifiers",
+        "vehicle electronics",
+        "appointments",
+        "Hartford",
+        "Wethersfield"
+      ],
+      "shortBio": "Car audio, auto electronics repair, detailing, and electrical installation in Hartford and Wethersfield. Serving Connecticut drivers since 1983.",
+      "longBio": "Action Audio helps Connecticut drivers with car audio, auto electronics repair, auto detailing, and electrical installation. Serving the community since 1983, the store has locations at 2814 Main St in Hartford and 105 Silas Deane Hwy in Wethersfield. Request an appointment online, choose your preferred store, and tell the team what your vehicle needs. The team will contact you to confirm your appointment.",
+      "faq": [
+        [
+          "How do I book an appointment with Action Audio?",
+          "Select Book an appointment to open Action Audio’s booking page, choose Hartford or Wethersfield, and submit your vehicle and service details. The team will contact you to confirm."
+        ],
+        [
+          "What services does Action Audio offer?",
+          "Action Audio offers auto electronics repair, auto detailing, and auto electrical installation, including car audio work."
+        ],
+        [
+          "Where are Action Audio’s stores?",
+          "Visit 2814 Main St in Hartford or 105 Silas Deane Hwy in Wethersfield. The listed phone number, 860-667-6330, is for Wethersfield."
+        ]
+      ]
+    },
     {
       "slug":"amanah-medical-care","repositoryPublished":true,"name":"Amanah Medical Care","categories":["medical-healthcare"],"locationKey":"beyond","locationLabel":"Chicago, Illinois","regionRank":4,
       "address":{"street":"980 N Michigan Ave Ste 1090 #733359","city":"Chicago","state":"IL","postalCode":"60611"},"phone":"505-218-7319","website":"https://amanahmedicalcare.com/","ctaLabel":"Visit Website","ctaUrl":"https://amanahmedicalcare.com/","image":"assets/marketplace/logos/amanah-medical-care.png","imageAlt":"Amanah Medical Care logo","schemaType":"Organization",

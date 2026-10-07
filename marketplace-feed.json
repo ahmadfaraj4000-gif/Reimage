@@ -8,6 +8,12 @@
   "featuredGuide": "https://reimagebs.com/marketplace/guides/new-britain-avenue-hartford/",
   "categories": [
     {
+      "slug": "car-audio-detailing",
+      "name": "Car Audio & Detailing",
+      "description": "Car audio, auto electronics repair, electrical installation, and detailing in Hartford and Wethersfield.",
+      "url": "https://reimagebs.com/marketplace/categories/car-audio-detailing/"
+    },
+    {
       "slug": "medical-healthcare",
       "name": "Medical & Healthcare",
       "description": "Physician collaboration, medical education, and initiatives supporting healthcare teams and communities.",
@@ -75,6 +81,26 @@
     }
   ],
   "businesses": [
+    {
+      "name": "Action Audio",
+      "profile": "https://reimagebs.com/marketplace/businesses/action-audio/",
+      "officialWebsite": "https://reimage-demo.github.io/action-audio/",
+      "category": [
+        "Car Audio & Detailing"
+      ],
+      "location": "Hartford and Wethersfield, Connecticut",
+      "specialties": [
+        "Auto electronics repair",
+        "Auto detailing",
+        "Electrical installation"
+      ],
+      "description": "Car audio, auto electronics repair, detailing, and electrical installation in Hartford and Wethersfield. Serving Connecticut drivers since 1983.",
+      "primaryAction": {
+        "label": "Book an appointment",
+        "url": "https://reimage-demo.github.io/action-audio/book.html"
+      },
+      "informationLastVerified": "2026-09-04"
+    },
     {
       "name": "Amanah Medical Care",
       "profile": "https://reimagebs.com/marketplace/businesses/amanah-medical-care/",
