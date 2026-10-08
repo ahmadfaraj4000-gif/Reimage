@@ -905,3 +905,23 @@ body.marketplace-page a.back-link { color: var(--market-blue); }
 .category-copy__inner>div>p{color:var(--market-muted);line-height:1.8}
 @media(max-width:900px){.discovery-guide-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.discovery-guide-grid{grid-template-columns:1fr}}
+
+/* Show the Blue Hills logo alone, excluding the adjacent flyer text. */
+.business-logo-stage > .blue-hills-logo-crop {
+  position: relative;
+  display: block;
+  width: min(100%, 230px);
+  aspect-ratio: 1;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.business-logo-stage .blue-hills-logo-crop > img {
+  position: absolute;
+  width: 210%;
+  height: auto;
+  max-width: none;
+  left: -8%;
+  top: -9%;
+  object-fit: initial;
+  transform: none;
+}

@@ -91,7 +91,7 @@ Topics: private chauffeur New York Capital Region, airport transportation, corpo
 
 URL: https://reimagebs.com/marketplace/locations/hartford/
 Explore Hartford restaurants, juice bars, hair braiding, car audio, printing, property services, and community organizations. Check each profile for its storefront or service area.
-Listed businesses: Action Audio, Jam Roc Restaurant & Lounge, Fusion Health Juice Bar, 881 Grab & Go, The Patio, Lunch Box, Mi Buen Pastor Mexican Fusion, Lorie’s African Hair Braiding, Living Word Imprints, Andaleeb Enterprises, The Anchor Collective
+Listed businesses: Blue Hills Cafe, Action Audio, Jam Roc Restaurant & Lounge, Fusion Health Juice Bar, 881 Grab & Go, The Patio, Lunch Box, Mi Buen Pastor Mexican Fusion, Lorie’s African Hair Braiding, Living Word Imprints, Andaleeb Enterprises, The Anchor Collective
 
 ### West Hartford, CT Local Businesses
 
@@ -128,6 +128,17 @@ Listed businesses: Action Audio, Andaleeb Enterprises, The Anchor Collective
 URL: https://reimagebs.com/marketplace/locations/beyond/
 Explore RE IMAGE directory listings outside Greater Hartford, including New York auto services and private transportation, plus a Chicago-based healthcare initiative.
 Listed businesses: Amanah Medical Care, CR8 Autos, Empire Elite Rides
+
+## Blue Hills Cafe
+
+- RE IMAGE profile: https://reimagebs.com/marketplace/businesses/blue-hills-cafe/
+- Official website: https://reimage-demo.github.io/blue-hills-cafe/
+- Category: Nightlife & Events
+- Location or service area: 1329 Albany Avenue, Hartford, CT 06112
+- Specialties: Late-night bar, Private events, Caribbean catering
+- Summary: A neighborhood cafe and late-night bar on Albany Avenue in Hartford, with private celebrations, Caribbean catering, and $5 Thursday meals.
+- Primary action: Visit Website — https://reimage-demo.github.io/blue-hills-cafe/
+- Information last verified: 2026-09-04
 
 ## Action Audio
 

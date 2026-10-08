@@ -40,6 +40,7 @@ function browseGuides() {
 }
 
 const logoAssets = {
+  'blue-hills-cafe': 'assets/marketplace/logos/blue-hills-cafe.jpg',
   'action-audio': 'assets/marketplace/logos/action-audio.webp',
   'amanah-medical-care': 'assets/marketplace/logos/amanah-medical-care.png',
   'jam-roc': 'assets/marketplace/logos/jam-roc.webp',
@@ -185,6 +186,9 @@ function profileFaqs(business) {
 function businessLogo(business) {
   const logo = logoAssets[business.slug];
   const title = `${business.name} logo`;
+  if (business.slug === 'blue-hills-cafe') {
+    return `<span class="blue-hills-logo-crop"><img src="/${logo}" alt="${escapeHtml(title)}" loading="lazy" decoding="async"></span>`;
+  }
   if (logo) {
     return `<img class="business-logo" src="/${logo}" alt="${escapeHtml(title)}" loading="lazy" decoding="async">`;
   }

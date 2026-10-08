@@ -176,6 +176,7 @@
       "description": "Explore Hartford restaurants, juice bars, hair braiding, car audio, printing, property services, and community organizations. Check each profile for its storefront or service area.",
       "url": "https://reimagebs.com/marketplace/locations/hartford/",
       "businesses": [
+        "https://reimagebs.com/marketplace/businesses/blue-hills-cafe/",
         "https://reimagebs.com/marketplace/businesses/action-audio/",
         "https://reimagebs.com/marketplace/businesses/jam-roc/",
         "https://reimagebs.com/marketplace/businesses/fusion-health-juice-bar/",
@@ -268,6 +269,26 @@
     "methodology": "https://reimagebs.com/market-signals.html#methodology"
   },
   "businesses": [
+    {
+      "name": "Blue Hills Cafe",
+      "profile": "https://reimagebs.com/marketplace/businesses/blue-hills-cafe/",
+      "officialWebsite": "https://reimage-demo.github.io/blue-hills-cafe/",
+      "category": [
+        "Nightlife & Events"
+      ],
+      "location": "1329 Albany Avenue, Hartford, CT 06112",
+      "specialties": [
+        "Late-night bar",
+        "Private events",
+        "Caribbean catering"
+      ],
+      "description": "A neighborhood cafe and late-night bar on Albany Avenue in Hartford, with private celebrations, Caribbean catering, and $5 Thursday meals.",
+      "primaryAction": {
+        "label": "Visit Website",
+        "url": "https://reimage-demo.github.io/blue-hills-cafe/"
+      },
+      "informationLastVerified": "2026-09-04"
+    },
     {
       "name": "Action Audio",
       "profile": "https://reimagebs.com/marketplace/businesses/action-audio/",

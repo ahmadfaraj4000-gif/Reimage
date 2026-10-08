@@ -16,6 +16,73 @@
   ],
   "businesses": [
     {
+      "slug": "blue-hills-cafe",
+      "repositoryPublished": true,
+      "name": "Blue Hills Cafe",
+      "categories": [
+        "nightlife-events"
+      ],
+      "locationKey": "hartford",
+      "locationLabel": "Hartford",
+      "regionRank": 1,
+      "address": {
+        "street": "1329 Albany Avenue",
+        "city": "Hartford",
+        "state": "CT",
+        "postalCode": "06112"
+      },
+      "phone": "860-436-1553",
+      "ctaLabel": "Visit Website",
+      "ctaUrl": "https://reimage-demo.github.io/blue-hills-cafe/",
+      "secondaryCtaLabel": "Ask about events & catering",
+      "secondaryCtaUrl": "mailto:caribeexquisitecatering@gmail.com?subject=Blue%20Hills%20Cafe%20event%20inquiry",
+      "image": "assets/marketplace/blue-hills-cafe-exterior.jpg",
+      "imageAlt": "AI-enhanced exterior of Blue Hills Cafe, showing its white siding, blue storefront, and fenced patio on Albany Avenue",
+      "profileImage": true,
+      "schemaType": "BarOrPub",
+      "cuisine": [
+        "Caribbean",
+        "Jamaican"
+      ],
+      "specialties": [
+        "Late-night bar",
+        "Private events",
+        "Caribbean catering"
+      ],
+      "tags": [
+        "nightlife",
+        "cafe and bar",
+        "birthday celebrations",
+        "bridal showers",
+        "baby showers",
+        "bottle service",
+        "$5 Thursday meals",
+        "Albany Avenue"
+      ],
+      "shortBio": "A neighborhood cafe and late-night bar on Albany Avenue in Hartford, with private celebrations, Caribbean catering, and $5 Thursday meals.",
+      "longBio": "Blue Hills Cafe brings Caribbean flavor and Hartford hospitality to 1329 Albany Avenue. Meet friends at the bar, plan a birthday or private celebration, or ask about Jamaican catering from Caribe Exquisite Catering. The cafe also offers $5 Thursday meals and bottle-service inquiries. Contact the team for current hours, this week’s dishes, event availability, guest capacity, and pricing.",
+      "verifiedAt": "2026-10-08",
+      "faq": [
+        [
+          "Can I host a private event at Blue Hills Cafe?",
+          "Yes. Blue Hills welcomes inquiries for birthdays, private parties, bridal showers, baby showers, and other gatherings. Contact the team to confirm availability, guest capacity, and rental rates."
+        ],
+        [
+          "What is the Thursday special?",
+          "Blue Hills Cafe offers $5 meals every Thursday. Call 860-436-1553 for this week’s dishes and serving times."
+        ],
+        [
+          "Does Blue Hills Cafe offer catering?",
+          "Caribbean and Jamaican catering is available through Caribe Exquisite Catering. Email caribeexquisitecatering@gmail.com to discuss your occasion and menu."
+        ],
+        [
+          "What are the opening hours?",
+          "Call 860-436-1553 for current opening hours."
+        ]
+      ],
+      "website": "https://reimage-demo.github.io/blue-hills-cafe/"
+    },
+    {
       "slug": "action-audio",
       "repositoryPublished": true,
       "name": "Action Audio",
