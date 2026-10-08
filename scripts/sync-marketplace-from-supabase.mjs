@@ -93,6 +93,16 @@ const snapshot = {
 // Explicitly repository-published listings remain available until managed in
 // Supabase. Synced records take precedence once those listings are added there.
 const repositoryCatalog = JSON.parse(fs.readFileSync(path.join(root, 'marketplace-data.json'), 'utf8'));
+// Correct Fusion's retired domain while older published records remain in Supabase.
+// Leave future admin-managed URLs unchanged.
+const fusion = snapshot.businesses.find((business) => business.slug === 'fusion-health-juice-bar');
+const repositoryFusion = repositoryCatalog.businesses.find((business) => business.slug === 'fusion-health-juice-bar');
+for (const field of ['website', 'ctaUrl']) {
+  if (fusion && repositoryFusion?.[field] && /^https?:\/\/(?:www\.)?fusionhealthjuicebar\.com\/?$/.test(fusion[field] || '')) {
+    fusion[field] = repositoryFusion[field];
+  }
+}
+
 for (const business of repositoryCatalog.businesses.filter((item) => item.repositoryPublished)) {
   if (snapshot.businesses.some((item) => item.slug === business.slug)) continue;
   for (const slug of business.categories) {

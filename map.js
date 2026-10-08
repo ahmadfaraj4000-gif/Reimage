@@ -38,7 +38,7 @@ const businesses = [
     description: "A bright product-first storefront for juices, smoothies, bowls, customer favorites, and fast online ordering.",
     action: "View menu & order",
     hotspot: "Open the menu",
-    website: "https://fusionhealthjuicebar.com",
+    website: "https://fusionhealthjuicebarllc.com",
     gallery: ["assets/fusion-health-home.png", "assets/fusion-health-menu.png", "assets/fusion-health-delivery-apps.png"]
   },
   {
