@@ -13,12 +13,6 @@ National economic indicators for small-business loan, hiring, and pricing decisi
 
 ## Category guides
 
-### Car Audio & Detailing
-
-URL: https://reimagebs.com/marketplace/categories/car-audio-detailing/
-Looking for car audio installation or auto detailing around Hartford? Compare the listed services, store locations, and appointment options. Describe your vehicle and the work you need when contacting the shop so it can confirm compatibility, timing, and an estimate.
-Topics: car audio installation, auto electronics repair, auto detailing, car electrical installation
-
 ### Medical & Healthcare
 
 URL: https://reimagebs.com/marketplace/categories/medical-healthcare/
@@ -37,11 +31,11 @@ URL: https://reimagebs.com/marketplace/categories/nightlife-events/
 Planning a night out or a private gathering in Hartford? Explore the listed venues and their event information. Confirm the current entertainment schedule, group arrangements, food and drink options, and reservation details directly with the venue.
 Topics: Hartford nightlife, cocktail bars, private events, live entertainment
 
-### Auto Body & Towing
+### Automobile services
 
-URL: https://reimagebs.com/marketplace/categories/auto-body-towing/
-Compare auto body and towing businesses by the work your vehicle needs and the area the shop serves. Use the profile links to ask about collision estimates, paint work, mechanical service, or towing. Connecticut and New York listings are labeled separately so you can choose the right location.
-Topics: auto body repair, collision repair, towing services, car paint repair
+URL: https://reimagebs.com/marketplace/categories/automobile-services/
+Find the right automobile service for your vehicle. Car Craft handles auto body and towing in West Hartford; Action Audio offers detailing in Hartford and car audio, remote starters, electronics repair, and installation in Wethersfield. Compare each shop’s specialties and location, then use its official links to request an estimate or appointment. Other listed automobile businesses are identified by their own service areas.
+Topics: auto body repair, collision repair, towing services, car detailing Hartford, car audio installation, auto electronics repair, remote starters, vehicle electrical installation
 
 ### Car Rentals
 
@@ -144,7 +138,7 @@ Listed businesses: Amanah Medical Care, CR8 Autos, Empire Elite Rides
 
 - RE IMAGE profile: https://reimagebs.com/marketplace/businesses/action-audio/
 - Official website: https://reimage-demo.github.io/action-audio/
-- Category: Car Audio & Detailing
+- Category: Automobile services
 - Location or service area: Hartford and Wethersfield, Connecticut
 - Specialties: Auto electronics repair, Auto detailing, Electrical installation
 - Summary: Car audio, auto electronics repair, detailing, and electrical installation in Hartford and Wethersfield. Serving Connecticut drivers since 1983.
@@ -232,7 +226,7 @@ Listed businesses: Amanah Medical Care, CR8 Autos, Empire Elite Rides
 
 - RE IMAGE profile: https://reimagebs.com/marketplace/businesses/car-craft-auto-body-towing/
 - Official website: https://carcraftautobodytowing.com/
-- Category: Auto Body & Towing
+- Category: Automobile services
 - Location or service area: 8 South Street, West Hartford, CT 06110
 - Specialties: Online photo estimates, Collision repair, 24/7 towing
 - Summary: Collision and body repair, paint, dents, bumper work, insurance claims, used vehicles, and 24/7 towing—with online photo estimates.
@@ -254,7 +248,7 @@ Listed businesses: Amanah Medical Care, CR8 Autos, Empire Elite Rides
 
 - RE IMAGE profile: https://reimagebs.com/marketplace/businesses/cr8-autos/
 - Official website: https://cr8autos.com/
-- Category: Auto Body & Towing
+- Category: Automobile services
 - Location or service area: 2603 2nd Avenue, Watervliet, NY 12189
 - Specialties: Collision repair, Mechanical service, Online estimates
 - Summary: A Capital Region automotive shop providing collision repair, mechanical service, paint, rust repair, diagnostics, and online estimates.

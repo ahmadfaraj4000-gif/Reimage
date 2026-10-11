@@ -16,11 +16,10 @@
 
 ## Hartford directory categories
 
-- [Car Audio & Detailing](https://reimagebs.com/marketplace/categories/car-audio-detailing/): Car audio, auto electronics repair, electrical installation, and detailing in Hartford and Wethersfield.
 - [Medical & Healthcare](https://reimagebs.com/marketplace/categories/medical-healthcare/): Physician collaboration, medical education, and initiatives supporting healthcare teams and communities.
 - [Restaurants & Drinks](https://reimagebs.com/marketplace/categories/restaurants-drinks/): Juice bars, Caribbean favorites, Mexican fusion, takeout, catering, and signature Hartford flavors.
 - [Nightlife & Events](https://reimagebs.com/marketplace/categories/nightlife-events/): Cocktails, live entertainment, private events, and memorable nights out in Hartford.
-- [Auto Body & Towing](https://reimagebs.com/marketplace/categories/auto-body-towing/): Collision repair, paint, mechanical service, towing, and online estimates near Hartford.
+- [Automobile services](https://reimagebs.com/marketplace/categories/automobile-services/): Auto body repair, towing, car detailing, car audio, remote starters, and vehicle electronics repair and installation.
 - [Car Rentals](https://reimagebs.com/marketplace/categories/car-rentals/): Local cars, SUVs, trucks, luxury vehicles, and passenger vans available to reserve online.
 - [Skincare & Esthetics](https://reimagebs.com/marketplace/categories/skincare-esthetics/): Corrective and customized skincare for acne, hyperpigmentation, texture, and personal care.
 - [Hair & Braiding](https://reimagebs.com/marketplace/categories/hair-braiding/): African braiding, protective styles, extensions, twists, locs, and personalized styling.

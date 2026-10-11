@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { normalizeAutomobileCategories } from './automobile-categories.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -115,5 +116,5 @@ for (const business of repositoryCatalog.businesses.filter((item) => item.reposi
 }
 
 const destination = process.env.MARKETPLACE_DATA_PATH || path.join(root, '.marketplace-data.generated.json');
-fs.writeFileSync(destination, `${JSON.stringify(snapshot, null, 2)}\n`);
+fs.writeFileSync(destination, `${JSON.stringify(normalizeAutomobileCategories(snapshot), null, 2)}\n`);
 console.log(`Synced ${snapshot.businesses.length} published businesses from Supabase to ${destination}.`);

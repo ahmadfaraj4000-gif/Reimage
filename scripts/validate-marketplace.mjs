@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { locationFilters } from './search-content.mjs';
+import { automobileAliases } from './automobile-categories.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const data = JSON.parse(fs.readFileSync(path.join(root, 'marketplace-data.json'), 'utf8'));
@@ -16,7 +17,7 @@ function collectHtml(directory) {
 
 const pages = [path.join(root, 'marketplace.html'), ...collectHtml(path.join(root, 'marketplace'))];
 const locationPageCount = locationFilters.filter(location => data.businesses.some(business => (business.locations || [business.locationKey]).includes(location.slug))).length;
-const expectedPageCount = 1 + data.categories.length + data.businesses.length + locationPageCount + 2;
+const expectedPageCount = 1 + data.categories.length + data.businesses.length + locationPageCount + 2 + automobileAliases.length;
 if (pages.length !== expectedPageCount) errors.push(`Expected ${expectedPageCount} marketplace pages, found ${pages.length}`);
 
 const titles = new Map();
@@ -26,6 +27,11 @@ const canonicals = new Map();
 for (const file of pages) {
   const html = fs.readFileSync(file, 'utf8');
   const relative = path.relative(root, file);
+  if (automobileAliases.some(alias => relative === `marketplace/categories/${alias}/index.html`)) {
+    const target = '/marketplace/categories/automobile-services/';
+    if (!html.includes(`content="0;url=${target}"`) || !html.includes('content="noindex,follow"') || !html.includes(`rel="canonical" href="https://reimagebs.com${target}"`) || !html.includes(`href="${target}"`)) errors.push(`${relative}: invalid category redirect`);
+    continue;
+  }
   if (!/<title>[^<]+<\/title>/.test(html)) errors.push(`${relative}: missing title`);
   if (!/<meta name="description" content="[^"]+">/.test(html)) errors.push(`${relative}: missing description`);
   if (!/<link rel="canonical" href="https:\/\/reimagebs\.com\//.test(html)) errors.push(`${relative}: missing canonical`);

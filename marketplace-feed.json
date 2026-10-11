@@ -8,19 +8,6 @@
   "featuredGuide": "https://reimagebs.com/marketplace/guides/new-britain-avenue-hartford/",
   "categories": [
     {
-      "slug": "car-audio-detailing",
-      "name": "Car Audio & Detailing",
-      "description": "Car audio, auto electronics repair, electrical installation, and detailing in Hartford and Wethersfield.",
-      "topics": [
-        "car audio installation",
-        "auto electronics repair",
-        "auto detailing",
-        "car electrical installation"
-      ],
-      "guide": "Looking for car audio installation or auto detailing around Hartford? Compare the listed services, store locations, and appointment options. Describe your vehicle and the work you need when contacting the shop so it can confirm compatibility, timing, and an estimate.",
-      "url": "https://reimagebs.com/marketplace/categories/car-audio-detailing/"
-    },
-    {
       "slug": "medical-healthcare",
       "name": "Medical & Healthcare",
       "description": "Physician collaboration, medical education, and initiatives supporting healthcare teams and communities.",
@@ -61,17 +48,21 @@
       "url": "https://reimagebs.com/marketplace/categories/nightlife-events/"
     },
     {
-      "slug": "auto-body-towing",
-      "name": "Auto Body & Towing",
-      "description": "Collision repair, paint, mechanical service, towing, and online estimates near Hartford.",
+      "slug": "automobile-services",
+      "name": "Automobile services",
+      "description": "Auto body repair, towing, car detailing, car audio, remote starters, and vehicle electronics repair and installation.",
       "topics": [
         "auto body repair",
         "collision repair",
         "towing services",
-        "car paint repair"
+        "car detailing Hartford",
+        "car audio installation",
+        "auto electronics repair",
+        "remote starters",
+        "vehicle electrical installation"
       ],
-      "guide": "Compare auto body and towing businesses by the work your vehicle needs and the area the shop serves. Use the profile links to ask about collision estimates, paint work, mechanical service, or towing. Connecticut and New York listings are labeled separately so you can choose the right location.",
-      "url": "https://reimagebs.com/marketplace/categories/auto-body-towing/"
+      "guide": "Find the right automobile service for your vehicle. Car Craft handles auto body and towing in West Hartford; Action Audio offers detailing in Hartford and car audio, remote starters, electronics repair, and installation in Wethersfield. Compare each shop’s specialties and location, then use its official links to request an estimate or appointment. Other listed automobile businesses are identified by their own service areas.",
+      "url": "https://reimagebs.com/marketplace/categories/automobile-services/"
     },
     {
       "slug": "car-rentals",
@@ -294,7 +285,7 @@
       "profile": "https://reimagebs.com/marketplace/businesses/action-audio/",
       "officialWebsite": "https://reimage-demo.github.io/action-audio/",
       "category": [
-        "Car Audio & Detailing"
+        "Automobile services"
       ],
       "location": "Hartford and Wethersfield, Connecticut",
       "specialties": [
@@ -455,7 +446,7 @@
       "profile": "https://reimagebs.com/marketplace/businesses/car-craft-auto-body-towing/",
       "officialWebsite": "https://carcraftautobodytowing.com/",
       "category": [
-        "Auto Body & Towing"
+        "Automobile services"
       ],
       "location": "8 South Street, West Hartford, CT 06110",
       "specialties": [
@@ -495,7 +486,7 @@
       "profile": "https://reimagebs.com/marketplace/businesses/cr8-autos/",
       "officialWebsite": "https://cr8autos.com/",
       "category": [
-        "Auto Body & Towing"
+        "Automobile services"
       ],
       "location": "2603 2nd Avenue, Watervliet, NY 12189",
       "specialties": [

@@ -1,11 +1,10 @@
 {
   "verifiedAt": "2026-09-04",
   "categories": [
-    {"slug":"car-audio-detailing","name":"Car Audio & Detailing","shortName":"Car Audio","description":"Car audio, auto electronics repair, electrical installation, and detailing in Hartford and Wethersfield.","featured":"action-audio"},
     {"slug":"medical-healthcare","name":"Medical & Healthcare","shortName":"Healthcare","description":"Physician collaboration, medical education, and initiatives supporting healthcare teams and communities.","featured":"amanah-medical-care"},
     {"slug":"restaurants-drinks","name":"Restaurants & Drinks","shortName":"Food & Drinks","description":"Juice bars, Caribbean favorites, Mexican fusion, takeout, catering, and signature Hartford flavors.","featured":"fusion-health-juice-bar"},
     {"slug":"nightlife-events","name":"Nightlife & Events","shortName":"Nightlife","description":"Cocktails, live entertainment, private events, and memorable nights out in Hartford.","featured":"the-patio"},
-    {"slug":"auto-body-towing","name":"Auto Body & Towing","shortName":"Auto Body","description":"Collision repair, paint, mechanical service, towing, and online estimates near Hartford.","featured":"car-craft-auto-body-towing"},
+    {"slug":"automobile-services","name":"Automobile services","shortName":"Automobile services","description":"Auto body repair, towing, car detailing, car audio, remote starters, and vehicle electronics repair and installation.","featured":"car-craft-auto-body-towing"},
     {"slug":"car-rentals","name":"Car Rentals","shortName":"Car Rentals","description":"Local cars, SUVs, trucks, luxury vehicles, and passenger vans available to reserve online.","featured":"rent-me-ct"},
     {"slug":"skincare-esthetics","name":"Skincare & Esthetics","shortName":"Skincare","description":"Corrective and customized skincare for acne, hyperpigmentation, texture, and personal care.","featured":"techniq-skin-beauty"},
     {"slug":"hair-braiding","name":"Hair & Braiding","shortName":"Hair & Braiding","description":"African braiding, protective styles, extensions, twists, locs, and personalized styling.","featured":"lories-african-hair-braiding"},
@@ -87,7 +86,7 @@
       "repositoryPublished": true,
       "name": "Action Audio",
       "categories": [
-        "car-audio-detailing"
+        "automobile-services"
       ],
       "locationKey": "hartford",
       "locations": [
@@ -120,7 +119,7 @@
         "Wethersfield"
       ],
       "shortBio": "Car audio, auto electronics repair, detailing, and electrical installation in Hartford and Wethersfield. Serving Connecticut drivers since 1983.",
-      "longBio": "Action Audio helps Connecticut drivers with car audio, auto electronics repair, auto detailing, and electrical installation. Serving the community since 1983, the store has locations at 2814 Main St in Hartford and 105 Silas Deane Hwy in Wethersfield. Request an appointment online, choose your preferred store, and tell the team what your vehicle needs. The team will contact you to confirm your appointment.",
+      "longBio": "Action Audio serves Connecticut drivers with interior and exterior auto detailing at 2814 Main St, Hartford, and car audio, remote starters, auto electronics repair, and electrical installation at 105 Silas Deane Hwy, Wethersfield. Established in 1983, Action Audio helps you choose the right location and service for your vehicle. Request an appointment online; the team will contact you to confirm the details.",
       "faq": [
         [
           "How do I book an appointment with Action Audio?",
@@ -193,7 +192,7 @@
       "faq":[["What is Mi Buen Pastor known for?","Popular specialties include quesabirria tacos and dishes made with fresh handmade tortillas."],["Where is Mi Buen Pastor?","The restaurant is at 265 Newfield Avenue in Hartford, Connecticut."],["Can I order online?","Yes. Visit the official website for the current menu and online ordering."]]
     },
     {
-      "slug":"car-craft-auto-body-towing","name":"Car Craft Auto Body & Towing","categories":["auto-body-towing"],"featuredLabel":"RE IMAGE Pick","locationKey":"west-hartford","locationLabel":"West Hartford","regionRank":2,
+      "slug":"car-craft-auto-body-towing","name":"Car Craft Auto Body & Towing","categories":["automobile-services"],"featuredLabel":"RE IMAGE Pick","locationKey":"west-hartford","locationLabel":"West Hartford","regionRank":2,
       "address":{"street":"8 South Street","city":"West Hartford","state":"CT","postalCode":"06110"},"phone":"860-953-1966","website":"https://carcraftautobodytowing.com/","ctaLabel":"Get an Online Estimate","ctaUrl":"https://carcraftautobodytowing.com/","image":"assets/carcraft-photo-estimate.png","imageAlt":"Car Craft Auto Body online photo estimate tool for collision damage","schemaType":"AutoRepair",
       "specialties":["Online photo estimates","Collision repair","24/7 towing"],"tags":["paint","scratches","dents","bumper repair","insurance repair","used cars","auto body"],
       "shortBio":"Collision and body repair, paint, dents, bumper work, insurance claims, used vehicles, and 24/7 towing—with online photo estimates.",
@@ -209,7 +208,7 @@
       "faq":[["What vehicles does Rent Me CT offer?","The fleet includes sedans, SUVs, luxury vehicles, trucks, and passenger vans."],["Where do I pick up a Rent Me CT vehicle?","The listed pickup location is 12 Holmes Circle in Farmington, Connecticut."],["Can I reserve online?","Yes. Live availability and booking are available through the official website."]]
     },
     {
-      "slug":"cr8-autos","name":"CR8 Autos","categories":["auto-body-towing"],"locationKey":"beyond","locationLabel":"Watervliet, New York","regionRank":4,
+      "slug":"cr8-autos","name":"CR8 Autos","categories":["automobile-services"],"locationKey":"beyond","locationLabel":"Watervliet, New York","regionRank":4,
       "address":{"street":"2603 2nd Avenue","city":"Watervliet","state":"NY","postalCode":"12189"},"phone":"518-495-6876","website":"https://cr8autos.com/","ctaLabel":"Get an Estimate","ctaUrl":"https://cr8autos.com/","image":"assets/cr8-online-estimate-2026.png","imageAlt":"CR8 Autos online estimate form for auto body and mechanical work","schemaType":"AutoRepair",
       "specialties":["Collision repair","Mechanical service","Online estimates"],"tags":["paint","rust repair","diagnostics","suspension","exhaust","new york","capital region"],
       "shortBio":"A Capital Region automotive shop providing collision repair, mechanical service, paint, rust repair, diagnostics, and online estimates.",
