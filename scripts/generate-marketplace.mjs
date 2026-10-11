@@ -7,6 +7,12 @@ import { categoryTopics, locationFilters, marketSearch } from './search-content.
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dataPath = process.env.MARKETPLACE_DATA_PATH || path.join(root, 'marketplace-data.json');
 const data = normalizeAutomobileCategories(JSON.parse(fs.readFileSync(dataPath, 'utf8')));
+// Keep legacy CMS category descriptions aligned with the expanded directory.
+for (const category of data.categories) {
+  category.description = category.description
+    .replace('signature Hartford flavors.', 'local flavors across Central Connecticut.')
+    .replace('memorable nights out in Hartford.', 'memorable nights out in Central Connecticut.');
+}
 const siteUrl = 'https://reimagebs.com';
 const guidePath = '/marketplace/guides/new-britain-avenue-hartford/';
 const editorialPath = '/marketplace/about/';
@@ -25,7 +31,7 @@ const profileUrl = (slug) => `/marketplace/businesses/${slug}/`;
 const locationUrl = (slug) => `/marketplace/locations/${slug}/`;
 const businessesInLocation = (slug) => data.businesses.filter(business => (business.locations || [business.locationKey]).includes(slug));
 const populatedLocations = locationFilters.filter(location => businessesInLocation(location.slug).length);
-const searchUpdatedAt = [data.verifiedAt, marketSearch.reviewed].sort().at(-1);
+const searchUpdatedAt = [data.verifiedAt, marketSearch.reviewed, ...data.businesses.map(business => business.verifiedAt || data.verifiedAt)].sort().at(-1);
 const topicFor = category => categoryTopics[category.slug] || { heading: category.name, terms: [category.name], copy: category.description };
 
 function faqSchema(faqs, pageUrl) {
@@ -37,10 +43,11 @@ function faqSection(faqs, title) {
 }
 
 function browseGuides() {
-  return `<section class="market-section discovery-guides" id="browse-guides"><div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Explore by service or place</p><h2>Find the local business you need.</h2></div></div><p>Browse a dedicated guide for every service filter, with business specialties, locations, and official links.</p><div class="discovery-guide-grid">${data.categories.map(category => `<article><h3><a href="${categoryUrl(category.slug)}">${escapeHtml(category.name)}</a></h3><p>${escapeHtml(category.description)}</p></article>`).join('')}</div><h3>Browse businesses by area</h3><p>Choose Hartford, a nearby town, other Connecticut service areas, or the clearly marked listings beyond Greater Hartford.</p><ul class="discovery-location-links">${populatedLocations.map(location => `<li><a href="${locationUrl(location.slug)}">${escapeHtml(location.name)} businesses</a></li>`).join('')}</ul><p class="directory-owner-resource">Planning your next business move? Read <a href="/market-signals.html">economic signals for business loan, hiring, and pricing decisions</a>.</p></div></section>`;
+  return `<section class="market-section discovery-guides" id="browse-guides"><div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Explore by service or place</p><h2>Find the local business you need.</h2></div></div><p>Browse a dedicated guide for every service filter, with business specialties, locations, and official links.</p><div class="discovery-guide-grid">${data.categories.map(category => `<article><h3><a href="${categoryUrl(category.slug)}">${escapeHtml(category.name)}</a></h3><p>${escapeHtml(category.description)}</p></article>`).join('')}</div><h3>Browse businesses by area</h3><p>Choose a Central Connecticut town, other Connecticut service areas, or the clearly marked listings beyond Central Connecticut.</p><ul class="discovery-location-links">${populatedLocations.map(location => `<li><a href="${locationUrl(location.slug)}">${escapeHtml(location.name)} businesses</a></li>`).join('')}</ul><p class="directory-owner-resource">Planning your next business move? Read <a href="/market-signals.html">economic signals for business loan, hiring, and pricing decisions</a>.</p></div></section>`;
 }
 
 const logoAssets = {
+  'fish-n-tingz': 'assets/marketplace/logos/fish-n-tingz.webp',
   'blue-hills-cafe': 'assets/marketplace/logos/blue-hills-cafe.jpg',
   'action-audio': 'assets/marketplace/logos/action-audio.webp',
   'amanah-medical-care': 'assets/marketplace/logos/amanah-medical-care.png',
@@ -126,14 +133,14 @@ function footer() {
 }
 
 function categoryDirectory() {
-  return `<nav class="marketplace-category-directory" aria-label="Hartford business categories"><div class="market-wrap"><strong>Browse local businesses</strong><div><a href="/marketplace.html">All businesses</a>${data.categories.map((category) => `<a href="${categoryUrl(category.slug)}">${escapeHtml(category.name)}</a>`).join('')}${populatedLocations.map(location => `<a href="${locationUrl(location.slug)}">${escapeHtml(location.name)}</a>`).join('')}<a href="${guidePath}">New Britain Avenue guide</a><a href="${editorialPath}">About this directory</a></div></div></nav>`;
+  return `<nav class="marketplace-category-directory" aria-label="Central Connecticut business categories"><div class="market-wrap"><strong>Browse local businesses</strong><div><a href="/marketplace.html">All businesses</a>${data.categories.map((category) => `<a href="${categoryUrl(category.slug)}">${escapeHtml(category.name)}</a>`).join('')}${populatedLocations.map(location => `<a href="${locationUrl(location.slug)}">${escapeHtml(location.name)}</a>`).join('')}<a href="${guidePath}">New Britain Avenue guide</a><a href="${editorialPath}">About this directory</a></div></div></nav>`;
 }
 
 function absoluteAsset(value) {
   return value.startsWith('http') ? value : `${siteUrl}/${value.replace(/^\//, '')}`;
 }
 
-function head({ title, description, canonical, image = `${siteUrl}/assets/reimage-logo-2026-transparent.png`, imageAlt = 'RE IMAGE Hartford local business guide', schema = [] }) {
+function head({ title, description, canonical, image = `${siteUrl}/assets/reimage-logo-2026-transparent.png`, imageAlt = 'RE IMAGE Central Connecticut local business guide', schema = [] }) {
   const absoluteImage = absoluteAsset(image);
   return `<head>
   <meta charset="utf-8">
@@ -153,7 +160,7 @@ function head({ title, description, canonical, image = `${siteUrl}/assets/reimag
   <link rel="icon" href="/assets/reimage-logo-2026-transparent.png">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
-  <meta property="og:site_name" content="Hartford Marketplace by RE IMAGE">
+  <meta property="og:site_name" content="Central Connecticut Discover by RE IMAGE">
   <meta property="og:title" content="${escapeHtml(title)}">
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:url" content="${canonical}">
@@ -206,7 +213,7 @@ function card(business, options = {}) {
     <a class="business-card__media business-card__logo" href="${profileUrl(business.slug)}" aria-label="View ${escapeHtml(business.name)} profile">
       <span class="business-logo-stage business-logo-stage--${business.slug}">${businessLogo(business)}</span>
       ${featured ? `<span class="feature-badge">${escapeHtml(business.featuredLabel || 'Featured')}</span>` : ''}
-      ${isBeyond ? '<span class="area-badge">Beyond Greater Hartford</span>' : ''}
+      ${isBeyond ? '<span class="area-badge">Beyond Central Connecticut</span>' : ''}
     </a>
     <div class="business-card__body">
       <div class="business-card__meta"><a href="${categoryUrl(primary.slug)}">${escapeHtml(primary.shortName)}</a><span>${escapeHtml(business.locationLabel)}</span></div>
@@ -242,20 +249,20 @@ function hubSchema() {
         '@type': 'Organization', '@id': `${siteUrl}/#organization`, name: 'RE IMAGE Business Solutions', alternateName: 'RE IMAGE', url: `${siteUrl}/`,
         logo: { '@type': 'ImageObject', url: `${siteUrl}/assets/reimage-logo-2026-transparent.png` },
         email: 'reimagebs@gmail.com', telephone: '+1-860-718-5928',
-        areaServed: [{ '@type': 'City', name: 'Hartford', containedInPlace: { '@type': 'State', name: 'Connecticut' } }, { '@type': 'AdministrativeArea', name: 'Greater Hartford' }]
+        areaServed: [{ '@type': 'City', name: 'Hartford', containedInPlace: { '@type': 'State', name: 'Connecticut' } }, { '@type': 'AdministrativeArea', name: 'Central Connecticut' }]
       },
       {
         '@type': 'WebSite', '@id': `${siteUrl}/#website`, name: 'RE IMAGE Business Solutions', url: `${siteUrl}/`, publisher: { '@id': `${siteUrl}/#organization` }, inLanguage: 'en-US',
         potentialAction: { '@type': 'SearchAction', target: `${siteUrl}/marketplace.html?q={search_term_string}`, 'query-input': 'required name=search_term_string' }
       },
       {
-        '@type': 'CollectionPage', '@id': `${siteUrl}/marketplace.html#webpage`, name: 'Hartford Local Business Directory by RE IMAGE', url: `${siteUrl}/marketplace.html`,
-        description: 'Discover restaurants, rental cars, auto body shops, skincare, hair braiding, printing, property rentals, and local services in Hartford and Greater Hartford.',
+        '@type': 'CollectionPage', '@id': `${siteUrl}/marketplace.html#webpage`, name: 'Central Connecticut Local Business Directory by RE IMAGE', url: `${siteUrl}/marketplace.html`,
+        description: 'Discover restaurants, rental cars, auto body shops, skincare, hair braiding, printing, property rentals, and local services in Central Connecticut.',
         isPartOf: { '@id': `${siteUrl}/#website` }, publisher: { '@id': `${siteUrl}/#organization` }, dateModified: searchUpdatedAt, inLanguage: 'en-US',
         hasPart: [...data.categories.map(category => ({ '@type': 'CollectionPage', name: category.name, url: `${siteUrl}${categoryUrl(category.slug)}` })), ...populatedLocations.map(location => ({ '@type': 'CollectionPage', name: location.title, url: `${siteUrl}${locationUrl(location.slug)}` }))],
-        about: { '@type': 'City', name: 'Hartford', containedInPlace: { '@type': 'State', name: 'Connecticut' } },
+        about: { '@type': 'AdministrativeArea', name: 'Central Connecticut', containedInPlace: { '@type': 'State', name: 'Connecticut' } },
         mainEntity: {
-          '@type': 'ItemList', name: 'Businesses in Hartford and Greater Hartford', numberOfItems: data.businesses.length,
+          '@type': 'ItemList', name: 'Businesses in Central Connecticut', numberOfItems: data.businesses.length,
           itemListElement: data.businesses.map((business, index) => ({ '@type': 'ListItem', position: index + 1, name: business.name, url: `${siteUrl}${profileUrl(business.slug)}` }))
         }
       }
@@ -264,18 +271,18 @@ function hubSchema() {
 }
 
 function generateHub() {
-  const hartfordBusinesses = data.businesses.filter((business) => business.regionRank < 4);
+  const centralConnecticutBusinesses = data.businesses.filter((business) => business.regionRank < 4);
   const beyondBusinesses = data.businesses.filter((business) => business.regionRank === 4);
   const featured = data.categories.map((category) => businessMap.get(category.featured)).filter((business) => business && business.regionRank < 4);
   const embedded = escapeJson({ categories: data.categories, businesses: data.businesses.map((business) => ({ slug: business.slug, name: business.name, categories: business.categories, locationKey: business.locationKey, regionRank: business.regionRank, specialties: business.specialties, tags: business.tags, shortBio: business.shortBio })) });
   const body = `<main id="main-content">
     <section class="market-hero">
       <div class="market-wrap market-hero__inner">
-        <h1>Discover Hartford’s <em>local businesses.</em></h1>
+        <h1>Discover Central Connecticut’s <em>local businesses.</em></h1>
         <p class="market-hero__copy">From restaurants and fresh juices to rental cars, auto body repair, skincare, braiding, printing, and more—start here.</p>
         <form class="market-search" id="marketSearchForm" role="search">
           <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m1.35-5.65a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
-          <label class="visually-hidden" for="marketSearch">Search Hartford businesses</label>
+          <label class="visually-hidden" for="marketSearch">Search Central Connecticut businesses</label>
           <input id="marketSearch" name="q" type="search" autocomplete="off" placeholder="Search food, cars, skincare, printing…">
           <button type="submit">Search</button>
         </form>
@@ -292,36 +299,36 @@ function generateHub() {
 
     <section class="market-section featured-section" aria-labelledby="featuredTitle">
       <div class="market-wrap">
-        <div class="section-heading"><div><p class="eyebrow">Featured around Hartford</p><h2 id="featuredTitle">Local standouts.</h2></div></div>
+        <div class="section-heading"><div><p class="eyebrow">Featured in Central Connecticut</p><h2 id="featuredTitle">Local standouts.</h2></div></div>
         <div class="featured-rail" id="featuredRail">${featured.map((business) => card(business, { featured: true })).join('')}</div>
       </div>
     </section>
 
     <section class="market-section directory-section" aria-labelledby="directoryTitle">
       <div class="market-wrap">
-        <div class="directory-heading"><div><p class="eyebrow">The local directory</p><h2 id="directoryTitle">Businesses in and around Hartford</h2></div><p class="results-count" id="resultsCount" aria-live="polite">${hartfordBusinesses.length} businesses</p></div>
+        <div class="directory-heading"><div><p class="eyebrow">The local directory</p><h2 id="directoryTitle">Businesses across Central Connecticut</h2></div><p class="results-count" id="resultsCount" aria-live="polite">${centralConnecticutBusinesses.length} businesses</p></div>
         <div class="active-filters" id="activeFilters" hidden></div>
-        <div class="business-grid" id="businessGrid">${hartfordBusinesses.map((business) => card(business)).join('')}</div>
-        <div class="empty-state" id="emptyState" hidden><span>0 results</span><h3>No exact matches yet.</h3><p>Try a broader service, clear the town filter, or tell RE IMAGE which Hartford business should be added.</p><button class="button button--primary" id="clearFilters" type="button">Clear filters</button></div>
+        <div class="business-grid" id="businessGrid">${centralConnecticutBusinesses.map((business) => card(business)).join('')}</div>
+        <div class="empty-state" id="emptyState" hidden><span>0 results</span><h3>No exact matches yet.</h3><p>Try a broader service, clear the town filter, or tell RE IMAGE which Central Connecticut business should be added.</p><button class="button button--primary" id="clearFilters" type="button">Clear filters</button></div>
       </div>
     </section>
 
     <section class="market-section beyond-section" id="beyond" aria-labelledby="beyondTitle">
-      <div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Beyond Greater Hartford</p><h2 id="beyondTitle">Trusted businesses farther out.</h2></div><p>These RE IMAGE clients serve New York and other markets outside Connecticut’s capital region.</p></div><div class="business-grid business-grid--two" id="beyondGrid">${beyondBusinesses.map((business) => card(business)).join('')}</div></div>
+      <div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Beyond Central Connecticut</p><h2 id="beyondTitle">Trusted businesses farther out.</h2></div><p>These RE IMAGE clients serve New York and other markets outside Central Connecticut.</p></div><div class="business-grid business-grid--two" id="beyondGrid">${beyondBusinesses.map((business) => card(business)).join('')}</div></div>
     </section>
 
     ${browseGuides()}
-    <section class="owner-cta"><div class="market-wrap owner-cta__inner"><div><p class="eyebrow">Built for local business</p><h2>Own a business Hartford should know?</h2><p>Join the directory or ask about the one featured placement available in your category.</p></div><div class="owner-cta__actions"><a class="button button--light" href="/start-with-us.html?service=Marketplace%20Listing">Get listed</a><a class="button button--primary" href="/start-with-us.html?service=Featured%20Marketplace%20Placement">Feature your business</a></div></div></section>
+    <section class="owner-cta"><div class="market-wrap owner-cta__inner"><div><p class="eyebrow">Built for local business</p><h2>Own a business Central Connecticut should know?</h2><p>Join the directory or ask about the one featured placement available in your category.</p></div><div class="owner-cta__actions"><a class="button button--light" href="/start-with-us.html?service=Marketplace%20Listing">Get listed</a><a class="button button--primary" href="/start-with-us.html?service=Featured%20Marketplace%20Placement">Feature your business</a></div></div></section>
     <script id="marketplaceData" type="application/json">${embedded}</script>
   </main>`;
 
-  return shell({ title: 'Discover Hartford Businesses, Services & Local Guides | RE IMAGE', description: 'Find Hartford restaurants, rental cars, auto body shops, skincare, African hair braiding, printing, property rentals, and local services with verified details and direct links.', canonical: `${siteUrl}/marketplace.html`, imageAlt: 'RE IMAGE Hartford local business directory', schema: hubSchema(), body, pageClass: 'marketplace-hub' });
+  return shell({ title: 'Discover Central Connecticut Businesses, Services & Local Guides | RE IMAGE', description: 'Find Central Connecticut restaurants, rental cars, auto body shops, skincare, African hair braiding, printing, property rentals, and local services with verified details and direct links.', canonical: `${siteUrl}/marketplace.html`, imageAlt: 'RE IMAGE Central Connecticut local business directory', schema: hubSchema(), body, pageClass: 'marketplace-hub' });
 }
 
 function generateCategory(category) {
   const businesses = data.businesses.filter((business) => business.categories.includes(category.slug)).sort((a, b) => a.regionRank - b.regionRank || a.name.localeCompare(b.name));
   const featured = businessMap.get(category.featured);
-  const categoryLocation = businesses.some((business) => business.regionRank < 4) ? 'in Greater Hartford, CT' : 'beyond Greater Hartford';
+  const categoryLocation = businesses.some((business) => business.regionRank < 4) ? 'in Central Connecticut' : 'beyond Central Connecticut';
   const topic = topicFor(category);
   const categoryFaqs = [
     [`Which ${category.name.toLowerCase()} businesses are listed?`, `${businesses.map(business => business.name).join(', ')} ${businesses.length === 1 ? 'is listed' : 'are listed'} in this category. Check each profile for specialties, location or service area, and the official business website.`],
@@ -334,11 +341,11 @@ function generateCategory(category) {
       '@type': 'CollectionPage', '@id': `${siteUrl}${categoryUrl(category.slug)}#webpage`, name: `${category.name} ${categoryLocation}`, url: `${siteUrl}${categoryUrl(category.slug)}`, description: category.description,
       isPartOf: { '@id': `${siteUrl}/#website` }, publisher: { '@id': `${siteUrl}/#organization` }, dateModified: searchUpdatedAt, inLanguage: 'en-US',
       about: [{ '@type': 'Thing', name: category.name }, ...businesses.map(business => ({ '@type': 'Place', name: business.locationLabel }))], keywords: topic.terms.join(', '), breadcrumb: { '@id': breadcrumb['@id'] },
-      mainEntity: { '@type': 'ItemList', name: `${category.name} near Hartford`, numberOfItems: businesses.length, itemListElement: businesses.map((business, index) => ({ '@type': 'ListItem', position: index + 1, name: business.name, item: { '@type': business.schemaType || 'Organization', '@id': `${siteUrl}${profileUrl(business.slug)}#business`, name: business.name, url: `${siteUrl}${profileUrl(business.slug)}` } })) }
+      mainEntity: { '@type': 'ItemList', name: `${category.name} in Central Connecticut`, numberOfItems: businesses.length, itemListElement: businesses.map((business, index) => ({ '@type': 'ListItem', position: index + 1, name: business.name, item: { '@type': business.schemaType || 'Organization', '@id': `${siteUrl}${profileUrl(business.slug)}#business`, name: business.name, url: `${siteUrl}${profileUrl(business.slug)}` } })) }
     }, breadcrumb, faqSchema(categoryFaqs, `${siteUrl}${categoryUrl(category.slug)}`)]
   }];
   const body = `<main id="main-content">
-    <section class="category-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Discover</a><span>/</span><span aria-current="page">${escapeHtml(category.name)}</span></nav><p class="eyebrow">${businesses.some((business) => business.regionRank < 4) ? 'Hartford local guide' : 'Beyond Greater Hartford'}</p><h1>${escapeHtml(category.name)}<br><em>${escapeHtml(categoryLocation)}.</em></h1><p>${escapeHtml(category.description)}</p><a class="back-link" href="/marketplace.html">← Search all Hartford businesses</a></div></section>
+    <section class="category-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Discover</a><span>/</span><span aria-current="page">${escapeHtml(category.name)}</span></nav><p class="eyebrow">${businesses.some((business) => business.regionRank < 4) ? 'Central Connecticut local guide' : 'Beyond Central Connecticut'}</p><h1>${escapeHtml(category.name)}<br><em>${escapeHtml(categoryLocation)}.</em></h1><p>${escapeHtml(category.description)}</p><a class="back-link" href="/marketplace.html">← Search all Central Connecticut businesses</a></div></section>
     <section class="market-section category-feature"><div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Featured ${escapeHtml(category.shortName)}</p><h2>Start with a local standout.</h2></div></div><div class="featured-single">${card(featured, { featured: true })}</div></div></section>
     <section class="market-section"><div class="market-wrap"><div class="directory-heading"><div><p class="eyebrow">Browse the category</p><h2>${businesses.length} ${businesses.length === 1 ? 'business' : 'businesses'} to explore</h2></div><a class="text-link" href="/marketplace.html?category=${category.slug}">Open filtered marketplace →</a></div><div class="business-grid">${businesses.map((business) => card(business)).join('')}</div></div></section>
     <section class="category-copy"><div class="market-wrap category-copy__inner"><div><p class="eyebrow">Find the right fit</p><h2>${escapeHtml(topic.heading)}</h2></div><div><p>${escapeHtml(topic.copy)}</p><p>Explore: ${topic.terms.map(escapeHtml).join(', ')}.</p></div></div></section>
@@ -402,7 +409,7 @@ function profileSchema(business) {
     '@context': 'https://schema.org', '@graph': [
       {
         '@type': 'WebPage', '@id': `${pageUrl}#webpage`, url: pageUrl, name: `${business.name} — ${business.specialties[0]} in ${business.locationLabel}`,
-        description: business.shortBio, dateModified: data.verifiedAt, inLanguage: 'en-US', isPartOf: { '@id': `${siteUrl}/#website` },
+        description: business.shortBio, dateModified: business.verifiedAt || data.verifiedAt, inLanguage: 'en-US', isPartOf: { '@id': `${siteUrl}/#website` },
         publisher: { '@id': `${siteUrl}/#organization` }, breadcrumb: { '@id': breadcrumb['@id'] }, mainEntity: { '@id': object['@id'] }
       },
       object,
@@ -419,7 +426,7 @@ function generateProfile(business) {
   const faqs = profileFaqs(business);
   const body = `<main id="main-content" data-profile-business="${business.slug}" data-profile-category="${business.categories[0]}">
     <section class="profile-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Discover</a><span>/</span><a href="${categoryUrl(primary.slug)}">${escapeHtml(primary.shortName)}</a><span>/</span><span aria-current="page">${escapeHtml(business.name)}</span></nav><div class="profile-hero__grid"><div class="profile-hero__media profile-hero__logo"><span class="business-logo-stage business-logo-stage--${business.slug}">${businessLogo(business)}</span></div><div class="profile-hero__copy"><p class="eyebrow">${escapeHtml(primary.name)}</p><h1>${escapeHtml(business.name)}</h1><p class="profile-lead">${escapeHtml(business.shortBio)}</p><div class="profile-actions"><a class="button button--primary" href="${business.ctaUrl}" target="_blank" rel="noopener">${escapeHtml(business.ctaLabel)} ↗</a>${business.address ? `<a class="button button--outline" href="${directionsUrl(business)}" target="_blank" rel="noopener">Get directions</a>` : ''}</div></div></div></div></section>
-    <section class="profile-details"><div class="market-wrap profile-details__grid"><div class="profile-story"><p class="eyebrow">Services and specialties</p><h2>What ${escapeHtml(business.name)} offers.</h2><p>${escapeHtml(business.longBio)}</p><div class="tag-cloud">${[...business.specialties, ...business.tags].map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div></div><aside class="profile-info"><p class="profile-info__label">Business information</p><dl><div><dt>${business.address ? 'Address' : 'Service area'}</dt><dd>${escapeHtml(address)}</dd></div>${business.secondaryAddress ? `<div><dt>Second location</dt><dd>${escapeHtml(business.secondaryAddress)}</dd></div>` : ''}${business.phone ? `<div><dt>Phone</dt><dd><a href="tel:${business.phone.replace(/[^\d+]/g, '')}">${escapeHtml(business.phone)}</a></dd></div>` : ''}<div><dt>Official website</dt><dd><a href="${business.website}" target="_blank" rel="noopener">Visit ${escapeHtml(business.name)} ↗</a></dd></div><div><dt>Information verified</dt><dd><time datetime="${data.verifiedAt}">${formatDate(data.verifiedAt)}</time></dd></div></dl>${business.secondaryCtaUrl ? `<a class="button button--outline button--full" href="${business.secondaryCtaUrl}" target="_blank" rel="noopener">${escapeHtml(business.secondaryCtaLabel)}</a>` : ''}</aside></div></section>
+    <section class="profile-details"><div class="market-wrap profile-details__grid"><div class="profile-story"><p class="eyebrow">Services and specialties</p><h2>What ${escapeHtml(business.name)} offers.</h2><p>${escapeHtml(business.longBio)}</p><div class="tag-cloud">${[...business.specialties, ...business.tags].map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div></div><aside class="profile-info"><p class="profile-info__label">Business information</p><dl><div><dt>${business.address ? 'Address' : 'Service area'}</dt><dd>${escapeHtml(address)}</dd></div>${business.secondaryAddress ? `<div><dt>Second location</dt><dd>${escapeHtml(business.secondaryAddress)}</dd></div>` : ''}${business.phone ? `<div><dt>Phone</dt><dd><a href="tel:${business.phone.replace(/[^\d+]/g, '')}">${escapeHtml(business.phone)}</a></dd></div>` : ''}<div><dt>Official website</dt><dd><a href="${business.website}" target="_blank" rel="noopener">Visit ${escapeHtml(business.name)} ↗</a></dd></div><div><dt>Information verified</dt><dd><time datetime="${business.verifiedAt || data.verifiedAt}">${formatDate(business.verifiedAt || data.verifiedAt)}</time></dd></div></dl>${business.secondaryCtaUrl ? `<a class="button button--outline button--full" href="${business.secondaryCtaUrl}" target="_blank" rel="noopener">${escapeHtml(business.secondaryCtaLabel)}</a>` : ''}</aside></div></section>
     ${faqs.length ? `<section class="profile-faq"><div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Quick answers</p><h2>Know before you go.</h2></div></div><div class="faq-grid">${faqs.map(([question, answer]) => `<details><summary>${escapeHtml(question)}<span aria-hidden="true">+</span></summary><p>${escapeHtml(answer)}</p></details>`).join('')}</div></div></section>` : ''}
     ${related.length ? `<section class="market-section related-section"><div class="market-wrap"><div class="directory-heading"><div><p class="eyebrow">Keep exploring</p><h2>More ${escapeHtml(primary.shortName)}</h2></div><a class="text-link" href="${categoryUrl(primary.slug)}">View category →</a></div><div class="business-grid">${related.map((item) => card(item)).join('')}</div></div></section>` : ''}
     ${corridorSlugs.has(business.slug) ? `<aside class="profile-guide-link"><div class="market-wrap"><p><strong>Planning a New Britain Avenue stop?</strong> Use the <a href="${guidePath}">New Britain Avenue Hartford business guide</a> to explore nearby food, drinks, and braiding.</p></div></aside>` : ''}
@@ -462,7 +469,7 @@ function generateCorridorGuide() {
     { '@type': 'FAQPage', '@id': `${pageUrl}#faq`, mainEntity: faqs.map(([question, answer]) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) }
   ] }];
   const body = `<main id="main-content">
-    <section class="category-hero corridor-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Discover</a><span>/</span><span aria-current="page">New Britain Avenue</span></nav><p class="eyebrow">Hartford street guide</p><h1>New Britain Avenue<br><em>business guide.</em></h1><p>Find signature food, fresh drinks, and African hair braiding in one compact Hartford block—with Mexican fusion nearby on Newfield Avenue.</p><a class="back-link" href="/marketplace.html">← Search all Hartford businesses</a></div></section>
+    <section class="category-hero corridor-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Discover</a><span>/</span><span aria-current="page">New Britain Avenue</span></nav><p class="eyebrow">Hartford street guide</p><h1>New Britain Avenue<br><em>business guide.</em></h1><p>Find signature food, fresh drinks, and African hair braiding in one compact Hartford block—with Mexican fusion nearby on Newfield Avenue.</p><a class="back-link" href="/marketplace.html">← Search all Central Connecticut businesses</a></div></section>
     <section class="corridor-answer"><div class="market-wrap corridor-answer__inner"><p class="eyebrow">The quick answer</p><h2>Three storefronts sit within six street numbers.</h2><p>Lorie’s African Hair Braiding is at <strong>875</strong>, Fusion Health Juice Bar is at <strong>879</strong>, and 881 Grab &amp; Go is at <strong>881 New Britain Avenue</strong>. That makes this small stretch a useful stop for braiding, Peanut Punch, Caribbean food, and the Cheyney Fish Sandwich.</p><p class="guide-verified">Business details last verified <time datetime="${data.verifiedAt}">${formatDate(data.verifiedAt)}</time>.</p></div></section>
     <section class="market-section guide-directory" aria-labelledby="guideDirectoryTitle"><div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Block by block</p><h2 id="guideDirectoryTitle">What to find and where.</h2></div></div><ol class="guide-business-list">${businesses.map((business) => guideListing(business, business.slug === 'mi-buen-pastor-mexican-fusion' ? 'Nearby on Newfield Avenue.' : 'On New Britain Avenue.')).join('')}</ol></div></section>
     <section class="profile-faq"><div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">New Britain Avenue FAQ</p><h2>Answers before you go.</h2></div></div><div class="faq-grid">${faqs.map(([question, answer]) => `<details><summary>${escapeHtml(question)}<span aria-hidden="true">+</span></summary><p>${escapeHtml(answer)}</p></details>`).join('')}</div></div></section>
@@ -474,38 +481,38 @@ function generateCorridorGuide() {
 function generateEditorialPage() {
   const pageUrl = `${siteUrl}${editorialPath}`;
   const schema = [{ '@context': 'https://schema.org', '@graph': [
-    { '@type': 'AboutPage', '@id': `${pageUrl}#webpage`, url: pageUrl, name: 'About the RE IMAGE Hartford Local Business Directory', description: 'How RE IMAGE researches, verifies, updates, and labels businesses in its Hartford local guide.', dateModified: data.verifiedAt, inLanguage: 'en-US', isPartOf: { '@id': `${siteUrl}/#website` }, publisher: { '@id': `${siteUrl}/#organization` } },
+    { '@type': 'AboutPage', '@id': `${pageUrl}#webpage`, url: pageUrl, name: 'About the RE IMAGE Central Connecticut Local Business Directory', description: 'How RE IMAGE researches, verifies, updates, and labels businesses in its Central Connecticut local guide.', dateModified: data.verifiedAt, inLanguage: 'en-US', isPartOf: { '@id': `${siteUrl}/#website` }, publisher: { '@id': `${siteUrl}/#organization` } },
     { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Discover', item: `${siteUrl}/marketplace.html` }, { '@type': 'ListItem', position: 2, name: 'About this directory', item: pageUrl }] }
   ] }];
   const body = `<main id="main-content">
-    <section class="category-hero editorial-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Discover</a><span>/</span><span aria-current="page">About this directory</span></nav><p class="eyebrow">How the guide works</p><h1>Local information<br><em>people can verify.</em></h1><p>RE IMAGE publishes concise Hartford-area business profiles built from official business sources and owner-supplied information.</p><a class="back-link" href="/marketplace.html">← Browse Hartford businesses</a></div></section>
-    <section class="editorial-content"><div class="market-wrap editorial-grid"><article><p class="eyebrow">Our process</p><h2>What gets checked.</h2><p>Before a listing is published, we check the business name, official website, physical address or truthful service area, direct customer action, core specialties, and image attribution. Each profile shows the date its information was last verified.</p><h3>Corrections and updates</h3><p>Business owners can request a correction through RE IMAGE. We update factual details when a current official source or owner confirmation supports the change.</p><p class="guide-verified">Directory information last reviewed <time datetime="${data.verifiedAt}">${formatDate(data.verifiedAt)}</time>.</p></article><article><p class="eyebrow">What you will not find</p><h2>No invented trust signals.</h2><p>We do not publish fabricated ratings, copied reviews, unsupported “best” claims, or fake storefront addresses. Paid placements are labeled <strong>Sponsored</strong>; editorial selections are labeled <strong>RE IMAGE Pick</strong>.</p><h3>How listings are organized</h3><p>Hartford storefronts appear first, followed by nearby Greater Hartford businesses, other Connecticut services, and a separate section for businesses beyond Greater Hartford.</p></article></div></section>
+    <section class="category-hero editorial-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Discover</a><span>/</span><span aria-current="page">About this directory</span></nav><p class="eyebrow">How the guide works</p><h1>Local information<br><em>people can verify.</em></h1><p>RE IMAGE publishes concise Central Connecticut business profiles built from official business sources and owner-supplied information.</p><a class="back-link" href="/marketplace.html">← Browse Central Connecticut businesses</a></div></section>
+    <section class="editorial-content"><div class="market-wrap editorial-grid"><article><p class="eyebrow">Our process</p><h2>What gets checked.</h2><p>Before a listing is published, we check the business name, official website, physical address or truthful service area, direct customer action, core specialties, and image attribution. Each profile shows the date its information was last verified.</p><h3>Corrections and updates</h3><p>Business owners can request a correction through RE IMAGE. We update factual details when a current official source or owner confirmation supports the change.</p><p class="guide-verified">Directory information last reviewed <time datetime="${data.verifiedAt}">${formatDate(data.verifiedAt)}</time>.</p></article><article><p class="eyebrow">What you will not find</p><h2>No invented trust signals.</h2><p>We do not publish fabricated ratings, copied reviews, unsupported “best” claims, or fake storefront addresses. Paid placements are labeled <strong>Sponsored</strong>; editorial selections are labeled <strong>RE IMAGE Pick</strong>.</p><h3>How listings are organized</h3><p>The main directory covers Central Connecticut and other Connecticut service areas. Businesses farther away appear in a separate section.</p></article></div></section>
     <section class="owner-cta"><div class="market-wrap owner-cta__inner"><div><p class="eyebrow">Keep it accurate</p><h2>Own or manage a listed business?</h2><p>Send RE IMAGE a correction, new official link, updated service area, or current business image.</p></div><div class="owner-cta__actions"><a class="button button--light" href="/start-with-us.html?service=Marketplace%20Listing">Request an update</a></div></div></section>
   </main>`;
-  return shell({ title: 'About the Hartford Local Business Directory | RE IMAGE', description: 'Learn how RE IMAGE researches, verifies, updates, and labels businesses in its Hartford local business directory.', canonical: pageUrl, imageAlt: 'RE IMAGE Business Solutions logo', schema, body, pageClass: 'marketplace-editorial' });
+  return shell({ title: 'About the Central Connecticut Local Business Directory | RE IMAGE', description: 'Learn how RE IMAGE researches, verifies, updates, and labels businesses in its Central Connecticut local business directory.', canonical: pageUrl, imageAlt: 'RE IMAGE Business Solutions logo', schema, body, pageClass: 'marketplace-editorial' });
 }
 
 function generateMarketplaceFeed() {
   return `${JSON.stringify({
-    schemaVersion: '1.1', name: 'RE IMAGE Hartford Local Business Directory', url: `${siteUrl}/marketplace.html`, focusArea: 'Hartford and Greater Hartford, Connecticut', informationLastVerified: data.verifiedAt,
+    schemaVersion: '1.1', name: 'RE IMAGE Central Connecticut Local Business Directory', url: `${siteUrl}/marketplace.html`, focusArea: 'Central Connecticut', informationLastVerified: data.verifiedAt,
     editorialPolicy: `${siteUrl}${editorialPath}`, featuredGuide: `${siteUrl}${guidePath}`,
     categories: data.categories.map(category => ({ slug: category.slug, name: category.name, description: category.description, topics: topicFor(category).terms, guide: topicFor(category).copy, url: `${siteUrl}${categoryUrl(category.slug)}` })),
     locations: populatedLocations.map(location => ({ ...location, url: `${siteUrl}${locationUrl(location.slug)}`, businesses: businessesInLocation(location.slug).map(business => `${siteUrl}${profileUrl(business.slug)}`) })),
     businessDecisionResource: { url: `${siteUrl}/market-signals.html`, topics: marketSearch.topics, snapshot: `${siteUrl}/data/market/latest.json`, methodology: `${siteUrl}/market-signals.html#methodology` },
     businesses: data.businesses.map((business) => ({
       name: business.name, profile: `${siteUrl}${profileUrl(business.slug)}`, officialWebsite: business.website, category: business.categories.map(categoryName),
-      location: business.address ? addressText(business) : business.serviceArea, specialties: business.specialties, description: business.shortBio, primaryAction: { label: business.ctaLabel, url: business.ctaUrl }, informationLastVerified: data.verifiedAt
+      location: business.address ? addressText(business) : business.serviceArea, specialties: business.specialties, description: business.shortBio, primaryAction: { label: business.ctaLabel, url: business.ctaUrl }, informationLastVerified: business.verifiedAt || data.verifiedAt
     }))
   }, null, 2)}\n`;
 }
 
 function generateLlmsSummary() {
-  return `# RE IMAGE Business Solutions\n\n> Hartford-based business systems company and publisher of a verified Hartford local business directory.\n\n## Primary URLs\n\n- [Homepage](${siteUrl}/): Custom websites, customer portals, payment systems, automation, and connected business operating systems.\n- [Business loan, hiring, and pricing decisions](${siteUrl}/market-signals.html): National FRED and BLS indicators, source dates, M2 projection, decision guides, and a transparent RE IMAGE pressure model.\n- [Published economic data](${siteUrl}/data/market/latest.json): Timestamped observations and model components; M2 projection is money-supply growth, not a CPI forecast.\n- [Hartford Local Business Directory](${siteUrl}/marketplace.html): Search verified Hartford-area businesses by service, specialty, and town.\n- [New Britain Avenue Hartford Business Guide](${siteUrl}${guidePath}): Block-by-block guide to food, fresh drinks, and African hair braiding.\n- [Directory methodology](${siteUrl}${editorialPath}): Verification, corrections, ranking, and placement-label policy.\n- [Complete machine-readable directory](${siteUrl}/llms-full.txt): Full verified listing summaries and direct links.\n- [Marketplace JSON feed](${siteUrl}/marketplace-feed.json): Structured public listing data.\n- [XML sitemap](${siteUrl}/sitemap.xml): Canonical public URLs and image discovery.\n\n## Hartford directory categories\n\n${data.categories.map((category) => `- [${category.name}](${siteUrl}${categoryUrl(category.slug)}): ${category.description}`).join('\n')}\n\n## Location guides\n\n${populatedLocations.map(location => `- [${location.title}](${siteUrl}${locationUrl(location.slug)}): ${location.description}`).join('\n')}\n\n## Key facts\n\n- Geographic focus: Hartford and Greater Hartford, Connecticut.\n- Listings use official business links and verified storefront addresses or truthful service areas.\n- Profiles include specialties, direct actions, factual FAQs, and the information verification date.\n- Businesses outside Greater Hartford are separated from Hartford-area listings.\n- No fabricated ratings, copied reviews, or unsupported ranking claims are published.\n\n## Contact\n\n- Email: reimagebs@gmail.com\n- Phone: +1-860-718-5928\n- Project inquiry: ${siteUrl}/start-with-us.html\n`;
+  return `# RE IMAGE Business Solutions\n\n> Hartford-based business systems company and publisher of a verified Central Connecticut local business directory.\n\n## Primary URLs\n\n- [Homepage](${siteUrl}/): Custom websites, customer portals, payment systems, automation, and connected business operating systems.\n- [Business loan, hiring, and pricing decisions](${siteUrl}/market-signals.html): National FRED and BLS indicators, source dates, M2 projection, decision guides, and a transparent RE IMAGE pressure model.\n- [Published economic data](${siteUrl}/data/market/latest.json): Timestamped observations and model components; M2 projection is money-supply growth, not a CPI forecast.\n- [Central Connecticut Local Business Directory](${siteUrl}/marketplace.html): Search verified Central Connecticut businesses by service, specialty, and town.\n- [New Britain Avenue Hartford Business Guide](${siteUrl}${guidePath}): Block-by-block guide to food, fresh drinks, and African hair braiding.\n- [Directory methodology](${siteUrl}${editorialPath}): Verification, corrections, ranking, and placement-label policy.\n- [Complete machine-readable directory](${siteUrl}/llms-full.txt): Full verified listing summaries and direct links.\n- [Marketplace JSON feed](${siteUrl}/marketplace-feed.json): Structured public listing data.\n- [XML sitemap](${siteUrl}/sitemap.xml): Canonical public URLs and image discovery.\n\n## Central Connecticut directory categories\n\n${data.categories.map((category) => `- [${category.name}](${siteUrl}${categoryUrl(category.slug)}): ${category.description}`).join('\n')}\n\n## Location guides\n\n${populatedLocations.map(location => `- [${location.title}](${siteUrl}${locationUrl(location.slug)}): ${location.description}`).join('\n')}\n\n## Key facts\n\n- Geographic focus: Central Connecticut.\n- Listings use official business links and verified storefront addresses or truthful service areas.\n- Profiles include specialties, direct actions, factual FAQs, and the information verification date.\n- Businesses outside Central Connecticut are separated from the main local listings.\n- No fabricated ratings, copied reviews, or unsupported ranking claims are published.\n\n## Contact\n\n- Email: reimagebs@gmail.com\n- Phone: +1-860-718-5928\n- Project inquiry: ${siteUrl}/start-with-us.html\n`;
 }
 
 function generateLlmsFull() {
-  const listings = data.businesses.map((business) => `## ${business.name}\n\n- RE IMAGE profile: ${siteUrl}${profileUrl(business.slug)}\n- Official website: ${business.website}\n- Category: ${business.categories.map(categoryName).join(', ')}\n- Location or service area: ${business.address ? addressText(business) : business.serviceArea}\n- Specialties: ${business.specialties.join(', ')}\n- Summary: ${business.shortBio}\n- Primary action: ${business.ctaLabel} — ${business.ctaUrl}\n- Information last verified: ${data.verifiedAt}`).join('\n\n');
-  return `# RE IMAGE Hartford Local Business Directory — Full Listing Reference\n\n> Public facts for citation and discovery. Prefer each RE IMAGE profile for complete visible context and the official business link for transactions.\n\nDirectory: ${siteUrl}/marketplace.html\nEditorial policy: ${siteUrl}${editorialPath}\nInformation last verified: ${data.verifiedAt}\n\n## Business decision resource\n\n${siteUrl}/market-signals.html\nNational economic indicators for small-business loan, hiring, and pricing decisions. Published by RE IMAGE; not an assessment of a particular loan, employee, or price. Source dates and methodology are visible on the page. M2 is a linear money-supply projection and is weighted at 25%; it is not a CPI forecast.\n\n## Category guides\n\n${data.categories.map(category => `### ${category.name}\n\nURL: ${siteUrl}${categoryUrl(category.slug)}\n${topicFor(category).copy}\nTopics: ${topicFor(category).terms.join(', ')}`).join('\n\n')}\n\n## Location guides\n\n${populatedLocations.map(location => `### ${location.title}\n\nURL: ${siteUrl}${locationUrl(location.slug)}\n${location.description}\nListed businesses: ${businessesInLocation(location.slug).map(business => business.name).join(', ')}`).join('\n\n')}\n\n${listings}\n`;
+  const listings = data.businesses.map((business) => `## ${business.name}\n\n- RE IMAGE profile: ${siteUrl}${profileUrl(business.slug)}\n- Official website: ${business.website}\n- Category: ${business.categories.map(categoryName).join(', ')}\n- Location or service area: ${business.address ? addressText(business) : business.serviceArea}\n- Specialties: ${business.specialties.join(', ')}\n- Summary: ${business.shortBio}\n- Primary action: ${business.ctaLabel} — ${business.ctaUrl}\n- Information last verified: ${business.verifiedAt || data.verifiedAt}`).join('\n\n');
+  return `# RE IMAGE Central Connecticut Local Business Directory — Full Listing Reference\n\n> Public facts for citation and discovery. Prefer each RE IMAGE profile for complete visible context and the official business link for transactions.\n\nDirectory: ${siteUrl}/marketplace.html\nEditorial policy: ${siteUrl}${editorialPath}\nInformation last verified: ${data.verifiedAt}\n\n## Business decision resource\n\n${siteUrl}/market-signals.html\nNational economic indicators for small-business loan, hiring, and pricing decisions. Published by RE IMAGE; not an assessment of a particular loan, employee, or price. Source dates and methodology are visible on the page. M2 is a linear money-supply projection and is weighted at 25%; it is not a CPI forecast.\n\n## Category guides\n\n${data.categories.map(category => `### ${category.name}\n\nURL: ${siteUrl}${categoryUrl(category.slug)}\n${topicFor(category).copy}\nTopics: ${topicFor(category).terms.join(', ')}`).join('\n\n')}\n\n## Location guides\n\n${populatedLocations.map(location => `### ${location.title}\n\nURL: ${siteUrl}${locationUrl(location.slug)}\n${location.description}\nListed businesses: ${businessesInLocation(location.slug).map(business => business.name).join(', ')}`).join('\n\n')}\n\n${listings}\n`;
 }
 
 function write(relativePath, contents) {

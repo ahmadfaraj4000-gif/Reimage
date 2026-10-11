@@ -1,24 +1,24 @@
 # RE IMAGE Business Solutions
 
-> Hartford-based business systems company and publisher of a verified Hartford local business directory.
+> Hartford-based business systems company and publisher of a verified Central Connecticut local business directory.
 
 ## Primary URLs
 
 - [Homepage](https://reimagebs.com/): Custom websites, customer portals, payment systems, automation, and connected business operating systems.
 - [Business loan, hiring, and pricing decisions](https://reimagebs.com/market-signals.html): National FRED and BLS indicators, source dates, M2 projection, decision guides, and a transparent RE IMAGE pressure model.
 - [Published economic data](https://reimagebs.com/data/market/latest.json): Timestamped observations and model components; M2 projection is money-supply growth, not a CPI forecast.
-- [Hartford Local Business Directory](https://reimagebs.com/marketplace.html): Search verified Hartford-area businesses by service, specialty, and town.
+- [Central Connecticut Local Business Directory](https://reimagebs.com/marketplace.html): Search verified Central Connecticut businesses by service, specialty, and town.
 - [New Britain Avenue Hartford Business Guide](https://reimagebs.com/marketplace/guides/new-britain-avenue-hartford/): Block-by-block guide to food, fresh drinks, and African hair braiding.
 - [Directory methodology](https://reimagebs.com/marketplace/about/): Verification, corrections, ranking, and placement-label policy.
 - [Complete machine-readable directory](https://reimagebs.com/llms-full.txt): Full verified listing summaries and direct links.
 - [Marketplace JSON feed](https://reimagebs.com/marketplace-feed.json): Structured public listing data.
 - [XML sitemap](https://reimagebs.com/sitemap.xml): Canonical public URLs and image discovery.
 
-## Hartford directory categories
+## Central Connecticut directory categories
 
 - [Medical & Healthcare](https://reimagebs.com/marketplace/categories/medical-healthcare/): Physician collaboration, medical education, and initiatives supporting healthcare teams and communities.
-- [Restaurants & Drinks](https://reimagebs.com/marketplace/categories/restaurants-drinks/): Juice bars, Caribbean favorites, Mexican fusion, takeout, catering, and signature Hartford flavors.
-- [Nightlife & Events](https://reimagebs.com/marketplace/categories/nightlife-events/): Cocktails, live entertainment, private events, and memorable nights out in Hartford.
+- [Restaurants & Drinks](https://reimagebs.com/marketplace/categories/restaurants-drinks/): Juice bars, Caribbean favorites, Mexican fusion, takeout, catering, and local flavors across Central Connecticut.
+- [Nightlife & Events](https://reimagebs.com/marketplace/categories/nightlife-events/): Cocktails, live entertainment, private events, and memorable nights out in Central Connecticut.
 - [Automobile services](https://reimagebs.com/marketplace/categories/automobile-services/): Auto body repair, towing, car detailing, car audio, remote starters, and vehicle electronics repair and installation.
 - [Car Rentals](https://reimagebs.com/marketplace/categories/car-rentals/): Local cars, SUVs, trucks, luxury vehicles, and passenger vans available to reserve online.
 - [Skincare & Esthetics](https://reimagebs.com/marketplace/categories/skincare-esthetics/): Corrective and customized skincare for acne, hyperpigmentation, texture, and personal care.
@@ -33,17 +33,17 @@
 - [Hartford, CT Local Businesses](https://reimagebs.com/marketplace/locations/hartford/): Explore Hartford restaurants, juice bars, hair braiding, car audio, printing, property services, and community organizations. Check each profile for its storefront or service area.
 - [West Hartford, CT Local Businesses](https://reimagebs.com/marketplace/locations/west-hartford/): Find businesses listed for West Hartford, including auto body repair and towing. Compare service details and follow official links for estimates and availability.
 - [East Hartford, CT Business Services](https://reimagebs.com/marketplace/locations/east-hartford/): Browse businesses serving East Hartford, including custom printing, apparel, and property services. Profiles distinguish service areas from storefront addresses.
-- [Manchester, CT Local Businesses](https://reimagebs.com/marketplace/locations/manchester/): Explore businesses listed in Manchester, including skincare and esthetics. Read specialties and use official business links to confirm consultations and appointment availability.
+- [Manchester, CT Local Businesses](https://reimagebs.com/marketplace/locations/manchester/): Explore Manchester restaurants, bars, skincare, and esthetics. Browse specialties, request a table, or follow official business links for appointments and availability.
 - [Farmington, CT Local Businesses](https://reimagebs.com/marketplace/locations/farmington/): Find businesses listed for Farmington, including car rentals. Check vehicle options through the provider and confirm current availability, pricing, and pickup details.
 - [More Connecticut Businesses & Services](https://reimagebs.com/marketplace/locations/other-connecticut/): Explore businesses with additional Connecticut locations or service areas, including Wethersfield and Clinton. Check individual profiles for the precise areas and services offered.
-- [Businesses Beyond Greater Hartford](https://reimagebs.com/marketplace/locations/beyond/): Explore RE IMAGE directory listings outside Greater Hartford, including New York auto services and private transportation, plus a Chicago-based healthcare initiative.
+- [Businesses Beyond Central Connecticut](https://reimagebs.com/marketplace/locations/beyond/): Explore RE IMAGE directory listings outside Central Connecticut, including New York auto services and private transportation, plus a Chicago-based healthcare initiative.
 
 ## Key facts
 
-- Geographic focus: Hartford and Greater Hartford, Connecticut.
+- Geographic focus: Central Connecticut.
 - Listings use official business links and verified storefront addresses or truthful service areas.
 - Profiles include specialties, direct actions, factual FAQs, and the information verification date.
-- Businesses outside Greater Hartford are separated from Hartford-area listings.
+- Businesses outside Central Connecticut are separated from the main local listings.
 - No fabricated ratings, copied reviews, or unsupported ranking claims are published.
 
 ## Contact

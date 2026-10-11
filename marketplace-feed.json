@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.1",
-  "name": "RE IMAGE Hartford Local Business Directory",
+  "name": "RE IMAGE Central Connecticut Local Business Directory",
   "url": "https://reimagebs.com/marketplace.html",
-  "focusArea": "Hartford and Greater Hartford, Connecticut",
+  "focusArea": "Central Connecticut",
   "informationLastVerified": "2026-09-04",
   "editorialPolicy": "https://reimagebs.com/marketplace/about/",
   "featuredGuide": "https://reimagebs.com/marketplace/guides/new-britain-avenue-hartford/",
@@ -22,29 +22,31 @@
     {
       "slug": "restaurants-drinks",
       "name": "Restaurants & Drinks",
-      "description": "Juice bars, Caribbean favorites, Mexican fusion, takeout, catering, and signature Hartford flavors.",
+      "description": "Juice bars, Caribbean favorites, Mexican fusion, takeout, catering, and local flavors across Central Connecticut.",
       "topics": [
         "Hartford restaurants",
+        "Manchester restaurants",
+        "Central Connecticut restaurants",
         "Jamaican food",
         "Caribbean takeout",
         "Mexican fusion",
         "juice bars",
         "smoothies"
       ],
-      "guide": "Find Hartford food and drink options by the meal or specialty you want: Jamaican and Caribbean favorites, Mexican fusion, fresh juice, smoothies, and takeout. Browse the businesses below, then open their official menus for current dishes, ordering options, and hours.",
+      "guide": "Find Central Connecticut food and drink options by the meal or specialty you want: Jamaican and Caribbean favorites, Mexican fusion, fresh juice, smoothies, and takeout. Browse the businesses below, then open their official menus for current dishes, ordering options, and hours.",
       "url": "https://reimagebs.com/marketplace/categories/restaurants-drinks/"
     },
     {
       "slug": "nightlife-events",
       "name": "Nightlife & Events",
-      "description": "Cocktails, live entertainment, private events, and memorable nights out in Hartford.",
+      "description": "Cocktails, live entertainment, private events, and memorable nights out in Central Connecticut.",
       "topics": [
         "Hartford nightlife",
         "cocktail bars",
         "private events",
         "live entertainment"
       ],
-      "guide": "Planning a night out or a private gathering in Hartford? Explore the listed venues and their event information. Confirm the current entertainment schedule, group arrangements, food and drink options, and reservation details directly with the venue.",
+      "guide": "Planning a night out or a private gathering in Central Connecticut? Explore the listed venues and their event information. Confirm the current entertainment schedule, group arrangements, food and drink options, and reservation details directly with the venue.",
       "url": "https://reimagebs.com/marketplace/categories/nightlife-events/"
     },
     {
@@ -155,7 +157,7 @@
         "corporate car service",
         "private event transportation"
       ],
-      "guide": "Find a private-transportation provider serving New York’s Capital Region. Explore airport, corporate, event, and long-distance ride options, then request availability for your route and date. This listing is outside Greater Hartford and is labeled accordingly.",
+      "guide": "Find a private-transportation provider serving New York’s Capital Region. Explore airport, corporate, event, and long-distance ride options, then request availability for your route and date. This listing is outside Central Connecticut and is labeled accordingly.",
       "url": "https://reimagebs.com/marketplace/categories/private-transportation/"
     }
   ],
@@ -206,9 +208,10 @@
       "slug": "manchester",
       "name": "Manchester",
       "title": "Manchester, CT Local Businesses",
-      "description": "Explore businesses listed in Manchester, including skincare and esthetics. Read specialties and use official business links to confirm consultations and appointment availability.",
+      "description": "Explore Manchester restaurants, bars, skincare, and esthetics. Browse specialties, request a table, or follow official business links for appointments and availability.",
       "url": "https://reimagebs.com/marketplace/locations/manchester/",
       "businesses": [
+        "https://reimagebs.com/marketplace/businesses/fish-n-tingz/",
         "https://reimagebs.com/marketplace/businesses/techniq-skin-beauty/"
       ]
     },
@@ -236,9 +239,9 @@
     },
     {
       "slug": "beyond",
-      "name": "Beyond Greater Hartford",
-      "title": "Businesses Beyond Greater Hartford",
-      "description": "Explore RE IMAGE directory listings outside Greater Hartford, including New York auto services and private transportation, plus a Chicago-based healthcare initiative.",
+      "name": "Beyond Central Connecticut",
+      "title": "Businesses Beyond Central Connecticut",
+      "description": "Explore RE IMAGE directory listings outside Central Connecticut, including New York auto services and private transportation, plus a Chicago-based healthcare initiative.",
       "url": "https://reimagebs.com/marketplace/locations/beyond/",
       "businesses": [
         "https://reimagebs.com/marketplace/businesses/amanah-medical-care/",
@@ -261,6 +264,29 @@
   },
   "businesses": [
     {
+      "name": "Fish N Tingz Bar & Grill",
+      "profile": "https://reimagebs.com/marketplace/businesses/fish-n-tingz/",
+      "officialWebsite": "https://reimage-demo.github.io/fish-n-tingz/",
+      "category": [
+        "Restaurants & Drinks",
+        "Nightlife & Events"
+      ],
+      "location": "384 Middle Turnpike W, Manchester, CT 06040",
+      "specialties": [
+        "Oxtail tacos",
+        "Whole snapper",
+        "Rum Punch Tower",
+        "Jerk chicken",
+        "Sunday brunch"
+      ],
+      "description": "A family-operated West Indian bar and grill in Manchester, known for oxtail tacos, whole snapper, jerk chicken, and the Rum Punch Tower.",
+      "primaryAction": {
+        "label": "Reserve table",
+        "url": "https://reimage-demo.github.io/fish-n-tingz/contact.html#reservations"
+      },
+      "informationLastVerified": "2026-10-11"
+    },
+    {
       "name": "Blue Hills Cafe",
       "profile": "https://reimagebs.com/marketplace/businesses/blue-hills-cafe/",
       "officialWebsite": "https://reimage-demo.github.io/blue-hills-cafe/",
@@ -278,7 +304,7 @@
         "label": "Visit Website",
         "url": "https://reimage-demo.github.io/blue-hills-cafe/"
       },
-      "informationLastVerified": "2026-09-04"
+      "informationLastVerified": "2026-10-08"
     },
     {
       "name": "Action Audio",

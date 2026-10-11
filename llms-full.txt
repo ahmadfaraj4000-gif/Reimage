@@ -1,4 +1,4 @@
-# RE IMAGE Hartford Local Business Directory — Full Listing Reference
+# RE IMAGE Central Connecticut Local Business Directory — Full Listing Reference
 
 > Public facts for citation and discovery. Prefer each RE IMAGE profile for complete visible context and the official business link for transactions.
 
@@ -22,13 +22,13 @@ Topics: physician collaboration, medical education, healthcare partnerships
 ### Restaurants & Drinks
 
 URL: https://reimagebs.com/marketplace/categories/restaurants-drinks/
-Find Hartford food and drink options by the meal or specialty you want: Jamaican and Caribbean favorites, Mexican fusion, fresh juice, smoothies, and takeout. Browse the businesses below, then open their official menus for current dishes, ordering options, and hours.
-Topics: Hartford restaurants, Jamaican food, Caribbean takeout, Mexican fusion, juice bars, smoothies
+Find Central Connecticut food and drink options by the meal or specialty you want: Jamaican and Caribbean favorites, Mexican fusion, fresh juice, smoothies, and takeout. Browse the businesses below, then open their official menus for current dishes, ordering options, and hours.
+Topics: Hartford restaurants, Manchester restaurants, Central Connecticut restaurants, Jamaican food, Caribbean takeout, Mexican fusion, juice bars, smoothies
 
 ### Nightlife & Events
 
 URL: https://reimagebs.com/marketplace/categories/nightlife-events/
-Planning a night out or a private gathering in Hartford? Explore the listed venues and their event information. Confirm the current entertainment schedule, group arrangements, food and drink options, and reservation details directly with the venue.
+Planning a night out or a private gathering in Central Connecticut? Explore the listed venues and their event information. Confirm the current entertainment schedule, group arrangements, food and drink options, and reservation details directly with the venue.
 Topics: Hartford nightlife, cocktail bars, private events, live entertainment
 
 ### Automobile services
@@ -76,7 +76,7 @@ Topics: Hartford community resources, family support, mentorship, community gath
 ### Private Transportation
 
 URL: https://reimagebs.com/marketplace/categories/private-transportation/
-Find a private-transportation provider serving New York’s Capital Region. Explore airport, corporate, event, and long-distance ride options, then request availability for your route and date. This listing is outside Greater Hartford and is labeled accordingly.
+Find a private-transportation provider serving New York’s Capital Region. Explore airport, corporate, event, and long-distance ride options, then request availability for your route and date. This listing is outside Central Connecticut and is labeled accordingly.
 Topics: private chauffeur New York Capital Region, airport transportation, corporate car service, private event transportation
 
 ## Location guides
@@ -102,8 +102,8 @@ Listed businesses: Living Word Imprints, Andaleeb Enterprises
 ### Manchester, CT Local Businesses
 
 URL: https://reimagebs.com/marketplace/locations/manchester/
-Explore businesses listed in Manchester, including skincare and esthetics. Read specialties and use official business links to confirm consultations and appointment availability.
-Listed businesses: Techniq Skin & Beauty
+Explore Manchester restaurants, bars, skincare, and esthetics. Browse specialties, request a table, or follow official business links for appointments and availability.
+Listed businesses: Fish N Tingz Bar & Grill, Techniq Skin & Beauty
 
 ### Farmington, CT Local Businesses
 
@@ -117,11 +117,22 @@ URL: https://reimagebs.com/marketplace/locations/other-connecticut/
 Explore businesses with additional Connecticut locations or service areas, including Wethersfield and Clinton. Check individual profiles for the precise areas and services offered.
 Listed businesses: Action Audio, Andaleeb Enterprises, The Anchor Collective
 
-### Businesses Beyond Greater Hartford
+### Businesses Beyond Central Connecticut
 
 URL: https://reimagebs.com/marketplace/locations/beyond/
-Explore RE IMAGE directory listings outside Greater Hartford, including New York auto services and private transportation, plus a Chicago-based healthcare initiative.
+Explore RE IMAGE directory listings outside Central Connecticut, including New York auto services and private transportation, plus a Chicago-based healthcare initiative.
 Listed businesses: Amanah Medical Care, CR8 Autos, Empire Elite Rides
+
+## Fish N Tingz Bar & Grill
+
+- RE IMAGE profile: https://reimagebs.com/marketplace/businesses/fish-n-tingz/
+- Official website: https://reimage-demo.github.io/fish-n-tingz/
+- Category: Restaurants & Drinks, Nightlife & Events
+- Location or service area: 384 Middle Turnpike W, Manchester, CT 06040
+- Specialties: Oxtail tacos, Whole snapper, Rum Punch Tower, Jerk chicken, Sunday brunch
+- Summary: A family-operated West Indian bar and grill in Manchester, known for oxtail tacos, whole snapper, jerk chicken, and the Rum Punch Tower.
+- Primary action: Reserve table — https://reimage-demo.github.io/fish-n-tingz/contact.html#reservations
+- Information last verified: 2026-10-11
 
 ## Blue Hills Cafe
 
@@ -132,7 +143,7 @@ Listed businesses: Amanah Medical Care, CR8 Autos, Empire Elite Rides
 - Specialties: Late-night bar, Private events, Caribbean catering
 - Summary: A neighborhood cafe and late-night bar on Albany Avenue in Hartford, with private celebrations, Caribbean catering, and $5 Thursday meals.
 - Primary action: Visit Website — https://reimage-demo.github.io/blue-hills-cafe/
-- Information last verified: 2026-09-04
+- Information last verified: 2026-10-08
 
 ## Action Audio
 
