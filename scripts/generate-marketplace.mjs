@@ -327,7 +327,7 @@ function generateHub() {
     </section>
 
     <section class="market-section beyond-section" id="beyond" aria-labelledby="beyondTitle">
-      <div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Beyond Central Connecticut</p><h2 id="beyondTitle">Trusted businesses farther out.</h2></div><p>These RE IMAGE clients serve New York and other markets outside Central Connecticut.</p></div><div class="business-grid business-grid--two" id="beyondGrid">${beyondBusinesses.map((business) => card(business)).join('')}</div></div>
+      <div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Beyond Central Connecticut</p><h2 id="beyondTitle">Trusted businesses farther out.</h2></div><p>These RE IMAGE clients serve New York and other markets outside Central Connecticut.</p></div><div class="business-grid" id="beyondGrid">${beyondBusinesses.map((business) => card(business)).join('')}</div></div>
     </section>
 
     ${browseGuides()}
