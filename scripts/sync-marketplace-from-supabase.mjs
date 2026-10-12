@@ -104,6 +104,15 @@ for (const field of ['website', 'ctaUrl']) {
   }
 }
 
+// Replace ACE's old rental portal with the corrected Andaleeb website.
+const andaleeb = snapshot.businesses.find((business) => business.slug === 'andaleeb-enterprises');
+const repositoryAndaleeb = repositoryCatalog.businesses.find((business) => business.slug === 'andaleeb-enterprises');
+for (const field of ['website', 'ctaUrl']) {
+  if (andaleeb && repositoryAndaleeb?.[field] && /^https?:\/\/acedevelopments10\.managebuilding\.com(?:\/|$)/i.test(andaleeb[field] || '')) {
+    andaleeb[field] = repositoryAndaleeb[field];
+  }
+}
+
 for (const business of repositoryCatalog.businesses.filter((item) => item.repositoryPublished)) {
   if (snapshot.businesses.some((item) => item.slug === business.slug)) continue;
   for (const slug of business.categories) {

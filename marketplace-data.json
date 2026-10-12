@@ -1,7 +1,8 @@
 {
   "verifiedAt": "2026-09-04",
   "categories": [
-    {"slug":"medical-healthcare","name":"Medical & Healthcare","shortName":"Healthcare","description":"Physician collaboration, medical education, and initiatives supporting healthcare teams and communities.","featured":"amanah-medical-care"},
+    {"slug":"medical-healthcare","name":"Medical & Healthcare","shortName":"Healthcare","description":"Naturopathic care, nutrition consultations, physician collaboration, and medical education.","featured":"amanah-medical-care"},
+    {"slug":"nutrition-supplements","name":"Nutrition & Supplements","shortName":"Nutrition & Supplements","description":"Naturopathic care, nutrition consultations, and nutritional supplements in Greater Hartford.","featured":"dr-frank-aieta"},
     {"slug":"restaurants-drinks","name":"Restaurants & Drinks","shortName":"Food & Drinks","description":"Juice bars, Caribbean favorites, Mexican fusion, takeout, catering, and local flavors across Central Connecticut.","featured":"fusion-health-juice-bar"},
     {"slug":"nightlife-events","name":"Nightlife & Events","shortName":"Nightlife","description":"Cocktails, live entertainment, private events, and memorable nights out in Central Connecticut.","featured":"the-patio"},
     {"slug":"automobile-services","name":"Automobile services","shortName":"Automobile services","description":"Auto body repair, towing, car detailing, car audio, remote starters, and vehicle electronics repair and installation.","featured":"car-craft-auto-body-towing"},
@@ -14,6 +15,63 @@
     {"slug":"private-transportation","name":"Private Transportation","shortName":"Private Rides","description":"Private chauffeur service for airports, corporate travel, events, and long-distance trips.","featured":"empire-elite-rides"}
   ],
   "businesses": [
+    {
+      "slug": "dr-frank-aieta",
+      "repositoryPublished": true,
+      "name": "Dr. Frank Aieta, ND",
+      "categories": [
+        "nutrition-supplements",
+        "medical-healthcare"
+      ],
+      "featuredLabel": "RE IMAGE Pick",
+      "locationKey": "west-hartford",
+      "locationLabel": "West Hartford",
+      "regionRank": 2,
+      "address": {
+        "street": "301 North Main St",
+        "city": "West Hartford",
+        "state": "CT"
+      },
+      "phone": "860-232-9662",
+      "website": "https://draieta.com/",
+      "ctaLabel": "Shop Supplements",
+      "ctaUrl": "https://draieta.com/shop/",
+      "secondaryCtaLabel": "Contact the practice",
+      "secondaryCtaUrl": "https://draieta.com/contact/",
+      "image": "assets/marketplace/logos/dr-frank-aieta.png",
+      "imageAlt": "Dr. Frank Aieta — West Hartford Naturopathic Medicine logo",
+      "schemaType": "MedicalClinic",
+      "specialties": [
+        "Naturopathic care",
+        "Nutrition consultations",
+        "Nutritional supplements"
+      ],
+      "tags": [
+        "naturopathic physician",
+        "nutritionist",
+        "vitamins",
+        "minerals",
+        "supplement shop",
+        "West Hartford Naturopathic Medicine"
+      ],
+      "shortBio": "A West Hartford naturopathic physician and nutritionist offering consultations and an online nutritional supplement shop.",
+      "longBio": "Dr. Frank Aieta, ND, practices at West Hartford Naturopathic Medicine, Inc., at 301 North Main St. Explore his practice and nutrition services, contact the office for appointment information, or browse nutritional supplements through his online shop.",
+      "verifiedAt": "2026-10-12",
+      "faq": [
+        [
+          "Where is Dr. Frank Aieta’s practice?",
+          "The practice is at 301 North Main St, West Hartford, CT. Call 860-232-9662 for appointment information."
+        ],
+        [
+          "Where can I shop nutritional supplements?",
+          "Select Shop Supplements to visit Dr. Aieta’s official online shop at draieta.com/shop/."
+        ],
+        [
+          "What services does the practice offer?",
+          "Dr. Aieta’s practice offers naturopathic care and nutrition consultations. Contact the office for current services and appointment availability."
+        ]
+      ]
+    },
     {
       "slug": "fish-n-tingz",
       "repositoryPublished": true,

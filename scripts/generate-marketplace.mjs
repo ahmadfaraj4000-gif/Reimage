@@ -47,6 +47,7 @@ function browseGuides() {
 }
 
 const logoAssets = {
+  'dr-frank-aieta': 'assets/marketplace/logos/dr-frank-aieta.png',
   'fish-n-tingz': 'assets/marketplace/logos/fish-n-tingz.webp',
   'blue-hills-cafe': 'assets/marketplace/logos/blue-hills-cafe.jpg',
   'action-audio': 'assets/marketplace/logos/action-audio.webp',
@@ -180,7 +181,7 @@ function head({ title, description, canonical, image = `${siteUrl}/assets/reimag
 
 function addressText(business) {
   if (!business.address) return business.serviceArea;
-  return `${business.address.street}, ${business.address.city}, ${business.address.state} ${business.address.postalCode}`;
+  return `${business.address.street}, ${business.address.city}, ${[business.address.state, business.address.postalCode].filter(Boolean).join(' ')}`;
 }
 
 function directionsUrl(business) {

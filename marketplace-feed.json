@@ -10,7 +10,7 @@
     {
       "slug": "medical-healthcare",
       "name": "Medical & Healthcare",
-      "description": "Physician collaboration, medical education, and initiatives supporting healthcare teams and communities.",
+      "description": "Naturopathic care, nutrition consultations, physician collaboration, and medical education.",
       "topics": [
         "physician collaboration",
         "medical education",
@@ -18,6 +18,19 @@
       ],
       "guide": "Explore the healthcare initiatives represented in this directory, including physician collaboration, teaching, and hospital partnerships. These listings describe organizations and participation opportunities. Check the official website to understand the initiative’s scope and how to inquire.",
       "url": "https://reimagebs.com/marketplace/categories/medical-healthcare/"
+    },
+    {
+      "slug": "nutrition-supplements",
+      "name": "Nutrition & Supplements",
+      "description": "Naturopathic care, nutrition consultations, and nutritional supplements in Greater Hartford.",
+      "topics": [
+        "West Hartford nutritionist",
+        "naturopathic physician",
+        "nutritional supplements",
+        "vitamins and minerals"
+      ],
+      "guide": "Find a West Hartford naturopathic practice offering nutrition consultations and an online supplement shop. Explore the practice profile for contact details and follow the official shop link to browse its catalog.",
+      "url": "https://reimagebs.com/marketplace/categories/nutrition-supplements/"
     },
     {
       "slug": "restaurants-drinks",
@@ -190,6 +203,7 @@
       "description": "Find businesses listed for West Hartford, including auto body repair and towing. Compare service details and follow official links for estimates and availability.",
       "url": "https://reimagebs.com/marketplace/locations/west-hartford/",
       "businesses": [
+        "https://reimagebs.com/marketplace/businesses/dr-frank-aieta/",
         "https://reimagebs.com/marketplace/businesses/car-craft-auto-body-towing/"
       ]
     },
@@ -263,6 +277,27 @@
     "methodology": "https://reimagebs.com/market-signals.html#methodology"
   },
   "businesses": [
+    {
+      "name": "Dr. Frank Aieta, ND",
+      "profile": "https://reimagebs.com/marketplace/businesses/dr-frank-aieta/",
+      "officialWebsite": "https://draieta.com/",
+      "category": [
+        "Nutrition & Supplements",
+        "Medical & Healthcare"
+      ],
+      "location": "301 North Main St, West Hartford, CT",
+      "specialties": [
+        "Naturopathic care",
+        "Nutrition consultations",
+        "Nutritional supplements"
+      ],
+      "description": "A West Hartford naturopathic physician and nutritionist offering consultations and an online nutritional supplement shop.",
+      "primaryAction": {
+        "label": "Shop Supplements",
+        "url": "https://draieta.com/shop/"
+      },
+      "informationLastVerified": "2026-10-12"
+    },
     {
       "name": "Fish N Tingz Bar & Grill",
       "profile": "https://reimagebs.com/marketplace/businesses/fish-n-tingz/",
