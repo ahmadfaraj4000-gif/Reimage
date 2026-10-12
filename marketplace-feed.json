@@ -485,7 +485,7 @@
     {
       "name": "Mi Buen Pastor Mexican Fusion",
       "profile": "https://reimagebs.com/marketplace/businesses/mi-buen-pastor-mexican-fusion/",
-      "officialWebsite": "https://www.mibuenpastorct.com/",
+      "officialWebsite": "https://landing-page.mibuenpastorct.com/",
       "category": [
         "Restaurants & Drinks"
       ],
@@ -498,7 +498,7 @@
       "description": "A Hartford Mexican-fusion restaurant serving handmade tortillas, quesabirria tacos, burritos, quesadillas, churros, and aguas frescas.",
       "primaryAction": {
         "label": "Order Online",
-        "url": "https://www.mibuenpastorct.com/"
+        "url": "https://landing-page.mibuenpastorct.com/"
       },
       "informationLastVerified": "2026-09-04"
     },

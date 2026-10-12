@@ -306,7 +306,7 @@
     },
     {
       "slug":"mi-buen-pastor-mexican-fusion","name":"Mi Buen Pastor Mexican Fusion","categories":["restaurants-drinks"],"locationKey":"hartford","locationLabel":"Hartford","regionRank":1,
-      "address":{"street":"265 Newfield Avenue","city":"Hartford","state":"CT","postalCode":"06106"},"phone":"860-462-4076","website":"https://www.mibuenpastorct.com/","ctaLabel":"Order Online","ctaUrl":"https://www.mibuenpastorct.com/","image":"assets/marketplace/mi-buen-pastor.jpg","imageAlt":"Mexican dishes prepared by Mi Buen Pastor Mexican Fusion in Hartford","schemaType":"Restaurant",
+      "address":{"street":"265 Newfield Avenue","city":"Hartford","state":"CT","postalCode":"06106"},"phone":"860-462-4076","website":"https://landing-page.mibuenpastorct.com/","ctaLabel":"Order Online","ctaUrl":"https://landing-page.mibuenpastorct.com/","image":"assets/marketplace/mi-buen-pastor.jpg","imageAlt":"Mexican dishes prepared by Mi Buen Pastor Mexican Fusion in Hartford","schemaType":"Restaurant",
       "cuisine":["Mexican","Mexican fusion"],"specialties":["Quesabirria tacos","Handmade tortillas","Aguas frescas"],"tags":["mexican fusion","tacos","burritos","burrito bowls","quesadillas","churros"],
       "shortBio":"A Hartford Mexican-fusion restaurant serving handmade tortillas, quesabirria tacos, burritos, quesadillas, churros, and aguas frescas.",
       "longBio":"Mi Buen Pastor Mexican Fusion serves Hartford with fresh Mexican-fusion favorites and handmade tortillas. Its menu includes popular quesabirria tacos, tacos, burritos, burrito bowls, quesadillas, churros, and refreshing aguas frescas.",

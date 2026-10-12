@@ -113,6 +113,15 @@ for (const field of ['website', 'ctaUrl']) {
   }
 }
 
+// Preserve the requested Mi Buen Pastor landing page while the CMS has its old URL.
+const miBuenPastor = snapshot.businesses.find((business) => business.slug === 'mi-buen-pastor-mexican-fusion');
+const repositoryMiBuenPastor = repositoryCatalog.businesses.find((business) => business.slug === 'mi-buen-pastor-mexican-fusion');
+for (const field of ['website', 'ctaUrl']) {
+  if (miBuenPastor && repositoryMiBuenPastor?.[field] && /^https?:\/\/(?:www\.)?mibuenpastorct\.com\/?$/i.test(miBuenPastor[field] || '')) {
+    miBuenPastor[field] = repositoryMiBuenPastor[field];
+  }
+}
+
 for (const business of repositoryCatalog.businesses.filter((item) => item.repositoryPublished)) {
   if (snapshot.businesses.some((item) => item.slug === business.slug)) continue;
   for (const slug of business.categories) {

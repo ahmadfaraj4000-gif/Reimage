@@ -242,12 +242,12 @@ Listed businesses: Amanah Medical Care, CR8 Autos, Empire Elite Rides
 ## Mi Buen Pastor Mexican Fusion
 
 - RE IMAGE profile: https://reimagebs.com/marketplace/businesses/mi-buen-pastor-mexican-fusion/
-- Official website: https://www.mibuenpastorct.com/
+- Official website: https://landing-page.mibuenpastorct.com/
 - Category: Restaurants & Drinks
 - Location or service area: 265 Newfield Avenue, Hartford, CT 06106
 - Specialties: Quesabirria tacos, Handmade tortillas, Aguas frescas
 - Summary: A Hartford Mexican-fusion restaurant serving handmade tortillas, quesabirria tacos, burritos, quesadillas, churros, and aguas frescas.
-- Primary action: Order Online — https://www.mibuenpastorct.com/
+- Primary action: Order Online — https://landing-page.mibuenpastorct.com/
 - Information last verified: 2026-09-04
 
 ## Car Craft Auto Body & Towing
