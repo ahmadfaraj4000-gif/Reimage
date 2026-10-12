@@ -272,9 +272,21 @@ function hubSchema() {
 }
 
 function generateHub() {
-  const centralConnecticutBusinesses = data.businesses.filter((business) => business.regionRank < 4);
+  // Keep the requested Discover order stable across repository and CMS builds.
+  const firstChoices = ['car-craft-auto-body-towing', 'rent-me-ct', 'jam-roc'];
+  const lastChoices = ['mi-buen-pastor-mexican-fusion', 'living-word-imprints'];
+  const placement = new Map([
+    ...firstChoices.map((slug, index) => [slug, index - firstChoices.length]),
+    ...lastChoices.map((slug, index) => [slug, index + 1])
+  ]);
+  const byPlacement = (a, b) => (placement.get(a.slug) || 0) - (placement.get(b.slug) || 0);
+  const centralConnecticutBusinesses = data.businesses.filter((business) => business.regionRank < 4).sort(byPlacement);
   const beyondBusinesses = data.businesses.filter((business) => business.regionRank === 4);
-  const featured = data.categories.map((category) => businessMap.get(category.featured)).filter((business) => business && business.regionRank < 4);
+  const featured = [...new Set([...firstChoices, ...data.categories.map((category) => category.featured)])]
+    .filter((slug) => !lastChoices.includes(slug))
+    .map((slug) => businessMap.get(slug))
+    .filter((business) => business && business.regionRank < 4)
+    .sort(byPlacement);
   const embedded = escapeJson({ categories: data.categories, businesses: data.businesses.map((business) => ({ slug: business.slug, name: business.name, categories: business.categories, locationKey: business.locationKey, regionRank: business.regionRank, specialties: business.specialties, tags: business.tags, shortBio: business.shortBio })) });
   const body = `<main id="main-content">
     <section class="market-hero">
