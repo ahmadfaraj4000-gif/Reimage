@@ -7,7 +7,7 @@ export function normalizeAutomobileCategories(catalog) {
   if (!existing.length) return data;
   const category = {
     slug: 'automobile-services', name: 'Automobile services', shortName: 'Automobile services',
-    description: 'Auto body repair, towing, car detailing, car audio, remote starters, and vehicle electronics repair and installation.',
+    description: 'Used tires, tire service, auto body repair, towing, car detailing, car audio, remote starters, and vehicle electronics repair and installation.',
     featured: existing.find(item => item.featured === 'car-craft-auto-body-towing')?.featured || existing[0].featured
   };
   let inserted = false;

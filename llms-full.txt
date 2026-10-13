@@ -40,8 +40,8 @@ Topics: Hartford nightlife, cocktail bars, private events, live entertainment
 ### Automobile services
 
 URL: https://reimagebs.com/marketplace/categories/automobile-services/
-Find the right automobile service for your vehicle. Car Craft handles auto body and towing in West Hartford; Action Audio offers detailing in Hartford and car audio, remote starters, electronics repair, and installation in Wethersfield. Compare each shop’s specialties and location, then use its official links to request an estimate or appointment. Other listed automobile businesses are identified by their own service areas.
-Topics: auto body repair, collision repair, towing services, car detailing Hartford, car audio installation, auto electronics repair, remote starters, vehicle electrical installation
+Find the right automobile service for your vehicle. Sal’s Tire Shop offers used tires, mounting, balancing, plugs, rotations, and valve service in Hartford. Car Craft handles auto body and towing in West Hartford; Action Audio offers detailing in Hartford and car audio, remote starters, electronics repair, and installation in Wethersfield. Compare each shop’s specialties and location, then use its official links to request an estimate or appointment. Other listed automobile businesses are identified by their own service areas.
+Topics: used tires Hartford, tire service Hartford, auto body repair, collision repair, towing services, car detailing Hartford, car audio installation, auto electronics repair, remote starters, vehicle electrical installation
 
 ### Car Rentals
 
@@ -91,7 +91,7 @@ Topics: private chauffeur New York Capital Region, airport transportation, corpo
 
 URL: https://reimagebs.com/marketplace/locations/hartford/
 Explore Hartford restaurants, juice bars, hair braiding, car audio, printing, property services, and community organizations. Check each profile for its storefront or service area.
-Listed businesses: Blue Hills Cafe, Action Audio, Jam Roc Restaurant & Lounge, Fusion Health Juice Bar, 881 Grab & Go, The Patio, Lunch Box, Mi Buen Pastor Mexican Fusion, Lorie’s African Hair Braiding, Living Word Imprints, Andaleeb Enterprises, The Anchor Collective
+Listed businesses: Sal’s Tire Shop, Blue Hills Cafe, Action Audio, Jam Roc Restaurant & Lounge, Fusion Health Juice Bar, 881 Grab & Go, The Patio, Lunch Box, Mi Buen Pastor Mexican Fusion, Lorie’s African Hair Braiding, Living Word Imprints, Andaleeb Enterprises, The Anchor Collective
 
 ### West Hartford, CT Local Businesses
 
@@ -128,6 +128,17 @@ Listed businesses: Action Audio, Andaleeb Enterprises, The Anchor Collective
 URL: https://reimagebs.com/marketplace/locations/beyond/
 Explore RE IMAGE directory listings outside Central Connecticut, including New York auto services and private transportation, plus a Chicago-based healthcare initiative.
 Listed businesses: Amanah Medical Care, CR8 Autos, Empire Elite Rides
+
+## Sal’s Tire Shop
+
+- RE IMAGE profile: https://reimagebs.com/marketplace/businesses/sals-tire-shop/
+- Official website: https://reimage-demo.github.io/sals-tire-shop/#main
+- Category: Automobile services
+- Location or service area: 631 Wethersfield Avenue, Hartford, CT
+- Specialties: Used tires, Mounting & balancing, Tire plugs & rotations
+- Summary: Used tires, mounting, balancing, plugs, rotations, and valve service on Wethersfield Avenue. Open every day, 8 AM–6 PM.
+- Primary action: Visit website — https://reimage-demo.github.io/sals-tire-shop/#main
+- Information last verified: 2026-10-13
 
 ## Dr. Frank Aieta, ND
 

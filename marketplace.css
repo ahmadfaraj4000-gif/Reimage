@@ -925,3 +925,21 @@ body.marketplace-page a.back-link { color: var(--market-blue); }
   object-fit: initial;
   transform: none;
 }
+
+/* Preserve Sal’s supplied artwork while hiding its empty outer margins. */
+.business-logo-stage > .sals-logo-crop {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1474 / 360;
+  overflow: hidden;
+}
+.business-logo-stage .sals-logo-crop > img {
+  position: absolute;
+  display: block;
+  width: 120.3528%;
+  max-width: none;
+  height: auto;
+  left: -10.1764%;
+  top: -72.2222%;
+}

@@ -5,7 +5,7 @@
     {"slug":"nutrition-supplements","name":"Nutrition & Supplements","shortName":"Nutrition & Supplements","description":"Naturopathic care, nutrition consultations, and nutritional supplements in Greater Hartford.","featured":"dr-frank-aieta"},
     {"slug":"restaurants-drinks","name":"Restaurants & Drinks","shortName":"Food & Drinks","description":"Juice bars, Caribbean favorites, Mexican fusion, takeout, catering, and local flavors across Central Connecticut.","featured":"fusion-health-juice-bar"},
     {"slug":"nightlife-events","name":"Nightlife & Events","shortName":"Nightlife","description":"Cocktails, live entertainment, private events, and memorable nights out in Central Connecticut.","featured":"the-patio"},
-    {"slug":"automobile-services","name":"Automobile services","shortName":"Automobile services","description":"Auto body repair, towing, car detailing, car audio, remote starters, and vehicle electronics repair and installation.","featured":"car-craft-auto-body-towing"},
+    {"slug":"automobile-services","name":"Automobile services","shortName":"Automobile services","description":"Used tires, tire service, auto body repair, towing, car detailing, car audio, remote starters, and vehicle electronics repair and installation.","featured":"car-craft-auto-body-towing"},
     {"slug":"car-rentals","name":"Car Rentals","shortName":"Car Rentals","description":"Local cars, SUVs, trucks, luxury vehicles, and passenger vans available to reserve online.","featured":"rent-me-ct"},
     {"slug":"skincare-esthetics","name":"Skincare & Esthetics","shortName":"Skincare","description":"Corrective and customized skincare for acne, hyperpigmentation, texture, and personal care.","featured":"techniq-skin-beauty"},
     {"slug":"hair-braiding","name":"Hair & Braiding","shortName":"Hair & Braiding","description":"African braiding, protective styles, extensions, twists, locs, and personalized styling.","featured":"lories-african-hair-braiding"},
@@ -15,6 +15,61 @@
     {"slug":"private-transportation","name":"Private Transportation","shortName":"Private Rides","description":"Private chauffeur service for airports, corporate travel, events, and long-distance trips.","featured":"empire-elite-rides"}
   ],
   "businesses": [
+{
+  "slug": "sals-tire-shop",
+  "repositoryPublished": true,
+  "name": "Sal’s Tire Shop",
+  "categories": [
+    "automobile-services"
+  ],
+  "locationKey": "hartford",
+  "locationLabel": "Hartford",
+  "regionRank": 1,
+  "address": {
+    "street": "631 Wethersfield Avenue",
+    "city": "Hartford",
+    "state": "CT"
+  },
+  "phone": "860-713-8348",
+  "website": "https://reimage-demo.github.io/sals-tire-shop/#main",
+  "ctaLabel": "Visit website",
+  "ctaUrl": "https://reimage-demo.github.io/sals-tire-shop/#main",
+  "secondaryCtaLabel": "Call Sal",
+  "secondaryCtaUrl": "tel:+18607138348",
+  "image": "assets/marketplace/logos/sals-tire-shop.webp",
+  "imageAlt": "Sal Tire Shop logo with green, black, and red stripes",
+  "schemaType": "TireShop",
+  "specialties": [
+    "Used tires",
+    "Mounting & balancing",
+    "Tire plugs & rotations"
+  ],
+  "tags": [
+    "tire shop",
+    "used tires Hartford",
+    "wheel balancing",
+    "tire repair",
+    "valve service",
+    "Wethersfield Avenue"
+  ],
+  "shortBio": "Used tires, mounting, balancing, plugs, rotations, and valve service on Wethersfield Avenue. Open every day, 8 AM–6 PM.",
+  "longBio": "Sal’s Tire Shop sells used tires and provides tire service at 631 Wethersfield Avenue in Hartford. Services include tire plugs, wheel balancing, mounting and balancing, tire rotations, rim inner cleaning, and regular or tire pressure sensor valve service. Open every day from 8 AM to 6 PM. Call Sal at (860) 713-8348 to confirm your tire size, availability, and total.",
+  "verifiedAt": "2026-10-13",
+  "faq": [
+    [
+      "Does Sal’s sell new tires?",
+      "Sal’s Tire Shop sells used tires only. Call with your tire size to check availability."
+    ],
+    [
+      "What are the opening hours?",
+      "Sal’s is open every day from 8 AM to 6 PM."
+    ],
+    [
+      "Where is Sal’s Tire Shop?",
+      "Visit 631 Wethersfield Avenue, Hartford, Connecticut, or call (860) 713-8348."
+    ]
+  ]
+},
     {
       "slug": "dr-frank-aieta",
       "repositoryPublished": true,
