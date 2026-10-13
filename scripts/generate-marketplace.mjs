@@ -63,7 +63,7 @@ const logoAssets = {
   'cr8-autos': 'assets/marketplace/logos/cr8-autos.png',
   'empire-elite-rides': 'assets/marketplace/logos/empire-elite-rides.png',
   'techniq-skin-beauty': 'assets/marketplace/logos/techniq-skin-beauty.png',
-  'lories-african-hair-braiding': 'assets/marketplace/logos/lories-african-hair-braiding.png',
+  'lories-african-hair-braiding': 'assets/marketplace/logos/lories-african-hair-braiding-2026.webp',
   'living-word-imprints': 'assets/marketplace/logos/living-word-imprints.png',
   'andaleeb-enterprises': 'assets/marketplace/logos/andaleeb-enterprises.webp',
   'the-anchor-collective': 'assets/marketplace/logos/the-anchor-collective.png'
