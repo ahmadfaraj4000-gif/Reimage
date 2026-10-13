@@ -122,6 +122,16 @@ for (const field of ['website', 'ctaUrl']) {
   }
 }
 
+// Keep Lorie's new website while older published CMS records use the previous domain.
+// A future custom domain entered by an admin remains authoritative.
+const lories = snapshot.businesses.find((business) => business.slug === 'lories-african-hair-braiding');
+const repositoryLories = repositoryCatalog.businesses.find((business) => business.slug === 'lories-african-hair-braiding');
+for (const field of ['website', 'ctaUrl']) {
+  if (lories && repositoryLories?.[field] && /^https?:\/\/(?:www\.)?loriesafricanhairbraiding\.com\/?$/i.test(lories[field] || '')) {
+    lories[field] = repositoryLories[field];
+  }
+}
+
 for (const business of repositoryCatalog.businesses.filter((item) => item.repositoryPublished)) {
   if (snapshot.businesses.some((item) => item.slug === business.slug)) continue;
   for (const slug of business.categories) {

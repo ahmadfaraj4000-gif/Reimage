@@ -353,7 +353,7 @@
     },
     {
       "slug":"lories-african-hair-braiding","name":"Lorie’s African Hair Braiding","categories":["hair-braiding"],"featuredLabel":"RE IMAGE Pick","locationKey":"hartford","locationLabel":"Hartford","regionRank":1,
-      "address":{"street":"875 New Britain Avenue","city":"Hartford","state":"CT","postalCode":"06106"},"phone":"860-953-5838","website":"https://loriesafricanhairbraiding.com/","ctaLabel":"View Styles & Contact","ctaUrl":"https://loriesafricanhairbraiding.com/","image":"assets/marketplace/lories-braids.png","imageAlt":"African braid styling by Lorie's African Hair Braiding in Hartford","schemaType":"HairSalon",
+      "address":{"street":"875 New Britain Avenue","city":"Hartford","state":"CT","postalCode":"06106"},"phone":"860-953-5838","website":"https://reimage-demo.github.io/Lories-Hair-Braiding/","ctaLabel":"View Styles & Contact","ctaUrl":"https://reimage-demo.github.io/Lories-Hair-Braiding/","image":"assets/marketplace/lories-braids.png","imageAlt":"African braid styling by Lorie's African Hair Braiding in Hartford","schemaType":"HairSalon",
       "specialties":["Box braids","Knotless & Fulani styles","Locs & extensions"],"tags":["feed-in braids","boho braids","twists","cornrows","weaving","dreadlocks","protective styles"],
       "shortBio":"A longtime Hartford salon specializing in African braiding, protective styles, extensions, twists, cornrows, weaving, and locs.",
       "longBio":"Lorie’s African Hair Braiding is a longtime Hartford salon focused on African braiding and protective styling. Services include box braids, feed-in braids, Fulani styles, boho knotless braids, twists, cornrows, weaving, extensions, and dreadlocks.",
