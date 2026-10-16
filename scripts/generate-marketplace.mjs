@@ -47,7 +47,6 @@ function browseGuides() {
 }
 
 const logoAssets = {
-  'sals-tire-shop': 'assets/marketplace/logos/sals-tire-shop.webp',
   'dr-frank-aieta': 'assets/marketplace/logos/dr-frank-aieta.png',
   'fish-n-tingz': 'assets/marketplace/logos/fish-n-tingz.webp',
   'blue-hills-cafe': 'assets/marketplace/logos/blue-hills-cafe.jpg',
@@ -196,9 +195,6 @@ function profileFaqs(business) {
 function businessLogo(business) {
   const logo = logoAssets[business.slug];
   const title = `${business.name} logo`;
-  if (business.slug === 'sals-tire-shop') {
-    return `<span class="sals-logo-crop"><img src="/${logo}" alt="${escapeHtml(title)}" loading="lazy" decoding="async"></span>`;
-  }
   if (business.slug === 'blue-hills-cafe') {
     return `<span class="blue-hills-logo-crop"><img src="/${logo}" alt="${escapeHtml(title)}" loading="lazy" decoding="async"></span>`;
   }
@@ -215,7 +211,7 @@ function card(business, options = {}) {
   const featured = options.featured;
   const searchText = [business.name, business.locationLabel, addressText(business), business.shortBio, ...business.specialties, ...business.tags, ...business.categories.map(categoryName)].join(' ').toLowerCase();
   return `<article class="business-card${featured ? ' business-card--featured' : ''}" data-business-card data-slug="${business.slug}" data-primary-category="${business.categories[0]}" data-categories="${business.categories.join(' ')}" data-location="${(business.locations || [business.locationKey]).join(' ')}" data-rank="${business.regionRank}" data-search="${escapeHtml(searchText)}">
-    <a class="business-card__media business-card__logo" href="${business.slug === 'sals-tire-shop' ? business.website : profileUrl(business.slug)}" aria-label="${business.slug === 'sals-tire-shop' ? 'Visit' : 'View'} ${escapeHtml(business.name)} ${business.slug === 'sals-tire-shop' ? 'website' : 'profile'}">
+    <a class="business-card__media business-card__logo" href="${profileUrl(business.slug)}" aria-label="View ${escapeHtml(business.name)} profile">
       <span class="business-logo-stage business-logo-stage--${business.slug}">${businessLogo(business)}</span>
       ${featured ? `<span class="feature-badge">${escapeHtml(business.featuredLabel || 'Featured')}</span>` : ''}
       ${isBeyond ? '<span class="area-badge">Beyond Central Connecticut</span>' : ''}

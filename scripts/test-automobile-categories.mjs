@@ -18,3 +18,17 @@ test('published guide includes Action Audio and Car Craft under the broad filter
  const html=fs.readFileSync(new URL('../marketplace/categories/automobile-services/index.html',import.meta.url),'utf8');
  for(const slug of ['action-audio','car-craft-auto-body-towing'])assert(html.includes(`data-slug="${slug}"`));
 });
+
+
+test('retired listings cannot return through a CMS snapshot', () => {
+ const input = {
+  categories: [{slug:'auto-body-towing',name:'Auto Body',featured:'car-craft-auto-body-towing'}],
+  businesses: [
+   {slug:'sals-tire-shop',categories:['auto-body-towing']},
+   {slug:'car-craft-auto-body-towing',categories:['auto-body-towing']}
+  ]
+ };
+ const result = normalizeAutomobileCategories(input);
+ assert.deepEqual(result.businesses.map(b=>b.slug), ['car-craft-auto-body-towing']);
+ assert.equal(input.businesses.length, 2);
+});

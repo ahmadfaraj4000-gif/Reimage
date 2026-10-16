@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import { normalizeAutomobileCategories } from './automobile-categories.mjs';
+import { normalizeAutomobileCategories, retiredBusinessSlugs } from './automobile-categories.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -30,6 +30,7 @@ const retiredCategorySlugs = new Set(['business-software']);
 const categories = syncedCategories.filter((category) => !retiredCategorySlugs.has(category.slug));
 const activeCategoryIds = new Set(categories.map((category) => category.id));
 const businesses = syncedBusinesses.filter((business) =>
+  !retiredBusinessSlugs.has(business.slug) &&
   links.some((link) => link.business_id === business.id && activeCategoryIds.has(link.category_id))
 );
 

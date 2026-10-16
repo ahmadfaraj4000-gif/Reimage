@@ -1,13 +1,15 @@
 // Normalize older CMS categories on every build so scheduled syncs retain the public taxonomy.
+export const retiredBusinessSlugs = new Set(['sals-tire-shop']);
 export const automobileAliases = ['auto-body-towing', 'car-audio-detailing'];
 export function normalizeAutomobileCategories(catalog) {
   const data = structuredClone(catalog);
+  data.businesses = data.businesses.filter(business => !retiredBusinessSlugs.has(business.slug));
   const slugs = new Set([...automobileAliases, 'automobile-services']);
   const existing = data.categories.filter(category => slugs.has(category.slug));
   if (!existing.length) return data;
   const category = {
     slug: 'automobile-services', name: 'Automobile services', shortName: 'Automobile services',
-    description: 'Used tires, tire service, auto body repair, towing, car detailing, car audio, remote starters, and vehicle electronics repair and installation.',
+    description: 'Auto body repair, towing, car detailing, car audio, remote starters, and vehicle electronics repair and installation.',
     featured: existing.find(item => item.featured === 'car-craft-auto-body-towing')?.featured || existing[0].featured
   };
   let inserted = false;

@@ -65,10 +65,8 @@
     {
       "slug": "automobile-services",
       "name": "Automobile services",
-      "description": "Used tires, tire service, auto body repair, towing, car detailing, car audio, remote starters, and vehicle electronics repair and installation.",
+      "description": "Auto body repair, towing, car detailing, car audio, remote starters, and vehicle electronics repair and installation.",
       "topics": [
-        "used tires Hartford",
-        "tire service Hartford",
         "auto body repair",
         "collision repair",
         "towing services",
@@ -78,7 +76,7 @@
         "remote starters",
         "vehicle electrical installation"
       ],
-      "guide": "Find the right automobile service for your vehicle. Sal’s Tire Shop offers used tires, mounting, balancing, plugs, rotations, and valve service in Hartford. Car Craft handles auto body and towing in West Hartford; Action Audio offers detailing in Hartford and car audio, remote starters, electronics repair, and installation in Wethersfield. Compare each shop’s specialties and location, then use its official links to request an estimate or appointment. Other listed automobile businesses are identified by their own service areas.",
+      "guide": "Find the right automobile service for your vehicle. Car Craft handles auto body and towing in West Hartford; Action Audio offers detailing in Hartford and car audio, remote starters, electronics repair, and installation in Wethersfield. Compare each shop’s specialties and location, then use its official links to request an estimate or appointment. Other listed automobile businesses are identified by their own service areas.",
       "url": "https://reimagebs.com/marketplace/categories/automobile-services/"
     },
     {
@@ -184,7 +182,6 @@
       "description": "Explore Hartford restaurants, juice bars, hair braiding, car audio, printing, property services, and community organizations. Check each profile for its storefront or service area.",
       "url": "https://reimagebs.com/marketplace/locations/hartford/",
       "businesses": [
-        "https://reimagebs.com/marketplace/businesses/sals-tire-shop/",
         "https://reimagebs.com/marketplace/businesses/blue-hills-cafe/",
         "https://reimagebs.com/marketplace/businesses/action-audio/",
         "https://reimagebs.com/marketplace/businesses/jam-roc/",
@@ -280,26 +277,6 @@
     "methodology": "https://reimagebs.com/market-signals.html#methodology"
   },
   "businesses": [
-    {
-      "name": "Sal’s Tire Shop",
-      "profile": "https://reimagebs.com/marketplace/businesses/sals-tire-shop/",
-      "officialWebsite": "https://reimage-demo.github.io/sals-tire-shop/#main",
-      "category": [
-        "Automobile services"
-      ],
-      "location": "631 Wethersfield Avenue, Hartford, CT",
-      "specialties": [
-        "Used tires",
-        "Mounting & balancing",
-        "Tire plugs & rotations"
-      ],
-      "description": "Used tires, mounting, balancing, plugs, rotations, and valve service on Wethersfield Avenue. Open every day, 8 AM–6 PM.",
-      "primaryAction": {
-        "label": "Visit website",
-        "url": "https://reimage-demo.github.io/sals-tire-shop/#main"
-      },
-      "informationLastVerified": "2026-10-13"
-    },
     {
       "name": "Dr. Frank Aieta, ND",
       "profile": "https://reimagebs.com/marketplace/businesses/dr-frank-aieta/",
