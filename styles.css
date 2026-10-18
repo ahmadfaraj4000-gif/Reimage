@@ -5091,6 +5091,22 @@ html {
 	line-height: 1.6;
 }
 
+/* Keep the complete featured screenshot visible when the card stacks. */
+@media (max-width: 1000px) {
+	.home-page.new-blue-home .project-feature .project-screen {
+		min-width: 0;
+		width: 100%;
+		height: auto;
+		border-radius: 12px;
+	}
+
+	.home-page.new-blue-home .project-feature .project-screen img {
+		height: auto;
+		object-fit: contain;
+		transform: none;
+	}
+}
+
 @media (max-width: 700px) {
 	.home-page.new-blue-home .work-showcase,
 	.home-page.new-blue-home .why-grid {
@@ -5104,6 +5120,8 @@ html {
 
 	.home-page.new-blue-home .project-feature {
 		min-height: auto;
+		padding: 28px 16px;
+		gap: 28px;
 	}
 
 	.home-page.new-blue-home .project-copy h3 {
