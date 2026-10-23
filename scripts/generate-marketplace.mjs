@@ -47,6 +47,8 @@ function browseGuides() {
 }
 
 const logoAssets = {
+  'botticello-auto-repair': 'assets/marketplace/logos/botticello-auto-repair-2026.png',
+  'tuff-cuts': 'assets/marketplace/logos/tuff-cuts-2026.png',
   'dr-frank-aieta': 'assets/marketplace/logos/dr-frank-aieta.png',
   'fish-n-tingz': 'assets/marketplace/logos/fish-n-tingz.webp',
   'blue-hills-cafe': 'assets/marketplace/logos/blue-hills-cafe.jpg',
@@ -93,8 +95,9 @@ function validateData() {
     categorySlugs.add(category.slug);
   }
   for (const business of data.businesses) {
-    const required = ['slug', 'name', 'website', 'ctaLabel', 'ctaUrl', 'image', 'imageAlt', 'shortBio', 'longBio'];
+    const required = ['slug', 'name', 'ctaLabel', 'image', 'imageAlt', 'shortBio', 'longBio'];
     for (const field of required) if (!business[field]) throw new Error(`${business.slug || business.name || 'Business'} is missing ${field}`);
+    if (!business.websitePending && (!business.website || !business.ctaUrl)) throw new Error(`${business.slug} needs website and CTA URLs`);
     if (businessSlugs.has(business.slug)) throw new Error(`Duplicate business slug: ${business.slug}`);
     businessSlugs.add(business.slug);
     if (!business.categories?.length) throw new Error(`${business.slug} needs a category`);
@@ -173,7 +176,7 @@ function head({ title, description, canonical, image = `${siteUrl}/assets/reimag
   <meta name="twitter:image" content="${absoluteImage}">
   <meta name="twitter:image:alt" content="${escapeHtml(imageAlt)}">
   <link rel="stylesheet" href="/public-shell.css?v=20261007-2">
-  <link rel="stylesheet" href="/marketplace.css?v=20261006-2">
+  <link rel="stylesheet" href="/marketplace.css?v=20261023-1">
   ${schema.map((item) => `<script type="application/ld+json">${escapeJson(item)}</script>`).join('\n  ')}
   <link rel="stylesheet" href="/public-typography.css?v=20260914-1">
 </head>`;
@@ -205,6 +208,11 @@ function businessLogo(business) {
   return `<span class="business-wordmark" role="img" aria-label="${escapeHtml(title)}"><span aria-hidden="true">${escapeHtml(initials)}</span><strong>${escapeHtml(business.name)}</strong></span>`;
 }
 
+function primaryAction(business, arrow = '') {
+  if (business.websitePending) return `<button class="button button--pending" type="button" disabled>${escapeHtml(business.ctaLabel)}</button>`;
+  return `<a class="button button--primary" href="${escapeHtml(business.ctaUrl)}" target="_blank" rel="noopener">${escapeHtml(business.ctaLabel)}${arrow}</a>`;
+}
+
 function card(business, options = {}) {
   const primary = categoryMap.get(business.categories[0]);
   const isBeyond = business.regionRank === 4;
@@ -224,7 +232,7 @@ function card(business, options = {}) {
       <h3><a href="${escapeHtml(cardHref)}">${escapeHtml(business.name)}</a></h3>
       <p>${escapeHtml(business.shortBio)}</p>
       <ul class="specialty-list" aria-label="Specialties">${business.specialties.slice(0, 3).map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
-      <div class="business-card__actions"><a class="button button--primary" href="${business.ctaUrl}" target="_blank" rel="noopener">${escapeHtml(business.ctaLabel)}</a><a class="text-link" href="${profileUrl(business.slug)}">View profile <span aria-hidden="true">→</span></a></div>
+      <div class="business-card__actions">${primaryAction(business)}<a class="text-link" href="${profileUrl(business.slug)}">View profile <span aria-hidden="true">→</span></a></div>
     </div>
   </article>`;
 }
@@ -416,8 +424,8 @@ function profileSchema(business) {
     knowsAbout: [...business.specialties, ...business.tags],
     servesCuisine: business.cuisine || cuisineBySlug[business.slug],
     menu: ['Restaurant', 'BarOrPub'].includes(business.schemaType) ? business.website : undefined,
-    sameAs: [business.website],
-    potentialAction: { '@type': 'ViewAction', name: business.ctaLabel, target: business.ctaUrl }
+    sameAs: business.website ? [business.website] : undefined,
+    potentialAction: business.ctaUrl ? { '@type': 'ViewAction', name: business.ctaLabel, target: business.ctaUrl } : undefined
   };
   Object.keys(object).forEach((key) => object[key] === undefined && delete object[key]);
   const faqs = profileFaqs(business);
@@ -441,8 +449,8 @@ function generateProfile(business) {
   const address = addressText(business);
   const faqs = profileFaqs(business);
   const body = `<main id="main-content" data-profile-business="${business.slug}" data-profile-category="${business.categories[0]}">
-    <section class="profile-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Discover</a><span>/</span><a href="${categoryUrl(primary.slug)}">${escapeHtml(primary.shortName)}</a><span>/</span><span aria-current="page">${escapeHtml(business.name)}</span></nav><div class="profile-hero__grid"><div class="profile-hero__media profile-hero__logo"><span class="business-logo-stage business-logo-stage--${business.slug}">${businessLogo(business)}</span></div><div class="profile-hero__copy"><p class="eyebrow">${escapeHtml(primary.name)}</p><h1>${escapeHtml(business.name)}</h1><p class="profile-lead">${escapeHtml(business.shortBio)}</p><div class="profile-actions"><a class="button button--primary" href="${business.ctaUrl}" target="_blank" rel="noopener">${escapeHtml(business.ctaLabel)} ↗</a>${business.address ? `<a class="button button--outline" href="${directionsUrl(business)}" target="_blank" rel="noopener">Get directions</a>` : ''}</div></div></div></div></section>
-    <section class="profile-details"><div class="market-wrap profile-details__grid"><div class="profile-story"><p class="eyebrow">Services and specialties</p><h2>What ${escapeHtml(business.name)} offers.</h2><p>${escapeHtml(business.longBio)}</p><div class="tag-cloud">${[...business.specialties, ...business.tags].map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div></div><aside class="profile-info"><p class="profile-info__label">Business information</p><dl><div><dt>${business.address ? 'Address' : 'Service area'}</dt><dd>${escapeHtml(address)}</dd></div>${business.secondaryAddress ? `<div><dt>Second location</dt><dd>${escapeHtml(business.secondaryAddress)}</dd></div>` : ''}${business.phone ? `<div><dt>Phone</dt><dd><a href="tel:${business.phone.replace(/[^\d+]/g, '')}">${escapeHtml(business.phone)}</a></dd></div>` : ''}<div><dt>Official website</dt><dd><a href="${business.website}" target="_blank" rel="noopener">Visit ${escapeHtml(business.name)} ↗</a></dd></div><div><dt>Information verified</dt><dd><time datetime="${business.verifiedAt || data.verifiedAt}">${formatDate(business.verifiedAt || data.verifiedAt)}</time></dd></div></dl>${business.secondaryCtaUrl ? `<a class="button button--outline button--full" href="${business.secondaryCtaUrl}" target="_blank" rel="noopener">${escapeHtml(business.secondaryCtaLabel)}</a>` : ''}</aside></div></section>
+    <section class="profile-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Discover</a><span>/</span><a href="${categoryUrl(primary.slug)}">${escapeHtml(primary.shortName)}</a><span>/</span><span aria-current="page">${escapeHtml(business.name)}</span></nav><div class="profile-hero__grid"><div class="profile-hero__media profile-hero__logo"><span class="business-logo-stage business-logo-stage--${business.slug}">${businessLogo(business)}</span></div><div class="profile-hero__copy"><p class="eyebrow">${escapeHtml(primary.name)}</p><h1>${escapeHtml(business.name)}</h1><p class="profile-lead">${escapeHtml(business.shortBio)}</p><div class="profile-actions">${primaryAction(business, ' ↗')}${business.address ? `<a class="button button--outline" href="${directionsUrl(business)}" target="_blank" rel="noopener">Get directions</a>` : ''}</div></div></div></div></section>
+    <section class="profile-details"><div class="market-wrap profile-details__grid"><div class="profile-story"><p class="eyebrow">Services and specialties</p><h2>What ${escapeHtml(business.name)} offers.</h2><p>${escapeHtml(business.longBio)}</p><div class="tag-cloud">${[...business.specialties, ...business.tags].map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div></div><aside class="profile-info"><p class="profile-info__label">Business information</p><dl><div><dt>${business.address ? 'Address' : 'Service area'}</dt><dd>${escapeHtml(address)}</dd></div>${business.secondaryAddress ? `<div><dt>Second location</dt><dd>${escapeHtml(business.secondaryAddress)}</dd></div>` : ''}${business.phone ? `<div><dt>Phone</dt><dd><a href="tel:${business.phone.replace(/[^\d+]/g, '')}">${escapeHtml(business.phone)}</a></dd></div>` : ''}<div><dt>Official website</dt><dd>${business.websitePending ? 'Website coming soon' : `<a href="${business.website}" target="_blank" rel="noopener">Visit ${escapeHtml(business.name)} ↗</a>`}</dd></div><div><dt>Information verified</dt><dd><time datetime="${business.verifiedAt || data.verifiedAt}">${formatDate(business.verifiedAt || data.verifiedAt)}</time></dd></div></dl>${business.secondaryCtaUrl ? `<a class="button button--outline button--full" href="${business.secondaryCtaUrl}" target="_blank" rel="noopener">${escapeHtml(business.secondaryCtaLabel)}</a>` : ''}</aside></div></section>
     ${faqs.length ? `<section class="profile-faq"><div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Quick answers</p><h2>Know before you go.</h2></div></div><div class="faq-grid">${faqs.map(([question, answer]) => `<details><summary>${escapeHtml(question)}<span aria-hidden="true">+</span></summary><p>${escapeHtml(answer)}</p></details>`).join('')}</div></div></section>` : ''}
     ${related.length ? `<section class="market-section related-section"><div class="market-wrap"><div class="directory-heading"><div><p class="eyebrow">Keep exploring</p><h2>More ${escapeHtml(primary.shortName)}</h2></div><a class="text-link" href="${categoryUrl(primary.slug)}">View category →</a></div><div class="business-grid">${related.map((item) => card(item)).join('')}</div></div></section>` : ''}
     ${corridorSlugs.has(business.slug) ? `<aside class="profile-guide-link"><div class="market-wrap"><p><strong>Planning a New Britain Avenue stop?</strong> Use the <a href="${guidePath}">New Britain Avenue Hartford business guide</a> to explore nearby food, drinks, and braiding.</p></div></aside>` : ''}
@@ -454,7 +462,7 @@ function generateProfile(business) {
 function guideListing(business, note = '') {
   return `<li class="guide-business">
     <div class="guide-business__logo"><span class="business-logo-stage business-logo-stage--${business.slug}">${businessLogo(business)}</span></div>
-    <div><p class="business-card__meta"><a href="${categoryUrl(business.categories[0])}">${escapeHtml(categoryName(business.categories[0]))}</a></p><h2><a href="${profileUrl(business.slug)}">${escapeHtml(business.name)}</a></h2><address>${escapeHtml(addressText(business))}</address><p>${escapeHtml(business.shortBio)}</p>${note ? `<p class="guide-note">${escapeHtml(note)}</p>` : ''}<ul class="specialty-list" aria-label="${escapeHtml(business.name)} specialties">${business.specialties.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul><div class="business-card__actions"><a class="button button--primary" href="${business.ctaUrl}" target="_blank" rel="noopener">${escapeHtml(business.ctaLabel)}</a><a class="text-link" href="${profileUrl(business.slug)}">View full profile →</a></div></div>
+    <div><p class="business-card__meta"><a href="${categoryUrl(business.categories[0])}">${escapeHtml(categoryName(business.categories[0]))}</a></p><h2><a href="${profileUrl(business.slug)}">${escapeHtml(business.name)}</a></h2><address>${escapeHtml(addressText(business))}</address><p>${escapeHtml(business.shortBio)}</p>${note ? `<p class="guide-note">${escapeHtml(note)}</p>` : ''}<ul class="specialty-list" aria-label="${escapeHtml(business.name)} specialties">${business.specialties.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul><div class="business-card__actions">${primaryAction(business)}<a class="text-link" href="${profileUrl(business.slug)}">View full profile →</a></div></div>
   </li>`;
 }
 
@@ -517,7 +525,7 @@ function generateMarketplaceFeed() {
     businessDecisionResource: { url: `${siteUrl}/market-signals.html`, topics: marketSearch.topics, snapshot: `${siteUrl}/data/market/latest.json`, methodology: `${siteUrl}/market-signals.html#methodology` },
     businesses: data.businesses.map((business) => ({
       name: business.name, profile: `${siteUrl}${profileUrl(business.slug)}`, officialWebsite: business.website, category: business.categories.map(categoryName),
-      location: business.address ? addressText(business) : business.serviceArea, specialties: business.specialties, description: business.shortBio, primaryAction: { label: business.ctaLabel, url: business.ctaUrl }, informationLastVerified: business.verifiedAt || data.verifiedAt
+      location: business.address ? addressText(business) : business.serviceArea, specialties: business.specialties, description: business.shortBio, primaryAction: { label: business.ctaLabel, url: business.ctaUrl, ...(business.websitePending ? { available: false } : {}) }, informationLastVerified: business.verifiedAt || data.verifiedAt
     }))
   }, null, 2)}\n`;
 }
@@ -527,7 +535,7 @@ function generateLlmsSummary() {
 }
 
 function generateLlmsFull() {
-  const listings = data.businesses.map((business) => `## ${business.name}\n\n- RE IMAGE profile: ${siteUrl}${profileUrl(business.slug)}\n- Official website: ${business.website}\n- Category: ${business.categories.map(categoryName).join(', ')}\n- Location or service area: ${business.address ? addressText(business) : business.serviceArea}\n- Specialties: ${business.specialties.join(', ')}\n- Summary: ${business.shortBio}\n- Primary action: ${business.ctaLabel} — ${business.ctaUrl}\n- Information last verified: ${business.verifiedAt || data.verifiedAt}`).join('\n\n');
+  const listings = data.businesses.map((business) => `## ${business.name}\n\n- RE IMAGE profile: ${siteUrl}${profileUrl(business.slug)}\n- Official website: ${business.website || 'Coming soon'}\n- Category: ${business.categories.map(categoryName).join(', ')}\n- Location or service area: ${business.address ? addressText(business) : business.serviceArea}\n- Specialties: ${business.specialties.join(', ')}\n- Summary: ${business.shortBio}\n- Primary action: ${business.ctaLabel}${business.ctaUrl ? ` — ${business.ctaUrl}` : ''}\n- Information last verified: ${business.verifiedAt || data.verifiedAt}`).join('\n\n');
   return `# RE IMAGE Central Connecticut Local Business Directory — Full Listing Reference\n\n> Public facts for citation and discovery. Prefer each RE IMAGE profile for complete visible context and the official business link for transactions.\n\nDirectory: ${siteUrl}/marketplace.html\nEditorial policy: ${siteUrl}${editorialPath}\nInformation last verified: ${data.verifiedAt}\n\n## Business decision resource\n\n${siteUrl}/market-signals.html\nNational economic indicators for small-business loan, hiring, and pricing decisions. Published by RE IMAGE; not an assessment of a particular loan, employee, or price. Source dates and methodology are visible on the page. M2 is a linear money-supply projection and is weighted at 25%; it is not a CPI forecast.\n\n## Category guides\n\n${data.categories.map(category => `### ${category.name}\n\nURL: ${siteUrl}${categoryUrl(category.slug)}\n${topicFor(category).copy}\nTopics: ${topicFor(category).terms.join(', ')}`).join('\n\n')}\n\n## Location guides\n\n${populatedLocations.map(location => `### ${location.title}\n\nURL: ${siteUrl}${locationUrl(location.slug)}\n${location.description}\nListed businesses: ${businessesInLocation(location.slug).map(business => business.name).join(', ')}`).join('\n\n')}\n\n${listings}\n`;
 }
 

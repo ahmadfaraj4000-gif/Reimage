@@ -13,6 +13,12 @@ National economic indicators for small-business loan, hiring, and pricing decisi
 
 ## Category guides
 
+### Barbershops
+
+URL: https://reimagebs.com/marketplace/categories/barbershops/
+Explore Tuff Cuts Barbershop on Albany Avenue in Hartford for haircuts, fades, lineups, and beard grooming. Visit the shop website for services and contact information.
+Topics: barbershop Hartford, haircuts, fades, lineups, beard grooming
+
 ### Medical & Healthcare
 
 URL: https://reimagebs.com/marketplace/categories/medical-healthcare/
@@ -40,8 +46,8 @@ Topics: Hartford nightlife, cocktail bars, private events, live entertainment
 ### Automobile services
 
 URL: https://reimagebs.com/marketplace/categories/automobile-services/
-Find the right automobile service for your vehicle. Car Craft handles auto body and towing in West Hartford; Action Audio offers detailing in Hartford and car audio, remote starters, electronics repair, and installation in Wethersfield. Compare each shop’s specialties and location, then use its official links to request an estimate or appointment. Other listed automobile businesses are identified by their own service areas.
-Topics: auto body repair, collision repair, towing services, car detailing Hartford, car audio installation, auto electronics repair, remote starters, vehicle electrical installation
+Find the right automobile service for your vehicle. Botticello Auto Repair offers mechanic services and maintenance for cars, trucks, and diesel engines in West Hartford. Car Craft handles auto body and towing in West Hartford; Action Audio offers detailing in Hartford and car audio, remote starters, electronics repair, and installation in Wethersfield. Compare each shop’s specialties and location, then use its official links to request an estimate or appointment. Other listed automobile businesses are identified by their own service areas.
+Topics: mechanic services, auto repair, vehicle maintenance, auto body repair, collision repair, towing services, car detailing Hartford, car audio installation, auto electronics repair, remote starters, vehicle electrical installation
 
 ### Car Rentals
 
@@ -91,13 +97,13 @@ Topics: private chauffeur New York Capital Region, airport transportation, corpo
 
 URL: https://reimagebs.com/marketplace/locations/hartford/
 Explore Hartford restaurants, juice bars, hair braiding, car audio, printing, property services, and community organizations. Check each profile for its storefront or service area.
-Listed businesses: Blue Hills Cafe, Action Audio, Jam Roc Restaurant & Lounge, Fusion Health Juice Bar, 881 Grab & Go, The Patio, Lunch Box, Mi Buen Pastor Mexican Fusion, Lorie’s African Hair Braiding, Living Word Imprints, Andaleeb Enterprises, The Anchor Collective
+Listed businesses: Tuff Cuts Barbershop, Blue Hills Cafe, Action Audio, Jam Roc Restaurant & Lounge, Fusion Health Juice Bar, 881 Grab & Go, The Patio, Lunch Box, Mi Buen Pastor Mexican Fusion, Lorie’s African Hair Braiding, Living Word Imprints, Andaleeb Enterprises, The Anchor Collective
 
 ### West Hartford, CT Local Businesses
 
 URL: https://reimagebs.com/marketplace/locations/west-hartford/
 Find businesses listed for West Hartford, including auto body repair and towing. Compare service details and follow official links for estimates and availability.
-Listed businesses: Dr. Frank Aieta, ND, Car Craft Auto Body & Towing
+Listed businesses: Botticello Auto Repair, Dr. Frank Aieta, ND, Car Craft Auto Body & Towing
 
 ### East Hartford, CT Business Services
 
@@ -128,6 +134,28 @@ Listed businesses: Action Audio, Andaleeb Enterprises, The Anchor Collective
 URL: https://reimagebs.com/marketplace/locations/beyond/
 Explore RE IMAGE directory listings outside Central Connecticut, including New York auto services and private transportation, plus a Chicago-based healthcare initiative.
 Listed businesses: Amanah Medical Care, CR8 Autos, Empire Elite Rides
+
+## Botticello Auto Repair
+
+- RE IMAGE profile: https://reimagebs.com/marketplace/businesses/botticello-auto-repair/
+- Official website: Coming soon
+- Category: Automobile services
+- Location or service area: 210 South St, West Hartford, CT 06110
+- Specialties: Auto repair, Vehicle maintenance, Diesel engines
+- Summary: Auto repair and maintenance for cars, trucks, and diesel engines in West Hartford.
+- Primary action: Website coming soon
+- Information last verified: 2026-10-23
+
+## Tuff Cuts Barbershop
+
+- RE IMAGE profile: https://reimagebs.com/marketplace/businesses/tuff-cuts/
+- Official website: https://reimage-demo.github.io/tuff-cut/
+- Category: Barbershops
+- Location or service area: 1103 Albany Avenue, Hartford, CT 06112
+- Specialties: Haircuts & fades, Lineups, Beard grooming
+- Summary: Neighborhood barbershop on Albany Avenue in Hartford for haircuts, fades, lineups, and beard grooming.
+- Primary action: View services & visit — https://reimage-demo.github.io/tuff-cut/
+- Information last verified: 2026-10-23
 
 ## Dr. Frank Aieta, ND
 

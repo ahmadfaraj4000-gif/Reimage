@@ -8,6 +8,20 @@
   "featuredGuide": "https://reimagebs.com/marketplace/guides/new-britain-avenue-hartford/",
   "categories": [
     {
+      "slug": "barbershops",
+      "name": "Barbershops",
+      "description": "Local barbershops for haircuts, fades, lineups, beard grooming, and personal style.",
+      "topics": [
+        "barbershop Hartford",
+        "haircuts",
+        "fades",
+        "lineups",
+        "beard grooming"
+      ],
+      "guide": "Explore Tuff Cuts Barbershop on Albany Avenue in Hartford for haircuts, fades, lineups, and beard grooming. Visit the shop website for services and contact information.",
+      "url": "https://reimagebs.com/marketplace/categories/barbershops/"
+    },
+    {
       "slug": "medical-healthcare",
       "name": "Medical & Healthcare",
       "description": "Naturopathic care, nutrition consultations, physician collaboration, and medical education.",
@@ -65,8 +79,11 @@
     {
       "slug": "automobile-services",
       "name": "Automobile services",
-      "description": "Auto body repair, towing, car detailing, car audio, remote starters, and vehicle electronics repair and installation.",
+      "description": "Mechanic services, auto repair, vehicle maintenance, auto body repair, towing, detailing, car audio, and vehicle electronics.",
       "topics": [
+        "mechanic services",
+        "auto repair",
+        "vehicle maintenance",
         "auto body repair",
         "collision repair",
         "towing services",
@@ -76,7 +93,7 @@
         "remote starters",
         "vehicle electrical installation"
       ],
-      "guide": "Find the right automobile service for your vehicle. Car Craft handles auto body and towing in West Hartford; Action Audio offers detailing in Hartford and car audio, remote starters, electronics repair, and installation in Wethersfield. Compare each shop’s specialties and location, then use its official links to request an estimate or appointment. Other listed automobile businesses are identified by their own service areas.",
+      "guide": "Find the right automobile service for your vehicle. Botticello Auto Repair offers mechanic services and maintenance for cars, trucks, and diesel engines in West Hartford. Car Craft handles auto body and towing in West Hartford; Action Audio offers detailing in Hartford and car audio, remote starters, electronics repair, and installation in Wethersfield. Compare each shop’s specialties and location, then use its official links to request an estimate or appointment. Other listed automobile businesses are identified by their own service areas.",
       "url": "https://reimagebs.com/marketplace/categories/automobile-services/"
     },
     {
@@ -182,6 +199,7 @@
       "description": "Explore Hartford restaurants, juice bars, hair braiding, car audio, printing, property services, and community organizations. Check each profile for its storefront or service area.",
       "url": "https://reimagebs.com/marketplace/locations/hartford/",
       "businesses": [
+        "https://reimagebs.com/marketplace/businesses/tuff-cuts/",
         "https://reimagebs.com/marketplace/businesses/blue-hills-cafe/",
         "https://reimagebs.com/marketplace/businesses/action-audio/",
         "https://reimagebs.com/marketplace/businesses/jam-roc/",
@@ -203,6 +221,7 @@
       "description": "Find businesses listed for West Hartford, including auto body repair and towing. Compare service details and follow official links for estimates and availability.",
       "url": "https://reimagebs.com/marketplace/locations/west-hartford/",
       "businesses": [
+        "https://reimagebs.com/marketplace/businesses/botticello-auto-repair/",
         "https://reimagebs.com/marketplace/businesses/dr-frank-aieta/",
         "https://reimagebs.com/marketplace/businesses/car-craft-auto-body-towing/"
       ]
@@ -277,6 +296,45 @@
     "methodology": "https://reimagebs.com/market-signals.html#methodology"
   },
   "businesses": [
+    {
+      "name": "Botticello Auto Repair",
+      "profile": "https://reimagebs.com/marketplace/businesses/botticello-auto-repair/",
+      "category": [
+        "Automobile services"
+      ],
+      "location": "210 South St, West Hartford, CT 06110",
+      "specialties": [
+        "Auto repair",
+        "Vehicle maintenance",
+        "Diesel engines"
+      ],
+      "description": "Auto repair and maintenance for cars, trucks, and diesel engines in West Hartford.",
+      "primaryAction": {
+        "label": "Website coming soon",
+        "available": false
+      },
+      "informationLastVerified": "2026-10-23"
+    },
+    {
+      "name": "Tuff Cuts Barbershop",
+      "profile": "https://reimagebs.com/marketplace/businesses/tuff-cuts/",
+      "officialWebsite": "https://reimage-demo.github.io/tuff-cut/",
+      "category": [
+        "Barbershops"
+      ],
+      "location": "1103 Albany Avenue, Hartford, CT 06112",
+      "specialties": [
+        "Haircuts & fades",
+        "Lineups",
+        "Beard grooming"
+      ],
+      "description": "Neighborhood barbershop on Albany Avenue in Hartford for haircuts, fades, lineups, and beard grooming.",
+      "primaryAction": {
+        "label": "View services & visit",
+        "url": "https://reimage-demo.github.io/tuff-cut/"
+      },
+      "informationLastVerified": "2026-10-23"
+    },
     {
       "name": "Dr. Frank Aieta, ND",
       "profile": "https://reimagebs.com/marketplace/businesses/dr-frank-aieta/",
