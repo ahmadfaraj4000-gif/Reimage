@@ -137,7 +137,7 @@ for (const field of ['website', 'ctaUrl']) {
 const lories = snapshot.businesses.find((business) => business.slug === 'lories-african-hair-braiding');
 const repositoryLories = repositoryCatalog.businesses.find((business) => business.slug === 'lories-african-hair-braiding');
 for (const field of ['website', 'ctaUrl']) {
-  if (lories && repositoryLories?.[field] && /^https?:\/\/(?:www\.)?loriesafricanhairbraiding\.com\/?$/i.test(lories[field] || '')) {
+  if (lories && repositoryLories?.[field] && /^https?:\/\/(?:(?:www\.)?loriesafricanhairbraiding\.com\/?|reimage-demo\.github\.io\/Lories-Hair-Braiding\/?)$/i.test(lories[field] || '')) {
     lories[field] = repositoryLories[field];
   }
 }

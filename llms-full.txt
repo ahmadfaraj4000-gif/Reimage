@@ -308,12 +308,12 @@ Listed businesses: Amanah Medical Care, CR8 Autos, Empire Elite Rides
 ## Lorie’s African Hair Braiding
 
 - RE IMAGE profile: https://reimagebs.com/marketplace/businesses/lories-african-hair-braiding/
-- Official website: https://reimage-demo.github.io/Lories-Hair-Braiding/
+- Official website: https://loriesafricanhairbraidingllc.com
 - Category: Hair & Braiding
 - Location or service area: 875 New Britain Avenue, Hartford, CT 06106
 - Specialties: Box braids, Knotless & Fulani styles, Locs & extensions
 - Summary: A longtime Hartford salon specializing in African braiding, protective styles, extensions, twists, cornrows, weaving, and locs.
-- Primary action: View Styles & Contact — https://reimage-demo.github.io/Lories-Hair-Braiding/
+- Primary action: View Styles & Contact — https://loriesafricanhairbraidingllc.com
 - Information last verified: 2026-09-04
 
 ## Living Word Imprints
