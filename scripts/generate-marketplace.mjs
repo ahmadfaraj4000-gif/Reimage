@@ -209,16 +209,19 @@ function card(business, options = {}) {
   const primary = categoryMap.get(business.categories[0]);
   const isBeyond = business.regionRank === 4;
   const featured = options.featured;
+  const directWebsite = business.slug === 'blue-hills-cafe';
+  const cardHref = directWebsite ? business.website : profileUrl(business.slug);
+  const cardLabel = directWebsite ? `Visit ${business.name} website` : `View ${business.name} profile`;
   const searchText = [business.name, business.locationLabel, addressText(business), business.shortBio, ...business.specialties, ...business.tags, ...business.categories.map(categoryName)].join(' ').toLowerCase();
   return `<article class="business-card${featured ? ' business-card--featured' : ''}" data-business-card data-slug="${business.slug}" data-primary-category="${business.categories[0]}" data-categories="${business.categories.join(' ')}" data-location="${(business.locations || [business.locationKey]).join(' ')}" data-rank="${business.regionRank}" data-search="${escapeHtml(searchText)}">
-    <a class="business-card__media business-card__logo" href="${profileUrl(business.slug)}" aria-label="View ${escapeHtml(business.name)} profile">
+    <a class="business-card__media business-card__logo" href="${escapeHtml(cardHref)}" aria-label="${escapeHtml(cardLabel)}">
       <span class="business-logo-stage business-logo-stage--${business.slug}">${businessLogo(business)}</span>
       ${featured ? `<span class="feature-badge">${escapeHtml(business.featuredLabel || 'Featured')}</span>` : ''}
       ${isBeyond ? '<span class="area-badge">Beyond Central Connecticut</span>' : ''}
     </a>
     <div class="business-card__body">
       <div class="business-card__meta"><a href="${categoryUrl(primary.slug)}">${escapeHtml(primary.shortName)}</a><span>${escapeHtml(business.locationLabel)}</span></div>
-      <h3><a href="${profileUrl(business.slug)}">${escapeHtml(business.name)}</a></h3>
+      <h3><a href="${escapeHtml(cardHref)}">${escapeHtml(business.name)}</a></h3>
       <p>${escapeHtml(business.shortBio)}</p>
       <ul class="specialty-list" aria-label="Specialties">${business.specialties.slice(0, 3).map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
       <div class="business-card__actions"><a class="button button--primary" href="${business.ctaUrl}" target="_blank" rel="noopener">${escapeHtml(business.ctaLabel)}</a><a class="text-link" href="${profileUrl(business.slug)}">View profile <span aria-hidden="true">→</span></a></div>

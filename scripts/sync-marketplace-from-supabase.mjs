@@ -95,6 +95,15 @@ const snapshot = {
 // Explicitly repository-published listings remain available until managed in
 // Supabase. Synced records take precedence once those listings are added there.
 const repositoryCatalog = JSON.parse(fs.readFileSync(path.join(root, 'marketplace-data.json'), 'utf8'));
+// Keep Blue Hills Cafe's custom domain when older CMS records still use GitHub Pages.
+const blueHills = snapshot.businesses.find((business) => business.slug === 'blue-hills-cafe');
+const repositoryBlueHills = repositoryCatalog.businesses.find((business) => business.slug === 'blue-hills-cafe');
+for (const field of ['website', 'ctaUrl']) {
+  if (blueHills && repositoryBlueHills?.[field] && /^https?:\/\/reimage-demo\.github\.io\/blue-hills-cafe\/?$/i.test(blueHills[field] || '')) {
+    blueHills[field] = repositoryBlueHills[field];
+  }
+}
+
 // Correct Fusion's retired domain while older published records remain in Supabase.
 // Leave future admin-managed URLs unchanged.
 const fusion = snapshot.businesses.find((business) => business.slug === 'fusion-health-juice-bar');

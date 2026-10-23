@@ -153,7 +153,7 @@
       },
       "phone": "860-436-1553",
       "ctaLabel": "Visit Website",
-      "ctaUrl": "https://reimage-demo.github.io/blue-hills-cafe/",
+      "ctaUrl": "https://bluehillscafe.com",
       "secondaryCtaLabel": "Ask about events & catering",
       "secondaryCtaUrl": "mailto:caribeexquisitecatering@gmail.com?subject=Blue%20Hills%20Cafe%20event%20inquiry",
       "image": "assets/marketplace/blue-hills-cafe-exterior.jpg",
@@ -200,7 +200,7 @@
           "Call 860-436-1553 for current opening hours."
         ]
       ],
-      "website": "https://reimage-demo.github.io/blue-hills-cafe/"
+      "website": "https://bluehillscafe.com"
     },
     {
       "slug": "action-audio",

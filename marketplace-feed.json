@@ -324,7 +324,7 @@
     {
       "name": "Blue Hills Cafe",
       "profile": "https://reimagebs.com/marketplace/businesses/blue-hills-cafe/",
-      "officialWebsite": "https://reimage-demo.github.io/blue-hills-cafe/",
+      "officialWebsite": "https://bluehillscafe.com",
       "category": [
         "Nightlife & Events"
       ],
@@ -337,7 +337,7 @@
       "description": "A neighborhood cafe and late-night bar on Albany Avenue in Hartford, with private celebrations, Caribbean catering, and $5 Thursday meals.",
       "primaryAction": {
         "label": "Visit Website",
-        "url": "https://reimage-demo.github.io/blue-hills-cafe/"
+        "url": "https://bluehillscafe.com"
       },
       "informationLastVerified": "2026-10-08"
     },

@@ -154,12 +154,12 @@ Listed businesses: Amanah Medical Care, CR8 Autos, Empire Elite Rides
 ## Blue Hills Cafe
 
 - RE IMAGE profile: https://reimagebs.com/marketplace/businesses/blue-hills-cafe/
-- Official website: https://reimage-demo.github.io/blue-hills-cafe/
+- Official website: https://bluehillscafe.com
 - Category: Nightlife & Events
 - Location or service area: 1329 Albany Avenue, Hartford, CT 06112
 - Specialties: Late-night bar, Private events, Caribbean catering
 - Summary: A neighborhood cafe and late-night bar on Albany Avenue in Hartford, with private celebrations, Caribbean catering, and $5 Thursday meals.
-- Primary action: Visit Website — https://reimage-demo.github.io/blue-hills-cafe/
+- Primary action: Visit Website — https://bluehillscafe.com
 - Information last verified: 2026-10-08
 
 ## Action Audio
