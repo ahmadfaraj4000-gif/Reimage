@@ -171,12 +171,12 @@ Listed businesses: Amanah Medical Care, CR8 Autos, Empire Elite Rides
 ## Fish N Tingz Bar & Grill
 
 - RE IMAGE profile: https://reimagebs.com/marketplace/businesses/fish-n-tingz/
-- Official website: https://reimage-demo.github.io/fish-n-tingz/
+- Official website: https://www.fishntingz.com/
 - Category: Restaurants & Drinks, Nightlife & Events
 - Location or service area: 384 Middle Turnpike W, Manchester, CT 06040
 - Specialties: Oxtail tacos, Whole snapper, Rum Punch Tower, Jerk chicken, Sunday brunch
 - Summary: A family-operated West Indian bar and grill in Manchester, known for oxtail tacos, whole snapper, jerk chicken, and the Rum Punch Tower.
-- Primary action: Reserve table — https://reimage-demo.github.io/fish-n-tingz/contact.html#reservations
+- Primary action: Reserve table — https://www.fishntingz.com/contact.html#reservations
 - Information last verified: 2026-10-11
 
 ## Blue Hills Cafe

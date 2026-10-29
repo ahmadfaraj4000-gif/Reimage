@@ -359,7 +359,7 @@
     {
       "name": "Fish N Tingz Bar & Grill",
       "profile": "https://reimagebs.com/marketplace/businesses/fish-n-tingz/",
-      "officialWebsite": "https://reimage-demo.github.io/fish-n-tingz/",
+      "officialWebsite": "https://www.fishntingz.com/",
       "category": [
         "Restaurants & Drinks",
         "Nightlife & Events"
@@ -375,7 +375,7 @@
       "description": "A family-operated West Indian bar and grill in Manchester, known for oxtail tacos, whole snapper, jerk chicken, and the Rum Punch Tower.",
       "primaryAction": {
         "label": "Reserve table",
-        "url": "https://reimage-demo.github.io/fish-n-tingz/contact.html#reservations"
+        "url": "https://www.fishntingz.com/contact.html#reservations"
       },
       "informationLastVerified": "2026-10-11"
     },
