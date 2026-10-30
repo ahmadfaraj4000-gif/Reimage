@@ -402,7 +402,7 @@
     {
       "name": "Action Audio",
       "profile": "https://reimagebs.com/marketplace/businesses/action-audio/",
-      "officialWebsite": "https://reimage-demo.github.io/action-audio/",
+      "officialWebsite": "https://www.actionaudiostorellc.com/",
       "category": [
         "Automobile services"
       ],
@@ -415,7 +415,7 @@
       "description": "Car audio, auto electronics repair, detailing, and electrical installation in Hartford and Wethersfield. Serving Connecticut drivers since 1983.",
       "primaryAction": {
         "label": "Book an appointment",
-        "url": "https://reimage-demo.github.io/action-audio/book.html"
+        "url": "https://www.actionaudiostorellc.com/book.html"
       },
       "informationLastVerified": "2026-09-04"
     },

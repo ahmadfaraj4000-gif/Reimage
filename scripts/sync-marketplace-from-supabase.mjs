@@ -95,6 +95,16 @@ const snapshot = {
 // Explicitly repository-published listings remain available until managed in
 // Supabase. Synced records take precedence once those listings are added there.
 const repositoryCatalog = JSON.parse(fs.readFileSync(path.join(root, 'marketplace-data.json'), 'utf8'));
+// Keep Action Audio on its custom domain when an older CMS record still uses
+// GitHub Pages. Preserve any future admin-managed destination.
+const actionAudio = snapshot.businesses.find((business) => business.slug === 'action-audio');
+const repositoryActionAudio = repositoryCatalog.businesses.find((business) => business.slug === 'action-audio');
+for (const field of ['website', 'ctaUrl']) {
+  if (actionAudio && repositoryActionAudio?.[field] && /^https?:\/\/reimage-demo\.github\.io\/action-audio(?:\/|$)/i.test(actionAudio[field] || '')) {
+    actionAudio[field] = repositoryActionAudio[field];
+  }
+}
+
 // Keep Fish N Tingz on its custom domain when a published CMS record still
 // references the retired GitHub Pages site. Preserve future admin-managed URLs.
 const fishNTingz = snapshot.businesses.find((business) => business.slug === 'fish-n-tingz');
