@@ -105,6 +105,14 @@ for (const field of ['website', 'ctaUrl']) {
   }
 }
 
+// Correct the retired repair description only while the CMS still contains it.
+// Later business-managed copy remains authoritative.
+if (actionAudio && repositoryActionAudio && /electronics repair/i.test(actionAudio.shortBio || '')) {
+  for (const field of ['shortBio', 'longBio', 'specialties', 'tags', 'faq', 'verifiedAt']) {
+    actionAudio[field] = repositoryActionAudio[field];
+  }
+}
+
 // Keep Fish N Tingz on its custom domain when a published CMS record still
 // references the retired GitHub Pages site. Preserve future admin-managed URLs.
 const fishNTingz = snapshot.businesses.find((business) => business.slug === 'fish-n-tingz');

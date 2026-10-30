@@ -228,36 +228,47 @@
       "imageAlt": "The Action Audio Store logo",
       "schemaType": "AutomotiveBusiness",
       "specialties": [
-        "Auto electronics repair",
-        "Auto detailing",
-        "Electrical installation"
+        "Interior & exterior detailing",
+        "Car audio & electronics",
+        "Remote starter installation"
       ],
       "tags": [
-        "car audio",
+        "auto detailing",
+        "car detailing Hartford CT",
+        "interior detailing",
+        "exterior detailing",
+        "window tinting",
+        "car audio installation",
+        "stereo installation",
         "speakers",
         "subwoofers",
         "amplifiers",
-        "vehicle electronics",
-        "appointments",
-        "Hartford",
-        "Wethersfield"
+        "remote starters",
+        "dash cams",
+        "electronics replacement",
+        "Wethersfield CT"
       ],
-      "shortBio": "Car audio, auto electronics repair, detailing, and electrical installation in Hartford and Wethersfield. Serving Connecticut drivers since 1983.",
-      "longBio": "Action Audio serves Connecticut drivers with interior and exterior auto detailing at 2814 Main St, Hartford, and car audio, remote starters, auto electronics repair, and electrical installation at 105 Silas Deane Hwy, Wethersfield. Established in 1983, Action Audio helps you choose the right location and service for your vehicle. Request an appointment online; the team will contact you to confirm the details.",
+      "shortBio": "Interior and exterior car detailing and window tinting in Hartford; car audio, remote starters, and electronics installation in Wethersfield. Established in 1983.",
+      "longBio": "Action Audio offers interior and exterior auto detailing and window tinting at 2814 Main St, Hartford, CT 06120. The Wethersfield store at 105 Silas Deane Hwy, Wethersfield, CT 06109 handles car stereo, speaker, subwoofer, and amplifier installation, remote starters, dash cams, GPS trackers, and vehicle electronics replacement. Share your vehicle and service details to request an estimate or appointment. The team will contact you to confirm scope, pricing, and availability. The public phone number belongs to Wethersfield. Established in Connecticut in 1983.",
       "faq": [
         [
+          "Where can I get car detailing in Hartford?",
+          "Visit Action Audio at 2814 Main St, Hartford, CT 06120 for interior and exterior auto detailing and window tinting. Describe your vehicle’s condition and the work you want when requesting an estimate."
+        ],
+        [
+          "Where does Action Audio install car electronics?",
+          "Car audio, remote starters, dash cams, GPS trackers, and electronics replacement and installation are handled at 105 Silas Deane Hwy, Wethersfield, CT 06109. Call the Wethersfield store at (860) 667-6330 to discuss vehicle compatibility."
+        ],
+        [
           "How do I book an appointment with Action Audio?",
-          "Select Book an appointment to open Action Audio’s booking page, choose Hartford or Wethersfield, and submit your vehicle and service details. The team will contact you to confirm."
+          "Select Book an appointment to visit the official website and submit your service, vehicle, location, and preferred date. An appointment request is confirmed after the team contacts you."
         ],
         [
-          "What services does Action Audio offer?",
-          "Action Audio offers auto electronics repair, auto detailing, and auto electrical installation, including car audio work."
-        ],
-        [
-          "Where are Action Audio’s stores?",
-          "Visit 2814 Main St in Hartford or 105 Silas Deane Hwy in Wethersfield. The listed phone number, 860-667-6330, is for Wethersfield."
+          "Does Action Audio repair electronics?",
+          "Action Audio offers vehicle electronics replacement and installation at Wethersfield. Electronics repair is not offered."
         ]
-      ]
+      ],
+      "verifiedAt": "2026-10-30"
     },
     {
       "slug":"amanah-medical-care","repositoryPublished":true,"name":"Amanah Medical Care","categories":["medical-healthcare"],"locationKey":"beyond","locationLabel":"Chicago, Illinois","regionRank":4,
