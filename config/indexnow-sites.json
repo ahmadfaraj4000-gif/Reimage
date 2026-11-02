@@ -56,13 +56,6 @@
     "pending": false
   },
   {
-    "name": "Techniq Skin & Beauty",
-    "base": "https://techniqskinandbeauty.com/",
-    "keyPath": "indexnow-key.txt",
-    "key": "34da7f0a2c3664fadc0de650aad60bca",
-    "pending": true
-  },
-  {
     "name": "RE IMAGE Tech",
     "base": "https://reimagebstech.com/",
     "keyPath": "indexnow-key.txt",
