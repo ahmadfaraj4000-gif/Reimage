@@ -1,0 +1,96 @@
+[
+  {
+    "name": "CR8 Auto",
+    "base": "https://cr8autos.com/",
+    "keyPath": "indexnow-key.txt",
+    "key": "583e87413e4857d82fef3681482a0931",
+    "repo": "ahmadfaraj4000-gif/CR8-Auto"
+  },
+  {
+    "name": "Empire Elite Rides",
+    "base": "https://empireeliterides.com/",
+    "keyPath": "indexnow-key.txt",
+    "key": "0a4f8fd84e085d8a438ed9b15394bd6c",
+    "repo": "reimage-demo/Empire-Elite-Rides"
+  },
+  {
+    "name": "Fusion Health",
+    "base": "https://fusionhealthjuicebar.com/",
+    "keyPath": "indexnow-key.txt",
+    "key": "b7810634d19cbb3c62136a618c28224a",
+    "repo": "reimage-demo/Fusion-Health"
+  },
+  {
+    "name": "RE IMAGE",
+    "base": "https://reimagebs.com/",
+    "keyPath": "4d8f8e2f47e34922a4c0ee4288069a57.txt",
+    "key": "4d8f8e2f47e34922a4c0ee4288069a57",
+    "repo": "ahmadfaraj4000-gif/Reimage"
+  },
+  {
+    "name": "Rent Me CT",
+    "base": "https://rentmect.com/",
+    "keyPath": "indexnow-key.txt",
+    "key": "759b11485323fdfe6380467d19ed780b",
+    "repo": "ahmadfaraj4000-gif/rentmect"
+  },
+  {
+    "name": "The Patio",
+    "base": "https://thepatioct.com/",
+    "keyPath": "indexnow-key.txt",
+    "key": "87e5c498d92d2514127e59ae0f987c06",
+    "repo": "reimage-demo/the-patio"
+  },
+  {
+    "name": "Car Craft",
+    "base": "https://carcraftautobodytowing.com/",
+    "keyPath": "indexnow-key.txt",
+    "key": "2f1107e5e9740ebd45f8587212583bf3",
+    "repo": "ahmadfaraj4000-gif/Car-Craft-Auto"
+  },
+  {
+    "name": "Blesena",
+    "base": "https://www.blesena.com/",
+    "keyPath": "indexnow-key.txt",
+    "key": "476f80a951c2f3a52b64b757cebd980e",
+    "pending": false
+  },
+  {
+    "name": "Techniq Skin & Beauty",
+    "base": "https://techniqskinandbeauty.com/",
+    "keyPath": "indexnow-key.txt",
+    "key": "34da7f0a2c3664fadc0de650aad60bca",
+    "pending": true
+  },
+  {
+    "name": "RE IMAGE Tech",
+    "base": "https://reimagebstech.com/",
+    "keyPath": "indexnow-key.txt",
+    "key": "d2fd65c1f55f614ea5d6aebbd41f50bc",
+    "repo": "ahmadfaraj4000-gif/Faraj-Software-Solutions"
+  },
+  {
+    "name": "Blue Hills Cafe",
+    "base": "https://bluehillscafe.com/",
+    "keyPath": "indexnow-key.txt",
+    "key": "4903ef17e77f273cb9ff89ea16a343dd"
+  },
+  {
+    "name": "Lorie\u2019s African Hair Braiding",
+    "base": "https://loriesafricanhairbraidingllc.com/",
+    "keyPath": "indexnow-key.txt",
+    "key": "f3e73508305fbf6685d890eb098bc60f"
+  },
+  {
+    "name": "Fish N Tingz",
+    "base": "https://www.fishntingz.com/",
+    "keyPath": "indexnow-key.txt",
+    "key": "26aa17c93350deef3feefd3a08f92585"
+  },
+  {
+    "name": "Action Audio",
+    "base": "https://www.actionaudiostorellc.com/",
+    "keyPath": "action-audio-indexnow.txt",
+    "key": "48ad7293356691ec7088d51544da4472"
+  }
+]

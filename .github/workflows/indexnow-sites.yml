@@ -1,0 +1,41 @@
+name: IndexNow public websites
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '37 */6 * * *'
+  workflow_run:
+    workflows: ['Deploy RE IMAGE Public Website']
+    types: [completed]
+permissions:
+  contents: read
+concurrency:
+  group: indexnow-public-websites
+  cancel-in-progress: false
+jobs:
+  submit:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/cache/restore@v4
+        with:
+          path: .indexnow/state.json
+          key: indexnow-sites-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: indexnow-sites-v1-
+      - name: Notify Bing of public page changes
+        run: python scripts/indexnow_sites.py --apply
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: .indexnow/state.json
+          key: indexnow-sites-v1-${{ github.run_id }}-${{ github.run_attempt }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: indexnow-report
+          path: indexnow-report.json
+          retention-days: 30
