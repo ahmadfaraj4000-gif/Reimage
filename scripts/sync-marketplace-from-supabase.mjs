@@ -202,6 +202,15 @@ if (snapshot.categories.some(category => hairAliases.includes(category.slug))) {
   }
 }
 
+// Replace the previous restaurant picks in older published snapshots.
+const foodCategory = snapshot.categories.find(category => category.slug === 'restaurants-drinks');
+if (foodCategory && ['fusion-health-juice-bar', 'jam-roc'].includes(foodCategory.featured)) {
+  const pick = repositoryCatalog.categories.find(category => category.slug === foodCategory.slug)?.featured;
+  if (snapshot.businesses.some(business => business.slug === pick && business.categories.includes(foodCategory.slug))) {
+    foodCategory.featured = pick;
+  }
+}
+
 const destination = process.env.MARKETPLACE_DATA_PATH || path.join(root, '.marketplace-data.generated.json');
 fs.writeFileSync(destination, `${JSON.stringify(normalizeAutomobileCategories(snapshot), null, 2)}\n`);
 console.log(`Synced ${snapshot.businesses.length} published businesses from Supabase to ${destination}.`);

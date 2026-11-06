@@ -123,11 +123,12 @@
     });
 
     if (featuredRail) {
+      const featuredPick = categoryFilters.querySelector(`[data-category="${state.category}"]`)?.dataset.featuredPick;
       let visibleFeatured = 0;
       featuredRail.querySelectorAll('[data-business-card]').forEach((card) => {
         const categoryMatch = state.category === 'all' || card.dataset.categories.split(' ').includes(state.category);
         const locationMatch = state.location === 'all' || card.dataset.location.split(' ').includes(state.location);
-        card.hidden = !(categoryMatch && locationMatch);
+        card.hidden = !(categoryMatch && locationMatch) || Boolean(featuredPick && card.dataset.slug !== featuredPick);
         if (!card.hidden) visibleFeatured += 1;
       });
       const featuredSection = featuredRail.closest('.featured-section');

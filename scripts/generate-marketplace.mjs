@@ -252,7 +252,7 @@ function shell({ title, description, canonical, image, imageAlt, schema, body, p
   ${categoryDirectory()}
   ${footer()}
   <script src="/public-shell.js?v=20261007-3" defer></script>
-  <script src="/marketplace.js?v=20261105-1" defer></script>
+  <script src="/marketplace.js?v=20261105-2" defer></script>
 </body>
 </html>\n`;
 }
@@ -288,7 +288,8 @@ function hubSchema() {
 
 function generateHub() {
   // Keep the requested Discover order stable across repository and CMS builds.
-  const firstChoices = ['car-craft-auto-body-towing', 'rent-me-ct', 'jam-roc'];
+  const foodPick = categoryMap.get('restaurants-drinks')?.featured;
+  const firstChoices = ['car-craft-auto-body-towing', 'rent-me-ct', foodPick];
   const bottomPair = ['the-anchor-collective', 'living-word-imprints'];
   const formerLast = ['mi-buen-pastor-mexican-fusion', 'living-word-imprints'];
   const frontPair = ['comma-vintage', 'andaleeb-enterprises'];
@@ -328,7 +329,7 @@ function generateHub() {
 
     <section class="discovery-bar" aria-label="Marketplace filters">
       <div class="market-wrap">
-        <div class="filter-block"><span class="visually-hidden">Explore by service</span><div class="chip-row" id="categoryFilters"><button class="filter-chip active" type="button" data-category="all" aria-pressed="true">All businesses</button>${filterCategories.map((category) => `<a class="filter-chip" href="${categoryUrl(category.slug)}" data-category="${category.slug}" aria-current="false">${escapeHtml(category.shortName)}</a>`).join('')}</div></div>
+        <div class="filter-block"><span class="visually-hidden">Explore by service</span><div class="chip-row" id="categoryFilters"><button class="filter-chip active" type="button" data-category="all" aria-pressed="true">All businesses</button>${filterCategories.map((category) => `<a class="filter-chip" href="${categoryUrl(category.slug)}" data-category="${category.slug}"${category.slug === 'restaurants-drinks' ? ` data-featured-pick="${escapeHtml(foodPick)}"` : ''} aria-current="false">${escapeHtml(category.shortName)}</a>`).join('')}</div></div>
         <div class="filter-block filter-block--locations"><label class="location-select"><span class="visually-hidden">Filter by area</span><select id="locationFilter"><option value="all">All locations</option>${locationFilters.map(location => `<option value="${location.slug}">${escapeHtml(location.name)}</option>`).join('')}</select></label></div>
       </div>
     </section>
