@@ -219,7 +219,8 @@ function card(business, options = {}) {
   const isBeyond = business.regionRank === 4;
   const featured = options.featured;
   const directWebsite = ['blue-hills-cafe', 'action-audio', 'tuff-cuts'].includes(business.slug);
-  const cardHref = directWebsite ? business.website : profileUrl(business.slug);
+  const officialLink = business.slug === 'action-audio' ? business.ctaUrl : business.website;
+  const cardHref = directWebsite ? officialLink : profileUrl(business.slug);
   const cardLabel = directWebsite ? `Visit ${business.name} website` : `View ${business.name} profile`;
   const searchText = [business.name, business.locationLabel, addressText(business), business.shortBio, ...business.specialties, ...business.tags, ...business.categories.map(categoryName)].join(' ').toLowerCase();
   return `<article class="business-card${featured ? ' business-card--featured' : ''}" data-business-card data-slug="${business.slug}" data-primary-category="${business.categories[0]}" data-categories="${business.categories.join(' ')}" data-location="${(business.locations || [business.locationKey]).join(' ')}" data-rank="${business.regionRank}" data-search="${escapeHtml(searchText)}">

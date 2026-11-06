@@ -98,7 +98,7 @@ const snapshot = {
 const repositoryCatalog = JSON.parse(fs.readFileSync(path.join(root, 'marketplace-data.json'), 'utf8'));
 // Migrate known previous destinations while preserving future CMS edits.
 const previousDestinations = {
-  'action-audio': /^https?:\/\/(?:reimage-demo\.github\.io\/action-audio(?:\/|$)|www\.actionaudiostorellc\.com\/book\.html$)/i,
+  'action-audio': /^https?:\/\/(?:reimage-demo\.github\.io\/action-audio(?:\/|$))/i,
   'tuff-cuts': /^https?:\/\/reimage-demo\.github\.io\/tuff-cuts?(?:\/|$)/i
 };
 for (const [slug, previous] of Object.entries(previousDestinations)) {
@@ -106,7 +106,8 @@ for (const [slug, previous] of Object.entries(previousDestinations)) {
   const source = repositoryCatalog.businesses.find(business => business.slug === slug);
   if (!listing || !source) continue;
   for (const field of ['website', 'ctaUrl']) {
-    if (!previous.test(listing[field] || '')) continue;
+    const oldHomepageButton = slug === 'action-audio' && field === 'ctaUrl' && /^https?:\/\/(?:www\.)?actionaudiostorellc\.com\/?$/i.test(listing[field] || '');
+    if (!oldHomepageButton && !previous.test(listing[field] || '')) continue;
     listing[field] = source[field];
     if (field === 'ctaUrl') listing.ctaLabel = source.ctaLabel;
   }
