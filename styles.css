@@ -5165,7 +5165,7 @@ html {
 	width: max-content;
 	gap: 52px;
 	will-change: transform;
-	animation: brandBeltRight 36s linear infinite;
+	animation: brandBeltRight calc(var(--client-count, 14) * 2.6s) linear infinite;
 }
 
 .home-page.new-blue-home .client-proof-inner {
@@ -5221,7 +5221,7 @@ html {
 	.home-page.new-blue-home .brand-belt,
 	.home-page.new-blue-home .brand-strip-track { gap: 38px; }
 
-	.home-page.new-blue-home .brand-belt { animation-name: brandBeltRightMobile; animation-duration: 30s; }
+	.home-page.new-blue-home .brand-belt { animation-name: brandBeltRightMobile; animation-duration: calc(var(--client-count, 14) * 2.2s); }
 }
 
 @media (prefers-reduced-motion: reduce) {

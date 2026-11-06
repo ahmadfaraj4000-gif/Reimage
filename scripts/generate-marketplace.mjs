@@ -557,6 +557,26 @@ function write(relativePath, contents) {
   fs.writeFileSync(destination, contents.replace(/[ \t]+$/gm, ''));
 }
 
+function updateHomepageBanner() {
+  const clients = data.businesses.map(business => ({ name: business.name, url: profileUrl(business.slug) }));
+  // Keep this portfolio client until it also has a Discover profile.
+  if (!businessMap.has('da-candy-shop') && !clients.some(client => client.name.toLowerCase() === 'da candy shop')) {
+    clients.push({ name: 'Da Candy Shop', url: '/our-work.html#websites' });
+  }
+  function track(duplicate) {
+    const items = clients.map(client =>
+      `            <li><a href="${escapeHtml(client.url)}"${duplicate ? ' tabindex="-1"' : ''}>${escapeHtml(client.name)}</a></li>`
+    );
+    return [`          <ul class="brand-strip-track"${duplicate ? ' aria-hidden="true"' : ''}>`, ...items, '          </ul>'].join('\n');
+  }
+  const banner = [`        <div class="brand-belt" style="--client-count: ${clients.length}">`, track(false), track(true), '        </div>'].join('\n');
+  const homepagePath = path.join(root, 'index.html');
+  const homepage = fs.readFileSync(homepagePath, 'utf8');
+  const region = /(<!-- Discover banner start -->)[\s\S]*?(        <!-- Discover banner end -->)/;
+  if (!region.test(homepage)) throw new Error('Homepage is missing the Discover banner markers');
+  fs.writeFileSync(homepagePath, homepage.replace(region, (_, start, end) => `${start}\n${banner}\n${end}`));
+}
+
 function generateSitemap() {
   const urls = [
     { loc: `${siteUrl}/`, priority: '1.0', image: `${siteUrl}/assets/reimage-logo-2026-transparent.png` },
@@ -572,6 +592,7 @@ function generateSitemap() {
 }
 
 validateData();
+updateHomepageBanner();
 write('marketplace.html', generateHub());
 data.categories.forEach((category) => write(`marketplace/categories/${category.slug}/index.html`, generateCategory(category)));
 populatedLocations.forEach(location => write(`marketplace/locations/${location.slug}/index.html`, generateLocation(location)));
