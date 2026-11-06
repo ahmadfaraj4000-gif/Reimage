@@ -283,7 +283,7 @@ function hubSchema() {
         '@type': 'CollectionPage', '@id': `${siteUrl}/marketplace.html#webpage`, name: 'Central Connecticut Local Business Directory by RE IMAGE', url: `${siteUrl}/marketplace.html`,
         description: 'Discover restaurants, rental cars, auto body shops, skincare, hair braiding, printing, property rentals, and local services in Central Connecticut.',
         isPartOf: { '@id': `${siteUrl}/#website` }, publisher: { '@id': `${siteUrl}/#organization` }, dateModified: searchUpdatedAt, inLanguage: 'en-US',
-        hasPart: [...data.categories.map(category => ({ '@type': 'CollectionPage', name: category.name, url: `${siteUrl}${categoryUrl(category.slug)}` })), ...populatedLocations.map(location => ({ '@type': 'CollectionPage', name: location.title, url: `${siteUrl}${locationUrl(location.slug)}` }))],
+        hasPart: [{ '@type': 'WebPage', name: 'Things to Do in Hartford, CT', url: siteUrl + hartfordOutingsPath }, ...data.categories.map(category => ({ '@type': 'CollectionPage', name: category.name, url: `${siteUrl}${categoryUrl(category.slug)}` })), ...populatedLocations.map(location => ({ '@type': 'CollectionPage', name: location.title, url: `${siteUrl}${locationUrl(location.slug)}` }))],
         about: { '@type': 'AdministrativeArea', name: 'Central Connecticut', containedInPlace: { '@type': 'State', name: 'Connecticut' } },
         mainEntity: {
           '@type': 'ItemList', name: 'Businesses in Central Connecticut', numberOfItems: data.businesses.length,
@@ -323,7 +323,7 @@ function generateHub() {
     <section class="market-hero">
       <div class="market-wrap market-hero__inner">
         <h1>Discover Central Connecticut’s <em>local businesses.</em></h1>
-        <p class="market-hero__copy">Explore <a href="${hartfordOutingsPath}">things to do in Hartford</a>, find <a href="${categoryUrl('car-rentals')}">cars to rent nearby</a>, or compare <a href="${categoryUrl('automobile-services')}">Hartford-area auto services</a>.</p>
+        <p class="market-hero__copy">From restaurants and fresh juices to rental cars, auto body repair, skincare, braiding, printing, and more—start here.</p>
         <form class="market-search" id="marketSearchForm" role="search">
           <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m1.35-5.65a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
           <label class="visually-hidden" for="marketSearch">Search Central Connecticut businesses</label>
@@ -395,10 +395,10 @@ function generateCategory(category) {
     }, breadcrumb, faqSchema(categoryFaqs, `${siteUrl}${categoryUrl(category.slug)}`)]
   }];
   const body = `<main id="main-content">
-    <section class="category-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Discover</a><span>/</span><span aria-current="page">${escapeHtml(category.name)}</span></nav><p class="eyebrow">${businesses.some((business) => business.regionRank < 4) ? 'Central Connecticut local guide' : 'Beyond Central Connecticut'}</p><h1>${topic.title ? escapeHtml(title) : `${escapeHtml(category.name)}<br><em>${escapeHtml(categoryLocation)}.</em>`}</h1><p>${escapeHtml(description)}</p><a class="back-link" href="/marketplace.html">← Search all Central Connecticut businesses</a></div></section>
+    <section class="category-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Discover</a><span>/</span><span aria-current="page">${escapeHtml(category.name)}</span></nav><p class="eyebrow">${businesses.some((business) => business.regionRank < 4) ? 'Central Connecticut local guide' : 'Beyond Central Connecticut'}</p><h1>${escapeHtml(category.name)}<br><em>${escapeHtml(categoryLocation)}.</em></h1><p>${escapeHtml(category.description)}</p><a class="back-link" href="/marketplace.html">← Search all Central Connecticut businesses</a></div></section>
     <section class="market-section category-feature"><div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Featured ${escapeHtml(category.shortName)}</p><h2>Start with a local standout.</h2></div></div><div class="featured-single">${card(featured, { featured: true })}</div></div></section>
     <section class="market-section"><div class="market-wrap"><div class="directory-heading"><div><p class="eyebrow">Browse the category</p><h2>${businesses.length} ${businesses.length === 1 ? 'business' : 'businesses'} to explore</h2></div><a class="text-link" href="/marketplace.html?category=${category.slug}">Open filtered marketplace →</a></div><div class="business-grid">${businesses.map((business) => card(business)).join('')}</div></div></section>
-    <section class="category-copy"><div class="market-wrap category-copy__inner"><div><p class="eyebrow">Find the right fit</p><h2>${escapeHtml(topic.heading)}</h2></div><div><p>${escapeHtml(topic.copy)}</p><p>Explore: ${topic.terms.map(escapeHtml).join(', ')}.</p></div></div></section>
+    <section class="category-copy"><div class="market-wrap category-copy__inner"><div><p class="eyebrow">Find the right fit</p><h2>${escapeHtml(topic.heading)}</h2></div><div><p>${escapeHtml(topic.copy)}</p></div></div></section>
     ${faqSection(categoryFaqs, `${category.name}: common questions`)}
   </main>`;
   return shell({ title: `${title} | RE IMAGE Local Guide`, description: topic.description || `${description} Compare specialties and contact businesses through official links.`, canonical: `${siteUrl}${categoryUrl(category.slug)}`, image: logoAssets[featured.slug] || featured.image, imageAlt: `${featured.name} logo — featured ${category.shortName} business`, schema, body, pageClass: 'marketplace-category' });
