@@ -48,7 +48,7 @@ function browseGuides() {
 }
 
 const logoAssets = {
-  'bethaney-brenner-dmd': 'assets/marketplace/logos/bethaney-brenner-dmd.webp',
+  'bethaney-brenner-dmd': 'assets/marketplace/logos/bethaney-brenner-dmd-black.webp',
   'comma-vintage': 'assets/marketplace/logos/comma-vintage.webp',
   'botticello-auto-repair': 'assets/marketplace/logos/botticello-auto-repair-2026.png',
   'tuff-cuts': 'assets/marketplace/logos/tuff-cuts-2026.png',
@@ -179,7 +179,7 @@ function head({ title, description, canonical, image = `${siteUrl}/assets/reimag
   <meta name="twitter:image" content="${absoluteImage}">
   <meta name="twitter:image:alt" content="${escapeHtml(imageAlt)}">
   <link rel="stylesheet" href="/public-shell.css?v=20261007-2">
-  <link rel="stylesheet" href="/marketplace.css?v=20261105-2">
+  <link rel="stylesheet" href="/marketplace.css?v=20261105-3">
   ${schema.map((item) => `<script type="application/ld+json">${escapeJson(item)}</script>`).join('\n  ')}
   <link rel="stylesheet" href="/public-typography.css?v=20260914-1">
 </head>`;

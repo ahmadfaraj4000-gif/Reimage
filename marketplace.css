@@ -315,8 +315,6 @@ body.marketplace-page a.button--light { background: var(--market-blue); color: #
   padding-bottom: 1px;
 }
 
-.business-logo-stage--bethaney-brenner-dmd { background: #163047; }
-
 .filter-chip {
   flex: 0 0 auto;
   min-height: 38px;
