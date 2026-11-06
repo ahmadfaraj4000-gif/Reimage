@@ -179,7 +179,7 @@ function head({ title, description, canonical, image = `${siteUrl}/assets/reimag
   <meta name="twitter:image" content="${absoluteImage}">
   <meta name="twitter:image:alt" content="${escapeHtml(imageAlt)}">
   <link rel="stylesheet" href="/public-shell.css?v=20261007-2">
-  <link rel="stylesheet" href="/marketplace.css?v=20261105-3">
+  <link rel="stylesheet" href="/marketplace.css?v=20261105-4">
   ${schema.map((item) => `<script type="application/ld+json">${escapeJson(item)}</script>`).join('\n  ')}
   <link rel="stylesheet" href="/public-typography.css?v=20260914-1">
 </head>`;
@@ -328,8 +328,11 @@ function generateHub() {
 
     <section class="discovery-bar" aria-label="Marketplace filters">
       <div class="market-wrap">
-        <div class="filter-block"><span class="visually-hidden">Explore by service</span><div class="chip-row" id="categoryFilters"><button class="filter-chip active" type="button" data-category="all" aria-pressed="true">All businesses</button>${filterCategories.map((category) => `<a class="filter-chip" href="${categoryUrl(category.slug)}" data-category="${category.slug}"${category.slug === 'restaurants-drinks' ? ` data-featured-pick="${escapeHtml(foodPick)}"` : ''} aria-current="false">${escapeHtml(category.shortName)}</a>`).join('')}</div></div>
-        <div class="filter-block filter-block--locations"><label class="location-select"><span class="visually-hidden">Filter by area</span><select id="locationFilter"><option value="all">All locations</option>${locationFilters.map(location => `<option value="${location.slug}">${escapeHtml(location.name)}</option>`).join('')}</select></label></div>
+        <div class="chip-row" id="categoryFilters">
+          <button class="filter-chip active" type="button" data-category="all" aria-pressed="true">All businesses</button>
+          <label class="location-select"><span class="visually-hidden">Filter by area</span><select id="locationFilter"><option value="all">All locations</option>${locationFilters.map(location => `<option value="${location.slug}">${escapeHtml(location.name)}</option>`).join('')}</select></label>
+          ${filterCategories.map((category) => `<a class="filter-chip" href="${categoryUrl(category.slug)}" data-category="${category.slug}"${category.slug === 'restaurants-drinks' ? ` data-featured-pick="${escapeHtml(foodPick)}"` : ''} aria-current="false">${escapeHtml(category.shortName)}</a>`).join('')}
+        </div>
       </div>
     </section>
 
