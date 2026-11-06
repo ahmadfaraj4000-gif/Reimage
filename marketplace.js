@@ -72,6 +72,7 @@
 
   const params = new URLSearchParams(window.location.search);
   if (['auto-body-towing', 'car-audio-detailing'].includes(params.get('category'))) params.set('category', 'automobile-services');
+  if (['barbershops', 'hair-braiding'].includes(params.get('category'))) params.set('category', 'hair-services');
   const validCategory = [...categoryFilters.querySelectorAll('[data-category]')].some((button) => button.dataset.category === params.get('category'));
   const validLocation = [...locationFilter.options].some((option) => option.value === params.get('location'));
   const state = {

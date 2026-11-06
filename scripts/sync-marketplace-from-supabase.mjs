@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { hairAliases } from './category-redirects.mjs';
 import { normalizeAutomobileCategories, retiredBusinessSlugs } from './automobile-categories.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -95,16 +96,24 @@ const snapshot = {
 // Explicitly repository-published listings remain available until managed in
 // Supabase. Synced records take precedence once those listings are added there.
 const repositoryCatalog = JSON.parse(fs.readFileSync(path.join(root, 'marketplace-data.json'), 'utf8'));
-// Keep Action Audio on its custom domain when an older CMS record still uses
-// GitHub Pages. Preserve any future admin-managed destination.
-const actionAudio = snapshot.businesses.find((business) => business.slug === 'action-audio');
-const repositoryActionAudio = repositoryCatalog.businesses.find((business) => business.slug === 'action-audio');
-for (const field of ['website', 'ctaUrl']) {
-  if (actionAudio && repositoryActionAudio?.[field] && /^https?:\/\/reimage-demo\.github\.io\/action-audio(?:\/|$)/i.test(actionAudio[field] || '')) {
-    actionAudio[field] = repositoryActionAudio[field];
+// Migrate known previous destinations while preserving future CMS edits.
+const previousDestinations = {
+  'action-audio': /^https?:\/\/(?:reimage-demo\.github\.io\/action-audio(?:\/|$)|www\.actionaudiostorellc\.com\/book\.html$)/i,
+  'tuff-cuts': /^https?:\/\/reimage-demo\.github\.io\/tuff-cuts?(?:\/|$)/i
+};
+for (const [slug, previous] of Object.entries(previousDestinations)) {
+  const listing = snapshot.businesses.find(business => business.slug === slug);
+  const source = repositoryCatalog.businesses.find(business => business.slug === slug);
+  if (!listing || !source) continue;
+  for (const field of ['website', 'ctaUrl']) {
+    if (!previous.test(listing[field] || '')) continue;
+    listing[field] = source[field];
+    if (field === 'ctaUrl') listing.ctaLabel = source.ctaLabel;
   }
 }
 
+const actionAudio = snapshot.businesses.find((business) => business.slug === 'action-audio');
+const repositoryActionAudio = repositoryCatalog.businesses.find((business) => business.slug === 'action-audio');
 // Correct the retired repair description only while the CMS still contains it.
 // Later business-managed copy remains authoritative.
 if (actionAudio && repositoryActionAudio && /electronics repair/i.test(actionAudio.shortBio || '')) {
@@ -179,6 +188,17 @@ for (const business of repositoryCatalog.businesses.filter((item) => item.reposi
     snapshot.categories.push(category);
   }
   snapshot.businesses.push(business);
+}
+
+// Fold legacy CMS memberships into the shared public hair services filter.
+if (snapshot.categories.some(category => hairAliases.includes(category.slug))) {
+  const hair = repositoryCatalog.categories.find(category => category.slug === 'hair-services');
+  const first = snapshot.categories.findIndex(category => hairAliases.includes(category.slug) || category.slug === hair.slug);
+  snapshot.categories = snapshot.categories.filter(category => !hairAliases.includes(category.slug) && category.slug !== hair.slug);
+  snapshot.categories.splice(first, 0, hair);
+  for (const business of snapshot.businesses) {
+    business.categories = [...new Set(business.categories.map(slug => hairAliases.includes(slug) ? hair.slug : slug))];
+  }
 }
 
 const destination = process.env.MARKETPLACE_DATA_PATH || path.join(root, '.marketplace-data.generated.json');

@@ -16,7 +16,7 @@
 
 ## Central Connecticut directory categories
 
-- [Barbershops](https://reimagebs.com/marketplace/categories/barbershops/): Local barbershops for haircuts, fades, lineups, beard grooming, and personal style.
+- [Hair Services](https://reimagebs.com/marketplace/categories/hair-services/): Barbering and styling in Hartford, including haircuts, fades, beard grooming, African hair braiding, twists, and locs.
 - [Medical & Healthcare](https://reimagebs.com/marketplace/categories/medical-healthcare/): Naturopathic care, nutrition consultations, physician collaboration, and medical education.
 - [Nutrition & Supplements](https://reimagebs.com/marketplace/categories/nutrition-supplements/): Naturopathic care, nutrition consultations, and nutritional supplements in Greater Hartford.
 - [Restaurants & Drinks](https://reimagebs.com/marketplace/categories/restaurants-drinks/): Juice bars, Caribbean favorites, Mexican fusion, takeout, catering, and local flavors across Central Connecticut.
@@ -24,7 +24,6 @@
 - [Automobile services](https://reimagebs.com/marketplace/categories/automobile-services/): Mechanic services, auto repair, vehicle maintenance, auto body repair, towing, detailing, car audio, and vehicle electronics.
 - [Car Rentals](https://reimagebs.com/marketplace/categories/car-rentals/): Local cars, SUVs, trucks, luxury vehicles, and passenger vans available to reserve online.
 - [Skincare & Esthetics](https://reimagebs.com/marketplace/categories/skincare-esthetics/): Corrective and customized skincare for acne, hyperpigmentation, texture, and personal care.
-- [Hair & Braiding](https://reimagebs.com/marketplace/categories/hair-braiding/): African braiding, protective styles, extensions, twists, locs, and personalized styling.
 - [Printing & Custom Apparel](https://reimagebs.com/marketplace/categories/printing-apparel/): Custom apparel, embroidery, signs, banners, uniforms, promotional products, and print services.
 - [Real Estate & Rentals](https://reimagebs.com/marketplace/categories/real-estate-rentals/): Residential and commercial rentals, property management, and Hartford-area development.
 - [Community & Family](https://reimagebs.com/marketplace/categories/community-family/): Mentorship, gatherings, resources, and support designed to strengthen families and communities.

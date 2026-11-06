@@ -8,18 +8,19 @@
   "featuredGuide": "https://reimagebs.com/marketplace/guides/new-britain-avenue-hartford/",
   "categories": [
     {
-      "slug": "barbershops",
-      "name": "Barbershops",
-      "description": "Local barbershops for haircuts, fades, lineups, beard grooming, and personal style.",
+      "slug": "hair-services",
+      "name": "Hair Services",
+      "description": "Barbering and styling in Hartford, including haircuts, fades, beard grooming, African hair braiding, twists, and locs.",
       "topics": [
-        "barbershop Hartford",
-        "haircuts",
-        "fades",
-        "lineups",
-        "beard grooming"
+        "Hartford barbershops",
+        "haircuts and fades",
+        "beard grooming",
+        "African hair braiding Hartford",
+        "protective styles",
+        "twists and locs"
       ],
-      "guide": "Explore Tuff Cuts Barbershop on Albany Avenue in Hartford for haircuts, fades, lineups, and beard grooming. Visit the shop website for services and contact information.",
-      "url": "https://reimagebs.com/marketplace/categories/barbershops/"
+      "guide": "For a fade, lineup, or beard trim, visit Tuff Cuts Barbershop on Albany Avenue. For braids, twists, locs, or extensions, explore Lorie’s African Hair Braiding on New Britain Avenue. Check each shop’s website for services and booking details.",
+      "url": "https://reimagebs.com/marketplace/categories/hair-services/"
     },
     {
       "slug": "medical-healthcare",
@@ -122,20 +123,6 @@
       ],
       "guide": "Explore a Manchester skincare business offering customized and corrective skincare. Read the profile for its specialties, then contact the provider about consultations and the services available for your concerns. The directory does not diagnose skin conditions or promise treatment outcomes.",
       "url": "https://reimagebs.com/marketplace/categories/skincare-esthetics/"
-    },
-    {
-      "slug": "hair-braiding",
-      "name": "Hair & Braiding",
-      "description": "African braiding, protective styles, extensions, twists, locs, and personalized styling.",
-      "topics": [
-        "African hair braiding Hartford",
-        "protective hairstyles",
-        "twists",
-        "locs",
-        "hair extensions"
-      ],
-      "guide": "Find an African hair-braiding business in Hartford and explore protective styles, twists, locs, and extensions. Bring your preferred style, hair length, and timing to the booking conversation. Confirm service duration, hair requirements, and the final price with the stylist.",
-      "url": "https://reimagebs.com/marketplace/categories/hair-braiding/"
     },
     {
       "slug": "printing-apparel",
@@ -318,9 +305,9 @@
     {
       "name": "Tuff Cuts Barbershop",
       "profile": "https://reimagebs.com/marketplace/businesses/tuff-cuts/",
-      "officialWebsite": "https://reimage-demo.github.io/tuff-cut/",
+      "officialWebsite": "https://tuffcutsct.com/",
       "category": [
-        "Barbershops"
+        "Hair Services"
       ],
       "location": "1103 Albany Avenue, Hartford, CT 06112",
       "specialties": [
@@ -331,7 +318,7 @@
       "description": "Neighborhood barbershop on Albany Avenue in Hartford for haircuts, fades, lineups, and beard grooming.",
       "primaryAction": {
         "label": "View services & visit",
-        "url": "https://reimage-demo.github.io/tuff-cut/"
+        "url": "https://tuffcutsct.com/"
       },
       "informationLastVerified": "2026-10-23"
     },
@@ -414,8 +401,8 @@
       ],
       "description": "Interior and exterior car detailing and window tinting in Hartford; car audio, remote starters, and electronics installation in Wethersfield. Established in 1983.",
       "primaryAction": {
-        "label": "Book an appointment",
-        "url": "https://www.actionaudiostorellc.com/book.html"
+        "label": "Visit website",
+        "url": "https://www.actionaudiostorellc.com/"
       },
       "informationLastVerified": "2026-10-30"
     },
@@ -665,7 +652,7 @@
       "profile": "https://reimagebs.com/marketplace/businesses/lories-african-hair-braiding/",
       "officialWebsite": "https://loriesafricanhairbraidingllc.com",
       "category": [
-        "Hair & Braiding"
+        "Hair Services"
       ],
       "location": "875 New Britain Avenue, Hartford, CT 06106",
       "specialties": [

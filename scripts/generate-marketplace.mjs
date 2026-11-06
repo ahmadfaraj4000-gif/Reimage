@@ -1,5 +1,6 @@
 import fs from 'node:fs';
-import { normalizeAutomobileCategories, automobileAliases } from './automobile-categories.mjs';
+import { categoryRedirects } from './category-redirects.mjs';
+import { normalizeAutomobileCategories } from './automobile-categories.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { categoryTopics, locationFilters, marketSearch } from './search-content.mjs';
@@ -217,7 +218,7 @@ function card(business, options = {}) {
   const primary = categoryMap.get(business.categories[0]);
   const isBeyond = business.regionRank === 4;
   const featured = options.featured;
-  const directWebsite = business.slug === 'blue-hills-cafe';
+  const directWebsite = ['blue-hills-cafe', 'action-audio', 'tuff-cuts'].includes(business.slug);
   const cardHref = directWebsite ? business.website : profileUrl(business.slug);
   const cardLabel = directWebsite ? `Visit ${business.name} website` : `View ${business.name} profile`;
   const searchText = [business.name, business.locationLabel, addressText(business), business.shortBio, ...business.specialties, ...business.tags, ...business.categories.map(categoryName)].join(' ').toLowerCase();
@@ -248,7 +249,7 @@ function shell({ title, description, canonical, image, imageAlt, schema, body, p
   ${categoryDirectory()}
   ${footer()}
   <script src="/public-shell.js?v=20261007-3" defer></script>
-  <script src="/marketplace.js?v=20261011-1" defer></script>
+  <script src="/marketplace.js?v=20261105-1" defer></script>
 </body>
 </html>\n`;
 }
@@ -575,4 +576,8 @@ write('robots.txt', `User-agent: OAI-SearchBot\nAllow: /\nDisallow: /reimage-adm
 console.log(`Generated marketplace hub, ${data.categories.length} category pages, ${populatedLocations.length} location guides, ${data.businesses.length} business profiles, two trust/guide pages, AI feeds, sitemap.xml, and robots.txt.`);
 
 // Preserve published category URLs while consolidating discovery into one broad guide.
-for (const alias of automobileAliases) write(`marketplace/categories/${alias}/index.html`, `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Automobile services | RE IMAGE</title><meta name="robots" content="noindex,follow"><link rel="canonical" href="https://reimagebs.com/marketplace/categories/automobile-services/"><meta http-equiv="refresh" content="0;url=/marketplace/categories/automobile-services/"></head><body><p>This guide has moved to <a href="/marketplace/categories/automobile-services/">Automobile services</a>: auto body, towing, detailing, car audio, and vehicle electronics.</p></body></html>`);
+for (const [alias, slug] of categoryRedirects) {
+  const target = categoryUrl(slug);
+  const name = escapeHtml(categoryName(slug));
+  write(`marketplace/categories/${alias}/index.html`, `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${name} | RE IMAGE</title><meta name="robots" content="noindex,follow"><link rel="canonical" href="${siteUrl}${target}"><meta http-equiv="refresh" content="0;url=${target}"></head><body><p>This guide has moved to <a href="${target}">${name}</a>.</p></body></html>`);
+}

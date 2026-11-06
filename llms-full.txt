@@ -13,11 +13,11 @@ National economic indicators for small-business loan, hiring, and pricing decisi
 
 ## Category guides
 
-### Barbershops
+### Hair Services
 
-URL: https://reimagebs.com/marketplace/categories/barbershops/
-Explore Tuff Cuts Barbershop on Albany Avenue in Hartford for haircuts, fades, lineups, and beard grooming. Visit the shop website for services and contact information.
-Topics: barbershop Hartford, haircuts, fades, lineups, beard grooming
+URL: https://reimagebs.com/marketplace/categories/hair-services/
+For a fade, lineup, or beard trim, visit Tuff Cuts Barbershop on Albany Avenue. For braids, twists, locs, or extensions, explore Lorie’s African Hair Braiding on New Britain Avenue. Check each shop’s website for services and booking details.
+Topics: Hartford barbershops, haircuts and fades, beard grooming, African hair braiding Hartford, protective styles, twists and locs
 
 ### Medical & Healthcare
 
@@ -60,12 +60,6 @@ Topics: car rentals near Hartford, Farmington car rentals, SUV rentals, passenge
 URL: https://reimagebs.com/marketplace/categories/skincare-esthetics/
 Explore a Manchester skincare business offering customized and corrective skincare. Read the profile for its specialties, then contact the provider about consultations and the services available for your concerns. The directory does not diagnose skin conditions or promise treatment outcomes.
 Topics: Manchester skincare, esthetician near Hartford, customized facials, acne skincare, hyperpigmentation skincare
-
-### Hair & Braiding
-
-URL: https://reimagebs.com/marketplace/categories/hair-braiding/
-Find an African hair-braiding business in Hartford and explore protective styles, twists, locs, and extensions. Bring your preferred style, hair length, and timing to the booking conversation. Confirm service duration, hair requirements, and the final price with the stylist.
-Topics: African hair braiding Hartford, protective hairstyles, twists, locs, hair extensions
 
 ### Printing & Custom Apparel
 
@@ -149,12 +143,12 @@ Listed businesses: Amanah Medical Care, CR8 Autos, Empire Elite Rides
 ## Tuff Cuts Barbershop
 
 - RE IMAGE profile: https://reimagebs.com/marketplace/businesses/tuff-cuts/
-- Official website: https://reimage-demo.github.io/tuff-cut/
-- Category: Barbershops
+- Official website: https://tuffcutsct.com/
+- Category: Hair Services
 - Location or service area: 1103 Albany Avenue, Hartford, CT 06112
 - Specialties: Haircuts & fades, Lineups, Beard grooming
 - Summary: Neighborhood barbershop on Albany Avenue in Hartford for haircuts, fades, lineups, and beard grooming.
-- Primary action: View services & visit — https://reimage-demo.github.io/tuff-cut/
+- Primary action: View services & visit — https://tuffcutsct.com/
 - Information last verified: 2026-10-23
 
 ## Dr. Frank Aieta, ND
@@ -198,7 +192,7 @@ Listed businesses: Amanah Medical Care, CR8 Autos, Empire Elite Rides
 - Location or service area: Hartford and Wethersfield, Connecticut
 - Specialties: Interior & exterior detailing, Car audio & electronics, Remote starter installation
 - Summary: Interior and exterior car detailing and window tinting in Hartford; car audio, remote starters, and electronics installation in Wethersfield. Established in 1983.
-- Primary action: Book an appointment — https://www.actionaudiostorellc.com/book.html
+- Primary action: Visit website — https://www.actionaudiostorellc.com/
 - Information last verified: 2026-10-30
 
 ## Amanah Medical Care
@@ -337,7 +331,7 @@ Listed businesses: Amanah Medical Care, CR8 Autos, Empire Elite Rides
 
 - RE IMAGE profile: https://reimagebs.com/marketplace/businesses/lories-african-hair-braiding/
 - Official website: https://loriesafricanhairbraidingllc.com
-- Category: Hair & Braiding
+- Category: Hair Services
 - Location or service area: 875 New Britain Avenue, Hartford, CT 06106
 - Specialties: Box braids, Knotless & Fulani styles, Locs & extensions
 - Summary: A longtime Hartford salon specializing in African braiding, protective styles, extensions, twists, cornrows, weaving, and locs.
