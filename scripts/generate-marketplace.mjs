@@ -290,24 +290,23 @@ function generateHub() {
   // Keep the requested Discover order stable across repository and CMS builds.
   const foodPick = categoryMap.get('restaurants-drinks')?.featured;
   const firstChoices = ['car-craft-auto-body-towing', 'rent-me-ct', foodPick];
-  const bottomPair = ['the-anchor-collective', 'living-word-imprints'];
-  const formerLast = ['mi-buen-pastor-mexican-fusion', 'living-word-imprints'];
-  const frontPair = ['comma-vintage', 'andaleeb-enterprises'];
-  const dentist = 'bethaney-brenner-dmd';
+  const lastChoices = ['mi-buen-pastor-mexican-fusion', 'the-anchor-collective', 'living-word-imprints'];
+  // Restore the published slots on either side of Anchor's former spot.
+  const restoredSlots = ['andaleeb-enterprises', 'bethaney-brenner-dmd', 'comma-vintage'];
 
-  function discoverOrder(businesses, includeLast) {
-    const slugs = businesses.map(business => business.slug);
-    const originalOrder = [...new Set([...firstChoices, ...slugs])].filter(slug => slugs.includes(slug) && slug !== dentist && !formerLast.includes(slug));
-    const anchorIndex = originalOrder.indexOf('the-anchor-collective');
-    const ordered = [...new Set([...frontPair, ...originalOrder])].filter(slug => slugs.includes(slug) && slug !== 'the-anchor-collective');
-    if (slugs.includes(dentist)) ordered.splice(anchorIndex < 0 ? ordered.length : anchorIndex, 0, dentist);
-    if (includeLast) ordered.push(...['mi-buen-pastor-mexican-fusion', ...bottomPair].filter(slug => slugs.includes(slug)));
+  function discoverOrder(businesses, directory) {
+    const slugs = new Set(businesses.map(business => business.slug));
+    const reserved = new Set([...lastChoices, ...restoredSlots]);
+    const ordered = [...new Set([...firstChoices, ...slugs])].filter(slug => slugs.has(slug) && !reserved.has(slug));
+    const firstRestoredIndex = directory ? 9 : 7;
+    ordered.splice(firstRestoredIndex, 0, ...restoredSlots.filter(slug => slugs.has(slug)));
+    if (directory) ordered.push(...lastChoices.filter(slug => slugs.has(slug)));
     return ordered.map(slug => businessMap.get(slug));
   }
 
   const centralConnecticutBusinesses = discoverOrder(data.businesses.filter(business => business.regionRank < 4), true);
   const beyondBusinesses = data.businesses.filter(business => business.regionRank === 4);
-  const featuredBusinesses = [...new Set([...firstChoices, ...data.categories.map(category => category.featured), ...frontPair, dentist])]
+  const featuredBusinesses = [...new Set([...firstChoices, ...data.categories.map(category => category.featured), ...restoredSlots])]
     .map(slug => businessMap.get(slug)).filter(business => business && business.regionRank < 4);
   const featured = discoverOrder(featuredBusinesses, false);
   const filterCategories = [...data.categories].sort((a, b) => Number(b.slug === 'clothing-accessories') - Number(a.slug === 'clothing-accessories'));
