@@ -216,6 +216,13 @@ function primaryAction(business, arrow = '') {
   return `<a class="button button--primary" href="${escapeHtml(business.ctaUrl)}" target="_blank" rel="noopener">${escapeHtml(business.ctaLabel)}${arrow}</a>`;
 }
 
+const discoverySearchPhrases = {
+  'the-patio': 'things to do in Hartford date night mini golf live music',
+  'blue-hills-cafe': 'things to do in Hartford at night',
+  'rent-me-ct': 'cars to rent near Hartford CT rental cars',
+  'car-craft-auto-body-towing': 'choosing the best body shops in the Hartford area auto body shop near Hartford CT'
+};
+
 function card(business, options = {}) {
   const primary = categoryMap.get(business.categories[0]);
   const isBeyond = business.regionRank === 4;
@@ -224,7 +231,7 @@ function card(business, options = {}) {
   const officialLink = business.slug === 'action-audio' ? business.ctaUrl : business.website;
   const cardHref = directWebsite ? officialLink : profileUrl(business.slug);
   const cardLabel = directWebsite ? `Visit ${business.name} website` : `View ${business.name} profile`;
-  const searchText = [business.name, business.locationLabel, addressText(business), business.shortBio, ...business.specialties, ...business.tags, ...business.categories.map(categoryName)].join(' ').toLowerCase();
+  const searchText = [business.name, business.locationLabel, addressText(business), business.shortBio, discoverySearchPhrases[business.slug], ...business.specialties, ...business.tags, ...business.categories.map(categoryName)].join(' ').toLowerCase();
   return `<article class="business-card${featured ? ' business-card--featured' : ''}" data-business-card data-slug="${business.slug}" data-primary-category="${business.categories[0]}" data-categories="${business.categories.join(' ')}" data-location="${(business.locations || [business.locationKey]).join(' ')}" data-rank="${business.regionRank}" data-search="${escapeHtml(searchText)}">
     <a class="business-card__media business-card__logo" href="${escapeHtml(cardHref)}" aria-label="${escapeHtml(cardLabel)}">
       <span class="business-logo-stage business-logo-stage--${business.slug}">${businessLogo(business)}</span>
@@ -315,7 +322,7 @@ function generateHub() {
     <section class="market-hero">
       <div class="market-wrap market-hero__inner">
         <h1>Discover Central Connecticut’s <em>local businesses.</em></h1>
-        <p class="market-hero__copy">From restaurants and fresh juices to rental cars, auto body repair, skincare, braiding, printing, and more—start here.</p>
+        <p class="market-hero__copy">Explore <a href="${categoryUrl('nightlife-events')}">things to do in Hartford</a>, find <a href="${categoryUrl('car-rentals')}">cars to rent nearby</a>, or compare <a href="${categoryUrl('automobile-services')}">Hartford-area auto services</a>.</p>
         <form class="market-search" id="marketSearchForm" role="search">
           <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m1.35-5.65a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
           <label class="visually-hidden" for="marketSearch">Search Central Connecticut businesses</label>
@@ -361,7 +368,7 @@ function generateHub() {
     <script id="marketplaceData" type="application/json">${embedded}</script>
   </main>`;
 
-  return shell({ title: 'Discover Central Connecticut Businesses, Services & Local Guides | RE IMAGE', description: 'Find Central Connecticut restaurants, rental cars, auto body shops, skincare, African hair braiding, printing, property rentals, and local services with verified details and direct links.', canonical: `${siteUrl}/marketplace.html`, imageAlt: 'RE IMAGE Central Connecticut local business directory', schema: hubSchema(), body, pageClass: 'marketplace-hub' });
+  return shell({ title: 'Discover Hartford, CT | Things to Do & Local Businesses | RE IMAGE', description: 'Explore things to do in Hartford, from live music and mini golf to Caribbean food. Find nearby car rentals, collision repair, barbershops, and other local businesses.', canonical: `${siteUrl}/marketplace.html`, imageAlt: 'RE IMAGE Central Connecticut local business directory', schema: hubSchema(), body, pageClass: 'marketplace-hub' });
 }
 
 function generateCategory(category) {
@@ -369,7 +376,10 @@ function generateCategory(category) {
   const featured = businessMap.get(category.featured);
   const categoryLocation = businesses.some((business) => business.regionRank < 4) ? 'in Central Connecticut' : 'beyond Central Connecticut';
   const topic = topicFor(category);
+  const title = topic.title || `${category.name} ${categoryLocation}`;
+  const description = topic.description || category.description;
   const categoryFaqs = [
+    ...(topic.faq ? [topic.faq] : []),
     [`Which ${category.name.toLowerCase()} businesses are listed?`, `${businesses.map(business => business.name).join(', ')} ${businesses.length === 1 ? 'is listed' : 'are listed'} in this category. Check each profile for specialties, location or service area, and the official business website.`],
     [`Where do these ${category.name.toLowerCase()} businesses operate?`, `The listed locations or service areas are ${[...new Set(businesses.map(business => business.locationLabel))].join('; ')}. A service area is not necessarily a storefront. Confirm the specific location and availability directly with the business.`],
     [`How do I compare ${category.name.toLowerCase()} providers?`, topic.copy]
@@ -377,20 +387,20 @@ function generateCategory(category) {
   const breadcrumb = { '@type': 'BreadcrumbList', '@id': `${siteUrl}${categoryUrl(category.slug)}#breadcrumb`, itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Discover', item: `${siteUrl}/marketplace.html` }, { '@type': 'ListItem', position: 2, name: category.name, item: `${siteUrl}${categoryUrl(category.slug)}` }] };
   const schema = [{
     '@context': 'https://schema.org', '@graph': [{
-      '@type': 'CollectionPage', '@id': `${siteUrl}${categoryUrl(category.slug)}#webpage`, name: `${category.name} ${categoryLocation}`, url: `${siteUrl}${categoryUrl(category.slug)}`, description: category.description,
+      '@type': 'CollectionPage', '@id': `${siteUrl}${categoryUrl(category.slug)}#webpage`, name: title, url: `${siteUrl}${categoryUrl(category.slug)}`, description,
       isPartOf: { '@id': `${siteUrl}/#website` }, publisher: { '@id': `${siteUrl}/#organization` }, dateModified: searchUpdatedAt, inLanguage: 'en-US',
       about: [{ '@type': 'Thing', name: category.name }, ...businesses.map(business => ({ '@type': 'Place', name: business.locationLabel }))], keywords: topic.terms.join(', '), breadcrumb: { '@id': breadcrumb['@id'] },
       mainEntity: { '@type': 'ItemList', name: `${category.name} in Central Connecticut`, numberOfItems: businesses.length, itemListElement: businesses.map((business, index) => ({ '@type': 'ListItem', position: index + 1, name: business.name, item: { '@type': business.schemaType || 'Organization', '@id': `${siteUrl}${profileUrl(business.slug)}#business`, name: business.name, url: `${siteUrl}${profileUrl(business.slug)}` } })) }
     }, breadcrumb, faqSchema(categoryFaqs, `${siteUrl}${categoryUrl(category.slug)}`)]
   }];
   const body = `<main id="main-content">
-    <section class="category-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Discover</a><span>/</span><span aria-current="page">${escapeHtml(category.name)}</span></nav><p class="eyebrow">${businesses.some((business) => business.regionRank < 4) ? 'Central Connecticut local guide' : 'Beyond Central Connecticut'}</p><h1>${escapeHtml(category.name)}<br><em>${escapeHtml(categoryLocation)}.</em></h1><p>${escapeHtml(category.description)}</p><a class="back-link" href="/marketplace.html">← Search all Central Connecticut businesses</a></div></section>
+    <section class="category-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Discover</a><span>/</span><span aria-current="page">${escapeHtml(category.name)}</span></nav><p class="eyebrow">${businesses.some((business) => business.regionRank < 4) ? 'Central Connecticut local guide' : 'Beyond Central Connecticut'}</p><h1>${topic.title ? escapeHtml(title) : `${escapeHtml(category.name)}<br><em>${escapeHtml(categoryLocation)}.</em>`}</h1><p>${escapeHtml(description)}</p><a class="back-link" href="/marketplace.html">← Search all Central Connecticut businesses</a></div></section>
     <section class="market-section category-feature"><div class="market-wrap"><div class="section-heading"><div><p class="eyebrow">Featured ${escapeHtml(category.shortName)}</p><h2>Start with a local standout.</h2></div></div><div class="featured-single">${card(featured, { featured: true })}</div></div></section>
     <section class="market-section"><div class="market-wrap"><div class="directory-heading"><div><p class="eyebrow">Browse the category</p><h2>${businesses.length} ${businesses.length === 1 ? 'business' : 'businesses'} to explore</h2></div><a class="text-link" href="/marketplace.html?category=${category.slug}">Open filtered marketplace →</a></div><div class="business-grid">${businesses.map((business) => card(business)).join('')}</div></div></section>
     <section class="category-copy"><div class="market-wrap category-copy__inner"><div><p class="eyebrow">Find the right fit</p><h2>${escapeHtml(topic.heading)}</h2></div><div><p>${escapeHtml(topic.copy)}</p><p>Explore: ${topic.terms.map(escapeHtml).join(', ')}.</p></div></div></section>
     ${faqSection(categoryFaqs, `${category.name}: common questions`)}
   </main>`;
-  return shell({ title: `${category.name} ${categoryLocation} | RE IMAGE Local Guide`, description: `${category.description} Compare specialties and contact businesses through official links.`, canonical: `${siteUrl}${categoryUrl(category.slug)}`, image: logoAssets[featured.slug] || featured.image, imageAlt: `${featured.name} logo — featured ${category.shortName} business`, schema, body, pageClass: 'marketplace-category' });
+  return shell({ title: `${title} | RE IMAGE Local Guide`, description: topic.description || `${description} Compare specialties and contact businesses through official links.`, canonical: `${siteUrl}${categoryUrl(category.slug)}`, image: logoAssets[featured.slug] || featured.image, imageAlt: `${featured.name} logo — featured ${category.shortName} business`, schema, body, pageClass: 'marketplace-category' });
 }
 
 function generateLocation(location) {
