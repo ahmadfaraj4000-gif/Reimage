@@ -278,60 +278,42 @@ body.marketplace-page a.button--light { background: var(--market-blue); color: #
 .market-trust strong { color: var(--market-navy); font-family: var(--site-font-apple); font-size: 1.15rem; }
 
 .discovery-bar {
-  position: sticky;
-  z-index: 100;
-  top: 54px;
   border-bottom: 1px solid var(--market-line);
-  padding: 18px 0;
-  background: rgba(255,255,255,.95);
-  box-shadow: 0 12px 35px rgba(7,20,38,.04);
-  backdrop-filter: blur(14px);
+  padding: 8px 0;
+  background: #fff;
 }
 
-.chip-row {
+.directory-filters {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 190px));
   gap: 8px;
 }
 
-.filter-chip,
-.location-select select {
+.directory-filters[hidden] { display: none; }
+
+.filter-select { position: relative; min-width: 0; }
+
+.filter-select select {
   box-sizing: border-box;
+  display: block;
   width: 100%;
-  min-width: 0;
   height: 44px;
   border: 1px solid var(--market-line);
   border-radius: 999px;
-  padding: 0 10px;
-  background-color: #fff;
+  padding: 0 32px 0 16px;
+  background: #fff;
   color: var(--market-ink);
   font: 500 .8125rem/1.15 var(--site-font-apple);
   cursor: pointer;
-  text-align: center;
-}
-
-.filter-chip {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-}
-
-.location-select { position: relative; display: block; min-width: 0; }
-
-.location-select select {
-  display: block;
   -webkit-appearance: none;
   appearance: none;
-  padding-inline: 24px;
-  text-align-last: center;
   text-overflow: ellipsis;
 }
 
-.location-select::after {
+.filter-select::after {
   content: "";
   position: absolute;
-  right: 15px;
+  right: 16px;
   top: 50%;
   width: 6px;
   height: 6px;
@@ -341,17 +323,8 @@ body.marketplace-page a.button--light { background: var(--market-blue); color: #
   pointer-events: none;
 }
 
-.filter-chip:hover,
-.location-select select:hover { border-color: #9eb9d4; color: var(--market-blue); }
-
-.filter-chip:focus-visible,
-.location-select select:focus-visible { outline: 2px solid var(--market-blue); outline-offset: -3px; }
-
-.filter-chip.active {
-  border-color: var(--market-navy);
-  background: var(--market-navy);
-  color: #fff;
-}
+.filter-select select:hover { border-color: #9eb9d4; }
+.filter-select select:focus-visible { outline: 2px solid var(--market-blue); outline-offset: 1px; }
 
 .market-section { padding: clamp(72px, 8vw, 112px) 0; }
 
@@ -848,16 +821,6 @@ body.marketplace-page a.back-link { color: var(--market-blue); }
   .market-search { grid-template-columns: 22px 1fr; padding: 8px 14px; border-radius: 16px; }
   .market-search button { grid-column: 1 / -1; width: 100%; }
   .market-trust { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 34px; }
-  .chip-row {
-    grid-auto-flow: column;
-    grid-template: repeat(2, 44px) / none;
-    grid-auto-columns: minmax(148px, max-content);
-    overflow-x: auto;
-    scrollbar-width: thin;
-    padding-bottom: 3px;
-  }
-  .chip-row .filter-chip { white-space: nowrap; }
-  .discovery-bar { top: 56px; padding: 13px 0; }
   .section-heading,
   .directory-heading { align-items: flex-start; flex-direction: column; gap: 14px; }
   .business-grid,

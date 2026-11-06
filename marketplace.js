@@ -52,7 +52,7 @@
 
   const searchInput = document.getElementById('marketSearch');
   const searchForm = document.getElementById('marketSearchForm');
-  const categoryFilters = document.getElementById('categoryFilters');
+  const categoryFilter = document.getElementById('categoryFilter');
   const locationFilter = document.getElementById('locationFilter');
   const businessGrid = document.getElementById('businessGrid');
   const beyondGrid = document.getElementById('beyondGrid');
@@ -62,7 +62,7 @@
   const activeFilters = document.getElementById('activeFilters');
   const beyondSection = document.getElementById('beyond');
 
-  if (!searchInput || !categoryFilters || !locationFilter || !businessGrid) return;
+  if (!searchInput || !categoryFilter || !locationFilter || !businessGrid) return;
 
   const normalize = (value) => String(value || '')
     .normalize('NFKD')
@@ -73,7 +73,7 @@
   const params = new URLSearchParams(window.location.search);
   if (['auto-body-towing', 'car-audio-detailing'].includes(params.get('category'))) params.set('category', 'automobile-services');
   if (['barbershops', 'hair-braiding'].includes(params.get('category'))) params.set('category', 'hair-services');
-  const validCategory = [...categoryFilters.querySelectorAll('[data-category]')].some((button) => button.dataset.category === params.get('category'));
+  const validCategory = [...categoryFilter.options].some(option => option.value === params.get('category'));
   const validLocation = [...locationFilter.options].some((option) => option.value === params.get('location'));
   const state = {
     query: params.get('q') || '',
@@ -104,11 +104,7 @@
   }
 
   function renderFilters() {
-    categoryFilters.querySelectorAll('[data-category]').forEach((button) => {
-      const active = button.dataset.category === state.category;
-      button.classList.toggle('active', active);
-      button.setAttribute(button.tagName === 'A' ? 'aria-current' : 'aria-pressed', String(active));
-    });
+    categoryFilter.value = state.category;
 
     const organicCards = [...businessGrid.querySelectorAll('[data-business-card]'), ...(beyondGrid ? [...beyondGrid.querySelectorAll('[data-business-card]')] : [])];
     let visible = 0;
@@ -123,7 +119,7 @@
     });
 
     if (featuredRail) {
-      const featuredPick = categoryFilters.querySelector(`[data-category="${state.category}"]`)?.dataset.featuredPick;
+      const featuredPick = categoryFilter.selectedOptions[0]?.dataset.featuredPick;
       let visibleFeatured = 0;
       featuredRail.querySelectorAll('[data-business-card]').forEach((card) => {
         const categoryMatch = state.category === 'all' || card.dataset.categories.split(' ').includes(state.category);
@@ -142,7 +138,7 @@
 
     const labels = [];
     if (state.query) labels.push(`Search: “${state.query}”`);
-    if (state.category !== 'all') labels.push(categoryFilters.querySelector(`[data-category="${state.category}"]`)?.textContent.trim());
+    if (state.category !== 'all') labels.push(categoryFilter.selectedOptions[0]?.textContent.trim());
     if (state.location !== 'all') labels.push(locationFilter.selectedOptions[0]?.textContent.trim());
     if (activeFilters) {
       activeFilters.hidden = labels.length === 0;
@@ -176,12 +172,8 @@
     renderFilters();
   });
 
-  categoryFilters.addEventListener('click', (event) => {
-    const button = event.target.closest('[data-category]');
-    if (!button) return;
-    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
-    event.preventDefault();
-    state.category = button.dataset.category;
+  categoryFilter.addEventListener('change', () => {
+    state.category = categoryFilter.value;
     renderFilters();
   });
 
@@ -201,4 +193,5 @@
 
   document.getElementById('clearFilters')?.addEventListener('click', clearAll);
   renderFilters();
+  categoryFilter.closest('.directory-filters').hidden = false;
 })();

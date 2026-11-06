@@ -25,7 +25,8 @@ const verifyFaq = html => {
 
 for(const category of data.categories) {
   const path=`/marketplace/categories/${category.slug}/`;
-  assert(hub.includes(`href="${path}" data-category="${category.slug}"`),`Filter needs a crawlable link: ${category.slug}`);
+  assert(hub.includes(`href="${path}"`), `Missing crawlable category guide: ${category.slug}`);
+  assert(hub.includes(`<option value="${category.slug}"`), `Missing category filter: ${category.slug}`);
   const html=read(`${path.slice(1)}index.html`);
   assert(html.includes(`rel="canonical" href="https://reimagebs.com${path}"`));
   assert(sitemap.includes(`https://reimagebs.com${path}`));

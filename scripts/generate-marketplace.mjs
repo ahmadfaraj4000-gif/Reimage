@@ -179,7 +179,7 @@ function head({ title, description, canonical, image = `${siteUrl}/assets/reimag
   <meta name="twitter:image" content="${absoluteImage}">
   <meta name="twitter:image:alt" content="${escapeHtml(imageAlt)}">
   <link rel="stylesheet" href="/public-shell.css?v=20261007-2">
-  <link rel="stylesheet" href="/marketplace.css?v=20261105-4">
+  <link rel="stylesheet" href="/marketplace.css?v=20261105-5">
   ${schema.map((item) => `<script type="application/ld+json">${escapeJson(item)}</script>`).join('\n  ')}
   <link rel="stylesheet" href="/public-typography.css?v=20260914-1">
 </head>`;
@@ -252,7 +252,7 @@ function shell({ title, description, canonical, image, imageAlt, schema, body, p
   ${categoryDirectory()}
   ${footer()}
   <script src="/public-shell.js?v=20261007-3" defer></script>
-  <script src="/marketplace.js?v=20261105-2" defer></script>
+  <script src="/marketplace.js?v=20261105-3" defer></script>
 </body>
 </html>\n`;
 }
@@ -328,11 +328,11 @@ function generateHub() {
 
     <section class="discovery-bar" aria-label="Marketplace filters">
       <div class="market-wrap">
-        <div class="chip-row" id="categoryFilters">
-          <button class="filter-chip active" type="button" data-category="all" aria-pressed="true">All businesses</button>
-          <label class="location-select"><span class="visually-hidden">Filter by area</span><select id="locationFilter"><option value="all">All locations</option>${locationFilters.map(location => `<option value="${location.slug}">${escapeHtml(location.name)}</option>`).join('')}</select></label>
-          ${filterCategories.map((category) => `<a class="filter-chip" href="${categoryUrl(category.slug)}" data-category="${category.slug}"${category.slug === 'restaurants-drinks' ? ` data-featured-pick="${escapeHtml(foodPick)}"` : ''} aria-current="false">${escapeHtml(category.shortName)}</a>`).join('')}
+        <div class="directory-filters" hidden>
+          <label class="filter-select"><span class="visually-hidden">Business category</span><select id="categoryFilter"><option value="all">All categories</option>${filterCategories.map(category => `<option value="${category.slug}"${category.slug === 'restaurants-drinks' ? ` data-featured-pick="${escapeHtml(foodPick)}"` : ''}>${escapeHtml(category.shortName)}</option>`).join('')}</select></label>
+          <label class="filter-select"><span class="visually-hidden">Location</span><select id="locationFilter"><option value="all">All locations</option>${locationFilters.map(location => `<option value="${location.slug}">${escapeHtml(location.name)}</option>`).join('')}</select></label>
         </div>
+        <noscript><a href="#browse-guides">Browse categories and locations</a></noscript>
       </div>
     </section>
 
