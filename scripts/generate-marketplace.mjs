@@ -598,7 +598,9 @@ function write(relativePath, contents) {
 }
 
 function updateHomepageBanner() {
-  const clients = data.businesses.map(business => ({ name: business.name, url: profileUrl(business.slug) }));
+  const clients = data.businesses
+    .filter(business => business.slug !== 'jam-roc')
+    .map(business => ({ name: business.name, url: profileUrl(business.slug) }));
   // Keep this portfolio client until it also has a Discover profile.
   if (!businessMap.has('da-candy-shop') && !clients.some(client => client.name.toLowerCase() === 'da candy shop')) {
     clients.push({ name: 'Da Candy Shop', url: '/our-work.html#websites' });
