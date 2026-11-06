@@ -27,11 +27,13 @@
       "name": "Medical & Healthcare",
       "description": "Naturopathic care, nutrition consultations, physician collaboration, and medical education.",
       "topics": [
+        "Burlington dentist",
+        "dental care",
         "physician collaboration",
         "medical education",
         "healthcare partnerships"
       ],
-      "guide": "Explore the healthcare initiatives represented in this directory, including physician collaboration, teaching, and hospital partnerships. These listings describe organizations and participation opportunities. Check the official website to understand the initiative’s scope and how to inquire.",
+      "guide": "Find dental care in Burlington, nutrition consultations in West Hartford, and organizations working in medical education. Each profile links to the provider for appointments or inquiries.",
       "url": "https://reimagebs.com/marketplace/categories/medical-healthcare/"
     },
     {
@@ -247,6 +249,16 @@
       ]
     },
     {
+      "slug": "burlington",
+      "name": "Burlington",
+      "title": "Burlington, CT Local Businesses",
+      "description": "Explore businesses in Burlington, Connecticut, including dental care on Milford Street. Find services, contact details, and official websites.",
+      "url": "https://reimagebs.com/marketplace/locations/burlington/",
+      "businesses": [
+        "https://reimagebs.com/marketplace/businesses/bethaney-brenner-dmd/"
+      ]
+    },
+    {
       "slug": "farmington",
       "name": "Farmington",
       "title": "Farmington, CT Local Businesses",
@@ -294,6 +306,26 @@
     "methodology": "https://reimagebs.com/market-signals.html#methodology"
   },
   "businesses": [
+    {
+      "name": "Bethaney B. Brenner, DMD LLC",
+      "profile": "https://reimagebs.com/marketplace/businesses/bethaney-brenner-dmd/",
+      "officialWebsite": "https://theburlingtondentist.com/",
+      "category": [
+        "Medical & Healthcare"
+      ],
+      "location": "8 Milford Street, Burlington, CT 06013",
+      "specialties": [
+        "General dentistry",
+        "Restorative dentistry",
+        "Cosmetic dentistry"
+      ],
+      "description": "Dr. Bethaney Brenner’s Burlington dental office offers routine exams and cleanings, crowns, and cosmetic dental care on Milford Street.",
+      "primaryAction": {
+        "label": "Visit dental practice",
+        "url": "https://theburlingtondentist.com/"
+      },
+      "informationLastVerified": "2026-11-05"
+    },
     {
       "name": "Comma Vintage",
       "profile": "https://reimagebs.com/marketplace/businesses/comma-vintage/",

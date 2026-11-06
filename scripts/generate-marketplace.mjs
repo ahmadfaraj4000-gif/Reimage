@@ -48,6 +48,7 @@ function browseGuides() {
 }
 
 const logoAssets = {
+  'bethaney-brenner-dmd': 'assets/marketplace/logos/bethaney-brenner-dmd.webp',
   'comma-vintage': 'assets/marketplace/logos/comma-vintage.webp',
   'botticello-auto-repair': 'assets/marketplace/logos/botticello-auto-repair-2026.png',
   'tuff-cuts': 'assets/marketplace/logos/tuff-cuts-2026.png',
@@ -178,7 +179,7 @@ function head({ title, description, canonical, image = `${siteUrl}/assets/reimag
   <meta name="twitter:image" content="${absoluteImage}">
   <meta name="twitter:image:alt" content="${escapeHtml(imageAlt)}">
   <link rel="stylesheet" href="/public-shell.css?v=20261007-2">
-  <link rel="stylesheet" href="/marketplace.css?v=20261023-1">
+  <link rel="stylesheet" href="/marketplace.css?v=20261105-2">
   ${schema.map((item) => `<script type="application/ld+json">${escapeJson(item)}</script>`).join('\n  ')}
   <link rel="stylesheet" href="/public-typography.css?v=20260914-1">
 </head>`;
@@ -219,7 +220,7 @@ function card(business, options = {}) {
   const primary = categoryMap.get(business.categories[0]);
   const isBeyond = business.regionRank === 4;
   const featured = options.featured;
-  const directWebsite = ['blue-hills-cafe', 'action-audio', 'tuff-cuts', 'comma-vintage'].includes(business.slug);
+  const directWebsite = ['blue-hills-cafe', 'action-audio', 'tuff-cuts', 'comma-vintage', 'bethaney-brenner-dmd'].includes(business.slug);
   const officialLink = business.slug === 'action-audio' ? business.ctaUrl : business.website;
   const cardHref = directWebsite ? officialLink : profileUrl(business.slug);
   const cardLabel = directWebsite ? `Visit ${business.name} website` : `View ${business.name} profile`;
@@ -288,19 +289,27 @@ function hubSchema() {
 function generateHub() {
   // Keep the requested Discover order stable across repository and CMS builds.
   const firstChoices = ['car-craft-auto-body-towing', 'rent-me-ct', 'jam-roc'];
-  const lastChoices = ['mi-buen-pastor-mexican-fusion', 'living-word-imprints'];
-  const placement = new Map([
-    ...firstChoices.map((slug, index) => [slug, index - firstChoices.length]),
-    ...lastChoices.map((slug, index) => [slug, index + 1])
-  ]);
-  const byPlacement = (a, b) => (placement.get(a.slug) || 0) - (placement.get(b.slug) || 0);
-  const centralConnecticutBusinesses = data.businesses.filter((business) => business.regionRank < 4).sort(byPlacement);
-  const beyondBusinesses = data.businesses.filter((business) => business.regionRank === 4);
-  const featured = [...new Set([...firstChoices, ...data.categories.map((category) => category.featured)])]
-    .filter((slug) => !lastChoices.includes(slug))
-    .map((slug) => businessMap.get(slug))
-    .filter((business) => business && business.regionRank < 4)
-    .sort(byPlacement);
+  const bottomPair = ['the-anchor-collective', 'living-word-imprints'];
+  const formerLast = ['mi-buen-pastor-mexican-fusion', 'living-word-imprints'];
+  const frontPair = ['comma-vintage', 'andaleeb-enterprises'];
+  const dentist = 'bethaney-brenner-dmd';
+
+  function discoverOrder(businesses, includeLast) {
+    const slugs = businesses.map(business => business.slug);
+    const originalOrder = [...new Set([...firstChoices, ...slugs])].filter(slug => slugs.includes(slug) && slug !== dentist && !formerLast.includes(slug));
+    const anchorIndex = originalOrder.indexOf('the-anchor-collective');
+    const ordered = [...new Set([...frontPair, ...originalOrder])].filter(slug => slugs.includes(slug) && slug !== 'the-anchor-collective');
+    if (slugs.includes(dentist)) ordered.splice(anchorIndex < 0 ? ordered.length : anchorIndex, 0, dentist);
+    if (includeLast) ordered.push(...['mi-buen-pastor-mexican-fusion', ...bottomPair].filter(slug => slugs.includes(slug)));
+    return ordered.map(slug => businessMap.get(slug));
+  }
+
+  const centralConnecticutBusinesses = discoverOrder(data.businesses.filter(business => business.regionRank < 4), true);
+  const beyondBusinesses = data.businesses.filter(business => business.regionRank === 4);
+  const featuredBusinesses = [...new Set([...firstChoices, ...data.categories.map(category => category.featured), ...frontPair, dentist])]
+    .map(slug => businessMap.get(slug)).filter(business => business && business.regionRank < 4);
+  const featured = discoverOrder(featuredBusinesses, false);
+  const filterCategories = [...data.categories].sort((a, b) => Number(b.slug === 'clothing-accessories') - Number(a.slug === 'clothing-accessories'));
   const embedded = escapeJson({ categories: data.categories, businesses: data.businesses.map((business) => ({ slug: business.slug, name: business.name, categories: business.categories, locationKey: business.locationKey, regionRank: business.regionRank, specialties: business.specialties, tags: business.tags, shortBio: business.shortBio })) });
   const body = `<main id="main-content">
     <section class="market-hero">
@@ -319,7 +328,7 @@ function generateHub() {
 
     <section class="discovery-bar" aria-label="Marketplace filters">
       <div class="market-wrap">
-        <div class="filter-block"><span class="visually-hidden">Explore by service</span><div class="chip-row" id="categoryFilters"><button class="filter-chip active" type="button" data-category="all" aria-pressed="true">All businesses</button>${data.categories.map((category) => `<a class="filter-chip" href="${categoryUrl(category.slug)}" data-category="${category.slug}" aria-current="false">${escapeHtml(category.shortName)}</a>`).join('')}</div></div>
+        <div class="filter-block"><span class="visually-hidden">Explore by service</span><div class="chip-row" id="categoryFilters"><button class="filter-chip active" type="button" data-category="all" aria-pressed="true">All businesses</button>${filterCategories.map((category) => `<a class="filter-chip" href="${categoryUrl(category.slug)}" data-category="${category.slug}" aria-current="false">${escapeHtml(category.shortName)}</a>`).join('')}</div></div>
         <div class="filter-block filter-block--locations"><label class="location-select"><span class="visually-hidden">Filter by area</span><select id="locationFilter"><option value="all">All locations</option>${locationFilters.map(location => `<option value="${location.slug}">${escapeHtml(location.name)}</option>`).join('')}</select></label></div>
       </div>
     </section>

@@ -17,6 +17,50 @@
   ],
   "businesses": [
     {
+      "slug": "bethaney-brenner-dmd",
+      "repositoryPublished": true,
+      "verifiedAt": "2026-11-05",
+      "name": "Bethaney B. Brenner, DMD LLC",
+      "categories": [
+        "medical-healthcare"
+      ],
+      "locationKey": "burlington",
+      "locationLabel": "Burlington",
+      "regionRank": 2,
+      "address": {
+        "street": "8 Milford Street",
+        "city": "Burlington",
+        "state": "CT",
+        "postalCode": "06013"
+      },
+      "phone": "(860) 673-7155",
+      "website": "https://theburlingtondentist.com/",
+      "ctaUrl": "https://theburlingtondentist.com/",
+      "ctaLabel": "Visit dental practice",
+      "image": "assets/marketplace/logos/bethaney-brenner-dmd.webp",
+      "imageAlt": "Bethaney B. Brenner DMD LLC tooth logo with a turquoise swoosh",
+      "schemaType": "Dentist",
+      "specialties": [
+        "General dentistry",
+        "Restorative dentistry",
+        "Cosmetic dentistry"
+      ],
+      "tags": [
+        "Burlington dentist",
+        "dental cleanings",
+        "crowns",
+        "veneers"
+      ],
+      "shortBio": "Dr. Bethaney Brenner’s Burlington dental office offers routine exams and cleanings, crowns, and cosmetic dental care on Milford Street.",
+      "longBio": "Patients can visit the Milford Street office for preventive care or discuss options for a damaged or missing tooth. The practice website lists services, new patient information, and an appointment request form.",
+      "faq": [
+        [
+          "How can I request a dental appointment?",
+          "Use the appointment request form on the practice website or call (860) 673-7155."
+        ]
+      ]
+    },
+    {
       "slug": "comma-vintage",
       "repositoryPublished": true,
       "verifiedAt": "2026-11-05",

@@ -311,12 +311,11 @@ body.marketplace-page a.button--light { background: var(--market-blue); color: #
 .chip-row {
   display: flex;
   gap: 7px;
-  overflow-x: auto;
+  flex-wrap: wrap;
   padding-bottom: 1px;
-  scrollbar-width: none;
 }
 
-.chip-row::-webkit-scrollbar { display: none; }
+.business-logo-stage--bethaney-brenner-dmd { background: #163047; }
 
 .filter-chip {
   flex: 0 0 auto;
@@ -845,6 +844,8 @@ body.marketplace-page a.back-link { color: var(--market-blue); }
   .market-search { grid-template-columns: 22px 1fr; padding: 8px 14px; border-radius: 16px; }
   .market-search button { grid-column: 1 / -1; width: 100%; }
   .market-trust { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 34px; }
+  .discovery-bar .market-wrap { grid-template-columns: minmax(0, 1fr); }
+  .chip-row { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: thin; }
   .discovery-bar { top: 56px; padding: 13px 0; }
   .location-select select { width: 142px; min-width: 0; }
   .section-heading,
@@ -881,7 +882,6 @@ body.marketplace-page a.back-link { color: var(--market-blue); }
   .market-hero__inner { min-height: clamp(430px, 68svh, 520px); padding: 24px 0; }
   .market-hero h1 { font-size: clamp(1.95rem, 9vw, 2.4rem); word-spacing: .065em; }
   .market-hero__copy { font-size: .88rem; line-height: 1.58; }
-  .discovery-bar .market-wrap { grid-template-columns: minmax(0, 1fr) 132px; }
   .location-select select { width: 132px; }
   .market-section { padding: 64px 0; }
   .business-card__body { padding: 19px; }
