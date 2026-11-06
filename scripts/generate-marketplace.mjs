@@ -323,7 +323,6 @@ function generateHub() {
     <section class="market-hero">
       <div class="market-wrap market-hero__inner">
         <h1>Discover Central Connecticut’s <em>local businesses.</em></h1>
-        <p class="market-hero__copy">Explore <a href="${hartfordOutingsPath}">things to do in Hartford</a>, find <a href="${categoryUrl('car-rentals')}">cars to rent nearby</a>, or compare <a href="${categoryUrl('automobile-services')}">Hartford-area auto services</a>.</p>
         <form class="market-search" id="marketSearchForm" role="search">
           <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m1.35-5.65a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
           <label class="visually-hidden" for="marketSearch">Search Central Connecticut businesses</label>
