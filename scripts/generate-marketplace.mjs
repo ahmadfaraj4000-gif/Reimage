@@ -48,6 +48,7 @@ function browseGuides() {
 }
 
 const logoAssets = {
+  'comma-vintage': 'assets/marketplace/logos/comma-vintage.webp',
   'botticello-auto-repair': 'assets/marketplace/logos/botticello-auto-repair-2026.png',
   'tuff-cuts': 'assets/marketplace/logos/tuff-cuts-2026.png',
   'dr-frank-aieta': 'assets/marketplace/logos/dr-frank-aieta.png',
@@ -218,7 +219,7 @@ function card(business, options = {}) {
   const primary = categoryMap.get(business.categories[0]);
   const isBeyond = business.regionRank === 4;
   const featured = options.featured;
-  const directWebsite = ['blue-hills-cafe', 'action-audio', 'tuff-cuts'].includes(business.slug);
+  const directWebsite = ['blue-hills-cafe', 'action-audio', 'tuff-cuts', 'comma-vintage'].includes(business.slug);
   const officialLink = business.slug === 'action-audio' ? business.ctaUrl : business.website;
   const cardHref = directWebsite ? officialLink : profileUrl(business.slug);
   const cardLabel = directWebsite ? `Visit ${business.name} website` : `View ${business.name} profile`;

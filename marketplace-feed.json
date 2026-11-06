@@ -125,6 +125,16 @@
       "url": "https://reimagebs.com/marketplace/categories/skincare-esthetics/"
     },
     {
+      "slug": "clothing-accessories",
+      "name": "Clothing & Accessories",
+      "description": "Find vintage clothing, accessories, and clothing subscriptions from independent shops.",
+      "topics": [
+        "Clothing & Accessories"
+      ],
+      "guide": "Find vintage clothing, accessories, and clothing subscriptions from independent shops.",
+      "url": "https://reimagebs.com/marketplace/categories/clothing-accessories/"
+    },
+    {
       "slug": "printing-apparel",
       "name": "Printing & Custom Apparel",
       "description": "Custom apparel, embroidery, signs, banners, uniforms, promotional products, and print services.",
@@ -186,6 +196,7 @@
       "description": "Explore Hartford restaurants, juice bars, hair braiding, car audio, printing, property services, and community organizations. Check each profile for its storefront or service area.",
       "url": "https://reimagebs.com/marketplace/locations/hartford/",
       "businesses": [
+        "https://reimagebs.com/marketplace/businesses/comma-vintage/",
         "https://reimagebs.com/marketplace/businesses/tuff-cuts/",
         "https://reimagebs.com/marketplace/businesses/blue-hills-cafe/",
         "https://reimagebs.com/marketplace/businesses/action-audio/",
@@ -283,6 +294,26 @@
     "methodology": "https://reimagebs.com/market-signals.html#methodology"
   },
   "businesses": [
+    {
+      "name": "Comma Vintage",
+      "profile": "https://reimagebs.com/marketplace/businesses/comma-vintage/",
+      "officialWebsite": "https://www.commavintage.com/",
+      "category": [
+        "Clothing & Accessories"
+      ],
+      "location": "Based in Hartford, Connecticut. Subscription boxes ship to customers.",
+      "specialties": [
+        "Vintage menswear",
+        "Subscription boxes",
+        "Vintage accessories"
+      ],
+      "description": "Comma Vintage finds rare vintage menswear and packs subscription boxes by hand, choosing pieces to suit each subscriber’s size and style.",
+      "primaryAction": {
+        "label": "Explore the subscription boxes",
+        "url": "https://www.commavintage.com/"
+      },
+      "informationLastVerified": "2026-11-05"
+    },
     {
       "name": "Botticello Auto Repair",
       "profile": "https://reimagebs.com/marketplace/businesses/botticello-auto-repair/",
