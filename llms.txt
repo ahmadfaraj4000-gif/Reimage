@@ -8,6 +8,7 @@
 - [Business loan, hiring, and pricing decisions](https://reimagebs.com/market-signals.html): National FRED and BLS indicators, source dates, M2 projection, decision guides, and a transparent RE IMAGE pressure model.
 - [Published economic data](https://reimagebs.com/data/market/latest.json): Timestamped observations and model components; M2 projection is money-supply growth, not a CPI forecast.
 - [Central Connecticut Local Business Directory](https://reimagebs.com/marketplace.html): Search verified Central Connecticut businesses by service, specialty, and town.
+- [Things to do in Hartford](https://reimagebs.com/marketplace/guides/things-to-do-in-hartford/): Downtown art, neighborhood food stops, nightlife, and official event calendars.
 - [New Britain Avenue Hartford Business Guide](https://reimagebs.com/marketplace/guides/new-britain-avenue-hartford/): Block-by-block guide to food, fresh drinks, and African hair braiding.
 - [Directory methodology](https://reimagebs.com/marketplace/about/): Verification, corrections, ranking, and placement-label policy.
 - [Complete machine-readable directory](https://reimagebs.com/llms-full.txt): Full verified listing summaries and direct links.

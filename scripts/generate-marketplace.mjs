@@ -15,6 +15,7 @@ for (const category of data.categories) {
     .replace('memorable nights out in Hartford.', 'memorable nights out in Central Connecticut.');
 }
 const siteUrl = 'https://reimagebs.com';
+const hartfordOutingsPath = '/marketplace/guides/things-to-do-in-hartford/';
 const guidePath = '/marketplace/guides/new-britain-avenue-hartford/';
 const editorialPath = '/marketplace/about/';
 const categoryMap = new Map(data.categories.map((category) => [category.slug, category]));
@@ -140,7 +141,7 @@ function footer() {
 }
 
 function categoryDirectory() {
-  return `<nav class="marketplace-category-directory" aria-label="Central Connecticut business categories"><div class="market-wrap"><strong>Browse local businesses</strong><div><a href="/marketplace.html">All businesses</a>${data.categories.map((category) => `<a href="${categoryUrl(category.slug)}">${escapeHtml(category.name)}</a>`).join('')}${populatedLocations.map(location => `<a href="${locationUrl(location.slug)}">${escapeHtml(location.name)}</a>`).join('')}<a href="${guidePath}">New Britain Avenue guide</a><a href="${editorialPath}">About this directory</a></div></div></nav>`;
+  return `<nav class="marketplace-category-directory" aria-label="Central Connecticut business categories"><div class="market-wrap"><strong>Browse local businesses</strong><div><a href="/marketplace.html">All businesses</a>${data.categories.map((category) => `<a href="${categoryUrl(category.slug)}">${escapeHtml(category.name)}</a>`).join('')}${populatedLocations.map(location => `<a href="${locationUrl(location.slug)}">${escapeHtml(location.name)}</a>`).join('')}<a href="${hartfordOutingsPath}">Things to do in Hartford</a><a href="${guidePath}">New Britain Avenue guide</a><a href="${editorialPath}">About this directory</a></div></div></nav>`;
 }
 
 function absoluteAsset(value) {
@@ -322,7 +323,7 @@ function generateHub() {
     <section class="market-hero">
       <div class="market-wrap market-hero__inner">
         <h1>Discover Central Connecticut’s <em>local businesses.</em></h1>
-        <p class="market-hero__copy">Explore <a href="${categoryUrl('nightlife-events')}">things to do in Hartford</a>, find <a href="${categoryUrl('car-rentals')}">cars to rent nearby</a>, or compare <a href="${categoryUrl('automobile-services')}">Hartford-area auto services</a>.</p>
+        <p class="market-hero__copy">Explore <a href="${hartfordOutingsPath}">things to do in Hartford</a>, find <a href="${categoryUrl('car-rentals')}">cars to rent nearby</a>, or compare <a href="${categoryUrl('automobile-services')}">Hartford-area auto services</a>.</p>
         <form class="market-search" id="marketSearchForm" role="search">
           <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m1.35-5.65a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
           <label class="visually-hidden" for="marketSearch">Search Central Connecticut businesses</label>
@@ -491,6 +492,33 @@ function guideListing(business, note = '') {
   </li>`;
 }
 
+function generateHartfordOutingsGuide() {
+  const title = 'Things to Do in Hartford, CT';
+  const description = 'Plan a Hartford afternoon or night out with downtown art, riverfront events, Caribbean lunch stops and mini golf. Find addresses, menus and official calendars.';
+  const url = siteUrl + hartfordOutingsPath;
+  const schema = [{ '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Article', '@id': url + '#guide', headline: title, description, mainEntityOfPage: url, datePublished: '2026-11-05', dateModified: '2026-11-05', author: { '@type': 'Organization', name: 'RE IMAGE Business Solutions', url: siteUrl }, about: { '@type': 'City', name: 'Hartford, Connecticut' } },
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Discover', item: siteUrl + '/marketplace.html' },
+      { '@type': 'ListItem', position: 2, name: title, item: url }
+    ] }
+  ] }];
+  const body = `<main id="main-content">
+    <header class="category-hero"><div class="market-wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/marketplace.html">Discover</a><span>/</span><span aria-current="page">Hartford outings</span></nav>
+      <h1>Things to do in <em>Hartford, CT</em></h1><p>Spend a first afternoon downtown, make lunch the reason for a neighborhood visit, or pick a spot for a night out. Choose a plan below and check the venue for your date.</p>
+      <ul class="discovery-location-links"><li><a href="#downtown">A downtown afternoon</a></li><li><a href="#lunch">A neighborhood lunch</a></li><li><a href="#night-out">A night out</a></li><li><a href="#weekend">This weekend</a></li></ul>
+    </div></header>
+    <section class="editorial-content"><div class="market-wrap editorial-grid">
+      <article id="downtown"><h2>A downtown afternoon</h2><p>Start at the Wadsworth Atheneum Museum of Art at <strong>600 Main Street</strong>. The galleries make a good rainy-day plan. If the weather clears, head to Mortensen Riverfront Plaza at <strong>300 Columbus Boulevard</strong> for a view of the Connecticut River. Hartford residents can check the museum’s resident admission program before buying a ticket.</p><ul class="discovery-location-links"><li><a href="https://www.thewadsworth.org/visit/hours-admission/">Museum hours and admission</a></li><li><a href="https://www.thewadsworth.org/visit/hours-admission/wadsworth-welcome/">Hartford resident admission</a></li></ul></article>
+      <article id="lunch"><h2>Two stops for lunch on one block</h2><p>At <strong>879 New Britain Avenue</strong>, Fusion Health Juice Bar serves Peanut Punch and fresh juices. Next door at <strong>881 New Britain Avenue</strong>, 881 Grab &amp; Go serves a fried-whiting sandwich with pickled cabbage. For jerk chicken or escovitch fish on a different outing, head to Lunch Box at <strong>104 Baltimore Street</strong>.</p><ul class="discovery-location-links"><li><a href="${guidePath}">Explore the New Britain Avenue block</a></li><li><a href="${profileUrl('lunch-box')}">Lunch Box menu and ordering</a></li></ul></article>
+      <article id="night-out"><h2>Mini golf, cocktails and live music</h2><p>For a date night with something to do between drinks, try the putting green at The Patio, <strong>2280 Main Street</strong>. Check the venue’s calendar if you want to catch a DJ or a live performance. For a Jamaican dinner instead, Jam Roc Restaurant &amp; Lounge serves jerk chicken and seafood at <strong>3395 Main Street</strong>.</p><ul class="discovery-location-links"><li><a href="https://thepatioct.com/">The Patio’s menu and events</a></li><li><a href="${profileUrl('jam-roc')}">Jam Roc dining details</a></li></ul></article>
+      <article id="weekend"><h2>What’s happening this weekend?</h2><p>Riverfront Recapture’s calendar lists events by date and park. Open an event to check its start time, meeting point and registration details. Look at the town as well as the park name: the calendar includes both Hartford and East Hartford. If you’re coming from out of town and need a car, Rent Me CT lists vehicles in nearby Farmington.</p><ul class="discovery-location-links"><li><a href="https://riverfront.org/eventcalendar/">See the riverfront event calendar</a></li><li><a href="${categoryUrl('car-rentals')}">Find a rental car near Hartford</a></li></ul></article>
+    </div></section>
+    <aside class="profile-owner-note"><div class="market-wrap"><p>Explore more <a href="${locationUrl('hartford')}">Hartford businesses</a> or read <a href="${editorialPath}">how RE IMAGE selects and verifies listings</a>.</p></div></aside>
+  </main>`;
+  return shell({ title: title + ' | A Local Guide for Visitors & Residents | RE IMAGE', description, canonical: url, schema, body, pageClass: 'marketplace-guide' });
+}
+
 function generateCorridorGuide() {
   const orderedSlugs = ['lories-african-hair-braiding', 'fusion-health-juice-bar', '881-grab-and-go', 'mi-buen-pastor-mexican-fusion'];
   const businesses = orderedSlugs.map((slug) => businessMap.get(slug)).filter(Boolean);
@@ -556,7 +584,7 @@ function generateMarketplaceFeed() {
 }
 
 function generateLlmsSummary() {
-  return `# RE IMAGE Business Solutions\n\n> Hartford-based business systems company and publisher of a verified Central Connecticut local business directory.\n\n## Primary URLs\n\n- [Homepage](${siteUrl}/): Custom websites, customer portals, payment systems, automation, and connected business operating systems.\n- [Business loan, hiring, and pricing decisions](${siteUrl}/market-signals.html): National FRED and BLS indicators, source dates, M2 projection, decision guides, and a transparent RE IMAGE pressure model.\n- [Published economic data](${siteUrl}/data/market/latest.json): Timestamped observations and model components; M2 projection is money-supply growth, not a CPI forecast.\n- [Central Connecticut Local Business Directory](${siteUrl}/marketplace.html): Search verified Central Connecticut businesses by service, specialty, and town.\n- [New Britain Avenue Hartford Business Guide](${siteUrl}${guidePath}): Block-by-block guide to food, fresh drinks, and African hair braiding.\n- [Directory methodology](${siteUrl}${editorialPath}): Verification, corrections, ranking, and placement-label policy.\n- [Complete machine-readable directory](${siteUrl}/llms-full.txt): Full verified listing summaries and direct links.\n- [Marketplace JSON feed](${siteUrl}/marketplace-feed.json): Structured public listing data.\n- [XML sitemap](${siteUrl}/sitemap.xml): Canonical public URLs and image discovery.\n\n## Central Connecticut directory categories\n\n${data.categories.map((category) => `- [${category.name}](${siteUrl}${categoryUrl(category.slug)}): ${category.description}`).join('\n')}\n\n## Location guides\n\n${populatedLocations.map(location => `- [${location.title}](${siteUrl}${locationUrl(location.slug)}): ${location.description}`).join('\n')}\n\n## Key facts\n\n- Geographic focus: Central Connecticut.\n- Listings use official business links and verified storefront addresses or truthful service areas.\n- Profiles include specialties, direct actions, factual FAQs, and the information verification date.\n- Businesses outside Central Connecticut are separated from the main local listings.\n- No fabricated ratings, copied reviews, or unsupported ranking claims are published.\n\n## Contact\n\n- Email: reimagebs@gmail.com\n- Phone: +1-860-718-5928\n- Project inquiry: ${siteUrl}/start-with-us.html\n`;
+  return `# RE IMAGE Business Solutions\n\n> Hartford-based business systems company and publisher of a verified Central Connecticut local business directory.\n\n## Primary URLs\n\n- [Homepage](${siteUrl}/): Custom websites, customer portals, payment systems, automation, and connected business operating systems.\n- [Business loan, hiring, and pricing decisions](${siteUrl}/market-signals.html): National FRED and BLS indicators, source dates, M2 projection, decision guides, and a transparent RE IMAGE pressure model.\n- [Published economic data](${siteUrl}/data/market/latest.json): Timestamped observations and model components; M2 projection is money-supply growth, not a CPI forecast.\n- [Central Connecticut Local Business Directory](${siteUrl}/marketplace.html): Search verified Central Connecticut businesses by service, specialty, and town.\n- [Things to do in Hartford](${siteUrl}${hartfordOutingsPath}): Downtown art, neighborhood food stops, nightlife, and official event calendars.\n- [New Britain Avenue Hartford Business Guide](${siteUrl}${guidePath}): Block-by-block guide to food, fresh drinks, and African hair braiding.\n- [Directory methodology](${siteUrl}${editorialPath}): Verification, corrections, ranking, and placement-label policy.\n- [Complete machine-readable directory](${siteUrl}/llms-full.txt): Full verified listing summaries and direct links.\n- [Marketplace JSON feed](${siteUrl}/marketplace-feed.json): Structured public listing data.\n- [XML sitemap](${siteUrl}/sitemap.xml): Canonical public URLs and image discovery.\n\n## Central Connecticut directory categories\n\n${data.categories.map((category) => `- [${category.name}](${siteUrl}${categoryUrl(category.slug)}): ${category.description}`).join('\n')}\n\n## Location guides\n\n${populatedLocations.map(location => `- [${location.title}](${siteUrl}${locationUrl(location.slug)}): ${location.description}`).join('\n')}\n\n## Key facts\n\n- Geographic focus: Central Connecticut.\n- Listings use official business links and verified storefront addresses or truthful service areas.\n- Profiles include specialties, direct actions, factual FAQs, and the information verification date.\n- Businesses outside Central Connecticut are separated from the main local listings.\n- No fabricated ratings, copied reviews, or unsupported ranking claims are published.\n\n## Contact\n\n- Email: reimagebs@gmail.com\n- Phone: +1-860-718-5928\n- Project inquiry: ${siteUrl}/start-with-us.html\n`;
 }
 
 function generateLlmsFull() {
@@ -594,6 +622,7 @@ function generateSitemap() {
   const urls = [
     { loc: `${siteUrl}/`, priority: '1.0', image: `${siteUrl}/assets/reimage-logo-2026-transparent.png` },
     { loc: `${siteUrl}/marketplace.html`, lastmod: searchUpdatedAt, priority: '1.0', image: `${siteUrl}/assets/reimage-logo-2026-transparent.png` },
+    { loc: siteUrl + hartfordOutingsPath, lastmod: '2026-11-05', priority: '0.9' },
     { loc: `${siteUrl}${guidePath}`, priority: '0.9', image: absoluteAsset(logoAssets['fusion-health-juice-bar']) },
     { loc: `${siteUrl}${editorialPath}`, priority: '0.6', image: `${siteUrl}/assets/reimage-logo-2026-transparent.png` },
     ...data.categories.map((category) => ({ loc: `${siteUrl}${categoryUrl(category.slug)}`, lastmod: searchUpdatedAt, priority: '0.8', image: absoluteAsset(logoAssets[category.featured] || businessMap.get(category.featured).image) })),
@@ -610,6 +639,7 @@ write('marketplace.html', generateHub());
 data.categories.forEach((category) => write(`marketplace/categories/${category.slug}/index.html`, generateCategory(category)));
 populatedLocations.forEach(location => write(`marketplace/locations/${location.slug}/index.html`, generateLocation(location)));
 data.businesses.forEach((business) => write(`marketplace/businesses/${business.slug}/index.html`, generateProfile(business)));
+write(`.${hartfordOutingsPath}index.html`, generateHartfordOutingsGuide());
 write('marketplace/guides/new-britain-avenue-hartford/index.html', generateCorridorGuide());
 write('marketplace/about/index.html', generateEditorialPage());
 write('marketplace-feed.json', generateMarketplaceFeed());

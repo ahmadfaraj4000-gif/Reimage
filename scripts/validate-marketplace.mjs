@@ -17,7 +17,7 @@ function collectHtml(directory) {
 
 const pages = [path.join(root, 'marketplace.html'), ...collectHtml(path.join(root, 'marketplace'))];
 const locationPageCount = locationFilters.filter(location => data.businesses.some(business => (business.locations || [business.locationKey]).includes(location.slug))).length;
-const expectedPageCount = 1 + data.categories.length + data.businesses.length + locationPageCount + 2 + categoryRedirects.size;
+const expectedPageCount = 1 + data.categories.length + data.businesses.length + locationPageCount + 3 + categoryRedirects.size;
 if (pages.length !== expectedPageCount) errors.push(`Expected ${expectedPageCount} marketplace pages, found ${pages.length}`);
 
 const titles = new Map();
