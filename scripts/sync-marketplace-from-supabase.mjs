@@ -147,7 +147,7 @@ for (const field of ['website', 'ctaUrl']) {
 const fusion = snapshot.businesses.find((business) => business.slug === 'fusion-health-juice-bar');
 const repositoryFusion = repositoryCatalog.businesses.find((business) => business.slug === 'fusion-health-juice-bar');
 for (const field of ['website', 'ctaUrl']) {
-  if (fusion && repositoryFusion?.[field] && /^https?:\/\/(?:www\.)?fusionhealthjuicebar\.com\/?$/.test(fusion[field] || '')) {
+  if (fusion && repositoryFusion?.[field] && /^https?:\/\/(?:www\.)?fusionhealthjuicebarllc\.com\/?$/.test(fusion[field] || '')) {
     fusion[field] = repositoryFusion[field];
   }
 }
