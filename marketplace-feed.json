@@ -349,6 +349,7 @@
     {
       "name": "Botticello Auto Repair",
       "profile": "https://reimagebs.com/marketplace/businesses/botticello-auto-repair/",
+      "officialWebsite": "https://reimage-demo.github.io/botticello/",
       "category": [
         "Automobile services"
       ],
@@ -360,8 +361,8 @@
       ],
       "description": "Auto repair and maintenance for cars, trucks, and diesel engines in West Hartford.",
       "primaryAction": {
-        "label": "Website coming soon",
-        "available": false
+        "label": "Request estimate",
+        "url": "https://reimage-demo.github.io/botticello/estimate.html"
       },
       "informationLastVerified": "2026-10-23"
     },

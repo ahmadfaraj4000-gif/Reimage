@@ -166,12 +166,12 @@ Listed businesses: Amanah Medical Care, CR8 Autos, Empire Elite Rides
 ## Botticello Auto Repair
 
 - RE IMAGE profile: https://reimagebs.com/marketplace/businesses/botticello-auto-repair/
-- Official website: Coming soon
+- Official website: https://reimage-demo.github.io/botticello/
 - Category: Automobile services
 - Location or service area: 210 South St, West Hartford, CT 06110
 - Specialties: Auto repair, Vehicle maintenance, Diesel engines
 - Summary: Auto repair and maintenance for cars, trucks, and diesel engines in West Hartford.
-- Primary action: Website coming soon
+- Primary action: Request estimate — https://reimage-demo.github.io/botticello/estimate.html
 - Information last verified: 2026-10-23
 
 ## Tuff Cuts Barbershop
