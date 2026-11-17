@@ -160,7 +160,7 @@ Listed businesses: Amanah Medical Care, CR8 Autos, Empire Elite Rides
 - Location or service area: Based in Hartford, Connecticut. Subscription boxes ship to customers.
 - Specialties: Vintage menswear, Subscription boxes, Vintage accessories
 - Summary: Comma Vintage finds rare vintage menswear and packs subscription boxes by hand, choosing pieces to suit each subscriber’s size and style.
-- Primary action: Explore the subscription boxes — https://www.commavintage.com/
+- Primary action: Join Comma Vintage — https://www.commavintage.com/subscribe/?membership=annual
 - Information last verified: 2026-11-05
 
 ## Botticello Auto Repair

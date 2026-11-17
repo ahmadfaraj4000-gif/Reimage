@@ -152,6 +152,14 @@ for (const field of ['website', 'ctaUrl']) {
   }
 }
 
+// Migrate Comma's homepage CTA to the requested annual membership page.
+const comma = snapshot.businesses.find(business => business.slug === 'comma-vintage');
+const repositoryComma = repositoryCatalog.businesses.find(business => business.slug === 'comma-vintage');
+if (comma && repositoryComma && /^https?:\/\/(?:www\.)?commavintage\.com\/?$/i.test(comma.ctaUrl || '')) {
+  comma.ctaUrl = repositoryComma.ctaUrl;
+  comma.ctaLabel = repositoryComma.ctaLabel;
+}
+
 // Keep the rental button on the booking page while older CMS data uses the homepage.
 const rentMe = snapshot.businesses.find(business => business.slug === 'rent-me-ct');
 const repositoryRentMe = repositoryCatalog.businesses.find(business => business.slug === 'rent-me-ct');
