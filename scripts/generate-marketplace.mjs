@@ -52,7 +52,7 @@ const logoAssets = {
   'bethaney-brenner-dmd': 'assets/marketplace/logos/bethaney-brenner-dmd-black.webp',
   'comma-vintage': 'assets/marketplace/logos/comma-vintage.webp',
   'botticello-auto-repair': 'assets/marketplace/logos/botticello-auto-repair-2026.png',
-  'tuff-cuts': 'assets/marketplace/logos/tuff-cuts-mascot.webp',
+  'tuff-cuts': 'assets/marketplace/logos/tuff-cuts-black-white.png',
   'dr-frank-aieta': 'assets/marketplace/logos/dr-frank-aieta.png',
   'fish-n-tingz': 'assets/marketplace/logos/fish-n-tingz.webp',
   'blue-hills-cafe': 'assets/marketplace/logos/blue-hills-cafe.jpg',
@@ -180,7 +180,7 @@ function head({ title, description, canonical, image = `${siteUrl}/assets/reimag
   <meta name="twitter:image" content="${absoluteImage}">
   <meta name="twitter:image:alt" content="${escapeHtml(imageAlt)}">
   <link rel="stylesheet" href="/public-shell.css?v=20261007-2">
-  <link rel="stylesheet" href="/marketplace.css?v=20261105-5">
+  <link rel="stylesheet" href="/marketplace.css?v=20261116-hero-logo">
   ${schema.map((item) => `<script type="application/ld+json">${escapeJson(item)}</script>`).join('\n  ')}
   <link rel="stylesheet" href="/public-typography.css?v=20260914-1">
 </head>`;
