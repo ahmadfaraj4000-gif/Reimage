@@ -309,6 +309,11 @@ function generateHub() {
     const firstRestoredIndex = directory ? 9 : 7;
     ordered.splice(firstRestoredIndex, 0, ...restoredSlots.filter(slug => slugs.has(slug)));
     if (directory) ordered.push(...lastChoices.filter(slug => slugs.has(slug)));
+    const fishIndex = ordered.indexOf('fish-n-tingz');
+    const fusionIndex = ordered.indexOf('fusion-health-juice-bar');
+    if (fishIndex !== -1 && fusionIndex !== -1) {
+      [ordered[fishIndex], ordered[fusionIndex]] = [ordered[fusionIndex], ordered[fishIndex]];
+    }
     return ordered.map(slug => businessMap.get(slug));
   }
 
