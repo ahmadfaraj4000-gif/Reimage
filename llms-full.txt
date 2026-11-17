@@ -391,7 +391,7 @@ Listed businesses: Amanah Medical Care, CR8 Autos, Empire Elite Rides
 - Location or service area: Hartford, East Hartford, Clinton, and additional Connecticut communities
 - Specialties: Residential rentals, Commercial rentals, Property management
 - Summary: A Connecticut property-management and development business offering residential and commercial rentals across Hartford-area communities.
-- Primary action: View Available Rentals — https://reimage-demo.github.io/Andaleeb-Enterprises/
+- Primary action: Explore Portfolio — https://reimage-demo.github.io/Andaleeb-Enterprises/
 - Information last verified: 2026-09-04
 
 ## The Anchor Collective

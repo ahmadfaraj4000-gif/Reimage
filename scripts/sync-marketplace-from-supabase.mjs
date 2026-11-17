@@ -169,6 +169,10 @@ for (const field of ['website', 'ctaUrl']) {
   }
 }
 
+if (andaleeb && repositoryAndaleeb && andaleeb.ctaLabel === 'View Available Rentals') {
+  andaleeb.ctaLabel = repositoryAndaleeb.ctaLabel;
+}
+
 // Preserve the requested Mi Buen Pastor landing page while the CMS has its old URL.
 const miBuenPastor = snapshot.businesses.find((business) => business.slug === 'mi-buen-pastor-mexican-fusion');
 const repositoryMiBuenPastor = repositoryCatalog.businesses.find((business) => business.slug === 'mi-buen-pastor-mexican-fusion');
