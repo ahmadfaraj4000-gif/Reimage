@@ -325,7 +325,7 @@ Listed businesses: Amanah Medical Care, CR8 Autos, Empire Elite Rides
 - Location or service area: 12 Holmes Circle, Farmington, CT 06032
 - Specialties: Cars & SUVs, Passenger vans, Online booking
 - Summary: A local Hartford-area rental company offering sedans, SUVs, luxury vehicles, trucks, and passenger vans with online booking.
-- Primary action: Browse Vehicles — https://rentmect.com/
+- Primary action: Book your Rental — https://rentmect.com/cars-2.html
 - Information last verified: 2026-09-04
 
 ## CR8 Autos

@@ -152,6 +152,14 @@ for (const field of ['website', 'ctaUrl']) {
   }
 }
 
+// Keep the rental button on the booking page while older CMS data uses the homepage.
+const rentMe = snapshot.businesses.find(business => business.slug === 'rent-me-ct');
+const repositoryRentMe = repositoryCatalog.businesses.find(business => business.slug === 'rent-me-ct');
+if (rentMe && repositoryRentMe && /^https?:\/\/(?:www\.)?rentmect\.com\/?$/i.test(rentMe.ctaUrl || '')) {
+  rentMe.ctaUrl = repositoryRentMe.ctaUrl;
+  rentMe.ctaLabel = repositoryRentMe.ctaLabel;
+}
+
 // Replace ACE's old rental portal with the corrected Andaleeb website.
 const andaleeb = snapshot.businesses.find((business) => business.slug === 'andaleeb-enterprises');
 const repositoryAndaleeb = repositoryCatalog.businesses.find((business) => business.slug === 'andaleeb-enterprises');

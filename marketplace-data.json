@@ -423,7 +423,7 @@
     },
     {
       "slug":"rent-me-ct","name":"Rent Me CT","categories":["car-rentals"],"featuredLabel":"RE IMAGE Pick","locationKey":"farmington","locationLabel":"Farmington","regionRank":2,
-      "address":{"street":"12 Holmes Circle","city":"Farmington","state":"CT","postalCode":"06032"},"phone":"860-558-6031","website":"https://rentmect.com/","ctaLabel":"Browse Vehicles","ctaUrl":"https://rentmect.com/","image":"assets/rentme-live-fleet-2026.png","imageAlt":"Rent Me CT live rental fleet with available cars and SUVs","schemaType":"AutoRental",
+      "address":{"street":"12 Holmes Circle","city":"Farmington","state":"CT","postalCode":"06032"},"phone":"860-558-6031","website":"https://rentmect.com/","ctaLabel":"Book your Rental","ctaUrl":"https://rentmect.com/cars-2.html","image":"assets/rentme-live-fleet-2026.png","imageAlt":"Rent Me CT live rental fleet with available cars and SUVs","schemaType":"AutoRental",
       "specialties":["Cars & SUVs","Passenger vans","Online booking"],"tags":["sedans","luxury vehicles","trucks","rental car","live availability","250 daily miles"],
       "shortBio":"A local Hartford-area rental company offering sedans, SUVs, luxury vehicles, trucks, and passenger vans with online booking.",
       "longBio":"Rent Me CT is a local Hartford-area rental company with sedans, SUVs, luxury vehicles, trucks, and passenger vans. Customers can check live availability, review vehicle details, and begin booking online before pickup in Farmington.",

@@ -646,8 +646,8 @@
       ],
       "description": "A local Hartford-area rental company offering sedans, SUVs, luxury vehicles, trucks, and passenger vans with online booking.",
       "primaryAction": {
-        "label": "Browse Vehicles",
-        "url": "https://rentmect.com/"
+        "label": "Book your Rental",
+        "url": "https://rentmect.com/cars-2.html"
       },
       "informationLastVerified": "2026-09-04"
     },
