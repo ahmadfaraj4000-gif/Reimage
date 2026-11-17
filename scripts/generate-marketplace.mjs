@@ -321,6 +321,10 @@ function generateHub() {
         [ordered[firstIndex], ordered[secondIndex]] = [ordered[secondIndex], ordered[firstIndex]];
       }
     }
+    if (ordered.includes('vendetta') && ordered.includes('jam-roc')) {
+      ordered.splice(ordered.indexOf('vendetta'), 1);
+      ordered.splice(ordered.indexOf('jam-roc'), 0, 'vendetta');
+    }
     return ordered.map(slug => businessMap.get(slug));
   }
 
