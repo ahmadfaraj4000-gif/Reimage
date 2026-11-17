@@ -152,6 +152,10 @@ for (const field of ['website', 'ctaUrl']) {
   }
 }
 
+if (fusion && repositoryFusion && /^https?:\/\/(?:www\.)?fusionhealthjuicebar\.com\/?$/i.test(fusion.ctaUrl || '')) {
+  fusion.ctaUrl = repositoryFusion.ctaUrl;
+}
+
 // Migrate Comma's homepage CTA to the requested annual membership page.
 const comma = snapshot.businesses.find(business => business.slug === 'comma-vintage');
 const repositoryComma = repositoryCatalog.businesses.find(business => business.slug === 'comma-vintage');
