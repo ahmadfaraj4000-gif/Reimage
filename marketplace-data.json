@@ -391,7 +391,7 @@
     },
     {
       "slug":"the-patio","name":"The Patio","categories":["nightlife-events","restaurants-drinks"],"featuredLabel":"RE IMAGE Pick","locationKey":"hartford","locationLabel":"Hartford","regionRank":1,
-      "address":{"street":"2280 Main Street","city":"Hartford","state":"CT","postalCode":"06120"},"website":"https://thepatioct.com/","ctaLabel":"View Events & Menu","ctaUrl":"https://thepatioct.com/","image":"assets/patio-home-2026.jpg","imageAlt":"The Patio Hartford indoor-outdoor lounge and event destination","schemaType":"BarOrPub",
+      "address":{"street":"2280 Main Street","city":"Hartford","state":"CT","postalCode":"06120"},"website":"https://thepatioct.com/","ctaLabel":"View Events & Menu","ctaUrl":"https://thepatioct.com/menu.html","image":"assets/patio-home-2026.jpg","imageAlt":"The Patio Hartford indoor-outdoor lounge and event destination","schemaType":"BarOrPub",
       "cuisine":["American","Cocktails"],"specialties":["Cocktails","Live entertainment","Mini golf"],"tags":["private events","nightlife","garden lounge","drinks","events"],
       "shortBio":"An indoor-outdoor Hartford destination for cocktails, live entertainment, private events, and mini golf in a garden-lounge setting.",
       "longBio":"The Patio is an indoor-outdoor Hartford destination built for memorable nights out. Its garden-lounge atmosphere brings together handcrafted cocktails, live entertainment, private events, and mini golf in one polished social setting.",

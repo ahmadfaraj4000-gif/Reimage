@@ -160,6 +160,13 @@ if (comma && repositoryComma && /^https?:\/\/(?:www\.)?commavintage\.com\/?$/i.t
   comma.ctaLabel = repositoryComma.ctaLabel;
 }
 
+// Send The Patio's homepage CTA directly to its menu.
+const patio = snapshot.businesses.find(business => business.slug === 'the-patio');
+const repositoryPatio = repositoryCatalog.businesses.find(business => business.slug === 'the-patio');
+if (patio && repositoryPatio && /^https?:\/\/(?:www\.)?thepatioct\.com\/?$/i.test(patio.ctaUrl || '')) {
+  patio.ctaUrl = repositoryPatio.ctaUrl;
+}
+
 // Keep the rental button on the booking page while older CMS data uses the homepage.
 const rentMe = snapshot.businesses.find(business => business.slug === 'rent-me-ct');
 const repositoryRentMe = repositoryCatalog.businesses.find(business => business.slug === 'rent-me-ct');

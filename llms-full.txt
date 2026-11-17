@@ -281,7 +281,7 @@ Listed businesses: Amanah Medical Care, CR8 Autos, Empire Elite Rides
 - Location or service area: 2280 Main Street, Hartford, CT 06120
 - Specialties: Cocktails, Live entertainment, Mini golf
 - Summary: An indoor-outdoor Hartford destination for cocktails, live entertainment, private events, and mini golf in a garden-lounge setting.
-- Primary action: View Events & Menu — https://thepatioct.com/
+- Primary action: View Events & Menu — https://thepatioct.com/menu.html
 - Information last verified: 2026-09-04
 
 ## Lunch Box
