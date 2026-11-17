@@ -71,7 +71,7 @@ const logoAssets = {
   'techniq-skin-beauty': 'assets/marketplace/logos/techniq-skin-beauty.png',
   'lories-african-hair-braiding': 'assets/marketplace/logos/lories-african-hair-braiding-2026.webp',
   'living-word-imprints': 'assets/marketplace/logos/living-word-imprints.png',
-  'andaleeb-enterprises': 'assets/marketplace/logos/andaleeb-enterprises.webp',
+  'andaleeb-enterprises': 'assets/marketplace/logos/andaleeb-wordmark.png',
   'the-anchor-collective': 'assets/marketplace/logos/the-anchor-collective.png'
 };
 
