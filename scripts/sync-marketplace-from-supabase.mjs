@@ -160,6 +160,12 @@ if (comma && repositoryComma && /^https?:\/\/(?:www\.)?commavintage\.com\/?$/i.t
   comma.ctaLabel = repositoryComma.ctaLabel;
 }
 
+// Remove the old rarity claim from Comma's published description and tags.
+if (comma) {
+  comma.shortBio = comma.shortBio?.replace('finds rare vintage menswear', 'finds vintage menswear');
+  comma.tags = comma.tags.map(tag => tag === 'rare vintage clothing' ? 'vintage menswear' : tag);
+}
+
 // Send The Patio's homepage CTA directly to its menu.
 const patio = snapshot.businesses.find(business => business.slug === 'the-patio');
 const repositoryPatio = repositoryCatalog.businesses.find(business => business.slug === 'the-patio');
