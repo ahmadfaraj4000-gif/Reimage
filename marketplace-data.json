@@ -446,7 +446,7 @@
     },
     {
       "slug":"techniq-skin-beauty","name":"Techniq Skin & Beauty","categories":["skincare-esthetics"],"featuredLabel":"RE IMAGE Pick","locationKey":"manchester","locationLabel":"Manchester","regionRank":2,
-      "address":{"street":"49 Tolland Turnpike, Suite 202","city":"Manchester","state":"CT","postalCode":"06042"},"phone":"860-230-4411","website":"https://techniqskinandbeauty.com/","ctaLabel":"Book a Treatment","ctaUrl":"https://techniqskinandbeauty.com/","image":"assets/techniq-home.png","imageAlt":"Techniq Skin and Beauty customized skincare services website","schemaType":"BeautySalon",
+      "address":{"street":"49 Tolland Turnpike, Suite 202","city":"Manchester","state":"CT","postalCode":"06042"},"phone":"860-230-4411","website":"https://techniqskinandbeauty.com/","ctaLabel":"Book a Consultation","ctaUrl":"https://techniqskinandbeauty.com/consultation.html","image":"assets/techniq-home.png","imageAlt":"Techniq Skin and Beauty customized skincare services website","schemaType":"BeautySalon",
       "specialties":["Hyperpigmentation","Acne-focused skincare","Custom facials"],"tags":["esthetician","skin reset","corrective skincare","texture","waxing","facials"],
       "shortBio":"Customized facials and corrective skincare focused on acne, hyperpigmentation, texture, waxing, and personalized treatment plans.",
       "longBio":"Licensed esthetician Shaniqua Faraj provides customized facials, acne-focused and corrective skincare, hyperpigmentation and texture treatments, and waxing at Techniq Skin & Beauty. New clients can begin with a Skin Reset consultation, customized facial, and personal treatment plan.",

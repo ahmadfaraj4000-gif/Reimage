@@ -177,6 +177,14 @@ if (patio && repositoryPatio && /^https?:\/\/(?:www\.)?thepatioct\.com\/?$/i.tes
   patio.ctaUrl = repositoryPatio.ctaUrl;
 }
 
+// Migrate Techniq's homepage booking button to the consultation page.
+const techniq = snapshot.businesses.find(business => business.slug === 'techniq-skin-beauty');
+const repositoryTechniq = repositoryCatalog.businesses.find(business => business.slug === 'techniq-skin-beauty');
+if (techniq && repositoryTechniq && /^https?:\/\/(?:www\.)?techniqskinandbeauty\.com\/?$/i.test(techniq.ctaUrl || '')) {
+  techniq.ctaUrl = repositoryTechniq.ctaUrl;
+  techniq.ctaLabel = repositoryTechniq.ctaLabel;
+}
+
 // Keep the rental button on the booking page while older CMS data uses the homepage.
 const rentMe = snapshot.businesses.find(business => business.slug === 'rent-me-ct');
 const repositoryRentMe = repositoryCatalog.businesses.find(business => business.slug === 'rent-me-ct');
