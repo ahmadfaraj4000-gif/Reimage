@@ -52,7 +52,7 @@ const logoAssets = {
   'bethaney-brenner-dmd': 'assets/marketplace/logos/bethaney-brenner-dmd-black.webp',
   'comma-vintage': 'assets/marketplace/logos/comma-vintage.webp',
   'botticello-auto-repair': 'assets/marketplace/logos/botticello-auto-repair-2026.png',
-  'tuff-cuts': 'assets/marketplace/logos/tuff-cuts-2026.png',
+  'tuff-cuts': 'assets/marketplace/logos/tuff-cuts-monochrome.webp',
   'dr-frank-aieta': 'assets/marketplace/logos/dr-frank-aieta.png',
   'fish-n-tingz': 'assets/marketplace/logos/fish-n-tingz.webp',
   'blue-hills-cafe': 'assets/marketplace/logos/blue-hills-cafe.jpg',
