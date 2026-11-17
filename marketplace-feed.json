@@ -8,6 +8,16 @@
   "featuredGuide": "https://reimagebs.com/marketplace/guides/new-britain-avenue-hartford/",
   "categories": [
     {
+      "slug": "music-local-artists",
+      "name": "Music & Local Artists",
+      "description": "Discover Connecticut musicians and local artists, including pop and R&B releases.",
+      "topics": [
+        "Music & Local Artists"
+      ],
+      "guide": "Discover Connecticut musicians and local artists, including pop and R&B releases.",
+      "url": "https://reimagebs.com/marketplace/categories/music-local-artists/"
+    },
+    {
       "slug": "hair-services",
       "name": "Hair Services",
       "description": "Barbering and styling in Hartford, including haircuts, fades, beard grooming, African hair braiding, twists, and locs.",
@@ -275,6 +285,7 @@
       "description": "Explore businesses with additional Connecticut locations or service areas, including Wethersfield and Clinton. Check individual profiles for the precise areas and services offered.",
       "url": "https://reimagebs.com/marketplace/locations/other-connecticut/",
       "businesses": [
+        "https://reimagebs.com/marketplace/businesses/vendetta/",
         "https://reimagebs.com/marketplace/businesses/action-audio/",
         "https://reimagebs.com/marketplace/businesses/andaleeb-enterprises/",
         "https://reimagebs.com/marketplace/businesses/the-anchor-collective/"
@@ -306,6 +317,26 @@
     "methodology": "https://reimagebs.com/market-signals.html#methodology"
   },
   "businesses": [
+    {
+      "name": "Vendetta",
+      "profile": "https://reimagebs.com/marketplace/businesses/vendetta/",
+      "officialWebsite": "https://vendetta878.com/",
+      "category": [
+        "Music & Local Artists"
+      ],
+      "location": "Connecticut",
+      "specialties": [
+        "Pop",
+        "R&B",
+        "Original music"
+      ],
+      "description": "Vendetta is a local Connecticut artist making pop and R&B music. Explore his latest release, TRYOUTS, and purchase his EP.",
+      "primaryAction": {
+        "label": "Purchase His EP",
+        "url": "https://krisnova13.gumroad.com/l/cnodjv?wanted=true"
+      },
+      "informationLastVerified": "2026-11-16"
+    },
     {
       "name": "Bethaney B. Brenner, DMD LLC",
       "profile": "https://reimagebs.com/marketplace/businesses/bethaney-brenner-dmd/",

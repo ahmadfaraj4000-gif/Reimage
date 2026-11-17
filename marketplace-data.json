@@ -1,6 +1,7 @@
 {
   "verifiedAt": "2026-09-04",
   "categories": [
+    {"slug": "music-local-artists", "name": "Music & Local Artists", "shortName": "Music & Local Artists", "description": "Discover Connecticut musicians and local artists, including pop and R&B releases.", "featured": "vendetta"},
     {"slug": "hair-services", "name": "Hair Services", "shortName": "Hair Services", "description": "Barbering and styling in Hartford, including haircuts, fades, beard grooming, African hair braiding, twists, and locs.", "featured": "tuff-cuts"},
     {"slug":"medical-healthcare","name":"Medical & Healthcare","shortName":"Healthcare","description":"Naturopathic care, nutrition consultations, physician collaboration, and medical education.","featured":"amanah-medical-care"},
     {"slug":"nutrition-supplements","name":"Nutrition & Supplements","shortName":"Nutrition & Supplements","description":"Naturopathic care, nutrition consultations, and nutritional supplements in Greater Hartford.","featured":"dr-frank-aieta"},
@@ -16,6 +17,7 @@
     {"slug":"private-transportation","name":"Private Transportation","shortName":"Private Rides","description":"Private chauffeur service for airports, corporate travel, events, and long-distance trips.","featured":"empire-elite-rides"}
   ],
   "businesses": [
+    {"repositoryPublished": true, "verifiedAt": "2026-11-16", "slug": "vendetta", "name": "Vendetta", "categories": ["music-local-artists"], "locationKey": "other-connecticut", "locationLabel": "Connecticut", "regionRank": 3, "serviceArea": "Connecticut", "website": "https://vendetta878.com/", "ctaLabel": "Purchase His EP", "ctaUrl": "https://krisnova13.gumroad.com/l/cnodjv?wanted=true", "image": "assets/marketplace/logos/vendetta-wordmark.svg", "imageAlt": "VENDETTA wordmark with no background", "schemaType": "MusicGroup", "specialties": ["Pop", "R&B", "Original music"], "tags": ["Connecticut artist", "local music", "TRYOUTS", "EP"], "shortBio": "Vendetta is a local Connecticut artist making pop and R&B music. Explore his latest release, TRYOUTS, and purchase his EP.", "longBio": "Connecticut artist Vendetta blends pop melodies with R&B. His release TRYOUTS, produced by Ambient Act, explores heartbreak and relationships through synth-heavy production and deep 808s. Visit his website to listen, watch videos, and support his music by purchasing the EP.", "faq": [["What kind of music does Vendetta make?", "Vendetta is a local Connecticut artist making pop and R&B music."], ["Where can I purchase his EP?", "Select Purchase His EP to open the purchase page linked from Vendetta’s official website."]]},
     {
       "slug": "bethaney-brenner-dmd",
       "repositoryPublished": true,
