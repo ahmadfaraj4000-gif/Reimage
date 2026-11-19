@@ -49,6 +49,7 @@ function browseGuides() {
 }
 
 const logoAssets = {
+  'munroes-tire-service': 'assets/marketplace/logos/munroes-tire-service.png',
   'vendetta': 'assets/marketplace/logos/vendetta-wordmark-pink.svg',
   'bethaney-brenner-dmd': 'assets/marketplace/logos/bethaney-brenner-dmd-black.webp',
   'comma-vintage': 'assets/marketplace/logos/comma-vintage.webp',

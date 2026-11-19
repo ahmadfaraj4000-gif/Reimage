@@ -208,6 +208,7 @@
       "description": "Explore Hartford restaurants, juice bars, hair braiding, car audio, printing, property services, and community organizations. Check each profile for its storefront or service area.",
       "url": "https://reimagebs.com/marketplace/locations/hartford/",
       "businesses": [
+        "https://reimagebs.com/marketplace/businesses/munroes-tire-service/",
         "https://reimagebs.com/marketplace/businesses/comma-vintage/",
         "https://reimagebs.com/marketplace/businesses/tuff-cuts/",
         "https://reimagebs.com/marketplace/businesses/blue-hills-cafe/",
@@ -317,6 +318,26 @@
     "methodology": "https://reimagebs.com/market-signals.html#methodology"
   },
   "businesses": [
+    {
+      "name": "Munroe’s Tire Service LLC",
+      "profile": "https://reimagebs.com/marketplace/businesses/munroes-tire-service/",
+      "officialWebsite": "https://reimage-demo.github.io/munroes-tire-service/",
+      "category": [
+        "Automobile services"
+      ],
+      "location": "3430 Main Street, Hartford, CT 06120",
+      "specialties": [
+        "New and used tires",
+        "Mounting and balancing",
+        "Tire repairs"
+      ],
+      "description": "New and used tires, flat tire repairs, mounting and balancing on Main Street in Hartford.",
+      "primaryAction": {
+        "label": "View tire services & prices",
+        "url": "https://reimage-demo.github.io/munroes-tire-service/"
+      },
+      "informationLastVerified": "2026-11-18"
+    },
     {
       "name": "Vendetta",
       "profile": "https://reimagebs.com/marketplace/businesses/vendetta/",
