@@ -9,3 +9,7 @@ verify_jwt = true
 
 [functions.record-marketplace-event]
 verify_jwt = false
+
+[functions.dispatch-contract-email]
+# Server-to-server scheduler credential is checked inside the handler.
+verify_jwt = false
