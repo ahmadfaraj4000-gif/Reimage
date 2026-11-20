@@ -1,6 +1,31 @@
 # RE IMAGE project contracts, deposits, and receipts
 
-Status: Implementation in progress.
+## Production status · November 20, 2026
+
+**Staff can create a project, review its proposed payment schedule, and preview its contract. Project payment collection and automated customer email are still pending.**
+
+| To see | Where to go |
+| --- | --- |
+| A new project | In the [admin portal](https://admin.reimagebs.com), open **Products**, add catalog items, and choose **Create project from cart**. Enter the customer, scope, and payment dates, then save. |
+| An existing project and schedule | Open **Orders → Project orders** or **Invoices → Project orders**, search for the customer or project, and expand the result. The draft shows each installment before tax. |
+| A contract preview | In the expanded draft, choose **Prepare agreement**, enter the approved terms and version, then choose **Preview agreement**. |
+| An issued or signed agreement | Staff can use **View agreement** on an issued project. The customer opens the agreement link in the [client portal](https://login.reimagebs.com) with the matching verified account, draws their signature, and can print the signed copy or save it as a PDF. |
+
+### Deployed
+
+- Both portals use the REIMAGE production Supabase project, `uybcjtigyujoyrunecto`. The project, installment, agreement, and email queue tables are deployed.
+- POS drafts preserve catalog prices and discounts. Staff can choose a 50% deposit and balance, or three or four installments. The first payment counts toward the chosen number. Three- and four-payment drafts record the requirement for autopay authorization.
+- The signing workflow stores the issued document, version, signature image, signer, and signing time. New drafts can be previewed immediately. Sending a signing invitation requires finalized project tax.
+- The Brevo dispatch function is deployed and enforces worker authentication. An issued agreement can queue a signing invitation. Production delivery has yet to be verified.
+
+### Work still open
+
+1. **Stripe Tax and checkout.** Local work has begun on tax calculation, Stripe invoices, saved-card enrollment, and payment reconciliation. Finish the admin tax controls and customer payment screen, test the complete flow, then deploy it. New drafts currently have pending tax, which blocks issuing the agreement through the admin UI.
+2. **Payments and autopay.** Record explicit authorization for the signed schedule before activating a three- or four-payment plan. Connect scheduled charges, failed-payment recovery, receipts, and project-linked in-person collection. A draft schedule is a quote. Staff cannot collect a project installment from the deployed agreement page.
+3. **Brevo activation.** The account exists. Verify the sender and production credentials, configure the worker schedule, and test delivery. Complete reminders, installment and final receipts, delivery tracking, and staff resend controls.
+4. **Operations.** Supply approved contract wording and confirm tax and refund rules. Complete payment-status filters, amendments, and the acceptance checks below.
+
+The sections below describe the intended workflow and acceptance criteria.
 
 ## Objective
 
@@ -103,38 +128,10 @@ Keep receipt and agreement messages separate from marketing subscriptions. Enter
 
 Validate webhook authenticity and make payment/signature processing idempotent. Prevent simultaneous attempts from collecting more than the outstanding balance. Record refunds and adjustments separately so balances and receipts remain accurate.
 
-## Implementation stages
-
-### 1. Project records and partial payments
-
-- Audit the current Orders, Invoices, and Terminal integrations.
-- Add customer-linked, itemized project records and stable project identifiers.
-- Save pricing and discount snapshots.
-- Add deposit schedules, balance calculations, and multiple payments per project.
-- Add project recall and partial-payment status to admin and Terminal flows.
-
-The current checkout treats sales as complete payments. A percentage button alone is insufficient; the balance-tracking model must come first.
-
-### 2. Contracts and signing gate
-
-- Integrate the Rent Me CT signature pad with authenticated project agreements.
-- Add approved, versioned contract templates and staff preview.
-- Send signature requests and verify authenticated signing records.
-- Store completed agreements and signing records securely.
-- Enforce the signature prerequisite for project deposits across every payment entry point.
-- Add amendment/change-order handling.
-
-### 3. Customer communications
-
-- Build the secure customer project page.
-- Configure the Brevo sender/domain and transactional templates.
-- Generate immutable receipts for each payment and a final payment summary.
-- Add signing reminders, balance-payment requests, delivery tracking, and resend actions.
-
 ## Decisions and materials needed
 
 - Approved contract template and project terms.
-- Brevo account, verified sender/domain, and receipt branding.
+- Verified Brevo sender/domain, production delivery configuration, and receipt branding.
 - Deposit default and any allowed alternatives.
 - Balance due dates or milestone rules.
 - Signature reminder timing.
